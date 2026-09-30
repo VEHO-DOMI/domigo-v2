@@ -20,7 +20,209 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:79"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:80"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:84"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:86"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:94"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:98"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:100"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:102"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:104"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:106"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:110"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:121"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:125"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:126"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:127"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:128"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:191"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:219"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:227"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:229"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:231"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:233"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:235"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:237"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:239"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:243"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:244"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:245"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:246"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:247"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:249"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:250"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:251"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:252"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:254"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:255"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:256"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:257"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:258"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:263"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:264"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:265"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:266"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:267"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:268"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:269"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:270"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S001:420"
+        }
+      ]
     },
     {
       "id": "S002",
@@ -36,7 +238,165 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:99"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:102"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:107"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:114"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:117"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:125"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:132"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:137"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:142"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:150"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:155"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:164"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:171"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:178"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:185"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:186"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:192"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:198"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:205"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:216"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:218"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:220"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:222"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:224"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:226"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:238"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:244"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:249"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:257"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:263"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:270"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:275"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:280"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:286"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:293"
+        },
+        {
+          "register": "blueprint-lineage.json",
+          "id": "S002:300"
+        }
+      ]
     },
     {
       "id": "S003",
@@ -84,7 +444,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B1"
+        }
+      ]
     },
     {
       "id": "S006",
@@ -100,7 +466,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S007",
@@ -580,7 +952,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y3C"
+        }
+      ]
     },
     {
       "id": "S037",
@@ -596,7 +974,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y3C"
+        }
+      ]
     },
     {
       "id": "S038",
@@ -612,7 +996,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y3C"
+        }
+      ]
     },
     {
       "id": "S039",
@@ -644,7 +1034,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S041",
@@ -660,7 +1056,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S042",
@@ -708,7 +1110,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S045",
@@ -740,7 +1148,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        }
+      ]
     },
     {
       "id": "S047",
@@ -755,8 +1169,310 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:1"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:2"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:3"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:4"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:5"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:6"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:7"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:8"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:9"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:10"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:11"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:12"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:13"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:14"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:15"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:16"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:17"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:18"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:19"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:20"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:21"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:22"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:23"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:24"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:25"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:26"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:27"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:28"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:29"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:30"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:31"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:32"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:33"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:34"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:35"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:36"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:37"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:38"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:39"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:40"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:41"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:42"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:43"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:44"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:45"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:46"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:47"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:48"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:49"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:50"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:51"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:52"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:53"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:54"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:55"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:56"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:57"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:58"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:59"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:60"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:61"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:62"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:63"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:64"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:65"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:66"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:67"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:68"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:69"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:70"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:71"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:72"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:73"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S047:74"
+        }
+      ]
     },
     {
       "id": "S048",
@@ -771,8 +1487,398 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:1"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:2"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:3"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:4"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:5"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:6"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:7"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:8"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:9"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:10"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:11"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:12"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:13"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:14"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:15"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:16"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:17"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:18"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:19"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:20"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:21"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:22"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:23"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:24"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:25"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:26"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:27"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:28"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:29"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:30"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:31"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:32"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:33"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:34"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:35"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:36"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:37"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:38"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:39"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:40"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:41"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:42"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:43"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:44"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:45"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:46"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:47"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:48"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:49"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:50"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:51"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:52"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:53"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:54"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:55"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:56"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:57"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:58"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:59"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:60"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:61"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:62"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:63"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:64"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:65"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:66"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:67"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:68"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:69"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:70"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:71"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:72"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:73"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:74"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:75"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:76"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:77"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:78"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:79"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:80"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:81"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:82"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:83"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:84"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:85"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:86"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:87"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:88"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:89"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:90"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:91"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:92"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:93"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:94"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:95"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S048:96"
+        }
+      ]
     },
     {
       "id": "S049",
@@ -787,8 +1893,438 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:1"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:2"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:3"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:4"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:5"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:6"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:7"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:8"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:9"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:10"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:11"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:12"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:13"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:14"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:15"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:16"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:17"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:18"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:19"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:20"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:21"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:22"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:23"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:24"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:25"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:26"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:27"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:28"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:29"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:30"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:31"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:32"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:33"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:34"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:35"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:36"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:37"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:38"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:39"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:40"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:41"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:42"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:43"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:44"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:45"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:46"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:47"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:48"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:49"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:50"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:51"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:52"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:53"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:54"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:55"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:56"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:57"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:58"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:59"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:60"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:61"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:62"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:63"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:64"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:65"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:66"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:67"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:68"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:69"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:70"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:71"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:72"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:73"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:74"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:75"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:76"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:77"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:78"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:79"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:80"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:81"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:82"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:83"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:84"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:85"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:86"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:87"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:88"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:89"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:90"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:91"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:92"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:93"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:94"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:95"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:96"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:97"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:98"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:99"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:100"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:101"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:102"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:103"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:104"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:105"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S049:106"
+        }
+      ]
     },
     {
       "id": "S050",
@@ -803,8 +2339,450 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:1"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:2"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:3"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:4"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:5"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:6"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:7"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:8"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:9"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:10"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:11"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:12"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:13"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:14"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:15"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:16"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:17"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:18"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:19"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:20"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:21"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:22"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:23"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:24"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:25"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:26"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:27"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:28"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:29"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:30"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:31"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:32"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:33"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:34"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:35"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:36"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:37"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:38"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:39"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:40"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:41"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:42"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:43"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:44"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:45"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:46"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:47"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:48"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:49"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:50"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:51"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:52"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:53"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:54"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:55"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:56"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:57"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:58"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:59"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:60"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:61"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:62"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:63"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:64"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:65"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:66"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:67"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:68"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:69"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:70"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:71"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:72"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:73"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:74"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:75"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:76"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:77"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:78"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:79"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:80"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:81"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:82"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:83"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:84"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:85"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:86"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:87"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:88"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:89"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:90"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:91"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:92"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:93"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P1"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P2"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P3"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P4"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P5"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P6"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P7"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P8"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P9"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P10"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P11"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P12"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P13"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P14"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P15"
+        },
+        {
+          "register": "filed-lineage.json",
+          "id": "S050:P16"
+        }
+      ]
     },
     {
       "id": "S051",
@@ -820,7 +2798,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S052",
@@ -868,7 +2852,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S055",
@@ -884,7 +2874,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S056",
@@ -900,7 +2896,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S057",
@@ -932,7 +2934,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1A"
+        }
+      ]
     },
     {
       "id": "S059",
@@ -1140,7 +3148,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S072",
@@ -1172,7 +3186,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S074",
@@ -1332,7 +3352,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S084",
@@ -1476,7 +3502,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S093",
@@ -1620,7 +3652,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S102",
@@ -1764,7 +3802,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S111",
@@ -2180,7 +4224,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S137",
@@ -2244,7 +4294,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S141",
@@ -2292,7 +4348,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S144",
@@ -2580,7 +4642,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S162",
@@ -2692,7 +4760,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1B"
+        }
+      ]
     },
     {
       "id": "S169",
@@ -2724,7 +4798,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y3A"
+        }
+      ]
     },
     {
       "id": "S171",
@@ -2740,7 +4820,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1A"
+        }
+      ]
     },
     {
       "id": "S172",
@@ -2756,7 +4842,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1A"
+        }
+      ]
     },
     {
       "id": "S173",
@@ -2772,7 +4864,21 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y3A"
+        },
+        {
+          "register": "commitments.json",
+          "id": "Y3B"
+        },
+        {
+          "register": "commitments.json",
+          "id": "Y3C"
+        }
+      ]
     },
     {
       "id": "S174",
@@ -2804,7 +4910,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "OG1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "OG2"
+        }
+      ]
     },
     {
       "id": "S176",
@@ -2820,7 +4936,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "PL2"
+        }
+      ]
     },
     {
       "id": "S177",
@@ -2836,7 +4962,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL3"
+        }
+      ]
     },
     {
       "id": "S178",
@@ -2900,7 +5032,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "OG1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "OG2"
+        }
+      ]
     },
     {
       "id": "S182",
@@ -2916,7 +5058,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL1"
+        }
+      ]
     },
     {
       "id": "S183",
@@ -2948,7 +5096,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL2"
+        }
+      ]
     },
     {
       "id": "S185",
@@ -2964,7 +5118,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        }
+      ]
     },
     {
       "id": "S186",
@@ -2980,7 +5140,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S187",
@@ -3028,7 +5194,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S190",
@@ -3044,7 +5216,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B1"
+        }
+      ]
     },
     {
       "id": "S191",
@@ -3076,7 +5254,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S193",
@@ -3092,7 +5276,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S194",
@@ -3108,7 +5298,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "PL1"
+        }
+      ]
     },
     {
       "id": "S195",
@@ -3124,7 +5324,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S196",
@@ -3156,7 +5362,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        }
+      ]
     },
     {
       "id": "S198",
@@ -3348,7 +5560,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S210",
@@ -3412,7 +5630,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1E"
+        }
+      ]
     },
     {
       "id": "S214",
@@ -3460,7 +5684,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B3"
+        }
+      ]
     },
     {
       "id": "S217",
@@ -3476,7 +5706,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1C"
+        }
+      ]
     },
     {
       "id": "S218",
@@ -3508,7 +5744,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "Y1D"
+        }
+      ]
     },
     {
       "id": "S220",
@@ -3524,7 +5766,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL3"
+        }
+      ]
     },
     {
       "id": "S221",
@@ -3572,7 +5820,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "OG1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "OG2"
+        }
+      ]
     },
     {
       "id": "S224",
@@ -3700,7 +5958,17 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "PL2"
+        }
+      ]
     },
     {
       "id": "S232",
@@ -3716,7 +5984,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "RV1"
+        }
+      ]
     },
     {
       "id": "S233",
@@ -3732,7 +6006,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "B2"
+        }
+      ]
     },
     {
       "id": "S234",
@@ -3748,7 +6028,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL3"
+        }
+      ]
     },
     {
       "id": "S235",
@@ -3764,7 +6050,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL3"
+        }
+      ]
     },
     {
       "id": "S236",
@@ -3780,7 +6072,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "RV1"
+        }
+      ]
     },
     {
       "id": "S237",
@@ -3796,7 +6094,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "RV1"
+        }
+      ]
     },
     {
       "id": "S238",
@@ -3812,7 +6116,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "RV1"
+        }
+      ]
     },
     {
       "id": "S239",
@@ -3844,7 +6154,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "PL3"
+        }
+      ]
     },
     {
       "id": "S241",
@@ -3876,7 +6192,101 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "H1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C4"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "G1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "U1"
+        }
+      ]
     },
     {
       "id": "S243",
@@ -3892,7 +6302,101 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "H1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C4"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "G1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "U1"
+        }
+      ]
     },
     {
       "id": "S244",
@@ -3908,7 +6412,101 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "H1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "H3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "M2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "C4"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "CO2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "I2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "IX3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "V3"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "P2"
+        },
+        {
+          "register": "commitments.json",
+          "id": "G1"
+        },
+        {
+          "register": "commitments.json",
+          "id": "U1"
+        }
+      ]
     },
     {
       "id": "S245",
@@ -3940,7 +6538,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "DL1"
+        }
+      ]
     },
     {
       "id": "S247",
@@ -3956,7 +6560,13 @@
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
       "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "detailedDispositions": [
+        {
+          "register": "commitments.json",
+          "id": "DL1"
+        }
+      ]
     }
   ]
 }
