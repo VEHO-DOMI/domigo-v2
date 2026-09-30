@@ -1,0 +1,17 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "source": "S028",
+  "sourcePath": "docs/art/ch01-story-gamepass/ending-door/README.md",
+  "sourceVersion": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "sourceMd5": "4cda93de8003365b17f3eaa8638f4123",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "scope": "Einzelwortlaut einschließlich Unterkriterien; quellenbezogene Einschätzung und Vertragsprofil ergänzen konkrete Beleggrenze/Fortführung. Ein historisches Urteil wird nicht als neuer Produktlauf ausgegeben.",
+  "authorPassComplete": true,
+  "records": [
+    {"id": "S028:L3", "sourceLine": 3, "sourceEndLine": 3, "section": "CODEX DRAFT — NOT CANON", "requirementOrFinding": "Der lokale Importbericht wurde am 13.09.2026 gegen das Manifest, die unveränderte Quelle, die tatsächlich installierte `plate_ch01_door.png` und `import.log` geprüft. Alle vier Hashbindungen stimmen. Der Bericht enthält genau einen Eintrag `plate_ch01_door`; er musste nicht rekonstruiert werden. Ausgabe 1024 × 768, SHA-256 `3a36ed1d2db5ad50a790839b75de20ca13491a3d6b5bafbd488065a6e4d6d5b6`.", "subcriteria": [{"n": 1, "from": 0, "to": 257}, {"n": 2, "from": 259, "to": 392}], "sourceTextSha256": "5b78382a6aa210e404706150388f0ef9955873676a3b62e5929dc3bddbb77419", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "art-sourcepack", "authorPass": "Quellenrolle, Unterkriterium und Fortführung abgeglichen; aktueller Sachabschluss nur im ausdrücklich benannten Belegumfang"},
+    {"id": "S028:L5", "sourceLine": 5, "sourceEndLine": 5, "section": "CODEX DRAFT — NOT CANON", "requirementOrFinding": "Die tatsächliche Schlusskarte mit dieser neuesten Datei muss Root noch im Browser ansehen. Korrekte Dateizuordnung allein bestätigt keine räumliche Türplatzierung.", "subcriteria": [{"n": 1, "from": 0, "to": 163}], "sourceTextSha256": "0266a4101d2f5a14934428ab837928d3db00d36cb379ff960379d000ae63409e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "art-sourcepack", "authorPass": "Quellenrolle, Unterkriterium und Fortführung abgeglichen; aktueller Sachabschluss nur im ausdrücklich benannten Belegumfang"}
+  ],
+  "previousDispositions": [],
+  "sourceSpecificAssessment": "Ein eindeutiger Türimport1024×768 mit vierpassendenHashbindungen; tatsächliche Schlusskarte war ausdrücklich noch imBrowser anzusehen. Dateiquittung≠Türplatzierung.",
+  "subcriteriaEncoding": "Unicode-Zeichenpositionen [from,to) in requirementOrFinding."
+}

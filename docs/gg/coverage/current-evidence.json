@@ -253,6 +253,58 @@
           "excerpt": "{\n  \"schema\": \"story-release@1\",\n  \"storyId\": \"g4.st.lost-for-words\",\n  \"releasedChapters\": []\n}"
         }
       ]
+    },
+    {
+      "id": "P15",
+      "state": "gebaut",
+      "finding": "Beide in S015 ausdrücklich gehashten geprüften Dateien sind am Produktpin bytegleich. S016 nennt denselben Nahtprüferhash.",
+      "limits": "Erhält das damalige eng begrenzte Codeurteil; kein neuer Testlauf, keine aktuelle Anzahl bestandener Räume und keine Sicht-/Performancefreigabe.",
+      "method": "SHA256 ganzer Git-Dateibytes verglichen",
+      "evidence": [
+        {
+          "path": "packages/game-paint/src/composition.test.ts",
+          "sha256": "a0591c42ba87a1d1a3e1380f052181a3add7e0102175465444f0169834a6097e",
+          "historicalReviewedSha256": "a0591c42ba87a1d1a3e1380f052181a3add7e0102175465444f0169834a6097e",
+          "matches": true
+        },
+        {
+          "path": "scripts/check-png-seams.mjs",
+          "sha256": "54a756be0e589c1fb4ff76e937998f22c9aafe0ab7a2216f5d8b1d54b4813ec9",
+          "historicalReviewedSha256": "54a756be0e589c1fb4ff76e937998f22c9aafe0ab7a2216f5d8b1d54b4813ec9",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "id": "P16",
+      "state": "gebaut",
+      "finding": "Die aktuelle Restore-Aufgabe g1.paint.ch01.rsc.chair.r1 benennt chair und verlangt yellow, use=encounter, Phasep3; S136 dokumentiert diese konkrete Änderung.",
+      "limits": "Kein neues Bildurteil. Die alte Batch-Y-Farbe brown gehört zum damaligen anderen Bild-/Aufgabenvertrag; keine globale Buchfarbenkorrektur daraus.",
+      "method": "Exakten heutigen Aufgabenvertrag gelesen",
+      "evidence": [
+        {
+          "path": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+          "start": 2160,
+          "end": 2198,
+          "blob": "fe7a4eea4d1b0f01c4fc6d6984f10e49d0968fc4",
+          "excerpt": "      \"id\": \"g1.paint.ch01.rsc.chair.r1\",\n      \"use\": \"encounter\",\n      \"kind\": \"restore\",\n      \"form\": \"name-it\",\n      \"exercises\": [\n        \"g1u01.w.chair\",\n        \"g1u01.x.colours\"\n      ],\n      \"stimulus\": {\n        \"type\": \"entity\",\n        \"showsDe\": \"Der Stuhl hat seine Farbe verloren.\",\n        \"art\": \"obj_chair_a\"\n      },\n      \"storyDe\": \"Sag den Namen auf Englisch.\",\n      \"nameOptions\": [\n        \"chair\",\n        \"desk\",\n        \"school bag\",\n        \"pencil case\"\n      ],\n      \"name\": \"chair\",\n      \"colourAskDe\": \"Der Stuhl war gelb. Gib ihm die Farbe zurück.\",\n      \"colourOptions\": [\n        \"yellow\",\n        \"blue\",\n        \"pink\"\n      ],\n      \"colour\": \"yellow\",\n      \"skins\": [\n        \"obj_chair\"\n      ],\n      \"phases\": [\n        \"p3\"\n      ],\n      \"hints\": {\n        \"deDesc\": \"Darauf sitzt du in der Klasse.\",\n        \"deWord\": \"Der Stuhl.\"\n      },\n      \"grounding\": \"u01 chair and yellow. This ordinary chair is restored in the courtyard, not rescued as a person from a cage. Its painted surface and the colour answer must agree.\""
+        }
+      ]
+    },
+    {
+      "id": "P17",
+      "state": "offen",
+      "finding": "Matching/matching-pairs und group-sort liefern all-or-nothing; historisch verlangte anteilige Paar-/Elementpunkte fehlen.",
+      "limits": "Tatsächlich gelesene maßgebliche Bewertungsfunktionen, kein neuer Lauf.",
+      "method": "Quellcodelektüre",
+      "evidence": [
+        {
+          "path": "packages/engine/src/grade.ts",
+          "start": 133,
+          "end": 150,
+          "excerpt": "\nfunction gradeChoice(selected: string, answers: TieredAnswer[]): Tier {\n  const c = canonical(selected);\n  return answers.some((a) => a.tier === \"full\" && canonical(a.text) === c) ? \"correct\" : \"wrong\";\n}\n\n/** matching / matching-pairs: a left->right map; all pairs correct, all-or-nothing. */\nfunction gradeMatching(map: Record<string, string>, pairs: GrammarItem[\"pairs\"]): Tier {\n  if (pairs.length === 0) return \"wrong\";\n  if (Object.keys(map).length !== pairs.length) return \"wrong\";\n  return pairs.every((p) => canonical(map[p.left] ?? \"\") === canonical(p.right)) ? \"correct\" : \"wrong\";\n}\n\n/** group-sort: a member->label map; every member in its group, all-or-nothing. */\nfunction gradeGroupSort(map: Record<string, string>, groups: GrammarItem[\"groups\"]): Tier {\n  const total = groups.reduce((n, g) => n + g.members.length, 0);\n  if (total === 0 || Object.keys(map).length !== total) return \"wrong\";\n  return groups.every((g) => g.members.every((m) => canonical(map[m] ?? \"\") === canonical(g.label)))"
+        }
+      ]
     }
   ]
 }

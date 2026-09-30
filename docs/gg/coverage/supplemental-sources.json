@@ -409,5 +409,141 @@
         "md5": "c3a479953b94690e20964e8394a0208e"
       }
     ]
+  },
+  {
+    "id": "X012",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/SCHUELERSPRACHE_UND_DIDAKTIK_2026-09-30.md",
+    "md5": "c08c057040cf008cd4efb3b01624378b",
+    "sha256": "ad75f409a62752a48e2fcf1e4c841641c803275503d45f60ac9e073d585573e2",
+    "lines": 65,
+    "scope": "Verbindliches späteres Koki-Urteil 30.09., Board cgo-025 Nachtrag7",
+    "closure": "Volltext gelesen; Anforderungen unten einzeln erhalten. Keine Produkttextänderung und keine vorgetäuschte Buchsichtung."
+  },
+  {
+    "id": "X013",
+    "scope": "DomiLingo Fehlergeschichte; feste Originalfassung e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+    "sources": [
+      {
+        "path": "docs/audit/README.md",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "18fe84723d8d008d3a88e078cc7d4894",
+        "sha256": "f7eba43026fc3c03c9aeaf8fc520f871abac1f4932fa9f46b0ad0a34592c9568",
+        "bytes": 2936,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/docs/audit/README.md"
+      },
+      {
+        "path": "docs/audit/AUDIT_REPORT.md",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "f66c87ed0403d7d901b2092fe4cd1aba",
+        "sha256": "25ed912d9627a15cb306225ccc62ff6bc95c92b5efc43c588763268e6a4cfffb",
+        "bytes": 10532,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/docs/audit/AUDIT_REPORT.md"
+      },
+      {
+        "path": "docs/audit/TQ2_REPORT.md",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "85a62495ba11191495385706504e7396",
+        "sha256": "c80f2831d0e4a7adbd9a62828f741277cae57fd11cb80a9be975d870bd36b7a1",
+        "bytes": 11472,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/docs/audit/TQ2_REPORT.md"
+      },
+      {
+        "path": "docs/review/REVIEW_STEMS_WOERTLICH_2026-09-22.md",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "129786302fdc8f2eec3babbc4c0a7c74",
+        "sha256": "c7fb65b0f7400b3202ae15aa66451064d9a2db47f451d9482c54ced1bf4cf2f3",
+        "bytes": 31426,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/docs/review/REVIEW_STEMS_WOERTLICH_2026-09-22.md"
+      },
+      {
+        "path": "scripts/review/stem-overlap.mjs",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "23587c03104fe7e927a5dc05c0b7d0c0",
+        "sha256": "ca24128d4560ba6ff5706bbde17aa56460ef781359e5775af5a973c1fa2ec7d1",
+        "bytes": 15525,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/review/stem-overlap.mjs"
+      },
+      {
+        "path": "scripts/review/calibrate-official.mjs",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "ef5bda3bcbe0683a1da48ec97bd5fe4c",
+        "sha256": "8808fdcdb2f250fa2407f75f1f5402ff8b43739933184e654df1a55f8afaec80",
+        "bytes": 7861,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/review/calibrate-official.mjs"
+      },
+      {
+        "path": "scripts/quality-audit/README.md",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "c59094470f5f3c7b584276fd1fc7f554",
+        "sha256": "68b91ab8e8aaf0959a96eb8fbbbcf483f0510990da1e3511ebaeaa127d5703b5",
+        "bytes": 5487,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/quality-audit/README.md"
+      },
+      {
+        "path": "scripts/quality-audit/blindpack.py",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "693860e7607d52da89ee9c826fdcab1e",
+        "sha256": "6a326f7e7f22ca4aaf51fa8af2d4bef509f00f154385496f161a5502e0db4b25",
+        "bytes": 5301,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/quality-audit/blindpack.py"
+      },
+      {
+        "path": "scripts/quality-audit/frame.py",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "d8f6f967c82d987817cb054a72eb85d1",
+        "sha256": "e3d6ff3e04658efdeb90bd6652a4c1dabca6f31178e02956acd11c2e5ea5837a",
+        "bytes": 11953,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/quality-audit/frame.py"
+      },
+      {
+        "path": "scripts/quality-audit/fix_spec_leaks.py",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "cc24b2f96c8e6fd94ae1cb5bb99e7dc0",
+        "sha256": "28004604c1178b5cc94c0bc7dfa272f9b227161de0ff94b0083f7291fac08f53",
+        "bytes": 6777,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/quality-audit/fix_spec_leaks.py"
+      },
+      {
+        "path": "scripts/quality-audit/fix_ed_tick_leak.py",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "e2792e8b0a35f5a8d959d65d5cdf01ea",
+        "sha256": "ff2fe3a1cbe6a12a49326fd1d9adf63de093b700d3fc5566a2299da34ae3b256",
+        "bytes": 2202,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/quality-audit/fix_ed_tick_leak.py"
+      },
+      {
+        "path": "scripts/test-revision-regeln.ts",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "ffd980cd7722257ea59f6406cbe57688",
+        "sha256": "b490a4ad896c6eeab446e86ac39469977c9adfd63cd1829ef89cc05fdc8fb4cc",
+        "bytes": 22641,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/test-revision-regeln.ts"
+      },
+      {
+        "path": "scripts/test-revision-stempel.ts",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "5e36e11340ca31156bb615307ea647fd",
+        "sha256": "2f204db9af961864d6843645ecfe28b2502b31d53719577740c9b5d5c5ce7c28",
+        "bytes": 30955,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/test-revision-stempel.ts"
+      },
+      {
+        "path": "scripts/revision-pakete.mjs",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "3e3b2afbdfc4e7664b3deadd4e850356",
+        "sha256": "dee22e58582e01854520b00f98e6a21a6ff45a2b762921835e98aa9908199757",
+        "bytes": 9473,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/scripts/revision-pakete.mjs"
+      },
+      {
+        "path": "lib/revision-stempel.ts",
+        "pin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "md5": "ff676e632fdf48c4cac5ea1714411dec",
+        "sha256": "54ec8c7ff8cf8b8596f705492b04ef25a7e3d9313d3946f73e9ba6669d32753e",
+        "bytes": 7986,
+        "copy": "/Users/veho/Code/_codex/cgo-025-evidence/donor-quality/lib/revision-stempel.ts"
+      }
+    ],
+    "closure": "Berichte, Blindpack und Stempelimplementierung tatsächlich gelesen; historische Läufe als historische Belege, keine neue Ausführung."
   }
 ]

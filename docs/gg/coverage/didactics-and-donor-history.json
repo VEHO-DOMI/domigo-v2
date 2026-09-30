@@ -1,0 +1,190 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "authoritySource": "X012",
+  "authorityMd5": "c08c057040cf008cd4efb3b01624378b",
+  "donorPin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "requirements": [
+    {
+      "id": "Annahme getrennt",
+      "sourceSection": "§1",
+      "requirement": "cgo-007/PR473 technisch übernommen; Koki lehnt Sprache/Didaktik ab. Keine pauschale Kunstablehnung.",
+      "target": "cgo-020 / neue Muster-Nachbesserung",
+      "currentStateAndMissingEvidence": "Späteres Urteil ersetzt genau die angenommene sprachlich-didaktische Eignung. Technische Belege bleiben eng gültig. Neue Musterannahme fehlt.",
+      "state": "offen"
+    },
+    {
+      "id": "Chapter",
+      "sourceSection": "§2.1",
+      "requirement": "Sichtbarer Kapitelname Chapter, eindeutig zum Buchstoff; interne Unit-Schlüssel und Originaltitel bleiben.",
+      "target": "cgo-020 / alle Schülerflächen",
+      "currentStateAndMissingEvidence": "Vollständige sichtbare Textliste und Buchzuordnung je Chapter fehlen; internes Umbenennen wäre kein Erfüllungsbeleg.",
+      "state": "offen"
+    },
+    {
+      "id": "Sprachvoraussetzungen",
+      "sourceSection": "§2.2–4",
+      "requirement": "Frühes Y1 deutsch geführt; jedes Englisch eingeführt, Ziel, gestützt oder noch nicht voraussetzbar; ältere Jahrgänge gesondert.",
+      "target": "cgo-020 und jeweilige Inhaltskarte",
+      "currentStateAndMissingEvidence": "Wort-/Form-/Redemittelvoraussetzungen pro Lernmoment mit SB+WB-Seiten sowie wirksamer Hilfe fehlen. P13 de-first allein erfüllt das nicht.",
+      "state": "offen"
+    },
+    {
+      "id": "Konkrete natürliche Sprache",
+      "sourceSection": "§2.5–6",
+      "requirement": "Auftrag nennt Handlung, Feedback die wirkliche Antwort, Figurenrede die Situation. Beanstandete Formeln und ihre bloße Übersetzung nicht als Stilvorbild.",
+      "target": "cgo-020 / Autoren aller Schülertexte",
+      "currentStateAndMissingEvidence": "Kontextsicht und fachliche Begründung jeder sichtbaren Formulierung fehlen; bloße Wortverbotsliste wäre unzureichend.",
+      "state": "offen"
+    },
+    {
+      "id": "Buch tatsächlich ansehen",
+      "sourceSection": "§3",
+      "requirement": "Student’s Book UND Workbook: Ausgabe, gedruckte Seiten, Dateiprüfsumme, tatsächlicher Sichtumfang; Text/Bilder/Sprechblasen/Beispiele/Progression gemeinsam.",
+      "target": "cgo-020 / betroffene Lernstrecke",
+      "currentStateAndMissingEvidence": "PDFs laut GG vorhanden im MORE 1-Quellordner. Hier kein neuer Lernweg entworfen und kein PDF-Seitenstudium behauptet. Fehlender Sichtnachweis ist keine Behauptung fehlender Dateien.",
+      "state": "offen"
+    },
+    {
+      "id": "Originalhandlungen erhalten",
+      "sourceSection": "§3",
+      "requirement": "Unterschiedliche Aufgabenmodi und plausible Antworten nicht auf dieselben Auswahlknöpfe reduzieren; alte gute Reviews scoped erhalten.",
+      "target": "cgo-006/011 und Inhaltskarten",
+      "currentStateAndMissingEvidence": "Bestehende Erhaltungsmatrix plus gültige Reviewgrenzen gelten; neuer Modus braucht eigene Abnahme der tatsächlichen Schülerhandlung.",
+      "state": "offen"
+    },
+    {
+      "id": "Verfahrensgeschichte",
+      "sourceSection": "§4",
+      "requirement": "Originalfehler → übersehener Prüfgegenstand → wirksame Prüfung/Korrektur → begrenzte Anwendung.",
+      "target": "cgo-025 / cgo-006",
+      "currentStateAndMissingEvidence": "Konkrete DomiLingo-Lehren in derselben Datei. Matura-Schwellen nicht als Anfängermaß übertragen.",
+      "state": "offen"
+    },
+    {
+      "id": "Vollständiges nächstes Muster",
+      "sourceSection": "§5",
+      "requirement": "Anforderungsbelege, Buchsicht, alle Schülertexte einschließlich Fehl-/Leer-/Warte-/Speicherzuständen; richtige, plausible und falsche Antwort durchspielen.",
+      "target": "neue Muster-Nachbesserung durch GG",
+      "currentStateAndMissingEvidence": "Bisherige lokale Gestaltung ist hierfür nicht angenommen; vollständiger Beispielweg und gerenderte Textliste fehlen.",
+      "state": "offen"
+    },
+    {
+      "id": "Zwei unabhängige Rollen",
+      "sourceSection": "§5",
+      "requirement": "Blindlöser ohne Schlüssel/Autorbegründung und gesonderter Quellen-/Didaktikleser mit Buchseiten.",
+      "target": "GG: eigene Prüfkarten",
+      "currentStateAndMissingEvidence": "Keine eigenen Agenten. cgo-030/031 beenden ihr eingefrorenes Paket als Diagnose, nicht als Freigabe der nächsten Fassung.",
+      "state": "offen"
+    },
+    {
+      "id": "Ehrliche Wirkung",
+      "sourceSection": "§5",
+      "requirement": "Geprüfter Stand, funktionierende Bedienung, bestätigte Speicherung vor Lernpunkten; Musterzustände explizit.",
+      "target": "cgo-006/009/011/017 und Muster",
+      "currentStateAndMissingEvidence": "Dokumentierter Datenpfad noch kein vollständiger Fehler-/Wiederanlaufbeweis. Kein XP aus unbestätigtem Speicherzustand.",
+      "state": "offen"
+    },
+    {
+      "id": "Folgearbeit und Aufwand",
+      "sourceSection": "§1/6",
+      "requirement": "Qualität vor Kostenersparnis; fachliche Autoren/Prüfer XHIGH; neue Musterkarte/PR statt stiller Umschreibung007; Serienbau gesperrt.",
+      "target": "GG Programmsteuerung",
+      "currentStateAndMissingEvidence": "Diese Bestandskarte nennt weiterhin HIGH; keine unbelegte Behauptung einer Laufzeitänderung. Kein Serienfreigabe-Ja aus technischem Merge; keine Planänderung durch Executor.",
+      "state": "offen"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "DL01",
+      "subject": "Vollständige Arbeitsmenge",
+      "source": "docs/revision/README.md",
+      "sourceScope": "Abschnitt eingefrorene Pakete; docs/audit/README.md Tier A/B/C",
+      "historicalFailure": "Dynamische Paketbildung lässt nach Stilllegung einer Aufgabe spätere Pakete wandern; manuelle Aussage 1132 MANUAL war keine Prüfung.",
+      "missedBecause": "Struktur- und Mengenberichte wurden mit tatsächlicher Fachprüfung verwechselt.",
+      "effectiveEvidenceOrCorrection": "13 eingefrorene disjunkte Pakete/253 Aufgaben, Basis- und Nachfolgerbindung; Audit trennt Zensus und Stichprobe.",
+      "applicationAndLimit": "DomiGo: 247 Eingänge, 5898 Reviewzeilen und 2446 Wortbankzeilen erhalten, geänderte Teilmenge explizit. Keine neue fachliche Freigabe aus Summen."
+    },
+    {
+      "id": "DL02",
+      "subject": "Schlüsselleck in echter Schüleransicht",
+      "source": "docs/audit/AUDIT_REPORT.md",
+      "sourceScope": "A10/B; scripts/quality-audit/blindpack.py:32–107",
+      "historicalFailure": "85 Lückentexte enthielten ungelückten Volltext; verschachtelte Lückenfelder enthielten Antworten; Pilotlöser fanden zwei Paketlecks.",
+      "missedBecause": "Oberflächliches Entfernen bekannter Antwortfelder übersah andere Darstellung und Verschachtelung.",
+      "effectiveEvidenceOrCorrection": "Blindpack entfernt Schlüssel rekursiv aus Segmenten, lässt Volltext bei Segmentansicht weg, behält nur richtige Beispielantworten; sauberer Blindlauf nach Pilotfund.",
+      "applicationAndLimit": "DomiGo: tatsächliche Darstellung und Variantenfenster ohne Schlüssel prüfen, nicht nur JSON-Felder. Codelektüre ersetzt keine aktuelle Schülersichtprüfung."
+    },
+    {
+      "id": "DL03",
+      "subject": "Sichtbare ED-Häkchen",
+      "source": "docs/audit/AUDIT_REPORT.md",
+      "sourceScope": "ED-Befund; scripts/quality-audit/fix_ed_tick_leak.py:1–64",
+      "historicalFailure": "Alle sechs Extra-Wort-Aufgaben verrieten korrekte Zeilen durch sichtbare Häkchen.",
+      "missedBecause": "Format wurde nicht als tatsächliche Aufgabe durchgespielt; Key und sichtbarer Text waren vermischt.",
+      "effectiveEvidenceOrCorrection": "Gezielter Korrektor entfernt sichtbare Endhäkchen in Stem und Quellabsätzen, erhält versteckten Schlüssel; Schlüsselkorrektheit bleibt gesondertes Fachurteil.",
+      "applicationAndLimit": "DomiGo: Fehlerklasse über alle betreffenden Aufgaben/Sichten prüfen; keine Entfernung sinnvoller Beispiel-/Feedbackmarkierungen und kein vermeintlich korrekter Key aus bereinigter Darstellung."
+    },
+    {
+      "id": "DL04",
+      "subject": "Plausible Varianten",
+      "source": "docs/audit/AUDIT_REPORT.md",
+      "sourceScope": "Tier-B Disagreements und F2",
+      "historicalFailure": "109 Abweichungen:84 richtige Antworten zurückgewiesen,20 Löserfehler,5 Mehrdeutigkeiten;156 mögliche Erweiterungen.",
+      "missedBecause": "Ein einzelner Autorenschlüssel und hohe Gesamtübereinstimmung überdeckten Varianten.",
+      "effectiveEvidenceOrCorrection": "Echte Bewertung erneut angewendet, dann fachliche Adjudikation; Erweiterungen nur einzeln beurteilt und erneut blind gelöst.",
+      "applicationAndLimit": "DomiGo: 109 answers-Drifts sind geänderte Prüfungssache; alte korrekte Varianten erhalten, Echo-/Aufgabenzielschutz beachten. Alle vorgeschlagenen Antworten automatisch erlauben wäre falsch."
+    },
+    {
+      "id": "DL05",
+      "subject": "Quell- und Formatgrenze",
+      "source": "scripts/quality-audit/README.md",
+      "sourceScope": "Validity Firewall; docs/review/REVIEW_STEMS_WOERTLICH_2026-09-22.md §1/2/6",
+      "historicalFailure": "Falscher RC-Quelltyp, LC-Arbeitsblatt statt Transkript und fehlende Quellen erzeugen falsche Urteile.",
+      "missedBecause": "Allgemeiner Sucher nahm überall sourceText an, Originalregister konnte doppelte/kanonische Einträge verlieren.",
+      "effectiveEvidenceOrCorrection": "Formatabhängige Source/Stem-Kanäle, Unicode, Absatzgrenzen, Namensräume und Duplikatadressen; fehlende Transkripte explizit unprüfbar.",
+      "applicationAndLimit": "DomiGo: konkrete Buchausgabe/Bilder und Aufgabe abgleichen. MORE-Anfängeraufgabe ist keine Matura-Aufgabe; bei fehlender Quelle UNVERIFIZIERT statt erfundener Begründung."
+    },
+    {
+      "id": "DL06",
+      "subject": "Perfect ohne gemessenes Kriterium",
+      "source": "docs/review/REVIEW_STEMS_WOERTLICH_2026-09-22.md",
+      "sourceScope": "§3.5/4/5/6",
+      "historicalFailure": "268 Items/150 Aufgaben über Wortfolgeschwelle, darunter74 perfect; zwei Leser fanden zusätzlich7 von20 rechnerisch sauberen Items problematisch.",
+      "missedBecause": "Bisherige Prüfer wurden nicht nach Wort-Spotting gefragt; Synonyme unterbrechen Wortfolgen, ohne den abgeschriebenen Satzbau zu ändern.",
+      "effectiveEvidenceOrCorrection": "Same-function-Eichung an40 offiziellen Items, gepinnte Originalmessung und getrennte Blindstichprobe machen blinden Fleck sichtbar. §5 ist Reparaturvorschlag, ausdrücklich keine gebaute Fehlerbehebung.",
+      "applicationAndLimit": "DomiGo: eigenes Lernziel und Anfängerprogression prüfen; Worterkennung darf bewusst Lernziel sein. Keine4-/6-Wort-Matura-Schwelle übertragen und 161 Kandidaten nicht als161 bestätigte Fehler zählen."
+    },
+    {
+      "id": "DL07",
+      "subject": "Abnahme an genauer Fassung",
+      "source": "docs/audit/TQ2_REPORT.md",
+      "sourceScope": "§5/7, späterer srdp-320-Nachtrag; lib/revision-stempel.ts:90–160",
+      "historicalFailure": "Geänderte Aufgaben behielten nur scheinbar passende Rankings; sieben spätere Fixstände wurden historisch neu gepinnt, obwohl Richter Vorstände sahen.",
+      "missedBecause": "Ein Hash zeigt Dateigleichheit, aber nicht, dass der Leser genau diese Datei gesehen hat. Frühere unranked-Behandlung ließ Drift folgenlos.",
+      "effectiveEvidenceOrCorrection": "Aktueller Donor: Stempelprüfer vergleicht committed SHA, perfect+Lauf+offen/archiv, Duplikate; Sept28 macht ranked sidecar drift hart rot.",
+      "applicationAndLimit": "DomiGo: alte Urteile nur innerhalb unveränderten Inhalts/Schlüssels/Ansicht weitertragen. Alte README/Sept22-Aussage unranked durch späteres Sept28-Urteil überholt. Nachträgliches Neu-Pinnen allein ist keine Nachprüfung."
+    },
+    {
+      "id": "DL08",
+      "subject": "Belegtreue und Grenzen formaler Regeln",
+      "source": "docs/audit/TQ2_REPORT.md",
+      "sourceScope": "Zitatprüfung; docs/revision/README.md Sept28-Blindstellen",
+      "historicalFailure": "15 Richterurteile wegen falscher Zitatbelege zurückgewiesen; korrekt existentes Zitat kann dennoch falsches Item begründen; Slashvarianten und zufällige Ziffer täuschen Formalregeln.",
+      "missedBecause": "Zitatexistenz/Arraylänge/Ziffer wurden als fachliche Relevanz/Varianten/Fallencode behandelt.",
+      "effectiveEvidenceOrCorrection": "TQ2 Originalzitate verifiziert, abgelehnte Urteile nicht als Rang verwendet; Grand-Revision nennt präzise fachliche Zusatzprüfung und strengere Codes.",
+      "applicationAndLimit": "DomiGo: Maschinenprüfung bindet Quelle und Struktur, unabhängiger Leser beurteilt Passung. Kein behauptetes Semantik-Ja aus der hier erfolgreichen Quellenprüfung."
+    },
+    {
+      "id": "DL09",
+      "subject": "Fehlerklasse und Nachweisgrenzen",
+      "source": "docs/audit/TQ2_REPORT.md",
+      "sourceScope": "F-CENSUS-13/PR539+541 und offene tier3-Funde",
+      "historicalFailure": "Antwortsterne und verschachtelte akzeptierte Begründungen verrieten Lösungen;24 weitere tier3-Lehrertranskripte blieben offen.",
+      "missedBecause": "Einzelfix nur am bekannten Feld erfasst verwandte verschachtelte Lecks nicht.",
+      "effectiveEvidenceOrCorrection": "Nachgebesserte Hygieneprüfung gegen beide belegten Klassen; Schülercode/-bundle auf Adminmarker untersucht, historische4 Schüler-HTMLs ohne Marker.",
+      "applicationAndLimit": "DomiGo: verwandte Ansichten und Hilfestufen inventarisieren, Ausnahmen begründen. Nicht ausgeführter Build/Browser ist hier keine bestandene Prüfung; offene24 Donor-Funde nicht als behoben erben."
+    }
+  ],
+  "limits": "Dokumentierte historische Befunde und Implementierungslektüre. Kein neuer Donor-Testlauf, keine neue Produkt-/Buchbildprüfung, kein unabhängiger Leser dieser Inventur."
+}

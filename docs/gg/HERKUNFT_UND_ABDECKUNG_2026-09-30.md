@@ -193,3 +193,15 @@ Die leichte Prüfung muss Herkunftskennungen/Hashes/Dateizaun sowie absichtlich 
 | 5 · Lieferung/Prüfung | Drei angeforderte Dokumente und ausschließlich fachliche Zuordnungsdaten im Zaun; alte Dokumente als bytegleicher Präfix erhalten; eigene Gegenproben, keine eigenen Prüferagenten | Schwere Pflichtbatterie erst nach GG-Zuteilung; aktueller W0-Schlussabgleich und unabhängiger Leser offen. Dokumentreview kann diese Grenzen beurteilen; es darf sie nicht als erfüllt übernehmen. |
 
 **FREIGABE für eine Behauptung „Inventur vollständig“: nein.** Der konkrete Rest steht in dieser Tabelle und den einzelnen Dispositionen. Ein späteres Ja benötigt die fehlenden Einzelbelege und den ausdrücklich angenommenen Schlussstand, nicht zusätzliche gleiche Kennungsprüfungen.
+
+## Späteres Koki-Urteil: Sprache und Didaktik (Nachtrag 7)
+
+Die technische Übernahme von cgo-007/PR473 ist **keine sprachliche oder didaktische Annahme**. Kokis späteres Urteil verlangt ein neues geprüftes Muster; Serienarbeit bleibt gesperrt. Kunst/Figuren sind nicht pauschal verworfen. [Die ergänzte Zuordnung](coverage/didactics-and-donor-history.json) erhält elf Anforderungsgruppen und neun konkrete DomiLingo-Fehlerketten mit Originalbeleg, wirksamer Prüfung und Übertragungsgrenze.
+
+Sichtbar heißt es **Chapter**; interne Schlüssel bleiben erhalten. Frühes Year 1 braucht deutsche Orientierung und je englischem Text belegte Voraussetzungen. Maßgeblich sind tatsächliche Student’s-Book- und Workbook-Seiten samt Bildern und Aufgabenfolge. Für diese Dokumentkarte wurde kein neuer Lernweg entworfen und kein PDF-Sichtstudium behauptet. Der notwendige Sichtbeleg bleibt bei der Muster-/Inhaltsarbeit offen, obwohl die PDFs laut GG verfügbar sind.
+
+DomiLingo liefert konkrete Gegenbeispiele gegen pauschale Qualitätsbehauptungen: perfect-Urteile ohne gemessenes Wort-Spotting-Kriterium, Lösungen in Schülerfeldern, abgewiesene richtige Varianten und Dateidrift nach Abnahme. Die dokumentierten Matura-Schwellen sind **keine Anfängerregel**. Die Sept28-Driftregel ersetzt die ältere folgenlose unranked-Behandlung; ein neu berechneter Hash allein ersetzt keine erneute Lektüre des geänderten Inhalts.
+
+### Arbeitsstand der fortgesetzten Einzelzuordnung
+
+70 Quellen enthalten jetzt 4.074 gebundene Einzelstellen; 17 konkrete Produktbeleggruppen ergänzen die Quellenurteile. Der Restkatalog wird weiter zugeordnet; dies ist weiterhin **kein Vollständigkeits-Ja**. Bei matching und group-sort fehlt die früher verlangte Teilwertung nachweislich im heutigen Bewerter (Beleg P17). Zwei Quellenstellen mit historischen Zugangsdaten bleiben nur über Fundstelle und Originalprüfsumme gebunden; die Werte werden nicht weiterveröffentlicht.

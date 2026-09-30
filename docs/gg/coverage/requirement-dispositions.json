@@ -698,6 +698,100 @@
       "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
       "evidenceRefs": [],
       "replacement": null
+    },
+    {
+      "id": "art-commission",
+      "subject": "Historischer Bildauftrag mit eigenem Motiv-/Format-/Abnahmevertrag",
+      "state": "unverifiziert",
+      "missingEvidence": "Fehlt für jede bezeichnete Karte: die tatsächlich gewählte Originaldatei, passende Importbindung und Beurteilung in Anwendungsgröße. Eine Bestellbeschreibung ist weder eine gelieferte Datei noch eine Bildfreigabe.",
+      "disposition": "Motiv/Bedienzweck einzeln erhalten. Historischen Pixelstil nur als Vorgänger des Painted-Book-Wechsels lesen; keine neuen Bilder beauftragen. Alte Pfade/Befehle erteilen cgo-025 keine Ausführungsrechte.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "art-sourcepack",
+      "subject": "Originalbild → registrierter Ausschnitt → tatsächlicher eingebauter Stem",
+      "state": "unverifiziert",
+      "missingEvidence": "Ein historischer Hash-/Importbericht bindet die damals genannte Ausgabe. Für eine neue Ausgabe fehlen deren erneuter Hashabgleich, korrekter Bildausschnitt und gegebenenfalls neue Spiel-/Sichtabnahme; keine pauschale Freigabe aller Nachbarn eines Rohblatts.",
+      "disposition": "Jeden im Einzelposten benannten Stem, Alias, Originalzustand und verbliebenen Integrationsschritt erhalten. Reproduktion beginnt bei gespeicherten Roh-PNGs; erneute Generierung ist kein bytegleicher Wiederholer.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "art-visual-review",
+      "subject": "Historisches Bildurteil zu genau dem gezeigten Paar",
+      "state": "unverifiziert",
+      "missingEvidence": "Für eine später geänderte Zeichnung oder andere Kamera/Größe fehlt ein neues dazu passendes Bildurteil. Die alte bevorzugte Variante belegt weder Kollisionen noch Sprungreichweite, Importierbarkeit oder persönliche Koki-Freigabe.",
+      "disposition": "Jedes Paarurteil und jeden genannten Restmangel erhalten. Frühere 48 Lesungen nicht auf die nachgemalten Bonus-/Westbilder übertragen; S019/S020 sind eigene spätere Belege mit eigener Paarzuordnung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "art-code-review",
+      "subject": "Unabhängige technische Abnahme mit enger Prüfgrenze",
+      "state": "teilgebaut",
+      "missingEvidence": "Die historische focused-test-Abnahme erfasst die ausdrücklich benannten Dateien/Fixtures. Aktuelle vollständige Batterie und Spiel-/Kunstabnahme folgen daraus nicht; veränderte Daten sind nicht automatisch erneut getestet.",
+      "disposition": "S014 Nachprüfung schließt die zwei damaligen P2-Fälle im nachgeprüften Stand. S015-Dateihashes sind am Produktpin identisch: das eng begrenzte Codeurteil erhalten; 5-Phasen-Zahl nicht ungeprüft auf spätere Kapitel hochrechnen.",
+      "evidenceRefs": [
+        "P15"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "art-cast",
+      "subject": "FOURTEEN-Referenzporträts und 16-Bilder-Sollmatrix",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt Cast-Entscheid zu Saras Alter, DU strikt von hinten, tatsächlicher Besetzung der Episoden11/14 und eigens komponierten kleinen Sprecherbildern. Fünf Referenzen sind keine bestandene 16-Bilder-Welle.",
+      "disposition": "cgo-013/Y3-Kunst: jede X-Zelle als offene Prüfplicht bewahren. 46×46-Ausschnitt schneidet lange Referenzen ab; Manifest/Spielgröße vor Freigabe prüfen. Quelle ist ein Entwurf, keine Freigabe.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "y3-learning",
+      "subject": "Strukturzuordnung und Wiederholung mit erhaltener Originalszene",
+      "state": "unverifiziert",
+      "missingEvidence": "Weg1 verlangt serververtrauenswürdige Struktur und Kontext, einmalige Buchung, Lehrkraftsicht und fällige Originalszene. Weg3 ist nur Analyse, Weg2 nur bei unveränderter echter Unit-Lösung passend; kein neuer vollständiger DB-/Offline-Abnahmepfad belegt.",
+      "disposition": "cgo-011 erhält Weg1 als Ziel und Weg3 nur als ehrliche Zwischenstufe. Zehn Buchplätze bleiben. reviewContext=story aus PR452 nicht umgehen; keine rückwirkenden Versuche oder Punkte erfinden.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "syntaxia-rejected",
+      "subject": "Alle drei Syntaxia-Erzähloptionen verworfen",
+      "state": "geparkt",
+      "missingEvidence": "Kein Bauauftrag: S187:L3 dokumentiert Kokis ausdrückliche Ablehnung aller drei Fantasy-Erzählungen am06.07.; S189 ist der spätere reale Sprachwochenentwurf, der seinerseits später geparkt wurde.",
+      "disposition": "Nicht als neue Auswahl an Koki zurückgeben. Erhaltene Flag-/Scaffold-/Bossmechaniken getrennt unter g4-mechanics führen; kein genereller Verzicht auf Y4-Spiel.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "matching-partial",
+      "subject": "Teilpunkte pro richtigem Paar bzw. richtig sortiertem Eintrag",
+      "state": "offen",
+      "missingEvidence": "Konkreter Widerspruch: S178:46 und S181 matching/group-sort verlangen Teilwertung, gradeMatching und gradeGroupSort am269ee liefern weiter ausschließlich correct oder wrong. Akzeptierte komplette Maps sind keine Teilpunkte.",
+      "disposition": "An GG als erhaltene Bewertungsanforderung: entweder nach eigenem Fachentscheid anteilige Wertung entwerfen oder ausdrückliche begründete Ablösung beschließen. Nicht durch neues Design still verlieren. Nicht in cgo-025 bauen.",
+      "evidenceRefs": [
+        "P17"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "migration-history",
+      "subject": "Vollständige Migration und Erhalt bereits beanspruchter Konten",
+      "state": "unverifiziert",
+      "missingEvidence": "Historischer110-Konten-Import ist keine heutige Vollständigkeitsquittung: benötigt finalen export/cutover-Vergleich, Schutz bereits beanspruchter Konten und belegten eigenen Anspruch samt Fortschritt. Keine Produktionsdaten werden hier gelesen.",
+      "disposition": "cgo-009/Konto-Abgleich und GG-Betrieb: Altfortschritt nicht überschreiben, anonyme aggregierte Nachweise und tatsächlichen Fehlerpfad prüfen. Historische Anmeldedaten werden nicht weiterveröffentlicht.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "arcade-retired",
+      "subject": "Überholte Keen-spezifische Bewegungs-/Gegner-/Zielgrammatik",
+      "state": "geparkt",
+      "missingEvidence": "S198:L3–5 nennt ausdrücklich partielle Ablösung durch S204: Keen-Verben, Kreaturvokabular und Zielgrammatik sind keine weiter verbindlichen Bauziele.",
+      "disposition": "Studiengrenze, populationsbasierte Schwierigkeit und nichts-stirbt als eigene übertragbare Prinzipien erhalten; einzelnen Pogo-/Siegel-/Quickfire-Plan nicht zurückbauen. Spätere Paint-Phasen haben eigenen Vertrag.",
+      "evidenceRefs": [],
+      "replacement": null
     }
   ]
 }
