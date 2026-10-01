@@ -1,202 +1,54 @@
-import Link from "next/link";
-import { scopedClassIds } from "@/lib/identity";
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { listReleasedStories } from "@domigo/content-loader";
-import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
-import { listPaintChapters } from "@/lib/paint-content";
-import { getDb, getUnitMastery } from "@domigo/db";
 import { auth } from "@/auth";
-import { abmelden } from "../le/konto-aktion";
+import { getTeacherForPage, type ActingTeacher } from "@/lib/identity";
+import { kontoBaseUrl } from "@/lib/konto/basis";
 import { isGrandmaster } from "@/lib/grandmaster";
+import { loadTeacherClasses } from "./_lib/teacher-queries";
+import { teacherArea } from "./_lib/navigation";
+import { readResult } from "./_lib/teacher-classes";
+import ClassDirectory from "./_components/ClassDirectory";
+import { ClassesLoading, TeacherHeading, TeacherShell } from "./_components/TeacherShell";
+import TeacherManagement from "./_components/TeacherManagement";
+import StoryMastery from "./_components/StoryMastery";
+import GameExploration from "./_components/GameExploration";
+import TeacherAccessError from "./_components/TeacherAccessError";
+import "./lehrerbereich.css";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage() {
+async function Classes({ teacher, writing }: { teacher: ActingTeacher; writing: boolean }) {
+  const lists = await loadTeacherClasses(teacher);
+  return <ClassDirectory lists={lists} mode={writing ? "writing" : "home"} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />;
+}
+
+export default async function AdminPage({ searchParams }: { searchParams: Promise<{ bereich?: string | string[] }> }) {
+  // Preserve /admin's explicit student redirect. No new authentication path.
   const session = await auth();
   if (!session) redirect("/admin/signin");
   if (session.user.role !== "teacher") redirect("/home");
-
-  // v5.3: every chapter that HAS a guardian gets a direct boss door below —
-  // probing the corpus keeps the list in lockstep with authored content
-  const bossChapters: string[] = [];
-  for (let i = 1; i <= 15; i += 1) {
-    const ch = `ch${String(i).padStart(2, "0")}`;
-    try {
-      loadKeenLevel("g1.st.lost-pages", ch);
-      loadKeenBoss("g1.st.lost-pages", ch);
-      bossChapters.push(ch);
-    } catch {
-      // chapter not authored yet — no door
-    }
+  const identity = await readResult(getTeacherForPage);
+  if (identity.status === "error") {
+    return <TeacherShell area="classes"><TeacherAccessError retryHref="/admin" /></TeacherShell>;
   }
-  // doc 31: the painted-book preview list grows the same corpus-probing way
-  const paintChapters = listPaintChapters("g1.st.lost-pages");
-
-  // dach-074 · the one sign-out of the app: a konto session goes on to konto's
-  // /logout, a PIN session ends here (app/le/konto-aktion.ts).
-  async function doSignOut() {
-    "use server";
-    await abmelden();
-  }
-
-  // Story mastery per released grade — derived from the corpus (a new grade's game
-  // appears here the moment it releases) and rolled up from the attempts ledger.
-  // Each query is wrapped: one grade's DB hiccup must never blank the whole view.
-  const stories = listReleasedStories();
-  const klassen = await scopedClassIds();
-  const mastery = await Promise.all(stories.map((s) => getUnitMastery(getDb(), klassen, s.grade).catch(() => [])));
-  const th = { padding: "7px 8px", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: 12 } as const;
+  const teacher = identity.value;
+  if (!teacher) redirect("/admin/signin");
+  const area = teacherArea((await searchParams).bereich);
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-      <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Hi, {session.user.name}</h1>
-      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        Teacher view. Live today: story mastery by unit for each shipped game, rolled up from the attempts ledger.
-      </p>
-
-      {stories.map((s, idx) => {
-        const rows = mastery[idx] ?? [];
-        return (
-          <section key={s.storyId} className="dg-card" data-grade={s.grade} style={{ marginTop: 24 }}>
-            <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>
-              G{s.grade} “{s.titleEn}” — mastery by unit
-            </h2>
-            {rows.length === 0 ? (
-              <p style={{ color: "var(--muted)", fontSize: 14 }}>No game attempts yet.</p>
-            ) : (
-              <table style={{ borderCollapse: "collapse", width: "100%", fontSize: 14 }}>
-                <thead>
-                  <tr style={{ textAlign: "left", color: "var(--muted)" }}>
-                    <th style={th}>Unit</th>
-                    <th style={th}>Attempts</th>
-                    <th style={th}>Items solved</th>
-                    <th style={th}>Correct</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((m) => (
-                    <tr key={m.unitSlug} style={{ borderTop: "1px solid var(--card-border)" }}>
-                      <td style={{ padding: "7px 8px", fontWeight: 700 }}>{m.unitSlug}</td>
-                      <td style={{ padding: "7px 8px" }}>{m.attempts}</td>
-                      <td style={{ padding: "7px 8px" }}>{m.itemsSolved}</td>
-                      <td style={{ padding: "7px 8px", color: m.correctRate >= 0.7 ? "var(--correct)" : m.correctRate >= 0.4 ? "var(--partial)" : "var(--incorrect)", fontWeight: 700 }}>{Math.round(m.correctRate * 100)}%</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </section>
-        );
-      })}
-
-      <section className="dg-card" style={{ marginTop: 24, border: "2px solid #8b7cf5" }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>🖋 Story-Modus (Lehrer-Vorschau)</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          The new Keen-style game — prologue, world map, chapter 1 at full art. Unreleased: students are
-          redirected until the year-1 launch; only teacher sessions get in.
-        </p>
-        <Link href="/play/1/world" className="dg-btn" style={{ display: "inline-block" }}>Play the story mode →</Link>
-        {/* v5.3 (Koki): direct boss doors — test a guardian duel without
-            playing its level; the list grows with every authored chapter */}
-        {bossChapters.length > 0 && (
-          <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>⚔ Boss direkt:</span>
-            {bossChapters.map((ch) => (
-              <Link key={ch} href={`/play/1/run?level=g1-${ch}&boss=1`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
-                Kap. {Number(ch.slice(2))} →
-              </Link>
-            ))}
-          </div>
-        )}
-        {paintChapters.length > 0 && (
-          <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-            <span style={{ fontSize: 13, fontWeight: 700 }}>🖌 Das gemalte Buch (Vorschau):</span>
-            {paintChapters.map((ch) => (
-              // L0 · D11: die Karte führt in IHR Kapitel. Bis zur Level-Welle
-              // zeigten alle Karten dieser Zeile auf dieselbe Adresse, weil es
-              // nur eine gab — mit fünf Kapiteln wären es fünf Knöpfe zu ch01.
-              <Link key={ch} href={`/play/1/buch/${ch}`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
-                Kap. {Number(ch.slice(2))} →
-              </Link>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* P3 · the operator's entry. Rendered ONLY for a grandmaster — every
-          surface ships its own door, so nobody has to be told a URL. The page
-          behind it re-checks the rank server-side; this is presentation only. */}
-      {isGrandmaster(session.user.id) && (
-        <section className="dg-card" style={{ marginTop: 16, border: "2px solid var(--accent)" }}>
-          <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>👑 Großmeister — alle Klassen</h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-            Jede aktive Klasse der Plattform: wer sie eingerichtet hat, wie viele Kinder auf der Liste
-            stehen und wie viele sich schon angemeldet haben. Von dort in jeden Roster.
-          </p>
-          <Link href="/admin/grandmaster" className="dg-btn" style={{ display: "inline-block" }}>Alle Klassen ansehen →</Link>
-        </section>
-      )}
-
-      {/* P2 · die Einstiegskarte zur Kurzanleitung — für JEDE Lehrkraft, nicht nur
-          für neue: jede Fläche bringt ihre eigene Tür mit, damit niemandem eine
-          Adresse gesagt werden muss (Zugangs-Karten-Gesetz). */}
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Kurzanleitung</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Die drei Schritte von der fertigen Klasse bis zu den Ergebnissen — eine Seite, zum Ausdrucken.
-        </p>
-        <Link href="/admin/hilfe" className="dg-btn" style={{ display: "inline-block" }}>Kurzanleitung öffnen →</Link>
-      </section>
-
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Your classes</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Create a class, share its invite code for students to join, and keep an eye on the roster.
-        </p>
-        <Link href="/admin/classes" className="dg-btn" style={{ display: "inline-block" }}>Manage classes →</Link>
-      </section>
-
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Assignments</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Compose, time and assign your own practice sets and mock tests (Schularbeit rehearsal), graded by your
-          own Notenschlüssel.
-        </p>
-        <Link href="/admin/assignments" className="dg-btn" style={{ display: "inline-block" }}>Open the assignment builder →</Link>
-      </section>
-
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Studio</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Edit a task’s wording (hints, definitions, example sentences), or create a brand-new task. A new task
-          goes live only after an AI has solved it correctly through the real grading engine — so a wrong answer
-          key can never reach a student.
-        </p>
-        <Link href="/admin/studio" className="dg-btn" style={{ display: "inline-block" }}>Open Studio →</Link>
-      </section>
-
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Account settings</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Your account id. Your password and sign-in are managed at Lauter Einser.
-        </p>
-        <Link href="/admin/settings" className="dg-btn" style={{ display: "inline-block" }}>Account settings →</Link>
-      </section>
-
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Next for teachers</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: 0 }}>
-          Landing through the summer program, in build order: the student runner + results for these assignments,
-          grading captured writing submissions, and a student “report a problem” inbox. Until each one ships, it
-          doesn’t appear here — no dead buttons.
-        </p>
-      </section>
-
-      <form action={doSignOut} style={{ marginTop: 28 }}>
-        <button type="submit" style={{ background: "none", border: "none", color: "var(--muted)", fontSize: 14, cursor: "pointer", textDecoration: "underline", fontFamily: "var(--font-body)" }}>
-          Sign out
-        </button>
-      </form>
-    </main>
+    <TeacherShell area={area}>
+      {area === "classes" || area === "writing" ? (
+        <>
+          <TeacherHeading title={area === "writing" ? "Schreibabgaben" : "Meine Klassen"}>
+            {area === "writing" ? "Wähle eine Klasse, um ihre Schreibabgaben zu lesen und zu bearbeiten." : "Öffne eine Klasse, um Fortschritt und Abgaben anzusehen."}
+          </TeacherHeading>
+          <Suspense fallback={<ClassesLoading />}><Classes teacher={teacher} writing={area === "writing"} /></Suspense>
+        </>
+      ) : area === "management" ? (
+        <TeacherManagement grandmaster={isGrandmaster(teacher.userId)} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />
+      ) : area === "mastery" ? (
+        <Suspense fallback={<p role="status">Spielstände werden geladen …</p>}><StoryMastery teacher={teacher} /></Suspense>
+      ) : <GameExploration />}
+    </TeacherShell>
   );
 }

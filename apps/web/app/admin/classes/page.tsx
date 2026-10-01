@@ -1,30 +1,32 @@
-/**
- * /admin/classes — the teacher's own classes, active AND archived. Server resolves
- * both lists (each class with its invite code + roster count). dach-018 · the
- * create / rename / archive / un-archive UI is gone: those columns belong to the
- * account service alone, and the page points at the Lehrer-Raum instead (dach-108:
- * always, no date). Teacher-only (getTeacherForPage — a real session or the non-prod
- * dev fallback).
- */
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { getDb, listArchivedClassesForTeacher, listClassesForTeacher } from "@domigo/db";
-import { getTeacherForPage } from "@/lib/identity";
+import { getTeacherForPage, type ActingTeacher } from "@/lib/identity";
 import { kontoBaseUrl } from "@/lib/konto/basis";
+import { loadTeacherClasses } from "../_lib/teacher-queries";
+import { readResult } from "../_lib/teacher-classes";
+import { ClassesLoading, TeacherHeading, TeacherShell } from "../_components/TeacherShell";
 import ClassesManager from "./ClassesManager";
+import TeacherAccessError from "../_components/TeacherAccessError";
+import "../lehrerbereich.css";
 
 export const dynamic = "force-dynamic";
 
-export default async function ClassesPage() {
-  const teacher = await getTeacherForPage();
-  if (!teacher) redirect("/admin/signin");
+async function Classes({ teacher }: { teacher: ActingTeacher }) {
+  const lists = await loadTeacherClasses(teacher);
+  return <ClassesManager lists={lists} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />;
+}
 
-  // K9b · the archived half is read here too, because a class the working list filters
-  // out is a class with nothing to click — which is exactly why un-archiving was
-  // unreachable. Each read degrades on its own: a failing archive read must not be able
-  // to take the working list down with it.
-  const [classes, archived] = await Promise.all([
-    listClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
-    listArchivedClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
-  ]);
-  return <ClassesManager initialClasses={classes} initialArchived={archived} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />;
+export default async function ClassesPage() {
+  const identity = await readResult(getTeacherForPage);
+  if (identity.status === "error") {
+    return <TeacherShell area="classes"><TeacherAccessError retryHref="/admin/classes" /></TeacherShell>;
+  }
+  const teacher = identity.value;
+  if (!teacher) redirect("/admin/signin");
+  return (
+    <TeacherShell area="classes">
+      <TeacherHeading title="Klassen verwalten">Öffne eine Klassenliste oder kopiere den Beitrittscode deiner Klasse.</TeacherHeading>
+      <Suspense fallback={<ClassesLoading />}><Classes teacher={teacher} /></Suspense>
+    </TeacherShell>
+  );
 }
