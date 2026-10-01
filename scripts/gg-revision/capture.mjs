@@ -1,4 +1,8 @@
 // CODEX DRAFT — NOT CANON. Own headless Chrome, real React widgets, external PNGs.
+import './register.mjs';
+const { renderContract } = await import('./render-contract.tsx');
+const { pilotData, selection } = await import('./pilot-data.mjs');
+const { paintArt, rendererFingerprint } = await import('./census.mjs');
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
@@ -50,9 +54,12 @@ try{
  const {targetId}=await send('Target.createTarget',{url:'about:blank'}),{sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});
  page=(method,params={})=>send(method,params,sessionId);
  await page('Page.enable');await page('Runtime.enable');await page('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
- const {entries}=await (await fetch(rawUrl+'/private-data.json')).json();
+ const entries=pilotData();
+ const renderer=digest(rendererFingerprint());
  const privateMapping=await (await fetch(rawUrl+'/private-mapping.json')).json();
  const assets=await (await fetch(rawUrl+'/private-asset-map.json')).json();
+ const art=Object.fromEntries([...new Set(entries.filter(e=>e.kind==='paint').map(e=>e.chapter))].map(ch=>[ch,paintArt(ch)]));
+ const contract=renderContract(entries,art,assets,renderer,selection.basis);
  for(const entry of entries)for(const width of [390,1440]){
   await navigate(entry,width);const info=await shot(`${entry.itemId}-${width}`,'initial actual renderer; no answer entered');
   const exported=await (await fetch(rawUrl+'/solver/'+privateMapping.entries.find(m=>m.itemId===entry.itemId).publicId+'.html')).text();
@@ -84,11 +91,12 @@ try{
  await clickText('Check');await sleep(100);await shot('two-gap-correct-1440','typed plays and sings into separate fields; Check');
  // Restore really needs two phases. A name selection alone cannot resolve the card.
  const restore=entries.find(e=>e.kind==='paint'&&e.item.kind==='restore');await navigate(restore,390);
- await clickText('rubber');await sleep(100);
+ const restoreBefore=await evaluate('document.querySelector("main").outerHTML');
+ await clickText(restore.item.name);await sleep(100);
  const midway=await shot('restore-colour-390','selected rubber; colour phase now visible');
  assertSafeState(midway.html);
- const {manifest,mapping}=saveColourState(path.resolve(viewsOut),restore.itemId,midway.html,entries,assets);
- const packetProblems=packetErrors(path.join(path.resolve(viewsOut),'solver'),manifest,mapping,entries);
+ const {manifest,mapping}=saveColourState(path.resolve(viewsOut),restore.itemId,{before:restoreBefore,after:midway.html,action:{pickName:restore.item.name}},entries,assets,contract);
+ const packetProblems=packetErrors(path.join(path.resolve(viewsOut),'solver'),manifest,mapping,entries,renderer,contract);
  if(packetProblems.length)throw new Error(packetProblems.join(';'));
  const privateManifestPath=path.join(path.resolve(viewsOut),'private-view-manifest.json');
  const privateManifest=JSON.parse(fs.readFileSync(privateManifestPath,'utf8'));

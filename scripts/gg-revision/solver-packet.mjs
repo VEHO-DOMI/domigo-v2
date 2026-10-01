@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { digest, sha256, compareIds, solverHtmlErrors } from './core.mjs';
+import { matchesRender } from './html-contract.mjs';
 
 export const publicId = index => `p${String(index + 1).padStart(3, '0')}`;
 export const pageShell = body => `<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CODEX DRAFT — NOT CANON · Revision W0</title><link rel="stylesheet" href="style.css"><body>${body}</body></html>`;
@@ -42,9 +43,14 @@ export function finalizePacket(out, entries, assets) {
   fs.writeFileSync(path.join(out, 'private-mapping.json'), JSON.stringify(mapping, null, 2) + '\n');
   return { manifest, mapping };
 }
-export function saveColourState(out, itemId, html, entries, assets) {
+export function saveColourState(out, itemId, observation, entries, assets, contract) {
   const expected = expectedStates(entries).find(s => s.itemId === itemId);
   if (!expected) throw new Error('Unexpected state item');
+  const transition = contract?.transitions?.[expected.publicId];
+  if (!transition || !same(observation?.action, transition.action)
+    || !matchesRender(neutralizeAssets(observation?.before ?? '', assets), transition.before)
+    || !matchesRender(neutralizeAssets(observation?.after ?? '', assets), transition.after)) throw new Error('STATE:OBSERVED_TRANSITION');
+  const html = observation.after;
   const errors = solverHtmlErrors(html); if (errors.length) throw new Error(errors.join(';'));
   const solver = path.join(out, 'solver'), file = `${expected.publicId}-${expected.stateId}.html`;
   const frozen = pageShell(neutralizeAssets(html, assets));
@@ -58,7 +64,7 @@ export function saveColourState(out, itemId, html, entries, assets) {
 }
 
 const same = (a, b) => digest(a) === digest(b);
-const fields = (value, allowed) => value && typeof value === 'object'
+const fields = (value, allowed) => value && !Array.isArray(value) && typeof value === 'object'
   && same(Object.keys(value).sort(), [...allowed].sort());
 const decodeAttribute = value => value.replace(/&#(x[0-9a-f]+|\d+);|&(amp|quot|apos|lt|gt);/gi,
   (_, number, named) => number ? String.fromCodePoint(number[0].toLowerCase() === 'x' ? parseInt(number.slice(1),16) : Number(number))
@@ -68,15 +74,26 @@ const attributes = html => [...html.matchAll(/\b([\w:-]+)\s*=\s*(?:"([^\"]*)"|'(
 const walk = (root, prefix = '') => fs.readdirSync(path.join(root, prefix), { withFileTypes: true }).flatMap(e => {
   const file = path.posix.join(prefix, e.name);
   if (e.isSymbolicLink()) throw new Error('SOLVER:SYMLINK ' + file);
-  return e.isDirectory() ? walk(root, file) : [file];
+  if (e.isDirectory()) return [file+'/', ...walk(root, file)];
+  if (!e.isFile()) throw new Error('SOLVER:NON_REGULAR ' + file);
+  return [file];
 });
 
 /** Checks the whole public directory AND the exact private mapping against current items. */
-export function packetErrors(solver, manifest, mapping, entries, rendererSha256 = manifest.rendererSha256) {
+export function packetErrors(solver, manifest, mapping, entries, rendererSha256, contract) {
   const errors = [], fail = code => errors.push(code);
   const expected = expectedMapping(entries), states = expectedStates(entries);
+  if (!manifest || !mapping) return ['PACKET:INVALID_INPUT'];
+  if (!contract || contract.rendererSha256 !== rendererSha256) fail('PUBLIC:RENDER_CONTRACT_REQUIRED');
   if (manifest.schema !== 'revision-solver-packet@2') fail('PACKET:SCHEMA');
   if (!fields(manifest, ['label','schema','basis','cssSha256','indexSha256','rendererSha256','views','states','assets'])) fail('PACKET:PUBLIC_FIELDS');
+  const hash = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
+  const commit = value => typeof value === 'string' && /^[a-f0-9]{40}$/.test(value);
+  if (manifest.label !== 'CODEX DRAFT — NOT CANON' || !commit(manifest.basis)
+    || (contract && manifest.basis !== contract.basis)
+    || !['cssSha256','indexSha256','rendererSha256'].every(k=>hash(manifest[k]))) fail('PACKET:PUBLIC_VALUES');
+  if (!['views','states','assets'].every(k=>Array.isArray(manifest[k]) && manifest[k].every(v=>v && typeof v==='object' && !Array.isArray(v)))
+    || !Array.isArray(mapping.assets)) return [...errors,'PACKET:COLLECTION_TYPES'];
   if (!fields(mapping, ['label','schema','packetSha256','entries','states','assets']) || mapping.schema !== 'revision-private-mapping@1') fail('MAP:SCHEMA');
   if (mapping.packetSha256 !== digest(manifest)) fail('MAP:STALE_PACKET');
   if (!same(mapping.entries, expected)) fail('MAP:IDENTITY_OR_CONTENT');
@@ -88,17 +105,23 @@ export function packetErrors(solver, manifest, mapping, entries, rendererSha256 
     const v = manifest.views.find(v => v.publicId === publicId(i));
     if (!v || !fields(v, ['publicId','unit','kind','pool','file','htmlSha256'])
       || v.unit !== e.unit || v.kind !== e.kind || v.pool !== (e.pool ?? null)
-      || v.file !== `${publicId(i)}.html`) fail('PACKET:VIEW_METADATA');
+      || v.file !== `${publicId(i)}.html` || !hash(v.htmlSha256)) fail('PACKET:VIEW_METADATA');
   }
   for (const s of manifest.states) if (!fields(s, ['publicId','stateId','file','htmlSha256'])
+    || !/^p\d{3}$/.test(s.publicId) || s.stateId !== 's01' || !hash(s.htmlSha256)
     || s.file !== `${s.publicId}-${s.stateId}.html`) fail('PACKET:STATE_METADATA');
   for (const a of manifest.assets) if (!fields(a, ['file','sha256'])
-    || !/^assets\/a\d{3}\.(png|woff2)$/.test(a.file)) fail('PACKET:ASSET_NAME');
+    || typeof a.file !== 'string' || !/^assets\/a\d{3}\.(png|woff2)$/.test(a.file) || !hash(a.sha256)) fail('PACKET:ASSET_NAME');
   if (!same(manifest.assets, mapping.assets.map(({ file, sha256 }) => ({ file, sha256 })))) fail('MAP:ASSETS');
   const expectedFiles = ['index.html','manifest.json','style.css', ...manifest.views.map(v => v.file),
     ...manifest.states.map(s => s.file), ...manifest.assets.map(a => a.file)];
-  let files;
-  try { files = walk(solver); } catch (e) { return [...errors, e.message]; }
+  let tree;
+  try {
+    if (fs.lstatSync(solver).isSymbolicLink()) throw new Error('SOLVER:ROOT_SYMLINK');
+    tree = walk(solver);
+  } catch (e) { return [...errors, e.message]; }
+  const files = tree.filter(f=>!f.endsWith('/')), directories = tree.filter(f=>f.endsWith('/'));
+  errors.push(...compareIds(manifest.assets.length ? ['assets/'] : [], directories).map(e=>'DIRECTORIES:'+e));
   errors.push(...compareIds(expectedFiles, files).map(e => 'FILES:' + e));
   for (const file of files) if (!/^(?:index\.html|manifest\.json|style\.css|p\d{3}(?:-s\d{2})?\.html|assets\/a\d{3}\.(?:png|woff2))$/.test(file)) fail('FILES:SPEAKING_OR_UNEXPECTED_NAME');
   const hashed = [{ file: 'index.html', sha256: manifest.indexSha256 }, { file: 'style.css', sha256: manifest.cssSha256 },
@@ -116,6 +139,8 @@ export function packetErrors(solver, manifest, mapping, entries, rendererSha256 
     if (sourcePaths.some(source => text.includes(source))) fail('PUBLIC:SOURCE_ASSET_PATH ' + file);
     if (file.endsWith('.html')) {
       errors.push(...solverHtmlErrors(text).map(e => file + ':' + e));
+      const wanted = file === 'index.html' ? packetIndex(manifest) : contract?.pages?.[file];
+      if (!matchesRender(text, wanted)) fail('PUBLIC:RENDER_MISMATCH ' + file);
       if (!text.includes('<title>CODEX DRAFT — NOT CANON · Revision W0</title>')) fail('PUBLIC:TITLE ' + file);
       // Links, title/id/class/data/alt metadata cannot carry a typed English target.
       // Visible exercise text and legitimate choice values remain unchanged.

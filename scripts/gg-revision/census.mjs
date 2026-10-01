@@ -144,7 +144,7 @@ export function collect(sourceFile) {
     paintCards: paintRows.length, paintKinds: counts(paintRows.map(r => r.kind)), storySlots: storyRows.length,
     sourceStatus: counts(unitRows.map(r => r.source.status)), sourceFiles: counts(sources.map(s => s.status)),
     auxiliaryFiles: auxiliary.length, liveDatabaseOverlay: 'UNVERIFIZIERT — not read; file corpus only', corpusStamp: stamp };
-  return { schema: 'domigo-revision-census@1', label: 'CODEX DRAFT — NOT CANON', basis: 'df258ae8952cf5e5747e7507759d4d7b61e094b5', summary, slugs, renderer, unitRows, paintRows, storyRows, auxiliary };
+  return { schema: 'domigo-revision-census@2', label: 'CODEX DRAFT — NOT CANON', sourceBasis: 'df258ae8952cf5e5747e7507759d4d7b61e094b5', runHead: execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(), workingTreeChanges: execFileSync('git',['status','--porcelain'],{cwd:ROOT,encoding:'utf8'}).trim().split('\n').filter(Boolean), summary, slugs, renderer, unitRows, paintRows, storyRows, auxiliary };
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   const [sources, output] = process.argv.slice(2);

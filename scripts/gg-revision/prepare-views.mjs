@@ -10,14 +10,14 @@ import { PilotView } from './PilotView.tsx';
 import { PAINT_OVERLAY_CSS } from '../../packages/game-paint/src/cards/overlay-css.ts';
 import { ROOT, outside, paintArt, rendererFingerprint } from './census.mjs';
 import { sha256, digest, solverHtmlErrors } from './core.mjs';
-import { publicId, pageShell, neutralizeAssets, finalizePacket, saveColourState, packetErrors } from './solver-packet.mjs';
+import { publicId, pageShell, neutralizeAssets, finalizePacket } from './solver-packet.mjs';
 const req = createRequire(path.join(ROOT, 'node_modules/.pnpm/node_modules/esbuild/package.json'));
 const esbuild = req('./lib/main.js');
 const postcss = req(path.join(ROOT, 'node_modules/.pnpm/node_modules/postcss'));
 const tailwind = createRequire(path.join(ROOT, 'apps/web/package.json'))('@tailwindcss/postcss');
 if (!process.argv[2]) throw new Error('External output directory required');
-const out = outside(process.argv[2]), reuse = process.argv[3];
-if (reuse && process.argv[4] !== '--reuse-unchanged-state') throw new Error('Explicit --reuse-unchanged-state required');
+const out = outside(process.argv[2]);
+if (process.argv[3]) throw new Error('Fresh transition observation required; state reuse is no longer accepted');
 // Refuse stale files: an old speaking filename must never survive a new export.
 if (fs.existsSync(path.join(out,'solver'))) throw new Error('Use a fresh export directory');
 fs.mkdirSync(out,{recursive:true});
@@ -53,28 +53,6 @@ fs.writeFileSync(path.join(solver,'style.css'),publicCss);
 const manifest={label:'CODEX DRAFT — NOT CANON',schema:'revision-solver-packet@2',basis:selection.basis,cssSha256:sha256(publicCss),indexSha256:'',rendererSha256:digest(renderer),views,states:[],assets:assets.map(({file,sha256})=>({file,sha256}))};
 fs.writeFileSync(path.join(solver,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.writeFileSync(path.join(out,'private-asset-map.json'),JSON.stringify(assets,null,2)+'\n');
-let packet=finalizePacket(out,entries,assets),reuseReceipt=null;
-if(reuse){
-  const prior=outside(reuse), old=JSON.parse(fs.readFileSync(path.join(prior,'solver/manifest.json'),'utf8'));
-  const privatePrior=JSON.parse(fs.readFileSync(path.join(prior,'private-view-manifest.json'),'utf8'));
-  assert.equal(digest(privatePrior.renderer),old.rendererSha256,'Prior renderer receipt does not bind old packet');
-  const stableScripts=['PilotView.tsx','pilot-data.mjs','pilots.json','register.mjs','browser.tsx'];
-  const runtime=privatePrior.renderer.filter(r=>!r.file.startsWith('scripts/gg-revision/')||stableScripts.some(n=>r.file==='scripts/gg-revision/'+n));
-  for(const r of runtime)assert.equal(sha256(fs.readFileSync(path.join(ROOT,r.file))),r.sha256,'Cannot reuse state after runtime change: '+r.file);
-  const oldMapping=old.schema==='revision-solver-packet@2'?JSON.parse(fs.readFileSync(path.join(prior,'private-mapping.json'),'utf8')):null;
-  const receipts=[];
-  for(const state of old.states){
-    const itemId=state.itemId??oldMapping.states.find(s=>s.publicId===state.publicId&&s.stateId===state.stateId)?.itemId;
-    const entry=entries.find(e=>e.itemId===itemId),oldView=privatePrior.manifest.find(v=>v.itemId===itemId);
-    assert.ok(entry&&oldView);assert.equal(digest(entry.item),oldView.contentSha256);assert.equal(digest(entry.context),oldView.contextSha256);
-    const bytes=fs.readFileSync(path.join(prior,'solver',state.file));assert.equal(sha256(bytes),state.htmlSha256);
-    let main=bytes.toString().match(/<main\b[\s\S]*<\/main>/)?.[0];assert.ok(main,'Prior actual state missing');
-    if(oldMapping)for(const a of oldMapping.assets)main=main.replaceAll(a.file,a.sourceUrl);
-    packet=saveColourState(out,itemId,main,entries,assets);
-    receipts.push({itemId,priorStateSha256:state.htmlSha256,method:'Unchanged actual-browser state reused; no new browser observation'});
-  }
-  reuseReceipt={priorPacketSha256:digest(old),unchangedRuntimeFiles:runtime.length,receipts};
-  assert.deepEqual(packetErrors(solver,packet.manifest,packet.mapping,entries,digest(renderer)),[]);
-}
+const packet=finalizePacket(out,entries,assets),reuseReceipt=null;
 fs.writeFileSync(path.join(out,'private-view-manifest.json'),JSON.stringify({manifest:privateViews,renderer,solverPacketSha256:digest(packet.manifest),privateMappingSha256:digest(packet.mapping),reuseReceipt},null,2)+'\n');
 console.log(JSON.stringify({cases:entries.length,solverPacketSha256:digest(packet.manifest),privateMappingSha256:digest(packet.mapping),states:packet.manifest.states.length,assets:assets.length,out}));

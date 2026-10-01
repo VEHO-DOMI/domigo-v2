@@ -9,7 +9,8 @@ import { gradeGrammar, gradeVocab, vocabAnswers } from '../../packages/engine/sr
 import { autoSolve } from '../../packages/game-paint/src/cards/machines.ts';
 import { collect, outside, paintArt } from './census.mjs';
 import { PilotView } from './PilotView.tsx';
-import { pilotData } from './pilot-data.mjs';
+import { pilotData, selection } from './pilot-data.mjs';
+import { renderContract } from './render-contract.tsx';
 import { packetErrors, expectedStates } from './solver-packet.mjs';
 import { makeBinding, checkBinding, approvalErrors, rankingStatus, compareIds, digest, sha256, solverHtmlErrors } from './core.mjs';
 const [sourceFile, viewDirectory, output, sourceRoot] = process.argv.slice(2);
@@ -29,7 +30,9 @@ assert.ok(compareIds(expectedIds,expectedIds.slice(1)).some(e=>e.startsWith('MIS
 sabotage.push({test:'omitted census item',detected:true});
 const publicManifest=JSON.parse(fs.readFileSync(path.join(viewDirectory,'solver/manifest.json'),'utf8'));
 const privateMapping=JSON.parse(fs.readFileSync(path.join(viewDirectory,'private-mapping.json'),'utf8'));
-assert.deepEqual(packetErrors(path.join(viewDirectory,'solver'),publicManifest,privateMapping,entries,digest(census.renderer)),[]);
+const artByChapter=Object.fromEntries([...new Set(entries.filter(e=>e.kind==='paint').map(e=>e.chapter))].map(ch=>[ch,paintArt(ch)]));
+const contract=renderContract(entries,artByChapter,privateMapping.assets,digest(census.renderer),selection.basis);
+assert.deepEqual(packetErrors(path.join(viewDirectory,'solver'),publicManifest,privateMapping,entries,digest(census.renderer),contract),[]);
 assert.equal(publicManifest.rendererSha256,digest(census.renderer),'Renderer changed since export');
 const requiredStates=expectedStates(entries).map(s=>s.publicId+'#'+s.stateId);
 assert.deepEqual(compareIds(requiredStates,publicManifest.states.map(s=>s.publicId+'#'+s.stateId)),[]);

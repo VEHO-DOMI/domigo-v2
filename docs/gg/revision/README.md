@@ -108,16 +108,12 @@ Packen zusätzlich die Archiveinträge und ihre Bytes prüfen:
 python3 scripts/gg-revision/check-archive.py "$REV_EVIDENCE/views/solver" "$REV_EVIDENCE/solver.zip"
 ```
 
-Für eine reine Metadatenkorrektur kann ein schon tatsächlich aufgenommener
-Folgezustand ausdrücklich wiederverwendet werden:
-
-```sh
-node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/prepare-views.mjs "$REV_EVIDENCE/views-new" "$REV_EVIDENCE/views-old" --reuse-unchanged-state
-```
-
-Dabei müssen Originalzustand, Aufgabeninhalt und sämtliche damaligen
-Darstellungskomponenten unverändert sein. Die private Exportquittung nennt den
-übernommenen Zustand und die geprüften Dateien. Das ist kein neuer Browserlauf.
+**Seit Nachtrag 21 ist die Übernahme eines alten Folgezustands gesperrt.**
+Der frühere Aufruf mit `--reuse-unchanged-state` wird abgewiesen. Die damalige
+N8-Übernahme bleibt als historischer Beleg erhalten; sie ist kein neuer
+Bediennachweis. Ein neuer Export benötigt eine neue beobachtete Namenswahl mit
+Vorher-/Nachheransicht und den Vergleich gegen den tatsächlichen Zustandswechsel.
+Siehe [PRUEFSCHUTZ.md](PRUEFSCHUTZ.md) für Vertrag, Grenzen und Restprüfungen.
 
 `register.mjs` ist ein Adapter für das isolierte Lesen: Er löst vorhandene
 Workspace-Pakete auf und übersetzt TSX, also Komponenten mit eingebauter
@@ -153,7 +149,12 @@ Behauptung „schlüsselfrei“ für Paket
 ist zurückgenommen; dieser Stand darf nicht an Löser gehen. Niemand hatte ihn
 unabhängig gelöst. Das korrigierte Schema `revision-solver-packet@2` prüft
 Dateinamen, Manifest, HTML-Metadaten, Links, Assets und die private Zuordnung
-gemeinsam; `check-archive.py` prüft das daraus erzeugte Archiv.
+gemeinsam; `check-archive.py` prüft das daraus erzeugte Archiv. Die unabhängige
+Prüfung 037 fand später vier zusätzliche Lücken an Kopf `38f95000…` (S1–S4).
+Deren ursprünglicher Neinbericht bleibt erhalten. Nachtrag 21 ergänzt deshalb
+vollständige Feldtypen, einen geschlossenen Darstellungsvergleich, Verzeichnisse
+und die echte Zustandslogik. Die Korrektur ist noch keine technische Abnahme;
+[PRUEFSCHUTZ.md](PRUEFSCHUTZ.md) hält den vollständigen Rest fest.
 
 ## Grenzen
 
