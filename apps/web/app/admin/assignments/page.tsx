@@ -5,9 +5,9 @@
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, listAssignmentsByCreator, listClasses, listClassesInScope } from "@domigo/db";
+import { getDb, listAssignmentsByCreator } from "@domigo/db";
+import { assignableClasses } from "@/lib/class-wall";
 import { getTeacherForPage } from "@/lib/identity";
-import { isGrandmaster } from "@/lib/grandmaster";
 
 export const dynamic = "force-dynamic";
 
@@ -22,10 +22,7 @@ export default async function AssignmentsPage() {
   // defect P1 had to repair in listClasses.
   const [rows, classes] = await Promise.all([
     listAssignmentsByCreator(getDb(), teacher.classScope, teacher.userId).catch(() => []),
-    (isGrandmaster(teacher.userId)
-      ? listClassesInScope(getDb(), teacher.classScope)
-      : listClasses(getDb(), teacher.classScope, teacher.userId)
-    ).catch(() => []),
+    assignableClasses(teacher).catch(() => []), // cgo-047: behind the class wall
   ]);
   const className = new Map(classes.map((c) => [c.id, c.name]));
 

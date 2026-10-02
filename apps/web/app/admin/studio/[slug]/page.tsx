@@ -75,7 +75,10 @@ export default async function StudioUnitPage({ params }: { params: Promise<{ slu
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 23, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Studio · {slug}</h1>
-        <Link href="/admin/studio" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Alle Einheiten</Link>
+        <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
+          <Link href={`/practice/${slug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 700 }}>Als Kind ansehen</Link>
+          <Link href="/admin/studio" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Alle Einheiten</Link>
+        </div>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
         {unit.vocab.length} Vokabeln · {unit.grammar.length} Grammatik. Ändere den Text, <strong>Speichern</strong> legt einen Entwurf an, <strong>Veröffentlichen</strong> macht ihn live.

@@ -6,11 +6,17 @@
  * a clobbered save costs nothing real. PUT is last-write-wins on `clientRev`
  * (resolved in-statement) and capped at 64 KB. Best-effort persistence (never
  * 500). Mirrors /api/writing-submission + /api/study-path.
+ *
+ * cgo-047 · A TEACHER READS BUT NEVER WRITES. The teacher preview of the student
+ * side (lib/student-view.ts) must not store anything, and that guarantee lives
+ * HERE, not only in the clients (GG ruling 02.10., cgo-047 Nachtrag 4): a PUT
+ * without a child session is refused with 403 `preview_read_only`. GET keeps the
+ * preview law — a teacher may still read her own old row.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { MAX_GAME_SAVE_BYTES, gameSaveStateBytes, getDb, getGameSave, upsertGameSave } from "@domigo/db";
-import { getActingPlayer } from "@/lib/identity";
+import { getActingPlayer, getActingUser } from "@/lib/identity";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -45,8 +51,13 @@ export async function GET(req: Request): Promise<Response> {
 }
 
 export async function PUT(req: Request): Promise<Response> {
-  const acting = await getActingPlayer(req); // student OR teacher (preview law)
-  if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
+  const acting = await getActingUser(req); // a CHILD only — the teacher preview writes nothing
+  if (!acting) {
+    const viewer = await getActingPlayer(req);
+    return viewer
+      ? NextResponse.json({ ok: false, error: "preview_read_only" }, { status: 403 })
+      : NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
+  }
 
   const parsed = PutBody.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });

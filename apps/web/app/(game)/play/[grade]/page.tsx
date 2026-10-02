@@ -13,8 +13,9 @@
  * card below is its only entrance. The two are told apart at the source rather than
  * by a flag: `getActingUserForPage` resolves ONLY a student, while `getPlayerForPage`
  * deliberately answers for both (identity.ts) — which is why the scope check hangs
- * on the former. The decision itself stays `visibleGradesFor` (lib/grade-scope.ts);
- * an unresolvable class year opens all four, unchanged.
+ * on the former. cgo-047: the child's years now come from lib/student-view.ts,
+ * like /play, /practice and the zone deep link — a known class whose year is
+ * unknown opens NONE (home), only a storage hiccup still opens all four.
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import Link from "next/link";
@@ -28,7 +29,8 @@ import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
 import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
-import { resolveVisibleGrades } from "@/lib/grade-scope";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -47,10 +49,13 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const acting = student ?? (await getPlayerForPage());
   if (!acting) redirect("/signin");
   if (student) {
-    const grades = await resolveVisibleGrades(student.classId);
-    // Not in scope ⇒ back to the child's own year (never to a blank page: the
-    // scope is never empty, so grades[0] always exists).
-    if (!grades.includes(grade)) redirect(`/play/${grades[0]}`);
+    // cgo-047: the child's years come from the SAME rule as /play, /practice and
+    // the zone deep link (lib/student-view.ts): a known class with an unknown
+    // year opens none, so this hub can no longer show stops that all bounce.
+    const view = await resolveStudentView();
+    const grades = view?.kind === "student" ? view.grades : [];
+    // Not in scope ⇒ back to the child's own year, or home when there is none.
+    if (!grades.includes(grade)) redirect(grades.length > 0 ? `/play/${grades[0]}` : "/home");
   }
   // the Keen story-mode preview is teacher-only until the year-1 release —
   // this card is its ONLY navigation entry (students never see it)
@@ -214,6 +219,8 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const plannedShorts = new Set((floorPlan ?? []).flatMap((b) => b.zones.map((z) => z.short)));
 
   return (
+    <>
+    {!student && <PreviewBanner grade={grade} />}
     <main className="dgh-hub" style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)", display: "flex", alignItems: "center" }}>
@@ -337,5 +344,6 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         </section>
       )}
     </main>
+    </>
   );
 }

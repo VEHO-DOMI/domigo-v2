@@ -13,21 +13,24 @@
  * documented status quo for the v1 legacy register: those classes predate ownership,
  * belong to nobody, and stay open to every teacher until they retire with the
  * school year.
+ *
+ * cgo-047 · THAT STATUS QUO LEAKED. Every teacher read every v1 class NAME, and a
+ * v1 class outside her session scope failed in createAssignment with a 500. The
+ * picker and this door now share lib/class-wall.ts#assignableClasses, which keeps
+ * only classes inside the session's scope: a foreign class is a 403, never a 500.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import {
   createAssignment,
   getDb,
-  listClasses,
-  listClassesInScope,
   listReservedForClass,
   validateAssignmentDraft,
   type AssignmentDraft,
   type SectionKind,
 } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
-import { isGrandmaster } from "@/lib/grandmaster";
+import { assignableClasses } from "@/lib/class-wall";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -89,9 +92,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // May this caller create work in that class at all? Fail CLOSED: a class list we
   // could not read is not permission, it is an unanswered question.
-  const allowed = isGrandmaster(teacher.userId)
-    ? await listClassesInScope(getDb(), teacher.classScope).catch(() => null)
-    : await listClasses(getDb(), teacher.classScope, teacher.userId).catch(() => null);
+  const allowed = await assignableClasses(teacher).catch(() => null);
   if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
   if (!allowed.some((c) => c.id === draft.classId)) {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });

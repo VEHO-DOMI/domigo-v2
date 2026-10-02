@@ -1,21 +1,27 @@
 import Link from "next/link";
 import { listApprovedUnits } from "@domigo/content-loader";
-import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
-import { getActingUserForPage } from "@/lib/identity";
+import { isSlugAllowed } from "@/lib/grade-scope";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 
 // Reads the corpus via fs at request time — never statically pre-rendered.
 export const dynamic = "force-dynamic";
 
-export default async function PracticeIndex() {
+export default async function PracticeIndex({ searchParams }: { searchParams: Promise<{ jahrgang?: string | string[] }> }) {
   const units = listApprovedUnits();
   // P1 (P-R1.5): a child sees only its own class's school year. Unlike the other
   // three list pages this one carries no session gate of its own — the middleware
-  // owns that — so a missing identity must NOT redirect here; it degrades to all
-  // four years (as does a teacher, who has no classId). Never an empty page.
-  const acting = await getActingUserForPage();
-  const grades = await resolveVisibleGrades(acting?.classId);
+  // owns that — so a missing identity must NOT redirect here; it shows no year.
+  //
+  // cgo-047: a TEACHER previews every year (or one, via ?jahrgang=) through
+  // lib/student-view.ts — before, `resolveVisibleGrades(null)` gave her none.
+  const view = await resolveStudentView((await searchParams)?.jahrgang);
+  const grades = view?.grades ?? [];
+  const preview = view?.kind === "preview";
   const inScope = units.filter((s) => isSlugAllowed(s, grades));
   return (
+    <>
+    {preview && <PreviewBanner grade={grades.length === 1 ? grades[0] : undefined} />}
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Practice</h1>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
@@ -38,5 +44,6 @@ export default async function PracticeIndex() {
         );
       })}
     </main>
+    </>
   );
 }
