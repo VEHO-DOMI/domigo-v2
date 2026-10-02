@@ -5,13 +5,15 @@ import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const dbURL = import.meta.resolve("@domigo/db");
+const loaderURL = import.meta.resolve("@domigo/content-loader");
 const root = fileURLToPath(new URL("../../../../", import.meta.url));
 /** @type {{session: {user: {id: string, classId: string|null, role: string, scope: string[], name?: string}}|null,
  * grade: number|null, gradeError: Error|null, released: boolean, writeError: Error|null, forcePreviewSave: boolean, storageCalls: number,
- * solved: Set<string>, writes: Array<{scope: readonly string[], data: Record<string, any>}>, reads: string[]}} */
+ * solved: Set<string>, writes: Array<{scope: readonly string[], data: Record<string, any>}>, reads: string[],
+ * classRows: Array<{id: string, name: string, grade: number}>, recordReturn: any}} */
 export const fixture = {
   session: null, grade: 2, gradeError: null, released: true, writeError: null, forcePreviewSave: false, storageCalls: 0,
-  solved: new Set(), writes: [], reads: [],
+  solved: new Set(), writes: [], reads: [], classRows: [], recordReturn: undefined,
 };
 export function resetSchoolFixture() {
   fixture.session = null;
@@ -24,6 +26,8 @@ export function resetSchoolFixture() {
   fixture.solved.clear();
   fixture.writes.length = 0;
   fixture.reads.length = 0;
+  fixture.classRows = [];
+  fixture.recordReturn = undefined;
   process.env.VERCEL_ENV = "production";
 }
 
@@ -49,6 +53,7 @@ const modules = new Map([
     }
   `],
   ["@domigo/content-loader", `${state}
+    export * from ${JSON.stringify(loaderURL)};
     export const REPO_ROOT = ${JSON.stringify(root)};
     export const loadReleasedChapters = () => f.released ? ["g2.st.ink-ghost-goes-to-school.ch01"] : [];
   `],
@@ -75,6 +80,19 @@ const modules = new Map([
       if (f.writeError) throw f.writeError;
       f.writes.push({ scope, data });
       if (data.tier === "correct") f.solved.add(data.itemId);
+      return f.recordReturn;
+    };
+    // cgo-047 Welle 2: the class picker and the assignment doors. Both lists
+    // return EVERY row they are given, scope or not — exactly the v1 leak the
+    // class wall (lib/class-wall.ts) has to close.
+    export const listClasses = async () => f.classRows.map((r) => ({ ...r }));
+    export const listClassesInScope = async () => f.classRows.map((r) => ({ ...r }));
+    export const listReservedForClass = async () => new Set();
+    export const createAssignment = async (_db, scope, draft) => {
+      f.storageCalls++;
+      if (!scope.includes(draft.classId)) throw new Error("class scope denied");
+      f.writes.push({ scope, data: { assignmentFor: draft.classId } });
+      return "assignment-1";
     };
   `],
 ]);

@@ -47,6 +47,11 @@ describe("client guards — nothing leaves a preview", () => {
   it("WorldClient: no server save", () => {
     assert.match(read(`${PLAY}/world/WorldClient.tsx`), /const put = \(payload: SavePayload\) => \{\n\s*if \(preview\) return;\n\s*void fetch\("\/api\/game-save"/);
   });
+  it("no navigation entry leads to the sunset Keen story mode (Koki 02.10.)", () => {
+    for (const file of ["admin/explorer/page.tsx", `${PLAY}/page.tsx`]) {
+      assert.doesNotMatch(code(read(file)), /\/play\/1\/world|Keen/, `${file} still offers Keen`);
+    }
+  });
   it("ArcadeClient: no Funken banked", () => {
     assert.match(read(`${PLAY}/run/ArcadeClient.tsx`), /if \(!preview && stats\.gluehwoerter > 0\)/);
   });
@@ -57,8 +62,8 @@ describe("server pages — who is a preview is decided on the server", () => {
   it("the zone page resolves the viewer through student-view and walls the child's year", () => {
     assert.match(zone, /const view = await resolveStudentView\(\);/);
     assert.doesNotMatch(code(zone), /getActingUserForPage|getPlayerForPage/);
-    assert.match(zone, /if \(view\.kind === "student" && !view\.grades\.includes\(grade\)\)/);
-    assert.match(zone, /const preview = view\.kind === "preview";/);
+    assert.match(zone, /const away = yearRedirect\(view, grade\);\n\s*if \(away\) redirect\(away\);/);
+    assert.match(zone, /const preview = isPreview\(view\);/);
     assert.match(zone, /const acting = view\.kind === "student" \? view\.player : null;/);
   });
   it("every game client gets the server's preview flag", () => {
@@ -82,9 +87,8 @@ describe("server pages — who is a preview is decided on the server", () => {
   }
   it("the year hub walls a child by the same rule as the zone page", () => {
     const hub = code(read(`${PLAY}/page.tsx`));
-    assert.match(hub, /const view = await resolveStudentView\(\);/);
     assert.doesNotMatch(hub, /resolveVisibleGrades/);
-    assert.match(hub, /if \(!grades\.includes\(grade\)\) redirect\(grades\.length > 0 \? `\/play\/\$\{grades\[0\]\}` : "\/home"\);/);
+    assert.match(hub, /const away = yearRedirect\(await resolveStudentView\(\), grade\);\n\s*if \(away\) redirect\(away\);/);
   });
   it("practice hands the client the server's preview flag", () => {
     assert.match(read("practice/[slug]/page.tsx"), /<PracticeSession [^\n]*preview=\{preview\} \/>/);

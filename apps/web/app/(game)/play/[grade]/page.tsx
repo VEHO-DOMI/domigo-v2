@@ -9,8 +9,8 @@
  *
  * K1b · GRADE SCOPE (the deep-link half of the /play binding). A CHILD is sent
  * back to its own school year; a TEACHER keeps every year, because the pre-release
- * preview is what this page has been for teachers since 2026-07-17 and the Keen
- * card below is its only entrance. The two are told apart at the source rather than
+ * preview is what this page has been for teachers since 2026-07-17 (lib/student-view.ts,
+ * cgo-047). The two are told apart at the source rather than
  * by a flag: `getActingUserForPage` resolves ONLY a student, while `getPlayerForPage`
  * deliberately answers for both (identity.ts) — which is why the scope check hangs
  * on the former. cgo-047: the child's years now come from lib/student-view.ts,
@@ -29,7 +29,7 @@ import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
 import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
-import { resolveStudentView } from "@/lib/student-view";
+import { resolveStudentView, yearRedirect } from "@/lib/student-view";
 import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
@@ -52,13 +52,13 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
     // cgo-047: the child's years come from the SAME rule as /play, /practice and
     // the zone deep link (lib/student-view.ts): a known class with an unknown
     // year opens none, so this hub can no longer show stops that all bounce.
-    const view = await resolveStudentView();
-    const grades = view?.kind === "student" ? view.grades : [];
     // Not in scope ⇒ back to the child's own year, or home when there is none.
-    if (!grades.includes(grade)) redirect(grades.length > 0 ? `/play/${grades[0]}` : "/home");
+    const away = yearRedirect(await resolveStudentView(), grade);
+    if (away) redirect(away);
   }
-  // the Keen story-mode preview is teacher-only until the year-1 release —
-  // this card is its ONLY navigation entry (students never see it)
+  // year-1 teacher extras (the painted book's Regelbuch). The Keen story-mode
+  // card that lived here is gone: everything Commander Keen is sunset (Koki
+  // 02.10., cgo-047) — no navigation entry leads there any more.
   const teacher = grade === 1 ? await getTeacherForPage() : null;
   const schoolTeacher = grade === 2 ? await getTeacherForPage() : null;
 
@@ -315,18 +315,6 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           the same law the HUD chips obey (F2-33). ACCESS-MAP row: doc 28 §8b. */}
       {teacher !== null && <RegelbuchBoard chapterNames={paintChapterNames} />}
 
-      {teacher !== null && (
-        <section style={{ marginTop: 20 }}>
-          <Link
-            href="/play/1/world"
-            style={{ display: "block", background: "linear-gradient(135deg, #1b1930, #2c2a44)", color: "#f3f1ff", borderRadius: 16, padding: "16px 20px", textDecoration: "none", border: "2px solid #8b7cf5" }}
-          >
-            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Nur für dich sichtbar · Lehrer-Vorschau</div>
-            <div style={{ fontSize: 20, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 2px" }}>🖋 Story-Modus — Die verlorenen Seiten (Keen)</div>
-            <div style={{ fontSize: 14, color: "#c9c4e4" }}>Prolog → Weltkarte → Kapitel 1 in voller Grafik. Spielen →</div>
-          </Link>
-        </section>
-      )}
 
       {zones.length > 0 && grade === 1 && (
         <section style={{ marginTop: 28 }}>
