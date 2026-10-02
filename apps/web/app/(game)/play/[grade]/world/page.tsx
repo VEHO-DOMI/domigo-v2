@@ -12,7 +12,7 @@ import { loadStory, loadStoryCast, loadStoryComprehension } from "@domigo/conten
 import { getDb, getGameSave } from "@domigo/db";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { loadUnitWithOverrides } from "@/lib/content-service";
-import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenWorld } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import { worldCopyFor } from "@/lib/world-copy";
@@ -67,8 +67,11 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect("/play/1");
 
   // getPlayerForPage: student OR teacher — a teacher session plays the
-  // preview with their own identity (progress saves; attempts stay unrecorded).
+  // preview with their own identity (attempts stay unrecorded; since cgo-047
+  // the position lives on the device only — /api/game-save takes a child's PUT).
   const acting = await getPlayerForPage();
+  // cgo-047: no child session ⇒ the teacher preview (lib/preview-attempt.ts).
+  const preview = (await getActingUserForPage()) === null;
   if (!acting) redirect("/signin");
 
   const storyId = "g1.st.lost-pages";
@@ -127,6 +130,7 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   return (
     <>
     <WorldClient
+      preview={preview}
       seed={1007}
       playerSeed={fnv1a32(acting.userId)}
       mode="game:g1"

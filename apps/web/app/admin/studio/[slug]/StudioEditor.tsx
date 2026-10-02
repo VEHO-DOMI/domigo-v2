@@ -8,6 +8,7 @@
  */
 import { useRouter } from "next/navigation";
 import { useState, type CSSProperties } from "react";
+import { saveThenPublish } from "@/lib/studio-publish";
 
 export interface StudioField {
   key: string; // "s" | "d" | "hintDe" | "prompt.text" | …
@@ -71,7 +72,8 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
     return patch;
   }
 
-  async function post(body: Record<string, unknown>, label: string): Promise<void> {
+  /** true only when the server confirmed the step (lib/studio-publish.ts relies on it). */
+  async function post(body: Record<string, unknown>, label: string): Promise<boolean> {
     setBusy(label);
     setErrors([]);
     try {
@@ -79,21 +81,26 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
       const d = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; errors?: string[] };
       if (!res.ok || !d.ok) {
         setErrors(d.errors ?? [d.error ?? "Fehler"]);
-        return;
+        return false;
       }
       router.refresh();
+      return true;
     } catch {
       setErrors(["Netzwerkfehler"]);
+      return false;
     } finally {
       setBusy(null);
     }
   }
 
   const save = () => post({ action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() }, "save");
-  const publish = async () => {
-    if (dirty) await post({ action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() }, "publish");
-    await post({ action: "publish", itemId: item.id }, "publish");
-  };
+  // cgo-047: a failed save must not publish the OLD draft (lib/studio-publish.ts).
+  const publish = () =>
+    saveThenPublish(dirty, (step) =>
+      step === "save"
+        ? post({ action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() }, "publish")
+        : post({ action: "publish", itemId: item.id }, "publish"),
+    );
   const revert = () => {
     if (window.confirm("Diese Änderungen verwerfen und zum Original zurück?")) void post({ action: "revert", itemId: item.id }, "revert");
   };

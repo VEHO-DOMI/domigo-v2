@@ -33,6 +33,7 @@ export default async function StudioListPage() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 25, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Studio</h1>
         <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
+          <Link href="/admin/explorer" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 700 }}>Schüleransicht</Link>
           <Link href="/admin/studio/new" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 700 }}>+ Neue Aufgabe</Link>
           <Link href="/admin" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Verwaltung</Link>
         </div>

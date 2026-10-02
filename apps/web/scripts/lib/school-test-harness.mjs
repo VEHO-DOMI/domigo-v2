@@ -62,6 +62,13 @@ const modules = new Map([
     export const getSolvedGameItemIds = async (_db, userId) => {
       f.reads.push(userId); return new Set(f.solved);
     };
+    // cgo-047: the game-save PUT wall (lib/game-save-route.test.ts).
+    export const upsertGameSave = async (_db, scope, data) => {
+      f.storageCalls++;
+      if (!scope.includes(data.classId)) throw new Error("class scope denied");
+      f.writes.push({ scope, data });
+      return { clientRev: data.clientRev, state: data.state };
+    };
     export const recordAttempt = async (_db, scope, data) => {
       f.storageCalls++;
       if (!scope.includes(data.classId)) throw new Error("class scope denied");

@@ -5,6 +5,15 @@
  * game (g2 detective / g3 novel / g4 trip). Server resolves identity, the
  * chapter + its taskSlot items, and the cosmetic save; a locked/unknown stop
  * bounces to the hub.
+ *
+ * cgo-047 · WHO PLAYS (lib/student-view.ts). A child is bound to its OWN year
+ * here too — the hub had the year wall, this deep link did not, so /play/3/ch01
+ * opened year three for a second-year. A teacher gets the real student
+ * rendering as a PREVIEW: no cosmetic save and no review queue are read (they
+ * are the teacher's own rows, never a child's), and every client gets
+ * `preview`, which silences attempts, the outbox flush and the save PUT
+ * (lib/preview-attempt.ts). /api/game-save refuses a teacher PUT on the server
+ * as well, so the guarantee does not hang on the client alone.
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
@@ -13,7 +22,8 @@ import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/game-core";
-import { getActingUserForPage } from "@/lib/identity";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 import { resolveTileArt } from "@/lib/tile-art";
 import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -77,8 +87,15 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
 
-  const acting = await getActingUserForPage();
-  if (!acting) redirect("/signin");
+  const view = await resolveStudentView();
+  if (!view) redirect("/signin");
+  if (view.kind === "student" && !view.grades.includes(grade)) {
+    redirect(view.grades.length > 0 ? `/play/${view.grades[0]}` : "/home");
+  }
+  const preview = view.kind === "preview";
+  const acting = view.kind === "student" ? view.player : null;
+  const playerId = view.kind === "student" ? view.player.userId : view.teacher.userId;
+  const banner = preview ? <PreviewBanner grade={grade} /> : null;
 
   // Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
   const devStory = devStoryOverride(grade);
@@ -99,7 +116,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   // the ledger is shared by design, only the cosmetic save slot moves.
   const saveMode = gameType === "detective" ? `game:g${grade}:bonus` : gameMode;
 
-  const saved = await getGameSave(getDb(), acting.userId, saveMode).catch(() => null);
+  const saved = acting ? await getGameSave(getDb(), acting.userId, saveMode).catch(() => null) : null;
   const cast = loadStoryCast(storyId);
   const castNames = Object.fromEntries((cast?.members ?? []).map((m) => [m.id, m.nameEn]));
 
@@ -112,7 +129,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     // Phase 4: genuine spaced retrieval — resolve ONLY actually-due clues from this
     // unit (no scope-random filler), so the re-interview beat appears only when due.
-    const dueRefs = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 3).catch(() => []);
+    const dueRefs = acting ? await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 3).catch(() => []) : [];
     const reviewItems: ResolvedItem[] = dueRefs
       .map((ref): ResolvedItem | null => {
         const v = unit.vocab.find((x) => x.id === ref.itemId);
@@ -127,7 +144,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const isFinale = story !== null && story.chapters[story.chapters.length - 1]?.id === chapter.id;
     let finalePieces: EvidencePiece[] = [];
     if (isFinale && story) {
-      const solved = await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>());
+      const solved = acting ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>()) : new Set<string>();
       finalePieces = story.chapters.map((c, i): EvidencePiece => {
         const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
         const unlocked = c.id === chapter.id || (refs.length > 0 && refs.every((ref) => solved.has(ref)));
@@ -136,7 +153,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     }
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
-      <DetectiveClient
+      <>{banner}<DetectiveClient
+        preview={preview}
         gameMode={saveMode}
         caseTitle={story?.title.en ?? "The case"}
         chapter={chapter}
@@ -146,7 +164,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         finalePieces={finalePieces}
         serverSave={serverSave}
         detectiveArt={detectiveArt}
-      />
+      /></>
     );
   }
 
@@ -163,7 +181,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
       ? { href: `/play/3/${following.id.split(".").at(-1)}`, title: following.titleEn } : null;
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-novel").NovelSave } : null;
     return (
-      <NovelClient
+      <>{banner}<NovelClient
+        preview={preview}
         gameMode={gameMode}
         episodeTitle={chapter.titleEn}
         chapter={chapter}
@@ -174,7 +193,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         novelArt={novelArt}
         nextEpisode={nextEpisode}
         economy={loadStoryEconomy(storyId)?.episodes ?? []}
-      />
+      /></>
     );
   }
 
@@ -194,7 +213,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const storyFlags = loadStoryFlags(storyId)?.flags.map((f) => f.id) ?? [];
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-trip").TripSave } : null;
     return (
-      <TripClient
+      <>{banner}<TripClient
+        preview={preview}
         gameMode={gameMode}
         dayTitle={chapter.titleEn}
         chapter={chapter}
@@ -204,7 +224,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         serverSave={serverSave}
         tripArt={tripArt}
         storyFlags={storyFlags}
-      />
+      /></>
     );
   }
 
@@ -227,7 +247,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   const fromRaw = (await searchParams)?.from;
   const from = typeof fromRaw === "string" && /^z\d{2}$/.test(fromRaw) ? fromRaw : null;
 
-  const due = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, Math.max(8, encounterCount * 2)).catch(() => []);
+  const due = acting ? await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, Math.max(8, encounterCount * 2)).catch(() => []) : [];
   const enc = Encounter.parse({
     schema: "encounter@1",
     id: `g${grade}.enc.${storyId.split(".").pop()}-${zone}`,
@@ -240,9 +260,10 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown } : null;
 
   return (
-    <GameClient
+    <>{banner}<GameClient
+      preview={preview}
       seed={mapZone.render?.seed ?? grade * 100 + chapter.unit}
-      playerSeed={fnv1a32(acting.userId)}
+      playerSeed={fnv1a32(playerId)}
       gameMode={gameMode}
       copy={worldCopyFor(storyId, zone)}
       zoneId={mapZone.id}
@@ -258,6 +279,6 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
       layout={mapZone.layout ?? null}
       from={from}
       unlockedZones={unlockedZones}
-    />
+    /></>
   );
 }

@@ -9,7 +9,7 @@ import { toggleGameFullscreen } from "@domigo/game-2d/fullscreen";
 import dynamic from "next/dynamic";
 import type { GameAttempt } from "@domigo/game-2d";
 import type { ResolvedItem } from "@domigo/game-core";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const ArcadeGame = dynamic(() => import("@domigo/game-2d").then((m) => m.ArcadeGame), {
@@ -35,14 +35,17 @@ export default function ArcadeClient(props: {
   doneHref?: string;
   /** v5.3 teacher preview: boot straight into the guardian duel. */
   bossOnly?: boolean;
+  /** cgo-047: a teacher plays — no attempts, no outbox flush, no Funken banked. */
+  preview?: boolean;
 }) {
-  useOutboxFlush();
+  const preview = props.preview === true;
+  useOutboxFlush(!preview);
   const onAttempt = (a: GameAttempt) =>
-    sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
   // Glühwörter → Hinweis-Funken: bank ONCE at run end (server clamps ≤8);
   // fire-and-forget — a failed bank never blocks the completion screen
   const onDone = (stats: { gluehwoerter: number }) => {
-    if (stats.gluehwoerter > 0) {
+    if (!preview && stats.gluehwoerter > 0) {
       void fetch("/api/funken", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ earned: stats.gluehwoerter }) }).catch(() => undefined);
     }
   };

@@ -93,8 +93,12 @@ export default function WorldClient(props: {
   serverSave: SavePayload | null;
   /** ?done=chNN — the level's doneHref triggers the restoration flow. */
   done?: string;
+  /** cgo-047: a teacher plays — no outbox flush and no server save (the
+   *  device copy stays: in production only teachers reach this world). */
+  preview?: boolean;
 }) {
-  useOutboxFlush();
+  const preview = props.preview === true;
+  useOutboxFlush(!preview);
   const router = useRouter();
   const { serverSave } = props;
   const ch = props.chapter.id.split(".").pop() ?? "ch01";
@@ -121,6 +125,7 @@ export default function WorldClient(props: {
   const at = useMemo(() => toV3(initial?.state ?? null), [initial]);
 
   const put = (payload: SavePayload) => {
+    if (preview) return;
     void fetch("/api/game-save", {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -154,6 +159,8 @@ export default function WorldClient(props: {
       window.removeEventListener("pagehide", flush);
       document.removeEventListener("visibilitychange", onHidden);
     };
+    // `put` reads only `preview`, fixed for the life of the page (cgo-047)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ── the restoration flow: ?done=ch01 → thrown flag plays, then the restore

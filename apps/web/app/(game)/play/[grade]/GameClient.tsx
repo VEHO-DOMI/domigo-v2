@@ -19,7 +19,7 @@ import type { GameAttempt, GameSaveState, WorldCopy } from "@domigo/game-2d";
 // (only the canvas is ssr:false), and the barrel would drag Phaser server-side.
 import { mergeZoneState, migrateSave, parseZoneLayout, zoneResume, zoneShort, type WorldSaveV2 } from "@domigo/game-2d/world";
 import type { ResolvedItem } from "@domigo/game-core";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const PhaserGame = dynamic(() => import("@domigo/game-2d").then((m) => m.PhaserGame), {
@@ -30,6 +30,8 @@ const PhaserGame = dynamic(() => import("@domigo/game-2d").then((m) => m.PhaserG
 interface SavePayload { clientRev: number; state: unknown }
 
 export default function GameClient(props: {
+  /** cgo-047: teacher preview — no attempts, no outbox flush, no save read or write. */
+  preview?: boolean;
   seed: number;
   /** A1-4: stable per-student avatar seed (from the userId) — decoupled from the zone seed. */
   playerSeed?: number;
@@ -54,7 +56,9 @@ export default function GameClient(props: {
   /** W-1: zone shorts with released chapters (door seal decisions). */
   unlockedZones?: string[];
 }) {
-  useOutboxFlush();
+  // cgo-047: a teacher preview (lib/student-view.ts) reads and writes nothing.
+  const preview = props.preview === true;
+  useOutboxFlush(!preview);
   const router = useRouter();
   const { gameMode, serverSave } = props;
   // L-1: the grade drives the story-language default + German chrome at grade 1.
@@ -73,6 +77,7 @@ export default function GameClient(props: {
   // (localStorage is client-only); PhaserGame is ssr:false so this only matters
   // on the client where the canvas actually mounts.
   const [initial] = useState<SavePayload | null>(() => {
+    if (preview) return null; // never a child's save from this device
     if (typeof window === "undefined") return serverSave;
     let local: SavePayload | null = null;
     try {
@@ -100,6 +105,7 @@ export default function GameClient(props: {
   };
 
   const onSave = (state: GameSaveState) => {
+    if (preview) return;
     // W-1: fold the zone report into the world container — other zones' progress rides along.
     worldRef.current = mergeZoneState(worldRef.current, { zoneId: state.zoneId, pos: state.pos, cleared: state.cleared });
     revRef.current += 1;
@@ -149,7 +155,7 @@ export default function GameClient(props: {
   }, [lsKey]);
 
   const onAttempt = (a: GameAttempt) =>
-    sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
     <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

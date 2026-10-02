@@ -10,7 +10,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
 import type { GameAttempt, DetectiveSave, DetectiveArt, EvidencePiece } from "@domigo/game-detective";
 import type { ResolvedItem } from "@domigo/game-core";
-import { flushOutbox, sendAttempt } from "@/lib/attempt-outbox";
+import { flushOutbox } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const DetectiveGame = dynamic(() => import("@domigo/game-detective").then((m) => m.DetectiveGame), {
@@ -21,6 +22,8 @@ const DetectiveGame = dynamic(() => import("@domigo/game-detective").then((m) =>
 interface SavePayload { clientRev: number; state: DetectiveSave }
 
 export default function DetectiveClient(props: {
+  /** cgo-047: teacher preview — no attempts, no outbox flush, no save read or write. */
+  preview?: boolean;
   gameMode: string;
   caseTitle: string;
   chapter: Chapter;
@@ -31,11 +34,14 @@ export default function DetectiveClient(props: {
   serverSave: SavePayload | null;
   detectiveArt: DetectiveArt | null;
 }) {
-  useOutboxFlush();
+  // cgo-047: a teacher preview (lib/student-view.ts) reads and writes nothing.
+  const preview = props.preview === true;
+  useOutboxFlush(!preview);
   const { gameMode, serverSave } = props;
   const lsKey = `domigo:gamesave:${gameMode}`;
 
   const [initial] = useState<SavePayload | null>(() => {
+    if (preview) return null; // never a child's save from this device
     if (typeof window === "undefined") return serverSave;
     let local: SavePayload | null = null;
     try {
@@ -58,6 +64,7 @@ export default function DetectiveClient(props: {
   };
 
   const onSave = (state: DetectiveSave) => {
+    if (preview) return;
     revRef.current += 1;
     const payload: SavePayload = { clientRev: revRef.current, state };
     try { localStorage.setItem(lsKey, JSON.stringify(payload)); } catch { /* quota/private mode */ }
@@ -80,7 +87,7 @@ export default function DetectiveClient(props: {
     const onHidden = () => {
       if (document.visibilityState !== "hidden") return;
       flushSave();
-      void flushOutbox(); // drain any pending graded attempts while we still can
+      if (!preview) void flushOutbox(); // drain any pending graded attempts while we still can
       setPaused(true);
     };
     window.addEventListener("pagehide", flushSave);
@@ -93,7 +100,7 @@ export default function DetectiveClient(props: {
   }, [lsKey]);
 
   const onAttempt = (a: GameAttempt) =>
-    sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
     <>
@@ -118,7 +125,7 @@ export default function DetectiveClient(props: {
         >
           <div style={{ fontSize: 44 }} aria-hidden="true">⏸️</div>
           <div style={{ color: "#fff", fontSize: 22, fontWeight: 700 }}>Paused</div>
-          <div style={{ color: "#cbd5e1", fontSize: 14 }}>Your case is saved.</div>
+          <div style={{ color: "#cbd5e1", fontSize: 14 }}>{preview ? "Preview — nothing is saved." : "Your case is saved."}</div>
           <button
             autoFocus
             onClick={() => setPaused(false)}
