@@ -24,29 +24,32 @@
  * and the teacher falls out of `getPlayerForPage`, which deliberately answers for
  * both. Student behaviour is byte-identical — the grade scope still hangs on the
  * student, so a second-year still lands straight on year two.
+ *
+ * cgo-047 · THAT TEACHER LIST WAS EMPTY. Since dach-018 `resolveVisibleGrades(null)`
+ * is `[]`, so the teacher half of K2b showed "Nothing here yet". The viewer now
+ * comes from lib/student-view.ts: a child keeps its own year (fail-closed for a
+ * class whose year is unknown), a teacher previews every released year — or one,
+ * via `?jahrgang=` — under the banner that says nothing is saved.
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
-import { getActingUserForPage, getPlayerForPage } from "@/lib/identity";
-import { resolveVisibleGrades } from "@/lib/grade-scope";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 
 export const dynamic = "force-dynamic";
 
-export default async function PlayIndexPage() {
-  const student = await getActingUserForPage();
-  const acting = student ?? (await getPlayerForPage());
-  if (!acting) redirect("/signin");
+export default async function PlayIndexPage({ searchParams }: { searchParams: Promise<{ jahrgang?: string | string[] }> }) {
+  const view = await resolveStudentView((await searchParams)?.jahrgang);
+  if (!view) redirect("/signin");
+  const student = view.kind === "student";
 
-  // The years this child may see. resolveVisibleGrades swallows a DB hiccup itself
-  // and lands on all four — so this never 500s and never renders an empty page for
-  // a reason the child has nothing to do with. (redirect() throws by design in
-  // Next, so it stays outside anything that catches.)
-  //
-  // A TEACHER is not grade-bound: she passes null and sees every released year,
-  // which is the same preview she already gets on /play/[grade].
-  const grades = await resolveVisibleGrades(student ? student.classId : null);
+  // The years this viewer may see (lib/student-view.ts swallows a DB hiccup for a
+  // child and lands on all four). A TEACHER is not grade-bound: every released
+  // year, the same preview she gets on /play/[grade]. (redirect() throws by design
+  // in Next, so it stays outside anything that catches.)
+  const grades = view.grades;
   const stories = listReleasedStories().filter((s) => grades.includes(s.grade));
 
   // Fast path: exactly one year in scope and a story released for it. Only a
@@ -56,6 +59,8 @@ export default async function PlayIndexPage() {
   }
 
   return (
+    <>
+    {!student && <PreviewBanner />}
     <main style={{ maxWidth: 560, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Story Mode</h1>
@@ -88,5 +93,6 @@ export default async function PlayIndexPage() {
         })}
       </div>
     </main>
+    </>
   );
 }

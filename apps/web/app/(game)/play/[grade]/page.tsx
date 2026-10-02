@@ -29,6 +29,7 @@ import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
 import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { resolveVisibleGrades } from "@/lib/grade-scope";
+import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -214,6 +215,8 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const plannedShorts = new Set((floorPlan ?? []).flatMap((b) => b.zones.map((z) => z.short)));
 
   return (
+    <>
+    {!student && <PreviewBanner grade={grade} />}
     <main className="dgh-hub" style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)", display: "flex", alignItems: "center" }}>
@@ -337,5 +340,6 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         </section>
       )}
     </main>
+    </>
   );
 }

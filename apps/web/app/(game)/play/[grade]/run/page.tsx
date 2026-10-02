@@ -13,7 +13,7 @@ import { getDb, getDueRefs } from "@domigo/db";
 import { resolveEncounterTasks } from "@domigo/game-core";
 import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
 import type { BossScript } from "@domigo/game-2d/boss";
-import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenBoss, loadKeenLevel, loadKeenTasks, type KeenGameTask } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import ArcadeClient from "./ArcadeClient";
@@ -39,6 +39,8 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect(`/play/${grade}`);
 
   const acting = await getPlayerForPage(); // student OR teacher (preview law)
+  // cgo-047: no child session ⇒ the teacher preview (lib/preview-attempt.ts).
+  const preview = (await getActingUserForPage()) === null;
   if (!acting) redirect("/signin");
   // v5.3: `boss=1` boots straight into the guardian duel — a TEACHER-ONLY
   // preview door (Koki: "don't make me play the level for every boss test");
@@ -108,6 +110,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   return (
     <>
       <ArcadeClient
+        preview={preview}
         seed={grade * 1000 + 7}
         playerSeed={fnv1a32(acting.userId)}
         mode={`game:g${grade}`}
