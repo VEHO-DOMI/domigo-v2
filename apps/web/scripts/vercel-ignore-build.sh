@@ -6,7 +6,8 @@
 # "Use project's Ignore Build Step". The provider bypasses this script;
 # there is deliberately no environment-variable override here.
 # https://vercel.com/docs/monorepos#ignoring-the-build-step
+# F3 (2026-10-02): codex/main is retired; only main publishes automatically.
 case "${VERCEL_GIT_COMMIT_REF-}" in
-  main|codex/main) exit 1 ;;
+  main) exit 1 ;;
   *) exit 0 ;;
 esac

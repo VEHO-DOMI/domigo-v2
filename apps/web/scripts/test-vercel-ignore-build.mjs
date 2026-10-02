@@ -7,7 +7,7 @@ const cwd = fileURLToPath(new URL('..', import.meta.url));
 const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url)));
 assert.equal(config.ignoreCommand, 'sh scripts/vercel-ignore-build.sh');
 const cases = [
-  ['main', 1], ['codex/main', 1], ['codex/beispiel', 0],
+  ['main', 1], ['codex/main', 0], ['codex/beispiel', 0],
   ['feature/beispiel', 0], [undefined, 0], ['', 0],
   ['main-extra', 0], ['codex/main/extra', 0], [' main', 0],
 ];
