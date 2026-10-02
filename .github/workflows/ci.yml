@@ -47,6 +47,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24, cache: pnpm }
       - run: pnpm install --frozen-lockfile
+      - run: pnpm test:vercel-ignore-build # cgo-059: main must build, other refs must skip
       - run: pnpm test
 
   content-validate:
