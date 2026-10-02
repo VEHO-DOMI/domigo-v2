@@ -49,7 +49,7 @@ export default async function ExplorerPage() {
         </div>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        Öffne die Kinderseite so, wie ein Kind sie sieht. Das ist eine <strong>Vorschau</strong>: Antworten werden bewertet, aber nichts wird gespeichert — kein Versuch, kein Spielstand, keine Wiederholung. Klassenstatistik und Fortschritt der Kinder bleiben unberührt. Nur das gemalte Buch von Klasse 1 merkt sich deinen Stand auf diesem Gerät.
+        Öffne die Kinderseite so, wie ein Kind sie sieht. Das ist eine <strong>Vorschau</strong>: Antworten werden bewertet, aber nichts wird gespeichert — kein Versuch, kein Spielstand, keine Wiederholung. Klassenstatistik und Fortschritt der Kinder bleiben unberührt. Die Lehrer-Türen (gemaltes Buch Klasse 1, Schulhaus Klasse 2) merken sich deinen Stand auf diesem Gerät.
       </p>
 
       {GRADES.map((grade) => {

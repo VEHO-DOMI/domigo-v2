@@ -10,6 +10,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { describe, it } from "node:test";
+import { transpileModule } from "typescript";
 
 const read = (rel: string) => fs.readFileSync(new URL(`../app/${rel}`, import.meta.url), "utf8");
 /** The source without comments — a header may NAME what the code must not call. */
@@ -46,6 +47,74 @@ describe("client guards — nothing leaves a preview", () => {
   }
   it("WorldClient: no server save", () => {
     assert.match(read(`${PLAY}/world/WorldClient.tsx`), /const put = \(payload: SavePayload\) => \{\n\s*if \(preview\) return;\n\s*void fetch\("\/api\/game-save"/);
+  });
+  for (const preview of [true, false]) {
+    it(`WorldClient: ${preview ? "preview never reads or writes device storage" : "normal play still loads and persists"}`, () => {
+      // Execute the real save-sync block, including its page-hide effect. Only
+      // React hooks and browser services are substituted; no copied guard logic.
+      const src = read(`${PLAY}/world/WorldClient.tsx`);
+      const definitions = src.match(/const GAME_MODE = [\s\S]*?(?=\/\*\* Slice the chapter)/);
+      const sync = src.match(/const \[initial\] = [\s\S]*?(?=  \/\/ ── the restoration flow)/);
+      assert.ok(definitions && sync, "WorldClient save-sync source must be found");
+      const saved = { clientRev: 7, state: { v: 3, chapters: { ch01: { done: true } }, beats: {}, pos: { c: 2, r: 3 } } };
+      const serverSave = { ...saved, clientRev: 4 };
+      let stored = JSON.stringify(saved);
+      let reads = 0;
+      let writes = 0;
+      let requests = 0;
+      const timers = new Set<() => void>();
+      const listeners = new Map<string, () => void>();
+      const cleanups: Array<() => void> = [];
+      const target = {
+        addEventListener: (event: string, fn: () => void) => listeners.set(event, fn),
+        removeEventListener: (event: string) => listeners.delete(event),
+      };
+      const env = {
+        window: target,
+        document: { ...target, visibilityState: "hidden" },
+        localStorage: {
+          getItem: () => { reads++; return stored; },
+          setItem: (_key: string, value: string) => { writes++; stored = value; },
+        },
+        fetch: async () => { requests++; },
+        setTimeout: (fn: () => void) => { timers.add(fn); return fn; },
+        clearTimeout: (fn: () => void) => { timers.delete(fn); },
+        useState: (init: () => unknown) => [init()],
+        useRef: (current: unknown) => ({ current }),
+        useMemo: (init: () => unknown) => init(),
+        useEffect: (effect: () => () => void) => cleanups.push(effect()),
+      };
+      const executable = transpileModule(`
+        function exercise(preview, serverSave, env) {
+          const { window, document, localStorage, fetch, setTimeout, clearTimeout,
+            useState, useRef, useMemo, useEffect } = env;
+          ${definitions[0]}
+          ${sync[0]}
+          return { initial, at, saveRef, persist };
+        }
+      `, {}).outputText;
+      const state = new Function(`${executable}\nreturn exercise;`)()(preview, serverSave, env);
+      assert.deepEqual(state.initial, preview ? null : saved);
+      assert.deepEqual(state.at, preview ? { v: 3, chapters: {}, beats: {} } : saved.state);
+      assert.equal(reads, preview ? 0 : 1, "preview must not read localStorage at startup");
+      state.saveRef.current.pos = { c: 5, r: 6 };
+      state.persist();
+      assert.equal(writes, preview ? 0 : 1, "preview must not write localStorage in persist()");
+      assert.equal(timers.size, preview ? 0 : 1);
+      listeners.get("pagehide")?.();
+      listeners.get("visibilitychange")?.();
+      assert.equal(reads, preview ? 0 : 2, "preview must not read localStorage on page hide");
+      assert.equal(requests, preview ? 0 : 1);
+      assert.equal(timers.size, 0);
+      assert.deepEqual(JSON.parse(stored), preview ? saved : {
+        clientRev: 8, state: { ...saved.state, pos: { c: 5, r: 6 } },
+      });
+      for (const cleanup of cleanups) cleanup();
+      assert.equal(listeners.size, 0);
+    });
+  }
+  it("explorer names both teacher doors that retain device progress", () => {
+    assert.match(read("admin/explorer/page.tsx"), /Die Lehrer-Türen \(gemaltes Buch Klasse 1, Schulhaus Klasse 2\) merken sich deinen Stand auf diesem Gerät\./);
   });
   it("the year-1 overworld is parked and a child never lands on an empty hub (Koki 02.10.)", () => {
     const release = JSON.parse(fs.readFileSync(new URL("../../../content/corpus/stories/g1.st.lost-pages/release.json", import.meta.url), "utf8"));

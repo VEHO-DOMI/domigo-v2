@@ -93,8 +93,7 @@ export default function WorldClient(props: {
   serverSave: SavePayload | null;
   /** ?done=chNN — the level's doneHref triggers the restoration flow. */
   done?: string;
-  /** cgo-047: a teacher plays — no outbox flush and no server save (the
-   *  device copy stays: in production only teachers reach this world). */
+  /** cgo-047: a teacher plays — no outbox flush, no device or server save. */
   preview?: boolean;
 }) {
   const preview = props.preview === true;
@@ -106,6 +105,7 @@ export default function WorldClient(props: {
   // ── the save sync (GameClient's logic, replicated): local vs server, higher
   //    clientRev wins; every change → localStorage now + a debounced PUT ──
   const [initial] = useState<SavePayload | null>(() => {
+    if (preview) return null;
     if (typeof window === "undefined") return serverSave;
     let local: SavePayload | null = null;
     try {
@@ -134,6 +134,7 @@ export default function WorldClient(props: {
     }).catch(() => { /* cosmetic, best-effort */ });
   };
   const persist = () => {
+    if (preview) return;
     revRef.current += 1;
     const payload: SavePayload = { clientRev: revRef.current, state: saveRef.current };
     try { localStorage.setItem(LS_KEY, JSON.stringify(payload)); } catch { /* quota/private mode */ }
