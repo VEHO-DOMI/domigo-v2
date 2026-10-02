@@ -30,6 +30,9 @@ import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
 import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { resolveStudentView, yearRedirect } from "@/lib/student-view";
+
+/** The story bundle the painted book (/play/1/buch) is built on — the year-1 game. */
+const PAINT_STORY = "g1.st.lost-pages";
 import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
@@ -68,6 +71,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const storyId = devStory?.storyId ?? storyIdForGrade(grade);
   const map = storyId ? loadGameMap(storyId) : null;
   const story = storyId ? loadStory(storyId) : null;
+  // cgo-047 · SUNSET (Koki 02.10.): the year-1 overworld "Die verlorenen Seiten"
+  // is parked (release.json, 0 chapters); the painted book (/play/1/buch) is the
+  // year-1 game being built and is not yet released to children. A child whose
+  // year has no released story goes to the /play chooser, which says so honestly
+  // — never an empty hub.
+  if (student && storyId === null) redirect("/play");
   const released = devStory
     ? devReleasedChapters(devStory, story?.chapters.map((c) => c.id) ?? [])
     : storyId
@@ -90,13 +99,16 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // Nummer aus der Kapitel-Id, damit »Kapitel 3« auch dann stimmt, wenn ein
   // Kapitel noch nicht freigegeben ist. Das Brett läuft im Browser und kann
   // keine Datei lesen — deshalb wird die Karte hier gebaut und hineingereicht.
+  // cgo-047: the painted book names its chapters from its OWN story bundle, which
+  // stays readable while the overworld built on the same bundle is parked.
+  const paintStory = grade === 1 ? loadStory(PAINT_STORY) : null;
   const paintChapterNames: Record<string, string> = Object.fromEntries(
-    (story?.chapters ?? [])
+    (paintStory?.chapters ?? [])
       .map((c) => c.id.split(".").pop() ?? "")
       .filter((ch) => /^ch\d{2}$/.test(ch))
       .map((ch) => [
         ch,
-        `Kapitel ${Number(ch.slice(2))} — ${story?.chapters.find((c) => c.id.endsWith(`.${ch}`))?.titleDe ?? ch}`,
+        `Kapitel ${Number(ch.slice(2))} — ${paintStory?.chapters.find((c) => c.id.endsWith(`.${ch}`))?.titleDe ?? ch}`,
       ]),
   );
 

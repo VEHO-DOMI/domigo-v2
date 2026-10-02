@@ -47,6 +47,14 @@ describe("client guards — nothing leaves a preview", () => {
   it("WorldClient: no server save", () => {
     assert.match(read(`${PLAY}/world/WorldClient.tsx`), /const put = \(payload: SavePayload\) => \{\n\s*if \(preview\) return;\n\s*void fetch\("\/api\/game-save"/);
   });
+  it("the year-1 overworld is parked and a child never lands on an empty hub (Koki 02.10.)", () => {
+    const release = JSON.parse(fs.readFileSync(new URL("../../../content/corpus/stories/g1.st.lost-pages/release.json", import.meta.url), "utf8"));
+    assert.deepEqual(release.releasedChapters, [], "Die verlorenen Seiten stays parked: the painted book is the year-1 game");
+    const hub = code(read(`${PLAY}/page.tsx`));
+    assert.match(hub, /if \(student && storyId === null\) redirect\("\/play"\);/);
+    assert.match(hub, /const paintStory = grade === 1 \? loadStory\(PAINT_STORY\) : null;/);
+    assert.match(read("admin/explorer/page.tsx"), /Gemaltes Buch — das Spiel für Klasse 1/);
+  });
   it("no navigation entry leads to the sunset Keen story mode (Koki 02.10.)", () => {
     for (const file of ["admin/explorer/page.tsx", `${PLAY}/page.tsx`]) {
       assert.doesNotMatch(code(read(file)), /\/play\/1\/world|Keen/, `${file} still offers Keen`);

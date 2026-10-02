@@ -9,6 +9,10 @@ export const dynamic = "force-dynamic";
  * der echten Schülerdarstellung und als Vorschau (lib/student-view.ts): es wird
  * nichts gespeichert, Klassenstatistik und Kinderfortschritt bleiben unberührt.
  *
+ * Klasse 1 (Koki 02.10.): die alte Oberwelt »Die verlorenen Seiten« und alles zu
+ * Commander Keen sind sunset; gebaut wird das gemalte Buch. Darum steht dort keine
+ * freigegebene Geschichte, sondern das Buch als Lehrer-Tür.
+ *
  * Was die Vorschau noch nicht erreicht, steht als Text da, nicht als Knopf — keine
  * toten Aktionen. Die Zahlen kommen aus dem Korpus (listReleasedStories,
  * loadReleasedChapters, listApprovedUnits), nie von Hand gepflegt.
@@ -23,7 +27,7 @@ const GRADES = [1, 2, 3, 4] as const;
 /** Die Lehrer-Türen, die es schon vor der Vorschau gab — ehrlich beschriftet. */
 const TEACHER_DOORS: Record<number, Array<{ href: string; label: string; note: string }>> = {
   1: [
-    { href: "/play/1/buch/ch01", label: "Gemaltes Buch", note: "nur Lehrkräfte, Kapitel 2–6 im Entwurf" },
+    { href: "/play/1/buch/ch01", label: "Gemaltes Buch — das Spiel für Klasse 1", note: "noch nicht für Kinder freigegeben · nur Lehrkräfte, Kapitel 2–6 im Entwurf" },
   ],
   2: [{ href: "/play/2/school", label: "Schulhaus-Kapitel", note: "nur Lehrkräfte, solange nicht freigegeben" }],
 };
