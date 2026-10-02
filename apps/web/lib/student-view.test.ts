@@ -99,6 +99,12 @@ describe("yearRedirect + isPreview — what the game pages do with a viewer", ()
     for (const g of [1, 2, 3, 4]) assert.equal(yearRedirect(view, g), null);
     assert.equal(isPreview(view), true);
   });
+  it("a teacher's narrowed preview (?jahrgang=3) is never walled out of another year", async () => {
+    fixture.session = teacher();
+    const narrowed = await resolveStudentView("3");
+    assert.deepEqual(narrowed?.grades, [3]);
+    for (const g of [1, 2, 4]) assert.equal(yearRedirect(narrowed, g), null);
+  });
   it("nobody is sent to sign in and is never a preview", async () => {
     const view = await resolveStudentView();
     assert.equal(yearRedirect(view, 1), "/signin");
