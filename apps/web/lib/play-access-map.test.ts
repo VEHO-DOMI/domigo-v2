@@ -80,6 +80,12 @@ describe("server pages — who is a preview is decided on the server", () => {
       assert.doesNotMatch(src, /resolveVisibleGrades|getActingUserForPage|getPlayerForPage/);
     });
   }
+  it("the year hub walls a child by the same rule as the zone page", () => {
+    const hub = code(read(`${PLAY}/page.tsx`));
+    assert.match(hub, /const view = await resolveStudentView\(\);/);
+    assert.doesNotMatch(hub, /resolveVisibleGrades/);
+    assert.match(hub, /if \(!grades\.includes\(grade\)\) redirect\(grades\.length > 0 \? `\/play\/\$\{grades\[0\]\}` : "\/home"\);/);
+  });
   it("practice hands the client the server's preview flag", () => {
     assert.match(read("practice/[slug]/page.tsx"), /<PracticeSession [^\n]*preview=\{preview\} \/>/);
   });

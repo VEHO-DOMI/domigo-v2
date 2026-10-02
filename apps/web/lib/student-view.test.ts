@@ -63,6 +63,9 @@ describe("resolveStudentView — who sees the student side, as what", () => {
   });
   it("nobody signed in sees nothing, and dev identities stay dead in production", async () => {
     assert.equal(await resolveStudentView(), null);
+    // The dev fallback must stay dead behind its guard: the harness runs as
+    // VERCEL_ENV === "production", so forged dev ids below resolve nobody.
+    assert.equal(process.env.VERCEL_ENV === "production", true);
     process.env.DEV_TEACHER_ID = "teacher-forged";
     process.env.DEV_USER_ID = "child-forged";
     process.env.DEV_CLASS_ID = "class-forged";

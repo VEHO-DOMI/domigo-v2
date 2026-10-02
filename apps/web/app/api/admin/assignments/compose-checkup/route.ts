@@ -14,10 +14,10 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, listClasses, listClassesInScope, listReservedForClass } from "@domigo/db";
+import { getDb, listReservedForClass } from "@domigo/db";
 import { composeCheckup, GRADE_STRUCTURES } from "@/lib/checkup";
 import { getTeacher } from "@/lib/teacher";
-import { isGrandmaster } from "@/lib/grandmaster";
+import { assignableClasses } from "@/lib/class-wall";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -49,9 +49,8 @@ export async function POST(req: Request): Promise<Response> {
   const { classId, unitSlug, presets } = parsed.data;
 
   // Fail closed — an unreadable class list is not permission (see the sibling route).
-  const allowed = isGrandmaster(teacher.userId)
-    ? await listClassesInScope(getDb(), teacher.classScope).catch(() => null)
-    : await listClasses(getDb(), teacher.classScope, teacher.userId).catch(() => null);
+  // cgo-047: the same class wall as the picker and the create door (lib/class-wall.ts).
+  const allowed = await assignableClasses(teacher).catch(() => null);
   if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
   if (!allowed.some((c) => c.id === classId)) {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });

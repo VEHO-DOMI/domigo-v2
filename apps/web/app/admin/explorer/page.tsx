@@ -24,7 +24,7 @@ const GRADES = [1, 2, 3, 4] as const;
 const TEACHER_DOORS: Record<number, Array<{ href: string; label: string; note: string }>> = {
   1: [
     { href: "/play/1/buch/ch01", label: "Gemaltes Buch", note: "nur Lehrkräfte, Kapitel 2–6 im Entwurf" },
-    { href: "/play/1/world", label: "Weltkarte (Keen)", note: "nur Lehrkräfte" },
+    { href: "/play/1/world", label: "Weltkarte (Keen)", note: "nur Lehrkräfte · merkt sich deinen Stand nur auf diesem Gerät" },
   ],
   2: [{ href: "/play/2/school", label: "Schulhaus-Kapitel", note: "nur Lehrkräfte, solange nicht freigegeben" }],
 };
@@ -46,7 +46,7 @@ export default async function ExplorerPage() {
         </div>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        Öffne die Kinderseite so, wie ein Kind sie sieht. Das ist eine <strong>Vorschau</strong>: Antworten werden bewertet, aber nichts wird gespeichert — kein Versuch, kein Spielstand, keine Wiederholung. Klassenstatistik und Fortschritt der Kinder bleiben unberührt.
+        Öffne die Kinderseite so, wie ein Kind sie sieht. Das ist eine <strong>Vorschau</strong>: Antworten werden bewertet, aber nichts wird gespeichert — kein Versuch, kein Spielstand, keine Wiederholung. Klassenstatistik und Fortschritt der Kinder bleiben unberührt. Nur die Lehrer-Türen von Klasse 1 merken sich deinen Stand auf diesem Gerät.
       </p>
 
       {GRADES.map((grade) => {

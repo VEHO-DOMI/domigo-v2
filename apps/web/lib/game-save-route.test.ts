@@ -14,10 +14,7 @@ const put = (headers: Record<string, string> = {}) =>
     body: JSON.stringify({ gameMode: "game:g3", schemaVersion: 1, clientRev: 7, state: { at: "ep01" } }),
   });
 
-beforeEach(() => {
-  resetSchoolFixture();
-  delete process.env.DEV_TEACHER_ID;
-});
+beforeEach(() => resetSchoolFixture());
 
 describe("PUT /api/game-save — only a child writes", () => {
   it("stores a child's save under the child's own class", async () => {
