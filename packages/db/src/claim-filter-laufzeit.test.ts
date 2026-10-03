@@ -157,7 +157,11 @@ const NUTZER = ["user_id"];
 // Kennung auch — und liest alle Spielstaende dieses Modus. Ein `or` ist darum nur erlaubt,
 // wo JEDES seiner Glieder die eigene Kennung bindet (die Loeschung im Journal: als
 // Lehrkraft ODER als Handelnde).
-const EIGENE: { schluessel: string; spalten: string[]; lauf: (db: Db) => Promise<unknown> }[] = [
+// dach-167 (GG-Pruefung PR 481, S3): gezaehlt wurden nur Glieder der Form `= $n` —
+// `or(eq(user_id, ICH), isNotNull(…))` und `… or true` blieben gruen. Jetzt ist `or`
+// verboten, ausser der Fall erlaubt es (`oder: true`), und dort muss JEDES Teilstueck
+// die eigene Kennung an eine Spalte binden.
+const EIGENE: { schluessel: string; spalten: string[]; oder?: true; lauf: (db: Db) => Promise<unknown> }[] = [
   { schluessel: "assignment-session-service.ts#getSessionAttempts", spalten: NUTZER, lauf: (db) => getSessionAttempts(db, ICH, "aufgabe-1", "sitzung-1") },
   { schluessel: "game-progress.ts#getSolvedGameItemIds", spalten: NUTZER, lauf: (db) => getSolvedGameItemIds(db, ICH, 2) },
   { schluessel: "gamesave.ts#getGameSave", spalten: NUTZER, lauf: (db) => getGameSave(db, ICH, "game:g1") },
@@ -167,7 +171,7 @@ const EIGENE: { schluessel: string; spalten: string[]; lauf: (db: Db) => Promise
   { schluessel: "konto-identity.ts#findKontoIdentity", spalten: ["id"], lauf: (db) => findKontoIdentity(db, ICH) },
   // Die Loeschung nennt die Person in vier Rollen: als Lernende, im Jahresabschluss,
   // als Lehrkraft/Handelnde im Journal, und zuletzt die Zeile der Person selbst.
-  { schluessel: "konto-loeschung.ts#deleteUserData", spalten: ["user_id", "v1_user_id", "teacher_id", "actor_id", "id"], lauf: (db) => deleteUserData(db, ICH) },
+  { schluessel: "konto-loeschung.ts#deleteUserData", spalten: ["user_id", "v1_user_id", "teacher_id", "actor_id", "id"], oder: true, lauf: (db) => deleteUserData(db, ICH) },
 ];
 
 describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen Kennung", () => {
@@ -187,9 +191,12 @@ describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen 
         const gebunden = [...bedingung.matchAll(/"([a-z_0-9]+)" = \$(\d+)/g)].filter((m) => e.params[Number(m[2]) - 1] === ICH).map((m) => m[1]);
         expect(gebunden.length, `${e.sql}: die eigene Kennung steht in keiner Spalten-Bedingung`).toBeGreaterThan(0);
         for (const spalte of gebunden) expect(fall.spalten, `${e.sql}: die Kennung haengt an "${spalte}"`).toContain(spalte);
-        if (/ or /.test(bedingung)) {
-          const alle = [...bedingung.matchAll(/= \$(\d+)/g)].map((m) => e.params[Number(m[1]) - 1]);
-          expect(alle.every((p) => p === ICH), `${e.sql}: ein or, dessen Glieder nicht alle die eigene Kennung binden`).toBe(true);
+        if (/ or /i.test(bedingung)) {
+          expect(fall.oder, `${e.sql}: ein or in einer Abfrage, die keins braucht`).toBe(true);
+          for (const teil of bedingung.split(/ or /i)) {
+            const bindet = [...teil.matchAll(/"[a-z_0-9]+" = \$(\d+)/g)].some((m) => e.params[Number(m[1]) - 1] === ICH);
+            expect(bindet, `${e.sql}: ein Glied des or bindet die eigene Kennung nicht: ${teil}`).toBe(true);
+          }
         }
         // … keine andere Person-Kennung kommt hinein …
         for (const p of e.params) if (typeof p === "string" && UUID.test(p)) expect(p).toBe(ICH);

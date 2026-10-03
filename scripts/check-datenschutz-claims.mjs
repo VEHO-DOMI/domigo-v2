@@ -109,7 +109,11 @@ const AUSNAHMEN = [
   },
 ];
 const NUTZT_TABELLE = /v2IdentityUsers/;
-const MAIL_ZUWEISUNG = /(^|[^a-zA-Z])email\s*:/;
+// dach-167 (GG-Pruefung PR 481, S1): nicht nur `email:` — auch die Kurzschreibweise
+// `{ email }` / `{ role, email }`, die natuerlichste Form, wenn die Variable schon so
+// heisst, und `"email":`. Gemessen ueber alle Dateien, die die Tabelle benutzen:
+// einziger Treffer schema.ts (die erklaerte Ausnahme).
+const MAIL_ZUWEISUNG = /(^|[^a-zA-Z_.])["'`]?email["'`]?\s*[:,}]/;
 const ROHES_SQL = /(insert\s+into|update)\s+(domigo_v2\.)?"?users"?\b/i;
 
 let fehler = 0;
@@ -144,6 +148,15 @@ const KOEDER = [
   [
     "packages/db/src/__selbsttest-zweite-tuer.ts",
     'import { v2IdentityUsers } from "./schema.ts";\nawait db.insert(v2IdentityUsers).values({ role: "student", email: eingabe.adresse });\n',
+  ],
+  // dach-167 · die Kurzschreibweise und der Schluessel in Anfuehrungszeichen
+  [
+    "packages/db/src/__selbsttest-kurz.ts",
+    'import { v2IdentityUsers } from "./schema.ts";\nawait db.insert(v2IdentityUsers).values({ role: "teacher", email });\n',
+  ],
+  [
+    "packages/db/src/__selbsttest-anfuehrung.ts",
+    'import { v2IdentityUsers } from "./schema.ts";\nawait db.update(v2IdentityUsers).set({ "email": adresse });\n',
   ],
 ];
 const BEINAHE = [
