@@ -25,7 +25,9 @@
 //   parameter · dach-100 · `db` baut nur Abfragen (select/insert/update/delete)
 //               oder geht als Argument weiter; `classScope` wird nie ueber-
 //               schrieben, mutiert oder umgewandelt. Sonst sieht keine Pruefung
-//               mehr, was gefragt wird.
+//               mehr, was gefragt wird. Und apps/web fasst keine Tabelle des
+//               Schemas an (Import, Namensraum, `db.query.<t>`) — jede Abfrage
+//               gehoert nach packages/db.
 //   herkunft  · `classScope(` wird in apps/web NUR in lib/identity.ts gerufen.
 //               Der Typ kann nicht beweisen, woher seine Kennungen kommen:
 //               `classScope([params.id])` uebersetzt sich tadellos und ist
@@ -82,7 +84,11 @@
 // GRENZEN, ehrlich (blinder Leser dach-100, zwei Runden): das Tor beweist, dass die
 // gefilterte Abfrage BENUTZT wird, nicht, dass sie die Antwort entscheidet — `return
 // roh ?? gefiltert` und `if (!gefiltert) return; return roh` sind gruen (ein `if` ist
-// das Muster jeder Besitz-Pruefung und muss zaehlen). Konstante Zweige (`if (false)`)
+// das Muster jeder Besitz-Pruefung und muss zaehlen); ebenso ein abgewartetes Ergebnis,
+// das an irgendeine Funktion geht (`toDto(await q)` muss zaehlen, also auch
+// `logger.debug(await q)` — nur `console.*` gilt als verworfen). Die Wache zaehlt nur als
+// `if (!inScope(…)) throw/return` (auch als Glied einer ODER-Kette), nicht als
+// `const ok = inScope(…)` oder in der positiven Form. Konstante Zweige (`if (false)`)
 // werden nicht ausgewertet. Die Spalte im `inArray` wird nicht geprueft (eine falsche
 // Spalte schliesst eher zu als auf), ebensowenig, welchen Wert `inScope` prueft. Filter
 // in Rueckruf-Funktionen (`v2Safe(() => …)`) zaehlen nicht. `aufrufer` vergleicht den
