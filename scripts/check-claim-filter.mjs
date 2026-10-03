@@ -88,8 +88,20 @@
 // in Rueckruf-Funktionen (`v2Safe(() => …)`) zaehlen nicht. `aufrufer` vergleicht den
 // TEXT des Ausdrucks: `acting.userId` bleibt gruen, wenn jemand `acting` in derselben
 // Datei aus der URL baut. Gelesen werden packages/db/src und apps/web; ein drittes
-// Paket, das @domigo/db ruft, saehe dieses Tor nicht. Dafuer gibt es
-// claim-filter-laufzeit.test.ts und den Review.
+// Paket, das @domigo/db ruft, saehe dieses Tor nicht.
+// Und grundsaetzlich: ein statisches Tor haelt Versehen auf, keinen Entwickler, der
+// es absichtlich taeuscht. Was der blinde Leser von dach-100 in Runde 2 noch gruen
+// bekam, ist bewusst NICHT geschlossen, weil jede Schliessung echten Code rot machte
+// oder die Tarnung nur eine Stufe weiter schob: Umwandlungen ohne den Namen
+// ClassScope (`as never`, `as any`, `// @ts-expect-error`, `JSON.parse`, Typ-Alias),
+// eine zusaetzliche ungefilterte Abfrage NEBEN der gefilterten in einer Pflicht-
+// Funktion (gemessen: die Regel »jede Klassen-Abfrage traegt selbst den Filter«
+// machte 14 korrekte Abfragen rot — Joins, v1-Rueckfaelle), Tabellen ueber lokale
+// Konstanten/Namensraum/Ternaer/Parameter, unerreichbarer Code nach `return`,
+// Aliase von `classScope` oder einer gespeicherten Abfrage (`const q2 = q`),
+// `Object.assign`/`Reflect`/`eval`, Getter und Konstruktoren, Tabellen ohne
+// classId, Dateien ausserhalb packages/db/src, die Rümpfe von scope.ts selbst.
+// Dafuer gibt es claim-filter-laufzeit.test.ts und den Review.
 //
 // Was nicht filtern KANN, steht in claim-filter-allowlist.json, je mit einem
 // Satz. Und die Liste rostet nicht: ein Eintrag, dessen Funktion inzwischen
@@ -216,7 +228,7 @@ function ohneKommentare(src) {
 
 // dach-100, blinder Leser: eine Datei in einem Unterordner oder mit der Endung .mts
 // war fuer das Tor nicht da. Jetzt: rekursiv, jede Quell-Endung, ohne Tests.
-const QUELLE = /\.(?:ts|mts|cts|tsx|js|mjs|cjs)$/;
+const QUELLE = /\.(?:ts|mts|cts|tsx|js|mjs|cjs|jsx)$/;
 const TEST = /\.(?:test|spec)\.[a-z]+$/;
 function dbDateien(dir = DB_SRC, out = []) {
   for (const e of fs.readdirSync(path.join(R, dir), { withFileTypes: true })) {
@@ -238,6 +250,14 @@ function webDateien(dir = WEB, out = []) {
     else if (QUELLE.test(e.name) && !e.name.endsWith(".d.ts")) out.push(rel);
   }
   return out;
+}
+/** Ein geparster Baum je Quelltext, gemerkt — der Selbsttest liest apps/web sonst 60-mal. */
+const BAEUME = new Map();
+function baum(rel, src) {
+  const k = `${rel}\0${src}`;
+  let sf = BAEUME.get(k);
+  if (!sf) { sf = ts.createSourceFile(rel, src, ts.ScriptTarget.ES2022, true, skriptArt(rel)); BAEUME.set(k, sf); }
+  return sf;
 }
 const skriptArt = (rel) => (/\.(?:tsx|jsx)$/.test(rel) ? ts.ScriptKind.TSX : /\.(?:m|c)?js$/.test(rel) ? ts.ScriptKind.JS : ts.ScriptKind.TS);
 
@@ -629,8 +649,9 @@ function aufrufeVon(state, namen) {
     ...[...state.db].map(([rel, src]) => [rel, src, "db"]),
   ];
   for (const [rel, src, art] of quellen) {
-    if (![...namen.keys()].some((n) => src.includes(n))) continue;
-    const sf = ts.createSourceFile(rel, src, ts.ScriptTarget.ES2022, true, skriptArt(rel));
+    // Kein Vorfilter auf den Rohtext: ein Name mit Unicode-Escape (`get\u0047ameSave`)
+    // stuende nicht darin (dach-100, blinder Leser Runde 2).
+    const sf = baum(rel, src);
     // Welcher lokale Name zeigt auf welche festgehaltene Funktion? In apps/web nur,
     // was aus @domigo/db kommt (auch umbenannt, auch als Namensraum); in packages/db
     // der eigene Name und jeder relative Import.
@@ -661,7 +682,9 @@ function aufrufeVon(state, namen) {
     const notiere = (knoten, s) => {
       const p = knoten.parent;
       const ruf = ts.isCallExpression(p) && p.expression === knoten;
-      raus.get(s).push({ text: `${rel} · ${ruf ? (p.arguments[1] ? normal(p.arguments[1].getText(sf)) : "—") : "WEITERGEREICHT"}`, von: von(knoten) });
+      // Die Kennung steht hinter `db` (zweites Argument); eine Funktion ohne `db` nimmt sie als erstes.
+      const arg = ruf ? (p.arguments.length >= 2 ? p.arguments[1] : p.arguments[0]) : null;
+      raus.get(s).push({ text: `${rel} · ${ruf ? (arg ? normal(arg.getText(sf)) : "—") : "WEITERGEREICHT"}`, von: von(knoten) });
     };
     (function lauf(x) {
       // In apps/web zaehlt JEDER Zugriff unter dem Namen: `ns.f`, `(await import(…)).f`,
@@ -725,6 +748,16 @@ const PRUEFUNGEN = {
         raus.push(`${schluessel}: nimmt einen Ausschnitt, steht aber nicht in ${REQUIRED} — mit der Zahl ihrer Filterstellen eintragen`);
       } else if (!bestand.has(schluessel) && beruehrtKlassenTabelle(f, tabellen)) {
         raus.push(`${schluessel}: liest oder schreibt eine Klassen-Tabelle ohne Ausschnitt und steht in keiner Liste — Ausschnitt nehmen, oder Ausnahme mit Satz`);
+      }
+    }
+    // dach-100, blinder Leser Runde 2: `export { getGameSave as leseJeden }` oder
+    // `export * as ns from …` gibt einer Funktion einen zweiten Namen, unter dem keine
+    // Liste sie kennt. In packages/db heisst jede Funktion so, wie sie deklariert ist.
+    for (const [rel, src] of state.db) {
+      for (const st of analyse(rel, src).sf.statements) {
+        if (!ts.isExportDeclaration(st) || !st.exportClause) continue;
+        if (ts.isNamespaceExport(st.exportClause)) raus.push(`${dbName(rel)}: »export * as ${st.exportClause.name.text}« — ein Namensraum verbirgt die Namen, unter denen die Listen Funktionen kennen`);
+        else for (const e of st.exportClause.elements) if (e.propertyName && e.propertyName.text !== e.name.text) raus.push(`${dbName(rel)}: exportiert ${e.propertyName.text} unter dem zweiten Namen ${e.name.text} — unter ihm kennt sie keine Liste`);
       }
     }
     // Eine Produktionsdatei, die aus einer Testdatei importiert, holt Code herein,
@@ -819,11 +852,17 @@ const PRUEFUNGEN = {
     for (const [schluessel, { a, f }] of kontext(state).idx) {
       const fn = f.node;
       const dbP = fn.parameters[0];
-      if (dbP && ts.isIdentifier(dbP.name) && dbP.name.text === "db") {
+      // Der Datenbank-Parameter heisst `db` ODER ist vom Typ `Db` (Runde 2: `client: Db`).
+      const istDb = dbP && ts.isIdentifier(dbP.name) && (dbP.name.text === "db" || (dbP.type && ts.isTypeReferenceNode(dbP.type) && dbP.type.typeName.getText(a.sf) === "Db"));
+      if (istDb) {
         for (const r of referenzen(a.c, dbP.name, fn)) {
           const p = r.parent;
           const baut = ts.isPropertyAccessExpression(p) && p.expression === r && BAUEN.has(p.name.text) && ts.isCallExpression(p.parent) && p.parent.expression === p;
-          const reicht = ts.isCallExpression(p) && p.arguments.includes(r);
+          // Weitergeben nur an eine Funktion dieses Pakets, deren erster Parameter selbst
+          // `Db` ist — sie steht dann unter derselben Pruefung (`same(db)` nicht).
+          const ziel = ts.isCallExpression(p) && p.arguments[0] === r && ts.isIdentifier(p.expression) ? gerufene(kontext(state), a, p.expression) : null;
+          const zf = ziel && kontext(state).idx.get(ziel)?.f.node.parameters[0];
+          const reicht = !!zf && !!zf.type && ts.isTypeReferenceNode(zf.type) && zf.type.typeName.getText() === "Db";
           if (!baut && !reicht) {
             raus.push(`${schluessel}: benutzt db anders als zum Bauen einer Abfrage (»${normal(p.getText(a.sf)).slice(0, 60)}«) — dahinter sieht das Tor nicht, was gefragt wird`);
             break;
@@ -832,6 +871,7 @@ const PRUEFUNGEN = {
       }
       const sc = fn.parameters.find((p) => ts.isIdentifier(p.name) && p.name.text === "classScope");
       if (!sc) continue;
+      // (Grenze: ein Alias `const sc = classScope` wird nicht weiter verfolgt.)
       for (const r of referenzen(a.c, sc.name, fn)) {
         let n = r;
         while (ts.isParenthesizedExpression(n.parent) || ts.isNonNullExpression(n.parent)) n = n.parent;
@@ -847,6 +887,32 @@ const PRUEFUNGEN = {
           break;
         }
       }
+    }
+    // apps/web: `getDb()` geht nur als Argument an eine Funktion aus packages/db. Eine
+    // Abfrage direkt in einer Seite (`getDb().select().from(v2Classes)`, `getDb().query…`)
+    // saehe keine Liste (dach-100, blinder Leser Runde 2; gemessen: heute 0 Stellen).
+    for (const [rel, src] of state.web) {
+      if (TEST.test(rel) || !src.includes("getDb")) continue;
+      const sf = baum(rel, src);
+      const melde = (x) => raus.push(`${rel}:${sf.getLineAndCharacterOfPosition(x.getStart(sf)).line + 1} benutzt getDb() anders als als Argument (»${normal(x.parent.getText(sf)).slice(0, 60)}«) — Abfragen gehoeren nach packages/db, hinter die Klassenwand`);
+      const alsArgument = (x) => ts.isCallExpression(x.parent) && x.parent.arguments.includes(x);
+      (function lauf(x) {
+        if (ts.isCallExpression(x) && ts.isIdentifier(x.expression) && x.expression.text === "getDb" && !alsArgument(x)) {
+          // `const db = getDb()` ist erlaubt, wenn `db` danach NUR als Argument vorkommt
+          // (ohne Typ-Pruefer: jeder gleichnamige Bezeichner im selben Rumpf zaehlt — strenger).
+          const d = x.parent;
+          if (ts.isVariableDeclaration(d) && d.initializer === x && ts.isIdentifier(d.name) && d.parent.flags & ts.NodeFlags.Const) {
+            const rumpf = umschliessendeFunktion(d)?.body ?? sf;
+            let gut = true;
+            (function such(y) {
+              if (ts.isIdentifier(y) && y !== d.name && y.text === d.name.text && !alsArgument(y) && !(ts.isPropertyAccessExpression(y.parent) && y.parent.name === y) && !(ts.isPropertyAssignment(y.parent) && y.parent.name === y)) gut = false;
+              ts.forEachChild(y, such);
+            })(rumpf);
+            if (!gut) melde(x);
+          } else melde(x);
+        }
+        ts.forEachChild(x, lauf);
+      })(sf);
     }
     return raus;
   },
@@ -869,8 +935,8 @@ const PRUEFUNGEN = {
     // In packages/db baut ihn nur scope.ts.
     const quellen = [...[...state.web].map(([rel, src]) => [rel, src, rel === SCOPE_HEIMAT]), ...[...state.db].map(([rel, src]) => [rel, src, rel === `${DB_SRC}/scope.ts`])];
     for (const [rel, src, heimat] of quellen) {
-      if (heimat || TEST.test(rel) || !/classScope|ClassScope/.test(src)) continue;
-      const sf = ts.createSourceFile(rel, src, ts.ScriptTarget.ES2022, true, skriptArt(rel));
+      if (heimat || TEST.test(rel)) continue;
+      const sf = baum(rel, src);
       const zeile = (n) => sf.getLineAndCharacterOfPosition(n.getStart(sf)).line + 1;
       (function lauf(x) {
         if (ts.isImportSpecifier(x) && (x.propertyName ?? x.name).text === "classScope" && !x.isTypeOnly && !x.parent.parent.isTypeOnly) {
@@ -1371,6 +1437,56 @@ const FAELLE = [
     name: "eine Ausnahme wird per Destrukturierung aus dem Namensraum geholt",
     pruefung: "aufrufer",
     mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.ts", 'import * as dbm from "@domigo/db";\nconst { getPathSummary: g } = dbm;\nexport const f = (id: string) => g(dbm.getDb(), id);\n'),
+  },
+  // dach-100 · blinder Leser, Runde 2.
+  {
+    name: "eine Seite in apps/web fragt die Datenbank direkt (getDb().select().from(v2Classes))",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb, v2Classes } from "@domigo/db";\nexport default async function P() {\n  return getDb().select().from(v2Classes);\n}\n'),
+  },
+  {
+    name: "eine Seite bindet getDb() und fragt ueber db.query",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb } from "@domigo/db";\nexport default async function P() {\n  const db = getDb();\n  return db.query.v2Classes.findMany();\n}\n'),
+  },
+  {
+    name: "der Datenbank-Parameter heisst anders und fuehrt rohes SQL aus",
+    pruefung: "parameter",
+    mach: (s) => {
+      const c = klon(s);
+      c.db.set(AS, c.db.get(AS) + "\nexport async function __selbsttest(client: Db) {\n  return client.execute(sql`select * from domigo_v2.classes`);\n}\n");
+      return c;
+    },
+  },
+  {
+    name: "db wird durch eine Hilfsfunktion ohne Db-Parameter gereicht (const d = same(db))",
+    pruefung: "parameter",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const d = ((x: unknown) => x)(db);\n  void d;\n${GW}`),
+  },
+  {
+    name: "packages/db exportiert eine Ausnahme unter einem zweiten Namen",
+    pruefung: "liste",
+    mach: (s) => { const c = klon(s); const rel = `${DB_SRC}/gamesave.ts`; c.db.set(rel, c.db.get(rel) + "\nexport { getGameSave as leseJedenSpielstand };\n"); return c; },
+  },
+  {
+    name: "packages/db exportiert einen Namensraum (export * as)",
+    pruefung: "liste",
+    mach: (s) => { const c = klon(s); const rel = `${DB_SRC}/index.ts`; c.db.set(rel, c.db.get(rel) + '\nexport * as gsNs from "./gamesave.ts";\n'); return c; },
+  },
+  {
+    name: "eine aeltere Ausnahme (syncKontoStudentClass) wird mit Kennungen aus der URL gerufen",
+    pruefung: "aufrufer",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb, syncKontoStudentClass } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string; k: string } }) {\n  await syncKontoStudentClass(getDb(), params.id, params.k);\n}\n'),
+  },
+  {
+    name: "eine Ausnahme wird mit Unicode-Escape im Namen gerufen",
+    pruefung: "aufrufer",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb, getGameSave } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  return get\\u0047ameSave(getDb(), params.id, "game:g1");\n}\n'),
+  },
+  {
+    name: "eine Ausnahme wird aus einer .jsx-Datei gerufen",
+    pruefung: "aufrufer",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.jsx", 'import { getDb, getPathSummary } from "@domigo/db";\nexport default async function P({ params }) {\n  const s = await getPathSummary(getDb(), params.id);\n  return <p>{s.size}</p>;\n}\n'),
   },
   // Gegenproben: dieselben Werkzeuge, ehrlich benutzt — ALLES muss gruen bleiben.
   {
