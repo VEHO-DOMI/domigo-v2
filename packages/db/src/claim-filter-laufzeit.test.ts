@@ -209,7 +209,10 @@ describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen 
   it("die Liste deckt jede Ausnahme mit festgehaltenen Aufrufern ab (scripts/claim-filter-aufrufer.json)", () => {
     const fest = JSON.parse(readFileSync(new URL("../../../scripts/claim-filter-aufrufer.json", import.meta.url), "utf8")) as { funktionen: Record<string, string[]> };
     const lebend = Object.entries(fest.funktionen).filter(([, a]) => a.length > 0).map(([s]) => s).sort();
-    const hier = [...EIGENE.map((f) => f.schluessel), "class-service.ts#resolveTeacherNames", "konto-identity.ts#createKontoTeacher"].sort();
+    // Zwei Helfer sind nicht exportiert und hier nicht rufbar; fuer sie haelt allein
+    // die Pruefung »aufrufer« fest, woher die Kennung kommt (signierter Push · Sitzung).
+    const intern = ["konto-class-term.ts#lokaleLehrkraft", "review.ts#reservierteFuerKlasse"];
+    const hier = [...EIGENE.map((f) => f.schluessel), "class-service.ts#resolveTeacherNames", "konto-identity.ts#createKontoTeacher", ...intern].sort();
     expect(hier).toEqual(lebend);
   });
 });

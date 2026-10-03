@@ -56,6 +56,15 @@
     "teacher-identity.ts#getTeacherEmail": [],
     "teacher-identity.ts#upsertTeacherIdentity": [],
     "teacher-claim.ts#listClaimableClasses": [],
-    "teacher-claim.ts#claimClassAsTeacher": []
+    "teacher-claim.ts#claimClassAsTeacher": [],
+    "konto-class-term.ts#lokaleLehrkraft": [
+      "packages/db/src/konto-class-term.ts · eingang.owner_app_user_id",
+      "packages/db/src/konto-class-term.ts · eingang.owner_app_user_id"
+    ],
+    "review.ts#reservierteFuerKlasse": [
+      "packages/db/src/review.ts · classId",
+      "packages/db/src/review.ts · classId"
+    ],
+    "teacher-claim.ts#claimableWithOwner": []
   }
 }
