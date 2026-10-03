@@ -221,13 +221,15 @@ describe("Datenschutzseite ↔ Produktion", () => {
 
     const tor = read("../../../scripts/check-datenschutz-claims.mjs");
     assert.match(tor, /GESETZ 1/, "law 1 (no third parties) must still be in that gate");
-    assert.match(tor, /GESETZ 2/, "law 2 (one writer for users.email) must still be in that gate");
+    assert.match(tor, /GESETZ 2/, "law 2 (who may write users.email) must still be in that gate");
     // Named as plain strings, not escaped regexes: this file is the declared
     // exception in that gate's law 1, and an exception that matches nothing goes
     // STALE and turns the gate red. So the two names have to be really here.
     assert.ok(tor.includes("@vercel/analytics"), "the gate must still name the packages it forbids");
     assert.ok(tor.includes("fonts.googleapis.com"), "the gate must still name the font services it forbids");
-    assert.ok(tor.includes("teacher-identity.ts"), "the gate must still name the ONE door to users.email");
+    // dach-167 · the one door (teacher-identity.ts) is deleted with the PIN sign-in;
+    // since then NOBODY writes users.email, and the gate says so in code, not prose.
+    assert.match(tor, /^const TUER = null;$/m, "the gate must still declare that users.email has NO door");
 
     // A gate CI does not really run is a comment. check-ci-gates.mjs polices this
     // too, from the other side; here it is what keeps the SENTENCE honest.

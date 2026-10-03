@@ -153,6 +153,10 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 // sein muss — `"unit_slug" = $1` enthaelt auch `= $1`, und eine falsche Spalte waere so
 // unsichtbar geblieben.
 const NUTZER = ["user_id"];
+// dach-167 (blinder Leser PR 481): `or(eq(user_id, ICH), eq(game_mode, m))` bindet die
+// Kennung auch — und liest alle Spielstaende dieses Modus. Ein `or` ist darum nur erlaubt,
+// wo JEDES seiner Glieder die eigene Kennung bindet (die Loeschung im Journal: als
+// Lehrkraft ODER als Handelnde).
 const EIGENE: { schluessel: string; spalten: string[]; lauf: (db: Db) => Promise<unknown> }[] = [
   { schluessel: "assignment-session-service.ts#getSessionAttempts", spalten: NUTZER, lauf: (db) => getSessionAttempts(db, ICH, "aufgabe-1", "sitzung-1") },
   { schluessel: "game-progress.ts#getSolvedGameItemIds", spalten: NUTZER, lauf: (db) => getSolvedGameItemIds(db, ICH, 2) },
@@ -183,6 +187,10 @@ describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen 
         const gebunden = [...bedingung.matchAll(/"([a-z_0-9]+)" = \$(\d+)/g)].filter((m) => e.params[Number(m[2]) - 1] === ICH).map((m) => m[1]);
         expect(gebunden.length, `${e.sql}: die eigene Kennung steht in keiner Spalten-Bedingung`).toBeGreaterThan(0);
         for (const spalte of gebunden) expect(fall.spalten, `${e.sql}: die Kennung haengt an "${spalte}"`).toContain(spalte);
+        if (/ or /.test(bedingung)) {
+          const alle = [...bedingung.matchAll(/= \$(\d+)/g)].map((m) => e.params[Number(m[1]) - 1]);
+          expect(alle.every((p) => p === ICH), `${e.sql}: ein or, dessen Glieder nicht alle die eigene Kennung binden`).toBe(true);
+        }
         // … keine andere Person-Kennung kommt hinein …
         for (const p of e.params) if (typeof p === "string" && UUID.test(p)) expect(p).toBe(ICH);
         // … und keine Klasse entscheidet mit.
