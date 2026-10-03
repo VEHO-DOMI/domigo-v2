@@ -106,7 +106,9 @@
 // Konstanten/Namensraum/Ternaer/Parameter, unerreichbarer Code nach `return`,
 // Aliase von `classScope` oder einer gespeicherten Abfrage (`const q2 = q`),
 // `Object.assign`/`Reflect`/`eval`, Getter und Konstruktoren, Tabellen ohne
-// classId, Dateien ausserhalb packages/db/src, die Rümpfe von scope.ts selbst.
+// classId, Dateien ausserhalb packages/db/src, die Rümpfe von scope.ts selbst, in
+// apps/web `const { query } = db` (Runde 4; die Tabelle selbst bleibt unerreichbar,
+// solange kein Tabellen-Name aus packages/db importiert wird).
 // Dafuer gibt es claim-filter-laufzeit.test.ts und den Review.
 //
 // Was nicht filtern KANN, steht in claim-filter-allowlist.json, je mit einem
@@ -417,23 +419,38 @@ const istZuweisung = (r) =>
  * `console.log(x)` — gelesen, aber ohne Folge. dach-100, blinder Leser: genau so lief
  * eine gefilterte Abfrage als Attrappe neben der ungefilterten, die zurueckging.
  */
-function verworfen(r) {
+function verworfen(r, c, fn) {
+  // Runde 4: auch durch `Promise.all([…])` hindurch (der Platz im Array zaehlt) und in
+  // eine Zwischenbindung, die selbst nie gelesen wird (`const unbenutzt = await q`).
+  let platz = null;
   for (let n = r; ;) {
     const p = n.parent;
+    if (ts.isArrayLiteralExpression(p)) { platz = p.elements.indexOf(n); n = p; continue; }
+    if (ts.isCallExpression(p) && p.arguments.includes(n) && istSammler(p)) { n = p; continue; }
+    if (ts.isAwaitExpression(p) || ts.isParenthesizedExpression(p) || ts.isNonNullExpression(p) || ts.isAsExpression(p)) { n = p; continue; }
     if (
-      ts.isParenthesizedExpression(p) || ts.isNonNullExpression(p) || ts.isAsExpression(p) || ts.isArrayLiteralExpression(p) || ts.isSpreadElement(p) ||
-      ts.isAwaitExpression(p) || ts.isTypeOfExpression(p) ||
+      ts.isSpreadElement(p) || ts.isTypeOfExpression(p) ||
       ((ts.isPropertyAccessExpression(p) || ts.isElementAccessExpression(p)) && p.expression === n) ||
       (ts.isCallExpression(p) && p.expression === n)
-    ) { n = p; continue; }
+    ) { platz = null; n = p; continue; }
     if (ts.isExpressionStatement(p) || ts.isVoidExpression(p)) return true;
-    if (ts.isCallExpression(p) && p.arguments.includes(n) && ts.isPropertyAccessExpression(p.expression) && ts.isIdentifier(p.expression.expression) && p.expression.expression.text === "console") return true;
+    if (ts.isCallExpression(p) && p.arguments.includes(n) && istKonsole(p)) return true;
+    if (c && ts.isVariableDeclaration(p) && p.initializer === n) {
+      const namen = bindungAmPlatz(p.name, platz);
+      return namen.length === 0 || !namen.some((id) => gelesen(c, id, fn).length > 0);
+    }
     return false;
   }
 }
+/** Die Namen, die ein Wert am Platz `platz` eines Arrays bindet (null = der ganze Wert). */
+function bindungAmPlatz(name, platz) {
+  if (platz === null || !ts.isArrayBindingPattern(name)) return gebundeneNamen(name);
+  const el = name.elements[platz];
+  return !el || ts.isOmittedExpression(el) ? [] : gebundeneNamen(el.name);
+}
 /** Verwendungen, die den Wert LESEN und benutzen (nicht `x = …`, nicht verworfen). */
 function gelesen(c, nameId, fn) {
-  return referenzen(c, nameId, fn).filter((r) => !istZuweisung(r) && !verworfen(r));
+  return referenzen(c, nameId, fn).filter((r) => !istZuweisung(r) && !verworfen(r, c, fn));
 }
 // Ein spaeteres `.where` ERSETZT ein frueheres (drizzle, mit toSQL() gemessen); eine
 // Mengen-Verknuepfung haengt eine zweite, ungefilterte Abfrage an.
@@ -482,8 +499,12 @@ const istZuweisungsOp = (k) => k >= ts.SyntaxKind.FirstAssignment && k <= ts.Syn
 function verbraucht(a, e, fn, schreib) {
   let n = e;
   let abgewartet = false;
+  let platz = null;
   for (;;) {
     const p = n.parent;
+    if (ts.isCallExpression(p) && p.arguments.includes(n) && istSammler(p)) { n = p; continue; }
+    if (ts.isArrayLiteralExpression(p)) { platz = p.elements.indexOf(n); n = p; continue; }
+    if (!ts.isAwaitExpression(p) && !ts.isParenthesizedExpression(p) && !ts.isVariableDeclaration(p)) platz = null;
     if (ts.isParenthesizedExpression(p) || ts.isNonNullExpression(p) || ts.isAsExpression(p) || ts.isSpreadElement(p) || ts.isTemplateSpan(p) || ts.isTemplateExpression(p)) { n = p; continue; }
     if (ts.isAwaitExpression(p)) { abgewartet = true; n = p; continue; }
     if ((ts.isElementAccessExpression(p) || ts.isPropertyAccessExpression(p)) && p.expression === n) {
@@ -496,7 +517,6 @@ function verbraucht(a, e, fn, schreib) {
       if (!abgewartet && !istSammler(p)) return false;
       n = p; continue;
     }
-    if (ts.isArrayLiteralExpression(p)) { n = p; continue; }
     if ((ts.isPropertyAssignment(p) && p.initializer === n) || ts.isShorthandPropertyAssignment(p)) { n = p.parent; continue; }
     if (ts.isConditionalExpression(p) && p.condition !== n) { n = p; continue; }
     if (ts.isBinaryExpression(p) && !istZuweisungsOp(p.operatorToken.kind)) { n = p; continue; }
@@ -509,7 +529,8 @@ function verbraucht(a, e, fn, schreib) {
   if ((ts.isIfStatement(p) || ts.isWhileStatement(p) || ts.isDoStatement(p) || ts.isConditionalExpression(p)) && p.expression === n) return true;
   if (ts.isConditionalExpression(p) && p.condition === n) return true;
   if (ts.isVariableDeclaration(p) && p.initializer === n) {
-    const namen = gebundeneNamen(p.name);
+    // `const [a, b] = await Promise.all([gefiltert, roh])` — nur der Platz der Abfrage zaehlt.
+    const namen = bindungAmPlatz(p.name, platz);
     const refs = namen.flatMap((id) => referenzen(a.c, id, fn));
     // `let q = gefiltert; q = roh;` — eine neu zugewiesene Bindung zaehlt nie.
     if (!(p.parent.flags & ts.NodeFlags.Const) && refs.some(istZuweisung)) return false;
@@ -978,6 +999,9 @@ const PRUEFUNGEN = {
     // apps/web, weder importiert noch ueber einen Namensraum noch ueber `db.query.<t>`
     // (gemessen 03.10.: 0 Stellen; apps/web hat drizzle-orm nicht einmal als Abhaengigkeit).
     const alleTabellen = schemaTabellen(state);
+    // Runde 4: `schema` ist ein benannter Export von @domigo/db — `schema.<tabelle>`.
+    const verboten = new Set([...alleTabellen, "schema"]);
+    const ausDb = (m) => ts.isStringLiteralLike(m) && /^@domigo\/db|packages\/db\//.test(m.text);
     for (const [rel, src] of state.web) {
       if (TEST.test(rel)) continue;
       const sf = baum(rel, src);
@@ -989,9 +1013,22 @@ const PRUEFUNGEN = {
         if (!/^@domigo\/db|packages\/db\//.test(modul)) continue;
         const b = st.importClause.namedBindings;
         if (b && ts.isNamespaceImport(b)) raeume.add(b.name.text);
-        if (b && ts.isNamedImports(b)) for (const e of b.elements) if (alleTabellen.has((e.propertyName ?? e.name).text)) melde(e, `importiert die Tabelle ${(e.propertyName ?? e.name).text}`);
+        if (b && ts.isNamedImports(b)) for (const e of b.elements) if (verboten.has((e.propertyName ?? e.name).text)) melde(e, `importiert ${(e.propertyName ?? e.name).text} aus packages/db`);
       }
       (function lauf(x) {
+        // `export { schema } from "@domigo/db"`, `const { practiceAttempts } = await import("@domigo/db")`
+        if (ts.isExportDeclaration(x) && x.moduleSpecifier && ausDb(x.moduleSpecifier) && (!x.exportClause || ts.isNamespaceExport(x.exportClause) || x.exportClause.elements.some((e) => verboten.has((e.propertyName ?? e.name).text)))) {
+          melde(x, "reicht Tabellen aus packages/db weiter");
+        }
+        if (ts.isCallExpression(x) && x.expression.kind === ts.SyntaxKind.ImportKeyword && x.arguments[0] && ausDb(x.arguments[0])) {
+          let o = x.parent;
+          while (o && (ts.isAwaitExpression(o) || ts.isParenthesizedExpression(o))) o = o.parent;
+          if (o && ts.isVariableDeclaration(o) && ts.isObjectBindingPattern(o.name) && o.name.elements.some((e) => verboten.has((e.propertyName ?? e.name).getText(sf)))) melde(x, "holt Tabellen per import() aus packages/db");
+          if (o && ts.isVariableDeclaration(o) && ts.isIdentifier(o.name)) raeume.add(o.name.text);
+        }
+        // Roher SQL-Text braucht keine Tabelle: `getDb().execute("select …")` (Runde 4).
+        if (ts.isPropertyAccessExpression(x) && (x.name.text === "execute" || x.name.text === "$client")) melde(x, `ruft .${x.name.text} — roher Datenbankzugriff`);
+        if (ts.isElementAccessExpression(x) && ts.isPropertyAccessExpression(x.expression) && x.expression.name.text === "query") melde(x, "greift ueber db.query[…] auf eine Tabelle zu");
         if (ts.isPropertyAccessExpression(x) && alleTabellen.has(x.name.text)) {
           const vorn = x.expression;
           if ((ts.isIdentifier(vorn) && raeume.has(vorn.text)) || (ts.isPropertyAccessExpression(vorn) && vorn.name.text === "query")) melde(x, `greift auf die Tabelle ${x.name.text} zu`);
@@ -1005,13 +1042,19 @@ const PRUEFUNGEN = {
 
   herkunft(state) {
     const raus = [];
+    // Runde 4: im Syntaxbaum statt Zeile fuer Zeile — ein Kommentar hinter einem
+    // Apostroph im JSX-Text war fuer den Zeilen-Leser Code. Testdateien sind ausgenommen.
     for (const [rel, src] of state.web) {
-      if (rel === SCOPE_HEIMAT) continue;
-      ohneKommentare(src).split("\n").forEach((zeile, i) => {
-        if (/\bclassScope\(/.test(zeile)) {
-          raus.push(`${rel}:${i + 1} baut einen Ausschnitt — das darf nur ${SCOPE_HEIMAT}`);
+      if (rel === SCOPE_HEIMAT || TEST.test(rel)) continue;
+      const sf = baum(rel, src);
+      (function lauf(x) {
+        if (ts.isCallExpression(x)) {
+          const e = x.expression;
+          const name = ts.isIdentifier(e) ? e.text : ts.isPropertyAccessExpression(e) ? e.name.text : ts.isElementAccessExpression(e) && ts.isStringLiteralLike(e.argumentExpression) ? e.argumentExpression.text : "";
+          if (name === "classScope") raus.push(`${rel}:${sf.getLineAndCharacterOfPosition(x.getStart(sf)).line + 1} baut einen Ausschnitt — das darf nur ${SCOPE_HEIMAT}`);
         }
-      });
+        ts.forEachChild(x, lauf);
+      })(sf);
     }
     // dach-100, blinder Leser: am Zeilen-Text vorbei — `import { classScope as mk }`,
     // `const cs = classScope`, ein Zeilenumbruch vor `(`, oder die Marke ganz ohne
@@ -1104,6 +1147,10 @@ const GW = "  const [a] = await db\n    .select()\n    .from(assignments)\n    .
 const ROH = "  const [a] = await db\n    .select()\n    .from(assignments)\n    .where(eq(assignments.id, id))";
 const ROH_WHERE = (w) => `  const [a] = await db\n    .select()\n    .from(assignments)\n    .where(${w})`;
 const FILTER = "inArray(assignments.classId, [...classScope])";
+// Hinter GW steht im Quelltext `.limit(1);` — wer GW durch eine andere Form ersetzt,
+// gibt dem Rest mit SCHLUSS etwas, woran er haengen kann (sonst haengt `.limit(1)` an
+// `Promise.all(…)`, und der Fall prueft ungueltigen Code).
+const SCHLUSS = ";\n  void db.select().from(assignments)";
 const WACHE_CA = /if \(!inScope\(classScope, draft\.classId\)\) \{\n[^\n]*\n  \}/;
 const webDazu = (c, rel, src) => { c.web.set(rel, src); return c; };
 
@@ -1599,17 +1646,53 @@ const FAELLE = [
   {
     name: "der gefilterte Builder geht an einen Helfer, der .where ersetzen kann",
     pruefung: "liste",
-    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await mitSuche(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))`),
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await mitSuche(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))${SCHLUSS}`),
   },
   {
     name: "union(gefiltert, roh) als Funktion",
     pruefung: "liste",
-    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await union(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))), db.select().from(assignments))`),
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await union(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))), db.select().from(assignments))${SCHLUSS}`),
   },
   {
     name: "ein NICHT exportierter Schreib-Helfer mit Ausschnitt ohne Wache",
     pruefung: "wache",
     mach: (s) => { const c = klon(s); c.db.set(AS, c.db.get(AS) + "\nasync function __schreib(db: Db, classScope: ClassScope, id: string) {\n  await db.update(assignments).set({ archivedAt: new Date() }).where(and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id)));\n}\nexport { __schreib };\n"); return c; },
+  },
+  // dach-100 · blinder Leser, Runde 4.
+  {
+    name: "apps/web fragt ueber den benannten Export schema (schema.practiceAttempts)",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb, schema } from "@domigo/db";\nexport default async function P() {\n  return getDb().select().from(schema.practiceAttempts);\n}\n'),
+  },
+  {
+    name: "apps/web fuehrt rohen SQL-Text aus (getDb().execute(\"select …\"))",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb } from "@domigo/db";\nexport default async function P() {\n  return getDb().execute("select * from domigo_v2.practice_attempts");\n}\n'),
+  },
+  {
+    name: "apps/web holt Tabellen per import() und Destrukturierung",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'export default async function P() {\n  const { getDb, practiceAttempts } = await import("@domigo/db");\n  return getDb().select().from(practiceAttempts);\n}\n'),
+  },
+  {
+    name: "eine lib-Datei reicht schema aus @domigo/db weiter",
+    pruefung: "parameter",
+    mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.ts", 'export { schema } from "@domigo/db";\n'),
+  },
+  {
+    name: "die gefilterte Abfrage laeuft in einem Promise.all ohne Bindung, die rohe geht hinaus",
+    pruefung: "liste",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const q1 = db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id)));\n  await Promise.all([q1]);\n${ROH}`),
+  },
+  {
+    name: "die gefilterte Abfrage landet in einer ungelesenen Zwischenbindung",
+    pruefung: "liste",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const q = db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id)));\n  const unbenutzt = await q;\n${ROH}`),
+  },
+  {
+    name: "Promise.all([gefiltert, roh]) — nur der rohe Platz wird gelesen",
+    pruefung: "liste",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [, [a]] = await Promise.all([db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))), db.select().from(assignments).where(eq(assignments.id, id))])${SCHLUSS}`),
   },
   // Gegenproben: dieselben Werkzeuge, ehrlich benutzt — ALLES muss gruen bleiben.
   {
@@ -1625,12 +1708,12 @@ const FAELLE = [
   {
     name: "Gegenprobe: zwei Abfragen in Promise.all, Ergebnis destrukturiert",
     gruen: true,
-    mach: (s) => verbiege(klon(s), AS, GW, `  const [[a]] = await Promise.all([db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id)))])`),
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [[a]] = await Promise.all([db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id)))])${SCHLUSS}`),
   },
   {
     name: "Gegenprobe: (await q)[0] statt const [a] = await q",
     gruen: true,
-    mach: (s) => verbiege(klon(s), AS, GW, `  const a = (await db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))[0]`),
+    mach: (s) => verbiege(klon(s), AS, GW, `  const a = (await db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))[0]${SCHLUSS}`),
   },
   {
     name: "Gegenprobe: if (classScope.length === 0) return",
@@ -1656,6 +1739,16 @@ const FAELLE = [
     name: "Gegenprobe: ein Kommentar in apps/web nennt classScope(…)",
     gruen: true,
     mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.ts", "// der Ausschnitt entsteht in lib/identity.ts per classScope([…])\nexport const x = 1;\n"),
+  },
+  {
+    name: "Gegenprobe: ein Web-Test baut sich einen Ausschnitt mit dem echten Konstruktor",
+    gruen: true,
+    mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.test.ts", 'import { classScope } from "@domigo/db";\nexport const s = classScope(["c1"]);\n'),
+  },
+  {
+    name: "Gegenprobe: ein Kommentar mit classScope( hinter einem Apostroph im JSX-Text",
+    gruen: true,
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", "export default function P() {\n  return <p>Don't panic</p>; // classScope([x]) entsteht in lib/identity.ts\n}\n"),
   },
   {
     name: "Gegenprobe: ein Kommentar ueber dem Filter aendert nichts",
