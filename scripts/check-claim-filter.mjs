@@ -93,13 +93,15 @@
 // Spalte schliesst eher zu als auf), ebensowenig, welchen Wert `inScope` prueft. Filter
 // in Rueckruf-Funktionen (`v2Safe(() => …)`) zaehlen nicht. `aufrufer` vergleicht den
 // TEXT des Ausdrucks: `acting.userId` bleibt gruen, wenn jemand `acting` in derselben
-// Datei aus der URL baut. Gelesen werden packages/db/src und apps/web; ein drittes
+// Datei aus der URL baut, und eine Kennung, die als Komponenten-Eigenschaft durchgereicht
+// wird (`<JourneySpine userId={slug} />`), sieht sie erst beim Aufruf als `userId`. Gelesen werden packages/db/src und apps/web; ein drittes
 // Paket, das @domigo/db ruft, saehe dieses Tor nicht.
 // Und grundsaetzlich: ein statisches Tor haelt Versehen auf, keinen Entwickler, der
 // es absichtlich taeuscht. Was der blinde Leser von dach-100 in Runde 2 noch gruen
 // bekam, ist bewusst NICHT geschlossen, weil jede Schliessung echten Code rot machte
 // oder die Tarnung nur eine Stufe weiter schob: Umwandlungen ohne den Namen
-// ClassScope (`as never`, `as any`, `// @ts-expect-error`, `JSON.parse`, Typ-Alias),
+// ClassScope (`as any` — das faengt ESLint no-explicit-any —, `JSON.parse`, Typ-Alias;
+// `as never` und die @ts-Kommentare sind seit der GG-Pruefung von PR 480 rot),
 // eine zusaetzliche ungefilterte Abfrage NEBEN der gefilterten in einer Pflicht-
 // Funktion (gemessen: die Regel »jede Klassen-Abfrage traegt selbst den Filter«
 // machte 14 korrekte Abfragen rot — Joins, v1-Rueckfaelle), Tabellen ueber lokale
@@ -136,6 +138,9 @@ const SCOPE_HEIMAT = "apps/web/lib/identity.ts";
 const SATZ_MIN = 40;
 const REQUIRED = "scripts/claim-filter-required.json";
 const AUFRUFER = "scripts/claim-filter-aufrufer.json";
+// Die EINE Ausnahme ohne festgehaltene Aufrufe: ihr Argument ist das ganze Journal-Objekt
+// (jede Aenderung am Inhalt waere rot), und die Journal-Tuer bewacht check-journal-door.mjs.
+const OHNE_AUFRUFER_LISTE = new Set(["roster-events.ts#writeRosterEvent"]);
 
 // Der Uebersetzer kommt aus packages/db (devDependency); die Wurzel hat keinen. In CI
 // laeuft `pnpm install` vorher (Job content-validate). Ohne ihn gibt es kein Tor.
@@ -870,6 +875,10 @@ const PRUEFUNGEN = {
         }
       }
     }
+    // GG-Pruefung PR 480 (S3): der Bestand ist seit dach-100 leer und BLEIBT es. »Darf nur
+    // schrumpfen« war ein Kommentar — wer eine neue Funktion hier eintrug, machte sie ohne
+    // Satz und ohne Ausschnitt gruen. Ein spaeterer Bedarf ist ein sichtbarer Eingriff ins Tor.
+    if (soll.bestand.funktionen.length > 0) raus.push(`${REQUIRED}: der Bestand ohne Ausschnitt ist leer und bleibt es — ${soll.bestand.funktionen.join(", ")}: Ausschnitt nehmen, oder Ausnahme mit Satz in ${ALLOWLIST}`);
     // Rost: der Bestand darf nur schrumpfen.
     for (const schluessel of bestand) {
       const e = k.idx.get(schluessel);
@@ -1067,12 +1076,22 @@ const PRUEFUNGEN = {
       if (heimat || TEST.test(rel)) continue;
       const sf = baum(rel, src);
       const zeile = (n) => sf.getLineAndCharacterOfPosition(n.getStart(sf)).line + 1;
+      // GG-Pruefung PR 480 (S4): `@ts-expect-error` / `@ts-ignore` / `@ts-nocheck` schalten den
+      // Uebersetzer ab, der die Marke ClassScope erst durchsetzt (gemessen: 0 Stellen).
+      for (const m of src.matchAll(/@ts-(expect-error|ignore|nocheck)\b/g)) {
+        raus.push(`${rel}:${src.slice(0, m.index).split("\n").length} schaltet mit »@ts-${m[1]}« die Typpruefung ab — die Marke ClassScope haelt nur, solange der Uebersetzer prueft`);
+      }
       (function lauf(x) {
         if (ts.isImportSpecifier(x) && (x.propertyName ?? x.name).text === "classScope" && !x.isTypeOnly && !x.parent.parent.isTypeOnly) {
           raus.push(`${rel}:${zeile(x)} importiert den Konstruktor classScope — einen Ausschnitt baut nur ${SCOPE_HEIMAT}`);
         }
         if ((ts.isAsExpression(x) || ts.isTypeAssertionExpression(x)) && ts.isTypeReferenceNode(x.type) && /\bClassScope$/.test(x.type.typeName.getText(sf))) {
           raus.push(`${rel}:${zeile(x)} muenzt einen Wert per Umwandlung zu ClassScope — die Marke entsteht nur in ${SCOPE_HEIMAT}`);
+        }
+        // GG-Pruefung PR 480 (S4): `as never` passt an JEDE Stelle, auch an ClassScope —
+        // der naheliegende Reflex, wenn der Uebersetzer ein string[] ablehnt (gemessen: 0 Stellen).
+        if ((ts.isAsExpression(x) || ts.isTypeAssertionExpression(x)) && x.type.kind === ts.SyntaxKind.NeverKeyword) {
+          raus.push(`${rel}:${zeile(x)} wandelt per »as never« um — damit passt jeder Wert, auch eine fremde Kennung, an die Stelle eines Ausschnitts`);
         }
         ts.forEachChild(x, lauf);
       })(sf);
@@ -1095,8 +1114,13 @@ const PRUEFUNGEN = {
       if ([...k.idx.keys()].filter((s) => s.endsWith(`#${name}`)).length > 1) raus.push(`${schluessel}: der Name ${name} ist in packages/db nicht eindeutig — die Aufrufe lassen sich nicht zuordnen`);
       namen.set(name, schluessel);
     }
+    // GG-Pruefung PR 480 (S2): JEDE Ausnahme braucht einen Eintrag — sonst entginge eine
+    // NEUE Ausnahme samt Aufruf mit einer Kennung aus der URL dieser Pruefung ganz.
     for (const [schluessel, satz] of Object.entries(erlaubt)) {
-      if (/^TOT\b/.test(satz) && !(schluessel in soll)) raus.push(`${schluessel}: die Ausnahme sagt »TOT«, steht aber nicht in ${AUFRUFER} — ohne Eintrag haelt niemand fest, dass sie tot bleibt`);
+      if (schluessel in soll || OHNE_AUFRUFER_LISTE.has(schluessel)) continue;
+      raus.push(/^TOT\b/.test(satz)
+        ? `${schluessel}: die Ausnahme sagt »TOT«, steht aber nicht in ${AUFRUFER} — ohne Eintrag haelt niemand fest, dass sie tot bleibt`
+        : `${schluessel}: Ausnahme ohne Eintrag in ${AUFRUFER} — jeder Aufruf mit seinen Argumenten gehoert dort hin, sonst sieht niemand, woher die Kennung kommt`);
     }
     const ist = aufrufeVon(state, namen);
     const tot = new Set(Object.entries(soll).filter(([s, a]) => a.length === 0 && /^TOT\b/.test(erlaubt[s] ?? "")).map(([s]) => s));
@@ -1694,6 +1718,46 @@ const FAELLE = [
     pruefung: "liste",
     mach: (s) => verbiege(klon(s), AS, GW, `  const [, [a]] = await Promise.all([db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))), db.select().from(assignments).where(eq(assignments.id, id))])${SCHLUSS}`),
   },
+  // GG-Pruefung PR 480 (S2–S4).
+  {
+    name: "eine NEUE Ausnahme mit Satz wird mit einer Kennung aus der URL gerufen, ohne Eintrag in der Aufrufer-Liste",
+    pruefung: "aufrufer",
+    mach: (s) => {
+      const c = klon(s);
+      c.db.set(AS, c.db.get(AS) + "\nexport async function __neueAusnahme(db: Db, userId: string) {\n  return db.select().from(reservedItems).where(eq(reservedItems.id, userId));\n}\n");
+      const j = JSON.parse(c.files.get(ALLOWLIST));
+      j.ausnahmen["assignment-service.ts#__neueAusnahme"] = "Liest angeblich nur die eigene Zeile des Kindes, die Kennung kommt aus der Sitzung.";
+      c.files.set(ALLOWLIST, JSON.stringify(j, null, 2));
+      return webDazu(c, "apps/web/app/__selftest/page.tsx", 'import { getDb, __neueAusnahme } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  return __neueAusnahme(getDb(), params.id);\n}\n');
+    },
+  },
+  {
+    name: "der Eintrag einer LEBENDEN Ausnahme fehlt in der Aufrufer-Liste (getGameSave)",
+    pruefung: "aufrufer",
+    mach: (s) => { const c = klon(s); const j = JSON.parse(c.files.get(AUFRUFER)); delete j.funktionen["gamesave.ts#getGameSave"]; c.files.set(AUFRUFER, JSON.stringify(j, null, 2)); return c; },
+  },
+  {
+    name: "eine Funktion wird in den leeren Bestand eingetragen",
+    pruefung: "liste",
+    mach: (s) => {
+      const c = klon(s);
+      c.db.set(AS, c.db.get(AS) + "\nexport async function __bestand(db: Db, id: string) {\n  return db.select().from(reservedItems).where(eq(reservedItems.id, id));\n}\n");
+      const j = JSON.parse(c.files.get(REQUIRED));
+      j.bestand.funktionen.push("assignment-service.ts#__bestand");
+      c.files.set(REQUIRED, JSON.stringify(j, null, 2));
+      return c;
+    },
+  },
+  {
+    name: "apps/web reicht eine URL-Kennung per »as never« an eine Pflicht-Funktion",
+    pruefung: "herkunft",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { getDb, listClassesInScope } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  return listClassesInScope(getDb(), [params.id] as never);\n}\n'),
+  },
+  ...["expect-error", "ignore", "nocheck"].map((art) => ({
+    name: `apps/web schaltet mit »@ts-${art}« die Typpruefung ab`,
+    pruefung: "herkunft",
+    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", `import { getDb, listClassesInScope } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  // @ts-${art} Ausschnitt\n  return listClassesInScope(getDb(), [params.id]);\n}\n`),
+  })),
   // Gegenproben: dieselben Werkzeuge, ehrlich benutzt — ALLES muss gruen bleiben.
   {
     name: "Gegenprobe: der Filter laeuft ueber eine Konstante and(…) in .where",
