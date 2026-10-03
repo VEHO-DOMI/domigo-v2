@@ -16,7 +16,6 @@ import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
 import { assertWritableScope, type ClassScope } from "./scope.ts";
-import { allocateClassCode } from "./auth.ts";
 
 /** Longest allowed class name (a roster label, not prose). */
 export const MAX_CLASS_NAME_LENGTH = 80;
@@ -163,43 +162,13 @@ export async function listArchivedClassesForTeacher(db: Db, classScope: ClassSco
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// dach-074 · THE LOCAL CLASS WRITERS — main's four, kept as functions.
+// dach-074 · THE LOCAL CLASS WRITERS on an existing class.
 //
-// dach-108 · no route calls them any more: apps/web/app/api/admin/classes answers
-// 405 always (lib/konto/klassen-antwort.ts), and classes are made at konto. They
-// stay here, unwired, because removing them is a packages/db change outside that
-// card. The three writers on an existing class take the class wall (scope
-// first, never empty) like every other writer; createClass makes a class no
-// scope can contain yet, so it cannot take one.
+// They take the class wall (scope first, never empty) like every other writer.
+// dach-167 · createClass is gone: since dach-108 apps/web/app/api/admin/classes
+// answers 405 always (lib/konto/klassen-antwort.ts), and classes are made at
+// konto (konto-class-term.ts#createKontoClass).
 // ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Create a class owned by `teacherId`. Re-validates name/grade (defense in depth —
- * the endpoint already 400s bad input) and mints a globally-unique invite code
- * (unique across v1 AND v2 — the single code space a student types), then inserts
- * and returns the created row (studentCount 0 — a fresh class has no roster yet).
- */
-export async function createClass(
-  db: Db,
-  input: { name: string; grade: number; teacherId: string },
-): Promise<ClassSummary> {
-  const nameError = validateClassName(input.name);
-  if (nameError) throw new Error(`createClass: ${nameError}`);
-  if (!validateGrade(input.grade)) throw new Error("createClass: grade must be between 1 and 4.");
-
-  const inviteCode = await allocateClassCode(db);
-  const [row] = await db
-    .insert(v2Classes)
-    .values({ name: input.name.trim(), inviteCode, grade: input.grade, teacherId: input.teacherId })
-    .returning({
-      id: v2Classes.id,
-      name: v2Classes.name,
-      inviteCode: v2Classes.inviteCode,
-      grade: v2Classes.grade,
-      createdAt: v2Classes.createdAt,
-    });
-  return { id: row!.id, name: row!.name, inviteCode: row!.inviteCode, grade: row!.grade, studentCount: 0, createdAt: row!.createdAt };
-}
 
 /**
  * Rename a class — only when `id` AND `teacherId` match AND it isn't archived, so
@@ -590,33 +559,3 @@ export async function listAllClassIds(db: Db): Promise<string[]> {
   return [...ids];
 }
 
-/**
- * dach-074 · THE SCOPE OF A PIN TEACHER, until the switch-over day.
- *
- * A teacher who signs in with the fallback PIN has no konto claims, so nobody
- * hands this session a list of classes. What main did instead was ownership:
- * every teacher query filtered on `teacher_id = me`, and every teacher could
- * assign to the legacy v1 classes, which have no owner column. This builds
- * exactly that list — the teacher's own v2 classes, archived ones included
- * (the archive page reads them), plus every v1 class — so the class wall
- * gives a PIN teacher the view main gave them, no more.
- *
- * dach-108 · no caller any more: the PIN sign-in is gone (Koki 19.09., E-3), and
- * lib/identity.ts builds every scope from konto claims (or the grandmaster list).
- * Kept, unwired, because removing it is a packages/db change outside that card.
- */
-export async function listClassIdsForPinTeacher(db: Db, teacherId: string): Promise<string[]> {
-  const ids = new Set<string>();
-  try {
-    const eigene = await db.select({ id: v2Classes.id }).from(v2Classes).where(eq(v2Classes.teacherId, teacherId));
-    for (const r of eigene) ids.add(r.id);
-  } catch (err) {
-    console.error("[class-service] own class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
-  }
-  try {
-    for (const r of await db.select({ id: v1Classes.id }).from(v1Classes)) ids.add(r.id);
-  } catch (err) {
-    console.error("[class-service] legacy class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
-  }
-  return [...ids];
-}

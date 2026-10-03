@@ -1177,6 +1177,24 @@ const FILTER = "inArray(assignments.classId, [...classScope])";
 const SCHLUSS = ";\n  void db.select().from(assignments)";
 const WACHE_CA = /if \(!inScope\(classScope, draft\.classId\)\) \{\n[^\n]*\n  \}/;
 const webDazu = (c, rel, src) => { c.web.set(rel, src); return c; };
+/**
+ * dach-167 · seit die 19 toten Ausnahmen geloescht sind, gibt es im echten Stand keine
+ * TOTE mehr. Die Faelle, die »TOT bleibt tot« beweisen, legen sich ihre im Speicher an:
+ * eine Funktion, ein Satz mit »TOT«, auf Wunsch der leere Eintrag in der Aufrufer-Liste.
+ */
+function mitToterAusnahme(s, { eintrag = true } = {}) {
+  const c = klon(s);
+  c.db.set(AS, c.db.get(AS) + "\nexport async function __tot(db: Db, id: string) {\n  return db.select().from(reservedItems).where(eq(reservedItems.id, id));\n}\n");
+  const j = JSON.parse(c.files.get(ALLOWLIST));
+  j.ausnahmen["assignment-service.ts#__tot"] = "TOT seit dem Selbsttest · kein Aufrufer, und wer sie wiederbelebt, muss die Herkunft der Kennung neu begruenden.";
+  c.files.set(ALLOWLIST, JSON.stringify(j, null, 2));
+  if (eintrag) {
+    const f = JSON.parse(c.files.get(AUFRUFER));
+    f.funktionen["assignment-service.ts#__tot"] = [];
+    c.files.set(AUFRUFER, JSON.stringify(f, null, 2));
+  }
+  return c;
+}
 
 const FAELLE = [
   {
@@ -1411,9 +1429,14 @@ const FAELLE = [
   },
   // dach-100 · aufrufer: die Herkunft der Kennung einer Ausnahme.
   {
-    name: "eine TOTE Ausnahme wird aus apps/web gerufen (bootstrap-teacher.ts#adoptAssignments)",
+    name: "Gegenprobe im Fall: die TOTE Ausnahme allein ist gruen",
+    gruen: true,
+    mach: (s) => mitToterAusnahme(s),
+  },
+  {
+    name: "eine TOTE Ausnahme wird aus apps/web gerufen",
     pruefung: "aufrufer",
-    mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.tsx", 'import { adoptAssignments, getDb } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  await adoptAssignments(getDb(), params.id);\n}\n'),
+    mach: (s) => webDazu(mitToterAusnahme(s), "apps/web/app/__selftest/page.tsx", 'import { __tot, getDb } from "@domigo/db";\nexport default async function P({ params }: { params: { id: string } }) {\n  await __tot(getDb(), params.id);\n}\n'),
   },
   {
     name: "eine Ausnahme bekommt ihre Kennung aus der URL (gamesave.ts#getGameSave mit params.id)",
@@ -1446,13 +1469,7 @@ const FAELLE = [
   {
     name: "eine Ausnahme heisst TOT, steht aber nicht in der Aufrufer-Liste",
     pruefung: "aufrufer",
-    mach: (s) => {
-      const c = klon(s);
-      const j = JSON.parse(c.files.get(AUFRUFER));
-      delete j.funktionen["bootstrap-teacher.ts#adoptAssignments"];
-      c.files.set(AUFRUFER, JSON.stringify(j, null, 2));
-      return c;
-    },
+    mach: (s) => mitToterAusnahme(s, { eintrag: false }),
   },
   // dach-100 · blinder Leser, Runde 1: Umgehungen um die Abfrage herum.
   {
@@ -1588,7 +1605,7 @@ const FAELLE = [
   {
     name: "eine TOTE Ausnahme wird ueber einen relativen Pfad aus einer .mjs-Datei gerufen",
     pruefung: "aufrufer",
-    mach: (s) => webDazu(klon(s), "apps/web/scripts/__selftest.mjs", 'import { claimClassAsTeacher } from "../../../packages/db/src/teacher-claim.ts";\nawait claimClassAsTeacher(db, process.argv[2]);\n'),
+    mach: (s) => webDazu(mitToterAusnahme(s), "apps/web/scripts/__selftest.mjs", 'import { __tot } from "../../../packages/db/src/assignment-service.ts";\nawait __tot(db, process.argv[2]);\n'),
   },
   {
     name: "eine Ausnahme wird per Destrukturierung aus dem Namensraum geholt",
