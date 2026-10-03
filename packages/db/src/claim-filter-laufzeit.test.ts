@@ -34,7 +34,15 @@ import { listClassTraps, listClassUnitProgress, listStudentPathSummary, listStud
 import { listReservedForClass } from "./assignment-service.ts";
 import { listAssignmentsForStudent, listStudentsForClass } from "./assignment-session-service.ts";
 import { listRoster } from "./roster-service.ts";
-import { getUnitMastery } from "./game-progress.ts";
+import { getSolvedGameItemIds, getUnitMastery } from "./game-progress.ts";
+import { getSessionAttempts } from "./assignment-session-service.ts";
+import { resolveTeacherNames } from "./class-service.ts";
+import { getGameSave } from "./gamesave.ts";
+import { getJourneyAttempts } from "./journey-progress.ts";
+import { getPathSummary, getUnitPathProgress } from "./studypath.ts";
+import { createKontoTeacher, findKontoIdentity } from "./konto-identity.ts";
+import { deleteUserData } from "./konto-loeschung.ts";
+import { readFileSync } from "node:fs";
 
 /** Ein Klient, der jede Anweisung mitschreibt und Zeilen nach Drehbuch liefert. */
 function schreiber(zeilen: unknown[][] = []) {
@@ -122,5 +130,95 @@ describe("eine Lehrkraft mit Ausschnitt {A} sieht Klasse B nicht", () => {
 
   it("ein Kind hat genau eine Klasse, und das ist seine", () => {
     expect([...classScope(["nur-diese"])]).toHaveLength(1);
+  });
+});
+
+/**
+ * dach-100 · DIE AUSNAHMEN OHNE AUSSCHNITT, gemessen statt behauptet.
+ *
+ * Zehn Funktionen lesen eine Klassen-Tabelle ohne Ausschnitt und stehen mit Satz in
+ * scripts/claim-filter-allowlist.json: »liest nur die eigene Zeile«. Das ist eine
+ * Behauptung in zwei Haelften, und jede hat ihre eigene Probe:
+ *   · WOHER die Kennung kommt (Sitzung, signierter Push, gefilterte Lesung) haelt
+ *     check-claim-filter.mjs · aufrufer fest — jeder Aufruf mit seinem Ausdruck.
+ *   · DASS die Abfrage nur an dieser Kennung haengt, steht HIER im SQL: jede
+ *     Bedingung bindet die uebergebene Kennung und keine andere, und keine Klasse.
+ * Zusammen heisst das: eine fremde Lehrkraft, ein fremdes Kind kann in diese
+ * Abfragen nicht hineingeraten — die Datenbank wird nach nichts anderem gefragt.
+ */
+const ICH = "cccccccc-0000-4000-8000-000000000003";
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const EIGENE: { schluessel: string; lauf: (db: Db) => Promise<unknown> }[] = [
+  { schluessel: "assignment-session-service.ts#getSessionAttempts", lauf: (db) => getSessionAttempts(db, ICH, "aufgabe-1", "sitzung-1") },
+  { schluessel: "game-progress.ts#getSolvedGameItemIds", lauf: (db) => getSolvedGameItemIds(db, ICH, 2) },
+  { schluessel: "gamesave.ts#getGameSave", lauf: (db) => getGameSave(db, ICH, "game:g1") },
+  { schluessel: "journey-progress.ts#getJourneyAttempts", lauf: (db) => getJourneyAttempts(db, ICH, "g2-u03") },
+  { schluessel: "studypath.ts#getPathSummary", lauf: (db) => getPathSummary(db, ICH) },
+  { schluessel: "studypath.ts#getUnitPathProgress", lauf: (db) => getUnitPathProgress(db, ICH, "g2-u03") },
+  { schluessel: "konto-identity.ts#findKontoIdentity", lauf: (db) => findKontoIdentity(db, ICH) },
+  { schluessel: "konto-loeschung.ts#deleteUserData", lauf: (db) => deleteUserData(db, ICH) },
+];
+
+describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen Kennung", () => {
+  for (const fall of EIGENE) {
+    it(`${fall.schluessel}: jede Bedingung bindet die eigene Kennung, keine fremde und keine Klasse`, async () => {
+      const { log, db } = schreiber();
+      await fall.lauf(db);
+      const mitWhere = log.filter((e) => / where /.test(e.sql));
+      expect(mitWhere.length, "die Funktion hat gar keine Bedingung gestellt").toBeGreaterThan(0);
+      for (const e of mitWhere) {
+        const bedingung = e.sql.slice(e.sql.indexOf(" where "));
+        // Die eigene Kennung ist gebunden, und zwar als Bedingung …
+        const stelle = e.params.indexOf(ICH);
+        expect(stelle, `${e.sql} bindet die eigene Kennung nicht`).toBeGreaterThanOrEqual(0);
+        expect(bedingung).toContain(`= $${stelle + 1}`);
+        // … keine andere Person-Kennung kommt hinein …
+        for (const p of e.params) if (typeof p === "string" && UUID.test(p)) expect(p).toBe(ICH);
+        // … und keine Klasse entscheidet mit.
+        expect(bedingung).not.toMatch(/class_id/);
+      }
+    });
+  }
+
+  it("class-service.ts#resolveTeacherNames: nur Lehrkraefte, nur die genannten — eine Kinder-Kennung loest zu nichts auf", async () => {
+    const { log, db } = schreiber([[], []]);
+    const namen = await resolveTeacherNames(db, [ICH]);
+    expect(namen.size).toBe(0);
+    expect(log.length).toBe(2);
+    for (const e of log) {
+      // Nur zwei Spalten — der Name und die Kennung, nach der gefragt wurde.
+      expect(e.sql).toMatch(/^select "id", "display_name" from /);
+      expect(e.sql).toMatch(/"role" = \$2/);
+      expect(e.params).toEqual([ICH, "teacher"]);
+    }
+  });
+
+  it("konto-identity.ts#createKontoTeacher: legt eine Lehrkraft OHNE Klasse an und liest nur die neue Kennung zurueck", async () => {
+    const { log, db } = schreiber([[{ id: ICH }]]);
+    await createKontoTeacher(db, { displayName: "KUE", pinHash: "x" });
+    expect(log.length).toBe(1);
+    const e = log[0]!;
+    expect(e.sql).toMatch(/^insert into /);
+    expect(e.sql).not.toMatch(/ where /);
+    expect(e.sql).toMatch(/returning "id"$/);
+    expect(e.params).toContain("teacher");
+    for (const p of e.params) if (typeof p === "string") expect(UUID.test(p)).toBe(false);
+  });
+
+  it("die Liste deckt jede von dach-100 beurteilte, lebende Ausnahme ab", () => {
+    const lies = (datei: string) => JSON.parse(readFileSync(new URL(`../../../scripts/${datei}`, import.meta.url), "utf8"));
+    const fest = lies("claim-filter-aufrufer.json") as { funktionen: Record<string, string[]> };
+    const saetze = (lies("claim-filter-allowlist.json") as { ausnahmen: Record<string, string> }).ausnahmen;
+    const lebend = Object.entries(fest.funktionen)
+      .filter(([s, a]) => a.length > 0 && saetze[s]?.startsWith("dach-100 ·"))
+      .map(([s]) => s)
+      .sort();
+    // Drei sind nicht exportiert und hier nicht rufbar; fuer sie haelt allein die
+    // Pruefung »aufrufer« fest, woher die Kennung kommt (signierter Push · Sitzung ·
+    // ein SQL-Baustein, der eine schon gefilterte Abfrage nur weiter einengt).
+    const intern = ["konto-class-term.ts#lokaleLehrkraft", "review.ts#reservierteFuerKlasse", "writing-review.ts#gehoertZuLehrkraft"];
+    const hier = [...EIGENE.map((f) => f.schluessel), "class-service.ts#resolveTeacherNames", "konto-identity.ts#createKontoTeacher", ...intern].sort();
+    expect(hier).toEqual(lebend);
   });
 });
