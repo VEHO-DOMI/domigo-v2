@@ -160,6 +160,17 @@ const TABELLEN_METHODEN = new Set(["from", "update", "insert", "delete", "innerJ
  * Fasst die Funktion eine Klassen-Tabelle an? dach-100: ueber das Symbol, nicht den
  * Text — `import { assignments as a2 }` und `.from(a2)` ist dieselbe Tabelle.
  */
+/** ALLE Tabellen des Schemas (nicht nur die mit Klassen-Spalte). */
+function schemaTabellen(state) {
+  const raus = new Set();
+  for (const [, roh] of state.db) {
+    const re = /^export const ([A-Za-z0-9_]+) = (?:v2\.table|pgTable)\(/gm;
+    let m;
+    const src = ohneKommentare(roh);
+    while ((m = re.exec(src))) raus.add(m[1]);
+  }
+  return raus;
+}
 function beruehrtKlassenTabelle(f, tabellen) {
   if (tabellen.size === 0) return false;
   let ja = false;
@@ -422,7 +433,16 @@ function gelesen(c, nameId, fn) {
 // Mengen-Verknuepfung haengt eine zweite, ungefilterte Abfrage an.
 const UEBERSCHREIBT = new Set(["where", "union", "unionAll", "intersect", "intersectAll", "except", "exceptAll"]);
 const MENGE = new Set([...UEBERSCHREIBT].filter((m) => m !== "where"));
-const wirdUeberschrieben = (r) => ts.isPropertyAccessExpression(r.parent) && r.parent.expression === r && UEBERSCHREIBT.has(r.parent.name.text);
+/** Haengt an dieser Verwendung — auch ueber `.$dynamic()` hinweg — ein ersetzendes `.where`/`union`? */
+function wirdUeberschrieben(r) {
+  for (let n = r; ts.isPropertyAccessExpression(n.parent) && n.parent.expression === n; ) {
+    if (UEBERSCHREIBT.has(n.parent.name.text)) return true;
+    const ruf = n.parent.parent;
+    if (!(ts.isCallExpression(ruf) && ruf.expression === n.parent)) return false;
+    n = ruf;
+  }
+  return false;
+}
 function gebundeneNamen(b) {
   if (ts.isIdentifier(b)) return [b];
   const raus = [];
@@ -436,25 +456,60 @@ function gebundeneNamen(b) {
  * als eigene Anweisung. Alles andere (nackte Anweisung, ungelesene Konstante, `void`,
  * Promise.all ohne Bindung) ist tot.
  */
+// `Promise.all([q1, q2])` sammelt nur — die Abfragen laufen unveraendert.
+const SAMMLER = new Set(["all", "allSettled"]);
+const istSammler = (call) => ts.isPropertyAccessExpression(call.expression) && SAMMLER.has(call.expression.name.text) && ts.isIdentifier(call.expression.expression) && call.expression.expression.text === "Promise";
+const istKonsole = (call) => ts.isPropertyAccessExpression(call.expression) && ts.isIdentifier(call.expression.expression) && call.expression.expression.text === "console";
+// `union(a, b)` als Funktion (drizzle-orm/pg-core) haengt die zweite Abfrage an.
+const istMengenFunktion = (call) => ts.isIdentifier(call.expression) && MENGE.has(call.expression.text);
+const istZuweisungsOp = (k) => k >= ts.SyntaxKind.FirstAssignment && k <= ts.SyntaxKind.LastAssignment;
+
+/**
+ * Wird der Wert des Ausdrucks benutzt? dach-100, Runde 3: der uebliche Code nimmt ein
+ * Ergebnis nicht nur als `const rows = await …` — er schreibt `return { items: await q }`,
+ * `(await q).map(…)`, `toDto(await q)`, `Promise.all([q1, q2])`, `x ? await q : []`. All
+ * das ist benutzt. Verworfen ist: eine nackte Anweisung (ausser ein abgewarteter
+ * Schreibweg), `void`, `console.*`, eine ungelesene Bindung. Ein NICHT abgewarteter
+ * Builder, der an eine fremde Funktion geht, gilt als verloren — die koennte `.where`
+ * ersetzen (das drizzle-`$dynamic`-Muster); ebenso `union(gefiltert, roh)`.
+ */
 function verbraucht(a, e, fn, schreib) {
   let n = e;
   let abgewartet = false;
   for (;;) {
     const p = n.parent;
-    if (ts.isParenthesizedExpression(p) || ts.isNonNullExpression(p) || ts.isAsExpression(p)) { n = p; continue; }
+    if (ts.isParenthesizedExpression(p) || ts.isNonNullExpression(p) || ts.isAsExpression(p) || ts.isSpreadElement(p) || ts.isTemplateSpan(p) || ts.isTemplateExpression(p)) { n = p; continue; }
     if (ts.isAwaitExpression(p)) { abgewartet = true; n = p; continue; }
-    if (ts.isElementAccessExpression(p) && p.expression === n) { n = p; continue; }
-    if (ts.isPropertyAccessExpression(p) && p.expression === n && !(ts.isCallExpression(p.parent) && p.parent.expression === p)) { n = p; continue; }
+    if ((ts.isElementAccessExpression(p) || ts.isPropertyAccessExpression(p)) && p.expression === n) {
+      if (!abgewartet && ts.isPropertyAccessExpression(p) && UEBERSCHREIBT.has(p.name.text)) return false;
+      n = p; continue;
+    }
+    if (ts.isCallExpression(p) && p.expression === n) { n = p; continue; }
+    if (ts.isCallExpression(p) && p.arguments.includes(n)) {
+      if (istKonsole(p) || istMengenFunktion(p)) return false;
+      if (!abgewartet && !istSammler(p)) return false;
+      n = p; continue;
+    }
+    if (ts.isArrayLiteralExpression(p)) { n = p; continue; }
+    if ((ts.isPropertyAssignment(p) && p.initializer === n) || ts.isShorthandPropertyAssignment(p)) { n = p.parent; continue; }
+    if (ts.isConditionalExpression(p) && p.condition !== n) { n = p; continue; }
+    if (ts.isBinaryExpression(p) && !istZuweisungsOp(p.operatorToken.kind)) { n = p; continue; }
+    if (ts.isPrefixUnaryExpression(p) || ts.isTypeOfExpression(p)) { n = p; continue; }
     break;
   }
   const p = n.parent;
-  if (ts.isReturnStatement(p)) return true;
+  if (ts.isReturnStatement(p) || ts.isThrowStatement(p)) return true;
+  if (ts.isArrowFunction(p) && p.body === n) return true;
+  if ((ts.isIfStatement(p) || ts.isWhileStatement(p) || ts.isDoStatement(p) || ts.isConditionalExpression(p)) && p.expression === n) return true;
+  if (ts.isConditionalExpression(p) && p.condition === n) return true;
   if (ts.isVariableDeclaration(p) && p.initializer === n) {
     const namen = gebundeneNamen(p.name);
     const refs = namen.flatMap((id) => referenzen(a.c, id, fn));
     // `let q = gefiltert; q = roh;` — eine neu zugewiesene Bindung zaehlt nie.
     if (!(p.parent.flags & ts.NodeFlags.Const) && refs.some(istZuweisung)) return false;
     if (refs.some(wirdUeberschrieben)) return false;
+    // Ein nicht abgewarteter Builder, der an eine fremde Funktion geht: verloren.
+    if (!abgewartet && refs.some((r) => ts.isCallExpression(r.parent) && r.parent.arguments.includes(r) && !istSammler(r.parent))) return false;
     return namen.some((id) => gelesen(a.c, id, fn).length > 0);
   }
   if (ts.isBinaryExpression(p) && p.right === n && p.operatorToken.kind === ts.SyntaxKind.EqualsToken && ts.isIdentifier(p.left)) {
@@ -465,12 +520,15 @@ function verbraucht(a, e, fn, schreib) {
     if (refs.filter(istZuweisung).length !== 1 || refs.some(wirdUeberschrieben)) return false;
     return gelesen(a.c, d.name, fn).length > 0;
   }
-  if (ts.isExpressionStatement(p)) return abgewartet && schreib;
+  if (ts.isExpressionStatement(p)) return abgewartet && schreib && ts.isAwaitExpression(n);
   return false;
 }
 
 const LESEN = new Set(["select", "selectDistinct"]);
 const BAUEN = new Set([...LESEN, "insert", "update", "delete"]);
+// `db.batch([...])` ist bei neon-http der Weg zu mehreren Schreibungen in einem Zug;
+// die Abfragen darin baut weiter `db`.
+const DB_ERLAUBT = new Set([...BAUEN, "batch"]);
 /** Die Abfrage, an deren `.where`/`.innerJoin` der Filter haengt: auf `db` gebaut, in `fn` selbst, und lebendig. */
 function lebendigeAbfrage(a, call, fn) {
   let e = call.expression;
@@ -519,7 +577,9 @@ function wache(a, call, fn) {
   const u = n.parent;
   if (!(ts.isPrefixUnaryExpression(u) && u.operator === ts.SyntaxKind.ExclamationToken)) return false;
   let m = u;
-  while (ts.isParenthesizedExpression(m.parent)) m = m.parent;
+  // `if (!classId || !inScope(…)) return null` — ein Glied einer ODER-Kette genuegt:
+  // ist inScope falsch, ist die ganze Bedingung wahr und die Funktion verlaesst sich.
+  while (ts.isParenthesizedExpression(m.parent) || (ts.isBinaryExpression(m.parent) && m.parent.operatorToken.kind === ts.SyntaxKind.BarBarToken)) m = m.parent;
   const wenn = m.parent;
   if (!(ts.isIfStatement(wenn) && wenn.expression === m && wenn.parent === fn.body && verlaesst(wenn.thenStatement))) return false;
   const vorher = fn.body.statements.slice(0, fn.body.statements.indexOf(wenn));
@@ -531,6 +591,7 @@ function gerufene(k, a, id) {
   const d = decl(a.c, id);
   if (!d) return null;
   if (ts.isFunctionDeclaration(d) && d.name) return `${dbName(a.rel)}#${d.name.text}`;
+  if (ts.isVariableDeclaration(d) && ts.isIdentifier(d.name) && d.initializer && (ts.isArrowFunction(d.initializer) || ts.isFunctionExpression(d.initializer))) return `${dbName(a.rel)}#${d.name.text}`;
   if (ts.isImportSpecifier(d)) {
     const modul = d.parent.parent.parent.moduleSpecifier.text;
     if (!modul.startsWith(".")) return null;
@@ -571,6 +632,11 @@ function filterstellen(k, a, f) {
 
 /** Nimmt die Funktion einen Ausschnitt — als Parameter oder als Name im Koerper? */
 function nimmtAusschnitt(f) {
+  // Runde 3: eine Funktion ohne Datenbank-Parameter kann nichts fragen — ein reiner
+  // Filter `rows.filter(r => inScope(classScope, r.classId))` braucht keinen Eintrag.
+  const p0 = f.node.parameters[0];
+  const hatDb = !!p0 && ts.isIdentifier(p0.name) && (p0.name.text === "db" || (!!p0.type && ts.isTypeReferenceNode(p0.type) && p0.type.typeName.getText() === "Db"));
+  if (!hatDb) return false;
   if (f.node.parameters.some((p) => ts.isIdentifier(p.name) && p.name.text === "classScope")) return true;
   let ja = false;
   (function lauf(x) {
@@ -644,8 +710,15 @@ const normal = (s) => s.replace(/\s+/g, " ").trim();
  */
 function aufrufeVon(state, namen) {
   const raus = new Map([...namen.values()].map((s) => [s, []]));
+  const k = kontext(state);
+  const mitDb = new Set([...namen.values()].filter((s) => {
+    const p0 = k.idx.get(s)?.f.node.parameters[0];
+    return !!p0 && ts.isIdentifier(p0.name) && (p0.name.text === "db" || (!!p0.type && ts.isTypeReferenceNode(p0.type) && p0.type.typeName.getText() === "Db"));
+  }));
   const quellen = [
-    ...[...state.web].map(([rel, src]) => [rel, src, "web"]),
+    // Testdateien in apps/web rufen mit erfundenen Kennungen und werden nie ausgeliefert;
+    // dass eine Seite aus einer Testdatei importiert, faengt `parameter`.
+    ...[...state.web].filter(([rel]) => !TEST.test(rel)).map(([rel, src]) => [rel, src, "web"]),
     ...[...state.db].map(([rel, src]) => [rel, src, "db"]),
   ];
   for (const [rel, src, art] of quellen) {
@@ -682,9 +755,10 @@ function aufrufeVon(state, namen) {
     const notiere = (knoten, s) => {
       const p = knoten.parent;
       const ruf = ts.isCallExpression(p) && p.expression === knoten;
-      // Die Kennung steht hinter `db` (zweites Argument); eine Funktion ohne `db` nimmt sie als erstes.
-      const arg = ruf ? (p.arguments.length >= 2 ? p.arguments[1] : p.arguments[0]) : null;
-      raus.get(s).push({ text: `${rel} · ${ruf ? (arg ? normal(arg.getText(sf)) : "—") : "WEITERGEREICHT"}`, von: von(knoten) });
+      // ALLE Argumente hinter `db` (Runde 3: bei syncKontoStudentClass(db, kind, KLASSE)
+      // ist das dritte das gefaehrliche). Ohne Datenbank-Parameter: alle Argumente.
+      const args = ruf ? [...p.arguments].slice(mitDb.has(s) ? 1 : 0).map((x) => normal(x.getText(sf))).join(", ") : null;
+      raus.get(s).push({ text: `${rel} · ${ruf ? args || "—" : "WEITERGEREICHT"}`, von: von(knoten) });
     };
     (function lauf(x) {
       // In apps/web zaehlt JEDER Zugriff unter dem Namen: `ns.f`, `(await import(…)).f`,
@@ -739,7 +813,7 @@ const PRUEFUNGEN = {
       if (!Number.isInteger(n) || n < 1) { raus.push(`${schluessel}: die Positiv-Liste sagt ${n} Filterstellen — mindestens 1; eine Funktion ohne Filter gehoert mit Satz in ${ALLOWLIST}`); continue; }
       if (!e) { raus.push(`${schluessel}: steht in der Positiv-Liste, die Funktion gibt es aber nicht mehr — Eintrag streichen`); continue; }
       const ist = filterstellen(k, e.a, e.f);
-      if (ist < n) raus.push(`${schluessel}: hat ${n - ist} von ${n} Filterstellen auf den Klassen-Ausschnitt verloren — die Abfrage liest jetzt ueber die Klassenwand hinweg (oder der Filter steht in or/not, in einer toten Abfrage, in einer ungelesenen Variablen)`);
+      if (ist < n) raus.push(`${schluessel}: hat ${n - ist} von ${n} Filterstellen auf den Klassen-Ausschnitt verloren — die Abfrage liest jetzt ueber die Klassenwand hinweg — oder der Filter wirkt nicht: er steht in or/not, in einer toten oder ueberschriebenen Abfrage, in einer ungelesenen Variablen. So zaehlt er: inArray(spalte, [...classScope]) direkt in .where(and(…)) der Abfrage, deren Ergebnis benutzt wird`);
       else if (ist > n) raus.push(`${schluessel}: filtert jetzt an ${ist} Stellen, die Positiv-Liste sagt ${n} — Eintrag nachziehen`);
     }
     for (const [schluessel, { f }] of k.idx) {
@@ -824,14 +898,17 @@ const PRUEFUNGEN = {
     const raus = [];
     for (const [schluessel, { a, f }] of kontext(state).idx) {
       const fn = f.node;
-      if (!f.exportiert || !fn.parameters.some((p) => ts.isIdentifier(p.name) && p.name.text === "classScope")) continue;
-      if (!SCHREIBT.test(f.koerper)) continue;
+      if (!fn.parameters.some((p) => ts.isIdentifier(p.name) && p.name.text === "classScope")) continue;
+      // Runde 3: auch nicht exportierte Helfer, und der Datenbank-Parameter heisst nicht immer `db`.
+      const dbName0 = fn.parameters[0] && ts.isIdentifier(fn.parameters[0].name) ? fn.parameters[0].name.text : "db";
+      const schreibt = new RegExp(`\\b${dbName0}\\s*\\.\\s*(?:insert|update|delete)\\s*\\(`);
+      if (!schreibt.test(f.koerper)) continue;
       const saetze = ts.isBlock(fn.body) ? fn.body.statements : [];
       const istWache = (st) =>
         ts.isExpressionStatement(st) && ts.isCallExpression(st.expression) && ts.isIdentifier(st.expression.expression) &&
         importiert(a.c, st.expression.expression, "./scope.ts", "assertWritableScope") && istParam(a.c, st.expression.arguments[0], fn, 1);
       const w = saetze.findIndex(istWache);
-      const s1 = saetze.findIndex((st) => SCHREIBT.test(ohneKommentare(st.getText(a.sf))));
+      const s1 = saetze.findIndex((st) => schreibt.test(ohneKommentare(st.getText(a.sf))));
       if (w < 0 || (s1 >= 0 && s1 < w)) {
         raus.push(`${schluessel}: schreibt mit einem Ausschnitt, ruft assertWritableScope(classScope, …) aber nicht als Anweisung auf oberster Ebene VOR dem ersten Schreiben — ein leerer Ausschnitt aendert null Zeilen und meldet Erfolg`);
       }
@@ -857,7 +934,7 @@ const PRUEFUNGEN = {
       if (istDb) {
         for (const r of referenzen(a.c, dbP.name, fn)) {
           const p = r.parent;
-          const baut = ts.isPropertyAccessExpression(p) && p.expression === r && BAUEN.has(p.name.text) && ts.isCallExpression(p.parent) && p.parent.expression === p;
+          const baut = ts.isPropertyAccessExpression(p) && p.expression === r && DB_ERLAUBT.has(p.name.text) && ts.isCallExpression(p.parent) && p.parent.expression === p;
           // Weitergeben nur an eine Funktion dieses Pakets, deren erster Parameter selbst
           // `Db` ist — sie steht dann unter derselben Pruefung (`same(db)` nicht).
           const ziel = ts.isCallExpression(p) && p.arguments[0] === r && ts.isIdentifier(p.expression) ? gerufene(kontext(state), a, p.expression) : null;
@@ -879,7 +956,7 @@ const PRUEFUNGEN = {
         const veraendert =
           istZuweisung(r) || (n !== r && ts.isBinaryExpression(p) && p.left === n) ||
           ts.isAsExpression(p) || ts.isTypeAssertionExpression(p) || ts.isSatisfiesExpression?.(p) ||
-          (ts.isPropertyAccessExpression(p) && p.expression === n && MUTIERT.has(p.name.text) && (ts.isCallExpression(p.parent) || (ts.isBinaryExpression(p.parent) && p.parent.left === p))) ||
+          (ts.isPropertyAccessExpression(p) && p.expression === n && MUTIERT.has(p.name.text) && ((ts.isCallExpression(p.parent) && p.parent.expression === p) || (ts.isBinaryExpression(p.parent) && p.parent.left === p && istZuweisungsOp(p.parent.operatorToken.kind)))) ||
           (ts.isElementAccessExpression(p) && p.expression === n && ts.isBinaryExpression(p.parent) && p.parent.left === p) ||
           ts.isDeleteExpression(p);
         if (veraendert) {
@@ -888,29 +965,32 @@ const PRUEFUNGEN = {
         }
       }
     }
-    // apps/web: `getDb()` geht nur als Argument an eine Funktion aus packages/db. Eine
-    // Abfrage direkt in einer Seite (`getDb().select().from(v2Classes)`, `getDb().query…`)
-    // saehe keine Liste (dach-100, blinder Leser Runde 2; gemessen: heute 0 Stellen).
+    // apps/web fragt die Datenbank nie selbst. Runde 2/3 des blinden Lesers: an einer
+    // Regel »getDb() nur als Argument« vorbei fuehrt jeder Umweg (`export const db =
+    // getDb()` in einer lib-Datei, ein Helfer `f(db: Db)`, `import { getDb as g }`) —
+    // aber JEDE Abfrage braucht eine Tabelle. Darum: keine Tabelle des Schemas in
+    // apps/web, weder importiert noch ueber einen Namensraum noch ueber `db.query.<t>`
+    // (gemessen 03.10.: 0 Stellen; apps/web hat drizzle-orm nicht einmal als Abhaengigkeit).
+    const alleTabellen = schemaTabellen(state);
     for (const [rel, src] of state.web) {
-      if (TEST.test(rel) || !src.includes("getDb")) continue;
+      if (TEST.test(rel)) continue;
       const sf = baum(rel, src);
-      const melde = (x) => raus.push(`${rel}:${sf.getLineAndCharacterOfPosition(x.getStart(sf)).line + 1} benutzt getDb() anders als als Argument (»${normal(x.parent.getText(sf)).slice(0, 60)}«) — Abfragen gehoeren nach packages/db, hinter die Klassenwand`);
-      const alsArgument = (x) => ts.isCallExpression(x.parent) && x.parent.arguments.includes(x);
+      const raeume = new Set();
+      const melde = (x, was) => raus.push(`${rel}:${sf.getLineAndCharacterOfPosition(x.getStart(sf)).line + 1} ${was} — Abfragen gehoeren nach packages/db, hinter die Klassenwand`);
+      for (const st of sf.statements) {
+        if (!ts.isImportDeclaration(st) || !st.importClause) continue;
+        const modul = st.moduleSpecifier.text;
+        if (!/^@domigo\/db|packages\/db\//.test(modul)) continue;
+        const b = st.importClause.namedBindings;
+        if (b && ts.isNamespaceImport(b)) raeume.add(b.name.text);
+        if (b && ts.isNamedImports(b)) for (const e of b.elements) if (alleTabellen.has((e.propertyName ?? e.name).text)) melde(e, `importiert die Tabelle ${(e.propertyName ?? e.name).text}`);
+      }
       (function lauf(x) {
-        if (ts.isCallExpression(x) && ts.isIdentifier(x.expression) && x.expression.text === "getDb" && !alsArgument(x)) {
-          // `const db = getDb()` ist erlaubt, wenn `db` danach NUR als Argument vorkommt
-          // (ohne Typ-Pruefer: jeder gleichnamige Bezeichner im selben Rumpf zaehlt — strenger).
-          const d = x.parent;
-          if (ts.isVariableDeclaration(d) && d.initializer === x && ts.isIdentifier(d.name) && d.parent.flags & ts.NodeFlags.Const) {
-            const rumpf = umschliessendeFunktion(d)?.body ?? sf;
-            let gut = true;
-            (function such(y) {
-              if (ts.isIdentifier(y) && y !== d.name && y.text === d.name.text && !alsArgument(y) && !(ts.isPropertyAccessExpression(y.parent) && y.parent.name === y) && !(ts.isPropertyAssignment(y.parent) && y.parent.name === y)) gut = false;
-              ts.forEachChild(y, such);
-            })(rumpf);
-            if (!gut) melde(x);
-          } else melde(x);
+        if (ts.isPropertyAccessExpression(x) && alleTabellen.has(x.name.text)) {
+          const vorn = x.expression;
+          if ((ts.isIdentifier(vorn) && raeume.has(vorn.text)) || (ts.isPropertyAccessExpression(vorn) && vorn.name.text === "query")) melde(x, `greift auf die Tabelle ${x.name.text} zu`);
         }
+        if (ts.isImportDeclaration(x) && TEST.test(x.moduleSpecifier.text)) melde(x, `importiert aus einer Testdatei (${x.moduleSpecifier.text})`);
         ts.forEachChild(x, lauf);
       })(sf);
     }
@@ -921,7 +1001,7 @@ const PRUEFUNGEN = {
     const raus = [];
     for (const [rel, src] of state.web) {
       if (rel === SCOPE_HEIMAT) continue;
-      src.split("\n").forEach((zeile, i) => {
+      ohneKommentare(src).split("\n").forEach((zeile, i) => {
         if (/\bclassScope\(/.test(zeile)) {
           raus.push(`${rel}:${i + 1} baut einen Ausschnitt — das darf nur ${SCOPE_HEIMAT}`);
         }
@@ -1488,6 +1568,43 @@ const FAELLE = [
     pruefung: "aufrufer",
     mach: (s) => webDazu(klon(s), "apps/web/app/__selftest/page.jsx", 'import { getDb, getPathSummary } from "@domigo/db";\nexport default async function P({ params }) {\n  const s = await getPathSummary(getDb(), params.id);\n  return <p>{s.size}</p>;\n}\n'),
   },
+  // dach-100 · blinder Leser, Runde 3.
+  {
+    name: "eine lib-Datei reicht getDb() heraus, eine Seite fragt damit eine Tabelle",
+    pruefung: "parameter",
+    mach: (s) => {
+      const c = webDazu(klon(s), "apps/web/lib/__dbgriff.ts", 'import { getDb } from "@domigo/db";\nexport const db = getDb();\n');
+      return webDazu(c, "apps/web/app/__selftest/page.tsx", 'import { v2Classes } from "@domigo/db";\nimport { db } from "@/lib/__dbgriff";\nexport default async function P() {\n  return db.select().from(v2Classes);\n}\n');
+    },
+  },
+  {
+    name: "ein bestehender Aufruf aendert nur das DRITTE Argument (syncKontoStudentClass: Ziel-Klasse aus dem Formular)",
+    pruefung: "aufrufer",
+    mach: (s) => {
+      const c = klon(s);
+      const rel = "apps/web/lib/konto/anmeldung.ts";
+      const src = c.web.get(rel);
+      const neu = src.replace(/syncKontoStudentClass\(db, vorhanden\.id, kindKlasse\)/, "syncKontoStudentClass(db, vorhanden.id, String(claims.wunschklasse))");
+      if (neu === src) throw new Error(`Selbsttest: ${rel} traegt den Aufruf von syncKontoStudentClass nicht mehr`);
+      c.web.set(rel, neu);
+      return c;
+    },
+  },
+  {
+    name: "der gefilterte Builder geht an einen Helfer, der .where ersetzen kann",
+    pruefung: "liste",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await mitSuche(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))`),
+  },
+  {
+    name: "union(gefiltert, roh) als Funktion",
+    pruefung: "liste",
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [a] = await union(db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))), db.select().from(assignments))`),
+  },
+  {
+    name: "ein NICHT exportierter Schreib-Helfer mit Ausschnitt ohne Wache",
+    pruefung: "wache",
+    mach: (s) => { const c = klon(s); c.db.set(AS, c.db.get(AS) + "\nasync function __schreib(db: Db, classScope: ClassScope, id: string) {\n  await db.update(assignments).set({ archivedAt: new Date() }).where(and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id)));\n}\nexport { __schreib };\n"); return c; },
+  },
   // Gegenproben: dieselben Werkzeuge, ehrlich benutzt — ALLES muss gruen bleiben.
   {
     name: "Gegenprobe: der Filter laeuft ueber eine Konstante and(…) in .where",
@@ -1498,6 +1615,41 @@ const FAELLE = [
     name: "Gegenprobe: der Filter steht in einer Variablen, die als erstes Glied in and() geht",
     gruen: true,
     mach: (s) => verbiege(klon(s), AS, GW, `  const w = ${FILTER};\n${ROH_WHERE("and(w, eq(assignments.id, id))")}`),
+  },
+  {
+    name: "Gegenprobe: zwei Abfragen in Promise.all, Ergebnis destrukturiert",
+    gruen: true,
+    mach: (s) => verbiege(klon(s), AS, GW, `  const [[a]] = await Promise.all([db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id)))])`),
+  },
+  {
+    name: "Gegenprobe: (await q)[0] statt const [a] = await q",
+    gruen: true,
+    mach: (s) => verbiege(klon(s), AS, GW, `  const a = (await db.select().from(assignments).where(and(${FILTER}, eq(assignments.id, id))))[0]`),
+  },
+  {
+    name: "Gegenprobe: if (classScope.length === 0) return",
+    gruen: true,
+    mach: (s) => verbiege(klon(s), AS, GW, `  if (classScope.length === 0) return null;\n${GW}`),
+  },
+  {
+    name: "Gegenprobe: die Wache als Glied einer ODER-Kette",
+    gruen: true,
+    mach: (s) => verbiege(klon(s), AS, "if (!inScope(classScope, draft.classId))", "if (!draft.classId || !inScope(classScope, draft.classId))"),
+  },
+  {
+    name: "Gegenprobe: ein reiner Filter mit Ausschnitt, ohne Datenbank",
+    gruen: true,
+    mach: (s) => { const c = klon(s); c.db.set(AS, c.db.get(AS) + "\nexport function __nurMeine(classScope: ClassScope, rows: { classId: string }[]) {\n  return rows.filter((r) => inScope(classScope, r.classId));\n}\n"); return c; },
+  },
+  {
+    name: "Gegenprobe: apps/web reicht getDb() als Standardparameter an eine Pflicht-Funktion",
+    gruen: true,
+    mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.ts", 'import { getDb, listRoster, type ClassScope } from "@domigo/db";\nexport async function f(cs: ClassScope, id: string, t: string, db = getDb()) {\n  return listRoster(db, cs, id, t);\n}\n'),
+  },
+  {
+    name: "Gegenprobe: ein Kommentar in apps/web nennt classScope(…)",
+    gruen: true,
+    mach: (s) => webDazu(klon(s), "apps/web/lib/__selftest.ts", "// der Ausschnitt entsteht in lib/identity.ts per classScope([…])\nexport const x = 1;\n"),
   },
   {
     name: "Gegenprobe: ein Kommentar ueber dem Filter aendert nichts",

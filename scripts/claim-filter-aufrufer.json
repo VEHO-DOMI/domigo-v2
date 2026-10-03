@@ -1,9 +1,9 @@
 {
-  "warum": "dach-100 · Die Pruefung »aufrufer« in scripts/check-claim-filter.mjs. Eine Ausnahme ohne Ausschnitt (scripts/claim-filter-allowlist.json) stimmt nur, solange ihre Kennung aus der Sitzung, aus einem signierten Push oder aus einer schon gefilterten Lesung kommt. Darum steht hier JEDER Aufruf in apps/web und packages/db (ohne Tests) als »Datei · Ausdruck des Arguments hinter db«. Ein neuer Aufruf, ein anderer Ausdruck, ein umbenannter Import oder ein Weiterreichen als Wert ist rot, bis jemand die Herkunft gelesen und hier eingetragen hat. Eine leere Liste heisst TOT: die Funktion hat keinen Aufrufer und darf keinen bekommen (der Ausnahme-Satz beginnt dann mit »TOT«). Entwickler-Skripte unter scripts/ zaehlen nicht. Ein Aufruf aus einer selbst TOTEN Funktion in packages/db (z. B. createClass → allocateClassCode) belebt nichts wieder und zaehlt nicht. dach-100 hat auch die aelteren Ausnahmen (dach-018, dach-074) mit ihren Aufrufen vom 03.10. festgehalten — gemessen, nicht neu beurteilt: ihr Grund steht in der Ausnahme-Liste; neu ist nur, dass ein NEUER Aufruf rot wird. Bewusst ohne Eintrag: roster-events.ts#writeRosterEvent — ihr Argument ist das ganze Journal-Objekt, und die Journal-Tuer bewacht scripts/check-journal-door.mjs.",
+  "warum": "dach-100 · Die Pruefung »aufrufer« in scripts/check-claim-filter.mjs. Eine Ausnahme ohne Ausschnitt (scripts/claim-filter-allowlist.json) stimmt nur, solange ihre Kennung aus der Sitzung, aus einem signierten Push oder aus einer schon gefilterten Lesung kommt. Darum steht hier JEDER Aufruf in apps/web und packages/db (ohne Tests) als »Datei · Ausdruecke ALLER Argumente hinter db« (Runde 3 des blinden Lesers: bei syncKontoStudentClass(db, kind, KLASSE) ist das dritte das gefaehrliche). Ein neuer Aufruf, ein anderer Ausdruck, ein umbenannter Import oder ein Weiterreichen als Wert ist rot, bis jemand die Herkunft gelesen und hier eingetragen hat. Eine leere Liste heisst TOT: die Funktion hat keinen Aufrufer und darf keinen bekommen (der Ausnahme-Satz beginnt dann mit »TOT«). Entwickler-Skripte unter scripts/ zaehlen nicht. Ein Aufruf aus einer selbst TOTEN Funktion in packages/db (z. B. createClass → allocateClassCode) belebt nichts wieder und zaehlt nicht. dach-100 hat auch die aelteren Ausnahmen (dach-018, dach-074) mit ihren Aufrufen vom 03.10. festgehalten — gemessen, nicht neu beurteilt: ihr Grund steht in der Ausnahme-Liste; neu ist nur, dass ein NEUER Aufruf rot wird. Bewusst ohne Eintrag: roster-events.ts#writeRosterEvent — ihr Argument ist das ganze Journal-Objekt, und die Journal-Tuer bewacht scripts/check-journal-door.mjs.",
   "funktionen": {
     "assignment-session-service.ts#getSessionAttempts": [
-      "apps/web/app/admin/assignments/[id]/page.tsx · stu.id",
-      "apps/web/app/api/assignments/submit/route.ts · acting.userId"
+      "apps/web/app/admin/assignments/[id]/page.tsx · stu.id, id, roster.id",
+      "apps/web/app/api/assignments/submit/route.ts · acting.userId, assignmentId, sessionId"
     ],
     "class-service.ts#resolveTeacherNames": [
       "apps/web/app/admin/classes/[id]/hoeren/page.tsx · [foreign.teacherId]",
@@ -14,26 +14,26 @@
       "packages/db/src/class-service.ts · classes.map((c) => c.teacherId)"
     ],
     "game-progress.ts#getSolvedGameItemIds": [
-      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId",
-      "apps/web/app/(game)/play/[grade]/page.tsx · acting.userId",
-      "apps/web/app/(game)/play/[grade]/school/page.tsx · access.player.userId",
-      "apps/web/app/api/school/route.ts · access.player.userId"
+      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId, grade",
+      "apps/web/app/(game)/play/[grade]/page.tsx · acting.userId, grade",
+      "apps/web/app/(game)/play/[grade]/school/page.tsx · access.player.userId, 2, true",
+      "apps/web/app/api/school/route.ts · access.player.userId, 2, true"
     ],
     "gamesave.ts#getGameSave": [
-      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId",
-      "apps/web/app/(game)/play/[grade]/world/page.tsx · acting.userId",
-      "apps/web/app/api/game-save/route.ts · acting.userId"
+      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId, saveMode",
+      "apps/web/app/(game)/play/[grade]/world/page.tsx · acting.userId, \"game:g1:keen\"",
+      "apps/web/app/api/game-save/route.ts · acting.userId, mode"
     ],
     "journey-progress.ts#getJourneyAttempts": [
-      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId",
-      "apps/web/app/learn/[slug]/page.tsx · userId"
+      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId, slug",
+      "apps/web/app/learn/[slug]/page.tsx · userId, slug"
     ],
     "studypath.ts#getPathSummary": [
       "apps/web/app/learn/page.tsx · session.user.id"
     ],
     "studypath.ts#getUnitPathProgress": [
-      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId",
-      "apps/web/app/learn/[slug]/page.tsx · acting.userId"
+      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId, slug",
+      "apps/web/app/learn/[slug]/page.tsx · acting.userId, slug"
     ],
     "konto-identity.ts#findKontoIdentity": [
       "apps/web/lib/konto/anmeldung.ts · claims.app_user_id"
@@ -68,7 +68,7 @@
     "teacher-claim.ts#claimableWithOwner": [],
     "auth.ts#lookupStudentForAuth": [],
     "ops-links.ts#findOpsClassStudent": [
-      "apps/web/auth.ts · opsClassCode()"
+      "apps/web/auth.ts · opsClassCode(), parsed.payload.userId"
     ],
     "ops-links.ts#loadOpsClass": [
       "apps/web/app/api/ops/test-students/route.ts · opsClassCode()",
@@ -76,19 +76,19 @@
       "apps/web/app/api/ops/test-students/route.ts · opsClassCode()"
     ],
     "ops-links.ts#findOpsStudent": [
-      "apps/web/app/api/ops/test-students/route.ts · cls.id"
+      "apps/web/app/api/ops/test-students/route.ts · cls.id, { id, nickname }"
     ],
     "ops-links.ts#listOpsClassStudents": [
       "apps/web/app/api/ops/test-students/route.ts · cls.id"
     ],
     "ops-links.ts#createOpsTestStudent": [
-      "apps/web/app/api/ops/test-students/route.ts · cls.id"
+      "apps/web/app/api/ops/test-students/route.ts · cls.id, nickname, await hashPin(pin)"
     ],
     "class-service.ts#listAllClassIds": [
-      "apps/web/lib/identity.ts · getDb()",
-      "apps/web/lib/identity.ts · getDb()",
-      "apps/web/lib/identity.ts · getDb()",
-      "apps/web/lib/identity.ts · getDb()"
+      "apps/web/lib/identity.ts · —",
+      "apps/web/lib/identity.ts · —",
+      "apps/web/lib/identity.ts · —",
+      "apps/web/lib/identity.ts · —"
     ],
     "class-service.ts#listClassIdsForPinTeacher": [],
     "roster-service.ts#findActiveClassByCode": [],
@@ -108,7 +108,7 @@
       "apps/web/lib/konto/anmeldung.ts · { displayName: name, classId: kindKlasse!, pinHash }"
     ],
     "konto-identity.ts#syncKontoStudentClass": [
-      "apps/web/lib/konto/anmeldung.ts · vorhanden.id"
+      "apps/web/lib/konto/anmeldung.ts · vorhanden.id, kindKlasse"
     ],
     "auth.ts#getClassGrade": [
       "apps/web/app/home/page.tsx · session.user.classId",
