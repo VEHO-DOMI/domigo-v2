@@ -206,12 +206,18 @@ describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen 
     for (const p of e.params) if (typeof p === "string") expect(UUID.test(p)).toBe(false);
   });
 
-  it("die Liste deckt jede Ausnahme mit festgehaltenen Aufrufern ab (scripts/claim-filter-aufrufer.json)", () => {
-    const fest = JSON.parse(readFileSync(new URL("../../../scripts/claim-filter-aufrufer.json", import.meta.url), "utf8")) as { funktionen: Record<string, string[]> };
-    const lebend = Object.entries(fest.funktionen).filter(([, a]) => a.length > 0).map(([s]) => s).sort();
-    // Zwei Helfer sind nicht exportiert und hier nicht rufbar; fuer sie haelt allein
-    // die Pruefung »aufrufer« fest, woher die Kennung kommt (signierter Push · Sitzung).
-    const intern = ["konto-class-term.ts#lokaleLehrkraft", "review.ts#reservierteFuerKlasse"];
+  it("die Liste deckt jede von dach-100 beurteilte, lebende Ausnahme ab", () => {
+    const lies = (datei: string) => JSON.parse(readFileSync(new URL(`../../../scripts/${datei}`, import.meta.url), "utf8"));
+    const fest = lies("claim-filter-aufrufer.json") as { funktionen: Record<string, string[]> };
+    const saetze = (lies("claim-filter-allowlist.json") as { ausnahmen: Record<string, string> }).ausnahmen;
+    const lebend = Object.entries(fest.funktionen)
+      .filter(([s, a]) => a.length > 0 && saetze[s]?.startsWith("dach-100 ·"))
+      .map(([s]) => s)
+      .sort();
+    // Drei sind nicht exportiert und hier nicht rufbar; fuer sie haelt allein die
+    // Pruefung »aufrufer« fest, woher die Kennung kommt (signierter Push · Sitzung ·
+    // ein SQL-Baustein, der eine schon gefilterte Abfrage nur weiter einengt).
+    const intern = ["konto-class-term.ts#lokaleLehrkraft", "review.ts#reservierteFuerKlasse", "writing-review.ts#gehoertZuLehrkraft"];
     const hier = [...EIGENE.map((f) => f.schluessel), "class-service.ts#resolveTeacherNames", "konto-identity.ts#createKontoTeacher", ...intern].sort();
     expect(hier).toEqual(lebend);
   });
