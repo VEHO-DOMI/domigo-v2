@@ -149,15 +149,21 @@ describe("eine Lehrkraft mit Ausschnitt {A} sieht Klasse B nicht", () => {
 const ICH = "cccccccc-0000-4000-8000-000000000003";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-const EIGENE: { schluessel: string; lauf: (db: Db) => Promise<unknown> }[] = [
-  { schluessel: "assignment-session-service.ts#getSessionAttempts", lauf: (db) => getSessionAttempts(db, ICH, "aufgabe-1", "sitzung-1") },
-  { schluessel: "game-progress.ts#getSolvedGameItemIds", lauf: (db) => getSolvedGameItemIds(db, ICH, 2) },
-  { schluessel: "gamesave.ts#getGameSave", lauf: (db) => getGameSave(db, ICH, "game:g1") },
-  { schluessel: "journey-progress.ts#getJourneyAttempts", lauf: (db) => getJourneyAttempts(db, ICH, "g2-u03") },
-  { schluessel: "studypath.ts#getPathSummary", lauf: (db) => getPathSummary(db, ICH) },
-  { schluessel: "studypath.ts#getUnitPathProgress", lauf: (db) => getUnitPathProgress(db, ICH, "g2-u03") },
-  { schluessel: "konto-identity.ts#findKontoIdentity", lauf: (db) => findKontoIdentity(db, ICH) },
-  { schluessel: "konto-loeschung.ts#deleteUserData", lauf: (db) => deleteUserData(db, ICH) },
+// dach-167 (Pruefer PR 480, S1): je Fall die SPALTE, an die die eigene Kennung gebunden
+// sein muss — `"unit_slug" = $1` enthaelt auch `= $1`, und eine falsche Spalte waere so
+// unsichtbar geblieben.
+const NUTZER = ["user_id"];
+const EIGENE: { schluessel: string; spalten: string[]; lauf: (db: Db) => Promise<unknown> }[] = [
+  { schluessel: "assignment-session-service.ts#getSessionAttempts", spalten: NUTZER, lauf: (db) => getSessionAttempts(db, ICH, "aufgabe-1", "sitzung-1") },
+  { schluessel: "game-progress.ts#getSolvedGameItemIds", spalten: NUTZER, lauf: (db) => getSolvedGameItemIds(db, ICH, 2) },
+  { schluessel: "gamesave.ts#getGameSave", spalten: NUTZER, lauf: (db) => getGameSave(db, ICH, "game:g1") },
+  { schluessel: "journey-progress.ts#getJourneyAttempts", spalten: NUTZER, lauf: (db) => getJourneyAttempts(db, ICH, "g2-u03") },
+  { schluessel: "studypath.ts#getPathSummary", spalten: NUTZER, lauf: (db) => getPathSummary(db, ICH) },
+  { schluessel: "studypath.ts#getUnitPathProgress", spalten: NUTZER, lauf: (db) => getUnitPathProgress(db, ICH, "g2-u03") },
+  { schluessel: "konto-identity.ts#findKontoIdentity", spalten: ["id"], lauf: (db) => findKontoIdentity(db, ICH) },
+  // Die Loeschung nennt die Person in vier Rollen: als Lernende, im Jahresabschluss,
+  // als Lehrkraft/Handelnde im Journal, und zuletzt die Zeile der Person selbst.
+  { schluessel: "konto-loeschung.ts#deleteUserData", spalten: ["user_id", "v1_user_id", "teacher_id", "actor_id", "id"], lauf: (db) => deleteUserData(db, ICH) },
 ];
 
 describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen Kennung", () => {
@@ -165,14 +171,18 @@ describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen 
     it(`${fall.schluessel}: jede Bedingung bindet die eigene Kennung, keine fremde und keine Klasse`, async () => {
       const { log, db } = schreiber();
       await fall.lauf(db);
-      const mitWhere = log.filter((e) => / where /.test(e.sql));
-      expect(mitWhere.length, "die Funktion hat gar keine Bedingung gestellt").toBeGreaterThan(0);
-      for (const e of mitWhere) {
+      expect(log.length, "die Funktion hat gar nichts gefragt").toBeGreaterThan(0);
+      // dach-167 (S1): JEDE Anweisung — nicht nur die mit Bedingung. Eine zweite
+      // Anweisung ohne WHERE (ein DELETE auf eine ganze Tabelle) war sonst unsichtbar.
+      for (const e of log) {
+        expect(e.sql, "Anweisung ohne Bedingung").toMatch(/ where /);
         const bedingung = e.sql.slice(e.sql.indexOf(" where "));
-        // Die eigene Kennung ist gebunden, und zwar als Bedingung …
+        // Die eigene Kennung ist gebunden, und zwar als Bedingung auf der erwarteten Spalte …
         const stelle = e.params.indexOf(ICH);
         expect(stelle, `${e.sql} bindet die eigene Kennung nicht`).toBeGreaterThanOrEqual(0);
-        expect(bedingung).toContain(`= $${stelle + 1}`);
+        const gebunden = [...bedingung.matchAll(/"([a-z_0-9]+)" = \$(\d+)/g)].filter((m) => e.params[Number(m[2]) - 1] === ICH).map((m) => m[1]);
+        expect(gebunden.length, `${e.sql}: die eigene Kennung steht in keiner Spalten-Bedingung`).toBeGreaterThan(0);
+        for (const spalte of gebunden) expect(fall.spalten, `${e.sql}: die Kennung haengt an "${spalte}"`).toContain(spalte);
         // … keine andere Person-Kennung kommt hinein …
         for (const p of e.params) if (typeof p === "string" && UUID.test(p)) expect(p).toBe(ICH);
         // … und keine Klasse entscheidet mit.

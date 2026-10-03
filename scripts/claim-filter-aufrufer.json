@@ -44,19 +44,6 @@
     "konto-loeschung.ts#deleteUserData": [
       "apps/web/app/api/konto/account-deleted/route.ts · id"
     ],
-    "auth.ts#allocateClassCode": [],
-    "auth.ts#lookupTeacherAuthById": [],
-    "auth.ts#lookupTeacherForAuth": [],
-    "bootstrap-teacher.ts#adoptAssignments": [],
-    "bootstrap-teacher.ts#createV2Teacher": [],
-    "bootstrap-teacher.ts#hasV2Teacher": [],
-    "class-service.ts#createClass": [],
-    "teacher-claim.ts#teacherNameTaken": [],
-    "teacher-identity.ts#deleteTeacherIdentity": [],
-    "teacher-identity.ts#getTeacherEmail": [],
-    "teacher-identity.ts#upsertTeacherIdentity": [],
-    "teacher-claim.ts#listClaimableClasses": [],
-    "teacher-claim.ts#claimClassAsTeacher": [],
     "konto-class-term.ts#lokaleLehrkraft": [
       "packages/db/src/konto-class-term.ts · eingang.owner_app_user_id",
       "packages/db/src/konto-class-term.ts · eingang.owner_app_user_id"
@@ -65,8 +52,6 @@
       "packages/db/src/review.ts · classId",
       "packages/db/src/review.ts · classId"
     ],
-    "teacher-claim.ts#claimableWithOwner": [],
-    "auth.ts#lookupStudentForAuth": [],
     "ops-links.ts#findOpsClassStudent": [
       "apps/web/auth.ts · opsClassCode(), parsed.payload.userId"
     ],
@@ -90,10 +75,6 @@
       "apps/web/lib/identity.ts · —",
       "apps/web/lib/identity.ts · —"
     ],
-    "class-service.ts#listClassIdsForPinTeacher": [],
-    "roster-service.ts#findActiveClassByCode": [],
-    "roster-service.ts#unclaimedForClaim": [],
-    "roster-service.ts#claimStudent": [],
     "konto-class-term.ts#createKontoClass": [
       "apps/web/app/api/konto/classes/route.ts · e"
     ],

@@ -22,7 +22,9 @@
 // GESETZ 2 »eine Tür für die E-Mail«: die Spalte email von domigo_v2.users wird an
 // genau einer Stelle geschrieben. Jede Datei, die v2IdentityUsers benutzt (oder
 // rohes SQL auf users fährt) UND eine email-Zuweisung trägt, ist ein Schreiber;
-// erlaubt sind die Tür und die Ausnahmen unten, mit Grund. RATSCHE: eine Ausnahme,
+// erlaubt sind die Tür und die Ausnahmen unten, mit Grund. dach-167: die Tür
+// (teacher-identity.ts, die Wiederherstellungs-Mail der Lehrkraft) ist mit der
+// PIN-Anmeldung gelöscht — seitdem gibt es KEINE Tür, und jeder Schreiber ist rot. RATSCHE: eine Ausnahme,
 // die auf nichts mehr zeigt, geht VERALTET und färbt dieses Tor rot — dasselbe
 // Muster, das check-journal-door.mjs und check-ci-gates.mjs tragen.
 //
@@ -95,7 +97,10 @@ const GESETZ1_AUSNAHMEN = [
 ];
 
 // ── Gesetz 2 · die eine Tür ─────────────────────────────────────────────────
-const TUER = "packages/db/src/teacher-identity.ts";
+// dach-167 · keine Tür mehr: seit die PIN-Anmeldung samt Wiederherstellungs-Mail
+// entfernt ist (dach-108), schreibt niemand die Spalte. Wer sie wieder braucht, baut
+// EINE Tür und trägt sie hier ein — das ist dann ein sichtbarer Eingriff.
+const TUER = null;
 const AUSNAHMEN = [
   {
     datei: "packages/db/src/schema.ts",
@@ -193,9 +198,9 @@ for (const rel of alle) {
     }
     melde(
       rel + ":" + (i + 1) + " · Gesetz 2 »eine Tür für die E-Mail«\n    " + zeile.trim() + "\n" +
-        "    ⇒ Nur " + TUER + " darf die Spalte email der Tabelle users schreiben (sie tut es nur für " +
-        "Lehrkräfte). Die Seite sagt »DomiGo speichert keine E-Mail-Adressen von Kindern« — entweder über " +
-        "die Tür schreiben oder hier als Ausnahme MIT GRUND eintragen.",
+        "    ⇒ " + (TUER ? "Nur " + TUER + " darf" : "Niemand darf (seit dach-167 gibt es keine Tür)") +
+        " die Spalte email der Tabelle users schreiben. Die Seite sagt »DomiGo speichert keine E-Mail-" +
+        "Adressen von Kindern« — entweder eine Tür bauen und hier eintragen, oder als Ausnahme MIT GRUND.",
     );
   });
 }
@@ -221,11 +226,17 @@ if (!selbsttest) {
   if (dateien.length === 0) {
     melde("keine eingecheckte Datei unter apps/ oder packages/ gefunden — dieses Tor prüft nichts mehr");
   }
-  if (!tabellenNutzer.includes(TUER)) {
+  if (TUER && !tabellenNutzer.includes(TUER)) {
     melde(
       TUER + " benutzt v2IdentityUsers nicht mehr — Gesetz 2 hat seine Tür verloren und bewacht nichts; " +
         "dieses Tor neu lesen, nicht löschen",
     );
+  }
+  // dach-167 · ohne Tür bewacht Gesetz 2 die Tabelle selbst: liest niemand sie mehr,
+  // hätte das Gesetz keinen Gegenstand (die Deklaration in schema.ts hält die
+  // Ausnahmen-Ratsche fest).
+  if (!TUER && tabellenNutzer.filter((rel) => !AUSNAHMEN.some((a) => a.datei === rel)).length === 0) {
+    melde("kein Code benutzt v2IdentityUsers mehr — Gesetz 2 bewacht nichts; dieses Tor neu lesen, nicht löschen");
   }
 }
 
@@ -266,6 +277,6 @@ if (fehler > 0) {
 }
 console.log(
   "check-datenschutz-claims: OK — " + dateien.length + " eingecheckte Dateien ohne Analyse-, Werbe-, " +
-    "Tracking- oder Schrift-Dienst; die Spalte email der Tabelle users hat eine Tür (" + TUER + ") und " +
+    "Tracking- oder Schrift-Dienst; die Spalte email der Tabelle users hat " + (TUER ? "eine Tür (" + TUER + ")" : "keine Tür (niemand schreibt sie)") + " und " +
     AUSNAHMEN.length + " begründete Ausnahme(n)",
 );
