@@ -20,7 +20,7 @@
  * registrierte Kontaktspannen und den passenden PNG-Hash; kein Winkel wird
  * dadurch großzügiger. Die reine Unterkantenmessung unten bleibt unverändert.
  * Der ALTBESTAND fällt absichtlich durch — er IST der Befund. Damit CI nicht auf
- * dem Befund rot steht, trägt jedes alte Blatt eine DATIERTE Zeile in
+ * dem Befund rot steht, trägt jedes alte Blatt eine EXAKT BEFUNDGEBUNDENE Zeile in
  * GROUND_PLANE_PENDING (Grund + Raum-Cutover, der es löscht). Ein NEUES Blatt
  * ohne Zeile muss bestehen. Eine Pending-Zeile ohne Blatt ist selbst ein Fehler
  * (sie überlebt ihre Löschung nicht still).
@@ -39,6 +39,8 @@ import { planMass } from "../packages/game-paint/src/mass.ts";
 import { measureDeck, measureContacts } from "./ground-plane-geometry.mjs";
 import { GROUND_CONTACTS } from "./ground-plane-contacts.mjs";
 import { geometrySelftest } from "./ground-plane-selftest.mjs";
+import { openFindingMap, findingError, groundFindingScope } from "./paint-art-claims.mjs";
+const OPEN_FINDINGS = openFindingMap(fs.readFileSync("docs/design/g1/paint/DEBT_REGISTER.md", "utf8"));
 
 const ART_DIR = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
 const OPAQUE = 128;
@@ -171,19 +173,19 @@ const synth = (mutate) => {
  *   · kein Raum referenziert es   → nie konsultiert
  *   · das Blatt ist REPARIERT     → nie konsultiert (und genau so soll eine
  *                                    Neu-Malung ihre eigene Duldung beenden)
- * Dazu die zweite Hälfte: ein `until`, das niemand liest, ist ein Datum ohne
- * Wirkung — eine abgelaufene Zeile wird rot, statt lautlos weiterzugelten.
+ * Dazu die zweite Hälfte: jede gebrauchte Zeile braucht ihren genauen offenen
+ * Registerbefund. Ein Datum kann diese Sachbedingung weder ersetzen noch ändern.
  */
-export const waiverHygiene = (pending, seen, today = new Date()) => {
+export const waiverHygiene = (pending, seen, today = new Date(), openFindings = OPEN_FINDINGS) => {
   const errors = [];
   for (const [stem, w] of Object.entries(pending)) {
     if (!seen.has(stem)) {
       errors.push(`GROUND_PLANE_PENDING trägt "${stem}", aber dieser Lauf hat die Zeile nicht gebraucht (Blatt gelöscht, von keinem Raum referenziert, oder der Befund ist behoben) — die Zeile löschen (${w.why})`);
       continue;
     }
-    if (Date.parse(`${w.until}T23:59:59Z`) < today.getTime()) {
-      errors.push(`GROUND_PLANE_PENDING "${stem}" ist am ${w.until} abgelaufen — nachmessen und neu begründen oder die Ausnahme fallen lassen (${w.why})`);
-    }
+    if (typeof w.why !== "string" || !w.why.trim() || w.until !== undefined) errors.push(`GROUND_PLANE_PENDING "${stem}" braucht einen Grund ohne Kalender-Verfall`);
+    const error = findingError(w.offen, groundFindingScope(stem), openFindings);
+    if (error) errors.push(`GROUND_PLANE_PENDING "${stem}": ${error}`);
   }
   return errors;
 };
@@ -201,16 +203,20 @@ const selftest = () => {
   }
   // ── Duldungs-Hygiene: 1 sauber + 2 Tamper ────────────────────────────────
   const heute = new Date("2026-09-02T12:00:00Z");
-  const reg = { a: { until: "2026-10-15", why: "Grund A" }, b: { until: "2026-10-15", why: "Grund B" } };
-  if (waiverHygiene(reg, new Set(["a", "b"]), heute).length !== 0) {
-    console.error("Selbsttest: zwei gebrauchte, unverfallene Duldungen fallen"); return 1;
+  const reg = { a: { offen: "D-1", why: "Grund A" }, b: { offen: "D-2", why: "Grund B" } };
+  const fixtureFindings = new Map([["D-1", groundFindingScope("a")], ["D-2", groundFindingScope("b")]]);
+  if (waiverHygiene(reg, new Set(["a", "b"]), heute, fixtureFindings).length !== 0) {
+    console.error("Selbsttest: zwei gebrauchte, befundgebundene Duldungen fallen"); return 1;
   }
-  if (waiverHygiene(reg, new Set(["a"]), heute).length !== 1) {
+  if (waiverHygiene(reg, new Set(["a"]), heute, fixtureFindings).length !== 1) {
     console.error('Selbsttest-TAMPER "schale Zeile" blieb GRÜN'); return 1;
   }
-  if (waiverHygiene({ a: { until: "2026-08-01", why: "Grund A" } }, new Set(["a"]), heute).length !== 1) {
-    console.error('Selbsttest-TAMPER "abgelaufene Zeile" blieb GRÜN'); return 1;
+  if (waiverHygiene({ a: { offen: "D-0", why: "Grund A" } }, new Set(["a"]), heute, fixtureFindings).length !== 1) {
+    console.error('Selbsttest-TAMPER "ungültiger Befund" blieb GRÜN'); return 1;
   }
+  if (waiverHygiene(reg, new Set(["a", "b"]), new Date("2099-01-01"), fixtureFindings).length !== 0) throw new Error("2099 verändert die Duldung");
+  if (waiverHygiene(reg, new Set(["a", "b"]), heute, new Map()).length !== 2) throw new Error("fehlende/geschlossene Befunde bleiben grün");
+  if (waiverHygiene(reg, new Set(["a", "b"]), heute, new Map([["D-1", groundFindingScope("b")], ["D-2", groundFindingScope("a")]])).length !== 2) throw new Error("vertauschte Befunde bleiben grün");
   geometrySelftest({ judgeBinding, activeGroundBindings, applyGroundPending });
   console.log("check-ground-plane: Selbsttest OK — 1 sauber + 3 Tamper rot · Duldungs-Hygiene 1 sauber + 2 Tamper rot");
   return 0;
@@ -259,7 +265,7 @@ const main = () => {
     const { used, errors } = applyGroundPending(result, pending, sha);
     if (used) {
       waiverSeen.add(stem);
-      console.log(`⚠ ${stem}: nur historischer Fußbefund GEDULDET bis ${pending.until} (${pending.why}) — ${result.groundErrors.join(" · ")}`);
+      console.log(`⚠ ${stem}: nur historischer Fußbefund GEDULDET durch offenen Befund ${pending.offen} (${pending.why}) — ${result.groundErrors.join(" · ")}`);
     }
     console.log(JSON.stringify({ phase: binding.phase, stem, role: binding.role, sha256: sha, ...m }));
     if (errors.length === 0) {

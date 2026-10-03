@@ -171,166 +171,166 @@
   "g1u01.w.board": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1073"
   },
   "g1u01.w.pencil-case": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1088"
   },
   "g1u01.w.to-read": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1102"
   },
   "g1u01.w.to-look": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1099"
   },
   "g1u01.w.how-many": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1078"
   },
   "g1u01.w.it": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1080"
   },
   "g1u01.w.to-speak": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1103"
   },
   "g1u01.w.to-stand-up": {
    "cards": "offered",
    "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber nirgends selbst produzieren. Bewusst so — die Unit hat 68 Eintraege und ch01 stellt 33 Feld-Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Law 17b prueft die Behauptung: was auf keiner Karte auf dem Bildschirm steht, gilt als ABWESEND, nicht als angeboten. Naechste Runde prueft, ob eines davon ein eigenes Wesen verdient.",
-   "until": "2026-12-31"
+   "offen": "D-1104"
   },
   "g1u01.w.projector": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1089"
   },
   "g1u01.w.time": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1092"
   },
   "g1u01.w.midnight": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1083"
   },
   "g1u01.w.light": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1082"
   },
   "g1u01.w.child": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1074"
   },
   "g1u01.w.class": {
    "cards": "exempt",
    "reason": "Kein Anker in der WELT dieses Kapitels: das Level setzt kein solches Wesen oder Ding, und das eine Gesetz ueber allem (STORY_SPINE_CH01) sagt, die Copy behauptet nur, was das Kind sieht. Eine Karte ueber ein Ding, das nirgends steht, waere genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. B8 fordert diese Wesen fuer spaetere Wellen nach: das ist eine Level-Design-Schuld, keine Karten-Schuld.",
-   "until": "2026-12-31"
+   "offen": "D-1075"
   },
   "g1u01.w.more": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1084"
   },
   "g1u01.w.their": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1090"
   },
   "g1u01.w.then": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1091"
   },
   "g1u01.w.or": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1086"
   },
   "g1u01.w.here": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1077"
   },
   "g1u01.w.our": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1087"
   },
   "g1u01.w.must": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1085"
   },
   "g1u01.w.let-s": {
    "cards": "exempt",
    "reason": "Funktionswort: auf A1-Niveau ist das kein Wort, das ein Kind als ANTWORT gibt — es lebt in Saetzen, die das Kind liest. Eine Karte, deren richtige Antwort »or« oder »then« ist, prueft nichts. Diese Woerter gehoeren auf die Regel-Seiten und in die Lese-Zeilen, nicht in eine Karten-Antwort.",
-   "until": "2026-12-31"
+   "offen": "D-1081"
   },
   "g1u01.w.to-give": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1097"
   },
   "g1u01.w.to-understand": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1105"
   },
   "g1u01.w.to-enjoy": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1095"
   },
   "g1u01.w.to-love": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1100"
   },
   "g1u01.w.to-ask": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1093"
   },
   "g1u01.w.to-meet": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1101"
   },
   "g1u01.w.to-eat": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1094"
   },
   "g1u01.w.to-hate": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1098"
   },
   "g1u01.w.to-find": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1096"
   },
   "g1u01.w.favourite": {
    "cards": "exempt",
    "reason": "Die Befehls-Plaetze des Kapitels sind vergeben (Bleistift 3 · Merle 6 · Tueren 3), und ein Befehl braucht eine Handlung, die das Wesen im Bild wirklich TUT — sonst behauptet die Karte etwas, das die Welt nicht zeigt. Fuer diese Verben tut in ch01 niemand etwas Sichtbares; sie kommen mit den Wesen spaeterer Kapitel oder als Regel-Seiten-Inhalt.",
-   "until": "2026-12-31"
+   "offen": "D-1076"
   },
   "g1u01.w.i-am-fine": {
    "cards": "exempt",
-   "until": "2026-12-31",
+   "offen": "D-1079",
    "reason": "Die FRAGE »How are you?« ist auf zwei Karten die Antwort (door.p2.d3 und enc.pen.k1); die Erwiderung »I'm fine, thanks.« ist die andere Haelfte desselben Wechsels und braucht eine Karte, die das Kind ANTWORTEN laesst statt fragen. Dafuer muesste ein Wesen das Kind zuerst fragen — in ch01 fragt kein Wesen zurueck. Als Wesen-Wunsch fuer die naechste Welle notiert."
   }
  },

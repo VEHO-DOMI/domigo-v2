@@ -46,7 +46,9 @@ const POLICY: VarietyPolicy = {
 
 /** Run the laws and return only the law ids that fired — the shape every test
  *  below asserts on, so a failure names the law rather than a wall of prose. */
-function laws(items: GameTaskV2[], policy: VarietyPolicy = POLICY): string[] {
+const findingScope = (id: string) => `content/corpus/stories/g1.st.lost-pages/paint/ch01.policy.json#/vocabLedger/${id}`;
+const fixtureFindings = new Map([["D-1", findingScope("g1u01.w.rubber")], ["D-2", findingScope("g1u01.w.book")]]);
+function laws(items: GameTaskV2[], policy: VarietyPolicy = POLICY, today = "2026-08-13", openFindings: ReadonlyMap<string, string> = fixtureFindings): string[] {
   return varietyErrors({
     chapter: "ch01",
     items,
@@ -55,7 +57,7 @@ function laws(items: GameTaskV2[], policy: VarietyPolicy = POLICY): string[] {
     wordbank,
     structureIds,
     lexicon,
-    today: "2026-08-13",
+    today, openFindings,
   }).map((e) => e.law);
 }
 const detailOf = (items: GameTaskV2[], law: string, policy: VarietyPolicy = POLICY): string =>
@@ -314,23 +316,28 @@ describe("17 · the COVERAGE LEDGER (B8) — answered, offered, or declared", ()
     const declared: VarietyPolicy = {
       ...POLICY,
       chapters: { ch01: { families: [], lexiconClasses: {}, vocabLedger: {
-        "g1u01.w.rubber": { cards: "exempt", reason: "no world anchor in ch01", until: "2026-12-31" },
-        "g1u01.w.book": { cards: "exempt", reason: "no world anchor in ch01", until: "2026-12-31" },
+        "g1u01.w.rubber": { cards: "exempt", reason: "no world anchor in ch01", offen: "D-1" },
+        "g1u01.w.book": { cards: "exempt", reason: "no world anchor in ch01", offen: "D-2" },
       } } },
     };
-    expect(laws(one, declared)).not.toContain("17a");
+    expect(laws(one, declared).filter(l => ["17a", "17e", "17f"].includes(l))).toEqual([]);
+    expect(laws(one, declared, "2099-01-01")).toEqual(laws(one, declared));
+    expect(laws(one, declared, "2026-08-13", new Map())).toContain("17e");
+    expect(laws(one, declared, "2099-01-01", new Map())).toContain("17e");
+    expect(laws(one, declared, "2026-08-13", new Map([["D-1", findingScope("g1u01.w.book")]]))).toContain("17e");
   });
 
-  it("refuses a reason-less, an expired, an unknown and a STALE entry", () => {
-    const bad = (ledger: Record<string, { cards: "offered" | "exempt"; reason?: string; until?: string }>): VarietyPolicy =>
+  it("refuses a reason-less, an unbound, an unknown and a STALE entry", () => {
+    const bad = (ledger: Record<string, { cards: "offered" | "exempt"; reason?: string; offen?: string; until?: string }>): VarietyPolicy =>
       ({ ...POLICY, chapters: { ch01: { families: [], lexiconClasses: {}, vocabLedger: ledger } } });
     const one = [choice("a", { exercises: ["g1u01.w.pencil"] })];
     expect(laws(one, bad({ "g1u01.w.rubber": { cards: "exempt" } }))).toContain("17f");
-    expect(laws(one, bad({ "g1u01.w.rubber": { cards: "exempt", reason: "r", until: "2020-01-01" } }))).toContain("17e");
-    expect(laws(one, bad({ "g1u01.w.ghost": { cards: "exempt", reason: "r", until: "2026-12-31" } }))).toContain("17d");
+    expect(laws(one, bad({ "g1u01.w.rubber": { cards: "exempt", reason: "r", offen: "D-1", until: "2099-01-01" } }))).toContain("17f");
+    expect(laws(one, bad({ "g1u01.w.rubber": { cards: "exempt", reason: "r", offen: "D-0" } }))).toContain("17e");
+    expect(laws(one, bad({ "g1u01.w.ghost": { cards: "exempt", reason: "r", offen: "D-1" } }))).toContain("17d");
     // the stale one: the item IS answered now, so the exemption must go — a stale
     // exemption is how the NEXT gap hides
-    expect(laws(one, bad({ "g1u01.w.pencil": { cards: "exempt", reason: "r", until: "2026-12-31" } }))).toContain("17c");
+    expect(laws(one, bad({ "g1u01.w.pencil": { cards: "exempt", reason: "r", offen: "D-1" } }))).toContain("17c");
   });
 
   it("refuses `offered` for a word that appears on no card at all", () => {
@@ -338,7 +345,7 @@ describe("17 · the COVERAGE LEDGER (B8) — answered, offered, or declared", ()
     const claimed: VarietyPolicy = {
       ...POLICY,
       chapters: { ch01: { families: [], lexiconClasses: {}, vocabLedger: {
-        "g1u01.w.rubber": { cards: "offered", reason: "as a distractor", until: "2026-12-31" },
+        "g1u01.w.rubber": { cards: "offered", reason: "as a distractor", offen: "D-1" },
       } } },
     };
     expect(laws(one, claimed)).toContain("17b");
