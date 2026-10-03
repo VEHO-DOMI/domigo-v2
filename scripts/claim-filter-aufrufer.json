@@ -1,0 +1,61 @@
+{
+  "warum": "dach-100 · Die Pruefung »aufrufer« in scripts/check-claim-filter.mjs. Eine Ausnahme ohne Ausschnitt (scripts/claim-filter-allowlist.json) stimmt nur, solange ihre Kennung aus der Sitzung, aus einem signierten Push oder aus einer schon gefilterten Lesung kommt. Darum steht hier JEDER Aufruf in apps/web und packages/db (ohne Tests) als »Datei · Ausdruck des Arguments hinter db«. Ein neuer Aufruf, ein anderer Ausdruck, ein umbenannter Import oder ein Weiterreichen als Wert ist rot, bis jemand die Herkunft gelesen und hier eingetragen hat. Eine leere Liste heisst TOT: die Funktion hat keinen Aufrufer und darf keinen bekommen (der Ausnahme-Satz beginnt dann mit »TOT«). Entwickler-Skripte unter scripts/ zaehlen nicht. Ein Aufruf aus einer selbst TOTEN Funktion in packages/db (z. B. createClass → allocateClassCode) belebt nichts wieder und zaehlt nicht.",
+  "funktionen": {
+    "assignment-session-service.ts#getSessionAttempts": [
+      "apps/web/app/admin/assignments/[id]/page.tsx · stu.id",
+      "apps/web/app/api/assignments/submit/route.ts · acting.userId"
+    ],
+    "class-service.ts#resolveTeacherNames": [
+      "apps/web/app/admin/classes/[id]/hoeren/page.tsx · [foreign.teacherId]",
+      "apps/web/app/admin/classes/[id]/page.tsx · [foreign.teacherId]",
+      "apps/web/app/admin/classes/[id]/roster/page.tsx · [foreign.teacherId]",
+      "apps/web/app/admin/classes/[id]/schreiben/page.tsx · [foreign.teacherId]",
+      "apps/web/app/admin/classes/[id]/schreiben/page.tsx · benoterIds",
+      "packages/db/src/class-service.ts · classes.map((c) => c.teacherId)"
+    ],
+    "game-progress.ts#getSolvedGameItemIds": [
+      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId",
+      "apps/web/app/(game)/play/[grade]/page.tsx · acting.userId",
+      "apps/web/app/(game)/play/[grade]/school/page.tsx · access.player.userId",
+      "apps/web/app/api/school/route.ts · access.player.userId"
+    ],
+    "gamesave.ts#getGameSave": [
+      "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId",
+      "apps/web/app/(game)/play/[grade]/world/page.tsx · acting.userId",
+      "apps/web/app/api/game-save/route.ts · acting.userId"
+    ],
+    "journey-progress.ts#getJourneyAttempts": [
+      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId",
+      "apps/web/app/learn/[slug]/page.tsx · userId"
+    ],
+    "studypath.ts#getPathSummary": [
+      "apps/web/app/learn/page.tsx · session.user.id"
+    ],
+    "studypath.ts#getUnitPathProgress": [
+      "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId",
+      "apps/web/app/learn/[slug]/page.tsx · acting.userId"
+    ],
+    "konto-identity.ts#findKontoIdentity": [
+      "apps/web/lib/konto/anmeldung.ts · claims.app_user_id"
+    ],
+    "konto-identity.ts#createKontoTeacher": [
+      "apps/web/lib/konto/anmeldung.ts · { displayName: name, pinHash }"
+    ],
+    "konto-loeschung.ts#deleteUserData": [
+      "apps/web/app/api/konto/account-deleted/route.ts · id"
+    ],
+    "auth.ts#allocateClassCode": [],
+    "auth.ts#lookupTeacherAuthById": [],
+    "auth.ts#lookupTeacherForAuth": [],
+    "bootstrap-teacher.ts#adoptAssignments": [],
+    "bootstrap-teacher.ts#createV2Teacher": [],
+    "bootstrap-teacher.ts#hasV2Teacher": [],
+    "class-service.ts#createClass": [],
+    "teacher-claim.ts#teacherNameTaken": [],
+    "teacher-identity.ts#deleteTeacherIdentity": [],
+    "teacher-identity.ts#getTeacherEmail": [],
+    "teacher-identity.ts#upsertTeacherIdentity": [],
+    "teacher-claim.ts#listClaimableClasses": [],
+    "teacher-claim.ts#claimClassAsTeacher": []
+  }
+}

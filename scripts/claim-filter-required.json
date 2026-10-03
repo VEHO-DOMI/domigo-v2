@@ -45,29 +45,7 @@
     "writing-review.ts#gradeSubmission": 2
   },
   "bestand": {
-    "hinweis": "Stand 19.09.2026 (dach-063, gemessen): exportierte Funktionen, die eine Klassen-Tabelle beruehren, ohne einen Ausschnitt zu nehmen und ohne Ausnahme-Satz. Sie lesen meist nach der eigenen Kennung (Kind, Lehrkraft, Sitzung). Einzeln NICHT geprueft — der GG entscheidet je Eintrag: Ausschnitt nehmen oder Ausnahme mit Satz. Diese Liste darf nur schrumpfen; ein Eintrag, dessen Funktion verschwindet, einen Ausschnitt bekommt oder keine Klassen-Tabelle mehr beruehrt, ist rot.",
-    "funktionen": [
-      "assignment-session-service.ts#getSessionAttempts",
-      "auth.ts#allocateClassCode",
-      "auth.ts#lookupTeacherAuthById",
-      "auth.ts#lookupTeacherForAuth",
-      "bootstrap-teacher.ts#adoptAssignments",
-      "bootstrap-teacher.ts#createV2Teacher",
-      "bootstrap-teacher.ts#hasV2Teacher",
-      "class-service.ts#createClass",
-      "class-service.ts#resolveTeacherNames",
-      "game-progress.ts#getSolvedGameItemIds",
-      "gamesave.ts#getGameSave",
-      "journey-progress.ts#getJourneyAttempts",
-      "konto-identity.ts#createKontoTeacher",
-      "konto-identity.ts#findKontoIdentity",
-      "konto-loeschung.ts#deleteUserData",
-      "studypath.ts#getPathSummary",
-      "studypath.ts#getUnitPathProgress",
-      "teacher-claim.ts#teacherNameTaken",
-      "teacher-identity.ts#deleteTeacherIdentity",
-      "teacher-identity.ts#getTeacherEmail",
-      "teacher-identity.ts#upsertTeacherIdentity"
-    ]
+    "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",
+    "funktionen": []
   }
 }
