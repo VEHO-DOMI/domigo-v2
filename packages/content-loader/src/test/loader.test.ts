@@ -32,12 +32,13 @@ test("loadUnit rejects a bad slug", () => {
   assert.throws(() => loadUnit("../etc"), /bad unit slug/);
 });
 
-test("listReleasedStories derives one story per grade from the corpus (all four grades released)", () => {
+test("listReleasedStories derives one story per grade from the corpus (year 1 parked)", () => {
   const stories = listReleasedStories();
   assert.deepEqual(
     stories.map((s) => [s.grade, s.storyId]),
     [
-      [1, "g1.st.lost-pages"],
+      // cgo-047 · Koki 02.10.: the year-1 overworld "Die verlorenen Seiten" is sunset
+      // (release.json parked, 0 chapters); the painted book is the year-1 game being built.
       [2, "g2.st.wrong-name"],
       [3, "g3.st.fourteen"],
       [4, "g4.st.fourteen-live"], // B-3: Season 2 is now the released g4 game; "Lost for Words" is parked
@@ -49,6 +50,7 @@ test("listReleasedStories derives one story per grade from the corpus (all four 
 test("storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)", () => {
   assert.equal(storyIdForGrade(3), "g3.st.fourteen"); // the stale app-side map missed g3 — this is the regression guard
   assert.equal(storyIdForGrade(4), "g4.st.fourteen-live"); // B-3 swap: the full FOURTEEN: LIVE season on the game-trip runtime
+  assert.equal(storyIdForGrade(1), null); // cgo-047: the year-1 overworld is sunset; no released year-1 story until the painted book ships
 });
 
 // ─────────────────────────────────────── B-0: canonical|bonus release ────

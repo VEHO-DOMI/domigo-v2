@@ -22,7 +22,7 @@ import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/game-core";
-import { resolveStudentView } from "@/lib/student-view";
+import { isPreview, resolveStudentView, yearRedirect } from "@/lib/student-view";
 import PreviewBanner from "@/app/PreviewBanner";
 import { resolveTileArt } from "@/lib/tile-art";
 import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
@@ -89,10 +89,9 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
 
   const view = await resolveStudentView();
   if (!view) redirect("/signin");
-  if (view.kind === "student" && !view.grades.includes(grade)) {
-    redirect(view.grades.length > 0 ? `/play/${view.grades[0]}` : "/home");
-  }
-  const preview = view.kind === "preview";
+  const away = yearRedirect(view, grade);
+  if (away) redirect(away);
+  const preview = isPreview(view);
   const acting = view.kind === "student" ? view.player : null;
   const playerId = view.kind === "student" ? view.player.userId : view.teacher.userId;
   const banner = preview ? <PreviewBanner grade={grade} /> : null;
