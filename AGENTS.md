@@ -9,7 +9,7 @@ Gilt seit 04.10.2026 (Charta F4, Masterplan cgo-072, Kokis Freigabe cgo-073). Er
 - Gemergt wird vom Claude-Sitz GG-DomiGo nach grüner Batterie und blindem Leser.
 
 ## Tore
-- Vor `review` einmal alle einzeiligen `- run:`-Zeilen aus `.github/workflows/ci.yml` plus `pnpm build` und `pnpm check:bundle`; Ausgaben in Dateien außerhalb des Repos; Exit-Codes als Tabelle in den PR-Text.
+- Vor `review` die Tore deiner Dateien (`scripts/check-*.mjs` mit und ohne `--selftest`, `pnpm test` der berührten Pakete, `pnpm typecheck`, `pnpm lint`); Ausgaben in Dateien außerhalb des Repos; Exit-Codes als Tabelle in den PR-Text. Die vollständige `ci.yml`-Batterie plus `pnpm build` und `pnpm check:bundle` fährt der GG in seiner Merge-Kette (du reservierst kein Schloss und schreibst nicht in `~/Code/_gg`); im Bericht steht dann »Vollbatterie: UNVERIFIZIERT, läuft in der GG-Kette« (F4 §3, Lehre cgo-075).
 - Jede neue Prüfung bekommt einen Tamper (absichtlicher Fehler, der rot werden muss); nur eigene Bytes zurücknehmen (`git checkout -- <datei>`).
 - Berührt der PR Rendering, Assets, Entities oder Karten-DOM: PERF-WÄCHTER-Tabelle nach `docs/PERF_WAECHTER.md` (CI-Job `perf-contract` prüft sie).
 - Rohlogs, Bilder und Berichte nie ins Repo committen.
