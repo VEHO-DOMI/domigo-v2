@@ -69,6 +69,8 @@ import { answerSurfaceOf, hasWord } from "../packages/game-paint/src/cards/varie
 // enforced copy (PK-R3b).
 import { HOSTILE_ROLES, allPhasesOf, askerUsesOf, raisedUsesOf } from "../packages/game-paint/src/cards/serving.ts";
 import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
+import { openFindingMap, findingError, artFindingScope } from "./paint-art-claims.mjs";
+const OPEN_FINDINGS = openFindingMap(fs.readFileSync("docs/design/g1/paint/DEBT_REGISTER.md", "utf8"));
 
 const STORIES = "content/corpus/stories";
 // L0 · D10 · DIE UNIT KOMMT VOM KAPITEL, NICHT AUS DIESER ZEILE.
@@ -141,8 +143,7 @@ const ALLE_LEXIKON_WOERTER = (() => {
   }
   return out;
 })();
-// the ledger's expiry dates are compared against a date the CHECKER supplies —
-// variety.ts stays pure so its tests cannot rot with the calendar.
+// Date is retained as a test input; the ledger uses exact open findings only.
 const TODAY = new Date().toISOString().slice(0, 10);
 
 // ── the painted stems that exist on disk (mirrors check-paint-art's walk) ────
@@ -183,7 +184,7 @@ const gemaltFuer = (chapter) => {
 };
 
 // L0c · P9 (D-880) · DIE FREILISTE, nur konsultiert. Ihre Hygiene (Grund,
-// Ablaufdatum, ueberfluessige Eintraege) gehoert `check-paint-art` — zwei
+// exakte offene Befundbindung, ueberfluessige Eintraege) gehoert `check-paint-art` — zwei
 // Besitzer fuer eine Datei sind ein Streit, kein Gesetz. Hier zaehlt allein:
 // steht dieser Stem heute noch geduldet drin?
 const KUNST_FREILISTE = (() => {
@@ -1232,7 +1233,7 @@ function checkPortraits(file, items, cx, bestand = D987_BESTAND) {
       // Blatt auf der Platte. Bei `draft:false` bleibt das Gesetz scharf, und
       // die Freiliste ist der einzige Weg daran vorbei (Only-Present unveraendert).
       const geduldet = KUNST_FREILISTE.get(stem);
-      const nochGueltig = geduldet !== undefined && String(geduldet.until ?? "") >= TODAY;
+      const nochGueltig = geduldet !== undefined && geduldet.until === undefined && typeof geduldet.reason === "string" && geduldet.reason.trim() !== "" && findingError(geduldet.offen, artFindingScope(stem), OPEN_FINDINGS) === null;
       // L0e · D-987 · SPERRKLINKE: ein Stem, der NUR fuer ein fremdes Kapitel
       // gemalt ist, ist keine Kunst, die spaeter kommt (D-880), sondern eine
       // Karte, die ein Blatt verspricht, das ihr Kapitel nie laden kann.
@@ -2014,6 +2015,7 @@ for (const cx of withTasks) {
     structureIds,
     lexicon: words,
     today: TODAY,
+    openFindings: OPEN_FINDINGS,
   })) {
     fail(`${file} ${e.where}`, `${e.law} · ${e.detail}`);
   }

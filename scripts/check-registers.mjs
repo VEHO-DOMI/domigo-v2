@@ -54,6 +54,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { findingRows, openFindingMap, findingError, vocabFindingScope, claimFindingScope, artFindingScope } from "./paint-art-claims.mjs";
 
 const R = process.cwd();
 const DEBT = "docs/design/g1/paint/DEBT_REGISTER.md";
@@ -306,7 +307,57 @@ const uniqueLaw = (label, ids, { gapless = false } = {}) => {
   return { count: ids.length, unique: seen.size };
 };
 
+/** Every old row has an explicit bookkeeping state; historical is not current. */
+export const registerStatusLaw = text => text.split("\n").flatMap((line, index) => {
+  const m = line.match(/^\| (?:~~)?(D-\d+)(?:~~)? \|([^|]*)\|/);
+  if (!m) return [];
+  const state = m[2].trim();
+  return /^(?:offen|geschlossen|historisch ungeklärt \/ UNVERIFIZIERT|historisch geschlossen \/ aktuell UNVERIFIZIERT|historisch: .+ \/ aktuell UNVERIFIZIERT)$/.test(state)
+    ? [] : [`${m[1]} Zeile ${index + 1}: Registerstatus fehlt oder ist ungültig`];
+});
+/** Bidirectional: a declaration needs its exact open row, and an open source
+ * binding must still have its declaration. No count inferred from prose. */
+export const exceptionRegisterLaw = (text, declarations) => {
+  const open = openFindingMap(text), errors = [];
+  const used = new Map();
+  for (const { id, scope, hasExpiry } of declarations) {
+    const error = findingError(id, scope, open);
+    if (error) errors.push(error);
+    if (hasExpiry) errors.push(`${scope}: Kalender-Verfall ist kein Befundvertrag`);
+    if (used.has(id)) errors.push(`${id}: Befund wird mehrfach beansprucht`);
+    used.set(id, scope);
+  }
+  for (const row of findingRows(text)) {
+    if (row.status !== "offen" && row.status !== "geschlossen") errors.push(`${row.id}: Befundstatus muss offen oder geschlossen sein`);
+    if (row.status === "offen" && !row.scope.startsWith("scripts/check-ground-plane.mjs#/") && used.get(row.id) !== row.scope) {
+      errors.push(`${row.id}: offener Befund ohne passende Ausnahmedeklaration — Bedarf entfallen oder Bindung falsch`);
+    }
+  }
+  return errors;
+};
+const declarations = [];
+const paintDir = "content/corpus/stories/g1.st.lost-pages/paint";
+for (const file of fs.readdirSync(path.join(R, paintDir)).filter(f => /^ch\d+\.policy\.json$/.test(f)).sort()) {
+  const policy = JSON.parse(read(`${paintDir}/${file}`)), chapter = file.split(".")[0];
+  for (const [key, entry] of Object.entries(policy.vocabLedger ?? {})) {
+    declarations.push({ id: entry.offen, scope: vocabFindingScope(chapter, key), hasExpiry: entry.until !== undefined });
+  }
+}
+for (const dir of DOSSIER_DIRS) {
+  const file = `docs/design/g1/paint/${dir}/claims.json`;
+  if (!fs.existsSync(path.join(R, file))) continue;
+  const claims = JSON.parse(read(file));
+  for (const [key, claim] of Object.entries(claims.claims ?? {})) if (claim.exception !== undefined) {
+    declarations.push({ id: claim.exception.offen, scope: claimFindingScope(dir.split("-")[0], key), hasExpiry: claim.exception.expires !== undefined });
+  }
+}
+for (const entry of JSON.parse(read("scripts/paint-art-allowlist.json"))) {
+  declarations.push({ id: entry.offen, scope: artFindingScope(entry.stem), hasExpiry: entry.until !== undefined });
+}
 const debtText = read(DEBT);
+for (const error of registerStatusLaw(debtText)) fail(error);
+for (const error of exceptionRegisterLaw(debtText, declarations)) fail(error);
+
 const debt = uniqueLaw("Schulden-Register (D-nn)", rowIds(debtText, "D"));
 const pit = uniqueLaw("Fallen-Register (PB-nn)", entryIds(read(PITFALLS), "PB"), { gapless: true });
 
@@ -417,7 +468,31 @@ for (const msg of offenLaw(debtText, LINE_REF_OFFEN, LINE_REF_ALLOW.length)) fai
 
 // ── Selbsttest: jedes rote Licht einmal wirklich gesehen ────────────────────
 if (selftest) {
+  const witness = declarations[0];
+  if (!witness || exceptionRegisterLaw(debtText, declarations).length) throw new Error("cgo-017: echte Befundbindung fehlt oder ist ungültig");
   const cases = [
+    ["cgo-017 · Statusspalte fehlt", () => {
+      const t = debtText.replace(/^(\| (?:~~)?D-\d+(?:~~)? \|)[^|]*\|/m, "$1 unklar |");
+      if (registerStatusLaw(t).length) fail("x");
+    }],
+    ["cgo-017 · fehlender Befund", () => {
+      const t = debtText.split("\n").filter(l => !l.startsWith(`| ${witness.id} |`)).join("\n");
+      if (exceptionRegisterLaw(t, declarations).some(e => e.includes(witness.id))) fail("x");
+    }],
+    ["cgo-017 · geschlossener Befund", () => {
+      const t = debtText.replace(`| ${witness.id} | offen |`, `| ${witness.id} | geschlossen |`);
+      if (exceptionRegisterLaw(t, declarations).some(e => e.includes(witness.id))) fail("x");
+    }],
+    ["cgo-017 · fremder Befund", () => {
+      const t = declarations.map((d, i) => i ? d : { ...d, id: declarations[1].id });
+      if (exceptionRegisterLaw(debtText, t).some(e => e.includes(witness.scope))) fail("x");
+    }],
+    ["cgo-017 · ausgelassene Ausnahme", () => {
+      if (exceptionRegisterLaw(debtText, declarations.slice(1)).some(e => e.includes(witness.id))) fail("x");
+    }],
+    ["cgo-017 · Kalenderfeld kehrt zurück", () => {
+      if (exceptionRegisterLaw(debtText, declarations.map((d, i) => i ? d : { ...d, hasExpiry: true })).some(e => e.includes("Kalender"))) fail("x");
+    }],
     ["doppelte D-Nummer", () => uniqueLaw("x", [1, 2, 2, 3])],
     ["doppelte PB-Nummer", () => uniqueLaw("x", [1, 2, 2], { gapless: true })],
     ["Lücke in der PB-Folge", () => uniqueLaw("x", [1, 3], { gapless: true })],

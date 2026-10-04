@@ -44,7 +44,9 @@ import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
 import { askerUsesOf } from "../packages/game-paint/src/cards/serving.ts";
 import { replayPhaseTape, newChapterShell, worldAssertionErrors } from "../packages/game-paint/src/tape.ts";
 
+import { openFindingMap, findingError, claimFindingScope } from "./paint-art-claims.mjs";
 const ROOT = path.resolve(import.meta.dirname, "..");
+const OPEN_FINDINGS = openFindingMap(fs.readFileSync(path.join(ROOT, "docs/design/g1/paint/DEBT_REGISTER.md"), "utf8"));
 
 const fails = [];
 const ledger = skipLedger();
@@ -195,7 +197,7 @@ const passiveContext = (level, cp, entries, items) => {
     policy: { ...VARIETY_POLICY, chapters: { ch01: { families: cp.families ?? [], lexiconClasses: cp.lexiconClasses ?? {}, vocabLedger: cp.vocabLedger ?? {} } } },
     wordbank: entries.filter(e => e.kind === "wordfile").map(e => ({ id: e.id, en: e.en, forms: [e.en, ...(e.forms ?? [])] })),
     passiveCoverage: cp.passiveCoverage, fieldForms: cp.fieldForms,
-    structureIds: [], lexicon: new Set(), today: TODAY,
+    structureIds: [], lexicon: new Set(), today: TODAY, openFindings: OPEN_FINDINGS,
   }).filter(e => e.law === "17p" || e.law === "17q");
   return { level, policy: cp, errors };
 };
@@ -218,7 +220,7 @@ const passiveClaimError = (claim, entry, cx) => {
 
 /** Der eine Block, den auch der Selbsttest fährt: Ansprüche gegen Level UND
  *  Karten, plus die Hygiene der Ausnahmen selbst. */
-export const claimFails = (claims, entries, skins, items, today, clothStems = new Set(), passive = null) => {
+export const claimFails = (claims, entries, skins, items, today, clothStems = new Set(), passive = null, chapter = "ch01", openFindings = OPEN_FINDINGS) => {
   const out = [];
   if (passive) for (const e of passive.errors) out.push(`abdeckung passivePickup: ${e.law} ${e.detail}`);
   const answerBlob = items.flatMap((t) => answerWordsOf(t)).join(" | ");
@@ -236,6 +238,7 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
     if (entry.kind !== "wordfile") continue;
     const claim = claims[entry.en];
     if (!claim) { out.push(`abdeckung: wordfile "${entry.en}" ist unklassifiziert (README §Abdeckung nachziehen)`); continue; }
+    if (claim.exception !== undefined && claim.kind !== "cards") out.push(`abdeckung: "${entry.en}" trägt eine unnötige Ausnahme außerhalb eines cards-Anspruchs (D-77)`);
     if ((claim.kind === "being" || claim.kind === "thing") && !claim.stems.some((s) => skins.has(s))) {
       out.push(`abdeckung: "${entry.en}" behauptet ${claim.kind} [${claim.stems.join("|")}], aber kein Stem im Level (B8)`);
     }
@@ -266,7 +269,7 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
     const ex = claim.exception;
     if (ex === undefined) {
       if (!answered) {
-        out.push(`abdeckung: "${entry.en}" behauptet Karten-Abdeckung, aber keine Karte lässt es ANTWORTEN (Ablenker zählt nicht) — beantworten oder mit { why, expires, owner } deklarieren (D-77)`);
+        out.push(`abdeckung: "${entry.en}" behauptet Karten-Abdeckung, aber keine Karte lässt es ANTWORTEN (Ablenker zählt nicht) — beantworten oder mit { why, offen, owner } deklarieren (D-77)`);
       }
       continue;
     }
@@ -275,18 +278,17 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
       out.push(`abdeckung: "${entry.en}" trägt eine Ausnahme, wird aber inzwischen von einer Karte beantwortet — Ausnahme entfernen (D-77)`);
       continue;
     }
-    if (!ex.why || !ex.expires || !ex.owner) {
-      out.push(`abdeckung: die Ausnahme für "${entry.en}" braucht why, expires UND owner — eine Lücke ohne Termin und ohne Namen ist keine Entscheidung (D-77)`);
-    } else if (ex.expires < today) {
-      out.push(`abdeckung: die Ausnahme für "${entry.en}" ist am ${ex.expires} abgelaufen (Besitzer: ${ex.owner}) — beantworten oder mit frischem Grund erneuern (D-77)`);
+    if (typeof ex.why !== "string" || !ex.why.trim() || typeof ex.owner !== "string" || !ex.owner.trim() || ex.expires !== undefined) {
+      out.push(`abdeckung: die Ausnahme für "${entry.en}" braucht why, offen UND owner, ohne Kalender-Verfall (D-77)`);
     }
+    const error = findingError(ex.offen, claimFindingScope(chapter, entry.en), openFindings);
+    if (error) out.push(`abdeckung: "${entry.en}": ${error} (D-77)`);
   }
   return out;
 };
 
-// Der Ablauf-Termin wird gegen ein Datum geprüft, das der CHECKER liefert —
-// `claimFails` bleibt rein, damit sein Selbsttest nicht mit dem Kalender rottet
-// (dieselbe Trennung wie variety.ts / check-game-tasks TODAY).
+// Datum bleibt ein Testeingang: die Sachentscheidung liest ausschließlich
+// den genauen offenen Befund und den tatsächlichen Ausnahmebedarf.
 const TODAY = new Date().toISOString().slice(0, 10);
 
 /** Block 2 für EIN Kapitel. Braucht drei Eingaben (Ansprüche, Wortbank, Karten);
@@ -307,7 +309,7 @@ const coverageFails = (cx, claims) => {
     // nur die Stems, die wirklich als Rolle `cloth` liegen — `pickup` fragt nach
     // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
     new Set(cx.phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
-    readPassiveContext(cx, wordbank.entries, items),
+    readPassiveContext(cx, wordbank.entries, items), cx.chapter, OPEN_FINDINGS,
   ).map((f) => `${cx.chapter} ${f}`);
 };
 
@@ -721,8 +723,9 @@ if (process.argv.includes("--selftest")) {
   const askShirt = { kind: "choice", answer: "shirt" };
   // die echte Form aus enc.ranzen.q3: `shirt` ist ITEM, aber nicht `correct`
   const oddoneShirt = { kind: "oddone", items: ["school tie", "shirt", "socks", "pencil"], correct: ["pencil"] };
-  const EX = { why: "w", expires: "2026-12-31", owner: "Welle 5 / Uniform" };
-  const claims2 = (claims, entries, items, today = IN_2026) => claimFails(claims, entries, NOSKINS, items, today);
+  const EX = { why: "w", offen: "D-1", owner: "Welle 5 / Uniform" };
+  const testFindings = new Map([["D-1", claimFindingScope("ch01", "shirt")]]);
+  const claims2 = (claims, entries, items, today = IN_2026) => claimFails(claims, entries, NOSKINS, items, today, new Set(), null, "ch01", testFindings);
 
   cases.push(
     ["ABDECKUNG · ein `cards`-Anspruch ohne Antwort-Karte ist rot",
@@ -738,15 +741,24 @@ if (process.argv.includes("--selftest")) {
     ["ABDECKUNG · …und dieselbe oddone-Karte wird grün, sobald das Wort die LÖSUNG ist",
       claims2({ shirt: { kind: "cards" } }, [ENTRY("shirt")], [{ ...oddoneShirt, correct: ["shirt"] }]),
       (f) => f.length === 0],
+    ["ABDECKUNG · Ausnahme auf anderem Anspruchstyp ist unnötig",
+      claims2({ shirt: { kind: "architecture", exception: EX } }, [ENTRY("shirt")], []),
+      f => f.some(x => /unnötige Ausnahme/.test(x))],
     ["ABDECKUNG · eine deklarierte, gültige Ausnahme schweigt",
       claims2({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], []),
       (f) => f.length === 0],
-    ["ABDECKUNG · eine ABGELAUFENE Ausnahme ist rot",
-      claims2({ shirt: { kind: "cards", exception: { ...EX, expires: "2026-01-01" } } }, [ENTRY("shirt")], []),
-      (f) => f.some((x) => /abgelaufen/.test(x))],
+    ["ABDECKUNG · dieselbe Ausnahme bleibt 2099 unverändert",
+      claims2({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], [], "2099-01-01"), f => f.length === 0],
+    ["ABDECKUNG · geschlossener oder fehlender Befund ist rot",
+      claimFails({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], NOSKINS, [], IN_2026, new Set(), null, "ch01", new Map()), f => f.some(x => /Befund/.test(x))],
+    ["ABDECKUNG · gültiger Befund eines fremden Kapitels ist rot",
+      claimFails({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], NOSKINS, [], IN_2026, new Set(), null, "ch02", testFindings), f => f.some(x => /Befund/.test(x))],
+    ["ABDECKUNG · ein unbekannter Befund ist rot",
+      claims2({ shirt: { kind: "cards", exception: { ...EX, offen: "D-0" } } }, [ENTRY("shirt")], []),
+      (f) => f.some((x) => /Befund/.test(x))],
     ["ABDECKUNG · eine Ausnahme ohne Besitzer ist rot",
-      claims2({ shirt: { kind: "cards", exception: { why: "w", expires: "2026-12-31" } } }, [ENTRY("shirt")], []),
-      (f) => f.some((x) => /why, expires UND owner/.test(x))],
+      claims2({ shirt: { kind: "cards", exception: { why: "w", offen: "D-1" } } }, [ENTRY("shirt")], []),
+      (f) => f.some((x) => /why, offen UND owner/.test(x))],
     ["ABDECKUNG · eine Ausnahme auf einem inzwischen beantworteten Wort ist rot (sie versteckt die nächste Lücke)",
       claims2({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], [askShirt]),
       (f) => f.some((x) => /inzwischen von einer Karte beantwortet/.test(x))],
@@ -933,7 +945,7 @@ if (process.argv.includes("--selftest")) {
     return ledgerDifferenz({
       chapter: "ch99", hasTasks: true, hasPolicy: true,
       wordbankPath: f("wordbank.json", { entries: [{ id: "x.shirt", en: "shirt", forms: ["shirt"] }] }),
-      policyPath: f("policy.json", { vocabLedger: { "x.shirt": { cards: "offered", reason: "r", until: "2026-12-31" } } }),
+      policyPath: f("policy.json", { vocabLedger: { "x.shirt": { cards: "offered", reason: "r", offen: "D-1" } } }),
       tasksPath: f("tasks.json", { items }),
     });
   };

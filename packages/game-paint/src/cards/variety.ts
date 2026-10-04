@@ -104,7 +104,7 @@ export interface VarietyPolicy {
      *  numbers and colours are taught by the unit but are not wordbank ENTRIES,
      *  so without this a wheel card could declare nothing true */
     lexiconClasses?: Record<string, { words: string[]; reason: string }>;
-    vocabLedger?: Record<string, { cards: "offered" | "exempt"; reason?: string; until?: string }>;
+    vocabLedger?: Record<string, { cards: "offered" | "exempt"; reason?: string; offen?: string; until?: string }>;
   }>;
 }
 
@@ -131,10 +131,10 @@ export interface VarietyInput {
   /** the lexicon the grounding law reads — a declared lexicon class must be made
    *  of words the unit actually teaches, not words an author wished for */
   lexicon: ReadonlySet<string>;
-  /** ISO date, passed IN rather than read: this module must stay pure so its
-   *  tests cannot rot with the calendar (and the repo forbids Date.now in the
-   *  game tree at all) */
+  /** Historical test input. No exception decision depends on this date. */
   today: string;
+  /** Exact source bindings from the open finding register; supplied by the authoring gate. */
+  openFindings?: ReadonlyMap<string, string>;
   /** L0 · D10 · die Feld-Formen dieses Kapitels (`chNN.policy.json#fieldForms`).
    *  `undefined` heisst »für dieses Kapitel noch nicht entschieden« — dann
    *  schweigt Gesetz 13a, wie es das für ein Kapitel ohne Tabelleneintrag
@@ -293,7 +293,7 @@ export function varietyErrors(input: VarietyInput): VarietyFailure[] {
 }
 
 function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[] {
-  const { chapter, items, level, policy, wordbank, structureIds, lexicon, today } = input;
+  const { chapter, items, level, policy, wordbank, structureIds, lexicon } = input;
   const out: VarietyFailure[] = [];
   const fail = (law: string, where: string, detail: string) => out.push({ law, where, detail });
 
@@ -749,10 +749,12 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       fail("17a", `${chapter}:ledger`, `unit item "${entry.en}" (${entry.id}) is exercised by no card and carries no ledger entry — every core word is answered, visibly collected, offered, or declared (doc 45 B8)`);
       continue;
     }
-    if (declared.reason === undefined || declared.reason.trim() === "" || declared.until === undefined) {
-      fail("17f", `${chapter}:ledger`, `entry "${entry.id}" needs a reason AND an until (see scripts/paint-art-allowlist.json for the form)`);
-    } else if (declared.until < today) {
-      fail("17e", `${chapter}:ledger`, `the entry for "${entry.id}" expired ${declared.until} — answer it or renew it with a fresh reason`);
+    if (typeof declared.reason !== "string" || !declared.reason.trim() || typeof declared.offen !== "string" || declared.until !== undefined) {
+      fail("17f", `${chapter}:ledger`, `entry "${entry.id}" needs a reason AND an open finding reference (offen), without a calendar expiry`);
+    }
+    const scope = `content/corpus/stories/g1.st.lost-pages/paint/${chapter}.policy.json#/vocabLedger/${entry.id}`;
+    if (typeof declared.offen !== "string" || !/^D-\d+$/.test(declared.offen) || input.openFindings?.get(declared.offen) !== scope) {
+      fail("17e", `${chapter}:ledger`, `the finding for "${entry.id}" is missing, closed or not bound to exactly ${scope}`);
     }
     if (declared.cards === "offered" && !entry.forms.some((f) => hasWord(optionBlob, norm(f)))) {
       fail("17b", `${chapter}:ledger`, `declares "${entry.id}" offered, but no card puts it on screen as an option at all — it is absent, not offered`);

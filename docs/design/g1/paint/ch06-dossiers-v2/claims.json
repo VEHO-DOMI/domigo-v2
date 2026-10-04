@@ -26,7 +26,7 @@
   "stems": [],
   "exception": {
    "why": "kommt als Kartenwort der Unit; im gebauten Raum steht kein Supermarkt",
-   "expires": "2026-12-31",
+   "offen": "D-1261",
    "owner": "L6-T2"
   }
  },
@@ -39,7 +39,7 @@
   "stems": [],
   "exception": {
    "why": "kein Wald im Kapitel; reines Kartenwort der Unit",
-   "expires": "2026-12-31",
+   "offen": "D-1274",
    "owner": "L6-T2"
   }
  },
@@ -52,7 +52,7 @@
   "stems": [],
   "exception": {
    "why": "Fundstück-Wort von p3; die pickupset-Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1273",
    "owner": "L6-T2"
   }
  },
@@ -61,7 +61,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1266",
    "owner": "L6-T2"
   }
  },
@@ -70,7 +70,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1269",
    "owner": "L6-T2"
   }
  },
@@ -79,7 +79,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1270",
    "owner": "L6-T2"
   }
  },
@@ -88,7 +88,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1272",
    "owner": "L6-T2"
   }
  },
@@ -97,7 +97,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1264",
    "owner": "L6-T2"
   }
  },
@@ -106,7 +106,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1262",
    "owner": "L6-T2"
   }
  },
@@ -115,7 +115,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1265",
    "owner": "L6-T2"
   }
  },
@@ -124,7 +124,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1271",
    "owner": "L6-T2"
   }
  },
@@ -133,7 +133,7 @@
   "stems": [],
   "exception": {
    "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1263",
    "owner": "L6-T2"
   }
  },
@@ -142,7 +142,7 @@
   "stems": [],
   "exception": {
    "why": "Tammos Befreiungs-Satz; die Rettungs-Karten kommen von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1267",
    "owner": "L6-T2"
   }
  },
@@ -151,7 +151,7 @@
   "stems": [],
   "exception": {
    "why": "das Motiv der Spiegelkammer; die Karte kommt von L6-T2",
-   "expires": "2026-12-31",
+   "offen": "D-1268",
    "owner": "L6-T2"
   }
  }
