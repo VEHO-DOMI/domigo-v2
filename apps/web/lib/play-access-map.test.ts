@@ -10,7 +10,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { describe, it } from "node:test";
-import { transpileModule } from "typescript";
+import { createSourceFile, forEachChild, isJsxSelfClosingElement, ScriptKind, ScriptTarget, transpileModule, type Node } from "typescript";
 
 const read = (rel: string) => fs.readFileSync(new URL(`../app/${rel}`, import.meta.url), "utf8");
 /** The source without comments — a header may NAME what the code must not call. */
@@ -30,11 +30,11 @@ describe("client guards — nothing leaves a preview", () => {
     it(`${file}: attempts and the outbox`, () => {
       const src = read(file);
       assert.doesNotMatch(src, /\bsendAttempt\b/, "attempts go through attemptSender(preview), never sendAttempt directly");
-      assert.match(src, /useOutboxFlush\(!preview\)/, "the outbox is not flushed in a preview");
-      for (const m of src.matchAll(/[^\n]*\bflushOutbox\(\)[^\n]*/g)) {
-        assert.match(m[0], /if \(!preview\) void flushOutbox\(\)/, `unguarded flush: ${m[0].trim()}`);
+      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId\)/, "the outbox is not flushed in a preview");
+      for (const m of src.matchAll(/[^\n]*\bflushOutbox\([^)]*\)[^\n]*/g)) {
+        assert.match(m[0], /if \(!preview\) void flushOutbox\(props\.ownerId\)/, `unguarded flush: ${m[0].trim()}`);
       }
-      for (const m of src.matchAll(/[^\n]*\battemptSender\(([^)]*)\)/g)) assert.equal(m[1], "preview");
+      for (const m of src.matchAll(/[^\n]*\battemptSender\(([^)]*)\)/g)) assert.match(m[1]!, /^preview, (?:props\.)?ownerId$/);
     });
   }
   for (const { file, save } of STORY_CLIENTS) {
@@ -189,6 +189,43 @@ describe("server write walls — a teacher session records nothing", () => {
       const src = read(file);
       assert.match(src, /const acting = await getActingUser\(req\);\n\s*if \(!acting\) return NextResponse\.json\(\{ ok: false, error: "no_identity" \}, \{ status: 401 \}\);/);
       assert.doesNotMatch(src, /getActingPlayer|getTeacher/);
+    });
+  }
+});
+
+// cgo-062: a refreshed server page must reset local answer state when its child changes.
+describe("answer owners travel from the trusted page into every client", () => {
+  const pages = [
+    { file: `${PLAY}/[zone]/page.tsx`, clients: ["GameClient", "DetectiveClient", "NovelClient", "TripClient"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
+    { file: `${PLAY}/run/page.tsx`, clients: ["ArcadeClient"], owner: "preview ? null : acting.userId", key: 'preview ? "preview" : acting.userId' },
+    { file: `${PLAY}/world/page.tsx`, clients: ["WorldClient"], owner: "preview ? null : acting.userId", key: 'preview ? "preview" : acting.userId' },
+    { file: "practice/[slug]/page.tsx", clients: ["PracticeSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
+    { file: "learn/[slug]/[node]/page.tsx", clients: ["PathPracticeNode", "PathPracticeNode"], owner: "acting.userId", key: "acting.userId" },
+    { file: "review/session/page.tsx", clients: ["ReviewSession"], owner: "session.user.id", key: "session.user.id" },
+    { file: "tests/[slug]/page.tsx", clients: ["TestSession"], owner: "session.user.id", key: "session.user.id" },
+    { file: "listening/[slug]/page.tsx", clients: ["ListeningSession"], owner: "session.user.id", key: "session.user.id" },
+  ];
+  for (const p of pages) {
+    it(p.file, () => {
+      const source = createSourceFile(p.file, read(p.file), ScriptTarget.Latest, true, ScriptKind.TSX);
+      const tags: string[] = [];
+      const visit = (node: Node): void => {
+        if (isJsxSelfClosingElement(node) && p.clients.includes(node.tagName.getText(source))) tags.push(node.getText(source));
+        forEachChild(node, visit);
+      };
+      visit(source);
+      assert.equal(tags.length, p.clients.length, "every call, including both journey paths, is checked");
+      for (const tag of tags) {
+        assert.ok(tag.includes(`ownerId={${p.owner}}`), `${p.file} must receive the trusted child`);
+        assert.ok(tag.includes(`key={${p.key}}`), `${p.file} must reset drafts on account change`);
+      }
+    });
+  }
+  for (const file of ["learn/[slug]/[node]/PathPracticeNode.tsx", "review/session/ReviewSession.tsx", "tests/[slug]/TestSession.tsx", "listening/[slug]/ListeningSession.tsx"]) {
+    it(`${file}: both immediate sends and background retries carry the same owner`, () => {
+      const src = code(read(file));
+      assert.match(src, /useOutboxFlush\(true, ownerId\)/);
+      assert.match(src, /sendAttempt\(\{[\s\S]*?\}, ownerId\)/);
     });
   }
 });

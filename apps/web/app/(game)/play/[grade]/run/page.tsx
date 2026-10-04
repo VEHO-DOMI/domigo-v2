@@ -111,6 +111,8 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
     <>
       <ArcadeClient
         preview={preview}
+        key={preview ? "preview" : acting.userId}
+        ownerId={preview ? null : acting.userId}
         seed={grade * 1000 + 7}
         playerSeed={fnv1a32(acting.userId)}
         mode={`game:g${grade}`}

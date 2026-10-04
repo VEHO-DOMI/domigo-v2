@@ -60,7 +60,7 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     if (jitems.length === 0) redirect(`/learn/${slug}`);
 
     // attempts write mode='journey:<unit>:<node>' → the derivation reads them back.
-    return <PathPracticeNode unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} />;
+    return <PathPracticeNode key={acting.userId} ownerId={acting.userId} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} />;
   }
 
   const unit = await loadUnitWithOverrides(slug);
@@ -94,5 +94,5 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     .filter((x): x is Resolved => x !== undefined);
   if (items.length === 0) redirect(`/learn/${slug}`);
 
-  return <PathPracticeNode unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} />;
+  return <PathPracticeNode key={acting.userId} ownerId={acting.userId} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} />;
 }

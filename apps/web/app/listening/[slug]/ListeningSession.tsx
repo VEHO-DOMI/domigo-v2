@@ -6,12 +6,12 @@ import { ListeningTaskView, type ClientListeningTask, type ResultDetail } from "
 import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
-export default function ListeningSession({ slug, tasks }: { slug: string; tasks: ClientListeningTask[] }) {
+export default function ListeningSession({ ownerId, slug, tasks }: { ownerId: string; slug: string; tasks: ClientListeningTask[] }) {
   const [t, setT] = useState(0);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Tier[]>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush();
+  useOutboxFlush(true, ownerId);
 
   const task = tasks[t];
 
@@ -25,7 +25,7 @@ export default function ListeningSession({ slug, tasks }: { slug: string; tasks:
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, ownerId).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };

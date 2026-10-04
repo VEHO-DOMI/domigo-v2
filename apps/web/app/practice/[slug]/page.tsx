@@ -36,7 +36,7 @@ export default async function UnitPracticePage({ params }: { params: Promise<{ s
   return (
     <>
       {preview && <PreviewBanner grade={Number(slug.match(/^g(\d)/)?.[1]) || undefined} note="auch für Prüfungen zurückgehaltene Aufgaben sind sichtbar" />}
-      <PracticeSession slug={slug} vocab={vocab} grammar={grammar} today={today} preview={preview} />
+      <PracticeSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} slug={slug} vocab={vocab} grammar={grammar} today={today} preview={preview} />
     </>
   );
 }

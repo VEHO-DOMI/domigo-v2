@@ -95,9 +95,10 @@ export default function WorldClient(props: {
   done?: string;
   /** cgo-047: a teacher plays — no outbox flush, no device or server save. */
   preview?: boolean;
+  ownerId: string | null;
 }) {
   const preview = props.preview === true;
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, props.ownerId);
   const router = useRouter();
   const { serverSave } = props;
   const ch = props.chapter.id.split(".").pop() ?? "ch01";

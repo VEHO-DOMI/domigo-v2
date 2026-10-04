@@ -1,39 +1,29 @@
 "use client";
 import { useEffect } from "react";
-import { flushOutbox } from "./attempt-outbox.ts";
+import { bindOutboxOwner, flushOutbox } from "./attempt-outbox.ts";
 
-/** The slice of `window` the flush needs — injectable so the switch is testable without a DOM. */
 export interface OnlineTarget {
   addEventListener(type: "online", listener: () => void): void;
   removeEventListener(type: "online", listener: () => void): void;
 }
 
-/**
- * The effect body of `useOutboxFlush`, pure enough for `node --test`
- * (lib/useOutboxFlush.test.ts): drain once, then on every reconnect. Returns
- * the cleanup, or nothing when `enabled` is false — the teacher preview
- * (cgo-047, lib/preview-attempt.ts): a teacher's flush would meet a 401 and DROP
- * the queued answers of the child who used this device before.
- */
+/** A new page invalidates old drains, including A → preview → A transitions. */
 export function startOutboxFlush(
   enabled: boolean,
-  flush: () => Promise<unknown> = flushOutbox,
+  ownerId: string | null,
+  flush: (ownerId: string | null) => Promise<unknown> = flushOutbox,
   target: OnlineTarget = window,
-): (() => void) | undefined {
-  if (!enabled) return undefined;
-  void flush();
-  const onOnline = (): void => {
-    void flush();
-  };
+): () => void {
+  const owner = enabled ? ownerId : null;
+  const release = bindOutboxOwner(owner);
+  if (!owner) return release;
+  const onOnline = (): void => { void flush(owner); };
+  onOnline();
   target.addEventListener("online", onOnline);
-  return () => target.removeEventListener("online", onOnline);
+  return () => { release(); target.removeEventListener("online", onOnline); };
 }
 
-/**
- * Drain the offline attempt outbox on mount and whenever the browser reconnects.
- * `enabled: false` is the teacher preview; a hook cannot be called conditionally,
- * hence the switch instead of a skipped call.
- */
-export function useOutboxFlush(enabled: boolean = true): void {
-  useEffect(() => startOutboxFlush(enabled), [enabled]);
+/** The server's owner and preview flag must both participate in the effect lifetime. */
+export function useOutboxFlush(enabled: boolean, ownerId: string | null): void {
+  useEffect(() => startOutboxFlush(enabled, ownerId), [enabled, ownerId]);
 }

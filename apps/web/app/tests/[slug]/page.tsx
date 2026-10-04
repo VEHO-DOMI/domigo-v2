@@ -77,5 +77,5 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
     throw new Error("unknown test section kind");
   });
 
-  return <TestSession slug={slug} testId={file.test.id} sections={sections} />;
+  return <TestSession key={session.user.id} ownerId={session.user.id} slug={slug} testId={file.test.id} sections={sections} />;
 }

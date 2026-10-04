@@ -154,6 +154,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     return (
       <>{banner}<DetectiveClient
         preview={preview}
+        key={acting?.userId ?? "preview"}
+        ownerId={acting?.userId ?? null}
         gameMode={saveMode}
         caseTitle={story?.title.en ?? "The case"}
         chapter={chapter}
@@ -182,6 +184,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     return (
       <>{banner}<NovelClient
         preview={preview}
+        key={acting?.userId ?? "preview"}
+        ownerId={acting?.userId ?? null}
         gameMode={gameMode}
         episodeTitle={chapter.titleEn}
         chapter={chapter}
@@ -214,6 +218,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     return (
       <>{banner}<TripClient
         preview={preview}
+        key={acting?.userId ?? "preview"}
+        ownerId={acting?.userId ?? null}
         gameMode={gameMode}
         dayTitle={chapter.titleEn}
         chapter={chapter}
@@ -261,6 +267,8 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   return (
     <>{banner}<GameClient
       preview={preview}
+      key={acting?.userId ?? "preview"}
+      ownerId={acting?.userId ?? null}
       seed={mapZone.render?.seed ?? grade * 100 + chapter.unit}
       playerSeed={fnv1a32(playerId)}
       gameMode={gameMode}

@@ -38,6 +38,7 @@ const GrammarInputSchema = z.union([
 ]);
 
 const Body = z.object({
+  ownerId: z.string().min(1).max(256).optional(),
   clientAttemptId: z.string().regex(UUID),
   itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
@@ -66,6 +67,17 @@ export async function POST(req: Request): Promise<Response> {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+
+  // Old pages delete queued answers on permanent 4xx responses. Keep them
+  // retryable until a reload upgrades the outbox and isolates ownerless rows.
+  if (parsed.data.ownerId === undefined) {
+    return NextResponse.json({ ok: false, error: "legacy_client" }, { status: 503, headers: { "Retry-After": "60" } });
+  }
+  // The client stamp is only a claim. Reject foreign owners before loading
+  // content, grading or touching the ledger; never adopt an ownerless answer.
+  if (parsed.data.ownerId !== acting.userId) {
+    return NextResponse.json({ ok: false, error: "wrong_owner" }, { status: 409 });
+  }
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.

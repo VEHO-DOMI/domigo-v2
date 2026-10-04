@@ -17,7 +17,7 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items, attemptMode }: {
+export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: { ownerId: string;
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
@@ -35,7 +35,7 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
   const [stars, setStars] = useState(0);
-  useOutboxFlush();
+  useOutboxFlush(true, ownerId);
 
   const current = items[i];
   const title = isCheckpoint ? "Checkpoint" : "Practice";
@@ -53,7 +53,7 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, ownerId).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
