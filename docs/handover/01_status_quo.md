@@ -8,8 +8,9 @@ the thing to extend. Build status: ✅ shipped/working · 🟡 fresh/verify · �
 - NextAuth v5 (Credentials, JWT 30-day, bcryptjs cost 12).
 - Neon Postgres (`@neondatabase/serverless` HTTP) + Drizzle ORM 0.45.
 - Server Actions for all writes; static JSON content under `data/`.
-- Vercel hosting; CI = `lint-and-typecheck` (only required check). Neon free-tier 10-branch cap makes
-  the **Vercel preview check fail on every PR** (infra, not code; prod deploys from `main` are fine).
+- Historical v1: Vercel hosting, required `lint-and-typecheck`, and PR previews blocked by the Neon
+  branch cap; in v2 since 2026-10-02 only `main` builds automatically, and a deliberate PR preview
+  requires Redeploy with "Use project's Ignore Build Step" unchecked (see `CONTRIBUTING.md`).
 
 ## Routes
 **Auth/landing:** `/` · `/signin` (student: invite code + nickname + 6-digit PIN) · `/signin/migrate`

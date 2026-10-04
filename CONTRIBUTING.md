@@ -71,6 +71,12 @@ cmd > log 2>&1; echo "EXIT=$?"
 **Jede neue Prüfung braucht ihren Selbsttest.** Ein Tor, das nie rot werden kann,
 hat nichts bewiesen; deshalb trägt jedes `--selftest` und CI läuft beide Seiten.
 
+## Bewusste Einzel-Vorschau
+
+Seit 02.10.2026 baut Vercel automatisch nur `main`; für eine einzelne PR-Vorschau
+im Vercel-Projekt **Redeploy** wählen und **"Use project's Ignore Build Step"**
+abwählen (Voraussetzung der Kostenregel: **Root Directory = apps/web**).
+
 ## Schriften
 
 Die drei Familien liegen als Dateien im Repo (`apps/web/app/fonts/`) und werden

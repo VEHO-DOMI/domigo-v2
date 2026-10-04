@@ -61,9 +61,10 @@ Tests**, **Listening**, and a path to an installable / native app.
 - **NextAuth v5** (Credentials, JWT 30-day, bcryptjs cost 12) — student + teacher providers.
 - **Neon Postgres** (`@neondatabase/serverless` HTTP driver) + **Drizzle ORM 0.45**.
 - **Server Actions** for all mutations; static JSON content under `data/{vocab,grammar,activity,arcade}/`.
-- **Vercel** hosting; per-PR Neon preview branches. CI = `lint-and-typecheck` (the only required check).
-  **Known infra wart:** Neon free-tier 10-branch cap makes the **Vercel preview check fail on every
-  PR** — not a code problem; production deploys from `main` are unaffected.
+- **Historical v1:** Vercel hosting, per-PR Neon branches, required `lint-and-typecheck`, and previews
+  blocked by the Neon branch cap; in v2 since 2026-10-02 only `main` builds automatically, and a
+  deliberate PR preview requires Redeploy with "Use project's Ignore Build Step" unchecked
+  (see `CONTRIBUTING.md`).
 
 ### 1.2 Routes (current app map)
 - **Auth/landing:** `/` (landing/redirect), `/signin` (student: class code + nickname + 6-digit PIN),

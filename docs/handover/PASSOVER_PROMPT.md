@@ -82,8 +82,9 @@ first, then document/evaluate native (Capacitor wrapper or Expo/React-Native; Ap
   `/tmp` clone** (`gh repo clone VEHO-DOMI/domigo`), never in the iCloud tree.
 - v1 corpus is **generated** from the legacy trainers (`npm run extract:content`); for v2, author into a
   MORE!-transcript → corpus pipeline + validator instead (don't hand-edit generated JSON).
-- CI required check is `lint-and-typecheck`; the Vercel preview check fails on every PR (Neon free-tier
-  branch cap) — that's infra, not your code.
+- Historical v1: `lint-and-typecheck` was required and the Neon branch cap broke PR previews;
+  in v2 since 2026-10-02 only `main` builds automatically, and a deliberate PR preview requires
+  Redeploy with "Use project's Ignore Build Step" unchecked (see `CONTRIBUTING.md`).
 
 Start by reading `00_START_HERE.md`, then `04` and `08`. Ask Koki the open decisions in
 `09_roadmap_and_open_decisions.md` (esp. the interim beta vehicle) before committing to architecture.

@@ -1,5 +1,7 @@
 #!/bin/sh
 # Vercel's Ignored Build Step: 0 skips; 1 builds (not normal success/failure).
+# Requires Root Directory = apps/web in the Vercel project settings.
+# Branch-name rule only: any main ref builds, including docs-only changes or a fork's main.
 # https://vercel.com/kb/guide/how-do-i-use-the-ignored-build-step-field-on-vercel
 # Missing/unknown refs skip: an ambiguous automatic trigger must not spend a build.
 # Deliberate one-off preview: Vercel deployment > Redeploy, uncheck

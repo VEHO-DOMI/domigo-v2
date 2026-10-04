@@ -29,7 +29,7 @@
     "check:journal-door": "node scripts/check-journal-door.mjs",
     "check:journal-door:selftest": "node scripts/check-journal-door.mjs --selftest",
     "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest",
-    "test:vercel-ignore-build": "node apps/web/scripts/test-vercel-ignore-build.mjs",
+    "test:vercel-ignore-build": "node scripts/check-vercel-ignore-build.mjs --selftest",
     "test:umbrella-tokens": "node scripts/check-umbrella-tokens.mjs",
     "test:claim-filter": "node scripts/check-claim-filter.mjs",
     "test:claim-filter:selftest": "node scripts/check-claim-filter.mjs --selftest",

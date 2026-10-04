@@ -1,16 +1,21 @@
+// cgo-075: --selftest runs the nine branch cases; without it, check the real
+// Vercel configuration and script from the project's Root Directory (apps/web).
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const cwd = fileURLToPath(new URL('..', import.meta.url));
-const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url)));
+const cwd = fileURLToPath(new URL('../apps/web/', import.meta.url));
+const config = JSON.parse(readFileSync(new URL('../apps/web/vercel.json', import.meta.url)));
 assert.equal(config.ignoreCommand, 'sh scripts/vercel-ignore-build.sh');
-const cases = [
+assert.ok(statSync(new URL('../apps/web/scripts/vercel-ignore-build.sh', import.meta.url)).isFile(),
+  'Vercel ignore-build script must exist');
+const selftest = process.argv.includes('--selftest');
+const cases = selftest ? [
   ['main', 1], ['codex/main', 0], ['codex/beispiel', 0],
   ['feature/beispiel', 0], [undefined, 0], ['', 0],
   ['main-extra', 0], ['codex/main/extra', 0], [' main', 0],
-];
+] : [['main', 1], ['codex/beispiel', 0]];
 let failures = 0;
 for (const [ref, expected] of cases) {
   const env = { ...process.env };
