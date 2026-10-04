@@ -318,6 +318,16 @@ export const yamlVerdict = (ciText) => {
   return fehler;
 };
 
+// cgo-075: read executable YAML steps, not comments or step labels. A trailing
+// `|| true` suppresses a gate's failure, so that line cannot prove CI coverage.
+const ciCommands = (ciText) => Object.values(yaml.load(ciText).jobs)
+  .flatMap((job) => job.steps)
+  .filter((step) => typeof step.run === "string")
+  .flatMap((step) => step.run.split("\n"))
+  .map((line) => line.replace(/(?:^|\s+)#.*$/, "").trim())
+  .filter((line) => line && !/\|\|\s*true\s*;?$/.test(line))
+  .join("\n");
+
 const scanUsage = (ciText, invoked) => {
   const usage = new Map(); // file -> { real: n, selftest: n, how: string }
   const note = (file, isSelftest, how) => {
@@ -338,10 +348,10 @@ const scanUsage = (ciText, invoked) => {
   return usage;
 };
 
-/** Which package.json scripts does CI actually invoke? (`- run: pnpm <name>`) */
+/** Which package.json scripts do the executable CI commands invoke? */
 const scanInvoked = (ciText) => {
   const invoked = new Set();
-  for (const m of ciText.matchAll(/^\s*-?\s*run:\s*pnpm\s+([A-Za-z0-9:_-]+)/gm)) invoked.add(m[1]);
+  for (const m of ciText.matchAll(/^\s*pnpm\s+([A-Za-z0-9:_-]+)/gm)) invoked.add(m[1]);
   return invoked;
 };
 
@@ -351,7 +361,7 @@ const scanInvoked = (ciText) => {
  * ci.yml — the real one, with one line taken out — instead of a made-up
  * configuration. P-71: tamper against the measurement, never against the config.
  */
-export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, importerWaivers, today, offen = new Set() }) => {
+export const analyse = ({ ciText, gates, selftestGates = [], notAGate, selftestOnly, importers, importerWaivers, today, offen = new Set() }) => {
   const failures = [];
   const rows = [];
   const fail = (msg) => failures.push(msg);
@@ -366,8 +376,9 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
     return { failures, rows };
   }
 
-  const invoked = scanInvoked(ciText);
-  const usage = scanUsage(ciText, invoked);
+  const commands = ciCommands(ciText);
+  const invoked = scanInvoked(commands);
+  const usage = scanUsage(commands, invoked);
 
   // ── Gesetz 1 · every gate on disk is reachable from CI ─────────────────────
   for (const file of gates) {
@@ -384,6 +395,14 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
     if (u === undefined) {
       fail(`${file} ist ein Tor auf der Platte, aber NICHTS in .github/workflows/ci.yml ruft es auf `
         + "— verdrahten, oder mit Grund in NOT_A_GATE eintragen");
+    }
+  }
+
+  // cgo-075: both halves are mandatory when a gate reads --selftest.
+  for (const file of selftestGates) {
+    if (notAGate[file] !== undefined) continue;
+    if (!(usage.get(file)?.selftest > 0)) {
+      fail(`${file} liest --selftest, aber CI faehrt keinen wirksamen Selbsttest`);
     }
   }
 
@@ -431,13 +450,13 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
     const m = SCRIPT_REF.exec(String(cmd));
     SCRIPT_REF.lastIndex = 0;
     const file = m?.[1];
-    if (file !== undefined && ciText.includes(`scripts/${file}`)) continue; // CI ruft die Datei direkt
+    if (file !== undefined && usage.has(file)) continue; // CI ruft die Datei direkt
     fail(`package.json definiert "${name}", aber CI ruft es nie auf `
       + `(weder als \`pnpm ${name}\` noch über seinen Skript-Pfad)`);
   }
 
   // ── Gesetz 5 · C10/R187c: jeder Importeur mit Selbsttest hat seine Zeile ───
-  const impUsage = scanImporterUsage(ciText);
+  const impUsage = scanImporterUsage(commands);
   for (const { file, hasSelftest } of importers) {
     const u = impUsage.get(file);
     const waiver = importerWaivers[file];
@@ -502,7 +521,7 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
 };
 
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
-// Vierzehn Fälle (welle-040: drei neue), und der letzte ist der wichtigste: die REALE, unverfälschte
+// Der letzte Fall ist der wichtigste: die REALE, unverfälschte
 // Konfiguration muss GRÜN herauskommen. Ein Selbsttest, der nur rote Lichter
 // beweist, kann ein arbeitendes Tor nicht von einem unterscheiden, das auf
 // alles rot geht.
@@ -513,6 +532,7 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
 const WELT = {
   ciText: ciOnDisk,
   gates: gatesOnDisk,
+  selftestGates: gatesOnDisk.filter((file) => READS_SELFTEST_FLAG.test(fs.readFileSync(path.join(SCRIPTS, file), "utf8"))),
   notAGate: NOT_A_GATE,
   selftestOnly: SELFTEST_ONLY,
   importers: importersOnDisk,
@@ -540,7 +560,27 @@ if (selftest) {
     return neu;
   };
 
+  const costGate = "scripts/check-vercel-ignore-build.mjs";
+  const costLine = (flag) => {
+    const matches = ciOnDisk.split("\n").filter((line) =>
+      /^\s*- run: node /.test(line) && line.includes(costGate) && line.includes("--selftest") === flag);
+    if (matches.length !== 1) throw new Error("cgo-075: expected one CI line for each cost-gate mode");
+    return matches[0];
+  };
+  const costMutants = [false, true].flatMap((flag) => {
+    const line = costLine(flag);
+    const mode = flag ? "Selbsttest" : "echter Lauf";
+    return [
+      ["geloescht", ""],
+      ["auskommentiert", line.replace("- run:", "# - run:")],
+      ["mit || true entschaerft", line.replace(/\s+#.*$/, "") + " || true"],
+    ].map(([kind, replacement]) => [`cgo-075: ${mode} ${kind}`, () => analyse({
+      ...WELT, ciText: ciOnDisk.replace(line, replacement),
+    }), true]);
+  });
+
   const cases = [
+    ...costMutants,
     ["ein Tor verschwindet aus CI", () => analyse({
       ...WELT, ciText: ciOnDisk.replace(/scripts\/check-paint-art\.mjs/g, "scripts/__weg.mjs"),
     }), true],

@@ -69,8 +69,9 @@ export default async function BuchPage({
   // and the proof tapes replay them through the real engine. So authors keep
   // the instant feedback, and production trusts the gate that already ran.
   // NODE_ENV, not VERCEL_ENV: the guard belongs where levels are EDITED (the
-  // dev server), and a preview deployment is a place Koki reviews, not a place
-  // anyone authors — it should be as fast as production.
+  // dev server). Since 2026-10-02 only main builds automatically; a deliberate
+  // PR preview uses Redeploy with "Use project's Ignore Build Step" unchecked
+  // and should be as fast as production for Koki's review.
   if (process.env.NODE_ENV !== "production") {
     const failures = checkLevelLaws(level);
     if (failures.length > 0) {

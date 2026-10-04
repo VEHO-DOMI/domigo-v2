@@ -47,7 +47,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test:vercel-ignore-build # cgo-059: main must build, other refs must skip
+      - run: node scripts/check-vercel-ignore-build.mjs --selftest # cgo-075 · main must build, other refs must skip
+      - run: node scripts/check-vercel-ignore-build.mjs # cgo-075 · main must build, other refs must skip
       - run: node --test scripts/gg-gate-policy/register.test.mjs # cgo-017/476 (Leser S1): das Register-Gesetz der Prüfausnahmen hat seinen eigenen Test — ohne diese Zeile liefe er nirgends (adapters.test.mjs bleibt lokal: 178 s, schreibt in getrackte Dateien)
       - run: pnpm test
 
