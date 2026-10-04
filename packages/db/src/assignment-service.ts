@@ -40,9 +40,11 @@ export const LEGACY_CLASS_LABEL_SUFFIX = " · Altbestand";
  *   1. the teacher's OWN v2 classes (scoped by teacherId, non-archived) — reusing
  *      listClassesForTeacher so the picker shows exactly what /admin/classes shows,
  *      one definition of "this teacher's classes" rather than two;
- *   2. then the v1 legacy classes (non-archived, UNSCOPED — the Koki era predates
- *      per-teacher ownership), each labelled with LEGACY_CLASS_LABEL_SUFFIX. The id
- *      spaces are disjoint (separate schemas, random UUIDs), so no de-duplication is
+ *   2. then the v1 legacy classes allowed by the session (non-archived), each
+ *      labelled with LEGACY_CLASS_LABEL_SUFFIX. Legacy ownership is defined by
+ *      classScope, not by teacherId. An empty scope admits nothing, including
+ *      when the v2 read fails. The id spaces are disjoint (separate schemas,
+ *      random UUIDs), so no de-duplication is
  *      needed — and a NAME that exists in both registers stays distinguishable.
  *
  * `teacherId` is a REQUIRED parameter, never a default: a default would silently
@@ -67,7 +69,7 @@ export async function listClasses(db: Db, classScope: ClassScope, teacherId: str
   const v1 = await db
     .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
     .from(v1Classes)
-    .where(isNull(v1Classes.archivedAt));
+    .where(and(inArray(v1Classes.id, [...classScope]), isNull(v1Classes.archivedAt)));
 
   return [
     ...v2,
