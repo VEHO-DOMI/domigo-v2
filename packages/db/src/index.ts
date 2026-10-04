@@ -43,15 +43,12 @@ export * from "./konto-loeschung.ts"; // dach-018: the complete deletion path ko
 export * from "./konto-class-term.ts"; // dach-018: konto owns name, grade, owner and archive
 export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
-export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
+export * from "./auth.ts"; // getClassGrade (dach-167: die PIN-Anmeldung samt lookupStudentForAuth/lookupTeacherForAuth/allocateClassCode ist entfernt)
 export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, authz by teacherId) + pure name/grade validation
 export * from "./roster-service.ts"; // P-2: roster import + student self-claim (journal-then-flip, authz by teacherId)
-export * from "./teacher-claim.ts"; // P2: teacher self-join — claimable pre-created classes + the guarded handover
 export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-flip publish/revert/fold)
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)
-export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap) — dach-074: until the switch-over day only
-export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service PIN — promote v1→v2 (reuse id) + change PIN
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
 export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)
 export * from "./teacher-events.ts"; // K2a: the teacher-scoped audit journal roster_events could never be (class_id is NOT NULL)

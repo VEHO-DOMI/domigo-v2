@@ -3,7 +3,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
-const { previewGradesFrom, resolveStudentView } = await import("./student-view.ts");
+const { isPreview, previewGradesFrom, resolveStudentView, yearRedirect } = await import("./student-view.ts");
 
 const child = () => ({ user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } });
 const teacher = () => ({ user: { id: "teacher-own", classId: null, role: "teacher", scope: ["class-own"] } });
@@ -74,5 +74,40 @@ describe("resolveStudentView — who sees the student side, as what", () => {
   it("a session that is neither child nor teacher sees nothing", async () => {
     fixture.session = { user: { id: "someone", classId: null, role: "student", scope: [] } };
     assert.equal(await resolveStudentView(), null);
+  });
+});
+
+// cgo-047 Welle 2 · Minor 3: the year wall and the preview flag of the game
+// pages (hub, chapter, world, arcade) as behaviour, through the real identity.
+describe("yearRedirect + isPreview — what the game pages do with a viewer", () => {
+  it("a year-2 child stays on year 2 and is sent home from year 3", async () => {
+    fixture.session = child();
+    const view = await resolveStudentView();
+    assert.equal(yearRedirect(view, 2), null);
+    assert.equal(yearRedirect(view, 3), "/play/2");
+    assert.equal(isPreview(view), false);
+  });
+  it("a child whose class year is unknown gets no year at all", async () => {
+    fixture.session = child();
+    fixture.grade = null;
+    const view = await resolveStudentView();
+    for (const g of [1, 2, 3, 4]) assert.equal(yearRedirect(view, g), "/home");
+  });
+  it("a teacher previews every year and is a preview", async () => {
+    fixture.session = teacher();
+    const view = await resolveStudentView();
+    for (const g of [1, 2, 3, 4]) assert.equal(yearRedirect(view, g), null);
+    assert.equal(isPreview(view), true);
+  });
+  it("a teacher's narrowed preview (?jahrgang=3) is never walled out of another year", async () => {
+    fixture.session = teacher();
+    const narrowed = await resolveStudentView("3");
+    assert.deepEqual(narrowed?.grades, [3]);
+    for (const g of [1, 2, 4]) assert.equal(yearRedirect(narrowed, g), null);
+  });
+  it("nobody is sent to sign in and is never a preview", async () => {
+    const view = await resolveStudentView();
+    assert.equal(yearRedirect(view, 1), "/signin");
+    assert.equal(isPreview(view), false);
   });
 });

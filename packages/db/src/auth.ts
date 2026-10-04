@@ -1,55 +1,20 @@
 /**
- * Identity lookups for auth — an ORDERED DUAL-READ. v2-native identity
- * (domigo_v2.users/classes, writable) is queried FIRST; if it has no row we fall
- * through to v1's read-only mirrors (public.users/classes). This lets new
- * v2-native rosters take precedence while every existing v1 login keeps working
- * unchanged. Reads return the row INCLUDING the bcrypt hash for the caller to
- * verify. NEVER writes `public.*`. Keeps drizzle out of the web app.
+ * Class lookups as an ORDERED DUAL-READ. v2-native (domigo_v2.classes,
+ * writable) is queried FIRST; if it has no row we fall through to v1's
+ * read-only mirror (public.classes). NEVER writes `public.*`. Keeps drizzle
+ * out of the web app.
  */
-import { and, eq, inArray, isNull, sql } from "drizzle-orm";
-import { v1Users, v1Classes } from "./v1.ts";
-import { v2Classes, v2IdentityUsers } from "./schema.ts";
-import { nextInviteCode, pickIdentity } from "./identity.ts";
+import { eq } from "drizzle-orm";
+import { v1Classes } from "./v1.ts";
+import { v2Classes } from "./schema.ts";
+import { pickIdentity } from "./identity.ts";
 import type { Db } from "./index.ts";
 
-export interface AuthUserRow {
-  id: string;
-  displayName: string;
-  classId: string | null;
-  pinHash: string;
-}
+// dach-167 · Die PIN-Anmeldung ist seit dach-108 entfernt; mit ihr gingen
+// lookupStudentForAuth, lookupTeacherForAuth, lookupTeacherAuthById und
+// allocateClassCode (alle ohne Aufrufer, PR 480). Uebrig bleibt die eine
+// Doppel-Lesung, die noch jemand braucht: die Stufe einer Klasse.
 
-// K2a · NO `email` HERE, DELIBERATELY. It would have been the tidy place for it, and
-// it is the one place it must never go: migration 0016 is applied BY HAND after the
-// merge, so for the whole of that window a v2 SELECT naming `email` fails, `v2Safe`
-// below degrades to the v1 mirror exactly as designed — and a teacher who has ever
-// changed her PIN would silently authenticate against her OLD v1 hash instead. Her
-// current PIN would stop working and her old one would start again. The recovery
-// address is therefore read by its own tolerant query (getTeacherEmail,
-// teacher-identity.ts), which no sign-in path ever touches.
-
-// Identical projection (AuthUserRow) from each identity source, so a v2-native or
-// v1-mirror hit is interchangeable to the caller.
-const cols = {
-  id: v1Users.id,
-  displayName: v1Users.displayName,
-  classId: v1Users.classId,
-  pinHash: v1Users.pinHash,
-};
-
-const v2Cols = {
-  id: v2IdentityUsers.id,
-  displayName: v2IdentityUsers.displayName,
-  classId: v2IdentityUsers.classId,
-  pinHash: v2IdentityUsers.pinHash,
-};
-
-/**
- * Student by class invite code + nickname (case-insensitive). Dual-read: the
- * v2-native active class + its student first, else the v1 mirror path. Null if
- * class/user absent or class archived. Invite codes are globally unique across
- * v1+v2 (see allocateClassCode), so a v2 code can never also match a v1 class.
- */
 /**
  * Run the v2-native half of a dual-read, degrading to `fallback` if the
  * domigo_v2 tables are unreachable (e.g. migrations not yet applied to this
@@ -72,57 +37,6 @@ async function v2Safe<T>(query: () => Promise<T>, fallback: T): Promise<T> {
   }
 }
 
-export async function lookupStudentForAuth(
-  db: Db,
-  inviteCode: string,
-  nickname: string,
-): Promise<AuthUserRow | null> {
-  // v2-native first: active class by invite code, then its student by nickname.
-  const v2Row = await v2Safe<AuthUserRow | null>(async () => {
-    const v2ClsRows = await db
-      .select({ id: v2Classes.id })
-      .from(v2Classes)
-      .where(and(eq(v2Classes.inviteCode, inviteCode), isNull(v2Classes.archivedAt)))
-      .limit(1);
-    const v2Cls = v2ClsRows[0];
-    if (!v2Cls) return null;
-    const rows = await db
-      .select(v2Cols)
-      .from(v2IdentityUsers)
-      .where(
-        and(
-          eq(v2IdentityUsers.role, "student"),
-          eq(v2IdentityUsers.classId, v2Cls.id),
-          sql`lower(${v2IdentityUsers.displayName}) = lower(${nickname})`,
-        ),
-      )
-      .limit(1);
-    return rows[0] ?? null;
-  }, null);
-  if (v2Row) return pickIdentity(v2Row, null);
-
-  // v1 fallback: the existing read-only mirror query, unchanged in shape.
-  const clsRows = await db
-    .select({ id: v1Classes.id, archivedAt: v1Classes.archivedAt })
-    .from(v1Classes)
-    .where(eq(v1Classes.inviteCode, inviteCode))
-    .limit(1);
-  const cls = clsRows[0];
-  if (!cls || cls.archivedAt) return pickIdentity(v2Row, null);
-  const rows = await db
-    .select(cols)
-    .from(v1Users)
-    .where(
-      and(
-        eq(v1Users.role, "student"),
-        eq(v1Users.classId, cls.id),
-        sql`lower(${v1Users.displayName}) = lower(${nickname})`,
-      ),
-    )
-    .limit(1);
-  return pickIdentity(v2Row, rows[0] ?? null);
-}
-
 /**
  * Grade (1–4) of a class by id — for grade-aware surfaces (the session carries
  * classId, not grade). Dual-read: v2-native class first, then the v1 mirror.
@@ -143,72 +57,3 @@ export async function getClassGrade(db: Db, classId: string): Promise<number | n
   return pickIdentity(v2Grade, rows[0]?.grade ?? null);
 }
 
-/** Teacher by nickname (case-insensitive). Dual-read: v2-native teacher first, then the v1 mirror. */
-export async function lookupTeacherForAuth(db: Db, nickname: string): Promise<AuthUserRow | null> {
-  const v2Rows = await v2Safe(
-    () =>
-      db
-        .select(v2Cols)
-        .from(v2IdentityUsers)
-        .where(and(eq(v2IdentityUsers.role, "teacher"), sql`lower(${v2IdentityUsers.displayName}) = lower(${nickname})`))
-        .limit(1),
-    [],
-  );
-  const v2Row = v2Rows[0] ?? null;
-  if (v2Row) return pickIdentity(v2Row, null);
-  const rows = await db
-    .select(cols)
-    .from(v1Users)
-    .where(and(eq(v1Users.role, "teacher"), sql`lower(${v1Users.displayName}) = lower(${nickname})`))
-    .limit(1);
-  return pickIdentity(v2Row, rows[0] ?? null);
-}
-
-/**
- * Teacher by id (uuid). Dual-read: the v2-native teacher first, then the v1
- * mirror — the same precedence as the nickname lookup, but keyed on the stable
- * user id. Returns the auth row INCLUDING the bcrypt hash so a caller (the
- * self-service PIN change) can verify the CURRENT pin for the logged-in teacher,
- * and read their displayName for a first-time v1→v2 promotion. Null if the id is
- * a teacher in neither table.
- */
-export async function lookupTeacherAuthById(db: Db, id: string): Promise<AuthUserRow | null> {
-  const v2Rows = await v2Safe(
-    () =>
-      db
-        .select(v2Cols)
-        .from(v2IdentityUsers)
-        .where(and(eq(v2IdentityUsers.role, "teacher"), eq(v2IdentityUsers.id, id)))
-        .limit(1),
-    [],
-  );
-  const v2Row = v2Rows[0] ?? null;
-  if (v2Row) return pickIdentity(v2Row, null);
-  const rows = await db
-    .select(cols)
-    .from(v1Users)
-    .where(and(eq(v1Users.role, "teacher"), eq(v1Users.id, id)))
-    .limit(1);
-  return pickIdentity(v2Row, rows[0] ?? null);
-}
-
-/**
- * Mint a class invite code that collides with NEITHER an existing v1 code NOR a
- * v2 one — both pools share the single code space a student types in. Reads every
- * code from both tables into one set (uppercased, since a generated code is always
- * uppercase, so a differently-cased legacy code can't slip through as a dupe),
- * then delegates to the pure nextInviteCode.
- */
-export async function allocateClassCode(db: Db): Promise<string> {
-  // v2 side degrades to "no v2 codes yet" (an absent table genuinely holds none);
-  // the v1 read stays unguarded — minting a code without seeing real v1 codes
-  // could collide, so a v1 failure must throw, not degrade.
-  const [v1Rows, v2Rows] = await Promise.all([
-    db.select({ code: v1Classes.inviteCode }).from(v1Classes),
-    v2Safe(() => db.select({ code: v2Classes.inviteCode }).from(v2Classes), []),
-  ]);
-  const taken = new Set<string>();
-  for (const r of v1Rows) taken.add(r.code.toUpperCase());
-  for (const r of v2Rows) taken.add(r.code.toUpperCase());
-  return nextInviteCode(taken);
-}

@@ -73,3 +73,25 @@ export async function resolveStudentView(jahrgang?: unknown): Promise<StudentVie
   if (teacher) return { kind: "preview", teacher, grades: previewGradesFrom(jahrgang) };
   return null;
 }
+
+/**
+ * cgo-047 Welle 2 · DIE JAHRGANGSWAND EINER SPIELSEITE, als eine Entscheidung
+ * (Hub /play/[grade] und Kapitel /play/[grade]/[zone]): wohin muss dieser
+ * Betrachter, bevor die Seite Jahrgang `grade` zeigt? `null` heißt: bleiben.
+ *   · niemand angemeldet          → /signin
+ *   · Lehrer-Vorschau             → bleiben (jeder Jahrgang)
+ *   · Kind im eigenen Jahrgang    → bleiben
+ *   · Kind in fremdem Jahrgang    → zum eigenen, oder /home ohne bekannten Jahrgang
+ * Rein, damit lib/student-view.test.ts sie ohne Datenbank prüft; die Seiten
+ * rufen nur sie (lib/play-access-map.test.ts hält das fest).
+ */
+export function yearRedirect(view: StudentView | null, grade: number): string | null {
+  if (!view) return "/signin";
+  if (view.kind === "preview" || view.grades.includes(grade)) return null;
+  return view.grades.length > 0 ? `/play/${view.grades[0]}` : "/home";
+}
+
+/** Speichert diese Ansicht nichts? Nur die Lehrer-Vorschau — nie ein Kind, nie niemand. */
+export function isPreview(view: StudentView | null): boolean {
+  return view?.kind === "preview";
+}
