@@ -10,13 +10,13 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
-export default function ReviewSession({ items }: { items: QueueItem[] }) {
+export default function ReviewSession({ ownerId, items }: { ownerId: string; items: QueueItem[] }) {
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush();
+  useOutboxFlush(true, ownerId);
 
   const current = items[i];
 
@@ -34,7 +34,7 @@ export default function ReviewSession({ items }: { items: QueueItem[] }) {
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, ownerId).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };

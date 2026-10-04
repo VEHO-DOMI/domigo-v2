@@ -19,14 +19,15 @@ function recorder() {
 describe("startOutboxFlush — the effect behind useOutboxFlush", () => {
   it("disabled (teacher preview): never flushes and never listens", () => {
     const r = recorder();
-    const cleanup = startOutboxFlush(false, r.flush, r.target);
-    assert.equal(cleanup, undefined);
+    const cleanup = startOutboxFlush(false, "fixture-a", r.flush, r.target);
+    assert.equal(typeof cleanup, "function");
+    cleanup();
     assert.equal(r.flushes, 0);
     assert.equal(r.listeners.size, 0);
   });
   it("enabled (a child): flushes once, again on every reconnect, and cleans up", () => {
     const r = recorder();
-    const cleanup = startOutboxFlush(true, r.flush, r.target);
+    const cleanup = startOutboxFlush(true, "fixture-a", r.flush, r.target);
     assert.equal(r.flushes, 1);
     assert.equal(r.listeners.size, 1);
     for (const l of r.listeners) l();
@@ -36,6 +37,6 @@ describe("startOutboxFlush — the effect behind useOutboxFlush", () => {
   });
   it("the hook passes its switch to the effect and re-runs when it changes", () => {
     const src = fs.readFileSync(new URL("./useOutboxFlush.ts", import.meta.url), "utf8");
-    assert.match(src, /useEffect\(\(\) => startOutboxFlush\(enabled\), \[enabled\]\);/);
+    assert.match(src, /useEffect\(\(\) => startOutboxFlush\(enabled, ownerId\), \[enabled, ownerId\]\);/);
   });
 });

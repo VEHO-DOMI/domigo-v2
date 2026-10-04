@@ -24,6 +24,7 @@ interface SavePayload { clientRev: number; state: DetectiveSave }
 export default function DetectiveClient(props: {
   /** cgo-047: teacher preview — no attempts, no outbox flush, no save read or write. */
   preview?: boolean;
+  ownerId: string | null;
   gameMode: string;
   caseTitle: string;
   chapter: Chapter;
@@ -36,7 +37,7 @@ export default function DetectiveClient(props: {
 }) {
   // cgo-047: a teacher preview (lib/student-view.ts) reads and writes nothing.
   const preview = props.preview === true;
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, props.ownerId);
   const { gameMode, serverSave } = props;
   const lsKey = `domigo:gamesave:${gameMode}`;
 
@@ -87,7 +88,7 @@ export default function DetectiveClient(props: {
     const onHidden = () => {
       if (document.visibilityState !== "hidden") return;
       flushSave();
-      if (!preview) void flushOutbox(); // drain any pending graded attempts while we still can
+      if (!preview) void flushOutbox(props.ownerId); // drain any pending graded attempts while we still can
       setPaused(true);
     };
     window.addEventListener("pagehide", flushSave);
@@ -97,10 +98,10 @@ export default function DetectiveClient(props: {
       document.removeEventListener("visibilitychange", onHidden);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lsKey]);
+  }, [lsKey, preview, props.ownerId]);
 
   const onAttempt = (a: GameAttempt) =>
-    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview, props.ownerId)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
     <>

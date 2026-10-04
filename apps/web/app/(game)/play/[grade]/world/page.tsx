@@ -131,6 +131,8 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
     <>
     <WorldClient
       preview={preview}
+        key={preview ? "preview" : acting.userId}
+        ownerId={preview ? null : acting.userId}
       seed={1007}
       playerSeed={fnv1a32(acting.userId)}
       mode="game:g1"

@@ -11,9 +11,9 @@ const { POST } = await import("../app/api/attempts/route.ts");
 
 const item = loadUnit("g2-u01").vocab[0]!;
 const answer = vocabAnswers(item, "carrier").find((a) => a.tier === "full")!.text;
-const attempt = (value: string) => new Request("https://attempts.invalid/api/attempts", {
+const attempt = (value: string, ownerId: string | undefined = "child-own", itemId = item.id) => new Request("https://attempts.invalid/api/attempts", {
   method: "POST", headers: { "content-type": "application/json" },
-  body: JSON.stringify({ clientAttemptId: "22222222-2222-4222-8222-222222222222", itemId: item.id, mode: "practice", input: { kind: "vocab", value, pool: "carrier" }, latencyMs: null, hintUsed: false }),
+  body: JSON.stringify({ clientAttemptId: "22222222-2222-4222-8222-222222222222", ownerId: ownerId || undefined, itemId, mode: "practice", input: { kind: "vocab", value, pool: "carrier" }, latencyMs: null, hintUsed: false }),
 });
 
 beforeEach(() => {
@@ -40,4 +40,33 @@ describe("POST /api/attempts — a child books, a teacher does not", () => {
     assert.equal(res.status, 401);
     assert.equal(fixture.storageCalls, 0);
   });
+});
+
+for (const ownerId of ["child-foreign", ""]) {
+  it(`refuses ${ownerId || "ownerless legacy"} before content lookup, grading or booking`, async () => {
+    fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+    // A syntactically valid but nonexistent item: reaching content/grading would return 400.
+    const res = await POST(attempt(answer, ownerId, "g2u01.w.fixture-missing"));
+    assert.equal(res.status, 409);
+    assert.deepEqual(await res.json(), { ok: false, error: "wrong_owner" });
+    assert.equal(fixture.storageCalls, 0);
+    assert.equal(fixture.writes.length, 0);
+  });
+}
+it("a direct A payload cannot book as B, then succeeds after A signs back in", async () => {
+  fixture.session = { user: { id: "child-b", classId: "class-b", role: "student", scope: ["class-b"] } };
+  assert.equal((await POST(attempt(answer, "child-own"))).status, 409);
+  assert.equal(fixture.storageCalls, 0);
+  fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+  assert.equal((await POST(attempt(answer, "child-own"))).status, 200);
+  assert.equal(fixture.writes.length, 1);
+  assert.equal(fixture.writes[0]!.data.userId, "child-own");
+});
+it("a storage error stays unconfirmed with persist_failed", async () => {
+  fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+  fixture.writeError = new Error("fixture storage unavailable");
+  const res = await POST(attempt(answer));
+  const data = await res.json();
+  assert.equal(data.ok, false);
+  assert.equal(data.error, "persist_failed");
 });

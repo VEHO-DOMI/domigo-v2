@@ -25,6 +25,7 @@ interface SavePayload { clientRev: number; state: NovelSave }
 export default function NovelClient(props: {
   /** cgo-047: teacher preview — no attempts, no outbox flush, no save read or write. */
   preview?: boolean;
+  ownerId: string | null;
   gameMode: string;
   episodeTitle: string;
   chapter: Chapter;
@@ -38,7 +39,7 @@ export default function NovelClient(props: {
 }) {
   // cgo-047: a teacher preview (lib/student-view.ts) reads and writes nothing.
   const preview = props.preview === true;
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, props.ownerId);
   const { gameMode, serverSave } = props;
   const lsKey = `domigo:gamesave:${gameMode}`;
 
@@ -87,7 +88,7 @@ export default function NovelClient(props: {
     const onHidden = () => {
       if (document.visibilityState !== "hidden") return;
       flushSave();
-      if (!preview) void flushOutbox();
+      if (!preview) void flushOutbox(props.ownerId);
       setPaused(true);
     };
     window.addEventListener("pagehide", flushSave);
@@ -97,10 +98,10 @@ export default function NovelClient(props: {
       document.removeEventListener("visibilitychange", onHidden);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lsKey]);
+  }, [lsKey, preview, props.ownerId]);
 
   const onAttempt = (a: GameAttempt) =>
-    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview, props.ownerId)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
     <>

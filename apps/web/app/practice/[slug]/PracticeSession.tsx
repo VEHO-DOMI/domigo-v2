@@ -13,10 +13,11 @@ type Mode = "grammar" | "vocab";
 /** "auto" rotates the vocab answer pool per (item, day); a VocabPool forces one. */
 type PoolChoice = "auto" | VocabPool;
 
-export default function PracticeSession({ slug, vocab, grammar, today, preview = false }: {
+export default function PracticeSession({ slug, vocab, grammar, today, ownerId, preview = false }: {
   slug: string; vocab: VocabItem[]; grammar: GrammarItem[]; today: string;
   /** cgo-047: teacher preview — answers are graded on screen, never sent. */
   preview?: boolean;
+  ownerId: string | null;
 }) {
   const [mode, setMode] = useState<Mode>("grammar");
   const [vocabPool, setVocabPool] = useState<PoolChoice>("auto");
@@ -24,7 +25,7 @@ export default function PracticeSession({ slug, vocab, grammar, today, preview =
   const [answered, setAnswered] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, ownerId);
 
   const list: Array<GrammarItem | VocabItem> = mode === "grammar" ? grammar : vocab;
   const item = list[i];
@@ -42,7 +43,7 @@ export default function PracticeSession({ slug, vocab, grammar, today, preview =
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the server re-grades authoritatively and returns the updated daily streak.
-    void attemptSender(preview)({
+    void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode: "practice",

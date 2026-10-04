@@ -2,7 +2,7 @@
 /**
  * Offline attempt outbox. `POST /api/attempts` is best-effort; when the server is
  * unreachable (offline / network error / transient 5xx / a 200 "persist_failed"),
- * the payload is queued in IndexedDB keyed by `clientAttemptId` and replayed on
+ * the payload is kept in IndexedDB under its owner/attempt key and replayed on
  * reconnect (see useOutboxFlush). The endpoint is idempotent on
  * (userId, clientAttemptId), so replaying a payload that actually landed is
  * harmless — it comes back as a duplicate. Dependency-free (raw IndexedDB).
@@ -38,11 +38,32 @@ interface AttemptResponse {
   streak?: number;
 }
 
+/** New rows carry the original sender; legacy ownerless rows are never replayed. */
+interface OwnedAttempt extends AttemptBody { ownerId: string }
+interface QueuedAttempt {
+  /** Keep the existing store/keyPath, but namespace new keys by owner. */
+  clientAttemptId: string;
+  attempt: OwnedAttempt;
+}
+
 const DB_NAME = "domigo";
 const STORE = "attempt-outbox";
-const DB_VERSION = 1;
-
+// Older open tabs request v1 and would delete unknown envelopes after a 4xx.
+// Upgrading without recreating the store preserves old rows and fences those writers.
+const DB_VERSION = 2;
 const hasIDB = (): boolean => typeof indexedDB !== "undefined";
+const storageKey = (body: OwnedAttempt): string => JSON.stringify([body.ownerId, body.clientAttemptId]);
+
+type OwnerBinding = { ownerId: string | null };
+let activeBinding: OwnerBinding | undefined;
+const drains = new WeakMap<OwnerBinding, Promise<number>>();
+
+/** A page lifetime, not an authority: the server still verifies the live session. */
+export function bindOutboxOwner(ownerId: string | null): () => void {
+  const binding = { ownerId };
+  activeBinding = binding;
+  return () => { if (activeBinding === binding) activeBinding = undefined; };
+}
 
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -51,7 +72,10 @@ function openDb(): Promise<IDBDatabase> {
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "clientAttemptId" });
     };
-    req.onsuccess = () => resolve(req.result);
+    req.onsuccess = () => {
+      req.result.onversionchange = () => req.result.close();
+      resolve(req.result);
+    };
     req.onerror = () => reject(req.error);
   });
 }
@@ -70,94 +94,102 @@ function runTx<T>(mode: IDBTransactionMode, op: (store: IDBObjectStore) => IDBRe
   );
 }
 
-async function enqueue(body: AttemptBody): Promise<boolean> {
-  if (!hasIDB()) return false;
+/** Persist BEFORE sending; add (not put) makes an attempt's first payload immutable. */
+async function remember(body: OwnedAttempt): Promise<{ body: OwnedAttempt; queued: boolean }> {
+  if (!hasIDB()) return { body, queued: false };
+  const key = storageKey(body);
   try {
-    await runTx("readwrite", (s) => s.put(body));
-    return true;
+    await runTx("readwrite", (s) => s.add({ clientAttemptId: key, attempt: body }));
+    return { body, queued: true };
   } catch {
-    return false; // caller must not claim the answer was saved
+    // A concurrent retry may already have committed this same owner/attempt.
+    try {
+      const existing = await runTx<QueuedAttempt | undefined>("readonly", (s) => s.get(key));
+      if (existing?.attempt?.ownerId === body.ownerId && existing.attempt.clientAttemptId === body.clientAttemptId) {
+        return { body: existing.attempt, queued: true };
+      }
+    } catch { /* unavailable storage: never claim a durable save */ }
+    return { body, queued: false };
   }
 }
 
-async function dequeue(clientAttemptId: string): Promise<void> {
+async function dequeue(body: OwnedAttempt): Promise<void> {
   if (!hasIDB()) return;
-  try {
-    await runTx("readwrite", (s) => s.delete(clientAttemptId));
-  } catch {
-    /* ignore */
-  }
+  try { await runTx("readwrite", (s) => s.delete(storageKey(body))); } catch { /* replay is idempotent */ }
 }
 
-async function allQueued(): Promise<AttemptBody[]> {
+async function allQueued(): Promise<QueuedAttempt[]> {
   if (!hasIDB()) return [];
+  try { return (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? []; }
+  catch { return []; }
+}
+
+async function postAttempt(body: OwnedAttempt): Promise<{ res: Response | null; data: AttemptResponse | null }> {
   try {
-    return (await runTx<AttemptBody[]>("readonly", (s) => s.getAll() as IDBRequest<AttemptBody[]>)) ?? [];
-  } catch {
-    return [];
-  }
+    const res = await fetch("/api/attempts", {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => null) as AttemptResponse | null;
+    return { res, data };
+  } catch { return { res: null, data: null }; }
 }
 
-function postAttempt(body: AttemptBody): Promise<Response> {
-  return fetch("/api/attempts", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
-  });
-}
-
-/** A failure worth retrying later — vs. a permanent 4xx client rejection that would loop forever. */
-function isTransient(res: Response | null, data: AttemptResponse | null): boolean {
-  if (!res) return true; // fetch threw → offline/network
-  if (res.status >= 500) return true; // server error
-  if (res.ok && data?.ok === false && data?.error === "persist_failed") return true; // graded ok, DB write failed
-  return false;
+/** Only a successful, explicit receipt can remove a stored answer. */
+function confirmed(res: Response | null, data: AttemptResponse | null): boolean {
+  return res?.ok === true && data?.ok === true;
 }
 
 /**
- * Send one attempt. On a transient failure it's queued for retry and
- * `{ ok:false, queued:true }` is returned; the caller has already shown optimistic
- * feedback, so this never throws.
+ * The owner comes from the server-rendered page, never from the game payload.
+ * A delayed callback retains that owner and cannot send through a newer page.
+ * A durable pending answer is not a confirmed booking (and earns no reward).
  */
-export async function sendAttempt(body: AttemptBody): Promise<AttemptResult> {
-  let res: Response | null = null;
-  try {
-    res = await postAttempt(body);
-  } catch {
-    res = null;
-  }
-  const data = res ? ((await res.json().catch(() => null)) as AttemptResponse | null) : null;
-
-  if (isTransient(res, data)) {
-    const queued = await enqueue(body);
-    return { ok: false, queued };
-  }
-  if (data?.ok) {
-    void flushOutbox(); // a live response means we're online — opportunistically drain any backlog
-    const tier = ["correct", "partial", "close", "wrong"].includes(data.tier ?? "") ? data.tier : undefined;
-    const xpAwarded = Number.isFinite(data.xpAwarded) && data.xpAwarded! >= 0
-      ? (data.duplicate ? 0 : data.xpAwarded) : undefined;
-    return { ok: true, queued: false, streak: data.streak, tier, xpAwarded };
-  }
-  return { ok: false, queued: false }; // permanent 4xx — nothing to retry
+export async function sendAttempt(body: AttemptBody, ownerId: string | null): Promise<AttemptResult> {
+  if (!ownerId) return { ok: false, queued: false };
+  const binding = activeBinding;
+  const isCurrent = (): boolean => binding !== undefined && binding === activeBinding && binding.ownerId === ownerId;
+  let owned: OwnedAttempt;
+  try { owned = structuredClone({ ...body, ownerId }); }
+  catch { return { ok: false, queued: false }; }
+  const saved = await remember(owned);
+  if (!isCurrent()) return { ok: false, queued: saved.queued };
+  const { res, data } = await postAttempt(saved.body);
+  if (!confirmed(res, data)) return { ok: false, queued: saved.queued };
+  await dequeue(saved.body);
+  // A receipt from a previous page must not update the new child's reward UI.
+  if (!isCurrent()) return { ok: false, queued: false };
+  void flushOutbox(ownerId);
+  const tier = ["correct", "partial", "close", "wrong"].includes(data?.tier ?? "") ? data?.tier : undefined;
+  const xpAwarded = Number.isFinite(data?.xpAwarded) && data!.xpAwarded! >= 0
+    ? (data?.duplicate ? 0 : data?.xpAwarded) : undefined;
+  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded };
 }
 
-/** Replay every queued attempt. Stops on the first network failure (still offline). */
-export async function flushOutbox(): Promise<number> {
-  const items = await allQueued();
-  let flushed = 0;
-  for (const body of items) {
-    let res: Response | null = null;
-    try {
-      res = await postAttempt(body);
-    } catch {
-      res = null;
+/** Drain only this mounted child's rows; switching/unmounting invalidates the whole run. */
+export function flushOutbox(ownerId: string | null): Promise<number> {
+  const binding = activeBinding;
+  if (!ownerId || !binding || binding.ownerId !== ownerId) return Promise.resolve(0);
+  const running = drains.get(binding);
+  if (running) return running;
+  const run = (async () => {
+    const items = await allQueued();
+    let flushed = 0;
+    for (const entry of items) {
+      if (activeBinding !== binding) break;
+      // A legacy row has no owned envelope. Leave its bytes and key untouched.
+      const body = entry.attempt;
+      if (!body || body.ownerId !== ownerId || entry.clientAttemptId !== storageKey(body)) continue;
+      const { res, data } = await postAttempt(body);
+      if (confirmed(res, data)) {
+        await dequeue(body);
+        flushed++;
+      }
+      // Lost session / another tab's account switch: preserve this and every remaining row.
+      if (!res || [401, 403, 409].includes(res.status)) break;
     }
-    if (!res) break; // still offline — keep the remaining items for next time
-    const data = (await res.json().catch(() => null)) as AttemptResponse | null;
-    if (isTransient(res, data)) continue; // transient — leave queued, try the rest
-    await dequeue(body.clientAttemptId); // success OR permanent 4xx → remove (a 4xx never succeeds)
-    if (data?.ok) flushed++;
-  }
-  return flushed;
+    return flushed;
+  })();
+  drains.set(binding, run);
+  void run.finally(() => drains.delete(binding));
+  return run;
 }

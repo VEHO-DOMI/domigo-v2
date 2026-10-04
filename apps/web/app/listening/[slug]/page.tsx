@@ -35,5 +35,5 @@ export default async function ListeningUnitPage({ params }: { params: Promise<{ 
     audio: ohneSprechtextFuersKind(t.audio),
     items: t.items,
   }));
-  return <ListeningSession slug={slug} tasks={tasks} />;
+  return <ListeningSession key={session.user.id} ownerId={session.user.id} slug={slug} tasks={tasks} />;
 }

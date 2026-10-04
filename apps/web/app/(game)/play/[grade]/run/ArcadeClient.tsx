@@ -37,11 +37,12 @@ export default function ArcadeClient(props: {
   bossOnly?: boolean;
   /** cgo-047: a teacher plays — no attempts, no outbox flush, no Funken banked. */
   preview?: boolean;
+  ownerId: string | null;
 }) {
   const preview = props.preview === true;
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, props.ownerId);
   const onAttempt = (a: GameAttempt) =>
-    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview, props.ownerId)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
   // Glühwörter → Hinweis-Funken: bank ONCE at run end (server clamps ≤8);
   // fire-and-forget — a failed bank never blocks the completion screen
   const onDone = (stats: { gluehwoerter: number }) => {

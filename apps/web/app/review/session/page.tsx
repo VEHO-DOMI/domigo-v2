@@ -43,5 +43,5 @@ export default async function ReviewSessionPage() {
 
   if (items.length === 0) redirect("/review");
 
-  return <ReviewSession items={items} />;
+  return <ReviewSession key={session.user.id} ownerId={session.user.id} items={items} />;
 }

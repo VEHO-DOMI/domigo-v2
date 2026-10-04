@@ -32,6 +32,7 @@ interface SavePayload { clientRev: number; state: unknown }
 export default function GameClient(props: {
   /** cgo-047: teacher preview — no attempts, no outbox flush, no save read or write. */
   preview?: boolean;
+  ownerId: string | null;
   seed: number;
   /** A1-4: stable per-student avatar seed (from the userId) — decoupled from the zone seed. */
   playerSeed?: number;
@@ -58,7 +59,7 @@ export default function GameClient(props: {
 }) {
   // cgo-047: a teacher preview (lib/student-view.ts) reads and writes nothing.
   const preview = props.preview === true;
-  useOutboxFlush(!preview);
+  useOutboxFlush(!preview, props.ownerId);
   const router = useRouter();
   const { gameMode, serverSave } = props;
   // L-1: the grade drives the story-language default + German chrome at grade 1.
@@ -155,7 +156,7 @@ export default function GameClient(props: {
   }, [lsKey]);
 
   const onAttempt = (a: GameAttempt) =>
-    attemptSender(preview)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+    attemptSender(preview, props.ownerId)({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
     <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

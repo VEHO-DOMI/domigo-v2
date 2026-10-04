@@ -6,8 +6,7 @@
  *
  *   · keine Antwort geht ans Versuchsbuch (die Klassenstatistik zählt nur Kinder);
  *   · die Outbox wird NICHT geleert — /api/attempts antwortet einer Lehrkraft mit
- *     401, und `flushOutbox` würfe dabei die vorgemerkten Antworten des Kindes
- *     weg, das vorher an diesem Gerät gearbeitet hat (401 gilt als endgültig).
+ *     401; die vorgemerkten Antworten des vorherigen Kindes bleiben erhalten.
  *
  * Die Antwort der Vorschau ist `{ ok: true, queued: false }` ohne Netz: so läuft
  * jedes Spiel weiter, auch eines, das auf die Antwort wartet (FOURTEEN), und
@@ -19,7 +18,7 @@ import { sendAttempt, type AttemptBody, type AttemptResult } from "./attempt-out
 export const PREVIEW_REPLY: Readonly<AttemptResult> = Object.freeze({ ok: true, queued: false });
 
 /** Der Absender einer Kinderfläche: in der Vorschau ein Stummschalter, sonst die Outbox. */
-export function attemptSender(preview: boolean): (body: AttemptBody) => Promise<AttemptResult> {
+export function attemptSender(preview: boolean, ownerId: string | null): (body: AttemptBody) => Promise<AttemptResult> {
   if (preview) return () => Promise.resolve({ ...PREVIEW_REPLY });
-  return sendAttempt;
+  return (body) => sendAttempt(body, ownerId);
 }

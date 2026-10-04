@@ -16,12 +16,12 @@ export type ResolvedSection =
 
 const page = { maxWidth: 680, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" } as const;
 
-export default function TestSession({ slug, testId, sections }: { slug: string; testId: string; sections: ResolvedSection[] }) {
+export default function TestSession({ ownerId, slug, testId, sections }: { ownerId: string; slug: string; testId: string; sections: ResolvedSection[] }) {
   const [s, setS] = useState(0);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Tier[]>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush();
+  useOutboxFlush(true, ownerId);
 
   const section = sections[s];
 
@@ -34,7 +34,7 @@ export default function TestSession({ slug, testId, sections }: { slug: string; 
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, ownerId).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
