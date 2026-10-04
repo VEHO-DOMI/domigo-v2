@@ -65,18 +65,35 @@ export function bindOutboxOwner(ownerId: string | null): () => void {
   return () => { if (activeBinding === binding) activeBinding = undefined; };
 }
 
+class OutboxOpenError extends Error {}
+
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
+    let settled = false;
+    const fail = (reason: string): void => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      reject(new OutboxOpenError(reason));
+    };
+    const timer = setTimeout(() => fail("Attempt storage open timed out"), 3000);
+    req.onblocked = () => fail("Attempt storage upgrade blocked");
     req.onupgradeneeded = () => {
+      // A blocked/timed-out request cannot be cancelled; abandon a late upgrade.
+      if (settled) { req.transaction?.abort(); return; }
       const db = req.result;
       if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE, { keyPath: "clientAttemptId" });
     };
     req.onsuccess = () => {
+      // Never leak a connection or resume writes after we reported no storage.
+      if (settled) { req.result.close(); return; }
+      settled = true;
+      clearTimeout(timer);
       req.result.onversionchange = () => req.result.close();
       resolve(req.result);
     };
-    req.onerror = () => reject(req.error);
+    req.onerror = () => fail(req.error?.message ?? "Attempt storage open failed");
   });
 }
 
@@ -101,7 +118,9 @@ async function remember(body: OwnedAttempt): Promise<{ body: OwnedAttempt; queue
   try {
     await runTx("readwrite", (s) => s.add({ clientAttemptId: key, attempt: body }));
     return { body, queued: true };
-  } catch {
+  } catch (error) {
+    // Retrying a blocked open would delay the online send for another 3 seconds.
+    if (error instanceof OutboxOpenError) return { body, queued: false };
     // A concurrent retry may already have committed this same owner/attempt.
     try {
       const existing = await runTx<QueuedAttempt | undefined>("readonly", (s) => s.get(key));

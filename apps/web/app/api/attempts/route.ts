@@ -68,7 +68,12 @@ export async function POST(req: Request): Promise<Response> {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
 
-  // The client stamp is only a claim. Reject old/foreign owners before loading
+  // Old pages delete queued answers on permanent 4xx responses. Keep them
+  // retryable until a reload upgrades the outbox and isolates ownerless rows.
+  if (parsed.data.ownerId === undefined) {
+    return NextResponse.json({ ok: false, error: "legacy_client" }, { status: 503, headers: { "Retry-After": "60" } });
+  }
+  // The client stamp is only a claim. Reject foreign owners before loading
   // content, grading or touching the ledger; never adopt an ownerless answer.
   if (parsed.data.ownerId !== acting.userId) {
     return NextResponse.json({ ok: false, error: "wrong_owner" }, { status: 409 });

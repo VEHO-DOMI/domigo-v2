@@ -42,13 +42,17 @@ describe("POST /api/attempts — a child books, a teacher does not", () => {
   });
 });
 
-for (const ownerId of ["child-foreign", ""]) {
+for (const [ownerId, status, error, retryAfter] of [
+  ["child-foreign", 409, "wrong_owner", null],
+  ["", 503, "legacy_client", "60"],
+] as const) {
   it(`refuses ${ownerId || "ownerless legacy"} before content lookup, grading or booking`, async () => {
     fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
     // A syntactically valid but nonexistent item: reaching content/grading would return 400.
     const res = await POST(attempt(answer, ownerId, "g2u01.w.fixture-missing"));
-    assert.equal(res.status, 409);
-    assert.deepEqual(await res.json(), { ok: false, error: "wrong_owner" });
+    assert.equal(res.status, status);
+    assert.deepEqual(await res.json(), { ok: false, error });
+    assert.equal(res.headers.get("Retry-After"), retryAfter);
     assert.equal(fixture.storageCalls, 0);
     assert.equal(fixture.writes.length, 0);
   });

@@ -14,9 +14,17 @@ const receipt = () => Response.json({ ok: true, tier: "correct", xpAwarded: 20, 
 /** Only the IndexedDB boundary is replaced; writes become visible at transaction completion. */
 function memoryIDB(abort = false) {
   const rows = new Map<string, unknown>();
-  const factory = { open() {
+  let version = 0, storeCreated = false;
+  const factory = { open(_name: string, requestedVersion = version || 1) {
     const request: Record<string, unknown> = {};
-    const db = { close() {}, transaction() {
+    const db = {
+      get version() { return version; },
+      objectStoreNames: { contains: (name: string) => name === "attempt-outbox" && storeCreated },
+      createObjectStore() {
+        if (storeCreated) throw new DOMException("Store already exists", "ConstraintError");
+        storeCreated = true;
+      },
+      close() {}, transaction() {
       const transaction: Record<string, unknown> = { error: new Error("storage unavailable") };
       transaction.objectStore = () => {
         const operation = (read: () => unknown, write?: () => void) => {
@@ -49,10 +57,21 @@ function memoryIDB(abort = false) {
       return transaction;
     } };
     request.result = db;
-    setTimeout(() => { (request.onsuccess as (() => void) | undefined)?.(); }, 0);
+    setTimeout(() => {
+      if (requestedVersion < version) {
+        request.error = new DOMException("Cannot open an older database version", "VersionError");
+        (request.onerror as (() => void) | undefined)?.();
+        return;
+      }
+      if (requestedVersion > version) {
+        version = requestedVersion;
+        (request.onupgradeneeded as (() => void) | undefined)?.();
+      }
+      (request.onsuccess as (() => void) | undefined)?.();
+    }, 0);
     return request;
   } } as unknown as IDBFactory;
-  return { rows, factory };
+  return { rows, factory, get version() { return version; } };
 }
 let store: ReturnType<typeof memoryIDB>;
 let release = () => {};
@@ -260,4 +279,137 @@ test("missing owner cannot send or create a new ownerless row", async () => {
   assert.deepEqual(await sendAttempt(body, null), { ok: false, queued: false });
   assert.equal(store.rows.size, 0);
   assert.equal(calls, 0);
+});
+
+test("v1 upgrade preserves the legacy bytes, never sends them, and fences v1 writers", async () => {
+  const legacy = await new Promise<IDBDatabase>((resolve, reject) => {
+    const req = indexedDB.open("domigo", 1);
+    req.onupgradeneeded = () => req.result.createObjectStore("attempt-outbox", { keyPath: "clientAttemptId" });
+    req.onerror = () => reject(req.error);
+    req.onsuccess = () => resolve(req.result);
+  });
+  await new Promise<void>((resolve, reject) => {
+    const tx = legacy.transaction("attempt-outbox", "readwrite");
+    tx.objectStore("attempt-outbox").add(body);
+    tx.oncomplete = () => resolve();
+    tx.onabort = () => reject(tx.error);
+  });
+  assert.equal(legacy.version, 1);
+  legacy.close();
+  const bytes = JSON.stringify([...store.rows]);
+  const sent: unknown[] = [];
+  globalThis.fetch = async (_url, init) => { sent.push(JSON.parse(String(init?.body))); return receipt(); };
+  assert.equal(await flushOutbox(A), 0); // the production open performs the upgrade
+  assert.equal(store.version, 2);
+  assert.equal(JSON.stringify([...store.rows]), bytes);
+  assert.equal(sent.length, 0);
+  await assert.rejects(new Promise((resolve, reject) => {
+    const req = indexedDB.open("domigo", 1);
+    req.onerror = () => reject(req.error);
+    req.onsuccess = () => { req.result.close(); resolve(req.result); };
+  }), { name: "VersionError" });
+  await offline();
+  globalThis.fetch = async (_url, init) => { sent.push(JSON.parse(String(init?.body))); return receipt(); };
+  assert.equal(await flushOutbox(A), 1);
+  assert.deepEqual(sent, [{ ...body, ownerId: A }]);
+  assert.equal(JSON.stringify([...store.rows]), bytes);
+});
+
+test("hook unmount releases its binding without needing a replacement mount", async () => {
+  await offline(); await offline(A, { ...body, clientAttemptId: "second" });
+  release();
+  let entered!: () => void, answer!: (r: Response) => void;
+  const started = new Promise<void>(resolve => { entered = resolve; });
+  let sends = 0, pending!: Promise<number>;
+  globalThis.fetch = async () => {
+    sends++; entered();
+    if (sends > 1) return receipt();
+    return new Promise<Response>(resolve => { answer = resolve; });
+  };
+  // Exercise the exact cleanup returned to useEffect, with the real outbox.
+  const cleanup = startOutboxFlush(true, A, owner => (pending = flushOutbox(owner)), target);
+  release = cleanup;
+  await started;
+  cleanup();
+  assert.equal(listeners.size, 0);
+  answer(receipt());
+  assert.equal(await pending, 1);
+  assert.equal(sends, 1);
+  assert.equal(store.rows.size, 1);
+  assert.equal(await flushOutbox(A), 0);
+  assert.equal(sends, 1);
+  // Returning to the same account starts a fresh lifetime and drains the remainder.
+  release = startOutboxFlush(true, A, flushOutbox, target);
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(sends, 2);
+  assert.equal(store.rows.size, 0);
+});
+
+for (const failure of ["timeout", "blocked"] as const) {
+  test(`IDB ${failure}: online send proceeds without a false save; late opens are abandoned`, async (t) => {
+    t.mock.timers.enable({ apis: ["setTimeout"] });
+    try {
+      const requests: Array<Record<string, unknown>> = [];
+      globalThis.indexedDB = { open() {
+        const request: Record<string, unknown> = {};
+        requests.push(request);
+        return request;
+      } } as unknown as IDBFactory;
+      let sends = 0, closed = 0, transactions = 0, upgrades = 0, aborted = 0;
+      globalThis.fetch = async () => { sends++; return Response.json({ ok: false }, { status: 500 }); };
+      let result: Awaited<ReturnType<typeof sendAttempt>> | undefined;
+      void sendAttempt(body, A).then(value => { result = value; });
+      assert.equal(requests.length, 1);
+      const request = requests[0]!;
+      if (failure === "timeout") {
+        t.mock.timers.tick(2999);
+        await new Promise<void>(resolve => setImmediate(resolve));
+        assert.equal(sends, 0);
+        assert.equal(result, undefined);
+        t.mock.timers.tick(1);
+      } else {
+        (request.onblocked as (() => void) | undefined)?.();
+      }
+      // setImmediate lets promises settle without advancing the simulated clock.
+      await new Promise<void>(resolve => setImmediate(resolve));
+      assert.equal(sends, 1);
+      assert.deepEqual(result, { ok: false, queued: false });
+      assert.equal(requests.length, 1, "do not repeat a failed open before sending online");
+      request.result = {
+        close() { closed++; },
+        transaction() { transactions++; throw new Error("late writes are forbidden"); },
+        objectStoreNames: { contains: () => false },
+        createObjectStore() { upgrades++; },
+      };
+      request.transaction = { abort() { aborted++; } };
+      (request.onupgradeneeded as (() => void) | undefined)?.();
+      assert.equal(aborted, 1);
+      assert.equal(upgrades, 0);
+      (request.onsuccess as (() => void) | undefined)?.();
+      await new Promise<void>(resolve => setImmediate(resolve));
+      assert.equal(closed, 1);
+      assert.equal(transactions, 0);
+      assert.equal(sends, 1);
+      assert.equal(store.rows.size, 0);
+    } finally { t.mock.timers.reset(); }
+  });
+}
+
+test("a blocked drain keeps saved rows and a later unblocked open can replay them", async () => {
+  await offline();
+  const original = JSON.stringify([...store.rows]);
+  let sends = 0;
+  globalThis.fetch = async () => { sends++; return receipt(); };
+  globalThis.indexedDB = { open() {
+    const request: Record<string, unknown> = {};
+    setTimeout(() => { (request.onblocked as (() => void) | undefined)?.(); }, 0);
+    return request;
+  } } as unknown as IDBFactory;
+  assert.equal(await flushOutbox(A), 0);
+  assert.equal(sends, 0);
+  assert.equal(JSON.stringify([...store.rows]), original);
+  globalThis.indexedDB = store.factory;
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(sends, 1);
+  assert.equal(store.rows.size, 0);
 });
