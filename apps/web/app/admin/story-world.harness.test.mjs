@@ -72,6 +72,7 @@ const modules = new Map([
     ["@domigo/game-2d/board", "export const ZoneBoard = () => null;"],
     ["@/lib/content-service", "export const loadUnitWithOverrides = async () => null;"],
     ["@/app/PreviewBanner", empty],
+    ["./BuchClient", empty],
     ["./ProfileCard", empty],
     ["./RegelbuchBoard", empty],
     ["../GameClient", empty],

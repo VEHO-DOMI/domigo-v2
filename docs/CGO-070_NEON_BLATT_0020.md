@@ -32,7 +32,7 @@ keine Personen- oder Klassenkennungen, keine Startzeilen. Ohne Eintrag greift
 die bestehende Story-Freigabedatei im Korpus: Jahrgang 1 geparkt, 2–4 unverändert.
 Spielstände, Versuche und Lernfortschritt bleiben unberührt.
 
-## Anwendung durch Koki nach Abschluss der offenen GG-Nachzüge
+## Anwendung durch Koki vor dem Merge
 
 1. In Neon **domigo-db → SQL Editor** öffnen. **main / neondb** sichtbar prüfen.
 2. Nur die Existenz der neuen Tabelle prüfen (keine Kinderdaten):
@@ -78,6 +78,6 @@ Bedienweg dieser Karte.
   Oberfläche meldet dies und deaktiviert den Schalter. Ein Schreibfehler liefert
   HTTP 503 und meldet keinen Erfolg. Während eines Lesefehlers kann deshalb ein
   zuvor geparkter Jahrgang 2–4 nach Dateivorgabe wieder sichtbar sein.
-- Das Buch besitzt auf der Basis noch eine gesonderte Produktionssperre außerhalb
-  des freigegebenen Dateizauns. Vor Merge muss GG diesen auf der Karte gemeldeten
-  Nachzug und den vollständigen Kinderdurchlauf abnehmen.
+- Im offenen Jahrgang erreichen Kinder ihrer eigenen Stufe die fertigen
+  Buchkapitel. Entwurfskapitel bleiben in jeder Umgebung Lehrkräften vorbehalten.
+  GG prüft den Kinderdurchlauf vor dem Merge unabhängig.

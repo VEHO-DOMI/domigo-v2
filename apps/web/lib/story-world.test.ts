@@ -9,6 +9,12 @@ const { default: HomePage } = await import("../app/home/page.tsx");
 const { default: PlayPage } = await import("../app/(game)/play/page.tsx");
 const { default: HubPage } = await import("../app/(game)/play/[grade]/page.tsx");
 const { default: ZonePage } = await import("../app/(game)/play/[grade]/[zone]/page.tsx");
+const { default: BookIndexPage } = await import("../app/(game)/play/[grade]/buch/page.tsx");
+const { default: BookPage } = await import("../app/(game)/play/[grade]/buch/[chapter]/page.tsx");
+const book = (chapter = "ch01") => BookPage({
+  params: Promise.resolve({ grade: "1", chapter }),
+  searchParams: Promise.resolve({ phase: "p2", perf: "1", grid: "1", warm: "0" }),
+});
 const post = (body: unknown, extra: Record<string, string> = {}) => new Request("https://fixture.invalid/admin/story-world", {
   method: "POST", headers: { origin: "https://fixture.invalid", "content-type": "application/json", ...extra }, body: JSON.stringify(body),
 });
@@ -98,5 +104,64 @@ describe("POST /admin/story-world", () => {
     fixture.writeFailure = true;
     assert.equal((await POST(post({ grade: 1, isOpen: true }))).status, 503);
     assert.equal(fixture.settings.get(1), false);
+  });
+});
+
+// Exercise the real server pages: only the browser game component is replaced.
+describe("painted book runtime door", () => {
+  it("open child follows hub and index into ch01; parking closes direct entry", async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = "production";
+    try {
+      fixture.session = child;
+      for (const isOpen of [true, false, true]) {
+        fixture.settings.set(1, isOpen);
+        if (!isOpen) {
+          await assert.rejects(book(), { message: "REDIRECT:/play" });
+          continue;
+        }
+        await assert.rejects(hub(), { message: "REDIRECT:/play/1/buch" });
+        await assert.rejects(BookIndexPage({ params: Promise.resolve({ grade: "1" }), searchParams: Promise.resolve({ phase: "p2", perf: "1" }) }),
+          { message: "REDIRECT:/play/1/buch/ch01?phase=p2&perf=1" });
+        const page = await book();
+        assert.equal(page.type, "main");
+        const game = page.props.children;
+        assert.equal(game.props.startPhase, undefined);
+        assert.equal(game.props.debugPerf, false);
+        assert.equal(game.props.debugGrid, false);
+        assert.equal(game.props.noWarm, false);
+      }
+    } finally {
+      if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = previousNodeEnv;
+    }
+  });
+  it("open does not admit a child to a draft chapter", async () => {
+    fixture.session = child;
+    fixture.settings.set(1, true);
+    await assert.rejects(book("ch02"), { message: "REDIRECT:/play/1" });
+  });
+  it("direct book entry keeps the school-year wall and the signed-in door", async () => {
+    fixture.settings.set(1, true);
+    fixture.session = child;
+    fixture.grade = 2;
+    await assert.rejects(book(), { message: "REDIRECT:/play/2" });
+    fixture.session = null;
+    await assert.rejects(book(), { message: "REDIRECT:/signin" });
+  });
+  it("teacher preview remains available while the year is parked, including drafts", async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = "production";
+    try {
+      fixture.settings.set(1, false);
+      for (const chapter of ["ch01", "ch02"]) {
+        const page = await book(chapter);
+        assert.equal(page.type, "main");
+        assert.equal(page.props.children.props.debugPerf, true);
+      }
+    } finally {
+      if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = previousNodeEnv;
+    }
   });
 });

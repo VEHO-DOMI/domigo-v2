@@ -131,8 +131,12 @@ describe("server pages — who is a preview is decided on the server", () => {
   it("practice hands the client the server's preview flag", () => {
     assert.match(read("practice/[slug]/page.tsx"), /<PracticeSession [^\n]*preview=\{preview\} \/>/);
   });
-  it("the painted book keeps its teacher-only production gate", () => {
-    assert.match(read(`${PLAY}/buch/[chapter]/page.tsx`), /process\.env\.VERCEL_ENV === "production" && teacher === null/);
+  it("the painted book keeps the draft gate and uses runtime visibility plus the year wall", () => {
+    const book = code(read(`${PLAY}/buch/[chapter]/page.tsx`));
+    assert.match(book, /if \(teacher === null\) \{/);
+    assert.match(book, /yearRedirect\(await resolveStudentView\(\), 1\)/);
+    assert.match(book, /if \(await openStoryIdForGrade\(1\) === null\) redirect\("\/play"\)/);
+    assert.match(book, /if \(raw\.draft === true && teacher === null\)/);
   });
 });
 
