@@ -111,7 +111,7 @@ describe("POST /admin/story-world", () => {
 describe("painted book runtime door", () => {
   it("open child follows hub and index into ch01; parking closes direct entry", async () => {
     const previousNodeEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = "production";
+    Object.assign(process.env, { NODE_ENV: "production" });
     try {
       fixture.session = child;
       for (const isOpen of [true, false, true]) {
@@ -132,8 +132,8 @@ describe("painted book runtime door", () => {
         assert.equal(game.props.noWarm, false);
       }
     } finally {
-      if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
-      else process.env.NODE_ENV = previousNodeEnv;
+      if (previousNodeEnv === undefined) Reflect.deleteProperty(process.env, "NODE_ENV");
+      else Object.assign(process.env, { NODE_ENV: previousNodeEnv });
     }
   });
   it("open does not admit a child to a draft chapter", async () => {
@@ -151,7 +151,7 @@ describe("painted book runtime door", () => {
   });
   it("teacher preview remains available while the year is parked, including drafts", async () => {
     const previousNodeEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = "production";
+    Object.assign(process.env, { NODE_ENV: "production" });
     try {
       fixture.settings.set(1, false);
       for (const chapter of ["ch01", "ch02"]) {
@@ -160,8 +160,8 @@ describe("painted book runtime door", () => {
         assert.equal(page.props.children.props.debugPerf, true);
       }
     } finally {
-      if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
-      else process.env.NODE_ENV = previousNodeEnv;
+      if (previousNodeEnv === undefined) Reflect.deleteProperty(process.env, "NODE_ENV");
+      else Object.assign(process.env, { NODE_ENV: previousNodeEnv });
     }
   });
 });
