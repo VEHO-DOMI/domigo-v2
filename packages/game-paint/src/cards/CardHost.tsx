@@ -136,7 +136,7 @@ export function CardHost({
     return task.kind === "restore" && restoreNamed ? { ...(initial as RestoreState), step: "colour" } : initial;
   };
   const [state, setState] = useState<unknown>(initialState);
-  const [clientAttemptId] = useState(() => crypto.randomUUID());
+  const [clientAttemptId] = useState(() => globalThis.crypto?.randomUUID?.() ?? "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => { const r = Math.floor(Math.random() * 16); return (c === "x" ? r : (r & 3) | 8).toString(16); }));
   const [openedAt] = useState(() => Date.now());
   const bookedRef = React.useRef(false);
   const hintUsedRef = React.useRef(false);

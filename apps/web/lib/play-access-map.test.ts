@@ -248,3 +248,51 @@ describe("cgo-092 every modality uses the shared viewer", () => {
     assert.equal(result.status, 0, result.stdout + result.stderr);
   });
 });
+
+// G-2: the painted book has a deliberate extra outbox wall for the card bench.
+const BOOK = `${PLAY}/buch/[chapter]`;
+const bookClient = code(read(`${BOOK}/BuchClient.tsx`));
+const bookPage = code(read(`${BOOK}/page.tsx`));
+const bookLaws = [
+  ["client: no direct sendAttempt", bookClient, (s: string) => !/\bsendAttempt\b/.test(s),
+    (s: string) => s + "\nsendAttempt(body, ownerId);"],
+  ["client: neither preview nor bench flushes", bookClient,
+    (s: string) => /useOutboxFlush\(!preview && cardBench === undefined, ownerId\)/.test(s)
+      && (s.match(/useOutboxFlush\(/g) ?? []).length === 1 && !/\bflushOutbox\(/.test(s),
+    (s: string) => s.replace("!preview && cardBench === undefined", "true")],
+  ["client: sender uses server preview and owner", bookClient,
+    (s: string) => /const send = useMemo\(\(\) => attemptSender\(preview, ownerId\)/.test(s)
+      && (s.match(/attemptSender\(/g) ?? []).length === 1,
+    (s: string) => s.replace("attemptSender(preview, ownerId)", "attemptSender(false, ownerId)")],
+  ["client: exactly one onAttempt uses that sender", bookClient,
+    (s: string) => (s.match(/onAttempt=\{send\}/g) ?? []).length === 1
+      && (s.match(/onAttempt=/g) ?? []).length === 1,
+    (s: string) => s.replace("onAttempt={send}", "onAttempt={body => sendAttempt(body, ownerId)}")],
+  ["page: only teacher without student is preview", bookPage,
+    (s: string) => /const preview = student === null && teacher !== null;/.test(s)
+      && (s.match(/preview=/g) ?? []).length === 1 && /preview=\{preview\}/.test(s),
+    (s: string) => s.replace("student === null && teacher !== null", "false")],
+] as const;
+
+describe("painted book preview wiring and tamper proofs", () => {
+  for (const [law, src, passes, mutate] of bookLaws) {
+    it(`${BOOK}: ${law}`, () => assert.equal(passes(src), true));
+    it(`${BOOK}: tamper is red: ${law}`, () => {
+      const broken = mutate(src);
+      assert.notEqual(broken, src);
+      assert.equal(passes(broken), false);
+    });
+  }
+  it("the bench condition, duplicate sender and server-to-client flag cannot disappear", () => {
+    for (const [index, before, after] of [
+      [1, "!preview && cardBench === undefined", "!preview"],
+      [3, "onAttempt={send}", "onAttempt={send} onAttempt={send}"],
+      [4, "preview={preview}", "preview={false}"],
+    ] as const) {
+      const law = bookLaws[index]!;
+      const broken = law[1].replace(before, after);
+      assert.notEqual(broken, law[1]);
+      assert.equal(law[2](broken), false);
+    }
+  });
+});
