@@ -9,6 +9,13 @@ export default auth((req) => {
   const session = req.auth;
   const { pathname, search } = req.nextUrl;
 
+  // The JSON write endpoint has an HTTP refusal contract, including at the
+  // outer door. Page navigation keeps its existing sign-in/home redirects.
+  if (pathname === "/admin/story-world" && req.method === "POST"
+    && (!session?.user?.id || session.user.role !== "teacher")) {
+    return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+  }
+
   // /admin/signin must be reachable without a session, or teachers redirect-loop.
   if (pathname === "/admin/signin") {
     if (!session) return NextResponse.next();

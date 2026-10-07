@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
+import type { NextFetchEvent } from "next/server";
 import { renderToStaticMarkup } from "react-dom/server";
 import { child, fixture, reset, teacher } from "../app/admin/story-world.harness.test.mjs";
 const { readStoryWorlds, listOpenStories, openStoryIdForGrade } = await import("./story-world.ts");
@@ -11,6 +12,15 @@ const { default: HubPage } = await import("../app/(game)/play/[grade]/page.tsx")
 const { default: ZonePage } = await import("../app/(game)/play/[grade]/[zone]/page.tsx");
 const { default: BookIndexPage } = await import("../app/(game)/play/[grade]/buch/page.tsx");
 const { default: BookPage } = await import("../app/(game)/play/[grade]/buch/[chapter]/page.tsx");
+const { default: middleware } = await import("../middleware.ts");
+const { NextRequest } = await import("next/server.js");
+const gate = async (path: string, method = "GET") => {
+  const request = Object.assign(new NextRequest(`https://fixture.invalid${path}`, { method }), { auth: fixture.session });
+  // The test auth boundary calls the real middleware callback directly.
+  const response = await middleware(request, {} as NextFetchEvent);
+  assert.ok(response);
+  return response;
+};
 const book = (chapter = "ch01") => BookPage({
   params: Promise.resolve({ grade: "1", chapter }),
   searchParams: Promise.resolve({ phase: "p2", perf: "1", grid: "1", warm: "0" }),
@@ -163,5 +173,48 @@ describe("painted book runtime door", () => {
       if (previousNodeEnv === undefined) Reflect.deleteProperty(process.env, "NODE_ENV");
       else Object.assign(process.env, { NODE_ENV: previousNodeEnv });
     }
+  });
+});
+
+describe("story-world outer HTTP wall", () => {
+  it("returns 403 for child and anonymous writes before the endpoint", async () => {
+    for (const session of [child, null]) {
+      fixture.session = session;
+      const response = await gate("/admin/story-world", "POST");
+      assert.equal(response.status, 403);
+      assert.deepEqual(await response.json(), { ok: false, error: "forbidden" });
+    }
+    assert.equal(fixture.storageCalls, 0);
+  });
+  it("admits a teacher write and preserves child/anonymous page redirects", async () => {
+    assert.equal((await gate("/admin/story-world", "POST")).headers.get("x-middleware-next"), "1");
+    fixture.session = child;
+    for (const path of ["/admin/story-world", "/admin/classes"]) {
+      const response = await gate(path);
+      assert.equal(response.status, 307);
+      assert.equal(new URL(response.headers.get("location")!).pathname, "/home");
+    }
+    fixture.session = null;
+    const response = await gate("/admin/story-world");
+    assert.equal(response.status, 307);
+    assert.equal(new URL(response.headers.get("location")!).pathname, "/admin/signin");
+  });
+  it("keeps the dev teacher page doors while requiring a session for the write", async () => {
+    fixture.session = null;
+    process.env.VERCEL_ENV = "development";
+    process.env.DEV_TEACHER_ID = "fixture-dev-teacher";
+    for (const path of ["/admin", "/admin/classes", "/play/1", "/play/4"]) {
+      assert.equal((await gate(path)).headers.get("x-middleware-next"), "1", path);
+    }
+    assert.equal((await gate("/admin/story-world", "POST")).status, 403);
+    process.env.VERCEL_ENV = "production";
+    for (const path of ["/admin", "/play/1"]) assert.equal((await gate(path)).status, 307, path);
+  });
+  it("keeps the existing teacher area gate", async () => {
+    const withoutArea = { user: { ...teacher.user, via: "konto-handoff", goTeacher: false } };
+    fixture.session = withoutArea;
+    const response = await gate("/admin/story-world", "POST");
+    assert.equal(response.status, 307);
+    assert.equal(new URL(response.headers.get("location")!).pathname, "/zugriff-fehlt");
   });
 });

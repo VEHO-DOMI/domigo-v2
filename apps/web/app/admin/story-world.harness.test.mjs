@@ -37,7 +37,9 @@ const reactURL = import.meta.resolve("react");
 const empty = "export default function FixtureComponent() { return null; }";
 const modules = new Map([
     ["server-only", "export {};"],
-    ["@/auth", `${state} export const auth = async () => f.session;`],
+    ["@/auth", `${state}
+    export const KONTO_PROVIDER = "konto-handoff";
+    export const auth = (handler) => typeof handler === "function" ? handler : Promise.resolve(f.session);`],
     ["next/navigation", `export const redirect = (href) => { throw new Error('REDIRECT:' + href); };
     export const notFound = () => { throw new Error('NOT_FOUND'); };
     export const useRouter = () => ({ refresh() {} });`],
@@ -84,6 +86,7 @@ const modules = new Map([
 const web = new URL("../../", import.meta.url);
 registerHooks({
     resolve(specifier, context, nextResolve) {
+        if (specifier === "next/server") return nextResolve("next/server.js", context);
         if (modules.has(specifier))
             return { url: `data:text/javascript,${encodeURIComponent(modules.get(specifier))}`, shortCircuit: true };
         if (specifier.startsWith("@/")) {
