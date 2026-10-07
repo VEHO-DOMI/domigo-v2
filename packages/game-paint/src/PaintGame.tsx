@@ -24,6 +24,8 @@ import type { Ability, PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 // Input machines are needed only when an actual task opens. Keeping this
 // boundary outside the component preserves its identity across reference views.
+import type { PaintAttemptSender } from "./cards/attempt.ts";
+
 const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
 import { FoundMark, Key, KeyBit, Plate } from "./cards/Glance.tsx";
@@ -62,6 +64,7 @@ import { StoryName } from "./story/StoryName.tsx";
 
 export type LiberationProgress = Record<string, "named" | "coloured" | "peaceful">;
 export interface PaintGameProps {
+  onAttempt?: PaintAttemptSender;
   liberationProgress?: LiberationProgress;
   onLiberationProgress?: (progress: LiberationProgress) => void;
   onLiberationRestart?: () => void;
@@ -466,7 +469,7 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
   books: chapterRoleCount(level, "book"),
 });
 
-export default function PaintGame({ liberationProgress = {}, onLiberationProgress, onLiberationRestart, level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ onAttempt, liberationProgress = {}, onLiberationProgress, onLiberationRestart, level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const shellRef = useRef<HTMLDivElement | null>(null);
   const hudRef = useRef<HTMLDivElement | null>(null);
@@ -2031,6 +2034,7 @@ export default function PaintGame({ liberationProgress = {}, onLiberationProgres
             o={shown} suspended={index === 0 && referenceReturn.current !== null} level={level} art={art} phaseId={phaseId}
             onResolve={resolveCorrect} onNameRestored={nameRestored} onWorldChange={applyWorldChange} onDismiss={dismissCard} onBack={backCard} onPay={payBonus}
             onGrade={cardGrade}
+            onAttempt={onAttempt}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
             collectedTips={archiveTips}
@@ -2084,9 +2088,10 @@ export default function PaintGame({ liberationProgress = {}, onLiberationProgres
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, art, phaseId, onResolve, onWorldChange, onNameRestored, onDismiss, onBack = () => {}, onGrade = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  onAttempt, o, level, art, phaseId, onResolve, onWorldChange, onNameRestored, onDismiss, onBack = () => {}, onGrade = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
   collectedTips, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onNameChosen, onStoryRead, suspended = false,
 }: {
+  onAttempt?: PaintAttemptSender;
   suspended?: boolean;
   displayName?: string;
   rescuedClassmateIds?: readonly string[];
@@ -2900,6 +2905,7 @@ function Overlay({
     <CardHost
       key={o.item!.id}
       task={o.item!}
+      onAttempt={onAttempt}
       suspended={suspended}
       sceneSnapshot={o.req.sceneSnapshot}
       align={o.align}

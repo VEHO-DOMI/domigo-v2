@@ -1,13 +1,15 @@
 "use client";
 // The ssr:false seam: Phaser only ever loads in the browser (next/dynamic with
 // ssr:false; keeps the bundle guard's one-lazy-chunk law intact).
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { readLiberation, saveLiberation, type LiberationProgress } from "@domigo/game-paint/liberation-store";
 import type { PaintLevel } from "@domigo/game-paint/level";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { chapterRegelSeiten, refreshChapterRegelbuch, regelbuchSnapshot, regelbuchServerSnapshot, subscribeRegelbuch, rememberRegelSeite } from "@/lib/regelbuch";
 import { auftaktSeen, rememberAuftakt } from "@/lib/auftakt";
+import { attemptSender } from "@/lib/preview-attempt";
+import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 import { CH01_STORY_VERSION, PAINT_CLASSMATES } from "@domigo/game-paint/story";
 import { readPaintStoryProfile, savePaintStoryProfile, paintPrologueSeen, withPaintPrologueRead, withPaintClassmateRescued, cleanPaintDisplayName, createPaintRunSeed, type PaintStoryProfile } from "@/lib/paint-story-profile";
@@ -26,6 +28,8 @@ const PaintDevGallery = dynamic(() => import("@domigo/game-paint/game").then((m)
 });
 
 type BuchClientProps = {
+  preview: boolean;
+  ownerId: string | null;
   playerKey: string;
   level: PaintLevel;
   art: Record<string, string>;
@@ -52,7 +56,9 @@ export default function BuchClient(props: BuchClientProps) {
 }
 
 function AccountBuchClient(props: BuchClientProps) {
-  const { cardBench, cardBenchTask, playerKey, ...game } = props;
+  const { cardBench, cardBenchTask, playerKey, preview, ownerId, ...game } = props;
+  useOutboxFlush(!preview && cardBench === undefined, ownerId);
+  const send = useMemo(() => attemptSender(preview, ownerId), [preview, ownerId]);
   // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
   // opening and tear it down a frame later, and a card that flashes is worse
   // than a card that stays. The SSR pass answers `false` (show it), which is
@@ -93,6 +99,7 @@ function AccountBuchClient(props: BuchClientProps) {
     {!liberationPersisted && <p role="status">Der Browser konnte deinen neuen Fortschritt nicht speichern. Lass diese Seite offen, damit er erhalten bleibt.</p>}
     <PaintGame
       {...game}
+      onAttempt={send}
       liberationProgress={liberation}
       onLiberationProgress={next => setLiberationPersisted(saveLiberation(playerKey, props.level.chapter, allowedLiberations, next))}
       onLiberationRestart={() => { saveLiberation(playerKey, props.level.chapter, allowedLiberations, {}); }}
