@@ -12,7 +12,7 @@ export function restoredAnswerState(preview: boolean, status?: string): SaveStat
 export const SAVE_COPY: Record<SaveState, string> = {
   saving: "Saving… (= Deine Antwort wird gespeichert …)",
   saved: "Saved. (= Antwort gespeichert und online bestätigt.)",
-  queued: "Waiting. (= Zum Senden auf diesem Gerät vorgemerkt. Hier ist noch keine Online-Bestätigung angekommen.)",
+  queued: "Added to the queue. (= Auf diesem Gerät zum Senden vorgemerkt. Hier fehlt noch die Online-Bestätigung.)",
   failed: "Saving failed. (= Speichern fehlgeschlagen. Versuche es noch einmal.)",
   unknown: "Earlier answer. (= Frühere Antwort. Eine Speicherbestätigung fehlt.)",
   preview: "Preview (= Vorschau). Deine Antwort bleibt nur in dieser Ansicht.",
