@@ -200,8 +200,8 @@ describe("story-world outer HTTP wall", () => {
   });
   it("keeps the dev teacher page doors while requiring a session for the write", async () => {
     fixture.session = null;
-    process.env.VERCEL_ENV = "development";
-    process.env.DEV_TEACHER_ID = "fixture-dev-teacher";
+    // Synthetic test configuration; production still rejects the same identity below.
+    Object.assign(process.env, { VERCEL_ENV: "development", DEV_TEACHER_ID: "fixture-dev-teacher" });
     for (const path of ["/admin", "/admin/classes", "/play/1", "/play/4"]) {
       assert.equal((await gate(path)).headers.get("x-middleware-next"), "1", path);
     }
