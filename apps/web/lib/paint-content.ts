@@ -14,8 +14,8 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
-import { GameTasksFileV2, ZooArtSet, PaintCollectSkin, PaintGunnerAim, PaintProjectileSkin, StageV2, TaskSequenceV2, SequenceTransfer, ZooGuardian, ZooRide, ZooCell, type GameTaskV2 } from "@domigo/content-schema";
-import { REPO_ROOT } from "@domigo/content-loader";
+import { PaintEncounter, type GrammarItem, GameTasksFileV2, ZooArtSet, PaintCollectSkin, PaintGunnerAim, PaintProjectileSkin, StageV2, TaskSequenceV2, SequenceTransfer, ZooGuardian, ZooRide, ZooCell, type GameTaskV2 } from "@domigo/content-schema";
+import { loadUnit, REPO_ROOT } from "@domigo/content-loader";
 import { ENTITY_ROLES } from "@domigo/game-paint/level";
 
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
@@ -426,4 +426,26 @@ export const listPaintChapters = (storyId: string): string[] => {
     .filter((f) => /^ch\d{2}\.level\.json$/.test(f))
     .map((f) => f.slice(0, 4))
     .sort();
+};
+
+// cgo-064: encounters have their own shelf; never feed these to world CardHost.
+const encounterCache = new Map<string, PaintEncounter & { grammarItems: GrammarItem[] }>();
+export const chapterHasEncounter = (storyId: string, chapter: string): boolean =>
+  CHAPTER_ID.test(chapter) && fs.existsSync(path.join(paintDir(storyId), `${chapter}.encounter.json`));
+export const loadPaintEncounter = (storyId: string, chapter: string): PaintEncounter & { grammarItems: GrammarItem[] } => {
+  if (!CHAPTER_ID.test(chapter)) throw new Error("Invalid encounter chapter");
+  const key = `${storyId}/${chapter}`;
+  const hit = encounterCache.get(key);
+  if (hit) return hit;
+  const encounter = PaintEncounter.parse(JSON.parse(fs.readFileSync(path.join(paintDir(storyId), `${chapter}.encounter.json`), "utf8")));
+  if (encounter.chapter !== chapter) throw new Error("Encounter chapter mismatch");
+  const grammar = loadUnit(encounter.unit).grammar;
+  const grammarItems = encounter.tasks.map(task => {
+    const item = grammar.find(item => item.id === task.corpusItem);
+    if (!item) throw new Error(`Unknown encounter corpus item: ${task.corpusItem}`);
+    return item;
+  });
+  const loaded = { ...encounter, grammarItems };
+  encounterCache.set(key, loaded);
+  return loaded;
 };

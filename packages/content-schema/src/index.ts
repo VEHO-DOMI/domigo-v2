@@ -1969,3 +1969,6 @@ export * from "./paint-art.ts";
 export { SceneSnapshot, sceneSnapshotText, type SceneSnapshotData } from "./paint-scene.ts";
 
 export * from "./paint-proof.ts";
+
+// Self-contained encounters use the same answer contract outside the world router.
+export * from "./paint-encounter.ts";
