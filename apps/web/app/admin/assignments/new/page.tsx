@@ -18,7 +18,7 @@ export default async function NewAssignmentPage({ searchParams }: { searchParams
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
   const query = await searchParams;
-  const hasSource = Object.keys(query).length > 0;
+  const hasSource = "source" in query;
   const prefill = hasSource ? resolveAssignmentPrefill(query) : null;
   if (hasSource && !prefill) return <main className="dg-card" style={{ maxWidth: 760, margin: "28px auto", padding: 20 }}>
     <h1>Inhalt nicht zuweisbar</h1>

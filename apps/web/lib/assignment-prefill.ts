@@ -50,7 +50,11 @@ export function resolveAssignmentPrefill(query: Record<string, unknown>): Assign
   };
 }
 
-/** The runner only resolves approved unit vocabulary/grammar; refuse other modalities. */
+/**
+ * The runner only resolves approved unit vocabulary/grammar; refuse other modalities
+ * for every draft, including drafts without a preview source.
+ * Hör-/Schreibabschnitte: erst wenn der Builder sie erzeugt, den Index erweitern.
+ */
 export function assignmentContentErrors(draft: AssignmentDraft, grade: number): string[] {
   const index = new Map(catalogForGrade(grade).flatMap((u) => [
     ...u.vocab.map((v) => [v.id, "vocab"] as const),

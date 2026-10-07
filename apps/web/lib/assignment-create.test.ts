@@ -69,6 +69,34 @@ describe("assignment creation checks the selected class and released content", (
     assert.equal((await send({ ...draft(), submissionId: "forged" })).status, 400);
     assert.equal(boundary.ids.length, 0);
   });
+  it("requires submissionId before saving", async () => {
+    const body: Partial<ReturnType<typeof draft>> = draft();
+    delete body.submissionId;
+    const response = await send(body);
+    assert.equal(response.status, 400);
+    assert.deepEqual(await response.json(), { ok: false, error: "bad_request" });
+    assert.equal(boundary.ids.length, 0);
+  });
+  it("accepts the builder's date-only dueAt", async () => {
+    const response = await send({ ...draft(), dueAt: "2026-10-10" });
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { ok: true, id: "synthetic-assignment" });
+    assert.deepEqual(boundary.ids, [draft().submissionId]);
+  });
+  for (const field of ["startsAt", "dueAt"] as const) {
+    it(`accepts an offset datetime for ${field}`, async () => {
+      const response = await send({ ...draft(), [field]: "2026-10-10T12:00:00+02:00" });
+      assert.equal(response.status, 200);
+      assert.deepEqual(await response.json(), { ok: true, id: "synthetic-assignment" });
+      assert.deepEqual(boundary.ids, [draft().submissionId]);
+    });
+    it(`refuses a datetime without a zone for ${field} before saving`, async () => {
+      const response = await send({ ...draft(), [field]: "2026-10-10T12:00" });
+      assert.equal(response.status, 400);
+      assert.deepEqual(await response.json(), { ok: false, error: "bad_request" });
+      assert.equal(boundary.ids.length, 0);
+    });
+  }
   it("refuses reserved content and reservation lookup failure", async () => {
     boundary.reserved.add(vocab);
     assert.equal((await send(draft())).status, 422);
