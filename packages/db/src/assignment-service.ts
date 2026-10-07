@@ -53,8 +53,10 @@ export const LEGACY_CLASS_LABEL_SUFFIX = " · Altbestand";
  */
 export async function listClasses(db: Db, classScope: ClassScope, teacherId: string): Promise<ClassRow[]> {
   // v2 half degrades like auth.ts's v2Safe(): if the domigo_v2 tables are
-  // unreachable on this deployment, the picker keeps its v1 classes instead of
-  // falling empty. (v2Safe itself is module-private to auth.ts.)
+  // unreachable on this deployment, the picker keeps the v1 classes the session
+  // admits instead of falling empty. (v2Safe itself is module-private to auth.ts.)
+  // The v1 half is deliberately NOT caught: a scope the database cannot read
+  // (cgo-063 reader, HINWEIS) fails loud — a wall that fails closed, never open.
   let v2: ClassRow[] = [];
   try {
     const owned = await listClassesForTeacher(db, classScope, teacherId);
@@ -78,8 +80,8 @@ export async function listClasses(db: Db, classScope: ClassScope, teacherId: str
 }
 
 /**
- * P3 · the GRANDMASTER's class picker — EVERY active class on the platform, not
- * just one teacher's. Same shape and same order as listClasses (v2 first, the v1
+ * P3 · the GRANDMASTER's class picker — every active class the session's scope
+ * admits (for the operator: every class on the platform), not just one teacher's. Same shape and same order as listClasses (v2 first, the v1
  * legacy register behind it), with one addition: each v2 label carries its owner,
  * "2A · Frau Beispiel", because the operator is now looking at classes that are
  * not his and a bare "2A" would say nothing about whose roster he is about to

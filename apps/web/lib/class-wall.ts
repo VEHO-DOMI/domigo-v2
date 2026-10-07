@@ -7,11 +7,12 @@
  * Jede Lehrkraft las damit die Namen fremder Klassen — ein Datenschutz-Fund —, und
  * wählte sie eine davon, scheiterte `createAssignment` an der Klassenwand mit 500.
  *
- * Die Wurzel liegt in einer DB-Datei unter dem cgo-029-Zaun; dort repariert sie der
- * Zaun-Inhaber (GG-Entscheid 02.10., Nachtrag 4). Bis dahin filtert die App jede
- * Auswahl auf den Ausschnitt der Sitzung — dieselbe Wand, gegen die
- * `createAssignment` ohnehin schreibt. Für den Plattformbetreiber ist der Filter
- * wirkungslos: sein Ausschnitt ist jede Klasse (lib/identity.ts#scopeAus).
+ * Die Wurzel ist seit cgo-063 (PR 485) in der DB repariert: `listClasses` und
+ * `listClassesInScope` binden auch die v1-Abfrage an den Ausschnitt. Die App
+ * filtert trotzdem weiter auf den Ausschnitt der Sitzung — zweite Tür vor
+ * derselben Wand, gegen die `createAssignment` ohnehin schreibt. Für den
+ * Plattformbetreiber ist der Filter wirkungslos: sein Ausschnitt ist jede Klasse
+ * (lib/identity.ts#scopeAus).
  *
  * Ein Weg für Seite UND Endpunkt, damit Auswahl und Tür nie auseinanderlaufen.
  */
