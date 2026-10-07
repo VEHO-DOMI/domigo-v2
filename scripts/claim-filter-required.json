@@ -1,7 +1,7 @@
 {
   "warum": "dach-063 · Die Positiv-Liste der Klassenwand. scripts/check-claim-filter.mjs (Pruefung »liste«) verlangt: jede Funktion in packages/db, die auf den Ausschnitt der Sitzung filtert, steht hier mit der Zahl ihrer Filterstellen (inArray auf [...classScope] · inScope(classScope, …) · Weitergabe fn(db, classScope…)). Weniger Stellen als hier = die Abfrage hat ihren Ausschnitt verloren = rot. Mehr = Eintrag nachziehen. Eine Funktion mit Ausschnitt, die hier fehlt, ist rot; ebenso eine neue exportierte Funktion auf einer Klassen-Tabelle, die weder hier noch in claim-filter-allowlist.json noch im Bestand steht.",
   "pflicht": {
-    "assignment-service.ts#listClasses": 1,
+    "assignment-service.ts#listClasses": 2,
     "assignment-service.ts#listClassesInScope": 1,
     "assignment-service.ts#listAssignmentsByCreator": 1,
     "assignment-service.ts#getAssignmentWithSections": 1,
@@ -25,7 +25,7 @@
     "class-service.ts#renameClass": 1,
     "class-service.ts#archiveClass": 2,
     "class-service.ts#unarchiveClass": 2,
-    "class-service.ts#listAllClassesForGrandmaster": 1,
+    "class-service.ts#listAllClassesForGrandmaster": 2,
     "class-service.ts#getClassForGrandmaster": 1,
     "class-service.ts#getOwnerIdForStudentForGrandmaster": 1,
     "game-progress.ts#getUnitMastery": 1,

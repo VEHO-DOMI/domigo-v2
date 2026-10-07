@@ -378,6 +378,28 @@ describe("cgo-063 · class rights in the emitted query", () => {
     });
   }
 
+  it("listClassesInScope binds BOTH registers to the scope in the query — foreign and archived rows never leave the DB", async () => {
+    const { db, reads, unsupported } = scopedClassDb();
+    const rows = await listClassesInScope(db, MIXED_SCOPE);
+    expect(reads).toHaveLength(2);
+    expectScopedRead(reads[0]!, MIXED_SCOPE, true);
+    expectScopedRead(reads[1]!, MIXED_SCOPE, false);
+    expect(reads.map((r) => r.returnedIds)).toEqual([["v2-b", "v2-a", "v2-other"], ["v1-b", "v1-a"]]);
+    expect(rows.map((r) => r.id)).toEqual(["v2-b", "v2-a", "v2-other", "v1-b", "v1-a"]);
+    expect(unsupported).toEqual([]);
+  });
+
+  for (const v2Fails of [false, true]) {
+    it(`listClassesInScope with an empty scope returns nothing with v2 ${v2Fails ? "unavailable" : "available"}`, async () => {
+      const { db, reads } = scopedClassDb(v2Fails);
+      expect(await listClassesInScope(db, EMPTY_SCOPE)).toEqual([]);
+      expect(reads).toHaveLength(2);
+      expectScopedRead(reads[0]!, EMPTY_SCOPE, true);
+      expectScopedRead(reads[1]!, EMPTY_SCOPE, false);
+      expect(reads.flatMap((r) => r.returnedIds)).toEqual([]);
+    });
+  }
+
   it("v2 failure retains only permitted, active legacy rows", async () => {
     const { db, reads } = scopedClassDb(true);
     expect(await listClasses(db, MIXED_SCOPE, "T-1")).toEqual([

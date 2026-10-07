@@ -396,6 +396,10 @@ function errText(err: unknown): string {
  * v1 half: a pure count(*) per class_id. No column of `public.users` other than the
  * grouping key is ever selected — the legacy register is a head count here, never
  * a list of people.
+ *
+ * Both halves are bound to `classScope` IN THE QUERY (cgo-063): an operator sees
+ * every class the session admits, and an empty scope admits nothing in either
+ * register — the app-side class wall is a second door, not the first.
  */
 export async function listAllClassesForGrandmaster(db: Db, classScope: ClassScope): Promise<GrandmasterOverview> {
   let v2: GrandmasterClassRow[] = [];
@@ -451,7 +455,7 @@ export async function listAllClassesForGrandmaster(db: Db, classScope: ClassScop
     const legacyClasses = await db
       .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
       .from(v1Classes)
-      .where(isNull(v1Classes.archivedAt))
+      .where(and(inArray(v1Classes.id, [...classScope]), isNull(v1Classes.archivedAt)))
       .orderBy(v1Classes.name);
 
     if (legacyClasses.length > 0) {
