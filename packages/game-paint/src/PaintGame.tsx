@@ -1934,9 +1934,10 @@ export default function PaintGame({ onAttempt, liberationProgress = {}, onLibera
         @keyframes pb-ack-glow {
           0%, 45% { box-shadow: 0 0 0 2px #b78d51, 0 0 10px rgba(183,141,81,.5); }
         }
-        .pb-ack-flash { animation: pb-ack-glow 1200ms ease-out; }
-        .pb-hud-dim .pb-ack-flash { animation: none; }
-        @media (prefers-reduced-motion: reduce) { .pb-ack-flash { animation: none; } }
+        .pb-ack-flash[data-flash="true"] { animation: pb-ack-glow 1200ms ease-out; }
+        .pb-game-hud.pb-hud-dim .pb-ack-flash { animation: none; }
+        .pb-game-shell[data-mobile="true"] .pb-hud-dim .pb-ack-flash { opacity: .26; filter: grayscale(.85) brightness(.86); }
+        @media (prefers-reduced-motion: reduce) { .pb-ack-flash[data-flash="true"] { animation: none; } }
       `}</style>
       {/* R5-W4b · D3b · D-209: the whole row dims while a card holds the screen
           (overlay-css `.pb-hud-dim`) — the focus mode's veil covers the stage,
@@ -2008,7 +2009,8 @@ export default function PaintGame({ onAttempt, liberationProgress = {}, onLibera
           />
           {(ack.state.total > 0 || ack.state.pending.size > 0) && <Chip
             key={ack.state.revision}
-            className={ack.lit ? "pb-ack-flash" : undefined}
+            className="pb-ack-flash"
+            flash={ack.lit}
             glyph={<span aria-hidden="true">+</span>}
             label="Lernpunkte"
             value={ack.state.pending.size > 0 ? "Punkte folgen" : `${ack.state.total}${ack.lit ? ` (+${ack.state.lastAward})` : ""}`}
@@ -3347,9 +3349,9 @@ function SchichtenLeiste({ voll, gesamt, breite = 8, hoehe = 13, luft = 3 }: {
   );
 }
 
-function Chip({ icon, glyph, label, value, art, onClick, titleDe, leiste, className }: {
+function Chip({ icon, glyph, label, value, art, onClick, titleDe, leiste, className, flash }: {
   icon?: PaintedIconName; glyph?: React.ReactNode; label: string; value: string; art?: Record<string, string>;
-  onClick?: () => void; titleDe?: string; leiste?: React.ReactNode; className?: string;
+  onClick?: () => void; titleDe?: string; leiste?: React.ReactNode; className?: string; flash?: boolean;
 }): React.ReactElement {
   // R5-W6 · S2: entweder ein gemaltes Bild aus dem Buch oder eine schlichte
   // Form — nie beides und nie keines.
@@ -3367,6 +3369,7 @@ function Chip({ icon, glyph, label, value, art, onClick, titleDe, leiste, classN
   return (
     <span
       className={`pb-hud-chip${className ? ` ${className}` : ""}`}
+      data-flash={flash}
       style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}
       title={titleDe}
       aria-label={titleDe === undefined ? undefined : `${label} ${value} — ${titleDe}`}

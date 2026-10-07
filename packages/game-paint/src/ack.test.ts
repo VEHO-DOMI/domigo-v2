@@ -137,9 +137,10 @@ describe("one scoring brain", () => {
 const presentationLaws = [
   ["no empty chip", "ack.state.total > 0 || ack.state.pending.size > 0"],
   ["wrapped sender", "onAttempt={ack.send}"],
-  ["short glow", ".pb-ack-flash { animation: pb-ack-glow 1200ms ease-out; }"],
-  ["overlay suppresses glow", ".pb-hud-dim .pb-ack-flash { animation: none; }"],
-  ["reduced motion suppresses glow", "@media (prefers-reduced-motion: reduce) { .pb-ack-flash { animation: none; } }"],
+  ["short glow", '.pb-ack-flash[data-flash="true"] { animation: pb-ack-glow 1200ms ease-out; }'],
+  ["overlay suppresses glow", ".pb-game-hud.pb-hud-dim .pb-ack-flash { animation: none; }"],
+  ["mobile overlay dims the acknowledgement", '.pb-game-shell[data-mobile="true"] .pb-hud-dim .pb-ack-flash { opacity: .26; filter: grayscale(.85) brightness(.86); }'],
+  ["reduced motion suppresses glow", '@media (prefers-reduced-motion: reduce) { .pb-ack-flash[data-flash="true"] { animation: none; } }'],
 ] as const;
 describe("ack presentation contracts", () => {
   it.each(presentationLaws)("%s, including its red tamper", (_law, required) => {
