@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import ts from "typescript";
 import { GrammarFile, PaintEncounter, type PaintEncounter as Encounter } from "@domigo/content-schema";
 import { gradeGrammar } from "@domigo/engine";
 
@@ -85,4 +86,32 @@ describe("the Chapter 2 encounter uses its actual scene assets and corpus", () =
       expect(PaintEncounter.safeParse(draft).success).toBe(false);
     }
   });
+});
+
+
+it("keeps the encounter behind the client-only lazy loading boundary", () => {
+  const file = path.join(ROOT, "apps/web/app/(game)/play/[grade]/buch/[chapter]/BuchClient.tsx");
+  const source = ts.createSourceFile(file, fs.readFileSync(file, "utf8"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  let eager = 0;
+  let lazy = false;
+  const isStage = (node: ts.Node): boolean => ts.isStringLiteral(node) && node.text.endsWith("/encounter/EncounterStage");
+  const visit = (node: ts.Node): void => {
+    if (ts.isImportDeclaration(node) && isStage(node.moduleSpecifier)) eager++;
+    if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === "dynamic") {
+      const [loader, options] = node.arguments;
+      let importsStage = false;
+      const scan = (child: ts.Node): void => {
+        if (ts.isCallExpression(child) && child.expression.kind === ts.SyntaxKind.ImportKeyword && child.arguments.some(isStage)) importsStage = true;
+        ts.forEachChild(child, scan);
+      };
+      if (loader) scan(loader);
+      const clientOnly = options && ts.isObjectLiteralExpression(options) && options.properties.some(property =>
+        ts.isPropertyAssignment(property) && property.name.getText(source) === "ssr" && property.initializer.kind === ts.SyntaxKind.FalseKeyword);
+      if (importsStage && clientOnly) lazy = true;
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(source);
+  expect(eager, "a static stage import bypasses the loading boundary").toBe(0);
+  expect(lazy, "the stage must load with dynamic import and ssr:false").toBe(true);
 });

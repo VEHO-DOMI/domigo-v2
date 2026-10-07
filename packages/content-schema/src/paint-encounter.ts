@@ -53,7 +53,7 @@ export const PaintEncounter = z.object({
     story: text, goal: text, orientation: text,
     wordSupport: z.array(z.object({ en: text, de: text }).strict()).min(1),
   }).strict(),
-  models: z.array(z.object({ scene: sceneId, sentence: text, explanationDe: text }).strict()).min(1),
+  models: z.array(z.object({ scene: sceneId, sentence: text, explanationDe: text }).strict()).length(3),
   scenes: z.array(z.object({
     id: sceneId,
     asset: z.string().regex(/^\/art\/g[1-4]\/paint\/ch\d{2}\/encounter\/s\d{2}\.svg$/),

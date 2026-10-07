@@ -31,6 +31,8 @@
 .encounter-answer { display: flex; flex-direction: column; gap: 8px; font-weight: 600; }
 .encounter-answer input { width: 100%; border: 1px solid #a58e68; background: #fffdf8; border-radius: 8px; min-height: 52px; padding: 10px 14px; font-size: 22px; color: inherit; }
 .encounter-feedback { margin-top: 18px; background: #edf0df; border-left: 4px solid #678b68; border-radius: 6px; padding: 14px 16px; }
+.encounter-feedback strong { display: block; }
+.encounter-feedback > button { display: block; margin-top: 12px; }
 .encounter-feedback p { margin: 8px 0; }
 .encounter-help { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; border-top: 1px solid #c9b99c; padding-top: 16px; }
 .encounter-help button { font-size: 14px; font-weight: 500; }
