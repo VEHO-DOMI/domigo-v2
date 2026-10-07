@@ -26,7 +26,7 @@ function mount() {
   let refreshes = 0;
   let finish: () => void = () => {};
   const settled = new Promise<void>((resolve) => { finish = resolve; });
-  const module = { exports: {} as { default: (props: object) => ReactElement } };
+  const componentModule = { exports: {} as { default: (props: object) => ReactElement } };
   const dependencies = (id: string) => {
     if (id === "next/navigation") return { useRouter: () => ({ refresh: () => { refreshes++; } }) };
     if (id === "react") return {
@@ -42,10 +42,10 @@ function mount() {
     };
     return require(id);
   };
-  new Function("require", "module", "exports", source)(dependencies, module, module.exports);
+  new Function("require", "module", "exports", source)(dependencies, componentModule, componentModule.exports);
   const render = () => {
     cursor = 0;
-    return module.exports.default({ grades: [{ grade: 1, isOpen: false }], allowedGrades: [1], available: true });
+    return componentModule.exports.default({ grades: [{ grade: 1, isOpen: false }], allowedGrades: [1], available: true });
   };
   return { render, settled, refreshes: () => refreshes };
 }
