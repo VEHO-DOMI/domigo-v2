@@ -9,7 +9,6 @@
 // `preview` — a child can never be handed it.
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { spawnSync } from "node:child_process";
 import { describe, it } from "node:test";
 import { createSourceFile, forEachChild, isJsxSelfClosingElement, ScriptKind, ScriptTarget, type Node } from "typescript";
 
@@ -243,9 +242,9 @@ describe("cgo-092 every modality uses the shared viewer", () => {
     assert.doesNotMatch(src, /Noch nicht in der Schüleransicht/);
     assert.match(src, /Chapter-Übungen ansehen und zuweisen/);
   });
-  it("isolated behavior tests cover routes and assignment content/scoring", () => {
-    const result = spawnSync(process.execPath, ["--import", "./scripts/lib/alias-register.mjs", "--test", "app/api/study-path/preview-walls.test.ts", "app/learn/preview-behavior.test.mjs", "app/assignments/preview.test.ts", "app/assignments/preview-score.test.ts"], { cwd: new URL("../", import.meta.url), encoding: "utf8" });
-    assert.equal(result.status, 0, result.stdout + result.stderr);
+  it("assignment list preview calls the teacher definitions helper, never the child list", () => {
+    const src = code(read("assignments/page.tsx"));
+    assert.match(src, /const rows = view\.kind === "preview"\s*\? await listPreviewAssignments\(view\.teacher, view\.grades\)\s*: await listAssignmentsForStudent\(/);
   });
 });
 

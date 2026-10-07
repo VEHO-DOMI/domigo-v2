@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// cgo-092: scan rendered JSX copy, never identifiers, slugs, imports or comments.
+// cgo-092: scan JSX copy and named copy fields, never identifiers, slugs, imports or comments.
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 const require = createRequire(new URL('../apps/web/package.json', import.meta.url));
 const ts = require('typescript');
 const forbidden = /\b(?:units?|einheit(?:en)?)\b/i;
@@ -34,6 +35,9 @@ export function copyHits(source, file = 'fixture.tsx') {
     else if (ts.isJsxExpression(node)) { expression(node.expression); ts.forEachChild(node, visit); }
     else if (ts.isJsxAttribute(node)) {
       if (/^(title|label|note|placeholder|alt|aria-label)$/.test(node.name.getText(tree))) expression(node.initializer);
+    } else if (ts.isPropertyAssignment(node)) {
+      if (/^(title|sub|label|blurb|note)$/.test(node.name.text ?? '')) expression(node.initializer);
+      ts.forEachChild(node, visit);
     } else ts.forEachChild(node, visit);
   };
   visit(tree);
@@ -47,11 +51,17 @@ function files(dir) {
   });
 }
 if (process.argv.includes('--selftest')) {
-  for (const bad of ['<p>Unit 1</p>', '<div>{rows.map(row => <p>Unit {row.id}</p>)}</div>', '<p>{"Units"}</p>', '<p>{`Einheit ${n}`}</p>', '<a title="Einheiten">Chapter</a>', 'const label = "all units"; const el = <p>{label}</p>']) assert.ok(copyHits(bad).length, bad);
-  for (const good of ['const unitSlug = "g1-u01"; const el = <p>Chapter {unitSlug}</p>', '/* Unit */ const el = <p>{listApprovedUnits().length} Chapters</p>', '<Link href="/unit">Chapter</Link>', '<p>{scope.kind === "unit" ? "Chapter" : "Alle"}</p>']) assert.equal(copyHits(good).length, 0, good);
-  console.log('check-chapter-copy selftest: 6 red / 4 green controls passed');
+  const copyFields = ['title', 'sub', 'label', 'blurb', 'note'];
+  const bad = ['<p>Unit 1</p>', '<div>{rows.map(row => <p>Unit {row.id}</p>)}</div>', '<p>{"Units"}</p>', '<p>{`Einheit ${n}`}</p>', '<a title="Einheiten">Chapter</a>', 'const label = "all units"; const el = <p>{label}</p>',
+    ...copyFields.flatMap((key) => [`const tiles = [{ ${key}: "by unit" }];`, `const tile = { "${key}": "Einheiten" };`]),
+    'const tile = { sub: `Unit ${n}` };', 'const caption = "Units"; const tile = { sub: caption };'];
+  const good = ['const unitSlug = "g1-u01"; const el = <p>Chapter {unitSlug}</p>', '/* Unit */ const el = <p>{listApprovedUnits().length} Chapters</p>', '<Link href="/unit">Chapter</Link>', '<p>{scope.kind === "unit" ? "Chapter" : "Alle"}</p>',
+    ...copyFields.map((key) => `const tile = { ${key}: "Chapter 1", kind: "unit", unitSlug: "g1-u01" };`)];
+  for (const fixture of bad) assert.ok(copyHits(fixture).length, fixture);
+  for (const fixture of good) assert.equal(copyHits(fixture).length, 0, fixture);
+  console.log(`check-chapter-copy selftest: ${bad.length} red / ${good.length} green controls passed`);
 } else {
-  const scanned = files('apps/web/app');
+  const scanned = files(fileURLToPath(new URL('../apps/web/app/', import.meta.url)));
   const hits = scanned.flatMap((file) => copyHits(fs.readFileSync(file, 'utf8'), file).map((hit) => ({ file, ...hit })));
   for (const hit of hits) console.error(`${hit.file}:${hit.line}: ${hit.text}`);
   console.log(`check-chapter-copy: ${scanned.length} student JSX files; ${hits.length} visible-copy violations`);

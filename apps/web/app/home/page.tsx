@@ -73,10 +73,10 @@ export default async function HomePage() {
 
   const items: { href: string; icon: string; title: string; sub: string; badge?: string | null }[] = [
     storyTile,
-    { href: "/practice", icon: "📚", title: "Practice", sub: "Vocabulary & grammar by unit" },
+    { href: "/practice", icon: "📚", title: "Practice", sub: "Vocabulary & grammar by Chapter" },
     { href: "/review", icon: "🔁", title: "Review", sub: dueLabel, badge: dueBadge },
-    { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided units with checkpoints" },
-    { href: "/listening", icon: "🎧", title: "Listening", sub: "Audio comprehension by unit" },
+    { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided Chapters with checkpoints" },
+    { href: "/listening", icon: "🎧", title: "Listening", sub: "Audio comprehension by Chapter" },
     { href: "/tests", icon: "📝", title: "Mock Test", sub: "Practice a Schularbeit" },
     { href: "/assignments", icon: "🗂️", title: "Aufgaben", sub: "Assigned by your teacher" },
   ];
