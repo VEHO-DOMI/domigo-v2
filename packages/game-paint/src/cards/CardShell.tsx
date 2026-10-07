@@ -508,7 +508,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
 
 export function CardShell({
   task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, captive, captiveIsPerson, round, flight, doff = false,
-  colourAskDe, actStep, children, sceneSnapshot,
+  colourAskDe, actStep, children, sceneSnapshot, liberationStage, knownName,
 }: {
   task: GameTaskV2;
   sceneSnapshot?: SceneSnapshot;
@@ -529,6 +529,8 @@ export function CardShell({
   art?: Record<string, string>;
   /** how drained the asker is right now (0…1) — the portrait matches the world */
   portraitWash?: number;
+  liberationStage?: "unnamed" | "named" | "coloured" | "peaceful";
+  knownName?: string;
   /** R5-W4 · D3 · F-14 · R54 · WHO IS IN THE CAGE, on the card as in the world.
    *  All four object cages wear the one `satchel` shell, so until now the sound
    *  system, the tablet, the chair and the class photo were the same picture —
@@ -672,7 +674,7 @@ export function CardShell({
         {task.kind === "wheel" && task.id.startsWith("g1.paint.ch01.") && task.skins?.includes("moths") ? (
           <NumberSwarmPlate seed={task.id + ":" + task.shown} />
         ) : portrait !== undefined ? (
-          <Plate url={portrait} height={photoPortrait ? 210 : countPage ? 180 : undefined} behindUrl={occupant} behindWindow={behindWindow} curseUrl={curseUrl} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
+          <Plate url={portrait} height={photoPortrait ? 210 : countPage ? 180 : undefined} behindUrl={occupant} behindWindow={behindWindow} curseUrl={curseUrl} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} liberationStage={liberationStage} knownName={knownName} />
         ) : picture !== undefined ? (
           <Plate url={picture} altDe={task.stimulus.type === "image" ? task.stimulus.altDe : ""} mark={mark} />
         ) : (

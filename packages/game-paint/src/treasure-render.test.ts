@@ -67,6 +67,6 @@ describe("the Regel-Seite's light is drawn, not decided, in the scene", () => {
     // itself. Counted on the call instead, which is the thing that can actually
     // be duplicated.
     expect([...src.matchAll(/treasureBobPx\(/g)].length).toBe(1);
-    expect(src).toContain("img.y += br.dy - lift;");
+    expect(src).toContain("img.y += br.dy - lift + (call?.dy ?? 0);");
   });
 });

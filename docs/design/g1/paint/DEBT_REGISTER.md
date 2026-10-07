@@ -1929,3 +1929,16 @@ fremde oder unnötige Ausnahmen sind Fehler. Alte Fristen sind Herkunft, keine S
 | D-1272 | offen | docs/design/g1/paint/ch06-dossiers-v2/claims.json#/claims/to sit in a tree | Verb-Phrase der Unit; die Karte kommt von L6-T2 | Wort oder zulässige Form wird auf einer Karte beantwortet; Ausnahme dann entfernen. | L6-T2 | Quellinventur cgo-017 am Startstand; frühere Frist 2026-12-31; Sachprüfung im zuständigen Tor bei jedem Lauf |
 | D-1273 | offen | docs/design/g1/paint/ch06-dossiers-v2/claims.json#/claims/tree | Fundstück-Wort von p3; die pickupset-Karte kommt von L6-T2 | Wort oder zulässige Form wird auf einer Karte beantwortet; Ausnahme dann entfernen. | L6-T2 | Quellinventur cgo-017 am Startstand; frühere Frist 2026-12-31; Sachprüfung im zuständigen Tor bei jedem Lauf |
 | D-1274 | offen | docs/design/g1/paint/ch06-dossiers-v2/claims.json#/claims/woods | kein Wald im Kapitel; reines Kartenwort der Unit | Wort oder zulässige Form wird auf einer Karte beantwortet; Ausnahme dann entfernen. | L6-T2 | Quellinventur cgo-017 am Startstand; frühere Frist 2026-12-31; Sachprüfung im zuständigen Tor bei jedem Lauf |
+
+
+## cgo-085 · begrenzte B1-Befunde, 07.10.2026
+
+**CODEX DRAFT — NOT CANON.** Nachtrag ohne neue D-Nummern; die Vergabe neuer
+Nummernblöcke bleibt beim GG. Keine bestehende Ausnahme wird hier geschlossen.
+
+| Stelle | Befund | Erwartete Auflösung / Zuständigkeit | Beleg |
+|---|---|---|---|
+| B1 Radiergummi, vorhandene sieben Posen | Die Befreiung ist durch Farbwechsel, Jubel, Ende des Rufens und Ruhe sichtbar; die vorhandenen Gesichter behalten ihre strengen Brauen. Keine Bilddatei wurde erzeugt oder ersetzt. | Gemalte friedliche Mimik nach Kokis Exemplar-Abnahme in D2/B2; B1 ist keine Kunstfreigabe. | cgo-085: Sichtung aller vorhandenen Radiergummi-Posen und gespielte Bildfolge. |
+| Künftige Gegenstände mit weißer, schwarzer oder grauer Zielfarbe | Vollständiges Entfärben kann die zurückgegebene Neutralfarbe nicht als eindeutigen Wechsel sichtbar machen. B1 erprobt rosa/blau und erweitert das Muster nicht auf diese Gegenstände. | D2/B2 braucht unterscheidbare Fluch-/Friedensdarstellung in der Kunst; kein automatischer Transfer aus B1. | cgo-085: Verfahren nutzt Grau → Zielfarbe, ohne neue Kunst. |
+| Restore-Karten: bestehende Farbpunkte und Hinweise | Beide blinden Löser sehen, dass Farbpunkte eine Auswahl ohne Kenntnis des englischen Wortes erlauben. Der bestehende Radiergummi-Hinweis erklärt den Namen auch noch nach dem Namensschritt. B1 ändert diese vorhandene Hilfestellung nicht. | GG/Koki beurteilen die Hilfestufe bei der B1-Spielabnahme; falls eigenständiger Farbwortabruf verlangt ist, in B2 gesondert bearbeiten. | cgo-085: zwei übereinstimmende Blindberichte im externen Belegordner. |
+| B1-Wiederaufnahme | Teilfortschritt ist nach Konto und Kapitel getrennt im selben Browser gespeichert. Ein Gerätewechsel überträgt ihn nicht. | Umfang des Eingangs PR 464; Cloud-Speicherung liegt außerhalb B1 und verlangt eine eigene Daten-/Profilbahn. | cgo-085: getrennte Konten/Kapitel und blockierter Speicher getestet; echter Reload nach Teilantwort gespielt. |

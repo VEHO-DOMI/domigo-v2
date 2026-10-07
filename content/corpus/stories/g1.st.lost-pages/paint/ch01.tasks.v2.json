@@ -154,7 +154,7 @@
         "showsDe": "Der Radiergummi wischt an drei Sätzen herum.",
         "art": "eraser_act"
       },
-      "storyDe": "Nur ein Satz ist richtig. Welcher?",
+      "storyDe": "Welcher Satz ist richtig geschrieben?",
       "options": [
         "It's a book.",
         "Its a book.",
@@ -186,7 +186,7 @@
         "showsDe": "Der Radiergummi hat an drei Sätzen herumgewischt.",
         "art": "eraser_b"
       },
-      "storyDe": "Welcher Satz bedeutet, dass es kein Fenster ist?",
+      "storyDe": "Welcher Satz ist richtig geschrieben?",
       "options": [
         "It isn't a window.",
         "It don't a window.",

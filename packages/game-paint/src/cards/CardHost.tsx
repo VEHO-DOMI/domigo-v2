@@ -71,9 +71,13 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round, suspended = false,
+  task, onResolve, onWorldChange, onDismiss, onGrade, restoreNamed = false, onNameRestored, liberationStage, knownName, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round, suspended = false,
 }: {
   task: GameTaskV2;
+  restoreNamed?: boolean;
+  liberationStage?: "unnamed" | "named" | "coloured" | "peaceful";
+  knownName?: string;
+  onNameRestored?: (answer: string) => void;
   /** Reading a reference preserves this machine and pauses its turn timer. */
   suspended?: boolean;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -125,7 +129,12 @@ export function CardHost({
   round?: { n: number; of: number };
 }): React.ReactElement {
   const m = MACHINES[task.kind];
-  const [state, setState] = useState<unknown>(() => m.init(task));
+  const initialState = (): unknown => {
+    const initial = m.init(task);
+    return task.kind === "restore" && restoreNamed ? { ...(initial as RestoreState), step: "colour" } : initial;
+  };
+  const [state, setState] = useState<unknown>(initialState);
+  const namedRef = React.useRef(restoreNamed);
   const [attempts, setAttempts] = useState(0);
   /** the card may only end ONCE — a late timer must not fire after an answer,
    *  and a second tap during the resolution must not resolve twice */
@@ -173,6 +182,11 @@ export function CardHost({
     const actions = Array.isArray(a) ? a : [a];
     let next = state;
     for (const act of actions) next = m.act(next, act);
+    if (task.kind === "restore" && onNameRestored && !namedRef.current
+      && (next as RestoreState).step === "colour") {
+      namedRef.current = true;
+      onNameRestored((next as RestoreState).name);
+    }
     const g = m.grade(next);
     if (g === "correct") {
       endedRef.current = true;
@@ -192,7 +206,8 @@ export function CardHost({
       // GENAU hier: eine Stelle tiefer (im Zurücksetzen) käme er auch beim
       // Neuaufbau der Karte, eine Stelle höher bei jedem `pending`.
       cbRef.current.onGrade?.("wrong");
-      setAttempts((x) => x + 1); setState(m.init(task)); return;
+      setAttempts((x) => x + 1); setState(task.kind === "restore" && onNameRestored && namedRef.current
+        ? { ...(m.init(task) as RestoreState), step: "colour" } : m.init(task)); return;
     }
     setState(next);
   };
@@ -222,6 +237,8 @@ export function CardHost({
       onActivity={onActivity}
       art={art}
       portraitWash={portraitWash}
+      liberationStage={liberationStage === "unnamed" && step === "colour" ? "named" : liberationStage}
+      knownName={liberationStage && task.kind === "restore" && step === "colour" ? task.name : knownName}
       sceneSnapshot={sceneSnapshot}
       captive={captive}
       captiveIsPerson={captiveIsPerson}
