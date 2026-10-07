@@ -159,6 +159,7 @@ export async function createAssignment(
   classScope: ClassScope,
   draft: AssignmentDraft,
   createdBy: string,
+  submissionId?: string,
 ): Promise<string> {
   // A stamped class id is a class: an INSERT has no WHERE to hide behind, so the
   // wall is a refusal. Without it a caller could file an assignment into a class
@@ -167,38 +168,49 @@ export async function createAssignment(
   if (!inScope(classScope, draft.classId)) {
     throw new Error("[@domigo/db] createAssignment: refused — class outside this session's scope (dach-018)");
   }
-  const [row] = await db
-    .insert(assignments)
-    .values({
-      classId: draft.classId,
-      createdBy,
-      title: draft.title.trim(),
-      descriptionDe: draft.descriptionDe?.trim() || null,
-      mode: draft.mode,
-      startsAt: draft.startsAt ? new Date(draft.startsAt) : null,
-      dueAt: draft.dueAt ? new Date(draft.dueAt) : null,
-      sessionDurationMinutes: draft.sessionDurationMinutes ?? null,
-      attemptsPerTest: draft.attemptsPerTest,
-      notenSchluessel: draft.notenSchluessel ?? null,
-      displayConfig: draft.displayConfig ?? null,
-    })
-    .returning({ id: assignments.id });
-  const assignmentId = row!.id;
-
+  // cgo-066: stable primary keys make an exact retry harmless, even across
+  // processes. Include teacher + complete validated payload so another teacher
+  // or an edited draft cannot collide with this submission. No schema change.
+  const uuidFor = async (value: string): Promise<string> => {
+    const bytes = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value))).slice(0, 16);
+    bytes[6] = (bytes[6]! & 0x0f) | 0x80; // UUIDv8: application-defined SHA-256 name.
+    bytes[8] = (bytes[8]! & 0x3f) | 0x80;
+    const hex = Array.from(bytes, (n) => n.toString(16).padStart(2, "0")).join("");
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  };
+  const assignmentId = await uuidFor(JSON.stringify([createdBy, submissionId ?? crypto.randomUUID(), draft]));
+  const insertAssignment = db.insert(assignments).values({
+    id: assignmentId,
+    classId: draft.classId,
+    createdBy,
+    title: draft.title.trim(),
+    descriptionDe: draft.descriptionDe?.trim() || null,
+    mode: draft.mode,
+    startsAt: draft.startsAt ? new Date(draft.startsAt) : null,
+    dueAt: draft.dueAt ? new Date(draft.dueAt) : null,
+    sessionDurationMinutes: draft.sessionDurationMinutes ?? null,
+    attemptsPerTest: draft.attemptsPerTest,
+    notenSchluessel: draft.notenSchluessel ?? null,
+    displayConfig: draft.displayConfig ?? null,
+  }).onConflictDoNothing({ target: assignments.id });
   if (draft.sections.length > 0) {
-    await db.insert(assignmentSections).values(
-      draft.sections.map((s) => ({
-        assignmentId,
-        position: s.position,
-        kind: s.kind,
-        itemIds: s.itemIds,
-        listeningTaskId: s.listeningTaskId ?? null,
-        writingPromptId: s.writingPromptId ?? null,
-        timerMinutes: s.timerMinutes ?? null,
-        weightPct: s.weightPct,
-        sectionConfig: s.sectionConfig ?? null,
-      })),
-    );
+    const rows = await Promise.all(draft.sections.map(async (s) => ({
+      id: await uuidFor(`${assignmentId}:section:${s.position}`),
+      assignmentId,
+      position: s.position,
+      kind: s.kind,
+      itemIds: s.itemIds,
+      listeningTaskId: s.listeningTaskId ?? null,
+      writingPromptId: s.writingPromptId ?? null,
+      timerMinutes: s.timerMinutes ?? null,
+      weightPct: s.weightPct,
+      sectionConfig: s.sectionConfig ?? null,
+    })));
+    // Neon HTTP has no interactive transaction, but Drizzle batch() delegates
+    // to its atomic transaction API: parent AND sections commit, or neither.
+    await db.batch([insertAssignment, db.insert(assignmentSections).values(rows).onConflictDoNothing({ target: assignmentSections.id })]);
+  } else {
+    await insertAssignment;
   }
   return assignmentId;
 }

@@ -83,6 +83,17 @@ export default async function ExplorerPage() {
                 </Link>
               ))}
             </div>
+            <details style={{ marginTop: 12 }}>
+              <summary style={{ cursor: "pointer", fontWeight: 700 }}>Chapter-Übungen ansehen und zuweisen</summary>
+              <p style={{ fontSize: 13, color: "var(--text-secondary)" }}>Wortschatz und Grammatik werden in die bestehende Aufgabenerstellung übernommen. Dort wählst du eine eigene Klasse und bestätigst die Zuweisung.</p>
+              {units.filter((u) => u.startsWith(`g${grade}-`)).map((unit) => (
+                <div key={unit} style={{ display: "flex", flexWrap: "wrap", gap: "8px 16px", padding: "8px 0" }}>
+                  <strong>Chapter {Number(unit.slice(-2))}</strong>
+                  <Link href={`/practice/${unit}`}>Schüleransicht öffnen</Link>
+                  <Link href={`/admin/assignments/new?source=unit&grade=${grade}&unit=${unit}`}>Übungen zuweisen →</Link>
+                </div>
+              ))}
+            </details>
           </section>
         );
       })}

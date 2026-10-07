@@ -31,6 +31,7 @@ import {
 } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { assignableClasses } from "@/lib/class-wall";
+import { assignmentContentErrors, resolveAssignmentPrefill } from "@/lib/assignment-prefill";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -47,12 +48,14 @@ const SectionConfigSchema = z.object({
 });
 
 const DraftSchema = z.object({
-  title: z.string(),
+  submissionId: z.uuid(),
+  source: z.object({ source: z.enum(["unit", "story"]), grade: z.number().int(), unit: z.string(), chapter: z.string().optional() }).strict().optional(),
+  title: z.string().max(200),
   descriptionDe: z.string().nullable().optional(),
   mode: z.enum(["practice", "mock_test", "checkup"]),
   classId: z.string(),
-  startsAt: z.string().nullable().optional(),
-  dueAt: z.string().nullable().optional(),
+  startsAt: z.iso.datetime({ offset: true }).nullable().optional(),
+  dueAt: z.union([z.iso.date(), z.iso.datetime({ offset: true })]).nullable().optional(),
   sessionDurationMinutes: z.number().int().positive().nullable().optional(),
   attemptsPerTest: z.number().int(),
   notenSchluessel: z
@@ -71,7 +74,7 @@ const DraftSchema = z.object({
       z.object({
         position: z.number().int().nonnegative(),
         kind: SECTION_KIND,
-        itemIds: z.array(z.string()),
+        itemIds: z.array(z.string()).max(1000),
         listeningTaskId: z.string().nullable().optional(),
         writingPromptId: z.string().nullable().optional(),
         timerMinutes: z.number().int().positive().nullable().optional(),
@@ -88,23 +91,29 @@ export async function POST(req: Request): Promise<Response> {
 
   const parsed = DraftSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const draft = parsed.data as AssignmentDraft & { sections: Array<{ kind: SectionKind }> };
+  const { submissionId, source, ...data } = parsed.data;
+  const draft = data as AssignmentDraft & { sections: Array<{ kind: SectionKind }> };
 
   // May this caller create work in that class at all? Fail CLOSED: a class list we
   // could not read is not permission, it is an unanswered question.
   const allowed = await assignableClasses(teacher).catch(() => null);
   if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
-  if (!allowed.some((c) => c.id === draft.classId)) {
+  const selectedClass = allowed.find((c) => c.id === draft.classId);
+  if (!selectedClass) {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
   }
 
   // Server-authoritative validation, including the class's reserved items.
-  const reserved = await listReservedForClass(getDb(), teacher.classScope, draft.classId).catch(() => new Set<string>());
-  const errors = validateAssignmentDraft(draft, { reservedIds: reserved });
+  const reserved = await listReservedForClass(getDb(), teacher.classScope, draft.classId).catch(() => null);
+  if (!reserved) return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });
+  if (source && (source.grade !== selectedClass.grade || !resolveAssignmentPrefill(source))) {
+    return NextResponse.json({ ok: false, error: "source_unavailable" }, { status: 422 });
+  }
+  const errors = [...validateAssignmentDraft(draft, { reservedIds: reserved }), ...assignmentContentErrors(draft, selectedClass.grade)];
   if (errors.length > 0) return NextResponse.json({ ok: false, error: "invalid", errors }, { status: 422 });
 
   try {
-    const id = await createAssignment(getDb(), teacher.classScope, draft, teacher.userId);
+    const id = await createAssignment(getDb(), teacher.classScope, draft, teacher.userId, submissionId);
     return NextResponse.json({ ok: true, id });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

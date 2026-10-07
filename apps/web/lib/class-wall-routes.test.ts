@@ -10,6 +10,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
+import { loadUnit } from "@domigo/content-loader";
 const { assignableClasses } = await import("./class-wall.ts");
 const { POST: createAssignmentRoute } = await import("../app/api/admin/assignments/route.ts");
 const { POST: composeCheckupRoute } = await import("../app/api/admin/assignments/compose-checkup/route.ts");
@@ -18,8 +19,8 @@ const OWN = { id: "class-own", name: "Testklasse A", grade: 2 };
 const FOREIGN = { id: "class-foreign-v1", name: "Fremde Testklasse (alt)", grade: 2 };
 
 const draft = (classId: string) => ({
-  title: "Probe", mode: "practice", classId, attemptsPerTest: 1,
-  sections: [{ position: 0, kind: "vocab", itemIds: ["g2-u01.v.probe"], weightPct: 100 }],
+  submissionId: "00000000-0000-4000-8000-000000000001", title: "Probe", mode: "practice", classId, attemptsPerTest: 1,
+  sections: [{ position: 0, kind: "vocab", itemIds: [loadUnit("g2-u01").vocab[0]!.id], weightPct: 100 }],
 });
 const post = (body: unknown, extraHeaders: Record<string, string> = {}) =>
   new Request("https://wall.invalid/api/admin/assignments", {
