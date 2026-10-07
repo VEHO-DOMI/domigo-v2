@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
-import type { NextFetchEvent } from "next/server";
 import { renderToStaticMarkup } from "react-dom/server";
 import { child, fixture, reset, teacher } from "../app/admin/story-world.harness.test.mjs";
 const { readStoryWorlds, listOpenStories, openStoryIdForGrade } = await import("./story-world.ts");
@@ -17,7 +16,7 @@ const { NextRequest } = await import("next/server.js");
 const gate = async (path: string, method = "GET") => {
   const request = Object.assign(new NextRequest(`https://fixture.invalid${path}`, { method }), { auth: fixture.session });
   // The test auth boundary calls the real middleware callback directly.
-  const response = await middleware(request, {} as NextFetchEvent);
+  const response = await middleware(request, { params: Promise.resolve({}) });
   assert.ok(response);
   return response;
 };
