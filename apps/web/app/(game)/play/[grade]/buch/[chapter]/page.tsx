@@ -24,8 +24,8 @@
  */
 import { notFound, redirect } from "next/navigation";
 import { allPhases, checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
-import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
-import { CHAPTER_ID, chapterHasEncounter, loadPaintEncounter, chapterHasTasks, listPaintChapters, loadPaintLevel, loadPaintTasksV2 } from "@/lib/paint-content";
+import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel, loadPaintTasksV2 } from "@/lib/paint-content";
 import { resolvePaintArt } from "@/lib/paint-art";
 import BuchClient from "./BuchClient";
 
@@ -48,9 +48,7 @@ export default async function BuchPage({
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
   if (process.env.VERCEL_ENV === "production" && teacher === null) redirect(`/play/${gradeStr}`);
-  const student = await getActingUserForPage();
   const acting = await getPlayerForPage();
-  const preview = student === null && teacher !== null;
   if (!acting) redirect("/signin");
 
   const raw = loadPaintLevel(STORY, chapter);
@@ -121,9 +119,6 @@ export default async function BuchPage({
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
       <BuchClient
         playerKey={acting.userId}
-        preview={preview}
-        ownerId={student?.userId ?? null}
-        encounter={chapterHasEncounter(STORY, chapter) ? loadPaintEncounter(STORY, chapter) : undefined}
         level={level}
         art={art}
         tasks={tasks}
