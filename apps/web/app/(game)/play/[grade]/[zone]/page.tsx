@@ -17,7 +17,7 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryEconomy, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryEconomy, loadStoryFlags } from "@domigo/content-loader";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
@@ -32,6 +32,8 @@ import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
 import NovelClient from "../NovelClient";
 import TripClient from "../TripClient";
+
+import { openStoryIdForGrade } from "@/lib/story-world";
 
 export const dynamic = "force-dynamic";
 
@@ -98,9 +100,10 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
 
   // Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
   const devStory = devStoryOverride(grade);
-  const storyId = devStory?.storyId ?? storyIdForGrade(grade);
+  const storyId = devStory?.storyId ?? await openStoryIdForGrade(grade);
   const hubHref = `/play/${grade}`;
   if (!storyId) redirect("/home");
+  if (grade === 1 && !preview) redirect("/play/1/buch");
 
   const story = loadStory(storyId);
   const released = devStory

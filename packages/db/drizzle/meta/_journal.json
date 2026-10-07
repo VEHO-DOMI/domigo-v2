@@ -141,6 +141,13 @@
       "when": 1787588857721,
       "tag": "0019_journal_ohne_klarnamen",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1791399857865,
+      "tag": "0020_story_world_settings",
+      "breakpoints": true
     }
   ]
 }

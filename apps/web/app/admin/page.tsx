@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
-import { listReleasedStories } from "@domigo/content-loader";
+import { readStoryWorlds } from "@/lib/story-world";
+import StoryWorldControls from "./StoryWorldControls";
 import { listPaintChapters } from "@/lib/paint-content";
-import { getDb, getUnitMastery } from "@domigo/db";
+import { getDb, getUnitMastery, listStoryWorldGrades } from "@domigo/db";
 import { auth } from "@/auth";
 import { abmelden } from "../le/konto-aktion";
 import { isGrandmaster } from "@/lib/grandmaster";
@@ -28,11 +29,13 @@ export default async function AdminPage() {
     await abmelden();
   }
 
-  // Story mastery per released grade — derived from the corpus (a new grade's game
-  // appears here the moment it releases) and rolled up from the attempts ledger.
+  // Story mastery follows the same runtime visibility as the student surfaces.
+  // Hiding a grade skips its read; it never changes the attempts ledger.
   // Each query is wrapped: one grade's DB hiccup must never blank the whole view.
-  const stories = listReleasedStories();
+  const worlds = await readStoryWorlds();
+  const stories = worlds.stories;
   const klassen = await scopedClassIds();
+  const allowedGrades = await listStoryWorldGrades(getDb(), klassen).catch(() => null);
   const mastery = await Promise.all(stories.map((s) => getUnitMastery(getDb(), klassen, s.grade).catch(() => [])));
   const th = { padding: "7px 8px", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: 12 } as const;
 
@@ -42,6 +45,8 @@ export default async function AdminPage() {
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
         Teacher view. Live today: story mastery by unit for each shipped game, rolled up from the attempts ledger.
       </p>
+
+      <StoryWorldControls grades={worlds.grades} allowedGrades={allowedGrades ?? []} available={worlds.available && allowedGrades !== null} />
 
       {stories.map((s, idx) => {
         const rows = mastery[idx] ?? [];
@@ -81,8 +86,7 @@ export default async function AdminPage() {
       <section className="dg-card" style={{ marginTop: 24, border: "2px solid #8b7cf5" }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>🖋 Story-Modus (Lehrer-Vorschau)</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          The painted book — the year-1 game, one door per authored chapter. Unreleased: students are
-          redirected until the year-1 launch; only teacher sessions get in.
+          Teacher preview of the painted book, one door per authored chapter. Draft chapters are only available to teachers.
         </p>
         {paintChapters.length > 0 && (
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
