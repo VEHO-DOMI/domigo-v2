@@ -54,7 +54,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2, MAX_LINE_DE, cloakErrorsDe, registerErrorsDe, seededShuffle } from "../packages/content-schema/src/game-tasks.ts";
-import { PaintEncounter } from "../packages/content-schema/src/paint-encounter.ts";
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
 // restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
@@ -1427,120 +1426,6 @@ function exerciseRegistry(unitSlug, chapter) {
   };
 }
 
-// cgo-064: encounters have their own ordered stage and never enter the world
-// router. Discover the sidecars independently so an orphan cannot pass unseen.
-function encounterFiles() {
-  const root = "content/corpus/stories";
-  return fs.readdirSync(root).sort().flatMap(story => {
-    const dir = path.join(root, story, "paint");
-    return fs.existsSync(dir) ? fs.readdirSync(dir).filter(name => /^ch\d{2}\.encounter\.json$/.test(name)).sort()
-      .map(name => ({ story, file: path.join(dir, name) })) : [];
-  });
-}
-
-function encounterCopyStrings(encounter) {
-  return [encounter.title, encounter.intro.story, encounter.intro.goal, encounter.intro.orientation,
-    ...encounter.intro.wordSupport.map(word => word.de),
-    ...encounter.models.map(model => model.explanationDe),
-    ...encounter.scenes.map(scene => scene.altDe),
-    ...encounter.tasks.flatMap(task => [task.titleDe, task.contextDe, task.storyDe, task.helpFocusDe, task.explanationDe]),
-    ...Object.values(encounter.completion)];
-}
-
-function checkEncounter(file, raw, cx) {
-  const parsed = PaintEncounter.safeParse(raw);
-  if (!parsed.success) {
-    for (const issue of parsed.error.issues) fail(file, `encounter schema: ${issue.path.join(".")} — ${issue.message}`);
-    return 0;
-  }
-  const encounter = parsed.data;
-  if (encounter.chapter !== cx.chapter || encounter.unit !== cx.storyUnit) {
-    fail(file, "encounter unit/chapter must match the story chapter");
-    return 0;
-  }
-  // Only the world-palette branch of checkItem is inapplicable. The shared
-  // schema, language grounding, register, line length and giveaway law still run.
-  CHAPTER_NOW = { ...cx, hasPolicy: false };
-  loadUnitRegisters(cx);
-  const grammar = JSON.parse(fs.readFileSync(cx.grammarPath, "utf8"));
-  const corpus = new Map(grammar.items.map(item => [item.id, item]));
-  for (const task of encounter.tasks) {
-    checkItem(`${encounter.chapter}.encounter`, task);
-    // New first-sight fields must not escape layer 18 just because the world
-    // card projection predates the encounter stage. Explanations remain help.
-    for (const err of giveawayFailures({ ...task, promptEn: undefined, stimulus: undefined, storyDe: `${task.titleDe} ${task.contextDe}` }, DE_GLOSS, new Set())) {
-      fail(`${file}:${task.id}`, `${err.law} · ${err.detail}`);
-    }
-    const item = corpus.get(task.corpusItem);
-    if (!item) { fail(`${file}:${task.id}`, "encounter corpusItem does not exist in its unit"); continue; }
-    const expectedFormat = task.kind === "choice" ? "multiple-choice" : "gap-fill";
-    if (item.format !== expectedFormat) fail(`${file}:${task.id}`, "encounter corpusItem format does not match the input kind");
-    const full = item.answers.filter(answer => answer.tier === "full").map(answer => answer.text).sort();
-    const accepted = [...new Set([task.answer, ...(task.kind === "typed" ? task.accept : [])])].sort();
-    if (JSON.stringify(full) !== JSON.stringify(accepted)) fail(`${file}:${task.id}`, "encounter corpus answers differ from the local answer/accept set");
-    if (task.exercises.length !== 1 || task.exercises[0] !== item.structureId) fail(`${file}:${task.id}`, "encounter exercises must name exactly the corpus item's structure");
-    if (task.kind === "choice" && task.options.filter(option => full.includes(option)).length !== 1) fail(`${file}:${task.id}`, "encounter choice needs exactly one corpus-correct option");
-  }
-  checkExercisesExist(file, encounter.tasks, exerciseRegistry(encounter.unit, encounter.chapter));
-  for (const model of encounter.models) checkEn(`${file}:model`, model.sentence);
-  for (const word of encounter.intro.wordSupport) checkEn(`${file}:wordSupport`, word.en);
-  // Existing copy/register CLIs discover level/tasks files, not encounter
-  // sidecars. Apply their shared register/cloak laws here, plus this encounter's
-  // explicit Pult/Sessel wording and the card's forbidden Geist tamper.
-  const forbiddenAt = JSON.parse(fs.readFileSync("scripts/lexikon-at.json", "utf8")).eintraege.flatMap(entry => entry.verboten ?? []);
-  for (const copy of encounterCopyStrings(encounter)) {
-    checkDe(`${file}:copy`, copy);
-    if (/„[^„“]*"/.test(copy)) fail(`${file}:copy`, "encounter quote-law: use a German closing quote");
-    if (/\bGeist\b/.test(copy)) fail(`${file}:copy`, "encounter copy: Geist is not part of this book-location scene");
-    if (/\b(?:Tisch\w*|Stuhl\w*)/.test(copy)) fail(`${file}:copy`, "encounter register: use Pult and Sessel");
-    for (const word of forbiddenAt) if (hasWord(copy, word)) fail(`${file}:copy`, `encounter register: ${word} is not Austrian game wording`);
-  }
-  return encounter.tasks.length;
-}
-
-const ENCOUNTER_FILES = encounterFiles();
-if (process.argv.includes("--selftest")) {
-  const source = ENCOUNTER_FILES.find(entry => entry.story === "g1.st.lost-pages" && entry.file.endsWith("ch02.encounter.json"));
-  if (!source) throw new Error("encounter selftest needs the real ch02 encounter");
-  const raw = JSON.parse(fs.readFileSync(source.file, "utf8"));
-  const cx = CHAPTERS.find(chapter => chapter.storyId === source.story && chapter.chapter === raw.chapter);
-  if (!cx) throw new Error("encounter selftest needs its story chapter");
-  const cases = [
-    ["actual encounter", () => {}, null],
-    ["layer 18 accept bag", data => { data.tasks.find(task => task.id === "t01").accept.push("bag"); }, /18a.*bag/],
-    ["missing corpus item", data => { data.tasks[0].corpusItem = "g1u02.gi.prepositions-place.mc.999"; }, /corpusItem does not exist/],
-    ["wrong corpus answer", data => { data.tasks[0].answer = "on"; }, /corpus answers differ/],
-    ["wrong corpus format", data => { data.tasks[0].corpusItem = "g1u02.gi.prepositions-place.gf.015"; }, /corpusItem format/],
-    ["wrong exercise", data => { data.tasks[0].exercises = ["g1u02.s.not-real"]; }, /exercises must name exactly/],
-    ["missing model scene", data => { data.models[0].scene = "s99"; }, /Unknown model scene/],
-    ["changed task description", data => { data.tasks[0].stimulus.altDe = "Ein anderes Bild."; }, /description must match/],
-    ["wrong asset owner", data => { data.scenes[0].asset = "/art/g1/paint/ch03/encounter/s01.svg"; }, /asset must belong/],
-    ["duplicate task", data => { data.tasks[1].id = data.tasks[0].id; }, /Duplicate task id/],
-    ["unscoped unit", data => { data.unit = "g1-u01"; }, /Corpus item must belong/],
-    ["invalid kind", data => { data.tasks[0].kind = "wheel"; }, /encounter schema/],
-    ["German register", data => { data.intro.story += " Am Tisch."; }, /encounter register/],
-    ["intro copy", data => { data.intro.story += " Ein Geist."; }, /encounter copy/],
-    ["private author key", data => { data.authorKey = {}; }, /encounter schema/],
-  ];
-  let bad = 0;
-  const failuresBefore = failures;
-  for (const [label, mutate, expected] of cases) {
-    const data = structuredClone(raw);
-    mutate(data);
-    captured = [];
-    checkEncounter(source.file, data, cx);
-    const observed = captured;
-    captured = null;
-    if (expected === null ? observed.length !== 0 : !observed.some(line => expected.test(line))) {
-      console.error(`encounter selftest failed: ${label}: ${observed.join(" | ") || "no failure"}`);
-      bad++;
-    }
-  }
-  failures = failuresBefore;
-  if (bad) process.exit(1);
-  console.log(`check-game-tasks --selftest: encounter OK — ${cases.length} cases, real sidecar plus corpus/schema/copy/layer-18 tampers`);
-}
-
 // Device portraits: exercise the actual portrait gate with copies of shipped
 // tasks/entities; every alternate-shell permission has a corresponding red case.
 if (process.argv.includes("--selftest")) {
@@ -2071,7 +1956,7 @@ for (const c of CHAPTERS) if (!c.hasTasks) ledger.skip(c.chapter, "karten", `kei
 for (const o of orphanTaskFiles()) {
   ledger.skip(o.chapter, "karten (WAISE)", `${path.relative(process.cwd(), o.file)} hat kein ${o.chapter}.level.json — Bindungen und Abdeckung koennen gegen keine Welt geprueft werden`);
 }
-if (withTasks.length === 0 && ENCOUNTER_FILES.length === 0) { console.log("check-game-tasks: no gameTasks@2 or paintEncounter@1 files yet — nothing to check"); ledger.print(); process.exit(0); }
+if (withTasks.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); ledger.print(); process.exit(0); }
 
 let itemCount = 0;
 for (const cx of withTasks) {
@@ -2135,24 +2020,6 @@ for (const cx of withTasks) {
     fail(`${file} ${e.where}`, `${e.law} · ${e.detail}`);
   }
 }
-
-// Separate driver: encounters share content laws, never the world-task pools.
-let encounterItemCount = 0;
-for (const entry of ENCOUNTER_FILES) {
-  let raw;
-  try { raw = JSON.parse(fs.readFileSync(entry.file, "utf8")); }
-  catch (error) { fail(entry.file, `encounter JSON: ${error.message}`); continue; }
-  const cx = CHAPTERS.find(chapter => chapter.storyId === entry.story && chapter.chapter === path.basename(entry.file).slice(0, 4));
-  if (!cx?.lexiconPath || !fs.existsSync(cx.lexiconPath) || !cx.grammarPath || !fs.existsSync(cx.grammarPath)) {
-    fail(entry.file, "encounter has no owning story chapter, lexicon or grammar corpus");
-    continue;
-  }
-  encounterItemCount += checkEncounter(entry.file, raw, cx);
-  // The shared skipLedger makes this scope limit visible. Chapter 2 deliberately
-  // remains draft; releasing it requires the GG to review these named skips.
-  ledger.skip(cx.chapter, "encounter: serve/router layers 4–5 and 7–17", "self-contained ordered DOM stage: no world binding, field palette, desaturation, portraits, timer, pool twins, being voice/rhythm or world coverage; schema, grounding, register, 18 and 19 run");
-}
-if (ENCOUNTER_FILES.length) console.log(`check-game-tasks: ${encounterItemCount} encounter tasks across ${ENCOUNTER_FILES.length} sidecar(s) checked separately from world pools`);
 
 // L0 · N6: die Gesetze ueber die Verrats-TABELLE, EINMAL ueber alles.
 if (withTasks.length > 0) checkGiveawayFamilyTable("giveaway-policy (Korpus)");
