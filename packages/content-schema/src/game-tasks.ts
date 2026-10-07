@@ -145,6 +145,8 @@ const Binding = {
 // plain object members, so cross-field checks live in taskInvariantErrors, not here)
 const base = {
   id: z.string().min(1),
+  /** Existing unit item graded by the server; layer 20 verifies the actual twin. */
+  corpusItem: z.string().regex(/^g[1-4]u\d{2}\.(?:w\.[a-z0-9-]+|gi\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3})$/).optional(),
   use: z.enum(TASK_USES),
   stimulus: TaskStimulus,
   storyDe: z.string().min(1), // the German framing / instruction line (always present)

@@ -39,6 +39,7 @@ import { QUICKFIRE_MS } from "./overlay-css.ts";
 import { prefersReducedMotion } from "./motion.ts";
 import { armedClockMs, clockMsFor } from "./timer.ts";
 import { answerTextOf } from "./resolution.ts";
+import { paintAttemptBody, type PaintAttemptSender } from "./attempt.ts";
 import {
   ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard, MatchCard,
   RestoreCard, type Dispatch,
@@ -71,9 +72,10 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, onGrade, restoreNamed = false, onNameRestored, liberationStage, knownName, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round, suspended = false,
+  task, onResolve, onWorldChange, onDismiss, onGrade, onAttempt, restoreNamed = false, onNameRestored, liberationStage, knownName, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round, suspended = false,
 }: {
   task: GameTaskV2;
+  onAttempt?: PaintAttemptSender;
   restoreNamed?: boolean;
   liberationStage?: "unnamed" | "named" | "coloured" | "peaceful";
   knownName?: string;
@@ -134,6 +136,11 @@ export function CardHost({
     return task.kind === "restore" && restoreNamed ? { ...(initial as RestoreState), step: "colour" } : initial;
   };
   const [state, setState] = useState<unknown>(initialState);
+  const [clientAttemptId] = useState(() => crypto.randomUUID());
+  const [openedAt] = useState(() => Date.now());
+  const bookedRef = React.useRef(false);
+  const hintUsedRef = React.useRef(false);
+  React.useEffect(() => { if (suspended) hintUsedRef.current = true; }, [suspended]);
   const namedRef = React.useRef(restoreNamed);
   const [attempts, setAttempts] = useState(0);
   /** the card may only end ONCE — a late timer must not fire after an answer,
@@ -188,6 +195,15 @@ export function CardHost({
       onNameRestored((next as RestoreState).name);
     }
     const g = m.grade(next);
+    // First graded input, including wrong: retrying must not turn persistence
+    // into English credit. Delivery never delays the world's existing return.
+    if (g !== "pending" && !bookedRef.current) {
+      const b = paintAttemptBody(task, next, { clientAttemptId, openedAt, now: Date.now(), hintUsed: hintUsedRef.current });
+      if (b) {
+        bookedRef.current = true;
+        void onAttempt?.(b).catch(() => {});
+      }
+    }
     if (g === "correct") {
       endedRef.current = true;
       // ── N7B · DIE RICHTIGE ANTWORT GIBT DIE WELT SOFORT ZURÜCK ─────────────

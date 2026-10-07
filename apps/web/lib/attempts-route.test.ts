@@ -3,6 +3,7 @@
 // child's own class; a teacher session (the preview) books nothing. The real
 // route, identity, grader and content; session and storage replaced (harness).
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { beforeEach, describe, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
 import { loadUnit } from "@domigo/content-loader";
@@ -73,4 +74,130 @@ it("a storage error stays unconfirmed with persist_failed", async () => {
   const data = await res.json();
   assert.equal(data.ok, false);
   assert.equal(data.error, "persist_failed");
+});
+
+// welle-068: raw Paint answers must travel through the existing route and
+// engine. These independent expected pairs cover all six cards / four items;
+// the wording and distractors come from the actual book, not copied fixtures.
+const paintPairs = [
+  ["door.p1.d1", "g1u01.gi.imperatives.mc.001"],
+  ["door.p1.d3", "g1u01.gi.questions-personal-info.mc.001"],
+  ["door.p2.d3", "g1u01.gi.questions-personal-info.cp.001"],
+  ["enc.pen.k1", "g1u01.gi.questions-personal-info.cp.001"],
+  ["awk.merle.r4", "g1u01.gi.imperatives.cp.002"],
+  ["boss.k3", "g1u01.gi.questions-personal-info.mc.001"],
+] as const;
+const paintFile = JSON.parse(readFileSync(new URL(
+  "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json", import.meta.url,
+), "utf8")) as { items: Array<{ id: string; kind: string; answer?: string; options?: string[] }> };
+const paintCards = paintPairs.map(([suffix, itemId]) => {
+  const task = paintFile.items.find((candidate) => candidate.id === `g1.paint.ch01.${suffix}`);
+  assert.ok(task, suffix);
+  assert.equal(task.kind, "choice");
+  assert.equal(typeof task.answer, "string");
+  assert.ok(task.options);
+  assert.ok(task.options.includes(task.answer!));
+  assert.equal(task.options.length, 3);
+  return { task, itemId, answer: task.answer!, distractors: task.options.filter((option) => option !== task.answer) };
+});
+const paintClientAttemptId = "33333333-3333-4333-8333-333333333333";
+const paintAttempt = (itemId: string, value: string, ownerId: string | undefined = "child-own") => new Request("https://attempts.invalid/api/attempts", {
+  method: "POST", headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    clientAttemptId: paintClientAttemptId, ownerId: ownerId || undefined, itemId,
+    mode: "game:g1", input: { kind: "choice", value }, latencyMs: 1234, hintUsed: false,
+  }),
+});
+const paintStudent = () => {
+  fixture.grade = 1;
+  fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+};
+
+describe("POST /api/attempts — Paint uses the same server grading and learner ledger", () => {
+  for (const { task, itemId, answer, distractors } of paintCards) {
+    const submissions: Array<{ value: string; tier: "correct" | "wrong" }> = [
+      { value: answer, tier: "correct" }, ...distractors.map((value) => ({ value, tier: "wrong" as const })),
+    ];
+    for (const { value, tier } of submissions) {
+      it(`${task.id}: ${JSON.stringify(value)} is ${tier} and books exactly once`, async () => {
+        paintStudent();
+        const res = await POST(paintAttempt(itemId, value));
+        const body = await res.json();
+        assert.equal(res.status, 200, JSON.stringify(body));
+        assert.equal(body.ok, true);
+        assert.equal(body.tier, tier);
+        assert.equal(body.duplicate, false);
+        if (tier === "wrong") assert.equal(body.xpAwarded, 0);
+        else assert.ok(body.xpAwarded > 0);
+        assert.equal(fixture.storageCalls, 1);
+        assert.equal(fixture.writes.length, 1);
+        const write = fixture.writes[0]!;
+        assert.deepEqual(write.scope, ["class-own"]);
+        assert.deepEqual(write.data, {
+          userId: "child-own", classId: "class-own", itemId,
+          kind: "grammar", unitSlug: "g1-u01", grade: 1, mode: "game:g1",
+          tier, xpAwarded: body.xpAwarded, latencyMs: 1234, hintUsed: false,
+          context: undefined, clientAttemptId: paintClientAttemptId,
+        });
+      });
+    }
+  }
+
+  it("refuses a teacher's valid Paint answer with 401 and no storage call", async () => {
+    fixture.session = { user: { id: "teacher-own", classId: null, role: "teacher", scope: ["class-own"] } };
+    const card = paintCards[0]!;
+    const res = await POST(paintAttempt(card.itemId, card.answer));
+    assert.equal(res.status, 401);
+    assert.deepEqual(await res.json(), { ok: false, error: "no_identity" });
+    assert.equal(fixture.storageCalls, 0);
+    assert.equal(fixture.writes.length, 0);
+  });
+
+  it("rejects the Paint task ID as an item ID with 400 and no storage call", async () => {
+    paintStudent();
+    const card = paintCards[0]!;
+    const res = await POST(paintAttempt(card.task.id, card.answer));
+    assert.equal(res.status, 400);
+    assert.deepEqual(await res.json(), { ok: false, error: "bad_request" });
+    assert.equal(fixture.storageCalls, 0);
+    assert.equal(fixture.writes.length, 0);
+  });
+
+  for (const [ownerId, status, error] of [
+    ["child-foreign", 409, "wrong_owner"],
+    ["", 503, "legacy_client"],
+  ] as const) {
+    it(`refuses a Paint answer for ${ownerId || "an unstamped owner"} without booking`, async () => {
+      paintStudent();
+      const card = paintCards[0]!;
+      const res = await POST(paintAttempt(card.itemId, card.answer, ownerId));
+      assert.equal(res.status, status);
+      assert.deepEqual(await res.json(), { ok: false, error });
+      assert.equal(fixture.storageCalls, 0);
+      assert.equal(fixture.writes.length, 0);
+    });
+  }
+
+  it("passes the same client UUID on replay and returns the ledger's duplicate flag", async () => {
+    paintStudent();
+    const card = paintCards[0]!;
+    const first = await POST(paintAttempt(card.itemId, card.answer));
+    const firstBody = await first.json();
+    assert.equal(first.status, 200);
+    assert.equal(firstBody.duplicate, false);
+    fixture.recordReturn = { ...fixture.recordReturn, duplicate: true };
+    const replay = await POST(paintAttempt(card.itemId, card.answer));
+    const body = await replay.json();
+    assert.equal(replay.status, 200);
+    assert.equal(body.ok, true);
+    assert.equal(body.tier, "correct");
+    assert.equal(body.duplicate, true);
+    // The existing route returns the computed XP even for duplicates; the
+    // outbox turns duplicate replies into 0. Storage idempotency is not mocked
+    // here: two route calls reach the ledger with the same client UUID.
+    assert.ok(body.xpAwarded > 0);
+    assert.equal(body.xpAwarded, firstBody.xpAwarded);
+    assert.equal(fixture.storageCalls, 2);
+    assert.deepEqual(fixture.writes.map((write) => write.data.clientAttemptId), [paintClientAttemptId, paintClientAttemptId]);
+  });
 });

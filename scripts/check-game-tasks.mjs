@@ -1,7 +1,7 @@
 // PB-T6 · THE gameTasks@2 AUTHORING GATE (run: node --experimental-strip-types
 // scripts/check-game-tasks.mjs; exit 1 on any violation; CI-runnable).
 //
-// Eighteen layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
+// Twenty layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
 //   1. SCHEMA + cross-field invariants — GameTasksFileV2 (content-schema),
 //      which now also carries the BINDING LAW (entity stimulus ⟺ skins).
 //   2. GROUNDING — every student-visible English token is in the unit lexicon.
@@ -43,6 +43,10 @@
 //      plus the number/colour table in scripts/game-tasks-giveaway-policy.json)
 //      · 18c/18d the declared exception, policed in both directions · 18e the
 //      guardian's board (evidence) — the chalk may not carry the solution.
+//  19. EXERCISE REFERENCES — every declared exercise resolves in its unit.
+//  20. CORPUS TWIN (welle-068) — every booked choice card names a real grammar
+//      item in its chapter unit; the one grading engine must agree on the
+//      correct answer AND every distractor, with the same taught structure.
 //
 // (Beifang, R5-W2 · G1: this header said "Seven layers" while the file enforced
 // twelve, and it skipped straight from 9 to 11 although layer 10 — the
@@ -53,6 +57,8 @@
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
+import { GrammarFile } from "../packages/content-schema/src/index.ts";
+import { gradeGrammar } from "../packages/engine/src/grade.ts";
 import { GameTasksFileV2, MAX_LINE_DE, cloakErrorsDe, registerErrorsDe, seededShuffle } from "../packages/content-schema/src/game-tasks.ts";
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
@@ -1400,6 +1406,54 @@ function checkExercisesExist(file, items, reg, bestand = D985_BESTAND) {
   }
 }
 
+/** 20 · A BOOKING NEEDS A REAL CORPUS TWIN (welle-068, one brain).
+ *  A shared answer string alone is insufficient: every option must receive the
+ *  same result in the existing grading engine, and the taught structure must
+ *  be among the card's exercises. Cards without corpusItem remain world-only.
+ *  Read through cx.grammarPath, never a fixed unit; inject only the file reader
+ *  in selftests so missing/malformed corpus failures exercise this same path. */
+function checkCorpusItems(file, items, cx, read = (p) => fs.readFileSync(p, "utf8")) {
+  const mapped = items.filter((t) => t.corpusItem !== undefined);
+  if (mapped.length === 0) return 0;
+  let grammar;
+  try {
+    if (!cx.grammarPath) throw new Error("chapter has no grammarPath");
+    grammar = GrammarFile.parse(JSON.parse(read(cx.grammarPath)));
+    if (grammar.slug !== cx.unit) throw new Error(`grammar unit ${grammar.slug} differs from chapter unit ${cx.unit}`);
+  } catch (e) {
+    fail(file, `20a · corpusItem needs a valid chapter grammar file (${cx.grammarPath ?? "missing grammarPath"}): ${e.message}`);
+    return null;
+  }
+  const byId = new Map(grammar.items.map((item) => [item.id, item]));
+  for (const t of mapped) {
+    const where = `${path.basename(file)}:${t.id}`;
+    const item = byId.get(t.corpusItem);
+    if (!item) {
+      fail(where, `20a · corpusItem "${t.corpusItem}" does not exist in ${cx.grammarPath}`);
+      continue;
+    }
+    if (t.kind !== "choice" || !["multiple-choice", "context-picker"].includes(item.format)) {
+      fail(where, `20b · corpusItem requires a choice card and multiple-choice/context-picker item (got ${t.kind} / ${item.format})`);
+      continue;
+    }
+    if (!t.exercises?.includes(item.structureId)) {
+      fail(where, `20e · corpusItem structure "${item.structureId}" is absent from exercises`);
+    }
+    const tier = (value) => gradeGrammar(item, { kind: "choice", value }).tier;
+    if (tier(t.answer) !== "correct") {
+      fail(where, `20c · gradeGrammar does not grade the card answer correct for "${t.corpusItem}"`);
+    }
+    // Deliberately compare raw strings here: a distinct option that collapses
+    // to the answer after engine normalization is a FALSE distractor, not a skip.
+    for (const option of t.options.filter((value) => value !== t.answer)) {
+      if (tier(option) !== "wrong") {
+        fail(where, `20d · gradeGrammar does not grade distractor ${JSON.stringify(option)} wrong for "${t.corpusItem}"`);
+      }
+    }
+  }
+  return mapped.length;
+}
+
 /** Read the three registries for the unit a chapter teaches. Kept beside the law
  *  so the selftest can hand it a fabricated registry and drive the real code. */
 function exerciseRegistry(unitSlug, chapter) {
@@ -1668,6 +1722,73 @@ if (process.argv.includes("--selftest")) {
   }
   if (bad19 > 0) { console.error(`check-game-tasks --selftest: ${bad19} layer-19 case(s) did NOT bite`); process.exit(1); }
   console.log(`check-game-tasks --selftest: layer 19 OK — ${cases19.length} cases, both red lights seen, the real corpus still green`);
+}
+
+// ── SELFTEST · layer 20 — one red light per sub-law, real six-card coverage ──
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find((c) => c.chapter === "ch01" && c.unit === "g1-u01" && c.hasTasks);
+  if (!cx) throw new Error("layer-20 selftest needs real ch01 / g1-u01");
+  const raw = JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"));
+  const real = GameTasksFileV2.parse(raw).items;
+  const grammar = JSON.parse(fs.readFileSync(cx.grammarPath, "utf8"));
+  // Pin the G-1 contract so removed/stripped mappings cannot pass an empty sweep.
+  const expected = new Map([
+    ["door.p1.d1", "g1u01.gi.imperatives.mc.001"],
+    ["door.p1.d3", "g1u01.gi.questions-personal-info.mc.001"],
+    ["boss.k3", "g1u01.gi.questions-personal-info.mc.001"],
+    ["door.p2.d3", "g1u01.gi.questions-personal-info.cp.001"],
+    ["enc.pen.k1", "g1u01.gi.questions-personal-info.cp.001"],
+    ["awk.merle.r4", "g1u01.gi.imperatives.cp.002"],
+  ].map(([id, corpusItem]) => [`g1.paint.ch01.${id}`, corpusItem]));
+  if (real.filter((t) => t.corpusItem !== undefined).length !== expected.size
+      || [...expected].some(([id, corpusItem]) => real.find((t) => t.id === id)?.corpusItem !== corpusItem)) {
+    throw new Error("layer-20 selftest needs all six authored corpusItem mappings preserved by GameTasksFileV2");
+  }
+  const base = real.find((t) => t.id === "g1.paint.ch01.door.p1.d1");
+  const card = (over = {}) => ({ ...structuredClone(base), ...over });
+  const run = (items, context = cx, read) => {
+    captured = [];
+    try {
+      checkCorpusItems(cx.tasksPath, items, context, read);
+      return captured;
+    } finally { captured = null; }
+  };
+  const fromGrammar = (edit) => {
+    const copy = structuredClone(grammar);
+    edit(copy);
+    return () => JSON.stringify(copy);
+  };
+  const law = (id) => (messages) => messages.some((m) => m.includes(`${id} ·`));
+  const silent = (messages) => messages.length === 0;
+  const wrong = base.options.find((value) => value !== base.answer);
+  const cases20 = [
+    ["20a missing grammar path", run([card()], { ...cx, grammarPath: null }), law("20a"), true],
+    ["20a missing grammar file", run([card()], cx, () => { throw new Error("ENOENT: deliberate missing file"); }), law("20a"), true],
+    ["20a malformed JSON", run([card()], cx, () => "{"), law("20a"), true],
+    ["20a malformed grammar structure", run([card()], cx, () => JSON.stringify({ ...grammar, items: [] })), law("20a"), true],
+    ["20a grammar belongs to another chapter unit", run([card()], { ...cx, unit: "g1-u02" }), law("20a"), true],
+    ["20a unknown corpus item", run([card({ corpusItem: "g1u01.gi.imperatives.mc.999" })]), law("20a"), true],
+    ["20b non-choice card cannot book", run([card({ kind: "typed" })]), law("20b"), true],
+    ["20b a text-graded item cannot book choice", run([card({ corpusItem: grammar.items.find((i) => i.format === "anagram").id })]), law("20b"), true],
+    ["20c wrong keyed answer", run([card({ answer: wrong })]), law("20c"), true],
+    ["20d a distractor accepted by the real engine", run([card()], cx, fromGrammar((g) => {
+      g.items.find((i) => i.id === base.corpusItem).answers.push({ text: wrong, tier: "full" });
+    })), law("20d"), true],
+    ["20d normalized answer masquerades as distractor", run([card({ options: [...base.options, `  ${base.answer.toLowerCase()}  `] })]), law("20d"), true],
+    ["20e exercises missing", run([card({ exercises: undefined })]), law("20e"), true],
+    ["20e the mapped structure is not taught by this card", run([card({ exercises: ["g1u01.s.contractions"] })]), law("20e"), true],
+    ["NON-TAMPER all six real mappings / four real items", run(real), silent, false],
+    ["NON-TAMPER no corpusItem means world-only", run([{ ...card(), corpusItem: undefined }], { ...cx, grammarPath: null }), silent, false],
+    ["NON-TAMPER normalized wrong option stays wrong", run([card({ options: [base.answer, `  ${wrong.toLowerCase()}  `] })]), silent, false],
+  ];
+  let bad = 0;
+  for (const [name, got, ok] of cases20) {
+    const pass = ok(got);
+    if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} 20 · ${name}${pass ? "" : ` → ${JSON.stringify(got)}`}`);
+  }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} layer-20 case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: layer 20 OK — ${cases20.filter((c) => c[3]).length} tamper cases red, ${cases20.filter((c) => !c[3]).length} green cases; six real mappings checked`);
 }
 
 // ── L0e · D-987 · die Kunst-Sperrklinke, ein PAAR plus die D-880-Grenze ──────
@@ -1959,6 +2080,7 @@ for (const o of orphanTaskFiles()) {
 if (withTasks.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); ledger.print(); process.exit(0); }
 
 let itemCount = 0;
+let corpusItemCount = 0;
 for (const cx of withTasks) {
   const file = cx.tasksPath;
   CHAPTER_NOW = cx;
@@ -1982,13 +2104,18 @@ for (const cx of withTasks) {
     continue;
   }
   if (!cx.hasPolicy) ledger.skip(cx.chapter, "feld-palette+varietaet", `kein ${cx.chapter}.policy.json`);
-  loadUnitRegisters(cx);
   const raw = JSON.parse(fs.readFileSync(file, "utf8"));
   const parsed = GameTasksFileV2.safeParse(raw);
   if (!parsed.success) {
     for (const issue of parsed.error.issues) fail(file, `schema: ${issue.path.join(".")} — ${issue.message}`);
     continue;
   }
+  // Validate mapped grammar BEFORE other consumers parse it, so a missing or
+  // malformed file fails closed with the layer-20 diagnostic, never a bare crash.
+  const mapped = checkCorpusItems(file, parsed.data.items, cx);
+  if (mapped === null) continue;
+  corpusItemCount += mapped;
+  loadUnitRegisters(cx);
   for (const t of parsed.data.items) { checkItem(parsed.data.chapter, t); itemCount++; }
   // the level this set is played in — bindings and coverage are cross-file laws
   const level = cx.level;
@@ -2059,5 +2186,5 @@ for (const g of ledger.gaps()) {
 }
 
 ledger.print();
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board), corpus-twins (${corpusItemCount} mapped cards) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }
