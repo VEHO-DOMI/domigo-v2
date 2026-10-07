@@ -73,7 +73,12 @@ const hostErrors = (src: string): string[] => {
   if ((src.match(/onAttempt\?\.\(/g) ?? []).length !== 1) out.push("one-call");
   if (!dispatch.includes('g !== "pending" && !bookedRef.current') || book < 0 || call <= book || correct <= call) out.push("first-before-world");
   if (/\bawait\b/.test(dispatch) || !dispatch.includes("void onAttempt?.(b).catch(() => {});")) out.push("nonblocking");
-  if (!src.includes("useState(() => crypto.randomUUID())")) out.push("opening-id");
+  const correctEnd = dispatch.indexOf('if (g === "wrong") {', correct);
+  const branch = correct < 0 || correctEnd < 0 ? "" : dispatch.slice(correct, correctEnd);
+  if (branch.length < 80 || /\bawait\b|\.then\s*\(|\bPromise\b|\bonAttempt\b/.test(branch)) out.push("world-no-network");
+  const idLine = src.split("\n").find(line => line.includes("const [clientAttemptId]")) ?? "";
+  if (!idLine.includes("useState(() => globalThis.crypto?.randomUUID?.() ??")
+    || !idLine.includes('"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"') || !idLine.includes("Math.random()")) out.push("opening-id");
   if (!src.includes("if (suspended) hintUsedRef.current = true;") || !dispatch.includes("hintUsed: hintUsedRef.current")) out.push("reference-used");
   return out;
 };
@@ -88,18 +93,50 @@ describe("Paint attempt source guards and their red-light probes", () => {
     ["first-before-world", (s: string) => s.replace('g !== "pending" && !bookedRef.current', 'g === "correct"')],
     ["first-before-world", (s: string) => s.replace("bookedRef.current = true;", "bookedRef.current = false;")],
     ["nonblocking", (s: string) => s.replace("void onAttempt?.(b)", "await onAttempt?.(b)")],
-    ["opening-id", (s: string) => s.replace("useState(() => crypto.randomUUID())", 'useState(() => "same-for-every-opening")')],
+    ["opening-id", (s: string) => s.replace(/const \[clientAttemptId\][^\n]+/, 'const [clientAttemptId] = useState(() => "same-for-every-opening");')],
+    ["opening-id", (s: string) => s.replace("globalThis.crypto?.randomUUID?.() ??", "globalThis.crypto.randomUUID() ||")],
+    ["first-before-world", (s: string) => s.replace("bookedRef.current = true;", "")],
+    ["first-before-world", (s: string) => {
+      const start = s.indexOf('    if (g !== "pending" && !bookedRef.current) {');
+      const end = s.indexOf('    if (g === "correct") {', start);
+      const booking = s.slice(start, end);
+      return s.slice(0, start) + s.slice(end).replace('if (g === "correct") {', 'if (g === "correct") {\n' + booking);
+    }],
+    ...["await receipt;", "receipt.then(() => {});", "Promise.resolve();", "onAttempt?.(b);"].map(token =>
+      ["world-no-network", (s: string) => s.replace('if (g === "correct") {', 'if (g === "correct") { ' + token)] as const),
     ["reference-used", (s: string) => s.replace("if (suspended) hintUsedRef.current = true;", "hintUsedRef.current = false;")],
   ] as const)("tamper is red: %s", (law, mutate) => {
     const damaged = mutate(host);
     expect(damaged).not.toBe(host);
     expect(hostErrors(damaged)).toContain(law);
   });
-  it("keeps every production card module free of network and outbox storage", () => {
-    const sources = fs.readdirSync(__dirname, { recursive: true }).map(String)
-      .filter(name => /\.tsx?$/.test(name) && !name.includes(".test."));
+  it("keeps cards, dev/gallery, PaintGame and ack free of network and outbox storage", () => {
+    const sources = [__dirname, path.join(__dirname, "../dev")].flatMap(dir =>
+      fs.readdirSync(dir, { recursive: true }).map(String)
+        .filter(name => /\.tsx?$/.test(name) && !name.includes(".test."))
+        .map(name => path.join(dir, name)));
+    sources.push(path.join(__dirname, "../PaintGame.tsx"), path.join(__dirname, "../ack.ts"));
     expect(sources.length).toBeGreaterThan(10);
-    for (const name of sources) expect(networkErrors(fs.readFileSync(path.join(__dirname, name), "utf8")), name).toBe(false);
+    expect(sources.some(name => name.endsWith("/dev/CardGallery.tsx"))).toBe(true);
+    for (const name of sources) {
+      const src = fs.readFileSync(name, "utf8");
+      expect(networkErrors(src), name).toBe(false);
+      for (const mutation of ['fetch("/api/attempts")', 'indexedDB.open("attempts")']) {
+        expect(networkErrors(src + "\n" + mutation), `tamper ${name}: ${mutation}`).toBe(true);
+      }
+    }
+  });
+  it("the fallback produces fresh server-valid UUIDs without a crypto object or randomUUID", () => {
+    const line = host.split("\n").find(s => s.includes("const [clientAttemptId]"))!;
+    const expression = line.slice(line.indexOf("useState("), line.lastIndexOf(";"));
+    const make = new Function("globalThis", "useState", `return ${expression};`) as
+      (global: object, state: (fn: () => string) => string) => string;
+    for (const global of [{}, { crypto: {} }]) {
+      const ids = Array.from({ length: 100 }, () => make(global, fn => fn()));
+      expect(new Set(ids).size).toBe(100);
+      for (const id of ids) expect(id).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+    }
+    expect(make({ crypto: { randomUUID: () => "native" } }, fn => fn())).toBe("native");
   });
   it.each(['fetch("/api/attempts")', 'indexedDB.open("attempts")'])("network tamper is red: %s", src => {
     expect(networkErrors(src)).toBe(true);
