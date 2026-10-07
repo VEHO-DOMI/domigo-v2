@@ -3,29 +3,29 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Tier } from "@domigo/engine";
 import { ListeningTaskView, type ClientListeningTask, type ResultDetail } from "@domigo/task-ui";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
-export default function ListeningSession({ ownerId, slug, tasks }: { ownerId: string; slug: string; tasks: ClientListeningTask[] }) {
+export default function ListeningSession({ preview = false, ownerId, slug, tasks }: { preview?: boolean; ownerId: string | null; slug: string; tasks: ClientListeningTask[] }) {
   const [t, setT] = useState(0);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Tier[]>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(true, ownerId);
+  useOutboxFlush(!preview, ownerId);
 
   const task = tasks[t];
 
   const onResult = (tier: Tier, detail: ResultDetail) => {
     setResults((prev) => [...prev, tier]);
     // Listening attempts grade + earn XP/streak but skip the Leitner queue (audio can't re-render in /review).
-    void sendAttempt({
+    void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode: "listening",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, ownerId).then((r) => {
+    }).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
@@ -48,17 +48,18 @@ export default function ListeningSession({ ownerId, slug, tasks }: { ownerId: st
     return (
       <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
         <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Listening complete — {results.length} answered 👂</h1>
+        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{tierSummary}{streak ? ` · 🔥 ${streak}-day streak` : ""}</p>
-        <Link href="/listening" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All listening</Link>
+        <Link href={preview ? `/listening?jahrgang=${grade}` : "/listening"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All listening</Link>
       </main>
     );
   }
 
   return (
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</h1>
-        <Link href="/listening" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Listening</Link>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 14 }}>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.match(/-u(\d+)/)?.[1])}</h1>
+        <Link href={preview ? `/listening?jahrgang=${grade}` : "/listening"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Listening</Link>
       </div>
       <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         Task {t + 1} / {tasks.length}{streak ? ` · 🔥 ${streak}` : ""}

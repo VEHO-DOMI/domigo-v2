@@ -1,7 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { itemsInPool, listApprovedUnits, loadJourney, loadUnitStructures, loadWordbank } from "@domigo/content-loader";
 import { loadUnitWithOverrides } from "@/lib/content-service";
-import { getActingUserForPage } from "@/lib/identity";
+import { resolveStudentView } from "@/lib/student-view";
+import { isSlugAllowed } from "@/lib/grade-scope";
+import PreviewBanner from "@/app/PreviewBanner";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getDueRefs, getJourneyAttempts, getUnitPathProgress, journeyModeFor, listReservedForClass, nodeItemIds, withProgress } from "@domigo/db";
 import TeachingNode from "./TeachingNode";
@@ -11,11 +13,16 @@ export const dynamic = "force-dynamic";
 
 type Resolved = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
-export default async function NodeRunnerPage({ params }: { params: Promise<{ slug: string; node: string }> }) {
+export default async function NodeRunnerPage({ params, searchParams }: { params: Promise<{ slug: string; node: string }>; searchParams: Promise<{ jahrgang?: string | string[] }> }) {
   const { slug, node: nodeId } = await params;
-  const acting = await getActingUserForPage();
-  if (!acting) redirect("/signin");
+  const query = await searchParams;
+  const view = await resolveStudentView(query.jahrgang);
+  if (!view) redirect("/signin");
+  const acting = view.kind === "student" ? view.player : null;
+  const preview = view.kind === "preview";
   if (!listApprovedUnits().includes(slug)) notFound();
+  if (!preview && !isSlugAllowed(slug, view.grades)) redirect("/learn");
+  const banner = preview ? <PreviewBanner grade={Number(slug.charAt(1))} /> : null;
 
   // J-1: an authored journey runs its own node; else fall through to the legacy
   // Study Path below (F10). Progress is DERIVED from the attempt ledger (no table).
@@ -26,29 +33,28 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     // game nodes deep-link into the campaign — they never run inside /learn.
     if (jnode.kind === "game") redirect(jnode.gamePointer ? `/play/${journey.grade}/${jnode.gamePointer.zoneOrChapter}` : `/learn/${slug}`);
 
-    const classId = acting.classId;
     const junit = await loadUnitWithOverrides(slug);
     const itemIds = [...junit.vocab.map((v) => v.id), ...junit.grammar.map((g) => g.id)];
-    const reserved = await listReservedForClass(getDb(), acting.classScope, classId).catch(() => new Set<string>());
+    const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => new Set<string>()) : new Set<string>();
     const nodeItems = new Map<string, readonly string[]>();
     for (const n of journey.nodes) {
       if ((n.kind === "practice" || n.kind === "side-quest") && n.itemPool) {
         nodeItems.set(n.id, itemsInPool(itemIds, n.itemPool, reserved, journey.poolOverrides));
       }
     }
-    const jattempts = await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []);
+    const jattempts = acting ? await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []) : [];
     const jview = deriveJourneyProgress(journey.nodes, nodeItems, bestTierPerItem(jattempts)).find((v) => v.id === nodeId);
-    if (jview?.status === "locked") redirect(`/learn/${slug}`); // server unlock gate
+    if (!preview && jview?.status === "locked") redirect(`/learn/${slug}`); // server unlock gate
 
     // lesson → the unit's new words (teaching card).
     if (jnode.kind === "lesson") {
-      return <TeachingNode unitSlug={slug} nodeId={nodeId} kind="vocab-intro" wordbank={loadWordbank(slug)} />;
+      return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind="vocab-intro" wordbank={loadWordbank(slug)} /></>;
     }
 
     // practice / side-quest → the node's pool slice; review → the live due set (mock excluded).
     let ids: string[];
     if (jnode.kind === "review") {
-      const due = await getDueRefs(getDb(), acting.userId, classId, { kind: "unit", slug }, 20).catch(() => []);
+      const due = acting ? await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 20).catch(() => []) : itemIds.slice(0, 20).map((itemId) => ({ itemId }));
       ids = due.map((r) => r.itemId);
     } else {
       ids = [...(nodeItems.get(nodeId) ?? [])];
@@ -60,7 +66,7 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     if (jitems.length === 0) redirect(`/learn/${slug}`);
 
     // attempts write mode='journey:<unit>:<node>' → the derivation reads them back.
-    return <PathPracticeNode key={acting.userId} ownerId={acting.userId} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} />;
+    return <>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} /></>;
   }
 
   const unit = await loadUnitWithOverrides(slug);
@@ -71,18 +77,18 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
   // Server-side unlock gate: a directly-typed locked-node URL bounces to the map.
   let completed = new Map<string, { stars: number }>();
   try {
-    completed = await getUnitPathProgress(getDb(), acting.userId, slug);
+    completed = acting ? await getUnitPathProgress(getDb(), acting.userId, slug) : new Map();
   } catch {
     /* empty */
   }
-  const view = withProgress(nodes, completed).find((v) => v.id === nodeId);
-  if (view?.status === "locked") redirect(`/learn/${slug}`);
+  const nodeView = withProgress(nodes, completed).find((v) => v.id === nodeId);
+  if (!preview && nodeView?.status === "locked") redirect(`/learn/${slug}`);
 
   if (def.kind === "vocab-intro") {
-    return <TeachingNode unitSlug={slug} nodeId={nodeId} kind={def.kind} wordbank={loadWordbank(slug)} />;
+    return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} wordbank={loadWordbank(slug)} /></>;
   }
   if (def.kind === "grammar-intro") {
-    return <TeachingNode unitSlug={slug} nodeId={nodeId} kind={def.kind} structures={loadUnitStructures(slug)} />;
+    return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} structures={loadUnitStructures(slug)} /></>;
   }
 
   // practice / checkpoint — resolve the node's items server-side, in node order.
@@ -94,5 +100,5 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     .filter((x): x is Resolved => x !== undefined);
   if (items.length === 0) redirect(`/learn/${slug}`);
 
-  return <PathPracticeNode key={acting.userId} ownerId={acting.userId} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} />;
+  return <>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} /></>;
 }

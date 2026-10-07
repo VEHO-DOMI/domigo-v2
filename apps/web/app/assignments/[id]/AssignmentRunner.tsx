@@ -12,9 +12,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { rememberPreviewTier, scorePreviewAssignment, type PreviewScoring } from "./preview-score";
 
 export interface RunnerSection {
   position: number;
+  itemIds: string[];
+  weightPct: number;
   kind: "vocab" | "grammar";
   titleDe: string;
   items: Array<VocabItem | GrammarItem>;
@@ -30,7 +33,8 @@ function fmt(sec: number): string {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-export default function AssignmentRunner({ assignmentId, sessionId, title, mode, expiresAt, sections }: {
+export default function AssignmentRunner({ assignmentId, sessionId, title, mode, expiresAt, sections, preview, previewScoring }: {
+  preview: boolean; previewScoring?: PreviewScoring;
   assignmentId: string; sessionId: string; title: string; mode: "practice" | "mock_test"; expiresAt: string | null; sections: RunnerSection[];
 }) {
   const [idx, setIdx] = useState(0);
@@ -38,6 +42,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
   const [submitting, setSubmitting] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(() => (expiresAt ? Math.max(0, Math.round((new Date(expiresAt).getTime() - Date.now()) / 1000)) : null));
   const submittedRef = useRef(false);
+  const previewAttempts = useRef(new Map<string, Tier>());
   const isMock = mode === "mock_test";
   const section = sections[idx];
   const last = idx >= sections.length - 1;
@@ -46,6 +51,11 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
     if (submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
+    if (preview) {
+      if (previewScoring) setResult(scorePreviewAssignment(mode, sections, previewAttempts.current, previewScoring));
+      setSubmitting(false);
+      return;
+    }
     try {
       const res = await fetch("/api/assignments/submit", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ assignmentId, sessionId }) });
       const d = await res.json().catch(() => ({}));
@@ -55,7 +65,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
       submittedRef.current = false;
       setSubmitting(false);
     }
-  }, [assignmentId, sessionId]);
+  }, [assignmentId, sessionId, preview, previewScoring, mode, sections]);
 
   // Server clock: tick down; auto-submit at 0. All state writes happen inside the
   // timer callback (async) — never synchronously in the effect body.
@@ -68,7 +78,11 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
     return () => clearTimeout(t);
   }, [remaining, result, submit]);
 
-  const onResult = (_tier: Tier, detail: ResultDetail) => {
+  const onResult = (tier: Tier, detail: ResultDetail) => {
+    if (preview) {
+      rememberPreviewTier(previewAttempts.current, detail.itemId, tier);
+      return;
+    }
     const input = detail.kind === "vocab" ? { kind: "vocab" as const, value: detail.input.value } : detail.input;
     // Fire directly (no outbox) so the server wall + clock govern the record.
     void fetch("/api/assignments/attempt", {
@@ -82,7 +96,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
     const good = result.note <= 2;
     return (
       <main style={{ maxWidth: 560, margin: "0 auto", padding: "40px 20px", fontFamily: "var(--font-body)", color: "var(--text)", textAlign: "center" }}>
-        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Abgegeben ✓</h1>
+        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? "Vorschau — nichts gespeichert" : "Abgegeben ✓"}</h1>
         <p style={{ fontSize: 18 }}><strong>{title}</strong></p>
         {isMock ? (
           <div style={{ marginTop: 16 }}>
@@ -92,7 +106,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
         ) : (
           <div style={{ marginTop: 16, fontSize: 20, fontWeight: 700 }}>{Math.round(result.displayPct)}% richtig</div>
         )}
-        <Link href={`/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
+        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
       </main>
     );
   }
