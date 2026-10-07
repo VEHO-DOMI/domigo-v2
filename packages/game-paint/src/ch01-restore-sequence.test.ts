@@ -14,7 +14,6 @@ const read = (suffix: string) => JSON.parse(readFileSync(new URL(`../../../conte
 const level = read("level") as PaintLevel;
 const tasks = GameTasksFileV2.parse(read("tasks.v2")).items;
 const places = [
-  ["p1", "p1-eraser", "eraser.k1", "eraser.r1", "eraser.k2"],
   ["p2", "p2-pen", "pen.k1", "pen.r1", "pen.k2"],
   ["p3", "p3-heft", "heft.n1", "heft.r1", "heft.n2"],
 ] as const;
@@ -91,5 +90,108 @@ describe("ch01 hostile objects owe their actual colour restoration", () => {
     for (const mask of decodePads(read("proof").phases[phase].pads)) handle(sim.step(maskToPad(mask)));
     expect(observed.slice(0, 2)).toEqual([id(first), id(restore)]);
     expect(entity(sim, name).redeemed).toBe(true);
+  });
+});
+
+// B1 reverses only the eraser; the pen and exercise book above stay B2's work.
+describe("B1 liberation", () => {
+  it("limits B1 visuals to the two exemplars and keeps the peaceful reload settled", () => {
+    const sim = new Sim(config("p1"));
+    expect(sim.world.entities.filter(e => e.params.fullDrain).map(e => e.id).sort())
+      .toEqual(["p1-eraser", "p1-obj-book"]);
+    expect(sim.world.entities.filter(e => e.params.liberation).map(e => e.id).sort())
+      .toEqual(["p1-eraser", "p1-obj-book"]);
+    const loaded = new Sim({ ...config("p1"), liberationProgress: { "p1-eraser": "peaceful" } });
+    expect(entity(loaded, "p1-eraser")).toMatchObject({ state: "rest", redeemed: true, friendly: true });
+    loaded.step(IDLE_PAD);
+    expect(entity(loaded, "p1-eraser").state).toBe("rest");
+  });
+  it("earns the visible name before colour, and carries the same stage into the actual card request", () => {
+    let sim = new Sim(config("p1"));
+    const first = approach(sim, "p1-eraser");
+    expect(first).toMatchObject({ liberationStage: "unnamed" });
+    expect(first.knownName).toBeUndefined();
+    sim.nameRestore(first.ctx, "rubber");
+    sim.dismissTask(first.ctx);
+    sim = new Sim({ ...config("p1"), liberationProgress: sim.liberationProgress() });
+    const named = approach(sim, "p1-eraser");
+    expect(named).toMatchObject({ liberationStage: "named", knownName: "rubber", restoreNamed: true });
+    answer(sim, named);
+    const coloured = approach(sim, "p1-eraser");
+    expect(coloured).toMatchObject({ liberationStage: "coloured", knownName: "rubber" });
+    answer(sim, coloured);
+    const peaceful = approach(sim, "p1-eraser");
+    expect(peaceful).toMatchObject({ liberationStage: "peaceful", knownName: "rubber" });
+  });
+  it("strengthens the passed book without opening a task or changing its freedom", () => {
+    const sim = new Sim(config("p1"));
+    const book = entity(sim, "p1-obj-book");
+    sim.warp(10, 15);
+    const events = sim.step(IDLE_PAD);
+    expect(book.callPassed).toBe(true);
+    expect(book).toMatchObject({ liberation: "unnamed", redeemed: false });
+    expect(events.some(e => e.type === "task")).toBe(false);
+    expect(sim.liberationProgress()).toEqual({});
+  });
+
+  it("keeps name, colour and peace distinct through errors, dismissal, room return and reload", () => {
+    const learning = newChapterLearning();
+    let sim = new Sim(config("p1", learning));
+    const first = approach(sim, "p1-eraser");
+    expect(first.ctx.taskId).toBe(id("eraser.r1"));
+    expect(entity(sim, "p1-eraser")).toMatchObject({ friendly: false, redeemed: false, liberation: "unnamed" });
+    expect(sim.nameRestore(first.ctx, "ruler")).toBe(false);
+    expect(sim.nameRestore({ ...first.ctx, taskId: id("eraser.k1") }, "rubber")).toBe(false);
+    expect(sim.nameRestore(first.ctx, "rubber")).toBe(true);
+    expect(sim.solvedTaskIds.size).toBe(0);
+    sim.dismissTask(first.ctx);
+    new Sim(config("p9", learning)).step(IDLE_PAD);
+    sim = new Sim(config("p1", JSON.parse(JSON.stringify(learning))));
+    const colour = approach(sim, "p1-eraser");
+    expect(colour.restoreNamed).toBe(true);
+    expect(entity(sim, "p1-eraser").liberation).toBe("named");
+    expect(answer(sim, colour).some(e => e.type === "entityResolved")).toBe(false);
+    expect(entity(sim, "p1-eraser")).toMatchObject({ friendly: false, redeemed: false, liberation: "coloured" });
+    expect(sim.solveTask(colour.ctx)).toEqual([]);
+    const disk = JSON.parse(JSON.stringify(sim.liberationProgress()));
+    sim = new Sim({ ...config("p1"), liberationProgress: disk });
+    const grammar = approach(sim, "p1-eraser");
+    expect(grammar.ctx.taskId).toBe(id("eraser.k1"));
+    sim.dismissTask(grammar.ctx);
+    expect(entity(sim, "p1-eraser").friendly).toBe(false);
+    const retry = approach(sim, "p1-eraser");
+    expect(answer(sim, retry).filter(e => e.type === "entityResolved")).toHaveLength(1);
+    expect(entity(sim, "p1-eraser")).toMatchObject({ friendly: true, redeemed: true, liberation: "peaceful" });
+    sim = new Sim({ ...config("p1"), liberationProgress: JSON.parse(JSON.stringify(sim.liberationProgress())) });
+    expect(entity(sim, "p1-eraser")).toMatchObject({ friendly: true, redeemed: true, liberation: "peaceful" });
+    const review = approach(sim, "p1-eraser");
+    expect(review.ctx.taskId).toBe(id("eraser.k2"));
+    expect(answer(sim, review).some(e => e.type === "entityResolved")).toBe(false);
+  });
+  it("restores the first book without inventing a third task", () => {
+    let sim = new Sim(config("p1"));
+    const first = approach(sim, "p1-obj-book");
+    expect(sim.nameRestore(first.ctx, "book")).toBe(true);
+    sim.dismissTask(first.ctx);
+    sim = new Sim({ ...config("p1"), liberationProgress: sim.liberationProgress() });
+    const colour = approach(sim, "p1-obj-book");
+    expect(colour.restoreNamed).toBe(true);
+    expect(answer(sim, colour).filter(e => e.type === "entityResolved")).toHaveLength(1);
+    expect(entity(sim, "p1-obj-book")).toMatchObject({ friendly: true, redeemed: true, liberation: "peaceful" });
+  });
+  it("reaches the eraser's restore then grammar with the real recorded inputs", () => {
+    const sim = new Sim(config("p1"));
+    const observed: string[] = [];
+    const handle = (events: SimEvent[]): void => {
+      for (const event of events) {
+        if (event.type === "task") {
+          if (event.req.ctx.type === "entity" && event.req.ctx.id === "p1-eraser") observed.push(event.req.ctx.taskId ?? "unbound");
+          handle(sim.solveTask(event.req.ctx));
+        } else if (["tip", "cageHint", "arenaBrief", "powerup", "cageFreed"].includes(event.type)) sim.setOverlay(false);
+      }
+    };
+    for (const mask of decodePads(read("proof").phases.p1.pads)) handle(sim.step(maskToPad(mask)));
+    expect(observed.slice(0, 2)).toEqual([id("eraser.r1"), id("eraser.k1")]);
+    expect(entity(sim, "p1-eraser").redeemed).toBe(true);
   });
 });

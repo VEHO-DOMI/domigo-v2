@@ -81,6 +81,24 @@
  },
  "families": [
   {
+   "id": "b1-eraser-sentence-repair",
+   "match": {
+    "use": "encounter",
+    "kind": "choice",
+    "skins": [
+     "eraser"
+    ]
+   },
+   "exempts": [
+    "16b"
+   ],
+   "reason": "B1: Beide Radiergummi-Karten prüfen ausdrücklich die richtige Satzschreibung. Zwei blinde Löser verwechselten beim alten Wortlaut Bildwahrheit beziehungsweise Bedeutung mit sprachlicher Richtigkeit. Derselbe präzise Auftrag hält diese eine Handlung stabil; verschiedene richtige Sätze bleiben durch distinctAnswers Pflicht. Die Ausnahme gilt nur für choice/encounter/eraser in ch01.",
+   "doc": "docs/feedback/welle-058_REGISTER.md · cgo-085 B1-Nachführung",
+   "obliges": {
+    "distinctAnswers": true
+   }
+  },
+  {
    "id": "restore-gesture",
    "match": {
     "kind": "restore"

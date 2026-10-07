@@ -49,16 +49,16 @@ Jede Zeile enthält genau einen prüfbaren Wunsch beziehungsweise eine bewusste 
 | K-18 | „den Kontext für das gesamte Level“ | Auftakt; S `CH01_BOOT.linesDe`, L `goalDe` | Inhalt/Sprache | Den Gesamtauftrag erklären; erste Buchaufgabe erhält ihren Hinweis erst vor Ort. | mittel | prüfen | PLAN |
 | K-19 | „Ich habe mich befreit“ | Klecks-Herkunft; S | Inhalt/Sprache | Bestehende Loslösung vom Tintengeist verständlich mit Klecks’ Hilfe verbinden; nicht die spätere Identität des Gegenspielers verraten. | mittel | prüfen | PLAN |
 | K-20 | „sammel alle Gegenstände … und alle Regelseiten“ | Gesamtziel und Bilanz; L, G | Spieldesign | Befreite Schulsachen und eingesammelte Regelseiten korrekt unterscheiden; keine unsichtbare Inventaraufnahme behaupten. | mittel | prüfen | PLAN |
-| K-21 | „wenn man da vorbeispringt … immer prominenter“ | erstes Buch; L `p1`, P Hinweise | Spieldesign | Hinweis bei übersehenem Buch stärker machen, ohne den Weg unsichtbar zu sperren. | mittel | prüfen | PLAN |
-| K-22 | „rauf und runter … hin und her zappelt“ | entfärbte Gegenstände; P, `anim.ts` | Kunst | Deutliche, begrenzte Rufbewegung und Glühaura; keine konkurrierenden Dauerblitze. | mittel | prüfen | PLAN |
-| K-23 | „Das Buch muss farblos sein“ | Weltbuch und weitere Gegenstände; P, `anim.ts`, A | Fehler | Vollständige Entfärbung vor der Aufgabe prüfen und als Zustandsdarstellung korrigieren. | mittel | prüfen | PLAN |
-| K-24 | „auch im Bild in dieser Karte muss es farblos sein“ | Namens-/Farbkarte; `cards/CardHost.tsx`, `cards/CardShell.tsx`, `cards/skins.tsx` | Fehler | Kartenbild und Weltzustand über dieselben Schritte grau → Farbe führen. | mittel | prüfen | PLAN |
+| K-21 | „wenn man da vorbeispringt … immer prominenter“ | erstes Buch; L `p1`, P Hinweise | Spieldesign | Hinweis bei übersehenem Buch stärker machen, ohne den Weg unsichtbar zu sperren. | mittel | prüfen | GEBAUT |
+| K-22 | „rauf und runter … hin und her zappelt“ | entfärbte Gegenstände; P, `anim.ts` | Kunst | Deutliche, begrenzte Rufbewegung und Glühaura; keine konkurrierenden Dauerblitze. | mittel | prüfen | GEBAUT |
+| K-23 | „Das Buch muss farblos sein“ | Weltbuch und weitere Gegenstände; P, `anim.ts`, A | Fehler | Vollständige Entfärbung vor der Aufgabe prüfen und als Zustandsdarstellung korrigieren. | mittel | prüfen | GEBAUT |
+| K-24 | „auch im Bild in dieser Karte muss es farblos sein“ | Namens-/Farbkarte; `cards/CardHost.tsx`, `cards/CardShell.tsx`, `cards/skins.tsx` | Fehler | Kartenbild und Weltzustand über dieselben Schritte grau → Farbe führen. | mittel | prüfen | GEBAUT |
 | K-25 | „Dieser Gegenstand hat seine Farbe, seinen Namen und seine Farbe verloren.“ | T `enc.obj-book.r1` | Inhalt/Sprache | Beim ersten Buch vor der Namensfrage „Dieser Gegenstand hat Namen und Farbe verloren.“ verwenden; passt in die Grenze von 56 Zeichen. | klein | keins | GEBAUT |
 | K-26 | „klickt man … Buch … Blau … wird das auch blau danach“ | T `enc.obj-book.r1` | Spieldesign | Vorhandene Wahlfolge book → blue erhalten; Darstellungsfehler separat unter K-23/24. | klein | keins | BEIBEHALTEN |
 | K-27 | „Der Bleistift ist verhext und will in dein Heft kritzeln“ | T `enc.pencil.k3` | Inhalt/Sprache | Den vorhandenen konkreten Schreibauftrag um „verhext“ ergänzen; Schlüssel bleibt „Don't write!“. | klein | keins | GEBAUT |
 | K-28 | „dann klickt man an Don't write“ | Bleistift-Auswahl; L `p1-pencil1`, T `enc.pencil.*` | Spieldesign | Klären und planen, ob Schreibverbot der feste erste Kontakt wird; vorhandene Varianten nicht unbemerkt aus der Lernabdeckung entfernen. | mittel | prüfen | PLAN |
-| K-29 | „sag den Namen … gib ihm die Farbe zurück … dann kommt erst die Aufgabe“ | Radiergummi; L `p1-eraser`, T `enc.eraser.*` | Spieldesign | Reihenfolge vollständig umstellen: Benennen, Rosa zurückgeben, Satz reparieren; Zwischenzustand bleibt verhext. | mittel | prüfen | PLAN |
-| K-30 | „wieder happy … nicht mehr verhext“ | befreite Gegenstände; P, `entities.ts`, A | Kunst | Farbig-verhext und farbig-befreit müssen an Mimik/Bewegung unterscheidbar werden. | mittel | prüfen | PLAN |
+| K-29 | „sag den Namen … gib ihm die Farbe zurück … dann kommt erst die Aufgabe“ | Radiergummi; L `p1-eraser`, T `enc.eraser.*` | Spieldesign | Reihenfolge vollständig umstellen: Benennen, Rosa zurückgeben, Satz reparieren; Zwischenzustand bleibt verhext. | mittel | prüfen | GEBAUT |
+| K-30 | „wieder happy … nicht mehr verhext“ | befreite Gegenstände; P, `entities.ts`, A | Kunst | Farbig-verhext und farbig-befreit müssen an Mimik/Bewegung unterscheidbar werden. | mittel | prüfen | GEBAUT |
 | K-31 | „dieses Pop-up beim Schließfach … sparen“ | Näherung an Geräteschließfach; G `cagehint`, `sim.ts` | Spieldesign | Automatische Unterbrechung beim bloßen Vorbeigehen entfernen; bewusste Interaktion zum Öffnen behalten. | mittel | prüfen | PLAN |
 | K-32 | „es sei denn, es ist ein Key-Gegenstand“ | Hinweise auf neue Kräfte; G `grant`, `story/ability-lore.ts` | Spieldesign | Einführung wirklich neuer Kräfte erhalten; keine Faust oder Feder neu in Kapitel eins vergeben. | klein | keins | BEIBEHALTEN |
 | K-33 | „Der Titengeist hat Gegenstände weggesperrt“ | T `rsc.soundsystem.r1`, `rsc.tablet.r1` | Inhalt/Sprache | Die zwei Gerätekarten nennen den eingeführten Tintengeist als Ursache des verschlossenen Fachs. | klein | keins | GEBAUT |
@@ -97,3 +97,30 @@ Die Empfehlung zur Kunst lautet ein gemeinsames Vorher-/Nachherblatt mit drei de
 **Prüfnachweis:** Quellzuordnung am Stand `facedcdb`; technische Prüfungen, Vorher-/Nachheransichten und unabhängige Textlesung werden im PR und im Boardbericht geführt, nicht als Logdateien ins Repository aufgenommen. Die Sprachnotiz ist ein Beobachtungsbericht; ein darin genannter Fehler ist damit erfasst, aber noch kein von Codex reproduzierter Fehler.
 
 **Bilanz zur Review-Übergabe:** 58 Punkte: 4 Fehler, 22 Spieldesign, 18 Inhalt/Sprache, 12 Kunst, 2 Technik/Tempo, 0 Fragen zurück. Davon 6 GEBAUT (acht Situationssätze), 45 PLAN, 7 BEIBEHALTEN. Acht Vorher-/Nachherkarten sind lokal geprüft; unabhängige Sprach-/Bildlesung und Bildprüfsummen stehen im PR. Der Upload der Bilddateien in den PR wartet auf den Dateizugriff der Chrome-Erweiterung; bis dahin sind die Bilder im lokalen Kartenvergleich zugänglich. Alle 87 lokalen CI-Einzelbefehle einschließlich Produktionsbau bestanden; 2699 Tests bestanden, einer bestehend übersprungen. Der Buchsatz nutzt die bestehende bildgestützte Namensfrage gemäß D-1038; der englische Schlüssel und die zweite Hilfestufe bleiben erhalten. Vollständiger Leveldurchlauf, echte Mobilgeräte und die gemeldeten Merle-Aussetzer sind UNVERIFIZIERT.
+
+
+## cgo-085 · B1-Nachführung, 07.10.2026
+
+**CODEX DRAFT — NOT CANON · GEBAUT im eigenen Klon; Kokis Spielabnahme steht aus.**
+Die sechs Statuswechsel K-21/22/23/24/29/30 gelten ausschließlich für das
+B1-Exemplar Radiergummi und das erste Buch, nicht für die übrigen Gegenstände.
+Der Eingang aus PR 464 wurde auf die Basis nach PR 487 konfliktfrei nachgeführt.
+
+- K-21/22: Ein nahes unbefreites Exemplar ruft mit Bewegung und Leuchten; nach
+  dem Vorbeispringen wird der Buchruf stärker. Er öffnet keine Aufgabe von selbst.
+- K-23/24: Beide Exemplare sind bis zur richtigen Farbe in Welt und Karte ganz
+  grau. Der richtig gewählte Name wird sichtbar; die Farbe bleibt bis zur
+  Farbauswahl verborgen. Bei reduzierter Bewegung gelten dieselben Endzustände.
+- K-29: Der Radiergummi verlangt Name → Rosa → Satzaufgabe → Frieden. Falsche
+  Antworten, „Später“, Raumrückkehr und Wiederaufnahme setzen erreichte Schritte
+  nicht zurück. Die optionale zweite Satzkarte und alle Lernbindungen bleiben.
+- K-30: Farbe allein beendet den Fluch noch nicht. Erst die Satzlösung beendet
+  das Rufen und führt über Jubel zur Ruhe. Die vorhandene strenge Mimik bleibt
+  mangels neuer Kunst erhalten; die gemalte friedliche Mimik gehört in D2/B2.
+
+Zwei blinde Löser bestätigten das fehlende Farbverraten der Gegenstandsbilder.
+Ihre übereinstimmende Unklarheit bei beiden Satzaufträgen führte zur präzisen
+Frage „Welcher Satz ist richtig geschrieben?“; Antworten und Lernstoff blieben
+unverändert. Spielbilder, Rohprüfungen und Vorher/Nachher-Texte stehen außerhalb
+von Git im cgo-085-Bericht. Nichts wird automatisch freigegeben: nach GG-Review
+und Merge folgt Kokis HALT und Spielpass (cgo-021), erst sein Ja erlaubt B2.
