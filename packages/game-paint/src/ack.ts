@@ -1,5 +1,8 @@
 import type { PaintAttemptSender } from "./cards/attempt.ts";
 
+/** One duration for both the visual glow and its acknowledgement window. */
+export const ACK_FLASH_MS = 1200;
+
 export type AttemptReply = Awaited<ReturnType<PaintAttemptSender>>;
 export interface AttemptAck {
   total: number;

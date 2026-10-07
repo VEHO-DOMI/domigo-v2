@@ -25,7 +25,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 // Input machines are needed only when an actual task opens. Keeping this
 // boundary outside the component preserves its identity across reference views.
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { acknowledgeAttempt, attemptAckValue, emptyAttemptAck } from "./ack.ts";
+import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck } from "./ack.ts";
 
 const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
@@ -482,7 +482,7 @@ function useAttemptAck(sender: PaintAttemptSender | undefined) {
   useEffect(() => {
     if (state.revision === 0) return;
     setLit(true);
-    const timer = window.setTimeout(() => setLit(false), 1200);
+    const timer = window.setTimeout(() => setLit(false), ACK_FLASH_MS);
     return () => window.clearTimeout(timer);
   }, [state.revision]);
   const send = React.useMemo<PaintAttemptSender | undefined>(() => sender && (async body => {
@@ -1934,7 +1934,7 @@ export default function PaintGame({ onAttempt, liberationProgress = {}, onLibera
         @keyframes pb-ack-glow {
           0%, 45% { box-shadow: 0 0 0 2px #b78d51, 0 0 10px rgba(183,141,81,.5); }
         }
-        .pb-ack-flash[data-flash="true"] { animation: pb-ack-glow 1200ms ease-out; }
+        .pb-ack-flash[data-flash="true"] { animation: pb-ack-glow ${ACK_FLASH_MS}ms ease-out; }
         .pb-game-hud.pb-hud-dim .pb-ack-flash { animation: none; }
         .pb-game-shell[data-mobile="true"] .pb-hud-dim .pb-ack-flash { opacity: .26; filter: grayscale(.85) brightness(.86); }
         @media (prefers-reduced-motion: reduce) { .pb-ack-flash[data-flash="true"] { animation: none; } }

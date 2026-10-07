@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import { transpileModule } from "typescript";
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply } from "./ack.ts";
+import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply } from "./ack.ts";
 
 describe("server receipt acknowledgement", () => {
   const receive = (reply: AttemptReply, id = "a", state = emptyAttemptAck()) =>
@@ -10,6 +10,10 @@ describe("server receipt acknowledgement", () => {
   it("shows exactly the server award, irrespective of grading labels", () => {
     const state = receive({ ok: true, queued: false, xpAwarded: 7, tier: "partial" });
     expect([state.total, state.lastAward, state.revision]).toEqual([7, 7, 1]);
+  });
+  it.each([["correct", 3], ["wrong", 5]] as const)("uses only xpAwarded when tier is %s and the server awards %i", (tier, xpAwarded) => {
+    const state = receive({ ok: true, queued: false, tier, xpAwarded });
+    expect([state.total, state.lastAward, state.revision]).toEqual([xpAwarded, xpAwarded, 1]);
   });
   it.each([true, false])("marks durable queued delivery without awarding points (ok=%s)", ok => {
     const state = receive({ ok, queued: true, xpAwarded: 99 });
@@ -146,7 +150,7 @@ describe("one scoring brain", () => {
 const presentationLaws = [
   ["no empty chip", "ack.state.total > 0 || ack.state.pending.size > 0"],
   ["wrapped sender", "onAttempt={ack.send}"],
-  ["short glow", '.pb-ack-flash[data-flash="true"] { animation: pb-ack-glow 1200ms ease-out; }'],
+  ["short glow", '.pb-ack-flash[data-flash="true"] { animation: pb-ack-glow ${ACK_FLASH_MS}ms ease-out; }'],
   ["overlay suppresses glow", ".pb-game-hud.pb-hud-dim .pb-ack-flash { animation: none; }"],
   ["mobile overlay dims the acknowledgement", '.pb-game-shell[data-mobile="true"] .pb-hud-dim .pb-ack-flash { opacity: .26; filter: grayscale(.85) brightness(.86); }'],
   ["reduced motion suppresses glow", '@media (prefers-reduced-motion: reduce) { .pb-ack-flash[data-flash="true"] { animation: none; } }'],
@@ -157,5 +161,30 @@ describe("ack presentation contracts", () => {
     const broken = sources[0]!.replace(required, "REMOVED");
     expect(broken).not.toBe(sources[0]);
     expect(broken).not.toContain(required);
+  });
+});
+
+const flashTimingErrors = (src: string): string[] => {
+  const hook = src.slice(src.indexOf("function useAttemptAck("), src.indexOf("export default function PaintGame("));
+  const errors: string[] = [];
+  if (!hook.includes("window.setTimeout(() => setLit(false), ACK_FLASH_MS)")) errors.push("timer-duration");
+  if (!src.includes('animation: pb-ack-glow ${ACK_FLASH_MS}ms ease-out;')) errors.push("css-duration");
+  return errors;
+};
+describe("one short acknowledgement duration", () => {
+  it("keeps the shared duration positive and at most 1500 ms", () => {
+    expect(ACK_FLASH_MS).toBeGreaterThan(0);
+    expect(ACK_FLASH_MS).toBeLessThanOrEqual(1500);
+  });
+  it("uses that same constant for both the hook timer and CSS", () => {
+    expect(flashTimingErrors(sources[0]!)).toEqual([]);
+  });
+  it.each([
+    ["timer-duration", "setLit(false), ACK_FLASH_MS)", "setLit(false), 3000)"],
+    ["css-duration", "${ACK_FLASH_MS}ms", "3000ms"],
+  ] as const)("duration tamper is red: %s", (law, before, after) => {
+    const broken = sources[0]!.replace(before, after);
+    expect(broken).not.toBe(sources[0]);
+    expect(flashTimingErrors(broken)).toContain(law);
   });
 });
