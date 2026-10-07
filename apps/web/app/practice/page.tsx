@@ -25,7 +25,7 @@ export default async function PracticeIndex({ searchParams }: { searchParams: Pr
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Practice</h1>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {inScope.length} approved units — load any to render and grade its real items.
+        {inScope.length} approved Chapters — load any to render and grade its real items.
       </p>
       {grades.map((g) => {
         const inGrade = units.filter((s) => s.startsWith(`g${g}-`));
@@ -36,7 +36,7 @@ export default async function PracticeIndex({ searchParams }: { searchParams: Pr
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
               {inGrade.map((slug) => (
                 <Link key={slug} href={`/practice/${slug}`} className="dg-chip" style={{ fontSize: 14, padding: "8px 14px", color: "var(--text)", textDecoration: "none" }}>
-                  {slug}
+                  Chapter {Number(slug.slice(-2))}
                 </Link>
               ))}
             </div>
