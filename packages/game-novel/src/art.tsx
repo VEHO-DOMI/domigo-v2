@@ -94,16 +94,18 @@ const toneColor: Record<Comment["tone"], string> = {
  * `line` frames how the player's accuracy treated Ben; `comments` are toned by it.
  * Brand glass surface; each comment's tone shows as a coloured left accent.
  */
-export function CommentSection({ comments, line, label }: { comments: Comment[]; line: string; label: string }) {
+export function CommentSection({ comments, line, label, lineHelp }: { comments: Comment[]; line: string; label: string; lineHelp?: string }) {
   return (
     <div style={{ background: "var(--bg-sunken)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", borderRadius: 14, padding: "14px 16px", marginTop: 12 }}>
       <div style={{ color: "var(--ink)", fontSize: 14, fontWeight: 700, marginBottom: 4, fontFamily: "var(--font-display)" }}>💬 {label}</div>
       <p style={{ color: "var(--text-secondary)", fontSize: 13, margin: "0 0 12px" }}>{line}</p>
+      {lineHelp && <details className="fourteen-end-help"><summary>Auf Deutsch?</summary><p>{lineHelp}</p></details>}
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {comments.map((c, i) => (
           <div key={`${c.author}-${i}`} style={{ background: "var(--card)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", boxShadow: `inset 3px 0 0 ${toneColor[c.tone]}`, borderRadius: 10, padding: "8px 11px" }}>
             <div style={{ color: "var(--text-secondary)", fontSize: 12, fontWeight: 600 }}>@{c.author}</div>
             <div style={{ color: "var(--text)", fontSize: 14 }}>{c.text}</div>
+            {c.helpDe && <details className="fourteen-end-help"><summary>Wörterhilfe</summary><p>{c.helpDe}</p></details>}
           </div>
         ))}
       </div>

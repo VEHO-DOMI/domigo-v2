@@ -8,6 +8,11 @@ const source = read('content/overlays/g3-fourteen-feedback.json');
 const base = 'content/corpus/stories/g3.st.fourteen/';
 const story = read(base + 'story.json');
 const items = read(base + 'comprehension.json');
+for (const edit of source.chapters ?? []) {
+  const chapter = story.chapters.find((c) => c.id === edit.id);
+  if (!chapter) throw new Error(`Missing chapter ${edit.id}`);
+  Object.assign(chapter, edit);
+}
 items.items = items.items.filter((item) => !source.retiredDraftIds.includes(item.id));
 const scenes = story.chapters.flatMap((c) => c.scenes);
 for (const edit of source.scenes) {

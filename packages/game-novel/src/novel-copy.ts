@@ -7,8 +7,8 @@
 import type { Tier } from "@domigo/engine";
 
 export const COPY = {
-  taskPrompt: "✏️ Help write the script — get it right before it goes live",
-  fixPrompt: "✏️ Fix Ben's line before the video goes live",
+  taskPrompt: "✏️ Help write the script.",
+  fixPrompt: "✏️ Help Ben with his line.",
   deShow: "Auf Deutsch?",
   deHide: "Hide German",
   continue: "Next →",
@@ -25,15 +25,27 @@ export const COPY = {
  * scripting/fix framing would be grotesque — the redemption slots carry neutral,
  * story-true labels instead (and never trigger the comment beat; see isFixSlot).
  */
-export function slotPrompt(slot: string): string {
+export function slotPrompt(slot: string, unit?: number): string {
+  if (unit === 11 && /^script(-|$)/.test(slot)) return "✍️ Put what happened into words.";
   if (/^fix(-|$)/.test(slot)) return COPY.fixPrompt;            // ep01-11: fix Ben's on-camera line
   if (/^script(-|$)/.test(slot)) return COPY.taskPrompt;        // ep01-11: write the script
   if (/^truth(-|$)/.test(slot)) return "✍️ Finish the report — the way it really happened.";  // ep12 passive
-  if (/^regret(-|$)/.test(slot)) return "💭 If you could go back — what would you do?";        // ep13 2nd conditional
-  if (/^promise(-|$)/.test(slot)) return "🎤 Live and honest — help Ben get it right.";        // ep14 going-to
+  if (/^regret(-|$)/.test(slot)) return "💭 What would you do?";        // ep13 2nd conditional
+  if (/^promise(-|$)/.test(slot)) return "🎤 What happens next?";        // ep14 going-to
   if (/^reply(-|$)/.test(slot)) return "💬 Write back to the comments.";   // ep01 exemplar: write back to viewers
   if (/^recap(-|$)/.test(slot)) return "🤔 Did you follow the story?";                          // .ci. comprehension check
   return COPY.taskPrompt;
+}
+
+/** Short, optional help for the framing, without revealing a task answer. */
+export function slotHelp(slot: string, unit: number): string {
+  if (/^fix(-|$)/.test(slot)) return "Verbessere Bens Satz, bevor das Video veröffentlicht wird.";
+  if (/^script(-|$)/.test(slot)) return unit === 11 ? "Beschreibe, was passiert ist." : "Hilf beim Text für das Video, bevor es veröffentlicht wird.";
+  if (/^truth(-|$)/.test(slot)) return "Halte fest, was wirklich passiert ist.";
+  if (/^regret(-|$)/.test(slot)) return "Was würdest du jetzt tun?";
+  if (/^promise(-|$)/.test(slot)) return "Was passiert gleich?";
+  if (/^reply(-|$)/.test(slot)) return "Antworte auf die Kommentare.";
+  return "Was ist in der Geschichte passiert?";
 }
 
 /** Acknowledged learning points, never invented audience views. */
@@ -77,6 +89,26 @@ export const STAT_PLACEHOLDERS = ["views", "likes", "subscribers"] as const;
 /** Likes are display-only: round(views × likeRate) — never a pool, never stored. */
 export function likesFor(row: EpisodeStats): number {
   return Math.round(row.views * row.likeRate);
+}
+
+/** The comparison and its bars use the same authored row as the scene prose. */
+export function audienceMetrics(current: EpisodeStats | null, previous?: EpisodeStats | null) {
+  return [
+    { label: "Views", de: "Aufrufe", value: current?.views, before: previous?.views },
+    { label: "Likes", de: "Gefällt mir", value: current ? likesFor(current) : undefined, before: previous ? likesFor(previous) : undefined },
+    { label: "Shares", de: "geteilt", value: current?.shares, before: previous?.shares },
+    { label: "Comments", de: "Kommentare", value: current?.comments, before: previous?.comments },
+    { label: "Subscribers", de: "Abos", value: current?.subscribers, before: previous?.subscribers },
+  ];
+}
+
+/** Read alongside the numbers; no extra event or performance-dependent plot. */
+export function channelNote(unit: number): string {
+  if (unit === 12 || unit === 13) return "No new video. (= Kein neues Video.) Der Kanal wird ruhiger. Bens Geschichte geht weiter.";
+  if (unit === 14) return "Together again. (= Wieder gemeinsam.) Ein kleiner Anstieg nach dem ehrlichen Neuanfang.";
+  if (unit === 11) return "The clips are out there. (= Die Ausschnitte sind im Netz.) Mehr Aufrufe machen Bens Verletzung nicht kleiner.";
+  if (unit >= 6) return "Behind the numbers (= Hinter den Zahlen): Wie geht es Ben?";
+  return "Our channel so far (= Unser Kanal bis hierher). So hat sich die Reichweite verändert.";
 }
 
 /** 60000 → "60,000" (en) / "60.000" (de). */
@@ -137,6 +169,7 @@ export interface Comment {
   author: string;
   text: string;
   tone: "kind" | "tease" | "cruel";
+  helpDe?: string;
 }
 
 /** The authored emotional band of an episode — the ceiling the consequence works within. */
@@ -163,9 +196,9 @@ const TEASE_TENSE: Comment[] = [
 // RECKONING band (L11, the compilation): the cruelty is structural now — a clean take
 // can't undo it. This is the gut-punch the whole comment arc has been building to.
 const CRUEL: Comment[] = [
-  { author: "clip_farm", text: "made a compilation of all his fails 💀", tone: "cruel" },
-  { author: "h8r_x", text: "this kid is so dumb lol", tone: "cruel" },
-  { author: "noname_99", text: "they're all laughing AT him", tone: "cruel" },
+  { author: "clip_farm", text: "made a compilation of all his fails 💀", tone: "cruel", helpDe: "made = gemacht; compilation = Zusammenschnitt; fails = Reinfälle" },
+  { author: "h8r_x", text: "this kid is so dumb lol", tone: "cruel", helpDe: "kid = Kind; dumb = dumm; lol = laughing out loud, laut lachen" },
+  { author: "noname_99", text: "they're all laughing AT him", tone: "cruel", helpDe: "laughing at him = ihn auslachen" },
 ];
 
 /**
