@@ -74,3 +74,31 @@ it("a storage error stays unconfirmed with persist_failed", async () => {
   assert.equal(data.ok, false);
   assert.equal(data.error, "persist_failed");
 });
+
+// cgo-064: all six painted-book answers use the real corpus and HTTP handler.
+const encounterItems = [
+  ["mc.005", "choice", "in"], ["mc.002", "choice", "on"], ["mc.001", "choice", "under"],
+  ["gf.001", "text", "on"], ["gf.003", "text", "under"], ["gf.015", "text", "in"],
+] as const;
+for (const [suffix, kind, value] of encounterItems) {
+  it(`books the encounter ${suffix} through the shared grader`, async () => {
+    fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+    const itemId = `g1u02.gi.prepositions-place.${suffix}`;
+    const request = new Request("https://attempts.invalid/api/attempts", { method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ clientAttemptId: crypto.randomUUID(), ownerId: "child-own", itemId, mode: "game:g1", input: { kind, value }, latencyMs: 800, hintUsed: false }),
+    });
+    const response = await POST(request);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).tier, "correct");
+    assert.equal(fixture.writes.length, 1);
+    assert.equal(fixture.writes[0]!.data.itemId, itemId);
+    assert.equal(fixture.writes[0]!.data.mode, "game:g1");
+  });
+}
+it("the teacher cannot book an encounter choice answer", async () => {
+  fixture.session = { user: { id: "teacher-own", classId: null, role: "teacher", scope: ["class-own"] } };
+  const response = await POST(new Request("https://attempts.invalid/api/attempts", { method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ clientAttemptId: crypto.randomUUID(), ownerId: "teacher-own", itemId: "g1u02.gi.prepositions-place.mc.001", mode: "game:g1", input: { kind: "choice", value: "under" }, latencyMs: 1, hintUsed: false }),
+  }));
+  assert.equal(response.status, 401); assert.equal(fixture.writes.length, 0);
+});

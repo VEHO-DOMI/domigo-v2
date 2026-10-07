@@ -1,15 +1,25 @@
 "use client";
 // The ssr:false seam: Phaser only ever loads in the browser (the ArcadeClient
 // pattern; keeps the bundle guard's one-lazy-chunk law intact).
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useMemo, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import type { PaintLevel } from "@domigo/game-paint/level";
-import type { GameTaskV2 } from "@domigo/content-schema";
+import type { GameTaskV2, PaintEncounter, GrammarItem } from "@domigo/content-schema";
 import { chapterRegelSeiten, refreshChapterRegelbuch, regelbuchSnapshot, regelbuchServerSnapshot, subscribeRegelbuch, rememberRegelSeite } from "@/lib/regelbuch";
 import { auftaktSeen, rememberAuftakt } from "@/lib/auftakt";
 
 import { CH01_STORY_VERSION, PAINT_CLASSMATES } from "@domigo/game-paint/story";
 import { readPaintStoryProfile, savePaintStoryProfile, paintPrologueSeen, withPaintPrologueRead, withPaintClassmateRescued, cleanPaintDisplayName, createPaintRunSeed, type PaintStoryProfile } from "@/lib/paint-story-profile";
+
+import { attemptSender } from "@/lib/preview-attempt";
+import { useOutboxFlush } from "@/lib/useOutboxFlush";
+import { readPaintEncounterProgress, savePaintEncounterProgress } from "@/lib/paint-encounter-progress";
+import type { EncounterProgress } from "../../../../../../../../packages/game-paint/src/encounter/runtime";
+
+const EncounterStage = dynamic(() => import("../../../../../../../../packages/game-paint/src/encounter/EncounterStage"), {
+  ssr: false,
+  loading: () => <p style={{ textAlign: "center" }}>Wir öffnen das Buch …</p>,
+});
 
 const PaintGame = dynamic(() => import("@domigo/game-paint/game"), {
   ssr: false,
@@ -26,6 +36,9 @@ const PaintDevGallery = dynamic(() => import("@domigo/game-paint/game").then((m)
 
 type BuchClientProps = {
   playerKey: string;
+  preview: boolean;
+  ownerId: string | null;
+  encounter?: PaintEncounter & { grammarItems: GrammarItem[] };
   level: PaintLevel;
   art: Record<string, string>;
   tasks: GameTaskV2[];
@@ -47,11 +60,29 @@ type BuchClientProps = {
 
 export default function BuchClient(props: BuchClientProps) {
   // Switching accounts must discard the previous account's in-memory profile.
+  if (props.encounter && props.cardBench === undefined) {
+    return <EncounterBuchClient key={`${props.playerKey}:${props.preview}:${props.encounter.revision}`} {...props} encounter={props.encounter} />;
+  }
   return <AccountBuchClient key={props.playerKey} {...props} />;
 }
 
+function EncounterBuchClient({ playerKey, preview, ownerId, encounter, hubHref }: BuchClientProps & { encounter: PaintEncounter & { grammarItems: GrammarItem[] } }) {
+  useOutboxFlush(!preview, ownerId);
+  const context = useMemo(() => ({ playerKey, encounter, preview }), [playerKey, encounter, preview]);
+  const [initial] = useState(() => readPaintEncounterProgress(context));
+  const send = useMemo(() => attemptSender(preview, ownerId), [preview, ownerId]);
+  const persist = useCallback((next: EncounterProgress) => savePaintEncounterProgress(context, next), [context]);
+  return <EncounterStage encounter={encounter} grammarItems={encounter.grammarItems} initial={initial}
+    preview={preview} hubHref={hubHref} onProgress={persist} onAttempt={send} />;
+}
+
 function AccountBuchClient(props: BuchClientProps) {
-  const { cardBench, cardBenchTask, playerKey, ...game } = props;
+  const { cardBench, cardBenchTask, playerKey } = props;
+  const game = {
+    level: props.level, art: props.art, tasks: props.tasks, hubHref: props.hubHref,
+    buildSha: props.buildSha, startPhase: props.startPhase, debugGrid: props.debugGrid,
+    debugPerf: props.debugPerf, noWarm: props.noWarm,
+  };
   // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
   // opening and tear it down a frame later, and a card that flashes is worse
   // than a card that stays. The SSR pass answers `false` (show it), which is
