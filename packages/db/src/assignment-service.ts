@@ -40,9 +40,11 @@ export const LEGACY_CLASS_LABEL_SUFFIX = " · Altbestand";
  *   1. the teacher's OWN v2 classes (scoped by teacherId, non-archived) — reusing
  *      listClassesForTeacher so the picker shows exactly what /admin/classes shows,
  *      one definition of "this teacher's classes" rather than two;
- *   2. then the v1 legacy classes (non-archived, UNSCOPED — the Koki era predates
- *      per-teacher ownership), each labelled with LEGACY_CLASS_LABEL_SUFFIX. The id
- *      spaces are disjoint (separate schemas, random UUIDs), so no de-duplication is
+ *   2. then the v1 legacy classes allowed by the session (non-archived), each
+ *      labelled with LEGACY_CLASS_LABEL_SUFFIX. Legacy ownership is defined by
+ *      classScope, not by teacherId. An empty scope admits nothing, including
+ *      when the v2 read fails. The id spaces are disjoint (separate schemas,
+ *      random UUIDs), so no de-duplication is
  *      needed — and a NAME that exists in both registers stays distinguishable.
  *
  * `teacherId` is a REQUIRED parameter, never a default: a default would silently
@@ -51,8 +53,10 @@ export const LEGACY_CLASS_LABEL_SUFFIX = " · Altbestand";
  */
 export async function listClasses(db: Db, classScope: ClassScope, teacherId: string): Promise<ClassRow[]> {
   // v2 half degrades like auth.ts's v2Safe(): if the domigo_v2 tables are
-  // unreachable on this deployment, the picker keeps its v1 classes instead of
-  // falling empty. (v2Safe itself is module-private to auth.ts.)
+  // unreachable on this deployment, the picker keeps the v1 classes the session
+  // admits instead of falling empty. (v2Safe itself is module-private to auth.ts.)
+  // The v1 half is deliberately NOT caught: a scope the database cannot read
+  // (cgo-063 reader, HINWEIS) fails loud — a wall that fails closed, never open.
   let v2: ClassRow[] = [];
   try {
     const owned = await listClassesForTeacher(db, classScope, teacherId);
@@ -67,7 +71,7 @@ export async function listClasses(db: Db, classScope: ClassScope, teacherId: str
   const v1 = await db
     .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
     .from(v1Classes)
-    .where(isNull(v1Classes.archivedAt));
+    .where(and(inArray(v1Classes.id, [...classScope]), isNull(v1Classes.archivedAt)));
 
   return [
     ...v2,
@@ -76,8 +80,8 @@ export async function listClasses(db: Db, classScope: ClassScope, teacherId: str
 }
 
 /**
- * P3 · the GRANDMASTER's class picker — EVERY active class on the platform, not
- * just one teacher's. Same shape and same order as listClasses (v2 first, the v1
+ * P3 · the GRANDMASTER's class picker — every active class the session's scope
+ * admits (for the operator: every class on the platform), not just one teacher's. Same shape and same order as listClasses (v2 first, the v1
  * legacy register behind it), with one addition: each v2 label carries its owner,
  * "2A · Frau Beispiel", because the operator is now looking at classes that are
  * not his and a bare "2A" would say nothing about whose roster he is about to

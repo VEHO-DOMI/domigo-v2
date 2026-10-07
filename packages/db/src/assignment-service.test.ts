@@ -5,19 +5,18 @@
  * ("Koki is the sole teacher"), so every v2-native class — i.e. every class of
  * the 2026/27 school year — was invisible to it and could never receive an
  * assignment. The rules under test: v2 classes of THIS teacher come first, the
- * v1 legacy classes follow unscoped, both halves filter archived rows, and a
- * broken v2 side degrades to the v1 list instead of an empty picker.
+ * v1 legacy classes follow within the session scope, both halves filter archived
+ * rows, and a broken v2 side retains only the permitted v1 classes.
  */
 import { describe, expect, it } from "vitest";
+import { drizzle } from "drizzle-orm/neon-http";
 import { LEGACY_CLASS_LABEL_SUFFIX, listClasses, listClassesInScope } from "./assignment-service.ts";
 import { UNKNOWN_TEACHER_LABEL } from "./class-service.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
+import { classScope, EMPTY_SCOPE, type ClassScope } from "./scope.ts";
 
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope(["v2-a", "v2-b", "v1-a", "v1-b", "c1", "klasse-1"]);
+/** Synthetic session scope; the SQL tests below exercise the actual boundary. */
+const SCOPE = classScope(["v2-a", "v2-b", "v1-a", "v1-b", "c1", "klasse-1", "v2-2a", "v1-2a"]);
 
 /**
  * Sequential chain-mock (house style, cf. auth.test.ts:seqDb): each db.select()
@@ -95,13 +94,15 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
     expect(v2Where).toContain(" is null"); // archived rows filtered OUT, not IN
   });
 
-  it("leaves the v1 half UNSCOPED (Koki era) but still archive-filtered", async () => {
+  it("binds the legacy half to the session scope and still excludes archived rows", async () => {
     const { db, conditions } = seqDb([[v2Class], [], [v1Class]]);
     await listClasses(db, SCOPE, "T-1");
     const v1Where = conditionAtoms(conditions[conditions.length - 1]);
     expect(v1Where).toContain("col:archived_at");
     expect(v1Where).toContain(" is null");
-    expect(v1Where).not.toContain("T-1"); // the legacy half is deliberately unscoped
+    expect(v1Where).toContain("col:id");
+    for (const id of SCOPE) expect(v1Where).toContain(id);
+    expect(v1Where).not.toContain("T-1"); // legacy access comes from scope, not ownership
   });
 
   it("keeps a name that exists in BOTH registers distinguishable (prod carries '2A' twice)", async () => {
@@ -116,7 +117,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
     expect(rows[0]!.id).not.toBe(rows[1]!.id); // and the ids stay untouched
   });
 
-  it("degrades to the v1 list when the domigo_v2 tables are unreachable (never an empty picker)", async () => {
+  it("retains permitted v1 classes when the domigo_v2 tables are unreachable", async () => {
     const { db } = seqDb([new Error('relation "domigo_v2.classes" does not exist'), [v1Class]]);
     const rows = await listClasses(db, SCOPE, "T-1");
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
@@ -248,10 +249,8 @@ describe("K1b · which classes a caller may create work in", () => {
     expect(conditionAtoms(conditions[0])).toContain("T-1");
   });
 
-  it("ADMITS a v1 legacy class for any teacher — the documented status quo, pinned so nobody tightens it silently", async () => {
-    // The Koki-era register predates ownership: those classes belong to nobody and
-    // retire with the school year. Narrowing this would break live assignments for
-    // ~110 children, so it is asserted, not assumed.
+  it("ADMITS a v1 legacy class when it is in the session scope", async () => {
+    // The legacy register has no teacher ownership; the session scope grants access.
     const ids = await ownIds("T-new", [[], [v1Class]]);
     expect(ids).toEqual(["v1-a"]);
   });
@@ -274,5 +273,140 @@ describe("K1b · which classes a caller may create work in", () => {
     const ids = (await listClassesInScope(db, SCOPE)).map((c) => c.id);
     expect(ids).toContain("v2-a"); // not his, and open to him anyway
     expect(ids).toContain("v1-a");
+  });
+});
+
+// cgo-063: real Drizzle/Neon SQL, synthetic rows only. Unlike seqDb, this
+// fixture applies the emitted WHERE terms before returning any class row.
+// It supports only the predicates used here; unknown SQL is an error, never
+// silently treated as an authorised query. Separate exact-SQL assertions keep
+// the fixture's small evaluator from being the sole evidence of the boundary.
+type SyntheticClass = Record<string, string | number | null>;
+type ClassRead = { sql: string; params: unknown[]; returnedIds: string[] };
+
+function scopedClassDb(v2Fails = false) {
+  const make = (id: string, teacher = "T-1", archived = false): SyntheticClass => ({
+    id, name: "SYNTHETIC", grade: 2, teacher_id: teacher,
+    invite_code: "SYNTH", created_at: "2026-01-01T00:00:00Z",
+    archived_at: archived ? "2026-01-02T00:00:00Z" : null,
+  });
+  const v2 = [make("v2-b"), make("v2-a"), make("v2-outside"), make("v2-other", "T-2"), make("v2-archived", "T-1", true)];
+  const v1 = [make("v1-b"), make("v1-a"), make("v1-outside"), make("v1-archived", "T-1", true)];
+  const reads: ClassRead[] = [];
+  const unsupported: string[] = [];
+  const client = async (sql: string, params: unknown[]) => {
+    const classTable = / from ((?:"domigo_v2"\.)?"classes")(?: |$)/.exec(sql);
+    if (!classTable) {
+      // No synthetic pupils; owner lookup is cosmetic and uses synthetic teachers.
+      const rows = sql.includes('"display_name"')
+        ? params.filter((id) => id === "T-1" || id === "T-2").map((id) => [id, `SYNTH-${id}`])
+        : [];
+      return { rows, rowCount: rows.length, fields: [] };
+    }
+    const read: ClassRead = { sql, params, returnedIds: [] };
+    reads.push(read);
+    const native = classTable[1]!.includes("domigo_v2");
+    if (native && v2Fails) throw new Error("synthetic v2 outage");
+    const where = sql.split(" where ")[1]?.split(" order by ")[0] ?? "true";
+    const terms = where.startsWith("(") ? where.slice(1, -1).split(" and ") : [where];
+    const selected = (native ? v2 : v1).filter((row) => terms.every((term) => {
+      if (term === "false") return false;
+      if (term === "true") return true;
+      const membership = /"(\w+)" in \((\$\d+(?:, \$\d+)*)\)$/.exec(term);
+      if (membership) return membership[2]!.split(", ").some((p) => params[Number(p.slice(1)) - 1] === row[membership[1]!]);
+      const equal = /"(\w+)" = \$(\d+)$/.exec(term);
+      if (equal) return row[equal[1]!] === params[Number(equal[2]) - 1];
+      const absent = /"(\w+)" is null$/.exec(term);
+      if (absent) return row[absent[1]!] === null;
+      unsupported.push(term);
+      throw new Error(`unsupported synthetic predicate: ${term}`);
+    }));
+    read.returnedIds = selected.map((row) => String(row.id));
+    const columns = sql.slice("select ".length, sql.indexOf(" from ")).split(", ").map((c) => c.replaceAll('"', ""));
+    const rows = selected.map((row) => columns.map((column) => row[column]));
+    return { rows, rowCount: rows.length, fields: [] };
+  };
+  return { db: drizzle(client as never) as unknown as Db, reads, unsupported };
+}
+
+function expectScopedRead(read: ClassRead, scope: ClassScope, native: boolean, teacher?: string) {
+  const table = native ? '"domigo_v2"."classes"' : '"classes"';
+  const boundary = scope.length ? `${table}."id" in (${scope.map((_, i) => `$${i + 1}`).join(", ")})` : "false";
+  const owner = teacher ? ` and ${table}."teacher_id" = $${scope.length + 1}` : "";
+  const where = read.sql.split(" where ")[1]?.split(" order by ")[0];
+  expect(where).toBe(`(${boundary}${owner} and ${table}."archived_at" is null)`);
+  expect(read.params).toEqual(teacher ? [...scope, teacher] : [...scope]);
+}
+
+const MIXED_SCOPE = classScope(["v2-a", "v2-b", "v2-other", "v2-archived", "v1-a", "v1-b", "v1-archived"]);
+
+describe("cgo-063 · class rights in the emitted query", () => {
+  it("excludes foreign and archived rows before returning either register; preserves ids, labels and order", async () => {
+    const { db, reads, unsupported } = scopedClassDb();
+    const rows = await listClasses(db, MIXED_SCOPE, "T-1");
+    expect(reads).toHaveLength(2);
+    expectScopedRead(reads[0]!, MIXED_SCOPE, true, "T-1");
+    expectScopedRead(reads[1]!, MIXED_SCOPE, false);
+    expect(reads.map((r) => r.returnedIds)).toEqual([["v2-b", "v2-a"], ["v1-b", "v1-a"]]);
+    expect(rows).toEqual([
+      { id: "v2-b", name: "SYNTHETIC", grade: 2 },
+      { id: "v2-a", name: "SYNTHETIC", grade: 2 },
+      { id: "v1-b", name: `SYNTHETIC${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+      { id: "v1-a", name: `SYNTHETIC${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+    ]);
+    expect(unsupported).toEqual([]);
+  });
+
+  it("does not turn an empty v2 result into access to unrelated legacy classes", async () => {
+    const scope = classScope(["v1-a"]);
+    const { db, reads } = scopedClassDb();
+    expect(await listClasses(db, scope, "T-new")).toEqual([
+      { id: "v1-a", name: `SYNTHETIC${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+    ]);
+    expect(reads.map((r) => r.returnedIds)).toEqual([[], ["v1-a"]]);
+    expectScopedRead(reads[1]!, scope, false);
+  });
+
+  for (const v2Fails of [false, true]) {
+    it(`an empty scope returns nothing with v2 ${v2Fails ? "unavailable" : "available"}`, async () => {
+      const { db, reads } = scopedClassDb(v2Fails);
+      expect(await listClasses(db, EMPTY_SCOPE, "T-1")).toEqual([]);
+      expect(reads).toHaveLength(2);
+      expectScopedRead(reads[0]!, EMPTY_SCOPE, true, "T-1");
+      expectScopedRead(reads[1]!, EMPTY_SCOPE, false);
+      expect(reads.flatMap((r) => r.returnedIds)).toEqual([]);
+    });
+  }
+
+  it("listClassesInScope binds BOTH registers to the scope in the query — foreign and archived rows never leave the DB", async () => {
+    const { db, reads, unsupported } = scopedClassDb();
+    const rows = await listClassesInScope(db, MIXED_SCOPE);
+    expect(reads).toHaveLength(2);
+    expectScopedRead(reads[0]!, MIXED_SCOPE, true);
+    expectScopedRead(reads[1]!, MIXED_SCOPE, false);
+    expect(reads.map((r) => r.returnedIds)).toEqual([["v2-b", "v2-a", "v2-other"], ["v1-b", "v1-a"]]);
+    expect(rows.map((r) => r.id)).toEqual(["v2-b", "v2-a", "v2-other", "v1-b", "v1-a"]);
+    expect(unsupported).toEqual([]);
+  });
+
+  for (const v2Fails of [false, true]) {
+    it(`listClassesInScope with an empty scope returns nothing with v2 ${v2Fails ? "unavailable" : "available"}`, async () => {
+      const { db, reads } = scopedClassDb(v2Fails);
+      expect(await listClassesInScope(db, EMPTY_SCOPE)).toEqual([]);
+      expect(reads).toHaveLength(2);
+      expectScopedRead(reads[0]!, EMPTY_SCOPE, true);
+      expectScopedRead(reads[1]!, EMPTY_SCOPE, false);
+      expect(reads.flatMap((r) => r.returnedIds)).toEqual([]);
+    });
+  }
+
+  it("v2 failure retains only permitted, active legacy rows", async () => {
+    const { db, reads } = scopedClassDb(true);
+    expect(await listClasses(db, MIXED_SCOPE, "T-1")).toEqual([
+      { id: "v1-b", name: `SYNTHETIC${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+      { id: "v1-a", name: `SYNTHETIC${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+    ]);
+    expectScopedRead(reads[1]!, MIXED_SCOPE, false);
+    expect(reads[1]!.returnedIds).toEqual(["v1-b", "v1-a"]);
   });
 });
