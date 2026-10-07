@@ -19,7 +19,7 @@ test("only acknowledged answers are saved; queued and old answers remain honest"
   assert.equal(answerState(false, { ok: true, queued: false }), "saved");
   assert.equal(answerState(false, { ok: false, queued: true }), "queued");
   assert.equal(answerState(false, { ok: false, queued: false }), "failed");
-  assert.equal(restoredAnswerState(false, "queued"), "queued");
+  assert.equal(restoredAnswerState(false, "queued"), "unknown");
   assert.equal(restoredAnswerState(false), "unknown");
   assert.equal(restoredAnswerState(false, "invented"), "unknown");
   for (const status of ["saving", "saved", "queued", "failed"] as const) assert.ok(SAVE_COPY[status]);

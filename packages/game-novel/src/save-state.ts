@@ -6,12 +6,13 @@ export function answerState(preview: boolean, reply: { ok: boolean; queued: bool
 }
 export function restoredAnswerState(preview: boolean, status?: string): SaveState {
   if (preview) return "preview";
-  return status === "saved" || status === "queued" ? status : "unknown";
+  // A queued snapshot has no live receipt: the shared outbox may have sent it since.
+  return status === "saved" ? status : "unknown";
 }
 export const SAVE_COPY: Record<SaveState, string> = {
   saving: "Saving… (= Deine Antwort wird gespeichert …)",
   saved: "Saved. (= Antwort gespeichert und online bestätigt.)",
-  queued: "Waiting. (= Wartet auf Online-Bestätigung. Die Antwort liegt auf diesem Gerät.)",
+  queued: "Waiting. (= Zum Senden auf diesem Gerät vorgemerkt. Hier ist noch keine Online-Bestätigung angekommen.)",
   failed: "Saving failed. (= Speichern fehlgeschlagen. Versuche es noch einmal.)",
   unknown: "Earlier answer. (= Frühere Antwort. Eine Speicherbestätigung fehlt.)",
   preview: "Preview (= Vorschau). Deine Antwort bleibt nur in dieser Ansicht.",
