@@ -20,7 +20,11 @@ export default function StoryWorldControls({ grades, allowedGrades, available }:
       const res = await fetch("/admin/story-world", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ grade, isOpen }),
       });
-      if (!res.ok) throw new Error("save_failed");
+      if (!res.ok || res.redirected) throw new Error("save_failed");
+      const result: unknown = await res.json();
+      if (typeof result !== "object" || result === null || !("ok" in result) || result.ok !== true) {
+        throw new Error("save_failed");
+      }
       // Refresh the server's confirmed state, including the mastery sections.
       startTransition(() => router.refresh());
       setMessage(`Grade ${grade}: ${isOpen ? "open" : "parked"}.`);

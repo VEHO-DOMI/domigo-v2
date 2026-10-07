@@ -10,7 +10,6 @@
  * YEAR 1 (cgo-070): the runtime setting chooses between the /play chooser
  * (parked) and the painted book /play/1/buch (open). The retired overworld
  * stays parked in the corpus. Teachers retain the Regelbuch preview here.
- * The book's separate access gate must also be updated before this is merged.
  *
  * K1b · GRADE SCOPE (the deep-link half of the /play binding). A CHILD is sent
  * back to its own school year; a TEACHER keeps every year, because the pre-release

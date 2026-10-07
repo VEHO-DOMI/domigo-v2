@@ -44,9 +44,11 @@ describe("story-world service", () => {
     }
     const writes = log.filter((q) => /^(insert|update|delete)/.test(q.sql));
     expect(writes).toHaveLength(3);
-    for (const q of writes) {
+    for (const [index, q] of writes.entries()) {
       expect(q.sql).toMatch(/^insert into "domigo_v2"\."story_world_settings"/);
-      expect(q.sql).toContain("on conflict");
+      const update = /on conflict \("grade"\) do update set "is_open" = \$(\d+)/.exec(q.sql);
+      expect(update).not.toBeNull();
+      expect(q.params[Number(update?.[1]) - 1]).toBe([true, false, true][index]);
       expect(q.sql).not.toMatch(/game_saves|practice_attempts|user_progress/);
     }
     expect(log.filter((q) => q.sql.startsWith("select")).every((q) => !q.sql.includes('"name"'))).toBe(true);

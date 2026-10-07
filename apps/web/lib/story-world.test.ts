@@ -75,6 +75,21 @@ describe("runtime story world", () => {
     await assert.rejects(hub("2"), { message: "REDIRECT:/play" });
     await assert.rejects(ZonePage({ params: Promise.resolve({ grade: "2", zone: "ch01" }), searchParams: Promise.resolve({}) }), { message: "REDIRECT:/home" });
   });
+  it("an open year 3 renders the child's hub without redirecting", async () => {
+    fixture.settings.set(3, true);
+    fixture.session = child;
+    fixture.grade = 3;
+    const markup = renderToStaticMarkup(await hub("3"));
+    assert.match(markup, /class="dgh-hub"/);
+    assert.match(markup, /href="\/play\/3\/[^"/]+"/);
+  });
+  it("an open year 1 sends a child's zone deep link into the painted book", async () => {
+    fixture.settings.set(1, true);
+    fixture.session = child;
+    await assert.rejects(ZonePage({
+      params: Promise.resolve({ grade: "1", zone: "ch01" }), searchParams: Promise.resolve({}),
+    }), { message: "REDIRECT:/play/1/buch" });
+  });
   it("opening year 1 does not let another school year enter it", async () => {
     fixture.settings.set(1, true);
     fixture.session = child;
