@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import { transpileModule } from "typescript";
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { acknowledgeAttempt, emptyAttemptAck, type AttemptReply } from "./ack.ts";
+import { acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply } from "./ack.ts";
 
 describe("server receipt acknowledgement", () => {
   const receive = (reply: AttemptReply, id = "a", state = emptyAttemptAck()) =>
@@ -53,6 +53,15 @@ describe("server receipt acknowledgement", () => {
     expect([...next.pending]).toEqual(["b"]);
     expect([...b.pending]).toEqual(["a", "b"]);
     expect(next.total).toBe(points);
+  });
+  it("an older pending attempt cannot hide the latest confirmed award", () => {
+    const pending = receive({ ok: false, queued: true });
+    const awarded = receive({ ok: true, queued: false, xpAwarded: 7 }, "b", pending);
+    expect(attemptAckValue(awarded, true)).toBe("7 (+7)");
+    expect(attemptAckValue(awarded, false)).toBe("Punkte folgen");
+    const settled = receive({ ok: true, queued: false, xpAwarded: 3 }, "a", awarded);
+    expect(attemptAckValue(settled, true)).toBe("10 (+3)");
+    expect(attemptAckValue(settled, false)).toBe("10");
   });
 });
 

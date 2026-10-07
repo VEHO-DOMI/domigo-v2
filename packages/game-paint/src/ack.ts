@@ -13,6 +13,10 @@ export const emptyAttemptAck = (): AttemptAck => ({
   total: 0, lastAward: 0, revision: 0, pending: new Set(), settled: new Set(),
 });
 
+/** A pending older receipt must not hide a new confirmed award. */
+export const attemptAckValue = (state: AttemptAck, lit: boolean): string =>
+  lit ? `${state.total} (+${state.lastAward})` : state.pending.size > 0 ? "Punkte folgen" : `${state.total}`;
+
 /** Session receipts, never an account balance or a local English score. */
 export function acknowledgeAttempt(state: AttemptAck, { clientAttemptId, reply }: {
   clientAttemptId: string; reply: AttemptReply;

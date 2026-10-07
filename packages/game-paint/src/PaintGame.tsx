@@ -25,7 +25,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 // Input machines are needed only when an actual task opens. Keeping this
 // boundary outside the component preserves its identity across reference views.
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { acknowledgeAttempt, emptyAttemptAck } from "./ack.ts";
+import { acknowledgeAttempt, attemptAckValue, emptyAttemptAck } from "./ack.ts";
 
 const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
@@ -2013,7 +2013,7 @@ export default function PaintGame({ onAttempt, liberationProgress = {}, onLibera
             flash={ack.lit}
             glyph={<span aria-hidden="true">+</span>}
             label="Lernpunkte"
-            value={ack.state.pending.size > 0 ? "Punkte folgen" : `${ack.state.total}${ack.lit ? ` (+${ack.state.lastAward})` : ""}`}
+            value={attemptAckValue(ack.state, ack.lit)}
             titleDe="Seit Öffnen dieses Buchs"
             art={art}
           />}
