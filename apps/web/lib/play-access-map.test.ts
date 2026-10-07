@@ -63,8 +63,34 @@ describe("client guards — nothing leaves a preview", () => {
     for (const file of ["admin/explorer/page.tsx", `${PLAY}/page.tsx`, "admin/page.tsx"]) {
       assert.doesNotMatch(code(read(file)), /\/play\/[^"'`\s]*\/(?:world|run)\b|Keen|keen-content|keen-art/, `${file} still offers Keen`);
     }
-    for (const gone of [`${PLAY}/world`, `${PLAY}/run`, "api/funken"]) {
+    // The entry files, not the folders: a stray .DS_Store must not turn this red.
+    for (const gone of [`${PLAY}/world/page.tsx`, `${PLAY}/run/page.tsx`, "api/funken/route.ts"]) {
       assert.equal(fs.existsSync(new URL(`../app/${gone}`, import.meta.url)), false, `${gone} is sunset and stays deleted`);
+    }
+  });
+  it("no page or component anywhere links the deleted Keen routes (cgo-086)", () => {
+    const hits: string[] = [];
+    const walk = (dir: URL): void => {
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (e.isDirectory()) walk(new URL(`${e.name}/`, dir));
+        else if (/\.tsx?$/.test(e.name) && !/\.test\.tsx?$/.test(e.name)) {
+          const src = code(fs.readFileSync(new URL(e.name, dir), "utf8"));
+          if (/\/play\/[^"'`\s]*\/(?:world|run)\b/.test(src)) hits.push(new URL(e.name, dir).pathname);
+        }
+      }
+    };
+    for (const root of ["../app/", "../components/"]) {
+      const u = new URL(root, import.meta.url);
+      if (fs.existsSync(u)) walk(u);
+    }
+    assert.deepEqual(hits, [], "a link to /play/<n>/world or /run is back");
+  });
+  it("@domigo/game-2d exports no Keen module and every export exists (cgo-086)", () => {
+    const pkgUrl = new URL("../../../packages/game-2d/package.json", import.meta.url);
+    const exportsMap = JSON.parse(fs.readFileSync(pkgUrl, "utf8")).exports as Record<string, string>;
+    for (const [key, target] of Object.entries(exportsMap)) {
+      assert.doesNotMatch(key, /arcade|boss|cutscene|fullscreen|map|levels/i, `${key} is a Keen export`);
+      assert.ok(fs.existsSync(new URL(target, pkgUrl)), `${key} points at a missing file ${target}`);
     }
   });
 });

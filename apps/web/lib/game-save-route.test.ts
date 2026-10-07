@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
-const { PUT } = await import("../app/api/game-save/route.ts");
+const { GET, PUT } = await import("../app/api/game-save/route.ts");
 
 const put = (headers: Record<string, string> = {}, gameMode = "game:g3") =>
   new Request("https://save.invalid/api/game-save", {
@@ -63,4 +63,14 @@ describe("PUT /api/game-save — the save slots that exist", () => {
       assert.equal(fixture.writes[0]!.data.gameMode, mode);
     });
   }
+});
+
+describe("GET /api/game-save — the Keen slot is not read either (cgo-086)", () => {
+  it("answers game:g1:keen with 400 before any storage call", async () => {
+    fixture.session = child;
+    const res = await GET(new Request("https://save.invalid/api/game-save?mode=game:g1:keen"));
+    assert.equal(res.status, 400);
+    assert.equal((await res.json()).error, "bad_request");
+    assert.equal(fixture.storageCalls, 0);
+  });
 });
