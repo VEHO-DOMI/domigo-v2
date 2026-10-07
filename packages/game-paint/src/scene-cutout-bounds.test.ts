@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · no changes to simulation positions or authored card keys.
+// no changes to simulation positions or authored card keys.
 import React from "react";
 import { createRequire } from "node:module";
 import { describe, expect, it } from "vitest";

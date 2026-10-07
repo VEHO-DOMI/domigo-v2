@@ -1,5 +1,7 @@
 # DomiGo v2 — Build Status & Executable Roadmap
 
+> **⛔ Stand 24.08.; lebende Wahrheit: GG_DOMIGO/MASTERPLAN_INVENTAR_2026-10-07.md bis zum Neuschrieb.** (Programm-Ordner in iCloud, `PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/`.) Alles unten ist der gemessene Stand vom 24.08.2026. (Banner cgo-086, 07.10.2026.)
+
 _Last updated: **2026-08-24** (PLATT-K9a Doku-Sync). Repo-seitiger Abzug von "was ist fertig / was kommt". Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). **Der lebende Plattform-Stand steht im iCloud-Kanon, Blatt "Rahmen P1"** — nicht mehr hier; dieses Blatt trägt den gemessenen Stand plus die Historie. When you finish a step, check its box and update the snapshot in §3._
 
 > **2026-08-24 — PLATT-K9a · DOKU-SYNC: der gemessene Stand (dieser PR).** Gemessen an `origin/main` `3e7c390`: **364 PRs gemergt, zuletzt #367**, 0 offen (`gh pr list --state merged`). Alle älteren PR-Zählungen weiter unten (§2 „78 PRs / 127 PRs", §3 „merge #144 · 143 PRs merged") sind **überholte Punkt-Zeit-Lesungen** — sie bleiben als Historie stehen und sind als überholt markiert. **Die App ist LIVE seit 2026-07-12** auf `domigo-v2.vercel.app`. **Termine gibt es keine** — „fertig ist fertig" (Koki-Ruling): das „September 2026" in §1 ist der historische Ausgangsplan von 2026-06, kein Ziel. **Der lebende Plattform-Stand wird ausserhalb dieses Repos geführt** — im iCloud-Kanon, Blatt **„Rahmen P1"** der Plattform-Bahn; dieses Dokument hier ist der Repo-seitige Abzug und wird nicht mehr pro Bahn nachgeführt.

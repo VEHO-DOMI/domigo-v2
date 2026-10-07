@@ -21,7 +21,6 @@
     ],
     "gamesave.ts#getGameSave": [
       "apps/web/app/(game)/play/[grade]/[zone]/page.tsx · acting.userId, saveMode",
-      "apps/web/app/(game)/play/[grade]/world/page.tsx · acting.userId, \"game:g1:keen\"",
       "apps/web/app/api/game-save/route.ts · acting.userId, mode"
     ],
     "journey-progress.ts#getJourneyAttempts": [

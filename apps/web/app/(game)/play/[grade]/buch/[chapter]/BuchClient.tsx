@@ -1,6 +1,6 @@
 "use client";
-// The ssr:false seam: Phaser only ever loads in the browser (the ArcadeClient
-// pattern; keeps the bundle guard's one-lazy-chunk law intact).
+// The ssr:false seam: Phaser only ever loads in the browser (next/dynamic with
+// ssr:false; keeps the bundle guard's one-lazy-chunk law intact).
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import type { PaintLevel } from "@domigo/game-paint/level";

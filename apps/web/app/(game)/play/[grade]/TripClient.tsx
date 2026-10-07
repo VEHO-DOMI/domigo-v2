@@ -1,6 +1,6 @@
 "use client";
 /**
- * Client boundary for the G4 "Lost for Words" trip game (DOM+SVG, ssr:false).
+ * Client boundary for the G4 trip game, "FOURTEEN: LIVE" (DOM+SVG, ssr:false).
  * Same two persistence paths as the other game clients: graded answers → the
  * offline attempt outbox (TripGame builds mode:"game:g4"); cosmetic saves →
  * localStorage + debounced PUT /api/game-save (clientRev LWW). The save carries

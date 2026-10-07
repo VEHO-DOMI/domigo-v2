@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { describe, expect, it } from "vitest";
 import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
 import { Sim, type SimEvent } from "./sim.ts";
@@ -50,7 +49,6 @@ describe("painted transfers keep the real body's identity and route", () => {
   });
 });
 
-// CODEX DRAFT — NOT CANON
 // Append to codex-trial-transfer-visual.test.ts. Reuses its existing imports,
 // original/config/request. These three imports are additional, not replacements.
 import { entDisplayH } from "./anim.ts";

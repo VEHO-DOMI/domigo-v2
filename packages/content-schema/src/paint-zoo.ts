@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · opt-in zoo contracts shared by the loader and game.
+// opt-in zoo contracts shared by the loader and game.
 import { z } from "zod";
 import { zooActorPoseCells } from "./zoo-pose-cells.ts";
 

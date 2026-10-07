@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · shared authored cell names, without renderer dependencies.
+// shared authored cell names, without renderer dependencies.
 export const ZOO_CELLS: Readonly<Record<string, readonly string[]>> = {
   waertereimer: ["a","b","telegraph0","telegraph1","act0","act1","joy","rest"],
   pinguin_rutscher: ["a","b","brace","slide0","slide1","pop","joy","rest"],

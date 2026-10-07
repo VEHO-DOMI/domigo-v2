@@ -295,7 +295,7 @@ describe("L0b · D-790 · tipsTotal darf 0 sein (Ruling 2026-09-02)", () => {
   });
 });
 
-// CODEX DRAFT — NOT CANON · M-5 loader roundtrip and malformed opt-in tamper.
+// M-5 loader roundtrip and malformed opt-in tamper.
 describe("M-5 art opt-ins survive browser loading", () => {
   const raw = readZooJson("ch02.level.json");
   it("retains hero, room animation, and entity art contracts", () => {

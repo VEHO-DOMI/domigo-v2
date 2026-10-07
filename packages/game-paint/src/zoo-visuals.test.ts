@@ -1,5 +1,4 @@
 import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
-// CODEX DRAFT — NOT CANON
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { ZOO_CELLS, ZOO_HERO_STEMS, zooSkinStems, zooEntityCell, zooStageCell, collectCell, collectStems, effectiveCollectSkin, bubblePopAlive, zooHeroCell } from "./zoo-visuals.ts";

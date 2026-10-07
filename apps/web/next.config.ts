@@ -47,10 +47,10 @@ const nextConfig: NextConfig = {
   // a school connection before anything moves — for bytes that never change.
   //
   // Safe because every /art URL carries its own FILE's content fingerprint —
-  // `lib/art-fingerprint.ts`, used by paint-art · keen-art · tile-art ·
-  // story-art — so a repainted picture arrives under a new address and an
-  // unchanged one keeps its cached copy. (R5-W3 · E5: this comment used to say
-  // "?v=<commit sha>" from lib/paint-art.ts. Both halves had rotted — E4 had
+  // `lib/art-fingerprint.ts`, used by paint-art · tile-art · story-art (keen-art
+  // went with the Keen build, cgo-086) — so a repainted picture arrives under
+  // a new address and an unchanged one keeps its cached copy. (R5-W3 · E5:
+  // this comment used to say "?v=<commit sha>" from lib/paint-art.ts. Both halves had rotted — E4 had
   // already replaced the commit sha with a per-file hash, and three of the four
   // resolvers were emitting NO key at all while this header promised a year of
   // immutability over 66 MB of keen art.) Gated on VERCEL_ENV on purpose: an

@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · actual importer output, not a mocked trim.
+// actual importer output, not a mocked trim.
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";

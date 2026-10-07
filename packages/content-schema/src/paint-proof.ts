@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · optional evidence preserves legacy proof files.
+// optional evidence preserves legacy proof files.
 import { z } from "zod";
 const count=z.number().int().nonnegative();
 const ids=z.array(z.string().min(1));

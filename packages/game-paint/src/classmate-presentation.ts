@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · data-only props shared by the observed card and world.
+// data-only props shared by the observed card and world.
 import type { ClassmatePresentationSpec } from "../../content-schema/src/paint-zoo.ts";
 
 /** The home view is selected only after redemption; missing contracts/views draw no extra props. */

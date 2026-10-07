@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Present bytes count in every chapter, including drafts.
+// Present bytes count in every chapter, including drafts.
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";

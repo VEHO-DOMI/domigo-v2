@@ -687,7 +687,7 @@ export const withBrace = (pose: RigPose, t: number): RigPose => {
   };
 };
 
-/** CODEX DRAFT — NOT CANON · temporary parts poses until the zoo action art arrives.
+/** temporary parts poses until the zoo action art arrives.
  * This moves only painted parts; feet and the simulation never move for an image. */
 export const withZooAction = (pose: RigPose, cell: string | null | undefined): RigPose => {
   if (!cell || !/^hero2_(throw|catch|release|hangjump)/.test(cell)) return pose;

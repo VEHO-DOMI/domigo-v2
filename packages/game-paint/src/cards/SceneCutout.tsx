@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · intentionally simple draft scene view.
+// intentionally simple draft scene view.
 import React from "react";
 import { sceneCutoutBounds } from "../scene-bounds.ts";
 import { sceneDrawItems, type SceneSnapshot } from "../scene-v2.ts";

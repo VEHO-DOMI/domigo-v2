@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · executable scene contracts also apply to drafts.
+// executable scene contracts also apply to drafts.
 import { ClassmatePresentation, StageV2, SequenceTransfer, ZooGuardian, ZooRide, TaskSequenceV2 } from "../../content-schema/src/paint-zoo.ts";
 import type { PaintLevel, LawFailure } from "./level.ts";
 import { glyphAt, isSolid } from "./collide.ts";

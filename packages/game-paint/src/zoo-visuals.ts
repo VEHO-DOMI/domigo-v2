@@ -1,5 +1,5 @@
 import { PAINT } from "./paint.ts";
-// CODEX DRAFT — NOT CANON · one opt-in cell contract for drawing and checking.
+// one opt-in cell contract for drawing and checking.
 import { ZOO_CELLS, zooActorSkin } from "../../content-schema/src/zoo-pose-cells.ts";
 export { ZOO_CELLS, zooActorSkin } from "../../content-schema/src/zoo-pose-cells.ts";
 export const ZOO_DISPLAY_HEIGHTS: Readonly<Record<string,number>> = {waertereimer:24,pinguin_rutscher:22,pinguin:24,hund:24,buddy:26,papagei:16,affe:24,papagei_sturz:28,fenn:30};

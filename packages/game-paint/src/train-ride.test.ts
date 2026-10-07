@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { describe, expect, it } from "vitest";
 import { Sim } from "./sim.ts";
 import { IDLE_PAD } from "./player.ts";

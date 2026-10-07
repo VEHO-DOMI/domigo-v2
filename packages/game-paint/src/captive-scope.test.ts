@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON: Zoo opt-in cage/ceremony scope, no global legacy requirement.
+// Zoo opt-in cage/ceremony scope, no global legacy requirement.
 import {describe,it,expect} from 'vitest';
 import {domArtStems,phaseRequiredStems,phaseArtScope,type ScopeLevel} from './artScope.ts';
 const level=(entities:ScopeLevel['phases'][number]['entities']):ScopeLevel=>({chapter:'isolated-zoo-test',phases:[{id:'p1',rows:['....','####'],entities}]});

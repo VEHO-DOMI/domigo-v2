@@ -1,8 +1,8 @@
 // cgo-047 · THE PREVIEW WRITES NOTHING — the source contract of every student
 // surface a teacher can open (lib/student-view.ts, lib/preview-attempt.ts).
 //
-// The server half is behavioural (lib/game-save-route.test.ts; /api/attempts and
-// /api/funken answer only a child). This half pins the page wiring and the client
+// The server half is behavioural (lib/game-save-route.test.ts; /api/attempts
+// answers only a child). This half pins the page wiring and the client
 // guards, which have no DOM test runner in this repo: every attempt goes through
 // attemptSender(preview), the outbox is never flushed in a preview, no save is
 // read from or written to the device or the server, and the server decides
@@ -10,7 +10,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { describe, it } from "node:test";
-import { createSourceFile, forEachChild, isJsxSelfClosingElement, ScriptKind, ScriptTarget, transpileModule, type Node } from "typescript";
+import { createSourceFile, forEachChild, isJsxSelfClosingElement, ScriptKind, ScriptTarget, type Node } from "typescript";
 
 const read = (rel: string) => fs.readFileSync(new URL(`../app/${rel}`, import.meta.url), "utf8");
 /** The source without comments — a header may NAME what the code must not call. */
@@ -23,7 +23,7 @@ const STORY_CLIENTS = [
   { file: `${PLAY}/NovelClient.tsx`, save: "NovelSave" },
   { file: `${PLAY}/TripClient.tsx`, save: "TripSave" },
 ];
-const ALL_CLIENTS = [...STORY_CLIENTS.map((c) => c.file), `${PLAY}/run/ArcadeClient.tsx`, `${PLAY}/world/WorldClient.tsx`, "practice/[slug]/PracticeSession.tsx"];
+const ALL_CLIENTS = [...STORY_CLIENTS.map((c) => c.file), "practice/[slug]/PracticeSession.tsx"];
 
 describe("client guards — nothing leaves a preview", () => {
   for (const file of ALL_CLIENTS) {
@@ -45,74 +45,6 @@ describe("client guards — nothing leaves a preview", () => {
       assert.match(src, new RegExp(`const onSave = \\(state: ${save}\\) => \\{\\n\\s*if \\(preview\\) return;`), "nothing is saved");
     });
   }
-  it("WorldClient: no server save", () => {
-    assert.match(read(`${PLAY}/world/WorldClient.tsx`), /const put = \(payload: SavePayload\) => \{\n\s*if \(preview\) return;\n\s*void fetch\("\/api\/game-save"/);
-  });
-  for (const preview of [true, false]) {
-    it(`WorldClient: ${preview ? "preview never reads or writes device storage" : "normal play still loads and persists"}`, () => {
-      // Execute the real save-sync block, including its page-hide effect. Only
-      // React hooks and browser services are substituted; no copied guard logic.
-      const src = read(`${PLAY}/world/WorldClient.tsx`);
-      const definitions = src.match(/const GAME_MODE = [\s\S]*?(?=\/\*\* Slice the chapter)/);
-      const sync = src.match(/const \[initial\] = [\s\S]*?(?=  \/\/ ── the restoration flow)/);
-      assert.ok(definitions && sync, "WorldClient save-sync source must be found");
-      const saved = { clientRev: 7, state: { v: 3, chapters: { ch01: { done: true } }, beats: {}, pos: { c: 2, r: 3 } } };
-      const serverSave = { ...saved, clientRev: 4 };
-      let stored = JSON.stringify(saved);
-      let reads = 0;
-      let writes = 0;
-      let requests = 0;
-      const timers = new Set<() => void>();
-      const listeners = new Map<string, () => void>();
-      const cleanups: Array<() => void> = [];
-      const target = {
-        addEventListener: (event: string, fn: () => void) => listeners.set(event, fn),
-        removeEventListener: (event: string) => listeners.delete(event),
-      };
-      const env = {
-        window: target,
-        document: { ...target, visibilityState: "hidden" },
-        localStorage: {
-          getItem: () => { reads++; return stored; },
-          setItem: (_key: string, value: string) => { writes++; stored = value; },
-        },
-        fetch: async () => { requests++; },
-        setTimeout: (fn: () => void) => { timers.add(fn); return fn; },
-        clearTimeout: (fn: () => void) => { timers.delete(fn); },
-        useState: (init: () => unknown) => [init()],
-        useRef: (current: unknown) => ({ current }),
-        useMemo: (init: () => unknown) => init(),
-        useEffect: (effect: () => () => void) => cleanups.push(effect()),
-      };
-      const executable = transpileModule(`
-        function exercise(preview, serverSave, env) {
-          const { window, document, localStorage, fetch, setTimeout, clearTimeout,
-            useState, useRef, useMemo, useEffect } = env;
-          ${definitions[0]}
-          ${sync[0]}
-          return { initial, at, saveRef, persist };
-        }
-      `, {}).outputText;
-      const state = new Function(`${executable}\nreturn exercise;`)()(preview, serverSave, env);
-      assert.deepEqual(state.initial, preview ? null : saved);
-      assert.deepEqual(state.at, preview ? { v: 3, chapters: {}, beats: {} } : saved.state);
-      assert.equal(reads, preview ? 0 : 1, "preview must not read localStorage at startup");
-      state.saveRef.current.pos = { c: 5, r: 6 };
-      state.persist();
-      assert.equal(writes, preview ? 0 : 1, "preview must not write localStorage in persist()");
-      assert.equal(timers.size, preview ? 0 : 1);
-      listeners.get("pagehide")?.();
-      listeners.get("visibilitychange")?.();
-      assert.equal(reads, preview ? 0 : 2, "preview must not read localStorage on page hide");
-      assert.equal(requests, preview ? 0 : 1);
-      assert.equal(timers.size, 0);
-      assert.deepEqual(JSON.parse(stored), preview ? saved : {
-        clientRev: 8, state: { ...saved.state, pos: { c: 5, r: 6 } },
-      });
-      for (const cleanup of cleanups) cleanup();
-      assert.equal(listeners.size, 0);
-    });
-  }
   it("explorer names both teacher doors that retain device progress", () => {
     assert.match(read("admin/explorer/page.tsx"), /Die Lehrer-Türen \(gemaltes Buch Klasse 1, Schulhaus Klasse 2\) merken sich deinen Stand auf diesem Gerät\./);
   });
@@ -124,13 +56,16 @@ describe("client guards — nothing leaves a preview", () => {
     assert.match(hub, /const paintStory = grade === 1 \? loadStory\(PAINT_STORY\) : null;/);
     assert.match(read("admin/explorer/page.tsx"), /Gemaltes Buch — das Spiel für Klasse 1/);
   });
-  it("no navigation entry leads to the sunset Keen story mode (Koki 02.10.)", () => {
-    for (const file of ["admin/explorer/page.tsx", `${PLAY}/page.tsx`]) {
-      assert.doesNotMatch(code(read(file)), /\/play\/1\/world|Keen/, `${file} still offers Keen`);
+  // cgo-086 (Koki 07.10.): the Keen routes are deleted, not only unlinked — and
+  // the teacher dashboard, which still carried the story-mode card and the boss
+  // doors until then, is held to the same rule as the explorer and the hub.
+  it("no navigation entry leads to the sunset Keen story mode (Koki 02.10., admin since cgo-086)", () => {
+    for (const file of ["admin/explorer/page.tsx", `${PLAY}/page.tsx`, "admin/page.tsx"]) {
+      assert.doesNotMatch(code(read(file)), /\/play\/[^"'`\s]*\/(?:world|run)\b|Keen|keen-content|keen-art/, `${file} still offers Keen`);
     }
-  });
-  it("ArcadeClient: no Funken banked", () => {
-    assert.match(read(`${PLAY}/run/ArcadeClient.tsx`), /if \(!preview && stats\.gluehwoerter > 0\)/);
+    for (const gone of [`${PLAY}/world`, `${PLAY}/run`, "api/funken"]) {
+      assert.equal(fs.existsSync(new URL(`../app/${gone}`, import.meta.url)), false, `${gone} is sunset and stays deleted`);
+    }
   });
 });
 
@@ -170,21 +105,13 @@ describe("server pages — who is a preview is decided on the server", () => {
   it("practice hands the client the server's preview flag", () => {
     assert.match(read("practice/[slug]/page.tsx"), /<PracticeSession [^\n]*preview=\{preview\} \/>/);
   });
-  for (const file of [`${PLAY}/world/page.tsx`, `${PLAY}/run/page.tsx`]) {
-    it(`${file}: a teacher is a preview, the production gate stays`, () => {
-      const src = read(file);
-      assert.match(src, /const preview = \(await getActingUserForPage\(\)\) === null;/);
-      assert.match(src, /preview=\{preview\}/);
-      assert.match(src, /process\.env\.VERCEL_ENV === "production" && \(await getTeacherForPage\(\)\) === null/);
-    });
-  }
   it("the painted book keeps its teacher-only production gate", () => {
     assert.match(read(`${PLAY}/buch/[chapter]/page.tsx`), /process\.env\.VERCEL_ENV === "production" && teacher === null/);
   });
 });
 
 describe("server write walls — a teacher session records nothing", () => {
-  for (const file of ["api/attempts/route.ts", "api/funken/route.ts"]) {
+  for (const file of ["api/attempts/route.ts"]) {
     it(`${file} answers only a child`, () => {
       const src = read(file);
       assert.match(src, /const acting = await getActingUser\(req\);\n\s*if \(!acting\) return NextResponse\.json\(\{ ok: false, error: "no_identity" \}, \{ status: 401 \}\);/);
@@ -197,8 +124,6 @@ describe("server write walls — a teacher session records nothing", () => {
 describe("answer owners travel from the trusted page into every client", () => {
   const pages = [
     { file: `${PLAY}/[zone]/page.tsx`, clients: ["GameClient", "DetectiveClient", "NovelClient", "TripClient"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
-    { file: `${PLAY}/run/page.tsx`, clients: ["ArcadeClient"], owner: "preview ? null : acting.userId", key: 'preview ? "preview" : acting.userId' },
-    { file: `${PLAY}/world/page.tsx`, clients: ["WorldClient"], owner: "preview ? null : acting.userId", key: 'preview ? "preview" : acting.userId' },
     { file: "practice/[slug]/page.tsx", clients: ["PracticeSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
     { file: "learn/[slug]/[node]/page.tsx", clients: ["PathPracticeNode", "PathPracticeNode"], owner: "acting.userId", key: "acting.userId" },
     { file: "review/session/page.tsx", clients: ["ReviewSession"], owner: "session.user.id", key: "session.user.id" },

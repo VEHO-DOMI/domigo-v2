@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Poses change only the witnessed endpoint picture.
+// Poses change only the witnessed endpoint picture.
 import React from 'react';
 import fs from 'node:fs';
 import vm from 'node:vm';

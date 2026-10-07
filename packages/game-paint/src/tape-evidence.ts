@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · ordered observations, never expected totals.
+// ordered observations, never expected totals.
 import type {SimEvent,TaskRequest} from "./sim.ts";
 import type {GameTaskV2} from "@domigo/content-schema";
 import {renderTaskText} from "../../content-schema/src/game-tasks.ts";

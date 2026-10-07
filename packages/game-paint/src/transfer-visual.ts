@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · the travelling body uses its destination's drawing contract.
+// the travelling body uses its destination's drawing contract.
 import type { EntityState } from "./entities.ts";
 import type { TransferState } from "./learning.ts";
 import type { SceneDrawItem } from "./scene-v2.ts";

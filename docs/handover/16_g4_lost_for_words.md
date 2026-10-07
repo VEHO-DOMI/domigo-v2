@@ -1,5 +1,7 @@
 # 16 — G4 "Lost for Words" / "Sprachlos": the narrative gate pack (G4-N)
 
+> **⛔ PARKED 10.07. — Bundle bleibt validate-grün, Ledger-Regel 15.** `g4.st.lost-for-words` hat 0 freigegebene Kapitel; das lebende Klasse-4-Spiel ist "FOURTEEN: LIVE" (`g4.st.fourteen-live`, doc 19). Dieses Dokument ist der historische Entwurf. (Banner cgo-086, 07.10.2026.)
+
 > **Status: G4-N GATE PACK — awaiting Koki's sign-off (2026-07-06).** This is the approved real-life replacement for the rejected Syntaxia fantasy options (see the superseded banner on `13_g4_syntaxia.md` — that doc's **mechanics layer** — flags/validators/bosses/hint-economy/build plan — carries forward verbatim via `docs/BLUEPRINT.md` Part III.4; THIS doc is the story). The pack = this outline + the register sheet (§8) + **chapter 1 authored in the bundle `content/corpus/stories/g4.st.lost-for-words/` (validate-story green, unreleased — invisible to students)** as the voice test. Approval unblocks the G4 build lane (PR-1/PR-2 engineering is narrative-agnostic and may run in parallel; content PRs 3+ wait here).
 
 ## 1. The one-liner

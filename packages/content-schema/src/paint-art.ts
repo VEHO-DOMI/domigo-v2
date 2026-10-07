@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · opt-in art contracts shared by loader and tests.
+// opt-in art contracts shared by loader and tests.
 import { z } from "zod";
 export const ZooArtSet = z.literal("zoo-v2");
 export const PaintCollectSkin = z.string().min(1);

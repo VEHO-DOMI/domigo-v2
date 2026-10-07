@@ -200,7 +200,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     );
   }
 
-  // ── G4 "Lost for Words": the stop is a story chapter rendered as one day of
+  // ── G4 "FOURTEEN: LIVE": the stop is a story chapter rendered as one day of
   //    the trip — the first FLAG-AWARE runtime (Choice.sets / FlagGate / flagLines
   //    resolve against the cosmetic save's story-scoped flags) ──
   if (gameType === "trip") {

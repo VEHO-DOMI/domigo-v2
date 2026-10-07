@@ -2,7 +2,6 @@ import Link from "next/link";
 import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
-import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { listPaintChapters } from "@/lib/paint-content";
 import { getDb, getUnitMastery } from "@domigo/db";
 import { auth } from "@/auth";
@@ -16,24 +15,14 @@ export default async function AdminPage() {
   if (!session) redirect("/admin/signin");
   if (session.user.role !== "teacher") redirect("/home");
 
-  // v5.3: every chapter that HAS a guardian gets a direct boss door below —
-  // probing the corpus keeps the list in lockstep with authored content
-  const bossChapters: string[] = [];
-  for (let i = 1; i <= 15; i += 1) {
-    const ch = `ch${String(i).padStart(2, "0")}`;
-    try {
-      loadKeenLevel("g1.st.lost-pages", ch);
-      loadKeenBoss("g1.st.lost-pages", ch);
-      bossChapters.push(ch);
-    } catch {
-      // chapter not authored yet — no door
-    }
-  }
-  // doc 31: the painted-book preview list grows the same corpus-probing way
+  // doc 31: the painted-book preview list grows by probing the corpus, so it
+  // stays in lockstep with authored chapters
   const paintChapters = listPaintChapters("g1.st.lost-pages");
 
-  // dach-074 · the one sign-out of the app: a konto session goes on to konto's
-  // /logout, a PIN session ends here (app/le/konto-aktion.ts).
+  // dach-074 · the one sign-out of the app (app/le/konto-aktion.ts): a konto
+  // session goes on to konto's /logout; every other session (an ops-link test
+  // session, an old cookie from before konto) ends on the start page. DomiGo
+  // signs in no one by PIN any more — the PIN lives at konto.
   async function doSignOut() {
     "use server";
     await abmelden();
@@ -92,24 +81,11 @@ export default async function AdminPage() {
       <section className="dg-card" style={{ marginTop: 24, border: "2px solid #8b7cf5" }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>🖋 Story-Modus (Lehrer-Vorschau)</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          The new Keen-style game — prologue, world map, chapter 1 at full art. Unreleased: students are
+          The painted book — the year-1 game, one door per authored chapter. Unreleased: students are
           redirected until the year-1 launch; only teacher sessions get in.
         </p>
-        <Link href="/play/1/world" className="dg-btn" style={{ display: "inline-block" }}>Play the story mode →</Link>
-        {/* v5.3 (Koki): direct boss doors — test a guardian duel without
-            playing its level; the list grows with every authored chapter */}
-        {bossChapters.length > 0 && (
-          <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>⚔ Boss direkt:</span>
-            {bossChapters.map((ch) => (
-              <Link key={ch} href={`/play/1/run?level=g1-${ch}&boss=1`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
-                Kap. {Number(ch.slice(2))} →
-              </Link>
-            ))}
-          </div>
-        )}
         {paintChapters.length > 0 && (
-          <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
             <span style={{ fontSize: 13, fontWeight: 700 }}>🖌 Das gemalte Buch (Vorschau):</span>
             {paintChapters.map((ch) => (
               // L0 · D11: die Karte führt in IHR Kapitel. Bis zur Level-Welle

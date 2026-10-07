@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Real question snapshots and shared image geometry.
+// Real question snapshots and shared image geometry.
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { ClassmatePresentation, ZooSourceRect } from "../../content-schema/src/paint-zoo.ts";

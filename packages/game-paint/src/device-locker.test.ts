@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Paket A: passing is not an invitation to a card.
+// Paket A: passing is not an invitation to a card.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { Sim, type SimEvent } from "./sim.ts";

@@ -1,4 +1,4 @@
-/** CODEX DRAFT — NOT CANON. Kokis Spielpass: one visible cause per story beat. */
+/** Kokis Spielpass: one visible cause per story beat. */
 export interface ComicPanel {
   id: string;
   stem: string;

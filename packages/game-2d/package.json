@@ -7,11 +7,7 @@
     ".": "./src/index.tsx",
     "./board": "./src/zone-board.tsx",
     "./world": "./src/world.ts",
-    "./arcade": "./src/arcade.ts",
-    "./boss": "./src/boss.ts",
     "./dialogue": "./src/dialogue.tsx",
-    "./cutscene": "./src/cutscene.tsx",
-    "./fullscreen": "./src/fullscreen.ts",
     "./school": "./src/school.ts",
     "./school-types": "./src/school-types.ts",
     "./SchoolGame": "./src/SchoolGame.tsx"

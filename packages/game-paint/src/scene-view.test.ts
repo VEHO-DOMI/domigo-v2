@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · presentation changes must preserve witnessed movement.
+// presentation changes must preserve witnessed movement.
 import { describe, expect, it } from "vitest";
 import { StageV2, type StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 import { spawnEntities } from "./entities.ts";

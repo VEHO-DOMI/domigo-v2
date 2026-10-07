@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Actual render bodies with a recording display adapter.
+// Actual render bodies with a recording display adapter.
 import React from 'react';
 import {it,expect} from 'vitest';
 import fs from 'node:fs';import {fileURLToPath} from 'node:url';import vm from 'node:vm';import {createRequire,stripTypeScriptTypes} from 'node:module';

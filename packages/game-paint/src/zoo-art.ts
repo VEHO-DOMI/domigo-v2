@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · opt-in art names; absent art uses the draft kit.
+// opt-in art names; absent art uses the draft kit.
 import type { StageV2Spec, ZooGuardianSpec } from "../../content-schema/src/paint-zoo.ts";
 import { TILE } from "./paint.ts";
 export { ZOO_LION_CELLS } from "../../content-schema/src/zoo-pose-cells.ts";

@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Verify painted body pixels, not frame equality.
+// Verify painted body pixels, not frame equality.
 import fs from "node:fs";
 import { createRequire } from "node:module";
 import { describe, expect, it } from "vitest";

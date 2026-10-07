@@ -90,7 +90,7 @@ export default async function ExplorerPage() {
       <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 16, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Noch nicht in der Schüleransicht</h2>
         <p style={{ margin: 0, color: "var(--text-secondary)", fontSize: 14 }}>
-          Lernpfad, Hören, Tests, Wiederholung und eine Aufgabe so, wie das Kind sie bekommt, folgen als Nächstes. Ranglisten gibt es noch nicht.
+          Lernpfad, Hören, Tests, Wiederholung und eine Aufgabe so, wie das Kind sie bekommt, folgen als Nächstes.
         </p>
       </section>
     </main>

@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 // User playthrough contract: real Sim and shipped input tapes, without UI stubs.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";

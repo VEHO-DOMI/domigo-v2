@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Exact source and anatomical frame.
+// Exact source and anatomical frame.
 export const DUAL_READINGS = {
   "ch02/pinguin": {
     "word": "black and white",
