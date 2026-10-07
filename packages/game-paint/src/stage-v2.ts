@@ -1,5 +1,5 @@
 import { zooStageCell } from "./zoo-visuals.ts";
-// CODEX DRAFT — NOT CANON · witnessed groups and authored return paths.
+// witnessed groups and authored return paths.
 import type { StageV2Spec, ZooBeatSpec } from "../../content-schema/src/paint-zoo.ts";
 import type { EntityState } from "./entities.ts";
 import { SUBS, TILE } from "./paint.ts";

@@ -1,11 +1,17 @@
 /**
  * /play/[grade] — the story hub. BUNDLE-DERIVED (B-2): a grade whose canonical
- * story ships a map@1 lists overworld ZONES (g1 book-rooms; g2 school floor
- * plan); otherwise it lists released CHAPTERS in the grade's DOM-game skin
- * (g2 detective case files / g3 episodes / g4 journal days). A stop unlocks
- * once its chapter is released (chapter N requires units ≤ N). Locked stops
- * show "coming soon" — except the ink skin, where they render half-erased
- * (the Blank took them; the board itself tells the story).
+ * story ships a map@1 lists overworld ZONES (g2 school floor plan); otherwise
+ * it lists released CHAPTERS in the grade's DOM-game skin (g2 detective case
+ * files / g3 episodes / g4 journal days). A stop unlocks once its chapter is
+ * released (chapter N requires units ≤ N). Locked stops show "coming soon" —
+ * except the ink skin, where they render half-erased (the Blank took them; the
+ * board itself tells the story).
+ *
+ * YEAR 1 (cgo-047, Koki 02.10.; cgo-086, 07.10.): the year-1 game is the painted
+ * book (/play/1/buch), still teacher-only. The overworld "Die verlorenen Seiten"
+ * (g1 book-rooms) is parked with 0 released chapters, so year 1 has no canonical
+ * story here: a child goes to the /play chooser, a teacher sees the Regelbuch.
+ * The Keen story mode is deleted, not just unlinked (play-access-map.test.ts).
  *
  * K1b · GRADE SCOPE (the deep-link half of the /play binding). A CHILD is sent
  * back to its own school year; a TEACHER keeps every year, because the pre-release
@@ -61,7 +67,8 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   }
   // year-1 teacher extras (the painted book's Regelbuch). The Keen story-mode
   // card that lived here is gone: everything Commander Keen is sunset (Koki
-  // 02.10., cgo-047) — no navigation entry leads there any more.
+  // 02.10., cgo-047) and its routes are deleted (cgo-086) — no navigation entry
+  // leads there any more, the teacher dashboard included (play-access-map.test.ts).
   const teacher = grade === 1 ? await getTeacherForPage() : null;
   const schoolTeacher = grade === 2 ? await getTeacherForPage() : null;
 
@@ -141,7 +148,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
-  // g4 "Lost for Words" trip journal: a day is "stamped" once all its taskSlot items are solved.
+  // g4 "FOURTEEN: LIVE" trip journal: a day is "stamped" once all its taskSlot items are solved.
   const days: DayProgress[] =
     grade === 4 && story
       ? story.chapters.map((c, i): DayProgress => {

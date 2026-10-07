@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · a required place is an ID, never a pool index.
+// a required place is an ID, never a pool index.
 import type { TaskSequenceV2Spec } from "../../content-schema/src/paint-zoo.ts";
 export const nextRequiredTask = (sequence: TaskSequenceV2Spec, solved: ReadonlySet<string>): string | undefined => sequence.requiredIds.find(id=>!solved.has(id));
 export const optionalSequenceSlots = (sequence: TaskSequenceV2Spec): { taskId:string; slotId:string }[] => [

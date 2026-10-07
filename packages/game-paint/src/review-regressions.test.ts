@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · independent findings reproduced through real actions.
+// independent findings reproduced through real actions.
 import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
 import { describe, it, expect } from "vitest";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";

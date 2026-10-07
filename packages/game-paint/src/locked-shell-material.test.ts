@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Locked material is not an unfinished colour task.
+// Locked material is not an unfinished colour task.
 import { describe, expect, it } from "vitest";
 import { washAlphaFor, WASH_ALPHA, GHOST_WASH } from "./anim.ts";
 describe("explicit photo/device locks preserve painted material",()=>{

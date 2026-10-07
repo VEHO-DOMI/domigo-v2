@@ -1,5 +1,4 @@
 import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
-// CODEX DRAFT — NOT CANON
 import fs from "node:fs";
 import { describe, it, expect } from "vitest";
 import { PaintProof, GameTasksFileV2 } from "@domigo/content-schema";

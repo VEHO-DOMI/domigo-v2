@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · offline key audit uses live scene requests.
+// offline key audit uses live scene requests.
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";

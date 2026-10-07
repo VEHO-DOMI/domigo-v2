@@ -45,7 +45,7 @@ export default async function BuchPage({
   // Lock 1+2: the shape, then the shelf. Both before any file is opened, so a
   // stray URL is a plain 404 and never a stack trace.
   if (!CHAPTER_ID.test(chapter) || !listPaintChapters(STORY).includes(chapter)) notFound();
-  // pre-release gate with the teacher door (the run/world posture)
+  // pre-release gate with the teacher door
   const teacher = await getTeacherForPage();
   if (process.env.VERCEL_ENV === "production" && teacher === null) redirect(`/play/${gradeStr}`);
   const acting = await getPlayerForPage();

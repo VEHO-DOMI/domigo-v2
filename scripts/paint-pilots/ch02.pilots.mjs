@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 // R1a · L2-P1v2 · DIE PILOTEN VON KAPITEL 2 (Level-Welle, 2026-09-05).
 //
 // Die Programme stammen aus R1a und wurden in R1b um die Zoo-Beobachtungen

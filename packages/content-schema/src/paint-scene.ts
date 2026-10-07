@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · the exact observed data can cross a card boundary.
+// the exact observed data can cross a card boundary.
 import { z } from "zod";
 import { ZooBeat, ZooProp } from "./paint-zoo.ts";
 export const SceneSnapshot = z.object({

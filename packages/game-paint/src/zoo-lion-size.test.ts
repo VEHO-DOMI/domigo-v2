@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON: explicit actor canvas, same world/card size, legacy preserved.
+// explicit actor canvas, same world/card size, legacy preserved.
 import {describe,it,expect,vi} from 'vitest';
 import {entDisplayH,GUARDIAN_DISPLAY_H} from './anim.ts';
 import {zooLionDisplaySize,applyZooLionDisplaySize} from './zoo-lion-size.ts';

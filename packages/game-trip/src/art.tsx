@@ -1,6 +1,8 @@
 "use client";
 /**
- * @domigo/game-trip — procedural SVG fallback art for "Lost for Words".
+ * @domigo/game-trip — procedural SVG fallback art for the trip stories (live:
+ * "FOURTEEN: LIVE"). The look-locks below were drawn for the cast of the parked
+ * "Lost for Words"; any other cast member gets the deterministic generic look.
  * Deterministic (seed = a hash of the character key, never Math.random — Law 9).
  * Real art arrives via the art manifest later; these inline avatars render where
  * an image isn't on disk yet, with look-locks so the Leicester cast reads at a

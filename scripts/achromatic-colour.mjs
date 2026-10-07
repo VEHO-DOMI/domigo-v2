@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. Separate neutral-body measurement; ordinary colour laws are untouched.
+// Separate neutral-body measurement; ordinary colour laws are untouched.
 import {createHash} from 'node:crypto';
 import {OPAQUE,fields,WORD_FAMILY} from './material-classes.mjs';
 export const NEUTRAL_LIMITS=Object.freeze({blackMax:105,blackSpread:32,whiteMin:185,whiteSpread:32,whiteLuma:200,coverage:.80,componentShare:.70,coreShare:.45,erosionRadius:2});

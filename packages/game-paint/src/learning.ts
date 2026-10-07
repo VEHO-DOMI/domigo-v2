@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · serializable chapter state, shared across room mounts.
+// serializable chapter state, shared across room mounts.
 import type { EntityState } from "./entities.ts";
 export interface TransferState {
   id: string; sourceId: string; targetId: string; actorId?: string; skin: string;

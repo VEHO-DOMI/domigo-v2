@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · masks retain their common untrimmed canvas.
+// masks retain their common untrimmed canvas.
 /** Metadata deliberately records both detected ink bounds and draw bounds.
  * The PNG stays 512×512, so normal shared scene/card transforms are sufficient. */
 export const registeredCell = (group, stem, trim) => ({

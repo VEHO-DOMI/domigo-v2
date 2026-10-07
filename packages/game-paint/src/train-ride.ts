@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · fixed-endpoint shuttle with a witnessed full ride.
+// fixed-endpoint shuttle with a witnessed full ride.
 import type { EntityState, WorldInput, EntityEvent } from "./entities.ts";
 import type { ZooRideSpec } from "../../content-schema/src/paint-zoo.ts";
 import { SUBS, TILE } from "./paint.ts";

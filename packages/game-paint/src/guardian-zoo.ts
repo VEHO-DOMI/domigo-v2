@@ -1,6 +1,6 @@
 import { zooStageCell } from "./zoo-visuals.ts";
 import { zooLionDisplaySize } from "./zoo-lion-size.ts";
-// CODEX DRAFT — NOT CANON · opt-in grounded guardian, independent of the slate.
+// opt-in grounded guardian, independent of the slate.
 import type { EntityState, EntityWorld, EntityEvent, WorldInput, ProjectileState } from "./entities.ts";
 import type { ZooGuardianSpec, StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 import { groundSurfaceAt } from "./collide.ts";

@@ -181,7 +181,9 @@ if (selftest) {
   // übersprungener Fall ist ein Fall, der nichts beweist.
   const FIXTURES = [
     ["apps/web/public/art/g1/cards/card_paper.png", 3, false, "Palette — hat gar keinen Alphakanal zum Wegnehmen (D4s Fall)"],
-    ["apps/web/public/art/g1/keen/_style_key_cutscene.png", 2, false, "reines RGB — dasselbe Argument"],
+    // cgo-086 (07.10.): bis hierher stand _style_key_cutscene.png aus der Keen-Kunst;
+    // die ist geloescht, der RGB-Fall bleibt mit einem echten Blatt des Schulhauses.
+    ["apps/web/public/art/g2/school/hub.png", 2, false, "reines RGB — dasselbe Argument"],
     ["apps/web/public/art/g1/cards/card_buttons.png", 6, false, "echtes RGBA mit echter Durchsichtigkeit — keine Meldung, und das ist richtig"],
   ];
   for (const [file, wantCt, wantMeldung, warum] of FIXTURES) {

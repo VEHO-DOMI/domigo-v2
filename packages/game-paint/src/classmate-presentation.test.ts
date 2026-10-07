@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { describe, expect, it } from "vitest";
 import { ClassmatePresentation, type ClassmatePresentationSpec } from "../../content-schema/src/paint-zoo.ts";
 import { classmatePresentationProps } from "./classmate-presentation.ts";

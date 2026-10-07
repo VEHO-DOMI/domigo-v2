@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 // Test-only source reader. It is never imported by a runtime module.
 import fs from "node:fs";
 import { createHash } from "node:crypto";

@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { describe, it, expect } from "vitest";
 import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";

@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { GameTasksFileV2 } from "@domigo/content-schema";

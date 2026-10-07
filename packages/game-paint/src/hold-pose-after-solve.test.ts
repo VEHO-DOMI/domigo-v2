@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. A witnessed stationary pose survives answer/save; moving actors retain their own cycle.
+// A witnessed stationary pose survives answer/save; moving actors retain their own cycle.
 import fs from 'node:fs';
 import {createRequire} from 'node:module';
 import {describe,it,expect} from 'vitest';

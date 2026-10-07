@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · selected content may opt in to a card camera or a wider viewport.
+// selected content may opt in to a card camera or a wider viewport.
 import type { SceneDrawItem, SceneSnapshot } from "./scene-v2.ts";
 
 /** Preserve the old crop unless a card camera is authored; pad the selected union only once. */

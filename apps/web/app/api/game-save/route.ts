@@ -22,9 +22,11 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 // B-2: `:bonus` = a grade's extra released story's COSMETIC slot (the detective
-// game after the school overworld takes `game:g2`); `:keen` = the Keen world's
-// save slot. Attempt modes are unaffected.
-const GameMode = z.string().regex(/^game:g[1-4](:bonus|:keen)?$/);
+// game after the school overworld takes `game:g2`). Attempt modes are
+// unaffected. cgo-086 (Koki 07.10.): the Keen world's `:keen` slot is gone with
+// the Keen build — old `game:g1:keen` rows stay in the database (Welle 2 decides
+// about them) but nothing writes or reads that slot any more.
+const GameMode = z.string().regex(/^game:g[1-4](:bonus)?$/);
 
 const PutBody = z.object({
   gameMode: GameMode,

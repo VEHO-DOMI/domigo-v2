@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { readZooSource } from "./test-fixtures/zoo/read-fixture.ts";

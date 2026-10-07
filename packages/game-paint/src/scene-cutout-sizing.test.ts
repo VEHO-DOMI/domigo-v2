@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON · the SVG must use the world's declared drawing rectangles.
+// the SVG must use the world's declared drawing rectangles.
 import React from "react";
 import { createRequire } from "node:module";
 import { readFileSync } from "node:fs";

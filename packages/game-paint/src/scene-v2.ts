@@ -1,5 +1,5 @@
 import { zooActorSkin, zooStageCell, zooPropLayers } from "./zoo-visuals.ts";
-// CODEX DRAFT — NOT CANON · one scene model for the world and the frozen card.
+// one scene model for the world and the frozen card.
 import type { StageV2Spec, ZooBeatSpec } from "../../content-schema/src/paint-zoo.ts";
 import { SUBS, TILE } from "./paint.ts";
 

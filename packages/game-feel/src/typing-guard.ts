@@ -5,8 +5,8 @@
  * type "pencil". While any editable element has focus, every scene's
  * keyboard is disabled and its key state cleared; released on blur.
  *
- * Bound once per Phaser.Game by every game's React mount (ArcadeGame /
- * MapGame / PhaserGame / PaintGame). Pure helpers are exported for unit
+ * Bound once per Phaser.Game by every game's React mount (PhaserGame /
+ * SchoolGame / PaintGame). Pure helpers are exported for unit
  * tests (no DOM needed).
  *
  * SHARED HOME (PB-T1, 2026-07-23): lifted from game-2d into game-feel so the

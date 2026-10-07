@@ -1,4 +1,3 @@
-// CODEX DRAFT — NOT CANON
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { NUMBER_SWARM_BOUNDS, isNumberSwarm, numberSwarmLayout } from "./number-swarm.ts";

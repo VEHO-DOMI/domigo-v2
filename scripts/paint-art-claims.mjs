@@ -1,4 +1,4 @@
-// CODEX DRAFT — NOT CANON. File identity follows resolvePaintArt: hero first, own chapter wins.
+// File identity follows resolvePaintArt: hero first, own chapter wins.
 import { allScopePhases, domArtStems, phaseArtScope } from '../packages/game-paint/src/artScope.ts';
 
 /** Relative PNG paths under paint/, not a flattened union of unrelated chapters. */
