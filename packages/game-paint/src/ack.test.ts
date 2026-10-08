@@ -198,7 +198,7 @@ describe("outbox reply subscription", () => {
     const listeners = new Set<(id: string, reply: AttemptReply) => void>();
     const past: Array<(id: string, reply: AttemptReply) => void> = [];
     const subscribe: Replies = listener => { listeners.add(listener); past.push(listener); return () => { listeners.delete(listener); }; };
-    return { subscribe, listeners, past, emit: (id = body.clientAttemptId, reply: AttemptReply = award) => { for (const listener of listeners) listener(id, reply); } };
+    return { subscribe, listeners, past, emit: (id: string = body.clientAttemptId, reply: AttemptReply = award) => { for (const listener of listeners) listener(id, reply); } };
   }
   it("queued reply becomes settled and glows through the same reducer", async () => {
     const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
