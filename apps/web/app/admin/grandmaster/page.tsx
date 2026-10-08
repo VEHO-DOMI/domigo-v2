@@ -38,7 +38,7 @@ export default async function GrandmasterPage() {
   // happened is not a gate, it is a disclosure with a redirect on the end.
   if (!isGrandmaster(teacher.userId)) redirect("/admin");
 
-  const { v2, legacy, v2Failed, legacyFailed } = await listAllClassesForGrandmaster(getDb(), teacher.classScope);
+  const { v2, legacy, testClasses, v2Failed, legacyFailed } = await listAllClassesForGrandmaster(getDb(), teacher.classScope);
   const students = v2.reduce((n, c) => n + c.studentCount, 0);
   const claimed = v2.reduce((n, c) => n + c.claimedCount, 0);
 
@@ -114,6 +114,17 @@ export default async function GrandmasterPage() {
             </table>
           </div>
         )}
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 8px", color: "var(--ink)" }}>Testklassen: {testClasses.length}</h2>
+        <p style={{ fontSize: 14, color: "var(--text-secondary)" }}>Diese Klassen zählen nicht in den Summen. Ihr eigener Lernstand bleibt sichtbar.</p>
+        {testClasses.map((cls) => (
+          <p key={cls.id} style={{ overflowWrap: "anywhere" }}>
+            <span className="dg-chip">Testklasse</span>{" "}
+            <Link href={`/admin/classes/${cls.id}`}>{cls.name} · Jahrgang {cls.grade} → Fortschritt</Link>
+          </p>
+        ))}
       </section>
 
       <section className="dg-card" style={{ marginTop: 16 }}>

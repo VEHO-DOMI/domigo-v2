@@ -1,12 +1,13 @@
 import Link from "next/link";
-import type { AssignmentRow, ClassSummary } from "@domigo/db";
+import type { AssignmentRow, ClassSummary, ClassPurpose } from "@domigo/db";
 import { deadlineLabel, summarizeAssignments, type StartRead } from "@/lib/teacher-start";
 
-export default function KlassenKarten({ classes, registrations, assignments, now }: {
+export default function KlassenKarten({ classes, registrations, assignments, now, purposes }: {
   classes: readonly ClassSummary[];
   registrations: StartRead<{ classId: string; claimedCount: number }[]>;
   assignments: StartRead<AssignmentRow[]>;
   now: Date;
+  purposes?: ReadonlyMap<string, ClassPurpose>;
 }) {
   const claimed = new Map(registrations.ok ? registrations.value.map((row) => [row.classId, row.claimedCount]) : []);
   return (
@@ -17,6 +18,7 @@ export default function KlassenKarten({ classes, registrations, assignments, now
           <article key={cls.id} className="dg-card" data-class-card={cls.id} data-grade={cls.grade} style={{ minWidth: 0, overflowWrap: "anywhere", display: "flex", flexDirection: "column" }}>
             <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 700, color: "var(--accent)" }}>Jahrgang {cls.grade}</p>
             <h2 style={{ margin: 0, fontSize: 23, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{cls.name}</h2>
+            {purposes?.get(cls.id) === "test" && <span className="dg-chip" style={{ alignSelf: "flex-start", marginTop: 8 }}>Testklasse</span>}
             <dl style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12, margin: "20px 0 12px" }}>
               {[
                 { label: "Auf der Liste", value: cls.studentCount },
