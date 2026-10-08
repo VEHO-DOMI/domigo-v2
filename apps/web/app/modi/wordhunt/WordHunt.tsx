@@ -5,7 +5,7 @@ import type { GameProps, ModeReply } from "@/lib/modi/types";
 
 export default function WordHunt(props: GameProps & { rounds: HuntRound[] }) {
   const [index, setIndex] = useState(0);
-  return <HuntRoundView key={index} {...props} index={index} round={props.rounds[index]!} next={() => index + 1 === props.rounds.length ? props.finish() : setIndex(index + 1)} />;
+  return <HuntRoundView key={index} {...props} index={index} round={props.rounds[index]!} next={() => index + 1 === props.rounds.length ? props.finish([{ label: props.grade === 1 ? "Runden" : "Rounds", value: String(props.rounds.length) }]) : setIndex(index + 1)} />;
 }
 function HuntRoundView({ grade, submit, index, round, next }: GameProps & { index: number; round: HuntRound; next: () => void }) {
   const [picked, setPicked] = useState<Record<number, ModeReply>>({});

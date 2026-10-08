@@ -8,7 +8,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 import { subscribeOutboxReplies, type AttemptBody, type AttemptResult } from "@/lib/attempt-outbox";
 import { modeDetails, type TrainerMode } from "@/lib/modi/catalog";
 import { shuffle, type HuntRound } from "@/lib/modi/decks";
-import type { ModeInput } from "@/lib/modi/types";
+import type { ModeInput, ModeSummary } from "@/lib/modi/types";
 import type { SpeedSession } from "@/lib/modi/speed-session";
 import Flashcards from "./flashcards/Flashcards";
 import Memory from "./memory/Memory";
@@ -21,6 +21,7 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
 }) {
   const [deck, setDeck] = useState<VocabItem[] | null>(null);
   const [done, setDone] = useState(false);
+  const [summary, setSummary] = useState<ModeSummary[]>([]);
   const [receipts, setReceipts] = useState<Record<string, AttemptResult>>({});
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState("");
@@ -51,7 +52,7 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
     const result = await attemptSender(preview, ownerId)(body);
     // Preview uses the same pure grader, without a request or a reward.
     const receipt = preview ? { ...result, tier: gradeVocab(item, input.value, input.kind === "vocab" ? input.pool : "carrier").tier } : result;
-    if (mounted.current) setReceipts((old) => ({ ...old, [id]: receipt }));
+    if (mounted.current && ids.current.has(id)) setReceipts((old) => ({ ...old, [id]: receipt }));
     return receipt;
   }, [preview, ownerId, mode, speedSession]);
   async function start() {
@@ -75,7 +76,7 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
   // Display only the sum of server receipts, never locally computed rewards.
   const total = confirmed.map((receipt) => receipt.xpAwarded ?? 0).reduce((sum, award) => sum + award, 0);
   const pending = all.length - confirmed.length;
-  const finish = () => setDone(true);
+  const finish = (details: ModeSummary[] = []) => { setSummary(details); setDone(true); };
   const props = { words: deck ?? [], grade, submit, finish };
   const available = words.length > 0 && (mode !== "wordhunt" || rounds.length === 8);
   return <main className={`og-game og-game-${mode}`} lang={de ? "de" : "en"}>
@@ -87,9 +88,10 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
     </section> : done ? <section className="og-game-result" aria-label={de ? "Ergebnis" : "Results"}>
       <div className="og-game-icon" aria-hidden="true">{detail.icon}</div><h2>{de ? "Geschafft!" : "Round complete!"}</h2>
       <div className="og-game-totals"><div><strong>{all.length}</strong><span>{de ? "Antworten" : "Answers"}</span></div><div><strong>{confirmed.filter((receipt) => receipt.tier === "correct").length}</strong><span>{de ? "Richtig" : "Correct"}</span></div>{!preview && <div><strong>{total}</strong><span>XP</span></div>}</div>
+      {summary.length > 0 && <div className="og-game-totals">{summary.map((entry) => <div key={entry.label}><strong>{entry.value}</strong><span>{entry.label}</span></div>)}</div>}
       {pending > 0 && <p role="status">{de ? `${pending} Antworten noch nicht bestätigt.` : `${pending} answers not yet confirmed.`}</p>}
       {mode === "flashcards" && <Link className="og-game-back" href={`/review${suffix}`}>🔄 Smart Review</Link>}
-      <button className="og-primary" onClick={() => { ids.current.clear(); setReceipts({}); setDone(false); setDeck(null); setSpeedSession(null); }}>{de ? "Noch einmal" : "Play Again"}</button><Link href={`/modi${suffix}`}>{de ? "Modus wählen" : "Choose Mode"}</Link>
+      <button className="og-primary" onClick={() => { ids.current.clear(); setReceipts({}); setSummary([]); setDone(false); setDeck(null); setSpeedSession(null); }}>{de ? "Noch einmal" : "Play Again"}</button><Link href={`/modi${suffix}`}>{de ? "Modus wählen" : "Choose Mode"}</Link>
     </section> : <>
       {mode === "flashcards" && <Flashcards {...props} />}
       {mode === "memory" && <Memory {...props} />}

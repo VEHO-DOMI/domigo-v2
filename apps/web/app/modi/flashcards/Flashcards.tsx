@@ -11,7 +11,7 @@ export default function Flashcards({ words, grade, submit, finish }: GameProps) 
   const lock = useRef(false), pointer = useRef<number | null>(null), swiped = useRef(false);
   const word = words[index];
   const de = grade === 1;
-  if (!word) return <button className="og-primary" onClick={finish}>{de ? "Ergebnis" : "Results"}</button>;
+  if (!word) return <button className="og-primary" onClick={() => finish()}>{de ? "Ergebnis" : "Results"}</button>;
   if (!direction) return <section className="og-flash-directions"><h2>{de ? "Welche Richtung?" : "Flashcard Direction"}</h2>
     <button className="og-mode" onClick={() => setDirection("enToDe")}><span className="og-mode-icon">🇬🇧→🇩🇪</span><span>English → Deutsch</span></button>
     <button className="og-mode" onClick={() => setDirection("deToEn")}><span className="og-mode-icon">🇩🇪→🇬🇧</span><span>Deutsch → English</span></button>

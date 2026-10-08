@@ -118,4 +118,14 @@ describe("cgo-109 mode contracts", () => {
     for (const grade of [1, 2, 3, 4]) for (const info of Object.values(modeDetails(grade))) assert.doesNotMatch(info.sub + info.reward, /bonus|halves|halbiert|Speed Demon/i);
     assert.match(read("ModeSession.tsx"), /lang=\{de \? "de" : "en"\}/);
   });
+  it("C19 memory keeps moves and time, hunt keeps rounds on the result screen", () => {
+    assert.match(read("memory/Memory.tsx"), /finish\(\[\{ label: de \? "Züge" : "Moves", value: String\(moves \+ 1\) \}, \{ label: de \? "Zeit" : "Time", value: `\$\{seconds\}s` \}\]\)/);
+    assert.match(read("wordhunt/WordHunt.tsx"), /"Runden" : "Rounds", value: String\(props\.rounds\.length\)/);
+    assert.match(read("ModeSession.tsx"), /summary\.map\(\(entry\) =>/);
+  });
+  it("C20 delayed receipts cannot leak into a restarted round", () => {
+    const session = read("ModeSession.tsx");
+    assert.match(session, /mounted\.current && ids\.current\.has\(id\)/);
+    assert.match(session, /ids\.current\.clear\(\); setReceipts\(\{\}\)/);
+  });
 });

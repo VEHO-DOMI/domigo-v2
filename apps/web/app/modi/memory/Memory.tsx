@@ -22,7 +22,7 @@ export default function Memory({ words, grade, submit, finish }: GameProps) {
       const word = pairs[a.pair]!;
       await submit(word, { kind: "choice", value: fullAnswer(word) });
       setMatched((old) => [...old, a.pair]); setOpen([]); lock.current = false;
-      if (matched.length + 1 === pairs.length) finish();
+      if (matched.length + 1 === pairs.length) finish([{ label: de ? "Züge" : "Moves", value: String(moves + 1) }, { label: de ? "Zeit" : "Time", value: `${seconds}s` }]);
     } else {
       // A turn is not an assessed word attempt; only completed pairs count.
       timer.current = setTimeout(() => { setOpen([]); lock.current = false; }, 900);
