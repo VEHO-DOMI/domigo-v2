@@ -171,6 +171,35 @@ test("story review resolves only original scenes and catalog-backed grammar", ()
   assert.doesNotMatch(JSON.stringify(reviewCandidates), /\{\{(?:views|likes|subscribers)\}\}/);
 });
 
+test("story review pins the complete opening-to-task context for all 15 grammar items", () => {
+  const lengths: Record<string, number> = {
+    "g3u01.ci.saras-channel.gf.001": 6,
+    "g3u01.ci.bens-line.ec.001": 9,
+    "g3u02.ci.reading-for-camera.gf.001": 4,
+    "g3u03.ci.travel-question.sb.001": 4,
+    "g3u04.ci.hard-lines-comparison.sb.001": 3,
+    "g3u05.ci.leahs-click-plan.sb.001": 4,
+    "g3u06.ci.london-video-line.sb.001": 3,
+    "g3u07.ci.ben-since-first-video.sb.001": 4,
+    "g3u08.ci.channel-reaches-people.gf.001": 4,
+    "g3u09.ci.camera-permission.sb.001": 3,
+    "g3u10.ci.ask-before-showing.sb.001": 4,
+    "g3u11.ci.saras-words-stay.gf.001": 3,
+    "g3u12.ci.name-our-responsibility.sb.001": 2,
+    "g3u13.ci.listen-if-he-asks.gf.001": 4,
+    "g3u14.ci.steady-the-phone.sb.001": 8,
+  };
+  assert.deepEqual(reviewCandidates.map((r) => r.item.id).sort(), Object.keys(lengths).sort());
+  for (const review of reviewCandidates) {
+    const count = lengths[review.item.id]!;
+    const original = story.chapters.find((c: { id: string }) => c.id === review.chapterId);
+    assert.equal(review.scenes.length, count, `${review.item.id}: retain every preceding scene`);
+    assert.deepEqual(review.scenes.map((s) => s.id),
+      original.scenes.slice(0, count).map((s: { id: string }) => s.id),
+      `${review.item.id}: preserve the authored opening-to-task order`);
+  }
+});
+
 test("review starts with the original scene lines, waits for the child and skips without saves", () => {
   let attempts = 0;
   const game = fixture({ reviewItems: [dueReview], onAttempt: async () => { attempts++; return { ok: true, queued: false }; } });
