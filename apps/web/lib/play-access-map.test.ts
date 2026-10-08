@@ -267,6 +267,14 @@ const bookLaws = [
     (s: string) => (s.match(/onAttempt=\{send\}/g) ?? []).length === 1
       && (s.match(/onAttempt=/g) ?? []).length === 1,
     (s: string) => s.replace("onAttempt={send}", "onAttempt={body => sendAttempt(body, ownerId)}")],
+  ["client: reply subscription excludes preview, bench and absent owner", bookClient,
+    (s: string) => /const attemptReplies = useMemo\(\(\) => !preview && cardBench === undefined && ownerId\s*\? \(listener: OutboxReplyListener\) => subscribeOutboxReplies\(ownerId, listener\)\s*: undefined, \[preview, cardBench, ownerId\]\)/.test(s)
+      && (s.match(/subscribeOutboxReplies\(/g) ?? []).length === 1,
+    (s: string) => s.replace("!preview && cardBench === undefined && ownerId", "ownerId")],
+  ["client: optional subscription reaches only the game", bookClient,
+    (s: string) => (s.match(/attemptReplies=\{attemptReplies\}/g) ?? []).length === 1
+      && !/<PaintDevGallery[^>]*attemptReplies/.test(s),
+    (s: string) => s.replace("attemptReplies={attemptReplies}", "attemptReplies={undefined}")],
   ["page: only teacher without student is preview", bookPage,
     (s: string) => /const preview = student === null && teacher !== null;/.test(s)
       && (s.match(/preview=/g) ?? []).length === 1 && /preview=\{preview\}/.test(s),
@@ -286,7 +294,7 @@ describe("painted book preview wiring and tamper proofs", () => {
     for (const [index, before, after] of [
       [1, "!preview && cardBench === undefined", "!preview"],
       [3, "onAttempt={send}", "onAttempt={send} onAttempt={send}"],
-      [4, "preview={preview}", "preview={false}"],
+      [6, "preview={preview}", "preview={false}"],
     ] as const) {
       const law = bookLaws[index]!;
       const broken = law[1].replace(before, after);
