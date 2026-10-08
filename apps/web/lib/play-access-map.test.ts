@@ -594,3 +594,113 @@ it("OG grade palettes use the study's literal light/dark values", () => {
   }
   assert.match(css, /@media \(prefers-color-scheme: dark\)/);
 });
+
+// Nachzug 1: render the shipped components with synthetic identity only.
+async function renderTrainer(file: string, props: Record<string, unknown>): Promise<string> {
+  const ts = await import("typescript");
+  const React = await import("react");
+  const jsx = await import("react/jsx-runtime");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const levels = await import("./levels.ts");
+  const avatar = await import("./avatar.ts");
+  const modules: Record<string, unknown> = {
+    react: React, "react/jsx-runtime": jsx,
+    "next/link": { default: "a" }, "next/image": { default: "img" },
+    "../le/konto-aktion": { abmelden: async () => {} },
+    "@/lib/levels": levels, "@/lib/avatar": avatar,
+  };
+  const compiled = ts.transpileModule(read(file), { compilerOptions: {
+    module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+  } }).outputText;
+  const loaded: { exports: { default?: React.ComponentType<Record<string, unknown>> } } = { exports: {} };
+  new Function("require", "exports", "module", compiled)((id: string) => {
+    assert.ok(id in modules, id); return modules[id];
+  }, loaded.exports, loaded);
+  return renderToStaticMarkup(React.createElement(loaded.exports.default!, props));
+}
+
+it("Nachzug 1 modes render original subtitles and honest XP for every existing mode", async () => {
+  const { xpForTier } = await import("@domigo/engine");
+  const complete = [1, 2, 3].map((difficulty) => xpForTier(difficulty * 10, "correct"));
+  assert.deepEqual(complete, [10, 20, 30]);
+  assert.match(read("api/attempts/route.ts"), /xpForTier\(item\.difficulty \* 10, tier\)/);
+  for (const grade of [1, 2, 3, 4]) {
+    const html = await renderTrainer("modi/ModePicker.tsx", { grade, preview: true, chapters: [`g${grade}-u01`], due: null, story: { title: "Test Story", href: `/play/${grade}` }, areas: false });
+    assert.equal((html.match(/class="og-mode-xp"/g) ?? []).length, 5);
+    const word = grade === 1 ? "Wort" : "word";
+    assert.equal((html.match(new RegExp(`10–30 XP / ${word}`, "g")) ?? []).length, 3);
+    assert.ok(html.includes(grade === 1 ? "10–30 XP / Aufgabe" : "10–30 XP / question"));
+    for (const text of grade === 1
+      ? ["Alle gewählten Wörter, gemischte Aufgaben", "10 zufällige Wörter, schnelle Runde", "Wähle aus 4 Möglichkeiten", "XP für bewertete Antworten", "XP für eine richtige Antwort · je nach Schwierigkeit"]
+      : ["All selected words, mixed types", "10 random words, quick round", "Choose from 4 options", "XP for graded answers", "XP for a correct answer · based on difficulty"])
+      assert.ok(html.includes(text), `year ${grade}: ${text}`);
+  }
+});
+
+it("Nachzug 1 player grammar line is only level/title and right-aligned XP", async () => {
+  const { levelFor, grammarTitle, registerFor } = await import("./levels.ts");
+  for (const grade of [1, 2, 3, 4]) {
+    const grammarXp = 20;
+    const grammar = levelFor(grammarXp);
+    const title = grammarTitle(grammar.level, grammar.prestige, registerFor(grade)).name;
+    const html = await renderTrainer("home/PlayerCard.tsx", { grade, preview: true, profile: { name: "Test", avatar: 1, xp: 184, grammarXp, streak: 3 } });
+    assert.ok(html.includes(`<div class="og-grammar-bar"><div><span>Lv ${grammar.level} · ${title}</span><span>20 XP</span></div>`));
+  }
+});
+
+it("Nachzug 1 grades 3/4 start dark and theme selection never persists", async () => {
+  for (const grade of [1, 2, 3, 4]) {
+    const html = await renderTrainer("home/TrainerShell.tsx", { grade, preview: true, children: "Test" });
+    assert.ok(html.includes(`data-theme="${grade >= 3 ? "dark" : "system"}"`));
+  }
+  assert.doesNotMatch(code(read("home/TrainerShell.tsx")), /localStorage|sessionStorage|indexedDB|fetch\(/);
+});
+
+it("Nachzug 1 literal mockup geometry, bronze and subtitle recipes", () => {
+  const css = read("globals.css");
+  // Values from mockup.css + its original-2nd.css import; scoped selector names differ.
+  for (const recipe of [
+    "padding:28px 24px 20px;", "margin:8px 0 0;", "--radius:16px; --radius-lg:24px;",
+    "background:linear-gradient(90deg, rgb(212, 135, 74), rgba(212, 135, 74, 0.8));",
+    "box-shadow:0 0 8px var(--accent-glow);", "padding:6px 14px; border-radius:var(--radius); font-size:0.72rem;",
+    "padding:0.9rem 1rem; margin-bottom:0.6rem; border-radius:var(--radius);",
+    "font-size:0.72rem; color:var(--muted); margin-top:1px;", "padding:0.9rem 0.5rem; min-height:68px;",
+    ".og-today { background:var(--card); }", "font:10px var(--font-body); color:var(--muted); padding:10px 0 15px;",
+    ".og-rank { font-family:var(--font-display); }", ".og-mode strong,.og-mode small { font-family:Arial,sans-serif; }",
+    ".og-wordmark { font-size:52px; }",
+    "linear-gradient(140deg, #16A34A, #22C55E 40%, #15803D 80%)",
+    "linear-gradient(140deg, #d43a2a, #e8654a 40%, #b82e1e 80%)",
+    "linear-gradient(140deg, #3b82f6, #8ba4cc 50%, #d4943a 90%)",
+    "linear-gradient(140deg, #9b6dff, #c4a8f0 50%, #d4943a 90%)",
+    "background: rgba(22,163,74,0.06); border-color: rgba(22,163,74,0.15);",
+    "background: rgba(220,38,38,0.05); border-color: rgba(220,38,38,0.14);",
+    "background: rgba(37,99,235,0.06); border-color: rgba(37,99,235,0.15);",
+    "background: rgba(124,58,237,0.06); border-color: rgba(124,58,237,0.15);",
+    '.og-root[data-grade="4"] .og-action-card { background:var(--card); }',
+    ".og-primary { text-shadow:0 1px 2px rgba(0,0,0,0.2); }",
+
+  ]) assert.ok(css.includes(recipe), recipe);
+  assert.doesNotMatch(css, /\.og-rank \{ padding:6px 10px; \}|\.og-switch \{ font-size:\.65rem/);
+});
+
+it("Nachzug 1 year 1 original drawing field, star, bulb and underline stay scoped", async () => {
+  const { createHash } = await import("node:crypto");
+  const css = read("globals.css");
+  const decorations = css.slice(css.indexOf('/* Y1 drawing field'));
+  for (const selector of ['.og-root[data-grade="1"]::before', '.og-root[data-grade="1"] .og-brand::before', '.og-root[data-grade="1"] .og-brand::after', '.og-root[data-grade="1"] .og-grade::after']) assert.ok(decorations.includes(selector), selector);
+  const images = [...decorations.matchAll(/url\("(data:image\/svg\+xml,[^"]+)"\)/g)].map((m) => createHash("sha256").update(m[1]!).digest("hex"));
+  assert.deepEqual(images, ['3f6276924696489d0dea0f0dc50c3c9d29ce54cf8307b7a09cd7ecf3d53f7bb5', '8ef8ab5fd150d6ca8f17cde855e49ee07761a727adff4fa9c9cfd88a37943418', '3ec7f87e36fb3f8d60c22dea792b2768abdc4d0a5039bebabde0a9d4d3af193f', '9e5ec67b1a285c973e75640fa4e7eb65694e068edb897f66cacace7349dc215b']);
+});
+
+it("Nachzug 1 original button metrics and year 1 mode backdrop", () => {
+  const css = read("globals.css");
+  for (const recipe of [
+    '.og-nav-card { font-family:Arial,sans-serif; line-height:normal; }',
+    '.og-primary { line-height:normal; }',
+    '.og-today .og-primary { padding:0.5rem 0.9rem; font-size:0.8rem; }',
+    '.og-root[data-screen="modi"] { background:var(--bg); }',
+    '.og-root[data-grade="1"] .og-setup { background:var(--bg); }',
+    '.og-root[data-grade="1"][data-screen="modi"]::before { display:none; }',
+    '.og-root[data-grade="1"] .og-directions legend { font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.5rem; }',
+  ]) assert.ok(css.includes(recipe), recipe);
+});

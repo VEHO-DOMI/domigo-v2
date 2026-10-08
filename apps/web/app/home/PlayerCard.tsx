@@ -28,7 +28,7 @@ export default function PlayerCard({ profile, grade, preview }: { profile: Train
       <div className="og-xp-labels"><span>Lv {level.level}</span><span>{level.xpToNext === null ? "Max level" : `${formatXp(level.xpToNext)} XP to next`}</span><span>{level.prestige ? `P ${level.prestige}` : `Lv ${Math.min(20, level.level + 1)}`}</span></div>
     </div>}
     <div className="og-grammar-bar">
-      <div><span>🧠 Grammar{profile.grammarXp !== null ? ` · Lv ${grammar.level} · ${grammarName.name}` : ""}</span><span>{profile.grammarXp === null ? "—" : formatXp(profile.grammarXp)} XP</span></div>
+      <div><span>{profile.grammarXp !== null ? `Lv ${grammar.level} · ${grammarName.name}` : "—"}</span><span>{profile.grammarXp === null ? "—" : formatXp(profile.grammarXp)} XP</span></div>
       {profile.grammarXp !== null && <div className="og-track"><span className="og-fill" style={{ width: `${barFraction(grammar.xpIntoLevel, grammar.xpToNext) * 100}%` }} /></div>}
     </div>
     <div className="og-player-actions">

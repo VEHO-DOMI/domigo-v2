@@ -10,11 +10,11 @@ export default function ModePicker({ grade, preview, chapters, due, story, areas
   const [mode, setMode] = useState<PracticeMode>(areas ? "grammar" : "full");
   const [direction, setDirection] = useState<Direction>("auto");
   const suffix = preview ? `?jahrgang=${grade}` : "";
-  const modes: { mode: PracticeMode; icon: string; title: string; sub: string }[] = [
-    { mode: "full", icon: "📚", title: "Full Run", sub: grade === 1 ? "Alle gewählten Wörter, gemischte Aufgaben" : "All selected words, mixed types" },
-    { mode: "sprint", icon: "🏃", title: "Sprint", sub: grade === 1 ? "10 zufällige Wörter, kurze Runde" : "10 random words, quick round" },
-    { mode: "mc", icon: "🎯", title: "Multiple Choice", sub: grade === 1 ? "Wähle aus 4 Antworten" : "Choose from 4 options" },
-    { mode: "grammar", icon: "🧠", title: "Grammar Mode", sub: grade === 1 ? "Grammatik üben" : "Rules & Structures" },
+  const modes: { mode: PracticeMode; icon: string; title: string; sub: string; xp: string }[] = [
+    { mode: "full", icon: "📚", title: "Full Run", sub: grade === 1 ? "Alle gewählten Wörter, gemischte Aufgaben" : "All selected words, mixed types", xp: grade === 1 ? "10–30 XP / Wort" : "10–30 XP / word" },
+    { mode: "sprint", icon: "🏃", title: "Sprint", sub: grade === 1 ? "10 zufällige Wörter, schnelle Runde" : "10 random words, quick round", xp: grade === 1 ? "10–30 XP / Wort" : "10–30 XP / word" },
+    { mode: "mc", icon: "🎯", title: "Multiple Choice", sub: grade === 1 ? "Wähle aus 4 Möglichkeiten" : "Choose from 4 options", xp: grade === 1 ? "10–30 XP / Wort" : "10–30 XP / word" },
+    { mode: "grammar", icon: "🧠", title: "Grammar Mode", sub: grade === 1 ? "Grammatik üben" : "Rules & Structures", xp: grade === 1 ? "10–30 XP / Aufgabe" : "10–30 XP / question" },
   ];
   const params = new URLSearchParams({ mode, chapters: selected.join(","), direction });
   if (preview) params.set("jahrgang", String(grade));
@@ -24,9 +24,10 @@ export default function ModePicker({ grade, preview, chapters, due, story, areas
       {chapters.map((slug) => <label key={slug}><input type="checkbox" checked={selected.includes(slug)} onChange={() => setSelected((old) => old.includes(slug) ? old.filter((s) => s !== slug) : [...old, slug])} />Chapter {Number(slug.slice(-2))}</label>)}
     </div></details>
     <div className="og-mode-list" role="group" aria-label="Übungsmodus">
-      {modes.map((entry) => <button type="button" key={entry.mode} className="og-mode" aria-pressed={mode === entry.mode} onClick={() => setMode(entry.mode)}><span className="og-mode-icon">{entry.icon}</span><span><strong>{entry.title}</strong><small>{entry.sub}</small></span></button>)}
-      {story && <Link className="og-mode" href={`${story.href}${suffix}`}><span className="og-mode-icon">📖</span><span><strong>Story</strong><small>{story.title}</small></span></Link>}
+      {modes.map((entry) => <button type="button" key={entry.mode} className="og-mode" aria-pressed={mode === entry.mode} onClick={() => setMode(entry.mode)}><span className="og-mode-icon">{entry.icon}</span><span className="og-mode-info"><strong>{entry.title}</strong><small>{entry.sub}</small><span className="og-mode-xp">{entry.xp}</span></span></button>)}
+      {story && <Link className="og-mode" href={`${story.href}${suffix}`}><span className="og-mode-icon">📖</span><span className="og-mode-info"><strong>Story</strong><small>{story.title}</small><span className="og-mode-xp">{grade === 1 ? "XP für bewertete Antworten" : "XP for graded answers"}</span></span></Link>}
     </div>
+    <p className="og-xp-note">{grade === 1 ? "XP für eine richtige Antwort · je nach Schwierigkeit" : "XP for a correct answer · based on difficulty"}</p>
     {mode !== "grammar" && <fieldset className="og-directions"><legend>{grade === 1 ? "Übungsformat" : "Exercise Type"}</legend>
       {([["auto", "🔄 Mix", "Random mix of all types"], ["carrier", "📝 Context", "Fill in the blank"], ["definition", "📖 Definition", "Find the word"], ["deToEn", "🇩🇪 → 🇬🇧", "Deutsch → English"], ["enToDe", "🇬🇧 → 🇩🇪", "English → Deutsch"]] as const)
         .filter(([id]) => mode !== "mc" || id === "definition" || id === "deToEn").map(([id, title, sub]) => <label className="og-direction" key={id}><input type="radio" name="direction" checked={(mode === "mc" && direction !== "deToEn" ? "definition" : direction) === id} onChange={() => setDirection(id)} /><span><strong>{title}</strong><small>{sub}</small></span></label>)}

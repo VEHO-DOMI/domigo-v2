@@ -3,11 +3,11 @@ import { useSyncExternalStore, type ReactNode } from "react";
 import Link from "next/link";
 
 type Theme = "system" | "light" | "dark";
-let currentTheme: Theme = "system";
+let currentTheme: Theme | null = null;
 const themeListeners = new Set<() => void>();
 const subscribe = (listener: () => void) => { themeListeners.add(listener); return () => { themeListeners.delete(listener); }; };
 const getTheme = () => currentTheme;
-const serverTheme = (): Theme => "system";
+const serverTheme = (): Theme | null => null;
 
 export function trainerHref(path: string, grade: number, preview: boolean): string {
   return preview ? `${path}${path.includes("?") ? "&" : "?"}jahrgang=${grade}` : path;
@@ -16,7 +16,7 @@ export function trainerHref(path: string, grade: number, preview: boolean): stri
 export default function TrainerShell({ grade, preview, children, screen = "home", wordmark = true }: {
   grade: number; preview: boolean; children: ReactNode; screen?: string; wordmark?: boolean;
 }) {
-  const theme = useSyncExternalStore(subscribe, getTheme, serverTheme);
+  const theme = useSyncExternalStore(subscribe, getTheme, serverTheme) ?? (grade >= 3 ? "dark" : "system");
   const label = ["", "1st", "2nd", "3rd", "4th"][grade];
   function toggleTheme() {
     const dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);

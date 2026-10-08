@@ -13,7 +13,7 @@ Messweg: `git rev-parse origin/main`; `gh pr list --state merged --limit 400 --j
 
 ## In Prüfung: cgo-108 · OG-Parität W1
 
-Noch nicht freigegeben. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`, 50 Original-Avatare und Daily Challenge sind im eigenen PR vorbereitet; noch nicht LIVE. Migration 0022 ist additiv und wird hier nicht ausgeführt. 0020/0021 kommen aus PR 490/498; der GG vereinigt deren Journal/Snapshot-Reihenfolge vor der gemeinsamen Anwendung. Mockup-Gate: cgo-106/107 bestanden. Lokal sind 97/97 CI-Einzeiler und 28/28 absichtliche Fehlerproben bestätigt. Zwei frische Blindbetrachter erkannten alle vier Jahrgänge als unterscheidbar: 0/8 Urteile „unsicher“, visuelle Abnahme nicht bestanden. Produktionsabnahme, Migration, GG-Kette und Merge bleiben offen.
+Noch nicht LIVE. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`, 50 Original-Avatare und Daily Challenge sind in PR 507 vorbereitet. Migration 0022 ist additiv und wird hier nicht ausgeführt. 0020/0021 kommen aus PR 490/498; der GG vereinigt deren Journal/Snapshot-Reihenfolge vor der gemeinsamen Anwendung. Mockup-Gate: cgo-106/107 bestanden. Nachzug 1 ergänzt XP-Hinweise, Original-Stilwerte und Jahrgangsdekorationen; Grammatik zeigt nur Level/Titel und XP. Der GG hat Kopf, fehlende Zukunftskacheln (W4–W6) und Story-Kachel als beabsichtigte Unterschiede bestätigt. Die erneute Bildprüfung bewertet `/home` und `/modi` mit benanntem Erkennungsmerkmal. Produktionsabnahme, Migration, GG-Kette und Merge bleiben offen.
 
 ## Was LIVE ist
 
