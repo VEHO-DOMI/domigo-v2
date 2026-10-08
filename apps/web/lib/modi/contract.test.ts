@@ -52,7 +52,7 @@ describe("cgo-109 mode contracts", () => {
     const source = read("flashcards/Flashcards.tsx");
     assert.match(source, /setDirection\("enToDe"\)/); assert.match(source, /setDirection\("deToEn"\)/);
     assert.match(source, /value: got \? fullAnswer\(word, direction\) : "", pool: direction/);
-    assert.match(source, /onPointerUp/); assert.match(source, /Math\.abs\(distance\) > 70/);
+    assert.match(source, /onPointerUp/); assert.match(source, /Math\.abs\(distance\) > 70\b/);
     assert.match(read("ModeSession.tsx"), /href=\{`\/review\$\{suffix\}`\}/);
   });
   it("C05 memory pairs follow the grade ruling and only matches submit", () => {
