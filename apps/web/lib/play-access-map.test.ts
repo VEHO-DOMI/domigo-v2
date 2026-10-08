@@ -118,7 +118,7 @@ describe("server pages — who is a preview is decided on the server", () => {
       }
     }
   });
-  for (const file of ["(game)/play/page.tsx", "practice/page.tsx", "practice/[slug]/page.tsx"]) {
+  for (const file of ["(game)/play/page.tsx", "practice/page.tsx", "practice/[slug]/page.tsx", "woerterbuch/page.tsx"]) {
     it(`${file} resolves the viewer through student-view`, () => {
       const src = code(read(file));
       assert.match(src, /resolveStudentView\(/);
@@ -135,6 +135,64 @@ describe("server pages — who is a preview is decided on the server", () => {
   });
   it("the painted book keeps its teacher-only production gate", () => {
     assert.match(read(`${PLAY}/buch/[chapter]/page.tsx`), /process\.env\.VERCEL_ENV === "production" && teacher === null/);
+  });
+});
+
+describe("cgo-099 dictionary is a read-only child surface", () => {
+  it("uses the resolved year for data and the teacher's daily word preview", () => {
+    const src = code(read("woerterbuch/page.tsx"));
+    assert.match(src, /await resolveStudentView\(\(await searchParams\)\.jahrgang\)/);
+    assert.match(src, /if \(!view\) redirect\("\/signin"\)/);
+    assert.match(src, /const grades = view\.kind === "student" && view\.grades\.length !== 1 \? \[\] : view\.grades/);
+    assert.match(src, /await loadDictionary\(grades\)/);
+    assert.match(src, /preview && <PreviewBanner/);
+    assert.match(src, /preview && grades\.map/);
+    assert.match(src, /selectDailyWord\(entries, grade, dateKey\)/);
+  });
+  it("has no learner-state, attempt or browser storage/network path", () => {
+    const folder = new URL("../app/woerterbuch/", import.meta.url);
+    const files = fs.readdirSync(folder).filter((name) => /\.(ts|tsx)$/.test(name) && !name.includes(".test."));
+    const sources = files.map((name) => fs.readFileSync(new URL(name, folder), "utf8"));
+    for (const name of ["woerterbuch.ts", "wort-des-tages.ts"]) sources.push(fs.readFileSync(new URL(name, import.meta.url), "utf8"));
+    for (const src of sources.map(code)) {
+      assert.doesNotMatch(src, /@domigo\/db|attempt-outbox|preview-attempt|\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|getUserProgress|getDueCounts|recordAttempt)\b|["']use server["']/);
+    }
+    assert.doesNotMatch(code(read("woerterbuch/Dictionary.tsx")), /content-service/);
+    assert.doesNotMatch(code(read("woerterbuch/page.tsx")), /view\.player/);
+  });
+  it("home and explorer expose the dictionary and share the daily card", () => {
+    const home = code(read("home/page.tsx"));
+    assert.match(home, /grade === null \? null : await wortDesTages\(grade, viennaDateKey\(\)\)/);
+    assert.match(home, /dailyWord && <WordOfTheDay entry=\{dailyWord\}/);
+    assert.match(read("admin/explorer/page.tsx"), /\/woerterbuch\?jahrgang=\$\{grade\}/);
+    const card = read("woerterbuch/WordOfTheDay.tsx");
+    assert.match(card, /Im Wörterbuch/);
+    assert.match(card, /#wort-\$\{entry.id\}/);
+  });
+  it("dictionary loads approved Chapters and links each word to existing practice", () => {
+    const data = code(fs.readFileSync(new URL("woerterbuch.ts", import.meta.url), "utf8"));
+    assert.match(data, /const slugs = listApprovedUnits\(\)\.filter/);
+    assert.match(data, /await Promise\.all\(slugs\.map\(\(slug\) => loadUnitWithOverrides\(slug\)\)\)/);
+    assert.doesNotMatch(data, /readdir|loadWordbank/);
+    const client = code(read("woerterbuch/Dictionary.tsx"));
+    assert.match(client, /dictionaryResults\(entries, query\)/);
+    assert.match(client, /href=\{`\/practice\/\$\{entry.slug\}`\}/);
+    assert.match(client, /id=\{`wort-\$\{entry.id\}`\}/);
+    assert.match(client, /prefetch=\{false\}/);
+  });
+  it("dictionary is in the sign-in matcher and preview has exactly one return door", () => {
+    const middleware = code(fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8"));
+    assert.match(middleware, /matcher:\s*\[[^\]]*"\/woerterbuch"/);
+    const page = code(read("woerterbuch/page.tsx"));
+    assert.match(page, /!preview && <Link href="\/home"/);
+    assert.doesNotMatch(page, /\/admin\/explorer/);
+    assert.equal((read("PreviewBanner.tsx").match(/href="\/admin\/explorer"/g) ?? []).length, 1);
+  });
+  it("explorer counts the current dictionary words in each year alongside Chapters", () => {
+    const explorer = code(read("admin/explorer/page.tsx"));
+    assert.match(explorer, /const dictionary = await loadDictionary\(GRADES\)/);
+    assert.match(explorer, /const gradeWords = dictionary\.filter\(\(entry\) => entry\.grade === grade\)\.length/);
+    assert.match(explorer, /\{gradeWords\} Wörter · \{gradeUnits\} Chapters/);
   });
 });
 
