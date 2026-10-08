@@ -93,6 +93,12 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
   const [feedback, setFeedback] = useState<FeedbackMode>("on-submit");
   const [fillUnit, setFillUnit] = useState(prefill?.source.unit ?? "");
   const [filling, setFilling] = useState(false);
+  const [compositionId, setCompositionId] = useState<string | undefined>();
+  const workflow = useRef<{ id: string; classId: string } | null>(null);
+  const [automaticallyFilled, setAutomaticallyFilled] = useState(false);
+  const [alsoCheck, setAlsoCheck] = useState(false);
+  const [checkProgress, setCheckProgress] = useState<{ checked: number; total: number } | null>(null);
+  const [blockedItems, setBlockedItems] = useState<string[]>([]);
 
   const grade = classes.find((c) => c.id === classId)?.grade ?? 0;
 
@@ -102,6 +108,7 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
   const setMode = (m: Mode) => {
     setModeState(m);
     if (m === "checkup") {
+      workflow.current = null; setCompositionId(undefined); setAutomaticallyFilled(false); setCheckProgress(null);
       setSections((checkupPresets[grade] ?? []).map(fromPreset));
       setDurationMin((d) => (d === "" ? 10 : d));
     } else {
@@ -168,6 +175,15 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
   /** §4b mode 1: compose the /20 paper from one unit server-side (deterministic,
    *  reserved items excluded). Each click re-rolls (a fresh seed server-side);
    *  the teacher then edits freely — this is a STARTING POINT, not a publish. */
+  const ensureWorkflow = async (): Promise<string> => {
+    if (workflow.current?.classId === classId) return workflow.current.id;
+    const response = await fetch("/api/admin/assignments/compose-checkup", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "begin", classId }) });
+    const data = await response.json();
+    if (!response.ok || !data.ok || typeof data.compositionId !== "string") throw new Error("Die Zusammenstellung konnte nicht begonnen werden.");
+    workflow.current = { id: data.compositionId, classId }; setCompositionId(data.compositionId);
+    return data.compositionId;
+  };
+
   const autoFill = async () => {
     if (!fillUnit || filling) return;
     setFilling(true);
@@ -181,13 +197,17 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
             direction: s.checkup!.direction,
           }))
         : undefined; // fall back to the grade preset server-side
+      const currentWorkflow = await ensureWorkflow();
       const res = await fetch("/api/admin/assignments/compose-checkup", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ classId, unitSlug: fillUnit, presets }),
+        body: JSON.stringify({ classId, unitSlug: fillUnit, presets, compositionId: currentWorkflow }),
       });
       const d = await res.json().catch(() => ({}));
-      if (res.ok && d.ok) {
+      if (res.ok && d.ok && typeof d.compositionId === "string") {
+        setCompositionId(d.compositionId); setAutomaticallyFilled(true);
+        setCheckProgress(null);
+        setBlockedItems([]);
         setSections(
           (d.sections as Array<{ kind: Kind; itemIds: string[]; sectionConfig: { checkupKind: CheckupKind; points: number; mask?: string | null; direction?: CheckupConfig["direction"] } }>).map((s) => ({
             kind: s.kind,
@@ -241,9 +261,11 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
     inFlight.current = true;
     setSaving(true);
     setServerErrors([]);
+    setBlockedItems([]);
     const draft = {
       ...(prefill ? { source: prefill.source } : {}),
       title, mode, classId, dueAt: dueAt || null,
+      ...(mode === "checkup" ? { compositionId, alsoCheck } : {}),
       attemptsPerTest,
       sessionDurationMinutes: (mode === "mock_test" || mode === "checkup") && durationMin !== "" ? Number(durationMin) : null,
       notenSchluessel: mode === "mock_test" && (ns[1] !== AHS[1] || ns[2] !== AHS[2] || ns[3] !== AHS[3] || ns[4] !== AHS[4]) ? ns : null,
@@ -265,10 +287,23 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
       })),
     };
     try {
+      if (mode === "checkup") draft.compositionId = await ensureWorkflow();
       const submissionId = await assignmentSubmissionId(ownerId, draft, sessionStorage);
-      const res = await fetch("/api/admin/assignments", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...draft, submissionId }) });
-      const d = await res.json().catch(() => ({}));
-      if (res.ok && d.ok && typeof d.id === "string") { setSavedId(d.id); return; }
+      let d;
+      // Repeat the same immutable request. The server rechecks access, content
+      // and journal status on every poll and creates the assignment only at green.
+      for (;;) {
+        const res = await fetch("/api/admin/assignments", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...draft, submissionId }) });
+        d = await res.json().catch(() => ({}));
+        if (res.ok && d.ok && typeof d.id === "string") { setSavedId(d.id); return; }
+        if (res.status === 202 && d.status === "checking") {
+          setCheckProgress({ checked: d.checked, total: d.total });
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+          continue;
+        }
+        if (Array.isArray(d.blockedItemIds)) setBlockedItems(d.blockedItemIds);
+        break;
+      }
       const messages: Record<string, string> = {
         persist_failed: "Die Zuweisung konnte nicht bestätigt werden. Bitte sende denselben Auftrag erneut; er wird nur einmal angelegt.",
         not_your_class: "Diese Klasse ist für dein Konto nicht verfügbar.",
@@ -320,7 +355,14 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
           </div>
           <div>
             <label style={label} htmlFor="assignment-class">Class</label>
-            <select id="assignment-class" style={input} value={classId} onChange={(e) => setClassId(e.target.value)}>
+            <select id="assignment-class" style={input} value={classId} onChange={(e) => {
+              setClassId(e.target.value);
+              if (mode === "checkup") {
+                workflow.current = null; setCompositionId(undefined); setAutomaticallyFilled(false); setCheckProgress(null);
+                const nextGrade = classes.find((c) => c.id === e.target.value)?.grade ?? 0;
+                setSections((checkupPresets[nextGrade] ?? []).map(fromPreset));
+              }
+            }}>
               {prefill && classes.length > 0 && <option value="">Eigene Klasse wählen…</option>}
               {classes.length === 0 && <option value="">(no classes found)</option>}
               {classes.map((c) => <option key={c.id} value={c.id}>{c.name} (G{c.grade})</option>)}
@@ -344,8 +386,12 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
 
         {/* C-1 checkup controls: auto-fill from one unit + verdict visibility.
             Points-only by decision (§8-③) — no Notenschlüssel block here. */}
+        {mode === "checkup" && <div style={{ marginTop: 14 }}>
+          {automaticallyFilled ? <p>Automatisch zusammengestellt: Jede Aufgabe wird vor dem Zuweisen geprüft.</p>
+            : <label><input type="checkbox" checked={alsoCheck} onChange={(e) => setAlsoCheck(e.target.checked)} /> Auch prüfen: unabhängige Lösung vor dem Zuweisen</label>}
+        </div>}
         {mode === "checkup" && (
-          <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div style={{ marginTop: 14, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 14 }}>
             <div>
               <label style={label}>Automatisch füllen (unit)</label>
               <div style={{ display: "flex", gap: 6 }}>
@@ -488,10 +534,15 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
           <p>{classes.find((c) => c.id === classId)?.name} · Jahrgang {grade} · {mode === "practice" ? "Übung" : mode === "checkup" ? "Check-up" : "Schularbeit-Übung"} · {sections.reduce((n, s) => n + s.itemIds.length, 0)} Aufgaben</p>
           <p>Erst mit „Jetzt zuweisen“ erscheint der Auftrag unter „Deine Aufgaben“ bei den Kindern dieser Klasse.</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-            <button type="button" className="dg-btn" disabled={saving || issues.length > 0} onClick={save}>{saving ? "Wird zugewiesen…" : "Jetzt zuweisen"}</button>
+            <button type="button" className="dg-btn" disabled={saving || issues.length > 0} onClick={save}>{saving ? checkProgress ? "Prüfung läuft…" : "Wird zugewiesen…" : "Jetzt zuweisen"}</button>
             <button type="button" className="dg-btn-secondary" disabled={saving} onClick={() => setConfirming(false)}>Zurück zur Auswahl</button>
           </div>
         </div>}
+        {saving && checkProgress && <p role="status" aria-live="polite">Prüfung läuft … {checkProgress.checked}/{checkProgress.total} geprüft. Die Zuweisung erscheint erst nach bestandener Prüfung.</p>}
+        {!saving && !savedId && serverErrors.length > 0 && mode === "checkup" && <button type="button" className="dg-btn-secondary" onClick={() => {
+          if (blockedItems.length) setSections((previous) => previous.map((section) => ({ ...section, itemIds: section.itemIds.filter((id) => !blockedItems.includes(id)) })));
+          setConfirming(false); setCheckProgress(null); setBlockedItems([]);
+        }}>Item tauschen{blockedItems.length ? ` (${blockedItems.length})` : ""}</button>}
         {savedId && <div role="status" style={{ marginTop: 16 }}>
           <strong>Aufgabe zugewiesen</strong>
           <p>Die Kinder dieser Klasse finden „{title}“ unter „Deine Aufgaben“.</p>

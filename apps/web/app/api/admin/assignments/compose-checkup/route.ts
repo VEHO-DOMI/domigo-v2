@@ -16,13 +16,15 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getDb, listReservedForClass } from "@domigo/db";
 import { composeCheckup, GRADE_STRUCTURES } from "@/lib/checkup";
+import { beginManualCheckup, recordAutomaticCheckup } from "@/lib/checkup-gate";
 import { getTeacher } from "@/lib/teacher";
 import { assignableClasses } from "@/lib/class-wall";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const Body = z.object({
+const ComposeBody = z.object({
+  compositionId: z.uuid(),
   classId: z.string().min(1),
   unitSlug: z.string().regex(/^g[1-4]-u\d{2}$/),
   seed: z.string().min(1).max(80).optional(),
@@ -40,13 +42,16 @@ const Body = z.object({
     .optional(),
 });
 
+const Body = z.union([z.object({ action: z.literal("begin"), classId: z.string().min(1) }).strict(), ComposeBody]);
+
 export async function POST(req: Request): Promise<Response> {
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
-  const parsed = Body.safeParse(await req.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { classId, unitSlug, presets } = parsed.data;
+  const raw = await req.json().catch(() => null);
+  const target = z.object({ classId: z.string().min(1) }).safeParse(raw);
+  if (!target.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  const { classId } = target.data;
 
   // Fail closed — an unreadable class list is not permission (see the sibling route).
   // cgo-047: the same class wall as the picker and the create door (lib/class-wall.ts).
@@ -56,14 +61,33 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
   }
 
+  // Ownership takes precedence even for an incomplete/legacy compose request.
+  const parsed = Body.safeParse(raw);
+  if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+
+  if ("action" in parsed.data) {
+    try {
+      const compositionId = await beginManualCheckup({ scope: teacher.classScope, classId, teacherId: teacher.userId });
+      return NextResponse.json({ ok: true, compositionId });
+    } catch { return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 }); }
+  }
+  const { unitSlug, presets, compositionId } = parsed.data;
+  if (!allowed.some((c) => c.id === classId && c.grade === Number(unitSlug[1]))) return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
   const grade = Number(unitSlug[1]) as 1 | 2 | 3 | 4;
   const seed = parsed.data.seed ?? crypto.randomUUID();
-  const reserved = await listReservedForClass(getDb(), teacher.classScope, classId).catch(() => new Set<string>());
+  const reserved = await listReservedForClass(getDb(), teacher.classScope, classId).catch(() => null);
+  if (!reserved) return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });
 
   const result = composeCheckup(unitSlug, grade, seed, {
     reservedIds: reserved,
     presets: presets?.map((p) => ({ ...p, mask: p.mask ?? undefined })) ?? GRADE_STRUCTURES[grade],
   });
   if (!result.ok) return NextResponse.json({ ok: false, error: "shortfall", errors: result.errors }, { status: 422 });
-  return NextResponse.json({ ok: true, seed, sections: result.sections });
+  try {
+    await recordAutomaticCheckup({ scope: teacher.classScope, classId, teacherId: teacher.userId },
+      { unitSlug, seed, itemIds: result.sections.flatMap((s) => s.itemIds) }, compositionId);
+    return NextResponse.json({ ok: true, seed, compositionId, sections: result.sections });
+  } catch {
+    return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });
+  }
 }

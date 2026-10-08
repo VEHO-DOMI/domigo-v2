@@ -6,7 +6,89 @@
  * validateFullItem + the blind-solve gate — this is just the shaping. No
  * secrets, no IO → client-safe (imported by the create form).
  */
+import { countBlanks, nextGrammarItemId, type GrammarItem, type TieredAnswer } from "@domigo/content-schema";
+
 export type Difficulty = 1 | 2 | 3;
+
+export const STUDIO_GRAMMAR_FORMATS = ["multiple-choice", "gap-fill", "context-picker"] as const;
+export type StudioGrammarFormat = (typeof STUDIO_GRAMMAR_FORMATS)[number];
+export interface StudioUnitOptions {
+  slug: string;
+  structures: Array<{ id: string; nameDe: string }>;
+  occupiedIds: string[];
+}
+
+export interface NewGrammarInput {
+  unitSlug: string;
+  structureId: string;
+  format: StudioGrammarFormat;
+  occupiedIds: readonly string[];
+  prompt: string;
+  lang: "de" | "en";
+  answers: TieredAnswer[];
+  distractors: string[];
+  hintDe: string;
+  explainDe: string;
+  difficulty: Difficulty;
+}
+
+/** Shape only: all semantic answers remain authored by the teacher. The same
+ * server pre-gate and blind solve used by vocabulary decides publishability. */
+export function buildGrammarItem(input: NewGrammarInput): { id: string; item: GrammarItem } {
+  if (!input.structureId.startsWith(`${idStem(input.unitSlug)}.s.`)) {
+    throw new Error("Die Grammatik-Struktur gehört nicht zur gewählten Einheit.");
+  }
+  const id = nextGrammarItemId(input.structureId, input.format, input.occupiedIds);
+  const prompt = input.prompt.trim();
+  return { id, item: {
+    id, structureId: input.structureId, format: input.format,
+    rev: 1, difficulty: input.difficulty,
+    presentation: { variants: [], gameMeta: null, audio: null },
+    provenance: { by: "studio", sbRef: null, seedV1: null, narrative: null, note: "In Studio erstellt." },
+    prompt: { text: prompt, lang: input.lang, blanks: countBlanks(prompt) },
+    answers: input.answers.map((answer) => ({ text: answer.text.trim(), tier: answer.tier })),
+    direction: null,
+    distractors: input.format === "gap-fill" ? [] : input.distractors.map((text) => text.trim()).filter(Boolean),
+    pairs: [], groups: [], gloss: [],
+    hintDe: input.hintDe.trim(), hintEn: null,
+    explainDe: input.explainDe.trim(), explainEn: null,
+    strict: false,
+  } };
+}
+
+export interface StudioCreateRequest {
+  draftId?: string;
+  kind: "vocab" | "grammar";
+  unitSlug: string;
+  id: string;
+  item: unknown;
+}
+export interface StudioCreateResult {
+  draftId?: string;
+  ok?: boolean;
+  status?: string;
+  runId?: string;
+  error?: string;
+  errors?: string[];
+}
+
+/** Both authoring kinds use one ordered pipeline; failed pre-gate/save never
+ * reaches the paid sandbox publish step. The server repeats every check. */
+export async function submitStudioItem<T extends StudioCreateResult>(
+  item: StudioCreateRequest,
+  publish: boolean,
+  post: (body: Record<string, unknown>) => Promise<T>,
+): Promise<T> {
+  const checked = await post({ action: "pregate", kind: item.kind, item: item.item });
+  if (!checked.ok) return checked;
+  const saved = await post({ action: "save", itemId: item.id, unitSlug: item.unitSlug, kind: item.kind, draftAction: "create", item: item.item, ...(item.draftId ? { draftId: item.draftId } : {}) });
+  if (!saved.ok || !publish) return saved;
+  try {
+    return { ...await post({ action: "publish", itemId: item.id }), draftId: saved.draftId };
+  } catch {
+    return { ...saved, ok: false, error: "publish_unconfirmed", errors: ["Der Entwurf ist gespeichert. Öffne ihn im Studio und setze die Prüfung fort; der Prüfstatus konnte nicht bestätigt werden."] };
+  }
+}
 
 /** "g2-u03" → "g2u03" (the id stem); "" if malformed. */
 export function idStem(unitSlug: string): string {

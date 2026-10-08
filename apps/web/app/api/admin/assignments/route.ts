@@ -29,10 +29,12 @@ import {
   type AssignmentDraft,
   type SectionKind,
 } from "@domigo/db";
+import { checkAssignmentCheckup } from "@/lib/checkup-gate";
 import { getTeacher } from "@/lib/teacher";
 import { assignableClasses } from "@/lib/class-wall";
 import { assignmentContentErrors, resolveAssignmentPrefill } from "@/lib/assignment-prefill";
 
+export const maxDuration = 60;
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -49,6 +51,8 @@ const SectionConfigSchema = z.object({
 
 const DraftSchema = z.object({
   submissionId: z.uuid(),
+  compositionId: z.uuid().optional(),
+  alsoCheck: z.boolean().optional(),
   source: z.object({ source: z.enum(["unit", "story"]), grade: z.number().int(), unit: z.string(), chapter: z.string().optional() }).strict().optional(),
   title: z.string().max(200),
   descriptionDe: z.string().nullable().optional(),
@@ -91,7 +95,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const parsed = DraftSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { submissionId, source, ...data } = parsed.data;
+  const { submissionId, source, compositionId, alsoCheck, ...data } = parsed.data;
   const draft = data as AssignmentDraft & { sections: Array<{ kind: SectionKind }> };
 
   // May this caller create work in that class at all? Fail CLOSED: a class list we
@@ -111,6 +115,16 @@ export async function POST(req: Request): Promise<Response> {
   }
   const errors = [...validateAssignmentDraft(draft, { reservedIds: reserved }), ...assignmentContentErrors(draft, selectedClass.grade)];
   if (errors.length > 0) return NextResponse.json({ ok: false, error: "invalid", errors }, { status: 422 });
+
+  if (draft.mode === "checkup") {
+    try {
+      const gate = await checkAssignmentCheckup(draft, { scope: teacher.classScope, classId: draft.classId, teacherId: teacher.userId }, { compositionId, alsoCheck });
+      if (gate.status === "checking") return NextResponse.json({ ok: true, ...gate }, { status: 202 });
+      if (gate.status === "blocked") return NextResponse.json({ ok: false, error: "checkup_blocked", ...gate }, { status: 422 });
+    } catch {
+      return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });
+    }
+  }
 
   try {
     const id = await createAssignment(getDb(), teacher.classScope, draft, teacher.userId, submissionId);

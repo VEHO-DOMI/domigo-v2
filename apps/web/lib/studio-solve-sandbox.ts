@@ -115,57 +115,80 @@ export async function startSolveRun(runId: string): Promise<void> {
     await failSolveRun(db, runId, `pre-gate failed at start: ${pre.stage} — ${pre.errors.join("; ")}`);
     return;
   }
-  const payload = buildSolvePayload(kind, pre.frame, run.unitSlug);
-
-  const oauthToken = sanitizeToken(process.env.CLAUDE_CODE_OAUTH_TOKEN);
-  const apiKey = sanitizeToken(process.env.ANTHROPIC_API_KEY);
-  if (!oauthToken && !apiKey) {
-    await failSolveRun(db, runId, "No auth configured: set CLAUDE_CODE_OAUTH_TOKEN (subscription, via `claude setup-token`) in the Vercel environment");
-    return;
+  try {
+    await startSandboxFrame({ kind, frame: pre.frame, unitSlug: run.unitSlug, model: run.model },
+      (sandboxId) => setSolveRunSandbox(db, runId, sandboxId));
+  } catch {
+    await failSolveRun(db, runId, "Sandbox-Prüfung konnte nicht gestartet werden.");
+    throw new Error("Sandbox-Prüfung konnte nicht gestartet werden.");
   }
+}
 
+/** Shared S-2b transport: only an answer-free student frame enters the sandbox.
+ * Persist its handle before starting the detached command. Callers claim the
+ * exact revision in the journal BEFORE invoking this function. */
+export async function startSandboxFrame(
+  task: { kind: ItemKind; frame: Frame; unitSlug: string; model: string },
+  remember: (sandboxId: string) => Promise<void>,
+): Promise<void> {
+  const oauthToken = sanitizeToken(process.env.CLAUDE_CODE_OAUTH_TOKEN);
+  if (!oauthToken) throw new Error("CLAUDE_CODE_OAUTH_TOKEN ist nicht konfiguriert.");
   const repoRoot = process.cwd();
   const skillBuf = await readFile(path.join(repoRoot, SKILL_REL));
   const runnerBuf = await readFile(path.join(repoRoot, RUNNER_REL));
-
   let sandbox: Sandbox | null = null;
   try {
     sandbox = await Sandbox.create({ runtime: "node22", resources: { vcpus: SANDBOX_VCPUS }, timeout: SANDBOX_TIMEOUT_MS });
-    await setSolveRunSandbox(db, runId, sandbox.sandboxId);
-
-    // The Agent SDK discovers skills at `${cwd}/.claude/skills/<name>/` — write
-    // the committed skill source into the sandbox's ephemeral .claude tree.
+    await remember(sandbox.sandboxId);
     await sandbox.fs.mkdir(`${SANDBOX_ROOT}/.claude/skills/domigo-blind-solve`, { recursive: true });
     await sandbox.fs.mkdir(`${SANDBOX_ROOT}/output`, { recursive: true });
     await sandbox.fs.writeFile(`${SANDBOX_ROOT}/.claude/skills/domigo-blind-solve/SKILL.md`, skillBuf);
     await sandbox.fs.writeFile(`${SANDBOX_ROOT}/runner.mjs`, runnerBuf);
-    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/payload.md`, Buffer.from(payload, "utf8"));
-    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/package.json`, Buffer.from(JSON.stringify(SANDBOX_PACKAGE_JSON, null, 2), "utf8"));
-
+    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/payload.md`, Buffer.from(buildSolvePayload(task.kind, task.frame, task.unitSlug), "utf8"));
+    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/package.json`, Buffer.from(JSON.stringify(SANDBOX_PACKAGE_JSON), "utf8"));
     const install = { content: "" };
-    const installResult = await sandbox.runCommand({
-      cmd: "npm",
-      args: ["install", "--no-audit", "--no-fund", "--loglevel=error"],
-      cwd: SANDBOX_ROOT,
-      stdout: captureWritable(install),
-      stderr: captureWritable(install),
-    });
-    if (installResult.exitCode !== 0) {
-      throw new Error(`npm install failed (exit ${installResult.exitCode})\n${install.content.slice(-2000)}`);
-    }
-
-    const env: Record<string, string> = { MODEL: run.model, THINKING: process.env.STUDIO_SOLVER_THINKING || "adaptive" };
-    if (oauthToken) env.CLAUDE_CODE_OAUTH_TOKEN = oauthToken;
-    if (apiKey) env.ANTHROPIC_API_KEY = apiKey;
-
-    // Detached: resolves immediately; the sandbox keeps running independently.
-    await sandbox.runCommand({ cmd: "node", args: ["runner.mjs"], cwd: SANDBOX_ROOT, env, detached: true });
-  } catch (err) {
-    await failSolveRun(db, runId, err instanceof Error ? err.message : String(err));
+    const installed = await sandbox.runCommand({ cmd: "npm", args: ["install", "--no-audit", "--no-fund", "--loglevel=error"], cwd: SANDBOX_ROOT,
+      stdout: captureWritable(install), stderr: captureWritable(install) });
+    // Do not forward runner or installation output: it can contain credentials.
+    if (installed.exitCode !== 0) throw new Error("Sandbox-Vorbereitung fehlgeschlagen.");
+    await sandbox.runCommand({ cmd: "node", args: ["runner.mjs"], cwd: SANDBOX_ROOT,
+      env: { MODEL: task.model, THINKING: "adaptive", CLAUDE_CODE_OAUTH_TOKEN: oauthToken }, detached: true });
+  } catch {
     if (sandbox) await sandbox.stop().catch(() => {});
-    throw err;
+    throw new Error("Sandbox-Prüfung konnte nicht gestartet werden.");
   }
-  // No finally-stop: the sandbox must keep running for pollSolveRun to read it.
+}
+
+export type SandboxFrameResult =
+  | { status: "checking" }
+  | { status: "failed"; note: string }
+  | { status: "complete"; candidates: Array<{ answer: string; confidence: number }>; costUsd: number | null; inputTokens: number | null; outputTokens: number | null };
+
+/** Poll without stopping: the caller persists the verdict before releasing the
+ * sandbox. No raw provider error or account data crosses this boundary. */
+export async function pollSandboxFrame(sandboxId: string, createdAt: Date): Promise<SandboxFrameResult> {
+  if (Date.now() - createdAt.getTime() > RUN_STALE_MS) return { status: "failed", note: "Die Prüfung hat das Zeitlimit erreicht. Item tauschen oder den Betrieb prüfen lassen." };
+  try {
+    const sandbox = await Sandbox.get({ sandboxId });
+    let raw: string;
+    try { raw = await sandbox.fs.readFile(`${SANDBOX_ROOT}/output/meta.json`, "utf8"); }
+    catch { return { status: "checking" }; }
+    let meta: SandboxMeta;
+    try { meta = JSON.parse(raw) as SandboxMeta; }
+    catch { return { status: "failed", note: "Die Prüfung lieferte kein gültiges Ergebnis." }; }
+    if (!meta || meta.status !== "ok" || !Array.isArray(meta.candidates) || !meta.candidates.length || meta.candidates.some((c) =>
+      !c || typeof c.answer !== "string" || !c.answer.trim() || c.answer.length > 10000 || !Number.isFinite(c.confidence) || c.confidence < 0 || c.confidence > 1)) {
+      return { status: "failed", note: "Die Prüfung lieferte kein gültiges Ergebnis." };
+    }
+    return { status: "complete", candidates: meta.candidates, costUsd: meta.totalCostUsd ?? null,
+      inputTokens: meta.inputTokens ?? null, outputTokens: meta.outputTokens ?? null };
+  } catch {
+    return { status: "checking" };
+  }
+}
+
+export async function stopSandboxFrame(sandboxId: string): Promise<void> {
+  try { await (await Sandbox.get({ sandboxId })).stop(); } catch { /* timeout also releases the sandbox */ }
 }
 
 // ─── Phase 2 · poll (grade + flip) ─────────────────────────────────────────
