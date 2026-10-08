@@ -231,6 +231,23 @@ describe("outbox reply subscription", () => {
     expect([host.state().total, host.state().revision]).toEqual([3, 1]);
     host.unmount();
   });
+  it("a duplicate replay cannot settle before the original positive receipt", async () => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body); c.emit("current", { ...award, xpAwarded: 0 });
+    expect(host.state().settled.size).toBe(0);
+    resolve(award); await waiting;
+    expect([host.state().total, host.state().revision]).toEqual([3, 1]);
+    host.unmount();
+  });
+  it("buffered replay keeps its first confirmation when another duplicate arrives", async () => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body); c.emit(); c.emit("current", { ...award, xpAwarded: 0 });
+    resolve({ ok: false, queued: true }); await waiting;
+    expect([host.state().total, host.state().revision, host.state().pending.size]).toEqual([3, 1, 0]);
+    host.unmount();
+  });
   it("a fast replay cannot be overwritten by the later queued reply", async () => {
     const c = channel(); let resolve!: (reply: AttemptReply) => void;
     const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);

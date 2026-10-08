@@ -477,7 +477,7 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
 function useAttemptAck(sender: PaintAttemptSender | undefined, attemptReplies?: AttemptReplies) {
   const [state, receive] = React.useReducer(acknowledgeAttempt, undefined, emptyAttemptAck);
   const alive = useRef(false);
-  const submitted = useRef(new Set<string>());
+  const submitted = useRef(new Map<string, { waiting: boolean; replay?: AttemptReply }>());
   const [lit, setLit] = useState(false);
   useEffect(() => {
     alive.current = true;
@@ -488,7 +488,12 @@ function useAttemptAck(sender: PaintAttemptSender | undefined, attemptReplies?: 
     let listening = true;
     const unsubscribe = attemptReplies((clientAttemptId, reply) => {
       // Only attempts started in this book lifetime belong to its session sum.
-      if (listening && alive.current && submitted.current.has(clientAttemptId)) receive({ clientAttemptId, reply });
+      if (listening && alive.current && submitted.current.has(clientAttemptId)) {
+        const attempt = submitted.current.get(clientAttemptId)!;
+        // A duplicate replay (zero points) must not beat an in-flight direct award.
+        if (attempt.waiting) attempt.replay ??= reply;
+        else receive({ clientAttemptId, reply });
+      }
     });
     return () => { listening = false; unsubscribe(); };
   }, [sender, attemptReplies]);
@@ -499,10 +504,16 @@ function useAttemptAck(sender: PaintAttemptSender | undefined, attemptReplies?: 
     return () => window.clearTimeout(timer);
   }, [state.revision]);
   const send = React.useMemo<PaintAttemptSender | undefined>(() => sender && (async body => {
-    submitted.current.add(body.clientAttemptId);
-    const reply = await sender(body);
-    if (alive.current) receive({ clientAttemptId: body.clientAttemptId, reply });
-    return reply;
+    const attempt: { waiting: boolean; replay?: AttemptReply } = { waiting: true };
+    submitted.current.set(body.clientAttemptId, attempt);
+    try {
+      const reply = await sender(body);
+      if (alive.current) receive({ clientAttemptId: body.clientAttemptId, reply });
+      return reply;
+    } finally {
+      attempt.waiting = false;
+      if (alive.current && attempt.replay) receive({ clientAttemptId: body.clientAttemptId, reply: attempt.replay });
+    }
   }), [sender]);
   return { state, lit, send };
 }
