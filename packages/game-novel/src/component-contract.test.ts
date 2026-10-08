@@ -154,3 +154,73 @@ test("actual ending Audience receives the same economy rows for every answer qua
     assert.equal(text(quote), chapter.scenes.at(-1).textEn, "ending uses Koki's final story line");
   }
 });
+
+const allItems = read(base + "comprehension.json").items;
+const structures = Object.fromEntries(story.chapters.map((c: { unit: number }) => [c.unit,
+  read(`content/corpus/units/g3-u${String(c.unit).padStart(2, "0")}/grammar.json`).items.map((i: { structureId: string }) => i.structureId)]));
+const reviewCandidates = episode.storyReviewItems(story.chapters, allItems, structures, economy);
+const dueReview = reviewCandidates.find((r) => r.item.id === "g3u02.ci.reading-for-camera.gf.001")!;
+
+test("story review resolves only original scenes and catalog-backed grammar", () => {
+  assert.equal(reviewCandidates.length, 15);
+  assert.ok(dueReview.scenes.length > 0);
+  assert.equal(dueReview.scenes.at(-1)!.id, chapter.scenes.find((s: { taskSlots: { itemId: string }[] }) => s.taskSlots.some(t => t.itemId === dueReview.item.id)).id);
+  assert.equal(episode.storyReviewItems([], allItems, structures, economy).length, 0);
+  assert.equal(episode.storyReviewItems(story.chapters, allItems, {}, economy).length, 0);
+  assert.equal(episode.storyReviewItems(story.chapters, allItems.filter((i: { structureId?: string }) => !i.structureId), structures, economy).length, 0);
+  assert.doesNotMatch(JSON.stringify(reviewCandidates), /\{\{(?:views|likes|subscribers)\}\}/);
+});
+
+test("review starts with the original scene lines, waits for the child and skips without saves", () => {
+  let attempts = 0;
+  const game = fixture({ reviewItems: [dueReview], onAttempt: async () => { attempts++; return { ok: true, queued: false }; } });
+  const tree = game.render();
+  assert.equal(find(tree, el => el.type === "main").props["data-card"], "review");
+  assert.ok(text(tree).includes("Noch einmal aus Folge 2"));
+  for (const line of dueReview.scenes) assert.ok(text(tree).includes(line.textEn), line.id);
+  assert.ok(!nodes(tree).some(el => el.type === "GrammarItemView" || (typeof el.type === "function" && el.type.name === "TaskTake")), "no automatic task opening");
+  assert.equal(attempts, 0);
+  invoke(find(tree, el => el.type === "button" && text(el) === "Später"), "onClick");
+  assert.notEqual(find(game.render(), el => el.type === "main").props["data-card"], "review");
+  assert.equal(game.saves.length, 0);
+  assert.equal(attempts, 0);
+});
+
+test("missing original context and preview never display personal review work", () => {
+  for (const over of [{ reviewItems: [{ ...dueReview, scenes: [] }] }, { reviewItems: [dueReview], preview: true }]) {
+    const game = fixture(over);
+    assert.notEqual(find(game.render(), el => el.type === "main").props["data-card"], "review");
+    assert.equal(game.saves.length, 0);
+  }
+});
+
+test("review submits once per display, new IDs across displays, and leaves channel/episode untouched", async () => {
+  const attempts: Props[] = [];
+  const game = fixture({ reviewItems: [dueReview, dueReview], onAttempt: async (a: Props) => {
+    attempts.push(a); return { ok: true, queued: false, tier: "correct", xpAwarded: 10 };
+  } });
+  for (let display = 0; display < 2; display++) {
+    invoke(find(game.render(), el => el.type === "button" && text(el) === "Aufgabe öffnen"), "onClick");
+    const take = game.take(), host = new Host();
+    const render = () => host.render(take.type as Component, take.props);
+    const task = find(render(), el => el.type === "GrammarItemView");
+    const detail = { itemId: dueReview.item.id, input: { kind: "text", value: "was reading" } };
+    invoke(task, "onResult", "correct", detail);
+    invoke(task, "onResult", "correct", detail);
+    await setImmediate();
+    invoke(task, "onResult", "correct", detail);
+    assert.equal(attempts.length, display + 1, "even a late duplicate callback cannot resubmit");
+    assert.equal(game.saves.length, 0, "review must not update takes, scene or results");
+    assert.ok(!nodes(game.render()).some(el => el.type === "Audience"), "no channel reveal in replay");
+    invoke(find(render(), el => el.type === "button" && text(el) === copy.COPY.continue), "onClick");
+  }
+  assert.notEqual(attempts[0]!.clientAttemptId, attempts[1]!.clientAttemptId);
+  assert.equal(attempts[0]!.mode, "game:g3");
+  assert.equal(game.saves.length, 0);
+  const before = fixture().render(), after = game.render();
+  assert.equal(find(after, el => el.type === "main").props["data-scene"], find(before, el => el.type === "main").props["data-scene"]);
+  assert.equal(text(find(after, el => el.props.className === "fourteen-progress-label")), text(find(before, el => el.props.className === "fourteen-progress-label")));
+  const originalAudience = find(before, el => el.type === "Audience"), resumedAudience = find(after, el => el.type === "Audience");
+  assert.equal(originalAudience.props.current, resumedAudience.props.current);
+  assert.equal(originalAudience.props.previous, resumedAudience.props.previous);
+});

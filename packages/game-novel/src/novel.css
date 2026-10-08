@@ -118,3 +118,7 @@
   .fourteen .dg-input { background: var(--bg-sunken); color: var(--ink); }
   .fourteen-brand > span { background: #245cb5; }
 }
+
+/* The original dialogue stays together; replay does not make every line a full scene card. */
+.fourteen .fourteen-review-context { min-height: 0; margin-top: 18px; }
+.fourteen-review-line + .fourteen-review-line { margin-top: 24px; }

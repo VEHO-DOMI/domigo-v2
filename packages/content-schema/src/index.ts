@@ -1664,6 +1664,8 @@ export type ReadingItem = z.infer<typeof ReadingItem>;
 /** A gradeable comprehension item — same fields as ReadingItem, `.ci.` id. */
 export const ComprehensionItem = z.object({
   id: StoryComprehensionRef,
+  /** Story grammar retains its original scene; absent means reading comprehension. */
+  structureId: StructureId.optional(),
   rev: z.number().int().min(1),
   difficulty: Difficulty,
   format: GrammarFormat,
@@ -1683,8 +1685,24 @@ export const ComprehensionItem = z.object({
   explainDe: z.string().min(1),
   explainEn: z.string().nullable(),
   strict: z.boolean(),
+}).superRefine((item, ctx) => {
+  if (item.structureId && item.id.split(".")[0] !== item.structureId.split(".")[0]) {
+    ctx.addIssue({ code: "custom", path: ["structureId"], message: "story item and structure must belong to the same unit" });
+  }
 });
 export type ComprehensionItem = z.infer<typeof ComprehensionItem>;
+
+/** Cross-file coherence: the introducing unit, original scene and structure
+ * catalog must agree. Callers supply authored content, never client metadata. */
+export function storyGrammarMatches(
+  item: ComprehensionItem, chapter: Chapter, structureIds: readonly string[],
+): boolean {
+  return item.structureId !== undefined
+    && ComprehensionItem.safeParse(item).success
+    && item.id.startsWith(`g${chapter.id[1]}u${String(chapter.unit).padStart(2, "0")}.ci.`)
+    && structureIds.includes(item.structureId)
+    && chapter.scenes.some((scene) => scene.taskSlots.some((slot) => slot.itemId === item.id));
+}
 
 export const StoryComprehensionFile = z
   .object({

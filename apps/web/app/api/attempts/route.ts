@@ -148,8 +148,8 @@ export async function POST(req: Request): Promise<Response> {
       xpAwarded = xpForTier(item.difficulty * 10, tier);
       classifiable = item as unknown as ClassifiableItem;
     } else {
-      // story comprehension (`.ci.`): a receptive sibling — graded like reading,
-      // queue-skipped. cref is non-null (the guard above returned otherwise).
+      // Story grammar uses the same grader and XP pool as unit grammar.
+      // Persistence derives the original-scene review context from `.ci.`.
       const cr = cref!;
       kind = "reading";
       unitSlug = cr.unitSlug;
@@ -157,6 +157,13 @@ export async function POST(req: Request): Promise<Response> {
       const storyId = storyIdForGrade(cr.grade);
       const item = (storyId ? loadStoryComprehension(storyId) : null)?.items.find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+      if (item.structureId) {
+        const unit = await loadUnitWithOverrides(cr.unitSlug);
+        if (!unit.grammar.some((g) => g.structureId === item.structureId)) {
+          return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+        }
+        kind = "grammar";
+      }
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
       classifiable = item as unknown as ClassifiableItem;
@@ -180,6 +187,7 @@ export async function POST(req: Request): Promise<Response> {
       classId: acting.classId,
       itemId,
       kind,
+      ...(cref && kind === "grammar" ? { reviewContext: "story" as const } : {}),
       unitSlug,
       grade,
       mode,

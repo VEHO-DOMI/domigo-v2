@@ -51,7 +51,8 @@ test("every authored feedback task resolves, uses a different form, accepts all 
   }
   for (const authored of overlay.items) {
     const live = items.find((i) => i.id === authored.id);
-    assert.deepEqual(live, authored, `${authored.id}: overlay drift`);
+    const { structureId: _structureId, ...unchanged } = live!;
+    assert.deepEqual(unchanged, authored, `${authored.id}: overlay drift (only additive structureId allowed)`);
     const item = authored as unknown as GrammarItem;
     const kind = ["multiple-choice", "context-picker"].includes(item.format) ? "choice" : "text";
     if (item.pairs.length) {

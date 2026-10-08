@@ -5,7 +5,7 @@
 import { and, eq, inArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { practiceAttempts, reviewQueue, userProgress, writingSubmissions } from "./schema.ts";
-import { updateReviewQueue, type ReviewRef } from "./review.ts";
+import { isStoryReviewItemId, updateReviewQueue, type ReviewRef } from "./review.ts";
 import { computeNextStreak, viennaDayBefore, viennaDayString } from "./streak.ts";
 import type { Db } from "./index.ts";
 import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
@@ -24,7 +24,7 @@ export interface RecordAttemptInput {
   hintUsed?: boolean;
   context?: unknown;
   clientAttemptId: string;
-  /** Story-only grammar needs its original scene and cannot render in unit review. */
+  /** Legacy story items skip review; .ci. grammar uses scene-only review, derived from its ID. */
   reviewContext?: "unit" | "story";
 }
 
@@ -70,10 +70,11 @@ export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAtt
   const duplicate = inserted.length === 0;
   let streak = 0;
   if (!duplicate) {
-    // Listening items can't be re-rendered in /review (they need their audio), so they
-    // earn XP + streak but never enter the Leitner queue. Story grammar also
-    // needs its scene; only ordinary unit vocab/grammar enters unit review.
-    if ((a.kind === "vocab" || a.kind === "grammar") && a.reviewContext !== "story") {
+    // .ci. grammar uses the same Leitner queue and XP pool as unit grammar; the
+    // readers route it back to its story scene by ID, without a new DB column.
+    // Legacy scene-only items without .ci. still have no review renderer.
+    if ((a.kind === "vocab" || a.kind === "grammar")
+      && (a.reviewContext !== "story" || (a.kind === "grammar" && isStoryReviewItemId(a.itemId)))) {
       const ref: ReviewRef = { itemId: a.itemId, kind: a.kind, unitSlug: a.unitSlug, grade: a.grade };
       await updateReviewQueue(db, a.userId, ref, a.tier);
     }

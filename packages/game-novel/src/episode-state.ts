@@ -1,7 +1,7 @@
-import type { Chapter } from "@domigo/content-schema";
+import { storyGrammarMatches, type ComprehensionItem, type Scene, type Chapter } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { storyItemKey } from "@domigo/game-core";
-import type { EpisodeStats } from "./novel-copy.ts";
+import { fillChapterStats, type EpisodeStats } from "./novel-copy.ts";
 
 export const isFixSlot = (slot: string): boolean => /^fix(-|$)/.test(slot);
 export const commentsAfter = (unit: number, slot: string): boolean => unit === 11 ? slot === "recap" : unit < 11 && isFixSlot(slot);
@@ -50,4 +50,27 @@ export function restoredTakes(chapter: Chapter, source: unknown, results: Record
     const rebound = chapter.unit >= 2 && chapter.unit <= 11 && /^script-/.test(slot);
     return !rebound || results[slot] !== undefined;
   }))];
+}
+
+
+export interface StoryReviewItem {
+  item: ComprehensionItem;
+  chapterId: string;
+  unit: number;
+  scenes: Pick<Scene, "id" | "speaker" | "textEn" | "scaffoldDe" | "glosses">[];
+}
+
+/** Resolve once on the server from released chapters and their unit catalog.
+ * No invented context and no orphan task: without its original scene, skip it. */
+export function storyReviewItems(
+  chapters: readonly Chapter[], items: readonly ComprehensionItem[],
+  structures: Readonly<Record<number, readonly string[]>>, economy: readonly EpisodeStats[] = [],
+): StoryReviewItem[] {
+  return items.flatMap((item) => {
+    const chapter = chapters.find((c) => storyGrammarMatches(item, c, structures[c.unit] ?? []));
+    if (!chapter) return [];
+    const index = chapter.scenes.findIndex((s) => s.taskSlots.some((slot) => slot.itemId === item.id));
+    const scenes = fillChapterStats(chapter, economy).scenes.slice(0, index + 1).map(({ id, speaker, textEn, scaffoldDe, glosses }) => ({ id, speaker, textEn, scaffoldDe, glosses }));
+    return [{ item, chapterId: chapter.id, unit: chapter.unit, scenes }];
+  });
 }
