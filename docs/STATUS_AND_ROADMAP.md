@@ -97,6 +97,7 @@ Reihenfolge aus dem freigegebenen Programm vom 07.10., abgeglichen mit den Nachz
 
 | Spur / Reihenfolge | Nächster Schritt und Grenze | Beleg / Zuständigkeit |
 |---|---|---|
+| Eigene häufigste Fallen auf `/review`: bis zu drei in 30 Tagen ab zwei Fehlern, Register-Erklärung und Chapter-Tür; Vorschau ohne Kinderlesung | IN PRÜFUNG — cgo-105 | [Fallen-Karte](../apps/web/app/review/FallenKarte.tsx); [Leser](../packages/db/src/student-traps.ts) |
 | Spiel · Y1 | Nach B1 erst Kokis HALT, dann **B2 → C → F → Siegel → Zoo**. Nachsorge B1 folgt dem HALT; E misst Wartezeiten, D2 bleibt Kunst im Labor. Spätere Kapitel folgen der Zoo-Abnahme. G-1/G-2 samt Rückkanal sind bereits gebaut. | cgo-021, cgo-088; welle-064/065/067/077; siegel-001…005; Programm G7–G10 |
 | Spiel · Y3 | **A → K → C** weiterführen: A ist als PR 499 in Prüfung; K braucht das Cast-/Kunstblatt, C die anschließende Fertigstellung. Y3-B ist live, Kokis Spieltest bleibt ein eigenes Tor. | cgo-095, cgo-022; welle-075/071; Order Y3 und Programm |
 | Plattform · Vorarbeiten | Story-Schalter und Testklassen-Marker durch Migration und Review bringen; eigener Lehrer-Lernstand bleibt offen. Meldeknopf K13 sowie Outbox-Altbestand und Kokis Kindersatz nachziehen. | PR 490/498; cgo-029, cgo-081; Programm P1/P4/P5; die alte K13-Reservierung für 0020 ist überholt |
