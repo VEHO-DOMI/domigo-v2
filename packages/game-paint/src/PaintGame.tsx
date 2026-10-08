@@ -25,7 +25,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 // Input machines are needed only when an actual task opens. Keeping this
 // boundary outside the component preserves its identity across reference views.
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck } from "./ack.ts";
+import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply } from "./ack.ts";
 
 const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
@@ -64,8 +64,11 @@ import { ChalkGreeting } from "./story/ChalkGreeting.tsx";
 import { StoryName } from "./story/StoryName.tsx";
 
 export type LiberationProgress = Record<string, "named" | "coloured" | "peaceful">;
+type AttemptReplies = (listener: (clientAttemptId: string, reply: AttemptReply) => void) => () => void;
+
 export interface PaintGameProps {
   onAttempt?: PaintAttemptSender;
+  attemptReplies?: AttemptReplies;
   liberationProgress?: LiberationProgress;
   onLiberationProgress?: (progress: LiberationProgress) => void;
   onLiberationRestart?: () => void;
@@ -471,14 +474,24 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
 });
 
 /** The sender stays in the app. Only its unchanged receipt reaches this HUD. */
-function useAttemptAck(sender: PaintAttemptSender | undefined) {
+function useAttemptAck(sender: PaintAttemptSender | undefined, attemptReplies?: AttemptReplies) {
   const [state, receive] = React.useReducer(acknowledgeAttempt, undefined, emptyAttemptAck);
   const alive = useRef(false);
+  const submitted = useRef(new Set<string>());
   const [lit, setLit] = useState(false);
   useEffect(() => {
     alive.current = true;
     return () => { alive.current = false; };
   }, []);
+  useEffect(() => {
+    if (!sender || !attemptReplies) return;
+    let listening = true;
+    const unsubscribe = attemptReplies((clientAttemptId, reply) => {
+      // Only attempts started in this book lifetime belong to its session sum.
+      if (listening && alive.current && submitted.current.has(clientAttemptId)) receive({ clientAttemptId, reply });
+    });
+    return () => { listening = false; unsubscribe(); };
+  }, [sender, attemptReplies]);
   useEffect(() => {
     if (state.revision === 0) return;
     setLit(true);
@@ -486,6 +499,7 @@ function useAttemptAck(sender: PaintAttemptSender | undefined) {
     return () => window.clearTimeout(timer);
   }, [state.revision]);
   const send = React.useMemo<PaintAttemptSender | undefined>(() => sender && (async body => {
+    submitted.current.add(body.clientAttemptId);
     const reply = await sender(body);
     if (alive.current) receive({ clientAttemptId: body.clientAttemptId, reply });
     return reply;
@@ -493,8 +507,8 @@ function useAttemptAck(sender: PaintAttemptSender | undefined) {
   return { state, lit, send };
 }
 
-export default function PaintGame({ onAttempt, liberationProgress = {}, onLiberationProgress, onLiberationRestart, level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
-  const ack = useAttemptAck(onAttempt);
+export default function PaintGame({ onAttempt, attemptReplies, liberationProgress = {}, onLiberationProgress, onLiberationRestart, level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
+  const ack = useAttemptAck(onAttempt, attemptReplies);
   const hostRef = useRef<HTMLDivElement | null>(null);
   const shellRef = useRef<HTMLDivElement | null>(null);
   const hudRef = useRef<HTMLDivElement | null>(null);

@@ -73,7 +73,8 @@ const sources = ["PaintGame.tsx", "ack.ts"].map(name => fs.readFileSync(new URL(
 
 // Exercise the real hook's request lifetime with a minimal hook host: no game
 // renderer, network, or React internals are replaced in the browser proof.
-function hookHost(sender: PaintAttemptSender | undefined, source = sources[0]!) {
+type Replies = (listener: (id: string, reply: AttemptReply) => void) => () => void;
+function hookHost(sender: PaintAttemptSender | undefined, source = sources[0]!, replies?: Replies) {
   const hook = source.slice(source.indexOf("function useAttemptAck("), source.indexOf("export default function PaintGame("));
   const js = transpileModule(hook, {}).outputText;
   const effects: Array<() => (() => void) | undefined> = [];
@@ -83,12 +84,12 @@ function hookHost(sender: PaintAttemptSender | undefined, source = sources[0]!) 
     { useReducer: () => [state, (action: Parameters<typeof acknowledgeAttempt>[1]) => {
       writes++; state = acknowledgeAttempt(state, action);
     }], useMemo: (fn: () => unknown) => fn() },
-    (current: boolean) => ({ current }), (effect: () => (() => void) | undefined) => effects.push(effect),
+    (current: unknown) => ({ current }), (effect: () => (() => void) | undefined) => effects.push(effect),
     (initial: boolean) => [initial, () => {}], acknowledgeAttempt, emptyAttemptAck,
-  ) as (sender: PaintAttemptSender | undefined) => { send: PaintAttemptSender | undefined };
-  const { send } = mount(sender);
-  const cleanups = effects.map(effect => effect());
-  return { send, state: () => state, writes: () => writes, unmount: () => cleanups.forEach(cleanup => cleanup?.()) };
+  ) as (sender: PaintAttemptSender | undefined, replies?: Replies) => { send: PaintAttemptSender | undefined };
+  const { send } = mount(sender, replies);
+  let cleanups = effects.map(effect => effect());
+  return { send, state: () => state, writes: () => writes, strictRemount: () => { cleanups.forEach(cleanup => cleanup?.()); cleanups = effects.map(effect => effect()); }, unmount: () => cleanups.forEach(cleanup => cleanup?.()) };
 }
 
 describe("ack sender lifetime", () => {
@@ -186,5 +187,73 @@ describe("one short acknowledgement duration", () => {
     const broken = sources[0]!.replace(before, after);
     expect(broken).not.toBe(sources[0]);
     expect(flashTimingErrors(broken)).toContain(law);
+  });
+});
+
+
+describe("outbox reply subscription", () => {
+  const body = { clientAttemptId: "current", itemId: "fixture", mode: "game:g1", input: { kind: "choice", value: "Open!" }, latencyMs: 1, hintUsed: false } as const;
+  const award = { ok: true, queued: false, xpAwarded: 3 };
+  function channel() {
+    const listeners = new Set<(id: string, reply: AttemptReply) => void>();
+    const past: Array<(id: string, reply: AttemptReply) => void> = [];
+    const subscribe: Replies = listener => { listeners.add(listener); past.push(listener); return () => { listeners.delete(listener); }; };
+    return { subscribe, listeners, past, emit: (id = body.clientAttemptId, reply: AttemptReply = award) => { for (const listener of listeners) listener(id, reply); } };
+  }
+  it("queued reply becomes settled and glows through the same reducer", async () => {
+    const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
+    await host.send!(body);
+    expect(attemptAckValue(host.state(), false)).toBe("Punkte folgen");
+    c.emit();
+    expect([...host.state().pending]).toEqual([]);
+    expect([...host.state().settled]).toEqual(["current"]);
+    expect([host.state().total, host.state().revision]).toEqual([3, 1]);
+    expect(attemptAckValue(host.state(), true)).toBe("3 (+3)");
+    host.unmount();
+  });
+  it("unknown ids from another book or a reloaded tree are ignored", async () => {
+    const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
+    await host.send!(body);
+    const old = host.state(); c.emit("another-book");
+    expect(host.state()).toBe(old);
+    host.unmount();
+    const fresh = hookHost(async () => award, sources[0], c.subscribe);
+    c.emit(); expect(fresh.writes()).toBe(0); expect(fresh.state().total).toBe(0);
+    fresh.unmount();
+  });
+  it.each([true, false])("replay and delayed direct reply count once (replay first: %s)", async replayFirst => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body);
+    if (replayFirst) c.emit();
+    resolve(award); await waiting;
+    c.emit();
+    expect([host.state().total, host.state().revision]).toEqual([3, 1]);
+    host.unmount();
+  });
+  it("a fast replay cannot be overwritten by the later queued reply", async () => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body); c.emit(); resolve({ ok: false, queued: true }); await waiting;
+    expect(host.state().total).toBe(3); expect(host.state().pending.size).toBe(0);
+    host.unmount();
+  });
+  it("cleanup and StrictMode remount leave exactly one live subscription; stale callbacks stay silent", async () => {
+    const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
+    await host.send!(body); expect(c.listeners.size).toBe(1);
+    host.strictRemount(); expect(c.listeners.size).toBe(1);
+    const writes = host.writes(); c.past[0]!("current", award); expect(host.writes()).toBe(writes);
+    c.emit(); expect(host.state().total).toBe(3);
+    host.unmount(); expect(c.listeners.size).toBe(0);
+    c.past[1]!("current", award); expect(host.writes()).toBe(writes + 1);
+  });
+  it("tapes and bench without a sender never subscribe even if offered a channel", () => {
+    const c = channel(), host = hookHost(undefined, sources[0], c.subscribe);
+    expect(c.listeners.size).toBe(0); expect(host.send).toBeUndefined();
+    c.emit(); expect(host.writes()).toBe(0); host.unmount();
+  });
+  it("the optional reply prop reaches the acknowledgement hook", () => {
+    expect(sources[0]).toMatch(/PaintGame\(\{ onAttempt, attemptReplies,/);
+    expect(sources[0]).toContain("useAttemptAck(onAttempt, attemptReplies)");
   });
 });
