@@ -20,12 +20,14 @@ export default async function PracticeIndex({ searchParams }: { searchParams: Pr
   const mode = practiceMode(query.mode);
   const chapters = selectedChapters(query.chapters, listApprovedUnits().filter((slug) => slug.startsWith(`g${grade}-`)));
   const today = viennaDateKey();
-  const loaded = mode === "daily"
-    ? await loadDailyChallenge(view, grade, today).then(({ words }) => ({ vocab: words, grammar: [] }))
+  const challenge = mode === "daily" ? await loadDailyChallenge(view, grade, today) : null;
+  const loaded = challenge
+    ? { vocab: challenge.availableWords, grammar: [] }
     : await loadPracticeWords(view, grade, chapters);
   const vocab = mode === "sprint" ? sprintWords(loaded.vocab) : loaded.vocab;
   return <>
     {preview && <PreviewBanner grade={grade} />}
+    {challenge && challenge.blockedCount > 0 && <p lang="de">Heute gesperrt: {challenge.blockedCount}/10 · Diese Wörter werden übersprungen.</p>}
     <PracticeSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} slug={`g${grade}-u01`} vocab={vocab} grammar={loaded.grammar} today={today} runMode={mode} direction={practiceDirection(query.direction)} preview={preview} />
   </>;
 }

@@ -133,8 +133,12 @@ describe("server pages — who is a preview is decided on the server", () => {
   it("practice hands the client the server's preview flag", () => {
     assert.match(read("practice/[slug]/page.tsx"), /<PracticeSession [^\n]*preview=\{preview\} \/>/);
   });
-  it("the painted book keeps its teacher-only production gate", () => {
-    assert.match(read(`${PLAY}/buch/[chapter]/page.tsx`), /process\.env\.VERCEL_ENV === "production" && teacher === null/);
+  it("the painted book keeps the draft gate and uses runtime visibility plus the year wall", () => {
+    const book = code(read(`${PLAY}/buch/[chapter]/page.tsx`));
+    assert.match(book, /if \(teacher === null\) \{/);
+    assert.match(book, /yearRedirect\(await resolveStudentView\(\), 1\)/);
+    assert.match(book, /if \(await openStoryIdForGrade\(1\) === null\) redirect\("\/play"\)/);
+    assert.match(book, /if \(raw\.draft === true && teacher === null\)/);
   });
 });
 
@@ -525,6 +529,38 @@ it("student traps: actual child scope only; preview makes zero personal reads", 
 
 // cgo-108: the new trainer surfaces inherit the existing preview and year wall.
 describe("OG W1 surfaces", () => {
+  for (const route of ["home", "modi", "profil", "fortschritt"]) it(`${route}: pinned sign-in matcher`, () => {
+    const middleware = fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
+    const matcher = code(middleware).match(/matcher:\s*\[([^\]]+)\]/)?.[1] ?? "";
+    assert.ok([...matcher.matchAll(/"([^"]+)"/g)].some((m) => m[1] === `/${route}`), `${route} requires sign-in`);
+  });
+  for (const route of ["home", "modi"]) it(`${route}: no motivational formulas in source`, () => {
+    const directory = new URL(`../app/${route}/`, import.meta.url);
+    for (const file of fs.readdirSync(directory, { recursive: true, encoding: "utf8" }).filter((f) => /\.tsx?$/.test(f) && !/\.test\./.test(f))) {
+      assert.doesNotMatch(code(fs.readFileSync(new URL(file, directory), "utf8")), /\bSuper\b|Weiter so|Gut gemacht|Du schaffst das/i, `${route}/${file}`);
+    }
+  });
+  it("dictionary names only the available library until W2", () => {
+    const home = code(read("home/page.tsx"));
+    assert.match(home, /<strong>Dictionary<\/strong><small>Browse your full vocabulary library<\/small>/);
+    assert.doesNotMatch(home, /Flashcards/i);
+  });
+  it("daily reserve stays after selection and is visible without replacing words", () => {
+    const loader = code(read("practice/load-practice.ts")).split("export async function loadDailyChallenge")[1]!;
+    assert.doesNotMatch(loader, /loadPracticeWords/);
+    assert.ok(loader.indexOf("selectDailyChallenge(") < loader.indexOf("listReservedForClass("));
+    const runner = code(read("practice/page.tsx"));
+    assert.match(runner, /vocab: challenge.availableWords/);
+    for (const page of [runner, code(read("home/page.tsx"))]) assert.match(page, /Heute gesperrt: \{challenge.blockedCount\}\/10/);
+    assert.match(code(read("home/page.tsx")), /challenge.availableWords.length > 0/);
+  });
+  it("home and modes honor the merged runtime story opening", () => {
+    for (const file of ["home/page.tsx", "modi/page.tsx"]) {
+      const src = code(read(file));
+      assert.match(src, /await listOpenStories\(\)/);
+      assert.doesNotMatch(src, /listReleasedStories/);
+    }
+  });
   for (const route of ["home", "modi", "profil", "fortschritt"]) it(`${route}: server-resolved year and preview`, () => {
     const src = code(read(`${route}/page.tsx`));
     assert.match(src, /await resolveStudentView\(/);

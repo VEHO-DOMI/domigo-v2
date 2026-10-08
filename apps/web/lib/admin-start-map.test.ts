@@ -15,9 +15,9 @@ const cards = readFileSync(new URL("../app/admin/KlassenKarten.tsx", import.meta
 const code = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
 const hash = (s: string) => createHash("md5").update(s).digest("hex");
 
-const DB_READERS = new Set(["getDb", "listClassesForTeacher", "listClassRegistrationCountsForTeacher", "listAssignmentsByCreator"]);
+const DB_READERS = new Set(["getDb", "getClassPurposes", "listClassesForTeacher", "listClassRegistrationCountsForTeacher", "listAssignmentsByCreator"]);
 // Type-only imports do not read data; keep their names explicit too.
-const DB_TYPES = new Set(["ClassSummary", "AssignmentRow"]);
+const DB_TYPES = new Set(["ClassSummary", "AssignmentRow", "ClassPurpose"]);
 const PAGE_CALLS = new Set([...DB_READERS, "getTeacherForPage", "redirect", "readStart", "isGrandmaster", "kontoBaseUrl", "listPaintChapters", "abmelden", "Number", "summarizeAssignments", "deadlineLabel"]);
 const METHODS = new Set(["all", "map", "get", "slice", "toISOString"]);
 const PERSON_FIELDS = /^(?:displayName|firstName|givenName|lastName|surname|nickname|display_name|first_name|given_name|last_name|identity_users|v2IdentityUsers)$/i;
@@ -147,7 +147,7 @@ const laws: Law[] = [
     { name: `${i === 0 ? "page" : "cards"}: no pupil name fields`, source,
       passes: noPersonNames, break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>{student.name}</span>') },
     { name: `${i === 0 ? "page" : "cards"}: reviewed literals contain no fixed pupil names`, source,
-      passes: (s: string) => literalPin(s) === (i === 0 ? "812aac2af06a3b6f80cbc32b47a66c1e" : "8b16a9c08961b53097dae62247495007"),
+      passes: (s: string) => literalPin(s) === (i === 0 ? "ca83f96f191bfcb7a350982b820a9951" : "801d14d802024432c4fc00499e7f3bc6"),
       break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>Max Mustermann</span>') },
   ]),
   { name: "grandmaster link under its own rank guard", source: page,
@@ -197,7 +197,7 @@ const privacyVariants: Law[] = [
     break: s => s.replace("classes.map((cls)", "students.map((cls)") },
   ...['{"Max Mustermann"}', '{`Max Mustermann`}'].map(expression => ({
     name: `fixed pupil name in expression: ${expression}`, source: cards,
-    passes: (s: string) => literalPin(s) === "8b16a9c08961b53097dae62247495007",
+    passes: (s: string) => literalPin(s) === "801d14d802024432c4fc00499e7f3bc6",
     break: (s: string) => s.replace("{cls.name}</h2>", `${expression}</h2>`),
   })),
 ];

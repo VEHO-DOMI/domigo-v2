@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, listClassesForTeacher, listClassRegistrationCountsForTeacher, listAssignmentsByCreator } from "@domigo/db";
+import { getDb, getClassPurposes, listClassesForTeacher, listClassRegistrationCountsForTeacher, listAssignmentsByCreator } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
 import { kontoBaseUrl } from "@/lib/konto/basis";
@@ -12,6 +12,7 @@ import KlassenKarten from "./KlassenKarten";
 export const dynamic = "force-dynamic";
 
 const doors = [
+  { title: "Story world", description: "Open or park story worlds by grade. View story mastery.", href: "/admin/story-worlds", label: "Story world settings" },
   { title: "Schüleransicht", description: "Üben, Lernpfad, Hören, Tests und Geschichten in der Kinderansicht öffnen.", href: "/admin/explorer", label: "Schüleransicht öffnen" },
   { title: "Aufgaben", description: "Eigene Aufgaben zusammenstellen, zuweisen und ihre Ergebnisse ansehen.", href: "/admin/assignments", label: "Aufgaben öffnen" },
   { title: "Studio", description: "Aufgaben bearbeiten, eigene Aufgaben entwerfen und ausprobieren.", href: "/admin/studio", label: "Studio öffnen" },
@@ -30,6 +31,9 @@ export default async function AdminPage() {
     readStart(() => listClassRegistrationCountsForTeacher(getDb(), teacher.classScope, teacher.userId)),
     readStart(() => listAssignmentsByCreator(getDb(), teacher.classScope, teacher.userId)),
   ]);
+  const purposes = classes.ok
+    ? await getClassPurposes(getDb(), teacher.classScope, classes.value.map((cls) => cls.id))
+    : new Map();
   const paintChapters = listPaintChapters("g1.st.lost-pages");
   const lehrerraumUrl = `${kontoBaseUrl()}/lehrerraum/lehrgruppen`;
 
@@ -58,7 +62,7 @@ export default async function AdminPage() {
         </section>
       ) : (
         <>
-          <KlassenKarten classes={classes.value} registrations={registrations} assignments={assignments} now={new Date()} />
+          <KlassenKarten purposes={purposes} classes={classes.value} registrations={registrations} assignments={assignments} now={new Date()} />
           <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, margin: "14px 0 0" }}>
             Die Kinderzahlen beziehen sich auf die DomiGo-Liste. „Angemeldet“ zählt die bereits aktivierten Zugänge.
             Offene Aufgaben sind deine nicht archivierten Aufgaben ohne abgelaufene Frist, unabhängig von den Abgaben der Kinder.
@@ -85,7 +89,7 @@ export default async function AdminPage() {
         ))}
         <section className="dg-card" style={{ minWidth: 0 }}>
           <h3 style={{ fontSize: 18, margin: "0 0 8px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Das gemalte Buch</h3>
-          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 14px", lineHeight: 1.5 }}>Das Spiel für Jahrgang 1 ist noch nicht für Kinder freigegeben. Hier kannst du die vorhandenen Chapter ausprobieren; dein Stand bleibt auf diesem Gerät.</p>
+          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 14px", lineHeight: 1.5 }}>Child access follows Story world. Draft Chapters are teacher-only. Preview existing Chapters here; your progress stays on this device.</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {paintChapters.map((ch) => (
               <Link key={ch} href={`/play/1/buch/${ch}`} className="dg-chip" style={{ fontSize: 14, padding: "6px 10px" }}>Chapter {Number(ch.slice(2))} →</Link>

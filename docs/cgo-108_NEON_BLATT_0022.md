@@ -6,7 +6,7 @@ Migration bedeutet hier: eine neue Tabelle ergänzen. Die Konto-Spiegeltabellen 
 
 ## Reihenfolge und Zusammenführung
 
-Basis dieses PR: `1197a30bc9a4f4814b47285af9a53c695db4bb46`, Journal 0000–0019. 0020 (PR 490) und 0021 (PR 498) waren beim Boot noch offen. Deshalb enthält dieser PR ausschließlich den eigenen Journal-Eintrag 22 und einen Snapshot auf Basis 0019. **Vor Anwendung vereinigt der GG die Einträge 20, 21, 22 in dieser Reihenfolge und erzeugt den kumulativen Snapshot 0022 auf dem integrierten Schema neu.** Keine fremde Migration wird hier vorweggenommen. GG-Nachtrag 1 auf cgo-108 bestätigt die gemeinsame Anwendung.
+Boot-Basis dieses PR: `1197a30bc9a4f4814b47285af9a53c695db4bb46`. Nachzug 2 integriert `origin/main` (`8c8acd81`) einschließlich PR 490/498 durch einen Merge. Das Journal enthält jetzt 0000–0022 lückenlos; 0019, 0020 (Story-Einstellungen), 0021 (Klassen-Einstellungen), 0022 (Avatar) stehen in dieser Reihenfolge. Snapshot 0022 wurde aus dem integrierten Schema neu erzeugt und setzt Snapshot 0021 fort. Ein erneutes lokales `drizzle-kit generate` muss „No schema changes“ melden. Keine Migration wurde gegen Neon ausgeführt.
 
 ## Anzuwendende Datei
 
@@ -39,7 +39,7 @@ Vorher: keine Tabelle. Nachher: genau drei Spalten, Primärschlüssel auf user_i
 
 Ohne Tabelle bleibt die Darstellung lesbar: IDs der eigenen Klasse werden nach Erstellzeit und ID geordnet und erhalten den ersten freien Avatar. Ein Seitenaufruf schreibt nichts. Nur die eigene Avatar-Wahl schreibt über einen durch Klassenanspruch, Konto-ID und Schülerrolle begrenzten Insert/Update. Vor Migration meldet eine Wahl ehrlich „nicht gespeichert“.
 
-`deleteUserData` entfernt die Avatar-Zeile vor der Identität; der GG hat genau diese Erweiterung in Nachtrag 1 freigegeben. Ein entfernter Löschaufruf muss den Verhaltenstest rot machen. Bei fehlender Tabelle bleibt der bisherige Löschvertrag streng: Fehler und Wiederholung durch konto statt eines falschen Erfolgs. Daher Migration vor Auslieferung anwenden.
+`deleteUserData` entfernt die Avatar-Zeile nach allen Pflichttabellen und vor der Identität. Fehlt ausschließlich diese optionale Tabelle (PostgreSQL-Code `42P01`, auch in einer umschließenden Fehlerursache), wird `student_profile: 0` protokolliert und die fehlende Relation ausdrücklich im Löschjournal benannt; die Kontolöschung läuft weiter. Andere Fehler und fehlende Pflichttabellen bleiben Fehler und lösen die Wiederholung durch konto aus. Verhaltenstests und absichtliche Fehlerproben sichern Reihenfolge, Ausnahme und Journal. Nachzug 2 des GG autorisiert diesen Rückfall vor Migration.
 
 Die Avatar-Nummer beschreibt nur ein festes Bild. Die Konto-ID ist eine personenbezogene Kennung und steht im Datenschutz-Spaltenregister. Keine Uploads, Namenkopien oder neuen Tracking-Daten.
 

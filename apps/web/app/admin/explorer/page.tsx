@@ -11,7 +11,8 @@ export const dynamic = "force-dynamic";
  *
  * Klasse 1 (Koki 02.10.): die alte Oberwelt »Die verlorenen Seiten« und alles zu
  * Commander Keen sind sunset; gebaut wird das gemalte Buch. Darum steht dort keine
- * freigegebene Geschichte, sondern das Buch als Lehrer-Tür.
+ * alte Oberwelt. Die Story-Kachel folgt dem Laufzeitschalter; die Buch-Vorschau
+ * bleibt als Lehrer-Tür erreichbar.
  *
  * Lernpfad, Hören, Tests, Wiederholung und eigene Aufgaben sind ebenfalls
  * speicherfreie Schüleransichten. Fehlender Inhalt steht als Text da. Die Zahlen
@@ -19,9 +20,11 @@ export const dynamic = "force-dynamic";
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { listApprovedUnits, listListeningUnits, listTestUnits, listReleasedStories, loadReleasedChapters } from "@domigo/content-loader";
+import { listApprovedUnits, listListeningUnits, listTestUnits, loadReleasedChapters } from "@domigo/content-loader";
 import { getTeacherForPage } from "@/lib/identity";
 import { listPreviewAssignments } from "@/app/assignments/preview";
+import { listOpenStories } from "@/lib/story-world";
+import { listPaintChapters, loadPaintLevel } from "@/lib/paint-content";
 import { loadDictionary } from "@/lib/woerterbuch";
 
 const GRADES = [1, 2, 3, 4] as const;
@@ -29,7 +32,7 @@ const GRADES = [1, 2, 3, 4] as const;
 /** Die Lehrer-Türen, die es schon vor der Vorschau gab — ehrlich beschriftet. */
 const TEACHER_DOORS: Record<number, Array<{ href: string; label: string; note: string }>> = {
   1: [
-    { href: "/play/1/buch/ch01", label: "Gemaltes Buch — das Spiel für Klasse 1", note: "noch nicht für Kinder freigegeben · nur Lehrkräfte, Kapitel 2–6 im Entwurf" },
+    { href: "/play/1/buch/ch01", label: "Gemaltes Buch — das Spiel für Klasse 1", note: "Child access follows Story world. Draft Chapters are teacher-only." },
   ],
   2: [{ href: "/play/2/school", label: "Schulhaus-Kapitel", note: "nur Lehrkräfte, solange nicht freigegeben" }],
 };
@@ -39,7 +42,7 @@ export default async function ExplorerPage() {
   if (!teacher) redirect("/admin/signin");
 
   const units = listApprovedUnits();
-  const stories = listReleasedStories();
+  const stories = await listOpenStories();
   const listening = listListeningUnits();
   const tests = listTestUnits();
   const assignments = await listPreviewAssignments(teacher, [...GRADES]);
@@ -60,7 +63,9 @@ export default async function ExplorerPage() {
 
       {GRADES.map((grade) => {
         const story = stories.find((s) => s.grade === grade && s.role === "canonical");
-        const released = story ? loadReleasedChapters(story.storyId).length : 0;
+        const released = !story ? 0 : grade === 1
+          ? listPaintChapters(story.storyId).filter((chapter) => loadPaintLevel(story.storyId, chapter).draft !== true).length
+          : loadReleasedChapters(story.storyId).length;
         const gradeUnits = units.filter((u) => u.startsWith(`g${grade}-`)).length;
         const gradeWords = dictionary.filter((entry) => entry.grade === grade).length;
         const doors = TEACHER_DOORS[grade] ?? [];

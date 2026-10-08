@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { listReleasedStories } from "@domigo/content-loader";
+import { listOpenStories } from "@/lib/story-world";
 import { getDailyChallengeCount, getDb } from "@domigo/db";
 import { resolveStudentView, trainerGrade } from "@/lib/student-view";
 import { wortDesTages, viennaDateKey } from "@/lib/wort-des-tages";
@@ -11,7 +11,7 @@ import PlayerCard from "./PlayerCard";
 import { readTrainerProfile } from "./trainer-data";
 
 export const dynamic = "force-dynamic";
-export default async function HomePage({ searchParams }: { searchParams: Promise<{ jahrgang?: string }> }) {
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ jahrgang?: string }> } = { searchParams: Promise.resolve({}) }) {
   const view = await resolveStudentView((await searchParams).jahrgang);
   if (!view) redirect("/signin");
   const grade = trainerGrade(view);
@@ -24,13 +24,13 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
     readTrainerProfile(view), wortDesTages(grade, day), loadDailyChallenge(view, grade, day).catch(() => null),
   ]);
   const done = acting && challenge ? await getDailyChallengeCount(getDb(), acting.classScope, acting.classId, acting.userId, grade, day, challenge.words.map((item) => item.id)).catch(() => null) : null;
-  const story = listReleasedStories().find((entry) => entry.grade === grade);
+  const story = (await listOpenStories()).find((entry) => entry.grade === grade);
   const storyUi = STORY_UI[grade] ?? DEFAULT_STORY_UI;
   return <TrainerShell grade={grade} preview={preview}>
     <main className="og-screen">
       <PlayerCard profile={profile} grade={grade} preview={preview} />
       <Link href={`/modi${suffix}`} className="og-primary og-start"><span>🎯 Start Practice</span><span className="og-start-sub">{grade === 1 ? "Chapter und Übungsformat auswählen" : "Choose Chapters and exercise type"}</span></Link>
-      <Link className="og-nav-card" href={`/woerterbuch${suffix}`}><span className="og-nav-icon">📖</span><span><strong>Dictionary &amp; Flashcards</strong><small>{grade === 1 ? "Wörter im Wörterbuch nachschlagen" : "Browse your full vocabulary library"}</small></span><span className="og-arrow">→</span></Link>
+      <Link className="og-nav-card" href={`/woerterbuch${suffix}`}><span className="og-nav-icon">📖</span><span><strong>Dictionary</strong><small>Browse your full vocabulary library</small></span><span className="og-arrow">→</span></Link>
       {story && <Link className="og-nav-card" href={`/play/${grade}${suffix}`}><span className="og-nav-icon">{storyUi.icon}</span><span><strong>Story Mode</strong><small>{story.titleEn}</small></span><span className="og-arrow">→</span></Link>}
       <div className="og-action-row"><Link href={`/fortschritt${suffix}`} className="og-action-card"><span>📊</span><strong>Fortschritt</strong></Link><Link href={`/profil${suffix}`} className="og-action-card"><span>👤</span><strong>Profil</strong></Link></div>
       <section className="og-today">
@@ -39,7 +39,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           <p>{grade === 1 ? "10 Wörter · heute für alle gleich" : "10 words · same for everyone today"}</p>
           {done !== null && <p className="og-daily-count">Done today: {done}/10 ({done * 10}%)</p>}
           {acting && done === null && <p lang="de">Der Tagesstand konnte gerade nicht geladen werden.</p>}
-          {challenge?.words.length === 10 ? <Link className="og-primary" href={`/practice?mode=daily${preview ? `&jahrgang=${grade}` : ""}`}>{grade === 1 ? "Challenge starten" : "Start Challenge"}</Link> : <p lang="de">Die Challenge ist gerade nicht verfügbar.</p>}
+          {acting && challenge && challenge.blockedCount > 0 && <p lang="de">Heute gesperrt: {challenge.blockedCount}/10 · Diese Wörter werden übersprungen.</p>}
+          {challenge?.words.length === 10 && challenge.availableWords.length > 0 ? <Link className="og-primary" href={`/practice?mode=daily${preview ? `&jahrgang=${grade}` : ""}`}>{grade === 1 ? "Challenge starten" : "Start Challenge"}</Link> : <p lang="de">{challenge?.blockedCount === 10 ? "Alle Wörter der heutigen Challenge sind gesperrt." : "Die Challenge ist gerade nicht verfügbar."}</p>}
         </div>
       </section>
     </main>

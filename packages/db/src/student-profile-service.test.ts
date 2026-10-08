@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { drizzle } from "drizzle-orm/neon-http";
 import { readFileSync } from "node:fs";
 import * as schema from "./schema.ts";
@@ -9,11 +9,12 @@ import { deleteUserData } from "./konto-loeschung.ts";
 
 const C = "aaaaaaaa-0000-4000-8000-000000000001", U = "bbbbbbbb-0000-4000-8000-000000000002";
 const scope = classScope([C]);
-function recorder(rows: (unknown[][] | Error)[] = []) {
+function recorder(rows: (unknown[][] | Error)[] = [], failTable?: { name: string; error: Error }) {
   const log: { sql: string; params: unknown[] }[] = [];
   let n = 0;
   const client = async (sql: string, params: unknown[]) => {
     log.push({ sql, params });
+    if (failTable && sql.startsWith(`delete from "domigo_v2"."${failTable.name}"`)) throw failTable.error;
     const result = rows[n++];
     if (result instanceof Error) throw result;
     return { rows: result ?? [], rowCount: 0, fields: [] };
@@ -77,7 +78,30 @@ describe("cgo-108 avatar allocation", () => {
     expect(q, "avatar row must not survive account deletion").toBeDefined();
     expect(q!.params).toEqual([U]);
     expect(result.zeilen).toHaveProperty("student_profile", 0);
+    expect(r.log.at(-2)!.sql).toMatch(/delete from "domigo_v2"\."student_profile"/);
     expect(r.log.at(-1)!.sql).toMatch(/delete from "domigo_v2"\."users"/);
+  });
+  it("deletion journals a missing optional profile after mandatory tables and still deletes identity", async () => {
+    const info = vi.spyOn(console, "info").mockImplementation(() => {});
+    try {
+      const r = recorder([], { name: "student_profile", error: Object.assign(new Error("missing"), { code: "42P01" }) });
+      const result = await deleteUserData(r.db, U);
+      expect(result.zeilen.student_profile).toBe(0);
+      expect(Object.keys(result.zeilen).slice(-2)).toEqual(["student_profile", "users"]);
+      expect(r.log.at(-2)!.sql).toMatch(/delete from "domigo_v2"\."student_profile"/);
+      expect(r.log.at(-1)!.sql).toMatch(/delete from "domigo_v2"\."users"/);
+      expect(info).toHaveBeenCalledWith(expect.stringMatching(/student_profile: missing relation \(42P01\), 0 rows/));
+    } finally { info.mockRestore(); }
+  });
+  it("deletion rejects non-missing profile errors and missing mandatory tables", async () => {
+    const errorLog = vi.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      for (const [name, code] of [["student_profile", "42501"], ["student_profile", "08006"], ["practice_attempts", "42P01"]]) {
+        const r = recorder([], { name: name!, error: Object.assign(new Error("synthetic failure"), { code }) });
+        await expect(deleteUserData(r.db, U)).rejects.toThrow();
+        expect(r.log.some((q) => q.sql.startsWith('delete from "domigo_v2"."users"'))).toBe(false);
+      }
+    } finally { errorLog.mockRestore(); }
   });
 });
 
@@ -114,8 +138,14 @@ describe("cgo-108 truthful own progress", () => {
     expect(sql).toMatch(/CHECK \("avatar" between 1 and 50\)/);
     expect(sql).not.toMatch(/\b(ALTER|DROP|DELETE|UPDATE|INSERT)\b/i);
     const journal = JSON.parse(read("meta/_journal.json"));
+    expect(journal.entries.map((e: { idx: number }) => e.idx)).toEqual(Array.from({ length: 23 }, (_, i) => i));
+    expect(journal.entries.slice(-3).map((e: { tag: string }) => e.tag)).toEqual(["0020_story_world_settings", "0021_class_settings", "0022_student_profile"]);
     expect(journal.entries.filter((e: { idx: number }) => e.idx === 22)).toEqual([expect.objectContaining({ tag: "0022_student_profile", version: "7" })]);
     const snapshot = JSON.parse(read("meta/0022_snapshot.json"));
+    const previous = JSON.parse(read("meta/0021_snapshot.json"));
+    expect(snapshot.prevId).toBe(previous.id);
+    expect(Object.keys(snapshot.tables).sort()).toEqual([...Object.keys(previous.tables), "domigo_v2.student_profile"].sort());
+    for (const [name, table] of Object.entries(previous.tables)) expect(snapshot.tables[name]).toEqual(table);
     expect(Object.keys(snapshot.tables["domigo_v2.student_profile"].columns)).toEqual(["user_id", "avatar", "updated_at"]);
     expect(snapshot.tables["domigo_v2.student_profile"].checkConstraints.student_profile_avatar_check.value).toContain("between 1 and 50");
   });

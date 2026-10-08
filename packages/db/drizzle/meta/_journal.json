@@ -143,6 +143,20 @@
       "breakpoints": true
     },
     {
+      "idx": 20,
+      "version": "7",
+      "when": 1791399857865,
+      "tag": "0020_story_world_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1791426000000,
+      "tag": "0021_class_settings",
+      "breakpoints": true
+    },
+    {
       "idx": 22,
       "version": "7",
       "when": 1791464400000,

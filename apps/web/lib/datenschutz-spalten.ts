@@ -102,6 +102,12 @@ const W = {
 
 /** table (SQL name) → column (SQL name) → mark */
 export const SPALTEN: Record<string, Record<string, Eintrag>> = {
+  story_world_settings: {
+    grade: sachlich("platform-wide school year, no class or person identifier"),
+    is_open: sachlich("story visibility for the whole school year"),
+    updated_at: sachlich("configuration timestamp; no actor is recorded"),
+  },
+
   users: {
     id: kennung(W.konto, "the id every other table stores instead of a name"),
     role: sachlich("whether an account belongs to a child or to a teacher — the page is built on exactly that split, one section each"),
@@ -123,6 +129,15 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     smart_review_enabled: sachlich("a class setting"),
     archived_at: sachlich(),
     created_at: sachlich(),
+  },
+
+  // cgo-094 · GG-Entscheid, Nachzug 1: Inventarpflege, alle drei Spalten sachlich.
+  // Zweck: Kennzeichen Testklasse (Lehrer-Eigentest), kein Kind, kein Name.
+  // Löschweg: mit der Klasse.
+  class_settings: {
+    class_id: sachlich("Zuordnung der Einstellung zur Klasse, keine Personenkennung"),
+    purpose: sachlich("Kennzeichen Testklasse (Lehrer-Eigentest), kein Kind, kein Name"),
+    updated_at: sachlich("Zeitpunkt der Einstellungsänderung, keine Aktivität eines Kindes"),
   },
 
   practice_attempts: {

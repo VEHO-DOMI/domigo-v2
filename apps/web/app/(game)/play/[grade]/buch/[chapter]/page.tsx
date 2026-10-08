@@ -1,9 +1,8 @@
 /**
  * /play/[grade]/buch/[chapter] — THE PAINTED BOOK (doc 31). PR ④ "first light":
- * the movement toy on the draft ch01 level. TEACHER-PREVIEW ONLY in production
- * (the ACCESS-MAP row landed with doc 31; students never see this until the
- * M-gates pass). The level runs the FULL law gate at request time — a level
- * that breaks its own laws fails the page, never serves.
+ * Children enter released chapters when their school year is open. Teachers
+ * retain preview access; draft chapters always remain teacher-only. Level laws
+ * run during authoring and in the content test suite.
  *
  * L0 · D1 · DAS KAPITEL STEHT IN DER ADRESSE.
  *
@@ -19,12 +18,14 @@
  *   2. Bestand — `listPaintChapters()` liest, was WIRKLICH auf der Platte liegt;
  *      ein Kapitel, das es nicht gibt, ist ein 404 und kein Serverfehler.
  *   3. Reife — ein Kapitel mit `draft: true` wird noch gebaut und ist in JEDER
- *      Umgebung nur hinter der Lehrer-Tür sichtbar, auch lokal. Das Kapitel,
- *      das fertig ist, behält die alte Regel (Lehrer-Tür nur in Produktion).
+ *      Umgebung nur hinter der Lehrer-Tür sichtbar, auch lokal. Fertige
+ *      Kapitel folgen der Laufzeitfreigabe und der bestehenden Jahrgangswand.
  */
 import { notFound, redirect } from "next/navigation";
 import { allPhases, checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
 import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { openStoryIdForGrade } from "@/lib/story-world";
+import { resolveStudentView, yearRedirect } from "@/lib/student-view";
 import { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel, loadPaintTasksV2 } from "@/lib/paint-content";
 import { resolvePaintArt } from "@/lib/paint-art";
 import BuchClient from "./BuchClient";
@@ -45,14 +46,18 @@ export default async function BuchPage({
   // Lock 1+2: the shape, then the shelf. Both before any file is opened, so a
   // stray URL is a plain 404 and never a stack trace.
   if (!CHAPTER_ID.test(chapter) || !listPaintChapters(STORY).includes(chapter)) notFound();
-  // pre-release gate with the teacher door
+  // Runtime visibility and the existing school-year wall; teachers retain preview.
   const teacher = await getTeacherForPage();
-  if (process.env.VERCEL_ENV === "production" && teacher === null) redirect(`/play/${gradeStr}`);
   const student = await getActingUserForPage();
   const preview = student === null && teacher !== null;
   const ownerId = student?.userId ?? null;
   const acting = await getPlayerForPage();
   if (!acting) redirect("/signin");
+  if (teacher === null) {
+    const away = yearRedirect(await resolveStudentView(), 1);
+    if (away) redirect(away);
+    if (await openStoryIdForGrade(1) === null) redirect("/play");
+  }
 
   const raw = loadPaintLevel(STORY, chapter);
   // Lock 3: a chapter still being built is a teacher surface EVERYWHERE. The

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { abmelden } from "../le/konto-aktion";
 import { avatarPath, AVATAR_NAMES } from "@/lib/avatar";
 import { levelFor, vocabTitle, grammarTitle, registerFor, barFraction, formatXp, prestigeStars } from "@/lib/levels";
@@ -14,7 +13,9 @@ export default function PlayerCard({ profile, grade, preview }: { profile: Train
   async function logOut() { "use server"; await abmelden(); }
   return <section className="og-player" aria-label="Profil">
     <div className="og-player-top">
-      <Link href={`/profil${suffix}`} aria-label="Profil und Avatar öffnen"><Image className="og-avatar" src={avatarPath(profile.avatar)} alt={AVATAR_NAMES[profile.avatar - 1]} width={64} height={64} unoptimized /></Link>
+      {/* Original PNG, fixed dimensions; served directly without image transformation. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <Link href={`/profil${suffix}`} aria-label="Profil und Avatar öffnen"><img className="og-avatar" src={avatarPath(profile.avatar)} alt={AVATAR_NAMES[profile.avatar - 1]} width={64} height={64} decoding="async" /></Link>
       <div className="og-player-info">
         <div className="og-player-name"><Link href={`/profil${suffix}`}>{profile.name}</Link>
           {profile.xp !== null && <span className={`og-rank zone-${level.zone}`}>{prestigeStars(level.prestige)} Lv {level.level} · {title.name}</span>}

@@ -1,6 +1,4 @@
 {
-  "id": "b46136ff-9946-4a2a-8c4f-2ae3ed7bf228",
-  "prevId": "bc5e75fd-a8ca-4c97-a116-817ac6f08bb7",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -392,44 +390,6 @@
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "domigo_v2.class_settings": {
-      "name": "class_settings",
-      "schema": "domigo_v2",
-      "columns": {
-        "class_id": {
-          "name": "class_id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "purpose": {
-          "name": "purpose",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'regular'"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {
-        "class_settings_purpose_check": {
-          "name": "class_settings_purpose_check",
-          "value": "\"domigo_v2\".\"class_settings\".\"purpose\" in ('regular', 'test')"
-        }
-      },
       "isRLSEnabled": false
     },
     "domigo_v2.game_saves": {
@@ -1175,43 +1135,6 @@
         "story_world_settings_grade_check": {
           "name": "story_world_settings_grade_check",
           "value": "\"domigo_v2\".\"story_world_settings\".\"grade\" between 1 and 4"
-        }
-      },
-      "isRLSEnabled": false
-    },
-    "domigo_v2.student_profile": {
-      "name": "student_profile",
-      "schema": "domigo_v2",
-      "columns": {
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "avatar": {
-          "name": "avatar",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {
-        "student_profile_avatar_check": {
-          "name": "student_profile_avatar_check",
-          "value": "\"domigo_v2\".\"student_profile\".\"avatar\" between 1 and 50"
         }
       },
       "isRLSEnabled": false
@@ -2684,8 +2607,10 @@
   "policies": {},
   "views": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "d7afaff5-008a-4649-98b8-6b468bea5700",
+  "prevId": "bc9b7466-5e73-47b0-8385-882006c77e0c"
 }

@@ -20,6 +20,13 @@ export async function loadPracticeWords(view: StudentView, grade: number, chapte
 }
 
 export async function loadDailyChallenge(view: StudentView, grade: number, day = viennaDateKey()) {
-  const { vocab } = await loadPracticeWords(view, grade);
-  return { day, words: selectDailyChallenge(vocab, grade, day) };
+  const slugs = listApprovedUnits().filter((slug) => slug.startsWith(`g${grade}-`));
+  const units = await Promise.all(slugs.map((slug) => loadUnitWithOverrides(slug)));
+  // Everyone in the grade gets this same ten-word set, even across classes.
+  const words = selectDailyChallenge(units.flatMap((unit) => unit.vocab), grade, day);
+  const acting = view.kind === "student" ? view.player : null;
+  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId) : new Set<string>();
+  // Skip held-out words after selection; never replace them with other words.
+  const availableWords = words.filter((item) => assignPool(item.id, reserved) !== "mock");
+  return { day, words, availableWords, blockedCount: words.length - availableWords.length };
 }

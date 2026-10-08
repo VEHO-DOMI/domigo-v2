@@ -30,6 +30,13 @@ export const studentProfile = v2.table("student_profile", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => ({ avatarRange: check("student_profile_avatar_check", sql`${t.avatar} between 1 and 50`) }));
 
+/** Sparse platform settings: an absent grade uses the corpus release default. */
+export const storyWorldSettings = v2.table("story_world_settings", {
+  grade: smallint("grade").primaryKey(),
+  isOpen: boolean("is_open").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [check("story_world_settings_grade_check", sql`${t.grade} between 1 and 4`)]);
+
 /**
  * One unified attempt ledger (vocab + grammar), `kind`-discriminated. Game tasks
  * reuse it verbatim (`mode:'game:g1'` + `context` jsonb). `userId`/`classId` are
@@ -786,3 +793,10 @@ export const v2OpsLinkUses = v2.table("ops_link_uses", {
   usedAt: timestamp("used_at", { withTimezone: true }).notNull().defaultNow(),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
 });
+
+/** cgo-094 · DomiGo-owned purpose, never overwritten by the account class mirror. */
+export const classSettings = v2.table("class_settings", {
+  classId: uuid("class_id").primaryKey(),
+  purpose: text("purpose").notNull().default("regular"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [check("class_settings_purpose_check", sql`${t.purpose} in ('regular', 'test')`)]);

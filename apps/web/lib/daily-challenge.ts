@@ -12,7 +12,7 @@ export function dailySeed(grade: number, day: string): number {
 }
 
 /** Stable input order and unique headwords: repetitions in other Chapters do
- * not occupy two places. Callers supply only the grade's unreserved corpus.
+ * not occupy two places. Callers supply the grade's complete corpus, before class reservations.
  */
 export function selectDailyChallenge(items: readonly VocabItem[], grade: number, day: string): VocabItem[] {
   let state = dailySeed(grade, day);

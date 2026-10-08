@@ -70,3 +70,8 @@ export * from "./auth-throttle.ts"; // K2a: the sign-in brake, one statement per
 // (its only non-drizzle import is teacher-events.ts, which imports nothing). Contrast
 // the reset-tokens note above — that one stays out because of node:crypto.
 export * from "./writing-review.ts"; // K6a: the teacher's view of what the children wrote, and her mark on it
+export * from "./story-world-service.ts"; // cgo-070: runtime story visibility, teacher/class-scoped writes
+
+export * from "./class-settings-service.ts";
+// cgo-094: the public cohort reader excludes test classes; individual game reads stay unchanged.
+export { getUnitMastery } from "./class-progress.ts";
