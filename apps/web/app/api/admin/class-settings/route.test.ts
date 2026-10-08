@@ -210,7 +210,7 @@ describe("cgo-094 aggregation and deployment source contracts", () => {
   }
   it("Neon sheet includes the migration verbatim; snapshot describes only the new table delta", () => {
     assert.ok(read('docs/CGO-094_NEON_BLATT_0021.md').includes(read('packages/db/drizzle/0021_class_settings.sql')));
-    const before = JSON.parse(read('packages/db/drizzle/meta/0019_snapshot.json'));
+    const before = JSON.parse(read('packages/db/drizzle/meta/0020_snapshot.json'));
     const after = JSON.parse(read('packages/db/drizzle/meta/0021_snapshot.json'));
     assert.equal(after.prevId, before.id);
     const settings = after.tables['domigo_v2.class_settings'];
