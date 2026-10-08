@@ -21,6 +21,7 @@
     "class-progress.ts#listClassTraps": 1,
     "class-service.ts#getClassForTeacher": 1,
     "class-service.ts#listClassesForTeacher": 1,
+    "class-service.ts#listClassRegistrationCountsForTeacher": 1,
     "class-service.ts#listArchivedClassesForTeacher": 1,
     "class-service.ts#renameClass": 1,
     "class-service.ts#archiveClass": 2,

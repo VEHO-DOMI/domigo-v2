@@ -119,6 +119,20 @@ export async function listClassesForTeacher(db: Db, classScope: ClassScope, teac
   return classes.map((c) => ({ ...c, studentCount: byClass.get(c.id) ?? 0 }));
 }
 
+/** cgo-077: counts only, never student identities. Same claimed_at meaning as
+ * the grandmaster overview; both the session scope and ownership must match. */
+export async function listClassRegistrationCountsForTeacher(db: Db, classScope: ClassScope, teacherId: string): Promise<{ classId: string; claimedCount: number }[]> {
+  return db
+    .select({
+      classId: v2Classes.id,
+      claimedCount: sql<number>`count(${v2IdentityUsers.claimedAt})::int`,
+    })
+    .from(v2IdentityUsers)
+    .innerJoin(v2Classes, eq(v2Classes.id, v2IdentityUsers.classId))
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .groupBy(v2Classes.id);
+}
+
 /** An archived class the teacher owns — a ClassSummary plus WHEN it was retired. */
 export interface ArchivedClassSummary extends ClassSummary {
   archivedAt: Date;
