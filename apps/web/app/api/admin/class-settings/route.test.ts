@@ -140,6 +140,19 @@ const guards: Guard[] = [
   { name: "class list receives persisted purposes", path: "apps/web/app/admin/classes/page.tsx",
     passes: s => s.includes('getClassPurposes(getDb(), teacher.classScope, [...classes, ...archived]') && s.includes('initialPurposes={Object.fromEntries(purposes)}'),
     break: s => s.replace('initialPurposes={Object.fromEntries(purposes)}', 'initialPurposes={{}}') },
+  { name: "class list labels test classes in both active and archived rows", path: "apps/web/app/admin/classes/ClassesManager.tsx",
+    passes: s => ['initialClasses', 'initialArchived'].every(list => {
+      const rows = s.split(`${list}.map((c) => (`)[1]?.split('{purposeControl(c.id)}')[0] ?? '';
+      return rows.includes('{c.name} {purposes[c.id] === "test" && <span className="dg-chip">Testklasse</span>}');
+    }),
+    break: s => s.replaceAll('{purposes[c.id] === "test" && <span className="dg-chip">Testklasse</span>}', '') },
+  { name: "failed purpose writes show Nicht gespeichert in the class status", path: "apps/web/app/admin/classes/ClassesManager.tsx",
+    passes: s => {
+      const toggle = s.split('const togglePurpose = async (id: string) => {')[1]?.split('const purposeControl')[0] ?? '';
+      return /\} catch \{\s*setNotice\(\{ id, text: "Nicht gespeichert\. Bitte versuche es später erneut\." \}\);\s*\} finally/.test(toggle)
+        && /\{notice\?\.id === id && <p role="status"[^>]*>\{notice\.text\}<\/p>\}/.test(s);
+    },
+    break: s => s.replace('text: "Nicht gespeichert. Bitte versuche es später erneut."', 'text: "Gespeichert."') },
   { name: "toggle confirms actual JSON save before updating", path: "apps/web/app/admin/classes/ClassesManager.tsx",
     passes: s => /if \(!response.ok \|\| response.redirected \|\| result\?\.ok !== true\) throw/.test(s) && s.indexOf('if (!response.ok') < s.indexOf('setOverrides((previous)'),
     break: s => s.replace('!response.ok || response.redirected || result?.ok !== true', '!response.ok') },
