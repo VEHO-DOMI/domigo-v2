@@ -33,7 +33,7 @@ LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vo
 | Posten | Stand | Beleg |
 |---|---|---|
 | Y1: gemaltes Buch, Chapter 1 einschließlich B1-Befreiungsmuster; über Lehrerzugang spielbar | GEBAUT nicht freigegeben — Kinderzugang bleibt gesperrt; Kokis HALT-Spieltest offen | [Buch-Tür](../apps/web/app/(game)/play/[grade]/buch/[chapter]/page.tsx); PR 489; cgo-021 |
-| Y1: Lernspur G-1, servergezählte Lernpunkte G-2 und Rückkanal nach Offline-Versand | LIVE — innerhalb des Lehrerzugangs zum Buch, keine zusätzliche Kinderfreigabe | PR 491, 493, 497; [BuchClient](../apps/web/app/(game)/play/[grade]/buch/[chapter]/BuchClient.tsx) |
+| Y1: Lernspur G-1, servergezählte Lernpunkte G-2 und Rückkanal nach Offline-Versand | GEBAUT nicht freigegeben — ausgerollt, aber Lehrer-Vorschau schreibt keine Lernversuche; Kinderzugang gesperrt | PR 491, 493, 497; [BuchClient](../apps/web/app/(game)/play/[grade]/buch/[chapter]/BuchClient.tsx) |
 | Y1: Zoo Chapter 2 und Entwürfe Chapter 3–6 | GEBAUT nicht freigegeben — Zoo-Ausbau erst nach dem Siegel für Chapter 1 | [Buchdaten](../content/corpus/stories/g1.st.lost-pages/paint); PR 423, 424, 487 |
 | Y1: Chapter 7–15 | GEBAUT nicht freigegeben — nur Design-Dossiers, keine spielbaren Kapitel | Spielplan doc 44, Abschnitt 4; Programm-Inventar B |
 | Y2: Detektivgeschichte „The Wrong Name“, 15 freigegebene Kapitel | LIVE — bisherige Kampagne bleibt erreichbar | [Freigabe](../content/corpus/stories/g2.st.wrong-name/release.json); `pnpm content validate-story` |
@@ -45,6 +45,8 @@ LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vo
 | Y4: weiterer Ausbau | PAUSIERT — Koki 25.09.2026: „pausiert“ | cgo-069; Programm-Inventar Bereich B |
 | Keen und alte Y1-Oberwelt | VERWORFEN — Koki 02./03.10.2026: „sunset keen und anything overworld“; Aufräum-Welle 1 umgesetzt | PR 478, 488; Inhalte und an Y2 gebundene Reste bleiben als Erbe erhalten |
 | „Lost for Words“ | PAUSIERT — Koki 10.07.2026: „parked“; keine freigegebenen Kapitel, Bestand weiter geprüft | [Freigabe](../content/corpus/stories/g4.st.lost-for-words/release.json); [Blueprint-Ledger](BLUEPRINT_V2.md#part-0--canonical-state--the-wave-2-decision-ledger) |
+| Word-Battle / Top-down-Spielrichtung | VERWORFEN — Koki 16.07.2026: „Word-Battle/Top-down“ verworfen | [Historischer Status](handover/STATUS_ARCHIV_2026-08.md); Programm-Inventar „Verworfen/geparkt“ |
+| Syntaxia | VERWORFEN — Koki 06.07.2026: Fantasy-Ansätze zurückgewiesen | [Jahrgang-4-Dokumentation](handover/grades/g4.md); [Vision-Ledger](VISION.md) |
 | Fragen-Seite vor dem Zoo aus dem Laborpaket | VERWORFEN — 07.10.2026: „PR 486 vollständig zurück“ | Rücknahme PR 487; der Zoo-Level ist wieder der Spieleinstieg |
 
 ### Lehrerseite
