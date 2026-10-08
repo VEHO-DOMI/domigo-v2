@@ -4,7 +4,8 @@ import { listApprovedUnits, loadUnit, loadStory, loadReleasedChapters, loadStory
 import { resolveStudentView } from "@/lib/student-view";
 import { isSlugAllowed } from "@/lib/grade-scope";
 import PreviewBanner from "@/app/PreviewBanner";
-import { getDb, getDueCounts, getDueStoryCount, getDueStoryRefs } from "@domigo/db";
+import { getDb, getDueCounts, getDueStoryCount, getDueStoryRefs, listStudentTraps } from "@domigo/db";
+import FallenKarte from "./FallenKarte";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,8 @@ export default async function ReviewPage({ searchParams }: {
   const preview = view.kind === "preview";
   // Preview has no personal queue: no due-count query is made for the teacher.
   const counts = acting ? await getDueCounts(getDb(), acting.userId, acting.classId) : null;
+  // An unavailable optional summary must not prevent the due items from opening.
+  const traps = acting ? await listStudentTraps(getDb(), acting.classScope, acting.classId, acting.userId, { sinceDays: 30, limit: 3 }).catch(() => []) : [];
   const chapters = preview ? listApprovedUnits().filter((slug) => isSlugAllowed(slug, view.grades)) : [];
 
   // Story work has its own door, never a standalone card in unit review.
@@ -42,6 +45,8 @@ export default async function ReviewPage({ searchParams }: {
         <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Review</h1>
         <Link href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Zur Schüleransicht" : "← Home"}</Link>
       </div>
+
+      <FallenKarte traps={traps} />
 
       {storyHref && <section aria-labelledby="story-review-title" style={{ marginTop: 24, marginBottom: 24 }}>
         <h2 id="story-review-title" style={{ fontSize: 20 }}>Wiederholung in der Geschichte</h2>

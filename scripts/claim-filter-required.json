@@ -19,6 +19,7 @@
     "class-progress.ts#listStudentMeta": 1,
     "class-progress.ts#listClassUnitProgress": 1,
     "class-progress.ts#listClassTraps": 1,
+    "student-traps.ts#listStudentTraps": 1,
     "class-service.ts#getClassForTeacher": 1,
     "class-service.ts#listClassesForTeacher": 1,
     "class-service.ts#listClassRegistrationCountsForTeacher": 1,

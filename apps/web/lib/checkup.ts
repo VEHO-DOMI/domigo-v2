@@ -6,8 +6,13 @@
  * lives in @domigo/db (packages/db/src/checkup.ts); this file only ASSEMBLES —
  * grading stays in @domigo/engine end to end (one brain).
  */
-import { loadUnit } from "@domigo/content-loader";
+import { loadUnit, validateFullItem, type UnitContent } from "@domigo/content-loader";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
+import { buildEngineInput, frameGrammarItem, type Frame } from "@domigo/content-pipeline/blind-solve";
+import { gradeGrammar, gradeVocab, vocabAnswers, type Tier, type VocabPool } from "@domigo/engine";
+import { vocabPrompt } from "@domigo/task-ui/vocab-pool";
+import { firstLetterMaskText } from "../../../packages/task-ui/src/mask.ts";
+import { parseItemRef } from "./itemRef.ts";
 import {
   checkupSectionKind,
   checkupVocabPool,
@@ -225,4 +230,173 @@ export function composeCheckup(
  *  section order — shared by the runner page (render) and any verify path. */
 export function sectionItemPools(cfg: CheckupSectionConfig, itemCount: number) {
   return Array.from({ length: itemCount }, (_, i) => checkupVocabPool(cfg, i, itemCount));
+}
+
+/** A server-resolved task, before any paid solve. Only `frame` may be sent to
+ * the blind solver; `item` includes keys and stays on the grading side. */
+export interface PreparedCheckupTask {
+  itemId: string;
+  unitSlug: string;
+  kind: "vocab" | "grammar";
+  revision: number;
+  item: VocabItem | GrammarItem;
+  frame: Frame;
+  pool: VocabPool | null;
+  sectionPosition: number;
+  itemPosition: number;
+}
+
+export type PrepareCheckupResult =
+  | { ok: true; tasks: PreparedCheckupTask[] }
+  | { ok: false; errors: string[] };
+
+export type CheckupTaskUnits = ReadonlyMap<string, Pick<UnitContent, "vocab" | "grammar">>;
+
+/** Same question, input shape and answer pool as CheckupRunner. A mask changes
+ * the visible prompt only; it never replaces the full answer when grading. */
+export function gradeCheckupCandidate(task: PreparedCheckupTask, answer: string): Tier {
+  return task.kind === "vocab"
+    ? gradeVocab(task.item as VocabItem, answer, task.pool ?? "carrier").tier
+    : gradeGrammar(task.item as GrammarItem, buildEngineInput(task.frame, answer)).tier;
+}
+
+/** The assignment answer endpoint still grades canon. Until that separate
+ * contract changes, reject displayed replacements whose grading differs.
+ * Prose-only changes are safe except where the engine's prompt-echo guard
+ * uses the prompt itself to distinguish a correction from copying. */
+export function checkupGradingCompatible(canonical: VocabItem | GrammarItem, displayed: VocabItem | GrammarItem, kind: "vocab" | "grammar"): boolean {
+  const shape = (item: VocabItem | GrammarItem) => {
+    if (kind === "vocab") {
+      const vocab = item as VocabItem;
+      return [vocab.sAnswers, vocab.dAnswers, vocab.translation.deToEn, vocab.translation.enToDe];
+    }
+    const grammar = item as GrammarItem;
+    const echo = ["translation", "transformation", "error-correction", "question-formation"].includes(grammar.format);
+    return [grammar.format, grammar.answers, grammar.strict === true, grammar.direction, grammar.pairs, grammar.groups, echo ? grammar.prompt.text : null];
+  };
+  return JSON.stringify(shape(canonical)) === JSON.stringify(shape(displayed));
+}
+
+/** Free key-solvability proof, also exercised with deliberately broken keys
+ * in tests. Every authored full answer must round-trip in this exact pool. */
+export function checkCheckupTaskKeys(task: PreparedCheckupTask): string[] {
+  const answers = task.kind === "vocab" ? vocabAnswers(task.item as VocabItem, task.pool ?? "carrier") : (task.item as GrammarItem).answers;
+  const fullAnswers = answers.filter((answer) => answer.tier === "full");
+  if (!fullAnswers.length || fullAnswers.some((answer) => gradeCheckupCandidate(task, answer.text) !== "correct")) {
+    return [`${task.itemId}: Der Lösungsschlüssel wird im angezeigten Antwortformat nicht vollständig als richtig bewertet. Aufgabe tauschen oder korrigieren.`];
+  }
+  return [];
+}
+
+function frameCheckupVocab(item: VocabItem, pool: VocabPool, masked: boolean): Frame {
+  // Reuse the renderer's leak-safe pool selection and fixed-width mask; the
+  // definition/translation pools must never inherit the carrier's glosses.
+  const ask = vocabPrompt(item, pool);
+  const full = vocabAnswers(item, pool).find((answer) => answer.tier === "full");
+  const mask = masked ? firstLetterMaskText(full?.text ?? "") : "";
+  const blank = /_{2,}/.exec(ask.text);
+  const question = mask && blank
+    ? ask.text.slice(0, blank.index) + mask + ask.text.slice(blank.index + blank[0].length)
+    : ask.text;
+  return {
+    itemId: item.id,
+    kind: "vocab",
+    format: pool === "carrier" ? "vocab-carrier" : pool === "definition" ? "vocab-definition" : "translation",
+    lines: [
+      ...(ask.context === null ? [] : [ask.context]),
+      ...(ask.instruction ? [ask.instruction] : []),
+      question,
+      ...(mask && !blank ? [mask] : []),
+    ],
+    input: { kind: "text", blanks: 1 },
+    // CheckupRunner hides hints. Gloss rows, where present, start collapsed:
+    // solve the student's first unassisted view, never pre-reveal word help.
+    glosses: [],
+    direction: pool === "deToEn" || pool === "enToDe" ? pool : null,
+    structure: null,
+  };
+}
+
+/** §5.4's deterministic gate, in the exact section order and answer pools the
+ * child receives. Runtime supplies the same published overlay map as the
+ * assignment page; offline callers default to the canonical loader. A supplied
+ * map is authoritative: missing units fail closed instead of falling back to
+ * different bytes. No DB, account or model call occurs in this function. */
+export function prepareCheckupTasks(
+  sections: readonly ComposedCheckupSection[],
+  units?: CheckupTaskUnits,
+): PrepareCheckupResult {
+  const tasks: PreparedCheckupTask[] = [];
+  const errors: string[] = [];
+  const loaded = new Map<string, Pick<UnitContent, "vocab" | "grammar">>();
+  for (const section of sections) {
+    if (section.sectionConfig.checkupKind === "picture-mc" || checkupSectionKind(section.sectionConfig.checkupKind) !== section.kind) {
+      errors.push(`Teil ${section.position + 1}: Aufgabenart und Checkup-Abschnitt passen nicht zusammen.`);
+      continue;
+    }
+    for (const [itemPosition, itemId] of section.itemIds.entries()) {
+      const ref = parseItemRef(itemId);
+      if (!ref || ref.kind !== section.kind) {
+        errors.push(`${itemId}: Die Aufgabenkennung passt nicht zum Abschnitt.`);
+        continue;
+      }
+      let unit = units?.get(ref.unitSlug) ?? loaded.get(ref.unitSlug);
+      if (!unit && units === undefined) {
+        try {
+          unit = loadUnit(ref.unitSlug);
+          loaded.set(ref.unitSlug, unit);
+        } catch { /* named failure below, never silently skip an item */ }
+      }
+      const item = section.kind === "vocab"
+        ? unit?.vocab.find((candidate) => candidate.id === itemId)
+        : unit?.grammar.find((candidate) => candidate.id === itemId);
+      if (!item) {
+        errors.push(`${itemId}: Die Aufgabe ist in ${ref.unitSlug} nicht verfügbar.`);
+        continue;
+      }
+      const valid = validateFullItem(section.kind, item);
+      if (!valid.ok) {
+        errors.push(`${itemId}: ${valid.errors.join(" · ")}`);
+        continue;
+      }
+      if (units !== undefined) {
+        let canonicalUnit = loaded.get(ref.unitSlug);
+        if (!canonicalUnit) {
+          try {
+            canonicalUnit = loadUnit(ref.unitSlug);
+            loaded.set(ref.unitSlug, canonicalUnit);
+          } catch { /* unavailable canon cannot prove grading equivalence */ }
+        }
+        const canonical = section.kind === "vocab"
+          ? canonicalUnit?.vocab.find((candidate) => candidate.id === itemId)
+          : canonicalUnit?.grammar.find((candidate) => candidate.id === itemId);
+        if (!canonical || !checkupGradingCompatible(canonical, item, section.kind)) {
+          errors.push(`${itemId}: Angezeigte Aufgabe und gespeicherte Bewertung stimmen nicht überein. Aufgabe tauschen oder korrigieren.`);
+          continue;
+        }
+      }
+      const pool = section.kind === "vocab" ? checkupVocabPool(section.sectionConfig, itemPosition, section.itemIds.length) : null;
+      const framed = section.kind === "vocab"
+        ? frameCheckupVocab(item as VocabItem, pool!, section.sectionConfig.mask === "first-letter")
+        : CHECKUP_GRAMMAR_FORMATS.has((item as GrammarItem).format) ? frameGrammarItem(item as GrammarItem) : null;
+      if (!framed) {
+        errors.push(`${itemId}: Dieses Aufgabenformat kann im Checkup nicht blind geprüft werden.`);
+        continue;
+      }
+      // Practice's structure context is not displayed on the paper runner.
+      // Glosses are collapsed and hints/explanations unavailable before submit.
+      const frame = { ...framed, glosses: [], structure: null };
+      const task: PreparedCheckupTask = {
+        itemId, unitSlug: ref.unitSlug, kind: section.kind, revision: item.rev,
+        item, frame, pool, sectionPosition: section.position, itemPosition,
+      };
+      const keyErrors = checkCheckupTaskKeys(task);
+      if (keyErrors.length) {
+        errors.push(...keyErrors);
+        continue;
+      }
+      tasks.push(task);
+    }
+  }
+  return errors.length ? { ok: false, errors } : { ok: true, tasks };
 }

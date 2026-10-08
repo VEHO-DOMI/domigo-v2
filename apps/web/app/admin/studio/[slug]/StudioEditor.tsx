@@ -9,6 +9,8 @@
 import { useRouter } from "next/navigation";
 import { useState, type CSSProperties } from "react";
 import { saveThenPublish } from "@/lib/studio-publish";
+import { countBlanks, type GrammarItem, type VocabItem } from "@domigo/content-schema";
+import { GrammarItemView, VocabItemView } from "@domigo/task-ui";
 
 export interface StudioField {
   key: string; // "s" | "d" | "hintDe" | "prompt.text" | …
@@ -24,6 +26,7 @@ export interface StudioItem {
   fields: StudioField[];
   locked: Array<{ labelDe: string; value: string }>;
   override: { patch: Record<string, unknown>; status: string } | null;
+  fullDraft?: { draftId: string; item: GrammarItem | VocabItem; action: "create" | "replace"; status: string };
 }
 
 function getPatchValue(patch: Record<string, unknown>, key: string): unknown {
@@ -57,10 +60,50 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
   const [values, setValues] = useState<Record<string, string>>(() => Object.fromEntries(item.fields.map((f) => [f.key, initialValue(item, f)])));
   const [busy, setBusy] = useState<null | string>(null);
   const [errors, setErrors] = useState<string[]>([]);
+  const [preview, setPreview] = useState(false);
+  const [liveStatus, setLiveStatus] = useState<string | null>(null);
 
   const changed = item.fields.filter((f) => values[f.key] !== f.canon);
   const dirty = changed.length > 0;
-  const status = item.override?.status ?? null;
+  const status = liveStatus ?? item.fullDraft?.status ?? item.override?.status ?? null;
+
+  function buildFullItem(): GrammarItem | VocabItem {
+    const full = structuredClone(item.fullDraft!.item);
+    for (const field of item.fields) {
+      const value = values[field.key] ?? "";
+      setPatchValue(full as unknown as Record<string, unknown>, field.key, field.nullable && !value.trim() ? null : value);
+    }
+    if (item.kind === "grammar") {
+      const grammar = full as GrammarItem;
+      grammar.prompt.blanks = countBlanks(grammar.prompt.text);
+    }
+    if (dirty) full.rev += 1;
+    return full;
+  }
+
+  function saveBody(): Record<string, unknown> {
+    return item.fullDraft
+      ? { action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, draftAction: item.fullDraft.action, draftId: item.fullDraft.draftId, item: buildFullItem() }
+      : { action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() };
+  }
+
+  async function poll(runId: string) {
+    try {
+      const response = await fetch("/api/admin/studio/drafts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "poll", runId }) });
+      const result = await response.json() as { kind?: string; note?: string };
+      if (response.ok && result.kind === "running") {
+        window.setTimeout(() => void poll(runId), 3000);
+        return;
+      }
+      setBusy(null);
+      setLiveStatus(result.kind === "passed" ? "published" : "check_failed");
+      if (result.kind !== "passed") setErrors([result.note ?? "Die Aufgabe wurde nicht veröffentlicht. Prüfe den Entwurf."]);
+      router.refresh();
+    } catch {
+      setBusy(null);
+      setErrors(["Prüfstatus nicht erreichbar. Lade die Seite erneut, bevor du weiterarbeitest."]);
+    }
+  }
 
   function buildPatch(): Record<string, unknown> {
     const patch: Record<string, unknown> = {};
@@ -77,12 +120,16 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
     setBusy(label);
     setErrors([]);
     try {
-      const res = await fetch("/api/admin/studio", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
-      const d = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; errors?: string[] };
+      const res = await fetch(item.fullDraft ? "/api/admin/studio/drafts" : "/api/admin/studio", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      const d = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; errors?: string[]; status?: string; runId?: string };
       if (!res.ok || !d.ok) {
         setErrors(d.errors ?? [d.error ?? "Fehler"]);
         return false;
       }
+      if (d.status === "checking" && d.runId) {
+        setLiveStatus("checking");
+        void poll(d.runId);
+      } else if (d.status) setLiveStatus(d.status);
       router.refresh();
       return true;
     } catch {
@@ -93,12 +140,12 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
     }
   }
 
-  const save = () => post({ action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() }, "save");
+  const save = () => post(saveBody(), "save");
   // cgo-047: a failed save must not publish the OLD draft (lib/studio-publish.ts).
   const publish = () =>
     saveThenPublish(dirty, (step) =>
       step === "save"
-        ? post({ action: "save", itemId: item.id, unitSlug: slug, kind: item.kind, patch: buildPatch() }, "publish")
+        ? post(saveBody(), "publish")
         : post({ action: "publish", itemId: item.id }, "publish"),
     );
   const revert = () => {
@@ -110,7 +157,7 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
         <strong style={{ fontFamily: "var(--font-display)" }}>{item.kind === "vocab" ? "🔤" : "🧩"} {item.label}</strong>
         <span style={{ fontSize: 12, color: status === "published" ? "var(--correct)" : status === "draft" ? "var(--partial)" : "var(--muted)", fontWeight: 700 }}>
-          {status === "published" ? "● live" : status === "draft" ? "○ Entwurf" : "kein Override"}
+          {status === "published" ? "● live" : status === "checking" ? "Prüfung läuft …" : status === "check_failed" ? "○ Entwurf · Prüfung nicht bestanden" : status === "draft" ? "○ Entwurf" : "kein Override"}
         </span>
       </div>
 
@@ -120,9 +167,9 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
           <div key={f.key} style={{ marginTop: 10 }}>
             <label style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--muted)", fontFamily: "var(--font-label)" }}>{f.labelDe}</label>
             {f.multiline ? (
-              <textarea rows={2} value={values[f.key] ?? ""} onChange={(e) => setValues((s) => ({ ...s, [f.key]: e.target.value }))} style={{ ...inputStyle, resize: "vertical", ...(isChanged ? { borderColor: "var(--accent)" } : {}) }} />
+              <textarea disabled={status === "checking"} rows={2} value={values[f.key] ?? ""} onChange={(e) => setValues((s) => ({ ...s, [f.key]: e.target.value }))} style={{ ...inputStyle, resize: "vertical", ...(isChanged ? { borderColor: "var(--accent)" } : {}) }} />
             ) : (
-              <input value={values[f.key] ?? ""} onChange={(e) => setValues((s) => ({ ...s, [f.key]: e.target.value }))} style={{ ...inputStyle, ...(isChanged ? { borderColor: "var(--accent)" } : {}) }} />
+              <input disabled={status === "checking"} value={values[f.key] ?? ""} onChange={(e) => setValues((s) => ({ ...s, [f.key]: e.target.value }))} style={{ ...inputStyle, ...(isChanged ? { borderColor: "var(--accent)" } : {}) }} />
             )}
             {isChanged && (
               <div style={{ display: "flex", justifyContent: "space-between", gap: 8, marginTop: 2 }}>
@@ -147,11 +194,16 @@ function ItemCard({ slug, item }: { slug: string; item: StudioItem }) {
         <ul style={{ margin: "10px 0 0", paddingLeft: 18, color: "var(--incorrect)", fontSize: 13 }}>{errors.map((e, i) => <li key={i}>{e}</li>)}</ul>
       )}
 
-      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-        <button type="button" className="dg-btn-secondary" disabled={!dirty || busy !== null} onClick={save} style={{ opacity: !dirty || busy ? 0.5 : 1 }}>{busy === "save" ? "…" : "Speichern"}</button>
-        <button type="button" className="dg-btn" disabled={busy !== null || (!dirty && status !== "draft")} onClick={publish} style={{ opacity: busy || (!dirty && status !== "draft") ? 0.5 : 1 }}>{busy === "publish" ? "…" : "Veröffentlichen"}</button>
+      {item.fullDraft && status === "checking" && <button type="button" className="dg-btn-secondary" disabled={!!busy} onClick={() => void post({ action: "publish", itemId: item.id }, "resume")} style={{ marginTop: 12 }}>Prüfung fortsetzen</button>}
+      {item.fullDraft && <div style={{ marginTop: 12 }}>
+        <button type="button" className="dg-btn-secondary" onClick={() => setPreview((shown) => !shown)}>{preview ? "Vorschau schließen" : "Vorschau (wie ein Kind)"}</button>
+        {preview && <div style={{ marginTop: 12 }}>{item.kind === "grammar" ? <GrammarItemView item={buildFullItem() as GrammarItem} hideXp /> : <VocabItemView item={buildFullItem() as VocabItem} pool="carrier" hideXp />}</div>}
+      </div>}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
+        <button type="button" className="dg-btn-secondary" disabled={!dirty || busy !== null || status === "checking"} onClick={save} style={{ opacity: !dirty || busy ? 0.5 : 1 }}>{busy === "save" ? "…" : "Speichern"}</button>
+        <button type="button" className="dg-btn" disabled={busy !== null || status === "checking" || (!dirty && status !== "draft" && status !== "check_failed")} onClick={publish} style={{ opacity: busy || (!dirty && status !== "draft") ? 0.5 : 1 }}>{busy === "publish" ? "…" : "Veröffentlichen"}</button>
         {status && (
-          <button type="button" onClick={revert} disabled={busy !== null} style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--incorrect)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Zurücksetzen</button>
+          <button type="button" onClick={revert} disabled={busy !== null || status === "checking"} style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--incorrect)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Zurücksetzen</button>
         )}
       </div>
     </div>

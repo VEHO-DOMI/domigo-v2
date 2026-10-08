@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
  */
 import Link from "next/link";
 import { listApprovedUnits } from "@domigo/content-loader";
-import { getDb, loadOverrideStatuses } from "@domigo/db";
+import { getDb, loadDraftStatuses, loadOverrideStatuses } from "@domigo/db";
 import { redirect } from "next/navigation";
 import { getTeacherForPage } from "@/lib/identity";
 
@@ -16,7 +16,8 @@ export default async function StudioListPage() {
   if (!teacher) redirect("/admin/signin");
 
   const units = listApprovedUnits();
-  const statuses = await loadOverrideStatuses(getDb()).catch(() => []);
+  const [overrides, drafts] = await Promise.all([loadOverrideStatuses(getDb()), loadDraftStatuses(getDb())]);
+  const statuses = [...new Map([...overrides, ...drafts].map((row) => [row.itemId, row])).values()];
   const byUnit = new Map<string, { published: number; draft: number }>();
   for (const s of statuses) {
     const e = byUnit.get(s.unitSlug) ?? { published: 0, draft: 0 };

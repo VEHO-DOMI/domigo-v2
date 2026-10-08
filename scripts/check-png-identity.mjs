@@ -54,12 +54,76 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { supervise } from "./lib/process-watchdog.mjs";
 import { PNG } from "pngjs";
 
 const args = process.argv.slice(2);
 const ref = args.includes("--ref") ? args[args.indexOf("--ref") + 1] : "HEAD";
 const selftest = args.includes("--selftest");
 const strict = args.includes("--strict");
+const file = fileURLToPath(import.meta.url);
+const deadline = (isSelftest) => isSelftest ? 60_000 : 600_000;
+
+// cgo-104: the parent stays outside PNG/zlib work and waits for actual process
+// closure, not the success line. Measured on Node 24.20.0/macOS: forced exit
+// waited in WorkerThreadsTaskRunner::Shutdown while a V8 compiler waited for
+// foreground GC. Natural exit avoids that path; a same-process timer cannot
+// rescue native shutdown. No shortened deadline is exposed to real runs.
+async function watchdogSelftest() {
+  let bad = 0;
+  const cases = [
+    ["server", true, 124, "TCPServerWrap"],
+    ["server", false, 124, "TCPServerWrap"],
+    ["blocked", true, 124, "hängt — Handle:"],
+    ["clean", true, 0, ""],
+    ["failure", true, 7, ""],
+    ["signal", true, 143, ""],
+  ];
+  for (const [probe, testMode, expected, diagnostic] of cases) {
+    const result = await supervise({
+      file,
+      args: [...(testMode ? ["--selftest"] : []), `--watchdog-probe=${probe}`],
+      timeoutMs: expected === 124 ? 500 : 5_000,
+      label: testMode ? "Selbsttest" : "PNG-Prüfung",
+      capture: true,
+    });
+    const ok = result.code === expected && result.stderr.includes(diagnostic)
+      && result.timedOut === (expected === 124);
+    if (!ok) bad++;
+    console.log(`  ${ok ? "✓" : "✗"} Watchdog ${testMode ? "Selbsttest" : "Normallauf"}/${probe}: Exit ${result.code}, erwartet ${expected}`);
+  }
+  if (deadline(true) !== 60_000 || deadline(false) !== 600_000) {
+    bad++;
+    console.error("✗ Watchdog: Selbsttest braucht 60 s, Normallauf 10 min");
+  }
+  return bad;
+}
+
+async function reportResources() {
+  await new Promise((resolve, reject) => {
+    process.send({ type: "watchdog-resources", resources: process.getActiveResourcesInfo() },
+      (error) => error ? reject(error) : resolve());
+  });
+}
+
+// Private child fixtures exercise the real supervisor, including a blocked
+// event loop. They cannot be selected by a normal invocation to skip the gate.
+async function runProbe(probe) {
+  if (probe === "server") {
+    const { createServer } = await import("node:net");
+    const server = createServer();
+    await new Promise((resolve, reject) => {
+      server.once("error", reject);
+      server.listen(0, "127.0.0.1", resolve);
+    });
+  } else if (probe === "failure") process.exitCode = 7;
+  else if (!["clean", "blocked", "signal"].includes(probe)) throw new Error("Unbekannte Watchdog-Probe");
+  await reportResources();
+  process.disconnect();
+  if (probe === "blocked") Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0);
+  if (probe === "signal") process.kill(process.pid, "SIGTERM");
+}
 
 /** decode a PNG buffer to {w,h,data} — throws on anything that is not one */
 const decode = (buf) => {
@@ -129,12 +193,14 @@ export const wastedAlpha = ({ buf, img }) => {
   return fullyOpaque(img) ? ct : null;
 };
 
-if (selftest) {
+async function runSelftest() {
+  // Plain pixel buffers: new PNG() also opens an unused async Deflate stream.
+  // PNG.sync.write needs only dimensions + data; no stream needs tearing down.
   // THE CHECK MUST BE ABLE TO GO RED. Build two images that differ in exactly
   // one channel of one pixel — the smallest defect a recompressor could
   // possibly introduce — and prove the comparison finds it and names it.
   const make = (tweak) => {
-    const p = new PNG({ width: 4, height: 4 });
+    const p = { width: 4, height: 4, data: Buffer.alloc(4 * 4 * 4) };
     for (let i = 0; i < p.data.length; i += 4) {
       p.data[i] = 10; p.data[i + 1] = 20; p.data[i + 2] = 30; p.data[i + 3] = 255;
     }
@@ -150,7 +216,7 @@ if (selftest) {
     bad++; console.error("✗ the difference was found but misdescribed:", diff);
   }
   // and a size change must be caught too, not silently compared channel-wise
-  const small = decode(PNG.sync.write(new PNG({ width: 2, height: 2 })));
+  const small = decode(PNG.sync.write({ width: 2, height: 2, data: Buffer.alloc(2 * 2 * 4) }));
   if (firstDifference(make(false), small)?.kind !== "size") { bad++; console.error("✗ a size change went undetected"); }
 
   // ── W4/D-98 · das Urteil über die Nachverdichtung, alle drei Zweige ────────
@@ -169,7 +235,7 @@ if (selftest) {
   }
   // …und der Alphakanal-Hebel muss beide Antworten geben können
   const opaque = make(false);
-  const clear = decode(PNG.sync.write(new PNG({ width: 2, height: 2 }))); // pngjs füllt mit Alpha 0
+  const clear = decode(PNG.sync.write({ width: 2, height: 2, data: Buffer.alloc(2 * 2 * 4) })); // Buffer.alloc füllt mit Alpha 0
   if (!fullyOpaque(opaque)) { bad++; console.error("✗ ein vollständig undurchsichtiges Bild wurde nicht als solches gelesen"); }
   if (fullyOpaque(clear)) { bad++; console.error("✗ ein durchsichtiges Bild wurde als undurchsichtig gelesen"); }
 
@@ -218,7 +284,7 @@ if (selftest) {
   // GEBAUT: pngjs schreibt Farbtyp 6, und dieses hier hat Alpha 255 überall.
   {
     const rgbaOpakBuf = (() => {
-      const q = new PNG({ width: 4, height: 4 });
+      const q = { width: 4, height: 4, data: Buffer.alloc(4 * 4 * 4) };
       for (let i = 0; i < q.data.length; i += 4) { q.data[i] = 10; q.data[i + 1] = 20; q.data[i + 2] = 30; q.data[i + 3] = 255; }
       return PNG.sync.write(q);
     })();
@@ -238,121 +304,150 @@ if (selftest) {
     bad++; console.error("✗ ein JPEG-Kopf hat einen PNG-Farbtyp geliefert");
   }
 
-  if (bad > 0) { console.error("check-png-identity selftest: FAILED"); process.exit(1); }
+  bad += await watchdogSelftest();
+  if (bad > 0) { console.error("check-png-identity selftest: FAILED"); return 1; }
   console.log("✓ selftest: one changed channel in one pixel is found and named; a size change is found; "
     + "identical images pass; die drei Nachverdichtungs-Urteile stimmen (D-98); "
     + "der Farbtyp kommt aus dem IHDR-Kopf, also meldet ein Palettenblatt sich nicht mehr als RGBA.");
-  process.exit(0);
+  return 0;
 }
 
-// Neu importierte Blätter (`A`) sah dieses Skript per Konstruktion nie — D-257
-// nennt das ausdrücklich. Sie kommen jetzt mit, für die Zahlen; verglichen
-// werden kann bei ihnen naturgemäß nichts.
-const listed = (filter) => {
+function runCheck() {
+  // Neu importierte Blätter (`A`) sah dieses Skript per Konstruktion nie — D-257
+  // nennt das ausdrücklich. Sie kommen jetzt mit, für die Zahlen; verglichen
+  // werden kann bei ihnen naturgemäß nichts.
+  const listed = (filter) => {
+    try {
+      return execFileSync("git", ["diff", "--name-only", `--diff-filter=${filter}`, ref, "--", "*.png"], {
+        encoding: "utf8",
+        maxBuffer: 64 * 1024 * 1024,
+      }).split("\n").map((s) => s.trim()).filter(Boolean);
+    } catch (e) {
+      console.error(`check-png-identity: git diff gegen »${ref}« ist fehlgeschlagen — ist die Referenz da?`);
+      console.error(String(e.stderr ?? e.message).trim());
+      throw e;
+    }
+  };
+
+  const changed = listed("M");
+  const added = listed("A");
+
+  if (changed.length === 0 && added.length === 0) {
+    console.log(`check-png-identity: keine geänderten oder neuen PNGs gegen ${ref} — nichts zu beweisen.`);
+    return 0;
+  }
+
+  let failures = 0;
+  let bytesBefore = 0;
+  let bytesAfter = 0;
+  let proven = 0;
+  const repaints = [];
+  const opaqueRgba = [];
+
+  for (const file of changed) {
+    let before;
+    try {
+      before = execFileSync("git", ["show", `${ref}:${file}`], { maxBuffer: 64 * 1024 * 1024 });
+    } catch {
+      console.error(`✗ ${file}: cannot read the ${ref} version`);
+      failures++;
+      continue;
+    }
+    const after = fs.readFileSync(path.resolve(file));
+    bytesBefore += before.length;
+    bytesAfter += after.length;
+    const imgAfter = decode(after);
+    const d = firstDifference(decode(before), imgAfter);
+
+    if (d !== null && strict) {
+      failures++;
+      console.error(
+        d.kind === "size"
+          ? `✗ ${file}: the image CHANGED SIZE ${d.was} → ${d.now}`
+          : `✗ ${file}: pixel (${d.x},${d.y}) channel ${d.channel} was ${d.was}, is now ${d.now} — this is not a lossless recompression`,
+      );
+      continue;
+    }
+
+    const verdict = recompressionVerdict({
+      pixelsIdentical: d === null, bytesBefore: before.length, bytesAfter: after.length,
+    });
+    if (verdict === "grown") {
+      failures++;
+      console.error(`✗ ${file}: JEDER BILDPUNKT IST GLEICH, die Datei ist aber um `
+        + `${(after.length - before.length).toLocaleString("de-AT")} Bytes GEWACHSEN `
+        + `(${before.length.toLocaleString("de-AT")} → ${after.length.toLocaleString("de-AT")}). `
+        + "Das ist D-98: ein PNG-schreibendes Skript hat E5s verlustfreie Nachverdichtung still "
+        + "zurückgenommen. Reparatur: `node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs --strict`.");
+      continue;
+    }
+    if (verdict === "repaint") { repaints.push({ file, before: before.length, after: after.length, d }); continue; }
+    proven++;
+    const ct = wastedAlpha({ buf: after, img: imgAfter });
+    if (ct !== null) opaqueRgba.push({ file, ct });
+  }
+
+  for (const file of added) {
+    const buf = fs.readFileSync(path.resolve(file));
+    bytesAfter += buf.length;
+    const ct = wastedAlpha({ buf, img: decode(buf) });
+    if (ct !== null) opaqueRgba.push({ file, ct });
+  }
+
+  const MB = 1048576;
+  const kb = (n) => `${(n / 1024).toFixed(0)} kB`;
+
+  if (repaints.length > 0) {
+    console.log(`  ${repaints.length} Blatt/Blätter sind NEU GEMALT (kein Verstoß — Kunst darf sich ändern):`);
+    for (const r of repaints) console.log(`    · ${r.file} — ${kb(r.before)} → ${kb(r.after)}`);
+  }
+  if (added.length > 0) {
+    console.log(`  ${added.length} Blatt/Blätter sind NEU (gegen ${ref} nicht vergleichbar):`);
+    for (const f of added) console.log(`    · ${f} — ${kb(fs.statSync(path.resolve(f)).size)}`);
+  }
+  if (opaqueRgba.length > 0) {
+    console.log(`  ⚠ ${opaqueRgba.length} Blatt/Blätter sind vollständig UNDURCHSICHTIG und liegen trotzdem als RGBA `
+      + "auf der Platte — ein Viertel jeder Datei ist ein Alphakanal, der überall 255 ist (E5s Hebel). "
+      + "`node scripts/art-recompress.mjs` holt das verlustfrei heraus. Kein rotes Licht in dieser Runde:");
+    for (const o of opaqueRgba.slice(0, 8)) console.log(`    · ${o.file} (Farbtyp ${o.ct} = ${COLOUR_TYPE_NAME[o.ct]})`);
+    if (opaqueRgba.length > 8) console.log(`    · … (+${opaqueRgba.length - 8} weitere)`);
+  }
+
+  if (failures > 0) {
+    console.error(`\ncheck-png-identity: ${failures} von ${changed.length} geänderten Blättern verletzen die Regel`);
+    return 1;
+  }
+  const delta = bytesBefore > 0 ? ((bytesAfter - bytesBefore) / bytesBefore) * 100 : 0;
+  const trend = `${delta <= 0 ? "−" : "+"}${Math.abs(delta).toFixed(1)} %`;
+  console.log(
+    `check-png-identity: OK — ${proven} Blatt/Blätter Bildpunkt für Bildpunkt identisch zu ${ref} und nicht gewachsen, `
+    + `${repaints.length} neu gemalt, ${added.length} neu. `
+    + `${(bytesBefore / MB).toFixed(1)} MB → ${(bytesAfter / MB).toFixed(1)} MB (${trend}).`,
+  );
+
+  return 0;
+}
+
+const childMode = args.includes("--watchdog-child") && typeof process.send === "function";
+const probe = args.find((arg) => arg.startsWith("--watchdog-probe="))?.split("=")[1];
+if (childMode) {
   try {
-    return execFileSync("git", ["diff", "--name-only", `--diff-filter=${filter}`, ref, "--", "*.png"], {
-      encoding: "utf8",
-      maxBuffer: 64 * 1024 * 1024,
-    }).split("\n").map((s) => s.trim()).filter(Boolean);
-  } catch (e) {
-    console.error(`check-png-identity: git diff gegen »${ref}« ist fehlgeschlagen — ist die Referenz da?`);
-    console.error(String(e.stderr ?? e.message).trim());
-    process.exit(1);
+    if (probe) await runProbe(probe);
+    else {
+      await reportResources();
+      process.exitCode = selftest ? await runSelftest() : runCheck();
+      await reportResources();
+    }
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  } finally {
+    if (process.connected) process.disconnect();
   }
-};
-
-const changed = listed("M");
-const added = listed("A");
-
-if (changed.length === 0 && added.length === 0) {
-  console.log(`check-png-identity: keine geänderten oder neuen PNGs gegen ${ref} — nichts zu beweisen.`);
-  process.exit(0);
+} else if (args.some((arg) => arg.startsWith("--watchdog-"))) {
+  console.error("check-png-identity: Watchdog-Proben sind nur interne Selbsttest-Kinder");
+  process.exitCode = 1;
+} else {
+  const result = await supervise({ file, args, timeoutMs: deadline(selftest), label: selftest ? "Selbsttest" : "PNG-Prüfung" });
+  process.exitCode = result.code;
 }
-
-let failures = 0;
-let bytesBefore = 0;
-let bytesAfter = 0;
-let proven = 0;
-const repaints = [];
-const opaqueRgba = [];
-
-for (const file of changed) {
-  let before;
-  try {
-    before = execFileSync("git", ["show", `${ref}:${file}`], { maxBuffer: 64 * 1024 * 1024 });
-  } catch {
-    console.error(`✗ ${file}: cannot read the ${ref} version`);
-    failures++;
-    continue;
-  }
-  const after = fs.readFileSync(path.resolve(file));
-  bytesBefore += before.length;
-  bytesAfter += after.length;
-  const imgAfter = decode(after);
-  const d = firstDifference(decode(before), imgAfter);
-
-  if (d !== null && strict) {
-    failures++;
-    console.error(
-      d.kind === "size"
-        ? `✗ ${file}: the image CHANGED SIZE ${d.was} → ${d.now}`
-        : `✗ ${file}: pixel (${d.x},${d.y}) channel ${d.channel} was ${d.was}, is now ${d.now} — this is not a lossless recompression`,
-    );
-    continue;
-  }
-
-  const verdict = recompressionVerdict({
-    pixelsIdentical: d === null, bytesBefore: before.length, bytesAfter: after.length,
-  });
-  if (verdict === "grown") {
-    failures++;
-    console.error(`✗ ${file}: JEDER BILDPUNKT IST GLEICH, die Datei ist aber um `
-      + `${(after.length - before.length).toLocaleString("de-AT")} Bytes GEWACHSEN `
-      + `(${before.length.toLocaleString("de-AT")} → ${after.length.toLocaleString("de-AT")}). `
-      + "Das ist D-98: ein PNG-schreibendes Skript hat E5s verlustfreie Nachverdichtung still "
-      + "zurückgenommen. Reparatur: `node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs --strict`.");
-    continue;
-  }
-  if (verdict === "repaint") { repaints.push({ file, before: before.length, after: after.length, d }); continue; }
-  proven++;
-  const ct = wastedAlpha({ buf: after, img: imgAfter });
-  if (ct !== null) opaqueRgba.push({ file, ct });
-}
-
-for (const file of added) {
-  const buf = fs.readFileSync(path.resolve(file));
-  bytesAfter += buf.length;
-  const ct = wastedAlpha({ buf, img: decode(buf) });
-  if (ct !== null) opaqueRgba.push({ file, ct });
-}
-
-const MB = 1048576;
-const kb = (n) => `${(n / 1024).toFixed(0)} kB`;
-
-if (repaints.length > 0) {
-  console.log(`  ${repaints.length} Blatt/Blätter sind NEU GEMALT (kein Verstoß — Kunst darf sich ändern):`);
-  for (const r of repaints) console.log(`    · ${r.file} — ${kb(r.before)} → ${kb(r.after)}`);
-}
-if (added.length > 0) {
-  console.log(`  ${added.length} Blatt/Blätter sind NEU (gegen ${ref} nicht vergleichbar):`);
-  for (const f of added) console.log(`    · ${f} — ${kb(fs.statSync(path.resolve(f)).size)}`);
-}
-if (opaqueRgba.length > 0) {
-  console.log(`  ⚠ ${opaqueRgba.length} Blatt/Blätter sind vollständig UNDURCHSICHTIG und liegen trotzdem als RGBA `
-    + "auf der Platte — ein Viertel jeder Datei ist ein Alphakanal, der überall 255 ist (E5s Hebel). "
-    + "`node scripts/art-recompress.mjs` holt das verlustfrei heraus. Kein rotes Licht in dieser Runde:");
-  for (const o of opaqueRgba.slice(0, 8)) console.log(`    · ${o.file} (Farbtyp ${o.ct} = ${COLOUR_TYPE_NAME[o.ct]})`);
-  if (opaqueRgba.length > 8) console.log(`    · … (+${opaqueRgba.length - 8} weitere)`);
-}
-
-if (failures > 0) {
-  console.error(`\ncheck-png-identity: ${failures} von ${changed.length} geänderten Blättern verletzen die Regel`);
-  process.exit(1);
-}
-const delta = bytesBefore > 0 ? ((bytesAfter - bytesBefore) / bytesBefore) * 100 : 0;
-const trend = `${delta <= 0 ? "−" : "+"}${Math.abs(delta).toFixed(1)} %`;
-console.log(
-  `check-png-identity: OK — ${proven} Blatt/Blätter Bildpunkt für Bildpunkt identisch zu ${ref} und nicht gewachsen, `
-  + `${repaints.length} neu gemalt, ${added.length} neu. `
-  + `${(bytesBefore / MB).toFixed(1)} MB → ${(bytesAfter / MB).toFixed(1)} MB (${trend}).`,
-);
