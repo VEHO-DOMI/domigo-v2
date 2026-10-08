@@ -25,10 +25,10 @@
     ],
     "journey-progress.ts#getJourneyAttempts": [
       "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId, slug",
-      "apps/web/app/learn/[slug]/page.tsx · userId, slug"
+      "apps/web/app/learn/[slug]/page.tsx · acting.userId, slug"
     ],
     "studypath.ts#getPathSummary": [
-      "apps/web/app/learn/page.tsx · session.user.id"
+      "apps/web/app/learn/page.tsx · acting.userId"
     ],
     "studypath.ts#getUnitPathProgress": [
       "apps/web/app/learn/[slug]/[node]/page.tsx · acting.userId, slug",
