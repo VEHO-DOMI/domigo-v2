@@ -1,8 +1,6 @@
 # 23 · The DomiGo Design Language — D-1 (Fable-authored, mockup-gated)
 
-*Fable 5, 2026-07-13. Status: **DRAFT — decisions authored, MOCKUP GATE PENDING** (rendered
-mockups per grade + master are the gate artifact; nothing below is implemented before Koki's
-"looks fire"). Source of truth: `design-study-og-trainers.md` (same folder — the full
+*Fable 5, 2026-07-13. Mockup-Gate **BESTANDEN**: Kalibrier-Exemplar cgo-106, Kokis Freigabe cgo-107 am 08.10.2026, 13:05 (»looks fire«, Fragen 1–5 ja). Die W1-Implementierung cgo-108 ist CODEX DRAFT — NOT CANON bis GG-Review und Merge. Source of truth: `design-study-og-trainers.md` (same folder — the full
 source extraction of all four OG trainers: verbatim hexes, ladders, XP economy) + my eyes-on
 tour (2nd-grade landing, inside the 4th-grade app) + the v2 inventory (globals.css:84-105
 accent-only theming; unused leaderboard tokens :53-63; hidden `user_progress.xp`;

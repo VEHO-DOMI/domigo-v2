@@ -21,6 +21,7 @@ export function getDb(): Db {
 }
 
 export { schema };
+export * from "./student-profile-service.ts";
 export * from "./schema.ts";
 export * from "./review.ts";
 export * from "./persist.ts";

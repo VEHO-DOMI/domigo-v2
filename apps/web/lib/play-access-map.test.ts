@@ -162,8 +162,8 @@ describe("cgo-099 dictionary is a read-only child surface", () => {
   });
   it("home and explorer expose the dictionary and share the daily card", () => {
     const home = code(read("home/page.tsx"));
-    assert.match(home, /grade === null \? null : await wortDesTages\(grade, viennaDateKey\(\)\)/);
-    assert.match(home, /dailyWord && <WordOfTheDay entry=\{dailyWord\}/);
+    assert.match(home, /wortDesTages\(grade, day\)/);
+    assert.match(home, /word && <div className="og-today-section"/);
     assert.match(read("admin/explorer/page.tsx"), /\/woerterbuch\?jahrgang=\$\{grade\}/);
     const card = read("woerterbuch/WordOfTheDay.tsx");
     assert.match(card, /Im Wörterbuch/);
@@ -521,4 +521,76 @@ it("student traps: actual child scope only; preview makes zero personal reads", 
       assert.match(html, /4-mal in den letzten 30 Tagen/);
     } else assert.doesNotMatch(html, /Deine häufigsten Fallen|student-traps-title/);
   }
+});
+
+// cgo-108: the new trainer surfaces inherit the existing preview and year wall.
+describe("OG W1 surfaces", () => {
+  for (const route of ["home", "modi", "profil", "fortschritt"]) it(`${route}: server-resolved year and preview`, () => {
+    const src = code(read(`${route}/page.tsx`));
+    assert.match(src, /await resolveStudentView\(/);
+    assert.match(src, /trainerGrade\(view\)/);
+    assert.match(src, /view\.kind === "student" \? view\.player : null/);
+    assert.match(src, /preview=\{preview\}/);
+    assert.doesNotMatch(src, /\b(fetch|localStorage|sessionStorage|recordAttempt|setStudentAvatar)\(/);
+  });
+  it("personal readers require a child; profile preview returns before auth/storage", () => {
+    const profile = code(read("home/trainer-data.ts"));
+    const previewReturn = profile.indexOf('if (view.kind === "preview") return');
+    assert.ok(previewReturn >= 0 && previewReturn < profile.indexOf("await auth()"));
+    for (const [file, call] of [["home/page.tsx", "getDailyChallengeCount"], ["modi/page.tsx", "getDueCounts"], ["fortschritt/page.tsx", "getStudentChapterProgress"]]) {
+      const line = code(read(file!)).split("\n").find((l) => l.includes(`await ${call}(`));
+      assert.ok(line); assert.match(line, /acting (?:&& challenge )?\? await/);
+    }
+    const picker = code(read("profil/AvatarPicker.tsx"));
+    assert.ok(picker.indexOf('if (preview)') < picker.indexOf('await fetch('));
+    assert.match(picker, /if \(preview\) \{[^}]+return; \}/);
+    assert.equal([...picker.matchAll(/\bfetch\(/g)].length, 1);
+    assert.match(picker, /fetch\("\/api\/profil", \{ method: "POST"/);
+    assert.doesNotMatch(picker, /localStorage|sessionStorage|indexedDB/);
+  });
+  it("all declared tile destinations are real routes; unavailable games are absent", () => {
+    const tiles = ["home/page.tsx", "home/PlayerCard.tsx", "modi/ModePicker.tsx"];
+    const known = new Set<string>();
+    for (const f of tiles) {
+      const src = code(read(f));
+      assert.doesNotMatch(src, /Activity Game|Battle Arena|Bestenliste|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
+      for (const match of src.matchAll(/(?:href=\{?[`"]|path:\s*")(\/[a-z][a-z/-]*)/g)) known.add(match[1]!);
+    }
+    for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review"]) known.add(path);
+    assert.ok(known.size >= 7);
+    for (const path of known) {
+      const route = path === "/play/" ? "(game)/play/[grade]" : path.slice(1).replace(/\/$/, "");
+      assert.ok(fs.existsSync(new URL(`../app/${route}/page.tsx`, import.meta.url)), `dead tile: ${path}`);
+    }
+  });
+  it("daily parameter uses the existing attempt writer; reservations remain fail closed", () => {
+    const runner = code(read("practice/[slug]/PracticeSession.tsx"));
+    assert.match(runner, /mode: runMode === "daily" \? "daily" : "practice"/);
+    assert.match(runner, /attemptSender\(preview, (?:props\.)?ownerId\)/);
+    const loader = code(read("practice/load-practice.ts"));
+    assert.match(loader, /acting \? await listReservedForClass\(getDb\(\), acting.classScope, acting.classId\) : new Set/);
+    assert.doesNotMatch(loader, /\.catch\(/);
+    assert.match(loader, /assignPool\(item.id, reserved\) !== "mock"/);
+    const theme = code(read("home/TrainerShell.tsx"));
+    assert.doesNotMatch(theme, /localStorage|sessionStorage|fetch\(/);
+  });
+});
+
+it("OG grade palettes use the study's literal light/dark values", () => {
+  const study = fs.readFileSync(new URL("../../../docs/handover/design-study-og-trainers.md", import.meta.url), "utf8");
+  const css = read("globals.css");
+  for (const [theme, start, end] of [["light", "### Light theme", "### Dark theme"], ["dark", "### Dark theme", "### Dark-mode body"]]) {
+    const section = study.slice(study.indexOf(start!), study.indexOf(end!));
+    for (const row of section.split("\n").filter((l) => l.startsWith("| `--"))) {
+      const cells = row.split("|").slice(1, -1).map((s) => s.trim());
+      const token = cells[0]!.match(/`([^`]+)`/)![1]!;
+      for (let grade = 1; grade <= 4; grade++) {
+        const value = cells[grade]!.match(/^`([^`]+)`/); if (!value) continue; // prose shorthand in the source's shadow rows
+        const selector = `.og-root[data-grade="${grade}"]${theme === "dark" ? '[data-theme="dark"]' : ""} {`;
+        const block = css.slice(css.indexOf(selector) + selector.length).split("}")[0]!;
+        assert.ok(block.includes(`${token}: ${value[1]};`), `${theme} year ${grade}: ${token} must equal ${value[1]}`);
+      }
+    }
+  }
+  assert.match(css, /@media \(prefers-color-scheme: dark\)/);
 });

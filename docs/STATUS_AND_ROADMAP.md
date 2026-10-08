@@ -6,10 +6,14 @@ Die gesamte vorherige Datei bleibt im [Status-Archiv](handover/STATUS_ARCHIV_202
 - **main-sha:** `d19c4b673c15a77cdb26cebbc1bbb9c9cab7c360` — Ausgangsstand dieser Bestandsaufnahme.
 - **Gemergte PRs:** 487 insgesamt; 123 seit 2026-08-24. **Letzter Merge:** PR 497. PR bedeutet Pull Request, eine zusammengeführte Änderung; gezählt nach Merge-Zeit, nicht nach Nummernfolge.
 - **LIVE:** https://eng-unterstufe.lautereinser.at — `/api/version` antwortet mit HTTP 200 und bestätigt den oben genannten Hauptstand.
-- **CI-Einzeiler:** 100 `- run:`-Zeilen in `.github/workflows/ci.yml`, einschließlich 5 Installationszeilen; damit 95 lokal auszuführende Prüfzeilen. CI ist die automatische Prüfkette. Die Zahl ist kein Testergebnis.
+- **CI-Einzeiler:** 102 `- run:`-Zeilen in `.github/workflows/ci.yml`, einschließlich 5 Installationszeilen; damit 97 lokal auszuführende Prüfzeilen. CI ist die automatische Prüfkette. Die Zahl ist kein Testergebnis.
 - **Migrationen:** Repository-Journal 0000–0019; 0019 laut Kartenbrief angewendet. Der gesonderte Produktionsbeleg für 0015–0019 bleibt bei Koki offen (cgo-054). 0020 vorbereitet in PR 490, 0021 vorbereitet in PR 498, beide OPEN und noch nicht Teil dieses Hauptstands. Migration bedeutet Änderung der Datenbankstruktur; diese Sitzung hat keine Datenbank abgefragt oder verändert.
 
 Messweg: `git rev-parse origin/main`; `gh pr list --state merged --limit 400 --json number,title,mergedAt` (Zeitfenster), für die ungekappte Gesamtzahl derselbe Befehl mit `--limit 1000`; `git log origin/main --oneline --since=2026-08-24`; `rg -c '^\s*- run:' .github/workflows/ci.yml`; `node -p 'JSON.stringify(require("./packages/db/drizzle/meta/_journal.json").entries.map(e=>e.tag))'`; `gh pr view 490 --json state` und entsprechend PR 498. Vollständige Befehle → Ausgaben, Zählgrenzen und Bildbelege stehen im PR dieser Bestandsaufnahme (cgo-097).
+
+## In Prüfung: cgo-108 · OG-Parität W1
+
+Noch nicht freigegeben. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`, 50 Original-Avatare und Daily Challenge sind im eigenen PR vorbereitet; noch nicht LIVE. Migration 0022 ist additiv und wird hier nicht ausgeführt. 0020/0021 kommen aus PR 490/498; der GG vereinigt deren Journal/Snapshot-Reihenfolge vor der gemeinsamen Anwendung. Mockup-Gate: cgo-106/107 bestanden. Lokal sind 97/97 CI-Einzeiler und 28/28 absichtliche Fehlerproben bestätigt. Zwei frische Blindbetrachter erkannten alle vier Jahrgänge als unterscheidbar: 0/8 Urteile „unsicher“, visuelle Abnahme nicht bestanden. Produktionsabnahme, Migration, GG-Kette und Merge bleiben offen.
 
 ## Was LIVE ist
 

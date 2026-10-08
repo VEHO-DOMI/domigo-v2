@@ -8,19 +8,22 @@ import { xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, rotateVocabPool, VOCAB_POOL_LABEL, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
+import { multipleChoiceBank, type PracticeMode, type Direction } from "../options";
 
 type Mode = "grammar" | "vocab";
 /** "auto" rotates the vocab answer pool per (item, day); a VocabPool forces one. */
 type PoolChoice = "auto" | VocabPool;
 
-export default function PracticeSession({ slug, vocab, grammar, today, ownerId, preview = false }: {
+export default function PracticeSession({ slug, vocab, grammar, today, ownerId, preview = false, runMode, direction = "auto" }: {
   slug: string; vocab: VocabItem[]; grammar: GrammarItem[]; today: string;
   /** cgo-047: teacher preview — answers are graded on screen, never sent. */
   preview?: boolean;
   ownerId: string | null;
+  runMode?: PracticeMode;
+  direction?: Direction;
 }) {
-  const [mode, setMode] = useState<Mode>("grammar");
-  const [vocabPool, setVocabPool] = useState<PoolChoice>("auto");
+  const [mode, setMode] = useState<Mode>(runMode && runMode !== "grammar" ? "vocab" : "grammar");
+  const [vocabPool, setVocabPool] = useState<PoolChoice>(runMode === "mc" ? direction === "deToEn" ? "deToEn" : "definition" : direction);
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
@@ -46,7 +49,7 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
     void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
-      mode: "practice",
+      mode: runMode === "daily" ? "daily" : "practice",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
@@ -73,16 +76,16 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
   return (
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.slice(-2))}</h1>
-        <Link href="/practice" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all Chapters</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{runMode === "daily" ? "Daily Challenge" : runMode ? "Practice" : `Chapter ${Number(slug.slice(-2))}`}</h1>
+        <Link href={runMode ? `/modi${preview ? `?jahrgang=${grade}` : ""}` : "/practice"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all Chapters</Link>
       </div>
 
-      <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
+      {!runMode && <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
         <button style={tabStyle(mode === "grammar")} onClick={() => switchMode("grammar")}>Grammar ({grammar.length})</button>
         <button style={tabStyle(mode === "vocab")} onClick={() => switchMode("vocab")}>Vocab ({vocab.length})</button>
-      </div>
+      </div>}
 
-      {mode === "vocab" && (
+      {mode === "vocab" && !runMode && (
         <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }} role="group" aria-label="Vocab exercise mode">
           <button style={chipStyle(vocabPool === "auto")} onClick={() => switchPool("auto")}>Mix</button>
           {VOCAB_POOLS.map((p) => (
@@ -107,13 +110,13 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
         mode === "grammar" ? (
           <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile />
         ) : (
-          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} pool={resolvedPool} />
+          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} pool={resolvedPool} bank={runMode === "mc" ? multipleChoiceBank(item as VocabItem) : undefined} />
         )
       ) : (
         <p>No items in this mode.</p>
       )}
 
-      {answered && (
+      {answered && i >= list.length - 1 && runMode ? <Link className="dg-btn" href={`/home${preview ? `?jahrgang=${grade}` : ""}`}>Done →</Link> : answered && (
         <button className="dg-btn" onClick={next} disabled={i >= list.length - 1} style={{ marginTop: 14 }}>
           {i >= list.length - 1 ? "End of set" : "Next →"}
         </button>

@@ -95,3 +95,9 @@ export function yearRedirect(view: StudentView | null, grade: number): string | 
 export function isPreview(view: StudentView | null): boolean {
   return view?.kind === "preview";
 }
+
+/** A trainer is one grade. A failed class lookup cannot choose a foreign year. */
+export function trainerGrade(view: StudentView): number | null {
+  const grade = view.kind === "preview" ? view.grades[0] ?? 1 : view.grades.length === 1 ? view.grades[0]! : null;
+  return grade !== null && Number.isInteger(grade) && grade >= 1 && grade <= 4 ? grade : null;
+}

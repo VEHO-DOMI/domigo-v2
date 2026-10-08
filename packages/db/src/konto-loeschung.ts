@@ -42,6 +42,7 @@ import {
   reviewQueue,
   rolloverSnapshots,
   studyPathProgress,
+  studentProfile,
   userProgress,
   v2IdentityUsers,
   v2OpsLinkUses,
@@ -73,6 +74,7 @@ export async function deleteUserData(db: Db, userId: string): Promise<Loeschberi
   }
 
   // The learner's own trail.
+  await weg("student_profile", () => db.delete(studentProfile).where(eq(studentProfile.userId, userId)).returning({ id: studentProfile.userId }));
   await weg("practice_attempts", () => db.delete(practiceAttempts).where(eq(practiceAttempts.userId, userId)).returning({ id: practiceAttempts.id }));
   await weg("review_queue", () => db.delete(reviewQueue).where(eq(reviewQueue.userId, userId)).returning({ id: reviewQueue.id }));
   await weg("user_progress", () => db.delete(userProgress).where(eq(userProgress.userId, userId)).returning({ id: userProgress.userId }));
