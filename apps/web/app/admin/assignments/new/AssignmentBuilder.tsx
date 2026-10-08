@@ -98,6 +98,7 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
   const [automaticallyFilled, setAutomaticallyFilled] = useState(false);
   const [alsoCheck, setAlsoCheck] = useState(false);
   const [checkProgress, setCheckProgress] = useState<{ checked: number; total: number } | null>(null);
+  const [canSwapItems, setCanSwapItems] = useState(false);
   const [blockedItems, setBlockedItems] = useState<string[]>([]);
 
   const grade = classes.find((c) => c.id === classId)?.grade ?? 0;
@@ -259,7 +260,7 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
   const save = async () => {
     if (inFlight.current || savedId || !confirming || issues.length > 0) return;
     inFlight.current = true;
-    setSaving(true);
+    setSaving(true); setCanSwapItems(false);
     setServerErrors([]);
     setBlockedItems([]);
     const draft = {
@@ -301,6 +302,7 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
           await new Promise((resolve) => setTimeout(resolve, 2000));
           continue;
         }
+        setCanSwapItems(res.status === 422);
         if (Array.isArray(d.blockedItemIds)) setBlockedItems(d.blockedItemIds);
         break;
       }
@@ -308,7 +310,8 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
         persist_failed: "Die Zuweisung konnte nicht bestätigt werden. Bitte sende denselben Auftrag erneut; er wird nur einmal angelegt.",
         not_your_class: "Diese Klasse ist für dein Konto nicht verfügbar.",
         class_check_failed: "Die Klassenberechtigung konnte nicht geprüft werden. Bitte versuche es erneut.",
-        content_check_failed: "Die Inhaltsfreigabe konnte nicht geprüft werden. Bitte versuche es erneut.",
+        content_check_failed: "Prüfung konnte nicht laufen — später erneut.",
+        checkup_unavailable: "Prüfung konnte nicht laufen — später erneut.",
         source_unavailable: "Dieser Chapter ist für diese Klasse nicht zuweisbar.",
         forbidden: "Bitte melde dich erneut als Lehrkraft an.",
       };
@@ -539,7 +542,7 @@ export default function AssignmentBuilder({ classes, checkupPresets, prefill = n
           </div>
         </div>}
         {saving && checkProgress && <p role="status" aria-live="polite">Prüfung läuft … {checkProgress.checked}/{checkProgress.total} geprüft. Die Zuweisung erscheint erst nach bestandener Prüfung.</p>}
-        {!saving && !savedId && serverErrors.length > 0 && mode === "checkup" && <button type="button" className="dg-btn-secondary" onClick={() => {
+        {!saving && !savedId && serverErrors.length > 0 && mode === "checkup" && canSwapItems && <button type="button" className="dg-btn-secondary" onClick={() => {
           if (blockedItems.length) setSections((previous) => previous.map((section) => ({ ...section, itemIds: section.itemIds.filter((id) => !blockedItems.includes(id)) })));
           setConfirming(false); setCheckProgress(null); setBlockedItems([]);
         }}>Item tauschen{blockedItems.length ? ` (${blockedItems.length})` : ""}</button>}

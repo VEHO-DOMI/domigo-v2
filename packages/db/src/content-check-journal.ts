@@ -10,6 +10,7 @@
  * callers derive access from identity, never from request-body claims.
  */
 import { and, desc, eq, ne, sql } from "drizzle-orm";
+import { createHash } from "node:crypto";
 import type { Db } from "./index.ts";
 import { v2ContentChecks, v2ContentDrafts } from "./schema.ts";
 import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
@@ -20,12 +21,17 @@ export interface ContentCheckAccess {
   teacherId: string;
 }
 
-export type ContentCheckStatus = "checking" | "passed" | "blocked" | "failed";
+export type ContentCheckStatus = "checking" | "passed" | "blocked" | "error";
 
 export interface ContentCheckResult {
   status: ContentCheckStatus;
   /** Internal polling handle; never return it with the journal's actor data. */
   sandboxId?: string;
+  batch?: boolean;
+  batchMembers?: Array<{ key: string; attemptId: string }>;
+  /** A retry has its own durable identity; old polls cannot finish a new run. */
+  attemptId?: string;
+  attemptNumber?: number;
   note?: string;
   createdAt: Date;
 }
@@ -40,6 +46,10 @@ export interface ContentCheckTaskMeta {
 export interface ContentCheckEvent {
   status: ContentCheckStatus;
   sandboxId?: string;
+  batch?: boolean;
+  batchMembers?: Array<{ key: string; attemptId: string }>;
+  /** Omitted only by legacy callers, whose events belong to the initial claim. */
+  attemptId?: string;
   note?: string;
   evidence?: unknown;
   /** A deterministic completion UUID makes repeated polls append only once. */
@@ -68,16 +78,45 @@ function object(value: unknown): Record<string, unknown> {
     ? value as Record<string, unknown> : {};
 }
 
-/** The successful insert is the exclusive permission to start ONE paid run.
- * A crashed claimant stays claimed: failing closed is cheaper and safer than
- * silently spending again. There is deliberately no expiry/delete/retry API. */
+function nextAttemptId(key: string, previousAttemptId: string): string {
+  const hex = createHash("sha256").update(`content-check-attempt:${key}:${previousAttemptId}`).digest("hex");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-5${hex.slice(13, 16)}-8${hex.slice(17, 20)}-${hex.slice(20, 32)}`;
+}
+
+function readBatchMembers(value: unknown): Array<{ key: string; attemptId: string }> | undefined {
+  const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  if (!Array.isArray(value) || value.length === 0 || value.length > 20) return undefined;
+  const members: Array<{ key: string; attemptId: string }> = [];
+  for (const entry of value) {
+    if (entry === null || typeof entry !== "object" || Array.isArray(entry)) return undefined;
+    const member = object(entry);
+    if (typeof member.key !== "string" || !uuid.test(member.key)
+      || typeof member.attemptId !== "string" || !uuid.test(member.attemptId)) return undefined;
+    members.push({ key: member.key, attemptId: member.attemptId });
+  }
+  return members;
+}
+
+/** Each attempt has one exclusive permission to start a run. Infrastructure
+ * errors may be retried explicitly; a model verdict may not. All contenders
+ * for the same retry derive the same primary key, so only one insert wins. */
 export async function claimContentCheck(
   db: Db, access: ContentCheckAccess, key: string, task: ContentCheckTaskMeta,
+  retryAttemptId?: string,
 ): Promise<boolean> {
   guard(access, "claimContentCheck");
+  let attemptId = key;
+  let attemptNumber = 1;
+  if (retryAttemptId !== undefined) {
+    const previous = await readContentCheck(db, access, key);
+    if (previous?.status !== "error" || previous.attemptId !== retryAttemptId) return false;
+    attemptId = nextAttemptId(key, retryAttemptId);
+    attemptNumber = (previous.attemptNumber ?? 1) + 1;
+  }
   const rows = await db.insert(v2ContentChecks).values({
-    id: key, draftId: key, checkKind: "checkup_claim", verdict: "checking",
-    evidence: { ...task, teacherId: access.teacherId, classId: access.classId },
+    id: attemptId, draftId: key, checkKind: "checkup_claim", verdict: "checking",
+    evidence: { ...task, teacherId: access.teacherId, classId: access.classId,
+      attemptNumber, ...(retryAttemptId !== undefined ? { parentAttemptId: retryAttemptId } : {}) },
   }).onConflictDoNothing({ target: v2ContentChecks.id }).returning({ id: v2ContentChecks.id });
   return rows.length === 1;
 }
@@ -94,26 +133,44 @@ export async function readContentCheck(
     createdAt: v2ContentChecks.createdAt,
   }).from(v2ContentChecks).where(eq(v2ContentChecks.draftId, key))
     .orderBy(desc(v2ContentChecks.createdAt), desc(v2ContentChecks.id));
-  const claim = rows.find((row) => row.id === key && row.checkKind === "checkup_claim");
-  if (!claim) return null;
+  const initialClaim = rows.find((row) => row.id === key && row.checkKind === "checkup_claim");
+  if (!initialClaim) return null;
+  let claim: typeof rows[number] = initialClaim;
+  // Follow the unique successor chain from the original claim. Arrival times
+  // and late verdicts cannot select an older attempt or an unrelated claim.
+  let attemptNumber = 1;
+  for (;;) {
+    const parentAttemptId: string = claim.id;
+    const expectedId = nextAttemptId(key, parentAttemptId);
+    const nextClaim = rows.find((row) => row.id === expectedId && row.checkKind === "checkup_claim"
+      && object(row.evidence).parentAttemptId === parentAttemptId
+      && object(row.evidence).attemptNumber === attemptNumber + 1);
+    if (!nextClaim) break;
+    claim = nextClaim;
+    attemptNumber++;
+  }
   const sandboxRows = rows.filter((row) => row.checkKind === "checkup_sandbox"
-    && object(row.evidence).path === "sandbox/blind-solve");
+    && object(row.evidence).path === "sandbox/blind-solve"
+    && (object(row.evidence).attemptId ?? key) === claim.id);
   // A late in-flight append cannot turn a recorded terminal verdict back into
   // checking. Among terminal verdicts the newest wins (the SQL order above).
-  const terminal = sandboxRows.find((row) => row.verdict === "passed"
-    || row.verdict === "blocked" || row.verdict === "failed");
+  const terminal = sandboxRows.find((row) => row.verdict === "passed" || row.verdict === "blocked")
+    ?? sandboxRows.find((row) => row.verdict === "error" || row.verdict === "failed");
   const row = terminal ?? sandboxRows.find((entry) => entry.verdict === "checking") ?? claim;
   const evidence = object(row.evidence);
+  const batchMembers = !terminal && row !== claim ? readBatchMembers(evidence.batchMembers) : undefined;
   return {
-    status: terminal ? terminal.verdict as ContentCheckStatus : "checking",
+    status: terminal ? (terminal.verdict === "failed" ? "error" : terminal.verdict as ContentCheckStatus) : "checking",
     ...(row !== claim && typeof evidence.sandboxId === "string" ? { sandboxId: evidence.sandboxId } : {}),
+    ...(row !== claim && typeof evidence.batch === "boolean" ? { batch: evidence.batch } : {}),
+    ...(batchMembers ? { batchMembers } : {}),
     ...(row !== claim && typeof evidence.note === "string" ? { note: evidence.note } : {}),
-    createdAt: row.createdAt,
+    attemptId: claim.id, attemptNumber, createdAt: claim.createdAt,
   };
 }
 
 /** Append before any publication. Nested evidence cannot replace the protected
- * path, actor or status fields. A failed write propagates to block publication. */
+ * path, actor, attempt or status fields. A failed write propagates to block publication. */
 export async function appendContentCheck(
   db: Db, access: ContentCheckAccess, key: string, event: ContentCheckEvent,
 ): Promise<void> {
@@ -123,7 +180,10 @@ export async function appendContentCheck(
     checkKind: "checkup_sandbox", verdict: event.status,
     evidence: {
       path: "sandbox/blind-solve", actor: access.teacherId, classId: access.classId,
+      attemptId: event.attemptId ?? key,
       ...(event.sandboxId ? { sandboxId: event.sandboxId } : {}),
+      ...(event.batch !== undefined ? { batch: event.batch } : {}),
+      ...(event.batchMembers !== undefined ? { batchMembers: event.batchMembers } : {}),
       ...(event.note ? { note: event.note } : {}),
       ...(event.evidence !== undefined ? { detail: event.evidence } : {}),
     },

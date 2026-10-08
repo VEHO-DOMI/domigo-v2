@@ -120,6 +120,7 @@ export async function POST(req: Request): Promise<Response> {
     try {
       const gate = await checkAssignmentCheckup(draft, { scope: teacher.classScope, classId: draft.classId, teacherId: teacher.userId }, { compositionId, alsoCheck });
       if (gate.status === "checking") return NextResponse.json({ ok: true, ...gate }, { status: 202 });
+      if (gate.status === "error") return NextResponse.json({ ok: false, error: "checkup_unavailable", ...gate }, { status: 503 });
       if (gate.status === "blocked") return NextResponse.json({ ok: false, error: "checkup_blocked", ...gate }, { status: 422 });
     } catch {
       return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });

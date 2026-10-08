@@ -16,6 +16,6 @@ export async function checkStudioContent(access: ContentCheckAccess, kind: ItemK
   if (expectedKey && expectedKey !== key) return { status: "blocked" as const, errors: ["Der Entwurf wurde während der Prüfung geändert. Prüfe die neue Fassung vor dem Veröffentlichen."] };
   const ports = await sandboxGatePorts(access);
   if (expectedKey && !(await ports.read(key))) return { status: "blocked" as const, errors: ["Kein gespeicherter Prüflauf für diese Fassung."] };
-  const result = await runCheckupGate([task], ports);
+  const result = await runCheckupGate([task], ports, { single: true, retryErrors: !expectedKey });
   return { ...result, runId: `studio:${key}:${item.id}` };
 }

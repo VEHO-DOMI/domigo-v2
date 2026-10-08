@@ -80,6 +80,7 @@ const dialect = new PgDialect();
 describe("content-check journal class wall", () => {
   const calls = [
     ["claim", (db: Db, access: ContentCheckAccess) => claimContentCheck(db, access, KEY, TASK)],
+    ["retry claim", (db: Db, access: ContentCheckAccess) => claimContentCheck(db, access, KEY, TASK, KEY)],
     ["read", (db: Db, access: ContentCheckAccess) => readContentCheck(db, access, KEY)],
     ["append", (db: Db, access: ContentCheckAccess) => appendContentCheck(db, access, KEY, { status: "passed" })],
     ["record composition", (db: Db, access: ContentCheckAccess) => recordCheckupComposition(db, access, KEY, COMPOSITION)],
@@ -301,7 +302,7 @@ describe("one durable claim per exact revision", () => {
     const mock = journalDb();
     await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK)).resolves.toBe(true);
     expect(mock.inserts).toEqual([{ id: KEY, draftId: KEY, checkKind: "checkup_claim", verdict: "checking",
-      evidence: { ...TASK, teacherId: TEACHER, classId: CLASS } }]);
+      evidence: { ...TASK, teacherId: TEACHER, classId: CLASS, attemptNumber: 1 } }]);
     expect(mock.conflicts).toHaveLength(1);
     expect(mock.reads()).toBe(0); // no read-then-insert race
   });
@@ -330,7 +331,7 @@ describe("sandbox verdict reads", () => {
 
   it("a claim's forged passed verdict, polling handle and note are never trusted", async () => {
     const mock = journalDb([row("checkup_claim", "passed", { sandboxId: "not-a-run", note: "not-a-verdict" })]);
-    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toEqual({ status: "checking", createdAt: mock.rows[0]!.createdAt });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toEqual({ status: "checking", attemptId: KEY, attemptNumber: 1, createdAt: mock.rows[0]!.createdAt });
   });
 
   it("deterministic/legacy checks cannot stand in for a sandbox pass", async () => {
@@ -343,7 +344,7 @@ describe("sandbox verdict reads", () => {
     const passed = row("checkup_sandbox", "passed", { path: "sandbox/blind-solve", sandboxId: "sandbox-handle", note: "Correct.", actor: TEACHER, classId: CLASS, detail: { private: "hidden" } }, 1);
     const mock = journalDb([claim(), passed]);
     const other = { scope: classScope(["authorized-other-class"]), classId: "authorized-other-class", teacherId: "authorized-other-teacher" };
-    await expect(readContentCheck(mock.db, other, KEY)).resolves.toEqual({ status: "passed", sandboxId: "sandbox-handle", note: "Correct.", createdAt: passed.createdAt });
+    await expect(readContentCheck(mock.db, other, KEY)).resolves.toEqual({ status: "passed", sandboxId: "sandbox-handle", note: "Correct.", attemptId: KEY, attemptNumber: 1, createdAt: mock.rows[0]!.createdAt });
     expect(dialect.sqlToQuery(mock.predicates[0]!).params).toEqual([KEY]);
   });
 
@@ -369,10 +370,10 @@ describe("sandbox verdict reads", () => {
     await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "blocked", note: "Key mismatch." });
   });
 
-  it("failed is terminal; unknown verdicts never grant a pass", async () => {
+  it("legacy failed maps to retryable error; unknown verdicts never grant a pass", async () => {
     const mock = journalDb([claim(), row("checkup_sandbox", "failed", { path: "sandbox/blind-solve" }, 1),
       row("checkup_sandbox", "made-up", { path: "sandbox/blind-solve" }, 2)]);
-    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "failed" });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "error" });
   });
 });
 
@@ -381,7 +382,7 @@ describe("append-only check events", () => {
     const mock = journalDb();
     await appendContentCheck(mock.db, ACCESS, KEY, { status: "blocked", eventId: EVENT, sandboxId: "run-handle", note: "Wrong key.", evidence: { path: "forged", actor: "forged" } });
     expect(mock.inserts).toEqual([{ id: EVENT, draftId: KEY, checkKind: "checkup_sandbox", verdict: "blocked",
-      evidence: { path: "sandbox/blind-solve", actor: TEACHER, classId: CLASS, sandboxId: "run-handle", note: "Wrong key.", detail: { path: "forged", actor: "forged" } } }]);
+      evidence: { path: "sandbox/blind-solve", actor: TEACHER, classId: CLASS, attemptId: KEY, sandboxId: "run-handle", note: "Wrong key.", detail: { path: "forged", actor: "forged" } } }]);
   });
 
   it("deduplicates repeated completion polls with a deterministic event id", async () => {
@@ -397,6 +398,190 @@ describe("append-only check events", () => {
     await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK)).rejects.toThrow("offline");
     await expect(appendContentCheck(mock.db, ACCESS, KEY, { status: "passed" })).rejects.toThrow("offline");
     await expect(readContentCheck(mock.db, ACCESS, KEY)).rejects.toThrow("offline");
+  });
+});
+
+describe("retryable infrastructure errors with one claim per attempt", () => {
+  const failed = (status = "error") => row("checkup_sandbox", status,
+    { path: "sandbox/blind-solve", attemptId: KEY, note: "No verdict available." }, 1);
+
+  it.each(["error", "failed"])("an explicit retry of %s creates a new attributed claim under the unchanged content key", async (status) => {
+    const mock = journalDb([claim(), failed(status)]);
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY)).resolves.toBe(true);
+    const next = mock.inserts[0]!;
+    expect(next.id).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-8[0-9a-f]{3}-[0-9a-f]{12}$/);
+    expect(next.id).not.toBe(KEY);
+    expect(next).toMatchObject({ draftId: KEY, checkKind: "checkup_claim", verdict: "checking",
+      evidence: { ...TASK, teacherId: TEACHER, classId: CLASS, attemptNumber: 2, parentAttemptId: KEY } });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toEqual({
+      status: "checking", attemptId: next.id, attemptNumber: 2, createdAt: mock.rows[2]!.createdAt,
+    });
+  });
+
+  it("an infrastructure error cannot start another run without an explicit retry attempt", async () => {
+    const mock = journalDb([claim(), failed()]);
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK)).resolves.toBe(false);
+    expect(mock.rows).toHaveLength(2);
+  });
+
+  it("concurrent teachers can claim only one retry of the same failed attempt", async () => {
+    const mock = journalDb([claim(), failed()]);
+    const other = { ...ACCESS, teacherId: "synthetic-second-teacher" };
+    const attempts = await Promise.all([
+      claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY),
+      claimContentCheck(mock.db, other, KEY, TASK, KEY),
+      claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY),
+    ]);
+    expect(attempts.filter(Boolean)).toHaveLength(1);
+    expect(new Set(mock.inserts.map((entry) => entry.id)).size).toBe(1);
+    expect(mock.rows.filter((entry) => entry.checkKind === "checkup_claim")).toHaveLength(2);
+    expect(mock.conflicts.every((entry) => (entry as { target: { name: string } }).target.name === "id")).toBe(true);
+  });
+
+  it.each(["checking", "passed", "blocked"])("%s cannot be retried even with the right attempt identifier", async (status) => {
+    const mock = journalDb([claim(), failed(status)]);
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY)).resolves.toBe(false);
+    expect(mock.inserts).toHaveLength(0);
+  });
+
+  it("a missing claim or wrong failed-attempt identifier cannot grant a retry", async () => {
+    const missing = journalDb([failed()]);
+    await expect(claimContentCheck(missing.db, ACCESS, KEY, TASK, KEY)).resolves.toBe(false);
+    const wrong = journalDb([claim(), failed()]);
+    await expect(claimContentCheck(wrong.db, ACCESS, KEY, TASK, EVENT)).resolves.toBe(false);
+    expect(missing.inserts).toHaveLength(0);
+    expect(wrong.inserts).toHaveLength(0);
+  });
+
+  it("an old retry request cannot acquire a later failed attempt", async () => {
+    const mock = journalDb([claim(), failed()]);
+    await claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY);
+    const secondId = mock.inserts[0]!.id;
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "error", attemptId: secondId });
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY)).resolves.toBe(false);
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK, secondId)).resolves.toBe(true);
+    const thirdId = mock.inserts.at(-1)!.id;
+    expect(thirdId).not.toBe(secondId);
+    expect(thirdId).not.toBe(KEY);
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "checking", attemptId: thirdId, attemptNumber: 3 });
+  });
+
+  it("late original and legacy events cannot complete or poison the active retry", async () => {
+    const mock = journalDb([claim(), failed()]);
+    await claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY);
+    const retryId = mock.inserts[0]!.id;
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "passed", attemptId: KEY });
+    mock.rows.push(row("checkup_sandbox", "blocked", { path: "sandbox/blind-solve" }, 59));
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "error", attemptId: "unrelated-attempt" });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "checking", attemptId: retryId });
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "passed", attemptId: retryId });
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "blocked", attemptId: KEY });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "passed", attemptId: retryId });
+  });
+
+  it("an unrelated or malformed successor claim cannot suppress an existing model verdict", async () => {
+    const mock = journalDb([claim(), row("checkup_sandbox", "passed", { path: "sandbox/blind-solve" }, 1)]);
+    mock.rows.push({ ...row("checkup_claim", "checking", { attemptNumber: 2, parentAttemptId: KEY }, 2), id: EVENT });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "passed", attemptId: KEY, attemptNumber: 1 });
+  });
+
+  it.each(["wrong parent", "wrong sequence"])("a deterministic successor with %s is ignored", async (defect) => {
+    const mock = journalDb([claim(), failed()]);
+    await claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY);
+    const retry = mock.rows[2]!;
+    retry.evidence = { ...retry.evidence as object,
+      ...(defect === "wrong parent" ? { parentAttemptId: EVENT } : { attemptNumber: 8 }) };
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "error", attemptId: KEY, attemptNumber: 1 });
+  });
+
+  it("claim creation time controls timeout even after newer checking events", async () => {
+    const mock = journalDb([claim()]);
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "checking", sandboxId: "batch-handle", batch: true });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({
+      status: "checking", sandboxId: "batch-handle", batch: true, createdAt: mock.rows[0]!.createdAt,
+    });
+    expect(mock.rows[1]!.createdAt.getTime()).toBeGreaterThan(mock.rows[0]!.createdAt.getTime());
+  });
+
+  it("a late infrastructure error cannot erase a recorded model verdict", async () => {
+    const mock = journalDb([claim(), row("checkup_sandbox", "passed", { path: "sandbox/blind-solve" }, 1), failed()]);
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "error" });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "passed" });
+    await expect(claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY)).resolves.toBe(false);
+  });
+
+  it("retry metadata survives serialized JSONB driver evidence", async () => {
+    const mock = journalDb([claim(), failed()]);
+    await claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY);
+    const retryId = mock.inserts[0]!.id;
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "passed", attemptId: retryId, batch: true });
+    for (const entry of mock.rows) entry.evidence = JSON.stringify(entry.evidence);
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ status: "passed", attemptId: retryId, attemptNumber: 2, batch: true });
+  });
+
+  it("nested evidence cannot replace attempt, batch, actor or content attribution", async () => {
+    const mock = journalDb();
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "error", attemptId: EVENT, batch: false,
+      evidence: { attemptId: KEY, batch: true, actor: "forged", classId: "forged" } });
+    expect(mock.inserts[0]).toMatchObject({ draftId: KEY, verdict: "error", evidence: {
+      path: "sandbox/blind-solve", attemptId: EVENT, batch: false, actor: TEACHER, classId: CLASS,
+      detail: { attemptId: KEY, batch: true, actor: "forged", classId: "forged" },
+    } });
+  });
+});
+
+describe("shared batch lifetime membership", () => {
+  const members = [{ key: KEY, attemptId: KEY }, { key: CLASS, attemptId: EVENT }];
+
+  it("persists protected shared members and returns only their content and attempt identifiers", async () => {
+    const mock = journalDb([claim()]);
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "checking", batch: true, sandboxId: "shared-handle",
+      batchMembers: members, evidence: { batchMembers: [{ key: "forged", attemptId: "forged" }] } });
+    expect(mock.inserts[0]!.evidence).toMatchObject({ batchMembers: members,
+      detail: { batchMembers: [{ key: "forged", attemptId: "forged" }] } });
+    const event = mock.rows[1]!;
+    event.evidence = JSON.stringify({ ...event.evidence as object,
+      batchMembers: members.map((member) => ({ ...member, actor: "private", studentName: "must-not-leave-journal" })) });
+    const result = await readContentCheck(mock.db, ACCESS, KEY);
+    expect(result?.batchMembers).toEqual(members);
+    expect(JSON.stringify(result)).not.toContain("private");
+    expect(JSON.stringify(result)).not.toContain("studentName");
+  });
+
+  it.each([
+    ["missing", undefined], ["null", null], ["not array", {}], ["empty", []],
+    ["too many", Array.from({ length: 21 }, () => ({ key: KEY, attemptId: KEY }))],
+    ["null member", [null]], ["array member", [[]]], ["string member", [JSON.stringify(members[0])]],
+    ["missing key", [{ attemptId: KEY }]], ["non-string key", [{ key: 5, attemptId: KEY }]],
+    ["invalid key", [{ key: "not-a-uuid", attemptId: KEY }]],
+    ["missing attempt", [{ key: KEY }]], ["non-string attempt", [{ key: KEY, attemptId: 5 }]],
+    ["invalid attempt", [{ key: KEY, attemptId: "not-a-uuid" }]],
+  ])("ignores %s shared-member metadata instead of authorizing early batch shutdown", async (_reason, batchMembers) => {
+    const mock = journalDb([claim(), row("checkup_sandbox", "checking", { path: "sandbox/blind-solve", batch: true, batchMembers }, 1)]);
+    const result = await readContentCheck(mock.db, ACCESS, KEY);
+    expect(result).toMatchObject({ status: "checking", batch: true });
+    expect(result).not.toHaveProperty("batchMembers");
+  });
+
+  it("accepts exactly twenty UUID members and never exposes membership from a claim or terminal event", async () => {
+    const twenty = Array.from({ length: 20 }, () => ({ key: KEY, attemptId: KEY }));
+    const mock = journalDb([claim(), row("checkup_sandbox", "checking", { path: "sandbox/blind-solve", batchMembers: twenty }, 1)]);
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ batchMembers: twenty });
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "passed", batchMembers: members });
+    expect(await readContentCheck(mock.db, ACCESS, KEY)).not.toHaveProperty("batchMembers");
+    const forgedClaim = journalDb([row("checkup_claim", "checking", { batchMembers: members })]);
+    expect(await readContentCheck(forgedClaim.db, ACCESS, KEY)).not.toHaveProperty("batchMembers");
+  });
+
+  it("old attempt membership cannot replace the shared membership of an active retry", async () => {
+    const mock = journalDb([claim()]);
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "error" });
+    await claimContentCheck(mock.db, ACCESS, KEY, TASK, KEY);
+    const retryId = (await readContentCheck(mock.db, ACCESS, KEY))!.attemptId!;
+    const retryMembers = [{ key: KEY, attemptId: retryId }];
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "checking", attemptId: retryId, batchMembers: retryMembers });
+    await appendContentCheck(mock.db, ACCESS, KEY, { status: "checking", attemptId: KEY, batchMembers: members });
+    await expect(readContentCheck(mock.db, ACCESS, KEY)).resolves.toMatchObject({ batchMembers: retryMembers, attemptId: retryId });
   });
 });
 

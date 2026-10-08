@@ -194,6 +194,7 @@ export async function POST(req: Request): Promise<Response> {
         return NextResponse.json({ ok: true, status: "published" });
       }
       await setCheckedStudioStatus(getDb(), access, body.itemId, item, gate.status === "checking" ? "checking" : "check_failed");
+      if (gate.status === "error") return bad(gate.errors, 503);
       if (gate.status === "blocked") return bad(gate.errors, 422);
       return NextResponse.json({ ok: true, status: "checking", runId: gate.runId, model: DEFAULT_STUDIO_SOLVER_MODEL });
     } catch {
@@ -210,7 +211,7 @@ export async function POST(req: Request): Promise<Response> {
       const item = normalizePatchColumn(row.item) as VocabItem | GrammarItem;
       const gate = await checkStudioContent(access, row.kind === "grammar" ? "grammar" : "vocab", item, row.unitSlug, match[1]);
       if (gate.status !== "checking" && !(await setCheckedStudioStatus(getDb(), access, row.itemId, item, gate.status === "passed" ? "published" : "check_failed"))) return bad(["Der Entwurf wurde geändert."], 409);
-      return NextResponse.json({ ok: true, kind: gate.status === "checking" ? "running" : gate.status, note: gate.errors.join("; ") || undefined });
+      return NextResponse.json({ ok: true, kind: gate.status === "checking" ? "running" : gate.status === "error" ? "failed" : gate.status, note: gate.errors.join("; ") || undefined });
     } catch {
       return NextResponse.json({ ok: false, error: "content_check_failed" }, { status: 503 });
     }

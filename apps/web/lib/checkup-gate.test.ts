@@ -5,7 +5,7 @@ import { describe, it } from "node:test";
 import { vocabAnswers } from "@domigo/engine";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { ContentCheckEvent, ContentCheckResult, ContentCheckTaskMeta } from "../../../packages/db/src/content-check-journal.ts";
-import type { SandboxFrameResult } from "./studio-solve-sandbox.ts";
+import type { SandboxFrameResult, SandboxBatchResult } from "./studio-solve-sandbox.ts";
 import { composeCheckup, prepareCheckupTasks, type PreparedCheckupTask } from "./checkup.ts";
 import { checkupTaskKey, runCheckupGate, type CheckupGatePorts } from "./checkup-gate.ts";
 
@@ -29,6 +29,8 @@ function complete(candidates: Array<{ answer: string; confidence: number }>): Sa
 function memory() {
   const rows = new Map<string, ContentCheckResult>();
   const starts: PreparedCheckupTask[] = [];
+  const batches: PreparedCheckupTask[][] = [];
+  const batchReplies = new Map<string, SandboxBatchResult>();
   const claims: Array<{ key: string; meta: ContentCheckTaskMeta }> = [];
   const events: Array<{ key: string; event: ContentCheckEvent }> = [];
   const eventIds = new Set<string>();
@@ -39,11 +41,12 @@ function memory() {
   const ports: CheckupGatePorts = {
     now: () => CLOCK,
     async read(key) { const row = rows.get(key); return row ? { ...row } : null; },
-    async claim(key, meta) {
-      if (rows.has(key)) return false;
+    async claim(key, meta, retryAttemptId) {
+      const previous = rows.get(key);
+      if (previous && (previous.status !== "error" || previous.attemptId !== retryAttemptId)) return false;
       claims.push({ key, meta });
       sequence.push("claim");
-      rows.set(key, { status: "checking", createdAt: new Date(CLOCK) });
+      rows.set(key, { status: "checking", createdAt: new Date(CLOCK), attemptId: previous ? `${key}-retry-${previous.attemptNumber}` : key, attemptNumber: (previous?.attemptNumber ?? 0) + 1 });
       return true;
     },
     async append(key, event) {
@@ -52,8 +55,8 @@ function memory() {
       events.push({ key, event });
       sequence.push(`append:${event.status}`);
       const row = rows.get(key);
-      if (row?.status !== "checking") return;
-      rows.set(key, { status: event.status, createdAt: row.createdAt,
+      if (row?.status !== "checking" || (event.attemptId && event.attemptId !== (row.attemptId ?? key))) return;
+      rows.set(key, { ...row, ...event, status: event.status, createdAt: row.createdAt,
         ...(event.sandboxId ? { sandboxId: event.sandboxId } : {}),
         ...(event.note ? { note: event.note } : {}),
       });
@@ -63,11 +66,15 @@ function memory() {
       sequence.push("start");
       await remember(`stub-${checkupTaskKey(task)}`);
     },
+    async startBatch(group, remember) {
+      batches.push(group); starts.push(...group); sequence.push("start-batch"); await remember(`batch-${batches.length}`);
+    },
+    async pollBatch(id) { polls.push(id); sequence.push("poll-batch"); return batchReplies.get(id) ?? { status: "checking" }; },
     async poll(id) { polls.push(id); sequence.push("poll"); return replies.get(id) ?? { status: "checking" }; },
     async stop(id) { stops.push(id); sequence.push("stop"); },
   };
   function seed(task: PreparedCheckupTask, status: ContentCheckResult["status"], options: Partial<ContentCheckResult> = {}) {
-    rows.set(checkupTaskKey(task), { status, createdAt: new Date(CLOCK), ...options });
+    rows.set(checkupTaskKey(task), { status, createdAt: new Date(CLOCK), attemptId: checkupTaskKey(task), attemptNumber: 1, ...options });
   }
   function answer(task: PreparedCheckupTask, reply: SandboxFrameResult) {
     const id = `stub-${checkupTaskKey(task)}`;
@@ -75,11 +82,11 @@ function memory() {
     replies.set(id, reply);
     return id;
   }
-  return { ports, rows, starts, claims, events, stops, polls, sequence, replies, seed, answer };
+  return { ports, rows, starts, batches, batchReplies, claims, events, stops, polls, sequence, replies, seed, answer };
 }
 
 describe("runCheckupGate — paid-run and publication contracts", () => {
-  it("without journal hits returns checking and starts at most one item per request", async () => {
+  it("twenty missing items share exactly one frame start and twenty item claims", async () => {
     const m = memory();
     const result = await runCheckupGate(tasks, m.ports);
     assert.equal(result.status, "checking");
@@ -87,8 +94,11 @@ describe("runCheckupGate — paid-run and publication contracts", () => {
     assert.equal(result.total, 20);
     assert.equal(result.journalHits, 0);
     assert.equal(result.started, 1);
-    assert.equal(m.starts.length, 1);
-    assert.deepEqual(m.sequence.slice(0, 3), ["claim", "start", "append:checking"]);
+    assert.equal(m.starts.length, 20);
+    assert.equal(m.batches.length, 1);
+    assert.equal(m.batches[0]!.length, 20);
+    assert.equal(m.claims.length, 20);
+    assert.equal(m.sequence.indexOf("start-batch"), 20, "all claims precede the sole start");
     assert.deepEqual(m.claims[0]!.meta, { itemId: first.itemId, revision: String(first.revision), unitSlug: first.unitSlug, kind: first.kind });
     assert.ok(result.runId);
     assert.deepEqual(result.errors, []);
@@ -119,8 +129,8 @@ describe("runCheckupGate — paid-run and publication contracts", () => {
     assert.equal(m.starts[0]!.itemId, tasks[19]!.itemId);
   });
 
-  it("stored blocked or failed verdicts block with a reason and never restart", async () => {
-    for (const status of ["blocked", "failed"] as const) {
+  it("stored blocked verdicts block with a reason and never restart", async () => {
+    for (const status of ["blocked"] as const) {
       const m = memory();
       m.seed(first, status, { note: "Absichtlich nicht bestanden." });
       for (let retry = 0; retry < 2; retry++) {
@@ -217,44 +227,41 @@ describe("runCheckupGate — paid-run and publication contracts", () => {
     assert.equal(m.starts.length, 0);
   });
 
-  it("setup failure is terminal and repeated requests cannot spend again", async () => {
-    const m = memory();
-    let attempts = 0;
-    m.ports.start = async () => { attempts++; throw new Error("synthetic setup failure"); };
-    const firstResult = await runCheckupGate([first], m.ports);
-    const retry = await runCheckupGate([first], m.ports);
-    assert.equal(firstResult.status, "blocked");
-    assert.equal(retry.status, "blocked");
-    assert.equal(attempts, 1);
-    assert.equal(m.events[0]!.event.status, "failed");
-    assert.match(retry.errors.join(" "), /konnte nicht gestartet/);
+  it("setup failure is an error and the next publication attempt retries once", async () => {
+    const m = memory(); let attempts = 0;
+    const start = m.ports.startBatch;
+    m.ports.startBatch = async (...args) => { attempts++; if (attempts === 1) throw new Error("synthetic setup failure"); await start(...args); };
+    const failed = await runCheckupGate(tasks, m.ports);
+    assert.equal(failed.status, "error"); assert.deepEqual(failed.blockedItemIds, []);
+    assert.match(failed.errors.join(" "), /Prüfung konnte nicht laufen — später erneut/);
+    assert.ok(m.events.every(({ event }) => event.status === "error"));
+    const retry = await runCheckupGate(tasks, m.ports);
+    assert.equal(retry.status, "checking"); assert.equal(attempts, 2);
+    assert.equal(m.batches.length, 1); assert.equal(m.batches[0]!.length, 20);
+    assert.equal(m.claims.length, 40);
+    m.batchReplies.set("batch-1", { status: "complete", results: Object.fromEntries(tasks.map(task=>[checkupTaskKey(task), complete([{answer:fullAnswer(task),confidence:.99}])])) });
+    assert.equal((await runCheckupGate(tasks,m.ports)).status,"passed","retry completion has its own terminal event identity");
   });
 
-  it("stale claims fail closed without relaunch, including claims with no sandbox handle", async () => {
+  it("timeouts end without judgment and permit a later attempt, including missing handles", async () => {
     for (const sandboxId of [undefined, "stub-stale"]) {
-      const m = memory();
-      m.seed(first, "checking", { createdAt: new Date(CLOCK - 7 * 60_000 - 1), ...(sandboxId ? { sandboxId } : {}) });
-      const result = await runCheckupGate([first], m.ports);
-      assert.equal(result.status, "blocked");
-      assert.match(result.errors.join(" "), /Zeitlimit/);
-      assert.equal(m.polls.length, 0);
-      assert.equal(m.starts.length, 0);
+      const m = memory(); m.seed(first, "checking", { createdAt: new Date(CLOCK - 16 * 60_000 - 1), ...(sandboxId ? { sandboxId } : {}) });
+      const failed = await runCheckupGate([first], m.ports);
+      assert.equal(failed.status, "error"); assert.deepEqual(failed.blockedItemIds, []);
+      assert.equal(m.polls.length, 0); assert.equal(m.starts.length, 0);
       assert.equal(m.stops.length, sandboxId ? 1 : 0);
       const retry = await runCheckupGate([first], m.ports);
-      assert.equal(retry.status, "blocked");
-      assert.equal(m.starts.length, 0);
+      assert.equal(retry.status, "checking"); assert.equal(m.batches.length, 1);
     }
   });
 
-  it("a failed sandbox result is journaled as failed and cannot publish or retry", async () => {
-    const m = memory();
-    m.answer(first, { status: "failed", note: "Synthetischer Prüffehler." });
-    const result = await runCheckupGate([first], m.ports);
-    assert.equal(result.status, "blocked");
-    assert.match(result.errors.join(" "), /Synthetischer Prüffehler/);
-    assert.deepEqual(m.sequence, ["poll", "append:failed", "stop"]);
-    assert.equal((await runCheckupGate([first], m.ports)).status, "blocked");
-    assert.equal(m.starts.length, 0);
+  it("infrastructure poll failures journal error, never an item rejection", async () => {
+    const m = memory(); m.answer(first, { status: "error", note: "synthetic failure" });
+    const failed = await runCheckupGate([first], m.ports);
+    assert.equal(failed.status, "error"); assert.deepEqual(failed.blockedItemIds, []);
+    assert.deepEqual(m.sequence, ["poll", "append:error", "stop"]);
+    assert.equal((await runCheckupGate([first], m.ports)).status, "checking");
+    assert.equal(m.batches.length, 1);
   });
 
   it("journal write failure propagates, never passes, and does not stop before durable evidence", async () => {
@@ -278,7 +285,7 @@ describe("runCheckupGate — paid-run and publication contracts", () => {
     const missing = await runCheckupGate([first], n.ports);
     assert.equal(missing.status, "checking");
     assert.equal(missing.checked, 0);
-    assert.equal(n.starts.length, 1);
+    assert.equal(n.starts.length, 0);
   });
 
   it("changed item, answer key, frame, revision or pool invalidates a journal fingerprint", () => {
@@ -311,4 +318,65 @@ it("a known late failure prevents spending on earlier missing items", async () =
   const m = memory(); m.seed(tasks.at(-1)!, "blocked", { note: "Blocked fixture" });
   const result = await runCheckupGate(tasks, m.ports);
   assert.equal(result.status, "blocked"); assert.equal(m.starts.length, 0);
+});
+
+it("a complete twenty-item batch journals each answer, polls once, and reuses all hits", async () => {
+  const m = memory(); await runCheckupGate(tasks, m.ports);
+  const results = Object.fromEntries(tasks.map((task) => [checkupTaskKey(task), complete([{ answer: fullAnswer(task), confidence: .99 }])]));
+  m.batchReplies.set("batch-1", { status: "complete", results }); m.polls.length = 0;
+  const result = await runCheckupGate(tasks, m.ports);
+  assert.equal(result.status, "passed"); assert.equal(result.checked, 20); assert.equal(m.polls.length, 1);
+  assert.equal(m.events.filter(({ event }) => event.status === "passed").length, 20);
+  assert.equal(m.stops.length, 1); assert.equal(m.batches.length, 1);
+  const again = await runCheckupGate(tasks, m.ports);
+  assert.equal(again.journalHits, 20); assert.equal(again.started, 0); assert.equal(m.batches.length, 1);
+});
+it("a missing batch answer retries only that item; valid siblings remain free hits", async () => {
+  const m = memory(); await runCheckupGate(tasks, m.ports);
+  m.batchReplies.set("batch-1", { status: "complete", results: Object.fromEntries(tasks.slice(1).map((task) => [checkupTaskKey(task), complete([{ answer: fullAnswer(task), confidence: .99 }])])) });
+  const failed = await runCheckupGate(tasks, m.ports);
+  assert.equal(failed.status, "error"); assert.equal(failed.checked, 19); assert.deepEqual(failed.blockedItemIds, []);
+  const retry = await runCheckupGate(tasks, m.ports);
+  assert.equal(retry.journalHits, 19); assert.deepEqual(m.batches[1]!.map(t=>t.itemId), [first.itemId]);
+});
+it("one wrong answer in a batch blocks only its item, with all other results journaled", async () => {
+  const m = memory(); await runCheckupGate(tasks, m.ports);
+  m.batchReplies.set("batch-1", { status: "complete", results: Object.fromEntries(tasks.map((task, i) => [checkupTaskKey(task), complete([{ answer: i === 7 ? "zzzzz" : fullAnswer(task), confidence: .99 }])])) });
+  const result = await runCheckupGate(tasks, m.ports);
+  assert.equal(result.status, "blocked"); assert.equal(result.checked, 19);
+  assert.deepEqual(result.blockedItemIds, [tasks[7]!.itemId]);
+});
+it("Studio remains one ordinary single-item frame and polling errors never auto-retry", async () => {
+  const m = memory(); await runCheckupGate([first], m.ports, { single: true });
+  assert.equal(m.starts.length, 1); assert.equal(m.batches.length, 0);
+  m.seed(first, "error");
+  const result = await runCheckupGate([first], m.ports, { single: true, retryErrors: false });
+  assert.equal(result.status, "error"); assert.equal(m.starts.length, 1);
+});
+it("parallel twenty-item requests never duplicate a claimed item", async () => {
+  const m = memory(); await Promise.all(Array.from({length: 8},()=>runCheckupGate(tasks,m.ports)));
+  assert.equal(m.starts.length,20); assert.equal(new Set(m.starts.map(checkupTaskKey)).size,20);
+  assert.equal(m.batches.length,1);
+});
+
+it("a subset cannot close the shared environment before the other item verdicts persist",async()=>{
+  const m=memory();await runCheckupGate(tasks,m.ports);
+  m.batchReplies.set("batch-1",{status:"complete",results:Object.fromEntries(tasks.map(task=>[checkupTaskKey(task),complete([{answer:fullAnswer(task),confidence:.99}])]))});
+  const subset=await runCheckupGate([first],m.ports);assert.equal(subset.status,"passed");assert.equal(m.stops.length,0);
+  assert.equal(m.events.filter(e=>e.event.status==="passed").length,1);
+  const sheet=await runCheckupGate(tasks,m.ports);assert.equal(sheet.status,"passed");assert.equal(sheet.checked,20);assert.equal(m.stops.length,1);assert.equal(m.batches.length,1);
+});
+
+it("a blocked subset still lets existing batch siblings journal without new spending",async()=>{
+  const m=memory();await runCheckupGate(tasks,m.ports);
+  m.batchReplies.set("batch-1",{status:"complete",results:Object.fromEntries(tasks.map((task,i)=>[checkupTaskKey(task),complete([{answer:i===0?"zzz wrong":fullAnswer(task),confidence:.99}])]))});
+  assert.equal((await runCheckupGate([first],m.ports)).status,"blocked");assert.equal(m.stops.length,0);
+  const sheet=await runCheckupGate(tasks,m.ports);assert.equal(sheet.status,"blocked");assert.equal(sheet.checked,19);assert.equal(m.stops.length,1);assert.equal(m.batches.length,1);
+  assert.equal(m.events.filter(e=>e.event.status==="passed").length,19);
+});
+
+it("a partly claimed pending batch holds new spending until that owner finishes",async()=>{
+  const m=memory();m.seed(first,"checking");
+  const result=await runCheckupGate(tasks,m.ports);assert.equal(result.status,"checking");
+  assert.equal(m.claims.length,0);assert.equal(m.batches.length,0);
 });

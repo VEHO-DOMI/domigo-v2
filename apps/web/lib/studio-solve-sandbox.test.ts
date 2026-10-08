@@ -72,7 +72,7 @@ registerHooks({
     return next(specifier, context);
   },
 });
-const { startSandboxFrame, pollSandboxFrame, stopSandboxFrame } = await import("./studio-solve-sandbox.ts");
+const { startSandboxFrame, pollSandboxFrame, stopSandboxFrame, startSandboxBatch, pollSandboxBatch } = await import("./studio-solve-sandbox.ts");
 
 const frame: Frame = { itemId: "synthetic-frame", kind: "grammar", format: "gap-fill",
   lines: ["They ___ outside every day."], input: { kind: "text", blanks: 1 }, glosses: [], direction: null, structure: null };
@@ -227,7 +227,7 @@ describe("real pollSandboxFrame · meta.json protocol", { concurrency: false }, 
   for (const [name, meta] of malformed) it(`${name} fails with a sanitized reason`, async () => {
     fixture.meta = meta;
     const result = await pollSandboxFrame(sandbox.sandboxId, now());
-    assert.equal(result.status, "failed");
+    assert.equal(result.status, "error");
     assert.ok("note" in result && typeof result.note === "string" && !result.note.includes(PRIVATE_DETAIL));
     assert.equal(fixture.stopped, 0);
   });
@@ -235,8 +235,8 @@ describe("real pollSandboxFrame · meta.json protocol", { concurrency: false }, 
   it("stale runs fail before reconnecting, even if valid output is available", async () => {
     fixture.meta = JSON.stringify({ status: "ok", candidates: [{ answer: "play", confidence: 0.99 }] });
     const result = await pollSandboxFrame(sandbox.sandboxId, new Date(Date.now() - 7 * 60_000 - 100));
-    assert.equal(result.status, "failed");
-    assert.ok("note" in result && result.note.includes("Zeitlimit"));
+    assert.equal(result.status, "error");
+    assert.ok("note" in result && result.note.includes("später erneut"));
     assert.equal(fixture.gets.length, 0);
   });
 });
@@ -253,5 +253,52 @@ describe("real stopSandboxFrame", { concurrency: false }, () => {
     fixture.getFails = false; fixture.stopFails = true;
     await stopSandboxFrame(sandbox.sandboxId);
     assert.equal(fixture.stopped, 1);
+  });
+});
+
+const batchTasks = Array.from({ length: 20 }, (_, i) => ({ ...task, key: `00000000-0000-4000-8000-${String(i).padStart(12, "0")}` }));
+describe("real checkup batch transport", { concurrency: false }, () => {
+  it("twenty tasks create one environment, install once and launch one model runner", async () => {
+    await startSandboxBatch(batchTasks, remember);
+    assert.equal(fixture.creates.length, 1); assert.equal(fixture.commands.length, 2);
+    assert.deepEqual(fixture.creates[0], { runtime: "node22", resources: { vcpus: 2 }, timeout: 900000 });
+    assert.equal(fixture.commands.filter(c=>c.detached).length, 1);
+    const payload = fixture.files.get("/vercel/sandbox/payload.json")!.toString();
+    const prompts = JSON.parse(payload); assert.equal(prompts.length,20);
+    assert.ok(prompts.every((p: { prompt: string })=>p.prompt.includes(frame.lines[0]!)));
+    assert.doesNotMatch(payload,/synthetic-private-answer-key|synthetic-private-hint|"answers"/);
+    assert.deepEqual(Object.keys(fixture.commands[1]!.env!).sort(),["CLAUDE_CODE_OAUTH_TOKEN","MODEL","THINKING"]);
+    assert.ok(fixture.events.includes("remembered"));
+    assert.ok(fixture.events.indexOf("remembered") < fixture.events.indexOf("detached-run"));
+  });
+  it("missing subscription authentication cannot create a batch environment",async()=>{
+    delete process.env.CLAUDE_CODE_OAUTH_TOKEN;
+    await assert.rejects(startSandboxBatch(batchTasks,remember));assert.equal(fixture.creates.length,0);
+  });
+  it("setup failure stops the single environment and keeps provider details private",async()=>{
+    fixture.installExit=1;await assert.rejects(startSandboxBatch(batchTasks,remember),error=>error instanceof Error&&!error.message.includes(PRIVATE_DETAIL));assert.equal(fixture.stopped,1);
+  });
+  it("refuses empty, oversized, duplicate or malformed batch identities before spending",async()=>{
+    for(const tasks of [[],[...batchTasks,batchTasks[0]!],[batchTasks[0]!,batchTasks[0]!],[{...batchTasks[0]!,key:"../secret"}],[batchTasks[0]!,{...batchTasks[1]!,model:"other"}]])await assert.rejects(startSandboxBatch(tasks,remember));
+    assert.equal(fixture.creates.length,0);
+  });
+  it("one completed reply preserves distinct per-item candidates and performs one read",async()=>{
+    fixture.meta=JSON.stringify({status:"ok",results:batchTasks.map((t,i)=>({key:t.key,status:"ok",candidates:[{answer:`Answer ${i}`,confidence:.9}]}))});
+    const result=await pollSandboxBatch("synthetic",now());assert.equal(result.status,"complete");if(result.status!=="complete")throw Error("missing result");
+    assert.equal(Object.keys(result.results).length,20);assert.equal(fixture.readPaths.length,1);
+    const first=result.results[batchTasks[0]!.key]!;assert.equal(first.status,"complete");if(first.status==="complete")assert.equal(first.candidates[0]!.answer,"Answer 0");
+    assert.equal(fixture.stopped,0,"caller journals before stop");
+  });
+  it("malformed item output is an error without discarding valid siblings",async()=>{
+    fixture.meta=JSON.stringify({status:"ok",results:[{key:batchTasks[0]!.key,status:"ok",candidates:[{answer:"ok",confidence:.9}]},{key:batchTasks[1]!.key,status:"ok",candidates:[{answer:"",confidence:1}]}]});
+    const result=await pollSandboxBatch("synthetic",now());assert.equal(result.status,"complete");if(result.status!=="complete")throw Error("missing result");
+    assert.equal(result.results[batchTasks[0]!.key]!.status,"complete");assert.equal(result.results[batchTasks[1]!.key]!.status,"error");
+  });
+  for(const meta of ["invalid", "null", JSON.stringify({status:"error",error:PRIVATE_DETAIL}),JSON.stringify({status:"ok",results:[{key:"../secret"}]}),JSON.stringify({status:"ok",results:[{key:batchTasks[0]!.key},{key:batchTasks[0]!.key}]})])it(`malformed batch metadata is a retryable error (${meta.slice(0,12)})`,async()=>{
+    fixture.meta=meta;const result=await pollSandboxBatch("synthetic",now());assert.equal(result.status,"error");assert.ok(!JSON.stringify(result).includes(PRIVATE_DETAIL));
+  });
+  it("a pending batch stays checking and an expired batch becomes retryable error",async()=>{
+    assert.equal((await pollSandboxBatch("synthetic",now())).status,"checking");
+    assert.equal((await pollSandboxBatch("synthetic",new Date(Date.now()-16*60_000-1))).status,"error");
   });
 });

@@ -19,6 +19,7 @@ import "server-only";
  * server-only: the OAuth token + @vercel/sandbox never reach a client bundle.
  */
 import { Sandbox } from "@vercel/sandbox";
+import { BATCH_RUNNER_SOURCE } from "./studio-batch-runner.ts";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { Writable } from "node:stream";
@@ -159,15 +160,47 @@ export async function startSandboxFrame(
   }
 }
 
+/** A whole checkup shares one environment and one SDK query. The runtime
+ * supplies only claimed items; no keys, hints, teacher or class data are copied. */
+export async function startSandboxBatch(
+  tasks: Array<{ key: string; kind: ItemKind; frame: Frame; unitSlug: string; model: string }>,
+  remember: (sandboxId: string) => Promise<void>,
+): Promise<void> {
+  if (!tasks.length || tasks.length > 20 || new Set(tasks.map((task) => task.key)).size !== tasks.length
+    || tasks.some((task) => !/^[a-f0-9-]{36}$/.test(task.key) || task.model !== tasks[0]!.model)) throw new Error("Ungültiger Prüfauftrag.");
+  const oauthToken = sanitizeToken(process.env.CLAUDE_CODE_OAUTH_TOKEN);
+  if (!oauthToken) throw new Error("CLAUDE_CODE_OAUTH_TOKEN ist nicht konfiguriert.");
+  let sandbox: Sandbox | null = null;
+  try {
+    sandbox = await Sandbox.create({ runtime: "node22", resources: { vcpus: SANDBOX_VCPUS }, timeout: 15 * 60_000 });
+    await remember(sandbox.sandboxId);
+    await sandbox.fs.mkdir(`${SANDBOX_ROOT}/output`, { recursive: true });
+    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/runner.mjs`, Buffer.from(BATCH_RUNNER_SOURCE));
+    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/payload.json`, Buffer.from(JSON.stringify(tasks.map((task) => ({
+      key: task.key, prompt: buildSolvePayload(task.kind, task.frame, task.unitSlug),
+    })))));
+    await sandbox.fs.writeFile(`${SANDBOX_ROOT}/package.json`, Buffer.from(JSON.stringify(SANDBOX_PACKAGE_JSON)));
+    const install = { content: "" };
+    const installed = await sandbox.runCommand({ cmd: "npm", args: ["install", "--no-audit", "--no-fund", "--loglevel=error"], cwd: SANDBOX_ROOT,
+      stdout: captureWritable(install), stderr: captureWritable(install) });
+    if (installed.exitCode !== 0) throw new Error("Sandbox-Vorbereitung fehlgeschlagen.");
+    await sandbox.runCommand({ cmd: "node", args: ["runner.mjs"], cwd: SANDBOX_ROOT,
+      env: { MODEL: tasks[0]!.model, THINKING: "adaptive", CLAUDE_CODE_OAUTH_TOKEN: oauthToken }, detached: true });
+  } catch {
+    if (sandbox) await sandbox.stop().catch(() => {});
+    throw new Error("Prüfung konnte nicht laufen — später erneut.");
+  }
+}
+
 export type SandboxFrameResult =
   | { status: "checking" }
-  | { status: "failed"; note: string }
+  | { status: "failed" | "error"; note: string }
   | { status: "complete"; candidates: Array<{ answer: string; confidence: number }>; costUsd: number | null; inputTokens: number | null; outputTokens: number | null };
 
 /** Poll without stopping: the caller persists the verdict before releasing the
  * sandbox. No raw provider error or account data crosses this boundary. */
 export async function pollSandboxFrame(sandboxId: string, createdAt: Date): Promise<SandboxFrameResult> {
-  if (Date.now() - createdAt.getTime() > RUN_STALE_MS) return { status: "failed", note: "Die Prüfung hat das Zeitlimit erreicht. Item tauschen oder den Betrieb prüfen lassen." };
+  if (Date.now() - createdAt.getTime() > RUN_STALE_MS) return { status: "error", note: "Prüfung konnte nicht laufen — später erneut." };
   try {
     const sandbox = await Sandbox.get({ sandboxId });
     let raw: string;
@@ -175,16 +208,46 @@ export async function pollSandboxFrame(sandboxId: string, createdAt: Date): Prom
     catch { return { status: "checking" }; }
     let meta: SandboxMeta;
     try { meta = JSON.parse(raw) as SandboxMeta; }
-    catch { return { status: "failed", note: "Die Prüfung lieferte kein gültiges Ergebnis." }; }
+    catch { return { status: "error", note: "Prüfung konnte nicht laufen — später erneut." }; }
     if (!meta || meta.status !== "ok" || !Array.isArray(meta.candidates) || !meta.candidates.length || meta.candidates.some((c) =>
       !c || typeof c.answer !== "string" || !c.answer.trim() || c.answer.length > 10000 || !Number.isFinite(c.confidence) || c.confidence < 0 || c.confidence > 1)) {
-      return { status: "failed", note: "Die Prüfung lieferte kein gültiges Ergebnis." };
+      return { status: "error", note: "Prüfung konnte nicht laufen — später erneut." };
     }
     return { status: "complete", candidates: meta.candidates, costUsd: meta.totalCostUsd ?? null,
       inputTokens: meta.inputTokens ?? null, outputTokens: meta.outputTokens ?? null };
   } catch {
     return { status: "checking" };
   }
+}
+
+export type SandboxBatchResult =
+  | { status: "checking" }
+  | { status: "error"; note: string }
+  | { status: "complete"; results: Record<string, SandboxFrameResult> };
+
+/** One read per shared environment. Invalid or absent item outputs are errors,
+ * never passed/blocked judgments; valid siblings can still be journaled. */
+export async function pollSandboxBatch(sandboxId: string, createdAt: Date): Promise<SandboxBatchResult> {
+  const error = { status: "error" as const, note: "Prüfung konnte nicht laufen — später erneut." };
+  if (Date.now() - createdAt.getTime() > 16 * 60_000) return error;
+  try {
+    const sandbox = await Sandbox.get({ sandboxId });
+    let raw: string;
+    try { raw = await sandbox.fs.readFile(`${SANDBOX_ROOT}/output/meta.json`, "utf8"); }
+    catch { return { status: "checking" }; }
+    let meta: { status?: string; results?: Array<{ key?: string; status?: string; candidates?: Array<{ answer: string; confidence: number }> }> };
+    try { meta = JSON.parse(raw); } catch { return error; }
+    if (!meta || meta.status !== "ok" || !Array.isArray(meta.results) || meta.results.length > 20) return error;
+    const results: Record<string, SandboxFrameResult> = {};
+    for (const item of meta.results) {
+      if (!item || typeof item.key !== "string" || !/^[a-f0-9-]{36}$/.test(item.key) || Object.hasOwn(results, item.key)) return error;
+      results[item.key] = item.status === "ok" && Array.isArray(item.candidates) && item.candidates.length > 0 && item.candidates.length <= 3
+        && item.candidates.every((c) => c && typeof c.answer === "string" && c.answer.trim().length > 0 && c.answer.length <= 10000
+          && Number.isFinite(c.confidence) && c.confidence >= 0 && c.confidence <= 1)
+        ? { status: "complete", candidates: item.candidates, costUsd: null, inputTokens: null, outputTokens: null } : error;
+    }
+    return { status: "complete", results };
+  } catch { return { status: "checking" }; }
 }
 
 export async function stopSandboxFrame(sandboxId: string): Promise<void> {

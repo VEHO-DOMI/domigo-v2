@@ -49,10 +49,11 @@ function own(access: ContentCheckAccess) {
 }
 const boundary = {
   fixture,
-  async claim(access: ContentCheckAccess, key: string, task: ContentCheckTaskMeta) {
+  async claim(access: ContentCheckAccess, key: string, task: ContentCheckTaskMeta, retry?: string) {
     own(access);
-    if (fixture.claims.has(key)) return false;
-    fixture.claims.set(key, { status: "checking", createdAt: new Date(), task, access: structuredClone(access) });
+    const old = fixture.claims.get(key);
+    if (old && (old.status !== "error" || old.attemptId !== retry)) return false;
+    fixture.claims.set(key, { status: "checking", createdAt: new Date(), task, access: structuredClone(access), attemptId: old ? `${key}-retry-${old.attemptNumber}` : key, attemptNumber: (old?.attemptNumber ?? 0) + 1 });
     return true;
   },
   async read(access: ContentCheckAccess, key: string) {
@@ -60,7 +61,7 @@ const boundary = {
     fixture.journalReads.push(key);
     const row = fixture.claims.get(key);
     if (!row) return null;
-    return structuredClone({ status: row.status, createdAt: row.createdAt,
+    return structuredClone({ status: row.status, createdAt: row.createdAt, attemptId: row.attemptId, attemptNumber: row.attemptNumber,
       ...(row.sandboxId ? { sandboxId: row.sandboxId } : {}), ...(row.note ? { note: row.note } : {}) });
   },
   async append(access: ContentCheckAccess, key: string, event: ContentCheckEvent) {
@@ -71,7 +72,7 @@ const boundary = {
     const row = fixture.claims.get(key);
     assert.ok(row, "append follows durable claim");
     fixture.events.push({ key, access: structuredClone(access), event: structuredClone(event) });
-    if (row.status === "checking") fixture.claims.set(key, { ...row, ...event });
+    if (row.status === "checking" && (!event.attemptId || event.attemptId === row.attemptId)) fixture.claims.set(key, { ...row, ...event });
   },
   async load(itemId: string) {
     fixture.draftReads.push(itemId);
@@ -141,7 +142,7 @@ const modules = new Map([
     export const deleteDraft = async (_db, itemId) => { f.drafts.delete(itemId); };
   `],
   [journalURL, `${state}
-    export const claimContentCheck = async (_db, access, key, meta) => b.claim(access, key, meta);
+    export const claimContentCheck = async (_db, access, key, meta, retry) => b.claim(access, key, meta, retry);
     export const readContentCheck = async (_db, access, key) => b.read(access, key);
     export const appendContentCheck = async (_db, access, key, event) => b.append(access, key, event);
     export const loadCheckedStudioDraft = async (_db, access, itemId) => b.loadOwned(access, itemId);
@@ -323,14 +324,14 @@ describe("real Studio draft route · grammar and vocabulary intelligence gate", 
     assert.equal(fixture.starts.length, 1);
     assert.ok(!fixture.writes.some((row) => row.status === "published"));
   });
-  it("sandbox setup failure is terminal for the revision and has no API fallback", async () => {
+  it("sandbox setup error retries on a new publish and has no API fallback", async () => {
     assert.equal((await send(saveBody())).status, 200);
     fixture.startFailure = true;
-    assert.equal((await send({ action: "publish", itemId: grammar.id })).status, 422);
+    assert.equal((await send({ action: "publish", itemId: grammar.id })).status, 503);
     fixture.startFailure = false;
-    assert.equal((await send({ action: "publish", itemId: grammar.id })).status, 422);
-    assert.equal(fixture.starts.length, 1);
-    assert.equal(fixture.drafts.get(grammar.id)!.status, "check_failed");
+    assert.equal((await send({ action: "publish", itemId: grammar.id })).status, 200);
+    assert.equal(fixture.starts.length, 2);
+    assert.equal(fixture.drafts.get(grammar.id)!.status, "checking");
     const routeSource = readFileSync(new URL("./route.ts", import.meta.url), "utf8");
     const helperSource = readFileSync(new URL("../../../../../lib/studio-content-check.ts", import.meta.url), "utf8");
     assert.doesNotMatch(routeSource + helperSource, /ANTHROPIC_API_KEY|OPENAI_API_KEY|from ["'][^"']*studio-solve["']|solveGate\(/);
@@ -501,4 +502,11 @@ describe("Studio schema, content revision and request guards", () => {
     assert.ok(path);
     assert.equal(new URL(path, new URL("./route.ts", import.meta.url)).href, journalURL);
   });
+});
+
+it("Studio poll infrastructure error stays an error until a new publish retries",async()=>{
+  const {item,runId}=await begin();fixture.result={status:"failed",note:"synthetic outage"};
+  const failed=await send({action:"poll",runId});assert.equal(failed.body.kind,"failed");assert.match(String(failed.body.note),/Prüfung konnte nicht laufen — später erneut/);
+  await send({action:"poll",runId});assert.equal(fixture.starts.length,1);
+  fixture.result={status:"checking"};assert.equal((await send({action:"publish",itemId:item.id})).status,200);assert.equal(fixture.starts.length,2);
 });

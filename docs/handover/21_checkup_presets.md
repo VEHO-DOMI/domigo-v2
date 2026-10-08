@@ -299,18 +299,28 @@ Intelligence evidence is keyed by a stable digest of the **complete item, exact 
 resolved pool**; object-field order does not affect it. A primary-key insert in the existing
 append-only journal claims each such revision before any Sandbox launch. Repeated and
 concurrent requests share that claim. A verified passed journal entry costs no new run;
-blocked, failed or timed-out revisions do not retry automatically. The journal records the
+passed/blocked are permanent content verdicts. Infrastructure failures are `error`, not
+content judgments; an explicit later publication attempt can atomically claim the next
+attempt for the same revision. Attempt identities fence late old responses. The journal records the
 actor, class reference, time, item/revision, model, enabled thinking, candidates and verdict;
 it contains no student records. Content verdicts can be reused across authorized teachers;
 workflow history and unpublished Studio drafts remain owned.
 
 The existing subscription Sandbox transport uses the configured default capable Studio
 model with adaptive thinking. The API-key fallback is removed; no new provider or secret
-is introduced. One missing task starts per request, limiting Sandbox setup work within the
-server request budget. The builder polls the same immutable assignment request and shows
+is introduced. All missing items on one sheet share **one Sandbox environment and one model session**.
+The model solves the keyless student prompts in order; the platform grades and journals
+each item separately. Claims stay per item, so concurrent teachers share existing work.
+Batch membership is durable: even a smaller overlapping sheet, including a blocked one,
+must leave the environment readable until all original member verdicts are recorded.
+Studio continues using its single-item transport. The builder polls the same immutable assignment request and shows
 **Prüfung läuft … n/m geprüft**. Only all-green persists the assignment. A blocked item
-returns HTTP 422, a reason and **Item tauschen**; existing terminal failures block before
-any additional run. A final source reread after asynchronous work catches observed content
+returns HTTP 422, a reason and **Item tauschen**; a known content rejection prevents
+new spending while already-running sibling answers are still collected. Infrastructure
+errors return HTTP 503 and **Prüfung konnte nicht laufen — später erneut.**, without
+**Item tauschen**. The next explicit attempt retries only missing/error items; already
+passed siblings remain free hits. Batch runtime is bounded to 15 minutes (16-minute
+stale threshold); Studio retains 6/7 minutes. A final source reread after asynchronous work catches observed content
 changes before persistence and sends changed bytes through the next check.
 
 ### Offline import and measured evidence
@@ -337,3 +347,20 @@ student snapshot. That renderer/persistence follow-up lies outside this card's a
 files and remains explicitly **UNVERIFIZIERT**. The same applies to the real account path
 and execution of the generated import SQL. `/30?` is a GG hint only; this implementation
 retains exactly `/20`.
+
+### Nachzug 1 · GG review of PR 503 (2026-10-08)
+
+The changes above supersede the original per-item launch and permanent infrastructure
+failure policy. Synthetic transport and actual-route tests measure **one environment and
+one model query for a 20-item uncached sheet**, then zero launches on journal reuse.
+The real POST regression adds a full-tier answer that cannot round-trip through the
+actual engine; it returns 422 before any Sandbox claim/start. Removing the actual
+`checkCheckupTaskKeys` call makes that integration test fail.
+
+The offline importer now inspects its own executable syntax in `--selftest`, rejecting
+process launchers, unapproved database modules and indirect `createRequire` aliases.
+CI runs that selftest as a dedicated line and also runs the actual offline sweep into
+a fresh temporary directory. Neither command executes the emitted SQL. Exact requested
+source-guard probes and the one-frame/per-item-loop mutation are retained outside the
+repo with original/mutated/restored checksums. Real account/DB operation and the earlier
+immutable-student-snapshot boundary remain unverified.

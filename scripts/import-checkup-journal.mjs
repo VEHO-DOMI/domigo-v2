@@ -27,6 +27,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { composeCheckup, prepareCheckupTasks, gradeCheckupCandidate } from "../apps/web/lib/checkup.ts";
@@ -160,7 +161,65 @@ function outsideRepo(directory) {
   return real;
 }
 
+/** cgo-100 Nachzug 1: inspect executable syntax, not comments or the inert
+ * source strings below. This is a change guard, not an execution sandbox.
+ * The importer may prepare SQL, but cannot gain a shell/database capability
+ * merely by adding a new import or a process-launch call. */
+function offlineSourceViolations(source, ts) {
+  const tree = ts.createSourceFile("import-checkup-journal.mjs", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  const violations = [];
+  const allowedImports = new Set([
+    "node:assert/strict", "node:crypto", "node:fs", "node:module", "node:path", "node:url",
+    "../apps/web/lib/checkup.ts", "../apps/web/lib/checkup-gate.ts",
+    "../packages/content-loader/src/index.ts", "../packages/db/src/checkup.ts", "../packages/engine/src/index.ts",
+  ]);
+  const forbiddenNames = new Set([
+    "execFileSync", "execFile", "execSync", "exec", "spawn", "spawnSync", "fork",
+    "psql", "pg", "eval", "Function", "binding", "_linkedBinding", "getBuiltinModule",
+  ]);
+  const propertyName = (node) => ts.isIdentifier(node) ? node.text
+    : ts.isPropertyAccessExpression(node) ? node.name.text
+      : ts.isElementAccessExpression(node) && ts.isStringLiteralLike(node.argumentExpression) ? node.argumentExpression.text : null;
+  const visit = (node) => {
+    if (ts.isIdentifier(node) && ["createRequire", "parserRequire"].includes(node.text)) {
+      const parent = node.parent;
+      const declaration = ts.isVariableDeclaration(parent) && parent.name === node && node.text === "parserRequire";
+      const imported = ts.isImportSpecifier(parent) && node.text === "createRequire" && !parent.propertyName;
+      const invoked = ts.isCallExpression(parent) && parent.expression === node;
+      if (!declaration && !imported && !invoked) violations.push("require-alias");
+    }
+    if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier) {
+      if (!ts.isStringLiteralLike(node.moduleSpecifier) || !allowedImports.has(node.moduleSpecifier.text)) violations.push("non-offline-module");
+      if (ts.isImportDeclaration(node) && node.moduleSpecifier.text === "node:module") {
+        const names = node.importClause?.namedBindings;
+        if (node.importClause?.name || !names || !ts.isNamedImports(names) || names.elements.length !== 1
+          || names.elements[0].name.text !== "createRequire" || names.elements[0].propertyName) violations.push("require-alias");
+      }
+    }
+    if (ts.isIdentifier(node) && forbiddenNames.has(node.text)) violations.push("forbidden-capability");
+    if (ts.isElementAccessExpression(node) && forbiddenNames.has(propertyName(node))) violations.push("forbidden-capability");
+    if (ts.isCallExpression(node) || ts.isNewExpression(node)) {
+      if (node.expression.kind === ts.SyntaxKind.ImportKeyword) violations.push("dynamic-import");
+      if (propertyName(node.expression) === "createRequire" && !(ts.isIdentifier(node.expression)
+        && ts.isVariableDeclaration(node.parent) && ts.isIdentifier(node.parent.name) && node.parent.name.text === "parserRequire"
+        && node.arguments.length === 1 && node.arguments[0].getText(tree) === 'path.join(REPO, "packages/db/package.json")')) violations.push("require-alias");
+      if (propertyName(node.expression) === "require") violations.push("unreviewed-require");
+      if (propertyName(node.expression) === "parserRequire"
+        && !(node.arguments?.length === 1 && ts.isStringLiteralLike(node.arguments[0]) && node.arguments[0].text === "typescript")) violations.push("unreviewed-require");
+      if (node.arguments?.some((argument) => ts.isStringLiteralLike(argument) && ["psql", "pg"].includes(argument.text))) violations.push("database-command");
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(tree);
+  if (tree.parseDiagnostics.length) violations.push("invalid-source");
+  return [...new Set(violations)];
+}
+
 function selftest() {
+  // TypeScript is already a packages/db devDependency, also used by the
+  // existing claim-filter guard. No new runtime dependency or provider.
+  const parserRequire = createRequire(path.join(REPO, "packages/db/package.json"));
+  const ts = parserRequire("typescript");
   const composed = composeCheckup("g2-u03", 2, "verify-g2-u03");
   assert.equal(composed.ok, true);
   const prepared = prepareCheckupTasks(composed.sections);
@@ -175,6 +234,35 @@ function selftest() {
     classId: "10000000-0000-4000-8000-000000000002", checkedAt: "2026-01-01T00:00:00.000Z", candidates: [{ answer, confidence: 0.9 }] };
   let checks = 0;
   const check = (fn) => { fn(); checks++; };
+  const source = fs.readFileSync(fileURLToPath(import.meta.url), "utf8");
+  check(() => assert.deepEqual(offlineSourceViolations(source, ts), [], "importer must remain offline"));
+  const forbiddenSources = [
+    'import { execFileSync } from "node:child_process";',
+    'import { execFileSync as launch } from "child_process";',
+    'import postgres from "pg";',
+    'export { Client } from "pg";',
+    'const database = require("pg");',
+    'const database = await import("pg");',
+    'const database = await import(moduleName);',
+    'execFileSync("psql", []);',
+    'child["execFileSync"]("psql", []);',
+    'launch("psql", []);',
+    'const launch = execFileSync;',
+    'const database = parserRequire("pg");',
+    'const load = createRequire(import.meta.url); const database = load("postgres");',
+    'const load = parserRequire; const database = load("postgres");',
+    'import { createRequire as load } from "node:module"; const database = load(import.meta.url)("postgres");',
+    'import * as moduleTools from "node:module"; const database = moduleTools.createRequire(import.meta.url)("postgres");',
+    'const database = parserRequire.call(null, "postgres");',
+    'const database = parserRequire("post" + "gres");',
+    'const shell = process.getBuiltinModule("child_process");',
+    'eval("process launch hidden in a string");',
+    'new Function("process launch hidden in a string");',
+  ];
+  for (const mutation of forbiddenSources) check(() => assert.ok(offlineSourceViolations(`${source}\n${mutation}`, ts).length > 0, "offline guard must reject capability mutation"));
+  check(() => assert.deepEqual(offlineSourceViolations(`${source}\n// execFileSync("psql");\nconst inertFixture = 'import database from "pg"';`, ts), []));
+  const ci = fs.readFileSync(path.join(REPO, ".github/workflows/ci.yml"), "utf8");
+  check(() => assert.equal(ci.split("\n").filter((line) => /^\s*- run: node scripts\/import-checkup-journal\.mjs --selftest(?:\s+#.*)?\s*$/.test(line)).length, 1, "offline importer selftest needs its own CI run line"));
   check(() => assert.equal(validateEvidence(valid, tasks).ok, true));
   const rejects = [
     { task: undefined }, { checkupTaskKey: crypto.randomUUID() },
