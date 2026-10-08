@@ -8,7 +8,7 @@ import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection } from "./art.tsx";
 import { COPY, episodeComments, fillChapterStats, resultLine, slotHelp, slotPrompt, type EpisodeStats } from "./novel-copy.ts";
-import { audienceAt, bandForUnit, commentsAfter, episodeEnding, isFixSlot, restoredTakes, validTakes, type SavedTake } from "./episode-state.ts";
+import { audienceAt, bandForUnit, commentsAfter, episodeEnding, isFixSlot, restoredTakes, validTakes, type SavedTake, type StoryReviewItem } from "./episode-state.ts";
 import { Audience } from "./audience.tsx";
 import { answerState, restoredAnswerState, SAVE_COPY, type SaveState } from "./save-state.ts";
 import "./novel.css";
@@ -31,7 +31,7 @@ export interface NovelGameProps {
   /** The teacher's acknowledgement is not a durable answer receipt. */
   preview?: boolean;
   episodeTitle: string; grade?: number; chapter: Chapter; castNames: Record<string, string>;
-  storyItems: Record<string, ResolvedItem>; reviewItems?: ResolvedItem[]; onAttempt: AttemptFn;
+  storyItems: Record<string, ResolvedItem>; reviewItems?: StoryReviewItem[]; onAttempt: AttemptFn;
   initialSave?: NovelSave | null; onSave?: (s: NovelSave) => void; art?: NovelArt | null;
   economy: readonly EpisodeStats[];
   /** Resolved against the release list on the server, never inferred from the URL. */
@@ -73,6 +73,7 @@ function TaskTake({ item, prompt, promptHelp, preview, onAttempt, onContinue, on
     finally { busy.current = false; }
   };
   const onResult = (tier: Tier, detail: ResultDetail) => {
+    if (attempt.current) return; // one receipt per display, including repeated callbacks
     const body = { clientAttemptId: crypto.randomUUID(), itemId: detail.itemId, mode: "game:g3", input: detail.input, latencyMs: null, hintUsed: false };
     attempt.current = body;
     void submit(body, tier);
@@ -95,7 +96,7 @@ function TaskTake({ item, prompt, promptHelp, preview, onAttempt, onContinue, on
     </div>}
     {res && (res.status === "saved" || res.status === "queued" || res.status === "unknown" || res.status === "preview") && <div className="fourteen-actions">
       <button className="dg-btn" onClick={onContinue}>{COPY.continue}</button>
-      <button className="dg-btn-secondary" onClick={() => { setRes(null); setReplaying(true); setRound((r) => r + 1); }}>Try this line again (= Noch einmal versuchen)</button>
+      <button className="dg-btn-secondary" onClick={() => { attempt.current = null; setRes(null); setReplaying(true); setRound((r) => r + 1); }}>Try this line again (= Noch einmal versuchen)</button>
     </div>}
   </div>;
 }
@@ -104,6 +105,12 @@ export function NovelGame(props: NovelGameProps) {
   const { castNames, storyItems, onAttempt, onSave, art, economy } = props;
   const chapter = useMemo(() => fillChapterStats(props.chapter, economy), [props.chapter, economy]);
   const mode = useLangMode(props.grade ?? 3);
+  // Due work is shown once at entry, before the resumed episode, without saving
+  // or advancing the episode. A preview never consumes personal review props.
+  const [reviews] = useState(() => props.preview ? [] : (props.reviewItems ?? []).filter((r) => r.item.structureId && r.scenes.length > 0));
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const review = reviews[reviewIndex];
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const resume = !props.preview && props.initialSave?.chapterId === chapter.id ? props.initialSave : null;
   const first = chapter.scenes[0]?.id ?? "";
@@ -135,6 +142,26 @@ export function NovelGame(props: NovelGameProps) {
   };
   const counterNote = counterUpdated ? <p className="fourteen-caption">Einige Aufgaben sind neu. Dein Platz in der Geschichte bleibt erhalten; der Zähler zählt die neuen Aufgaben erst nach dem Bearbeiten.</p> : null;
   const header = <header className="fourteen-header"><span className="fourteen-brand"><span aria-hidden="true">14</span> FOURTEEN</span><nav><LangToggle grade={props.grade ?? 3} /><a href="/play/3">← Channel (= Kanal)</a></nav></header>;
+
+  if (review) return <main className="fourteen" data-episode={chapter.unit} data-card="review" data-band={bandForUnit(review.unit)}>
+    {header}
+    <div className="fourteen-title"><div><div className="fourteen-eyebrow">Chapter {review.unit} · FOURTEEN</div><h1>Noch einmal aus Folge {review.unit}</h1></div></div>
+    <p className="fourteen-caption">{reviewIndex + 1} / {reviews.length}</p>
+    <div className="fourteen-actions"><button className="dg-btn-secondary" onClick={() => { setReviewOpen(false); setReviewIndex(reviews.length); }}>Später</button></div>
+    <article className="fourteen-scene fourteen-text-card fourteen-review-context"><div className="fourteen-dialogue">
+    {review.scenes.map((line) => <section className="fourteen-review-line" key={line.id}>
+        <div className="fourteen-speaker">{line.speaker === "narrator" ? "FOURTEEN" : castNames[line.speaker] ?? line.speaker}</div>
+        <p className="fourteen-line">{primaryLine(mode, line.textEn, line.scaffoldDe)}</p>
+        <DialogueReveal mode={mode} textEn={line.textEn} scaffoldDe={line.scaffoldDe} />
+        <GlossReveal mode={mode} glosses={line.glosses} />
+    </section>)}
+    </div></article>
+    {reviewOpen ? <TaskTake key={`review:${reviewIndex}:${review.item.id}`} item={{ kind: "grammar", item: review.item as GrammarItem }}
+      prompt="Noch einmal versuchen" promptHelp="Lies die Szene und bearbeite die Aufgabe noch einmal." preview={false}
+      onAttempt={onAttempt} onScored={() => { /* learning receipt only; no channel or episode mutation */ }}
+      onContinue={() => { setReviewOpen(false); setReviewIndex((i) => i + 1); }} />
+      : <div className="fourteen-actions"><button className="dg-btn" onClick={() => setReviewOpen(true)}>Aufgabe öffnen</button></div>}
+  </main>;
 
   if (done || !scene) return <main className="fourteen" data-episode={chapter.unit} data-scene={sceneId} data-card="ending" data-band={bandForUnit(chapter.unit)}>
     {header}<div className="fourteen-ending">
