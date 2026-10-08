@@ -281,6 +281,21 @@ describe("outbox reply subscription", () => {
     expect(host.state().total).toBe(3); expect(host.state().pending.size).toBe(0);
     host.unmount();
   });
+  it("a buffered replay never writes after unmount when the direct sender settles", async () => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body);
+    c.emit(); // The direct sender is still waiting: this receipt lives in its finally path.
+    expect(host.writes()).toBe(0);
+    const state = host.state(), writes = host.writes();
+    host.unmount();
+    expect(c.listeners.size).toBe(0);
+    const reply = { ok: false, queued: true };
+    resolve(reply);
+    expect(await waiting).toBe(reply);
+    expect(host.writes()).toBe(writes);
+    expect(host.state()).toBe(state);
+  });
   it("cleanup and StrictMode remount leave exactly one live subscription; stale callbacks stay silent", async () => {
     const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
     await host.send!(body); expect(c.listeners.size).toBe(1);
