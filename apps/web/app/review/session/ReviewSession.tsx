@@ -5,18 +5,18 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
-export default function ReviewSession({ ownerId, items }: { ownerId: string; items: QueueItem[] }) {
+export default function ReviewSession({ preview = false, ownerId, items }: { preview?: boolean; ownerId: string | null; items: QueueItem[] }) {
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(true, ownerId);
+  useOutboxFlush(!preview, ownerId);
 
   const current = items[i];
 
@@ -27,14 +27,14 @@ export default function ReviewSession({ ownerId, items }: { ownerId: string; ite
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the POST re-grades + reschedules the item (mode:"review") and returns the daily streak.
-    void sendAttempt({
+    void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode: "review",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, ownerId).then((r) => {
+    }).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
@@ -57,18 +57,19 @@ export default function ReviewSession({ ownerId, items }: { ownerId: string; ite
     return (
       <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
         <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Reviewed {results.length} — see you tomorrow 👋</h1>
+        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{xpTotal} XP {tierSummary}</p>
         {streak ? <p style={{ fontSize: 15, color: "#ea580c", fontWeight: 700 }}>🔥 {streak}-day streak</p> : null}
-        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
+        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Review" : "← Home"}</Link>
       </main>
     );
   }
 
   return (
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 14 }}>
         <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Review</h1>
-        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
+        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Review" : "← Home"}</Link>
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>

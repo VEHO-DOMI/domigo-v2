@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Gloss, GrammarItem, ListeningItem, ReadingItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { AudioClip, GrammarItemView, VocabItemView, type ClientAudioRef, type ResultDetail } from "@domigo/task-ui";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 export type ResolvedSection =
@@ -16,25 +16,25 @@ export type ResolvedSection =
 
 const page = { maxWidth: 680, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" } as const;
 
-export default function TestSession({ ownerId, slug, testId, sections }: { ownerId: string; slug: string; testId: string; sections: ResolvedSection[] }) {
+export default function TestSession({ preview = false, ownerId, slug, testId, sections }: { preview?: boolean; ownerId: string | null; slug: string; testId: string; sections: ResolvedSection[] }) {
   const [s, setS] = useState(0);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Tier[]>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(true, ownerId);
+  useOutboxFlush(!preview, ownerId);
 
   const section = sections[s];
 
   const record = (mode: string) => (tier: Tier, detail: ResultDetail) => {
     setResults((p) => [...p, tier]);
-    void sendAttempt({
+    void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, ownerId).then((r) => {
+    }).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
@@ -52,19 +52,20 @@ export default function TestSession({ ownerId, slug, testId, sections }: { owner
     return (
       <main data-grade={grade} style={page}>
         <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Test complete 🎓</h1>
+        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>
-          {correct}/{results.length} auto-graded correct · writing sent for review.{streak ? ` · 🔥 ${streak}-day streak` : ""}
+          {correct}/{results.length} auto-graded correct{preview ? "." : " · writing sent for review."}{streak ? ` · 🔥 ${streak}-day streak` : ""}
         </p>
-        <Link href="/tests" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All tests</Link>
+        <Link href={preview ? `/tests?jahrgang=${grade}` : "/tests"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All tests</Link>
       </main>
     );
   }
 
   return (
     <main data-grade={grade} style={page}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug} — test</h1>
-        <Link href="/tests" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Tests</Link>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 4 }}>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.match(/-u(\d+)/)?.[1])} — test</h1>
+        <Link href={preview ? `/tests?jahrgang=${grade}` : "/tests"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Tests</Link>
       </div>
       <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 12 }}>
         Section {s + 1} / {sections.length}{streak ? ` · 🔥 ${streak}` : ""}
@@ -92,7 +93,7 @@ export default function TestSession({ ownerId, slug, testId, sections }: { owner
             ))}
           </>
         )}
-        {section.kind === "writing" && <WritingArea slug={slug} testId={testId} section={section} />}
+        {section.kind === "writing" && <WritingArea preview={preview} slug={slug} testId={testId} section={section} />}
       </div>
 
       <button className="dg-btn" onClick={next} style={{ marginTop: 16 }}>
@@ -119,7 +120,8 @@ function ReadingPassage({ passage, gloss }: { passage: string; gloss: Gloss[] })
   );
 }
 
-function WritingArea({ slug, testId, section }: {
+function WritingArea({ preview, slug, testId, section }: {
+  preview: boolean;
   slug: string;
   testId: string;
   section: { promptId: string; promptDe: string; taskEn: string; minWords: number; maxWords: number };
@@ -130,6 +132,7 @@ function WritingArea({ slug, testId, section }: {
   const ok = words >= section.minWords && words <= section.maxWords;
   const submit = () => {
     setSaved(true);
+    if (preview) return;
     void fetch("/api/writing-submission", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -148,12 +151,12 @@ function WritingArea({ slug, testId, section }: {
         onChange={(e) => setText(e.target.value)}
         rows={8}
         className="dg-input"
-        style={{ width: "100%", resize: "vertical" }}
+        style={{ width: "100%", boxSizing: "border-box", resize: "vertical" }}
       />
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 600, color: ok ? "var(--correct)" : "var(--muted)" }}>{words} words</span>
         <button className="dg-btn" onClick={submit} disabled={saved || !ok} style={{ padding: "8px 16px", fontSize: 14 }}>
-          {saved ? "Submitted ✓" : "Submit writing"}
+          {saved ? (preview ? "Vorschau — nichts gespeichert" : "Submitted ✓") : "Submit writing"}
         </button>
       </div>
     </div>

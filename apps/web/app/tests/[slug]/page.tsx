@@ -1,24 +1,28 @@
 import { notFound, redirect } from "next/navigation";
-import { auth } from "@/auth";
 import type { AudioRef, GrammarItem, ListeningItem, VocabItem } from "@domigo/content-schema";
 import { listTestUnits, loadListening, loadTest } from "@domigo/content-loader";
-import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
+import { isSlugAllowed } from "@/lib/grade-scope";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { ohneSprechtextFuersKind } from "@/lib/hoeren";
 import TestSession, { type ResolvedSection } from "./TestSession";
 
 export const dynamic = "force-dynamic";
 
-export default async function TestPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function TestPage({ params, searchParams }: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ jahrgang?: string | string[] }>;
+}) {
   const { slug } = await params;
-  const session = await auth();
-  if (!session) redirect("/signin");
-  if (session.user.role === "teacher") redirect("/admin");
-  if (!listTestUnits().includes(slug)) notFound(); // unknown unit stays a 404, not a redirect
-
-  // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
-  // sends the child back to its own list. (Teachers already went to /admin above.)
-  if (!isSlugAllowed(slug, await resolveVisibleGrades(session.user.classId))) redirect("/tests");
+  const query = await searchParams;
+  const view = await resolveStudentView(query.jahrgang);
+  if (!view) redirect("/signin");
+  const acting = view.kind === "student" ? view.player : null;
+  const preview = view.kind === "preview";
+  if (!listTestUnits().includes(slug)) notFound();
+  // A child cannot open another year's Chapter; the teacher previews without a child.
+  if (!preview && !isSlugAllowed(slug, view.grades)) redirect("/tests");
 
   const file = loadTest(slug);
   if (!file) notFound();
@@ -77,5 +81,10 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
     throw new Error("unknown test section kind");
   });
 
-  return <TestSession key={session.user.id} ownerId={session.user.id} slug={slug} testId={file.test.id} sections={sections} />;
+  return (
+    <>
+      {preview && <PreviewBanner grade={Number(slug.match(/^g(\d)/)?.[1]) || undefined} />}
+      <TestSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} preview={preview} slug={slug} testId={file.test.id} sections={sections} />
+    </>
+  );
 }

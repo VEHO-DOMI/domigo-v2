@@ -5,7 +5,8 @@ import { useState } from "react";
 import type { GrammarStructure, WordBank } from "@domigo/content-schema";
 import { GrammarIntroView, VocabIntroView } from "@domigo/task-ui";
 
-export default function TeachingNode({ unitSlug, nodeId, kind, wordbank, structures }: {
+export default function TeachingNode({ preview = false, unitSlug, nodeId, kind, wordbank, structures }: {
+  preview?: boolean;
   unitSlug: string;
   nodeId: string;
   kind: string;
@@ -18,6 +19,7 @@ export default function TeachingNode({ unitSlug, nodeId, kind, wordbank, structu
   // Best-effort completion (no outbox — path state is cosmetic + idempotent;
   // a lost write heals on the next visit). Route back to the map either way.
   const markDone = () => {
+    if (preview) { router.push(`/learn/${unitSlug}`); return; }
     setSaving(true);
     void fetch("/api/study-path", {
       method: "POST",

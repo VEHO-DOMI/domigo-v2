@@ -73,8 +73,8 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
   return (
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</h1>
-        <Link href="/practice" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all units</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.slice(-2))}</h1>
+        <Link href="/practice" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all Chapters</Link>
       </div>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>

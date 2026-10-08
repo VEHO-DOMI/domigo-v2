@@ -12,6 +12,8 @@
     "lint": "pnpm -r run lint",
     "test": "node scripts/test-workspace.mjs",
     "build": "pnpm --filter web run build",
+    "check:chapter-copy": "node scripts/check-chapter-copy.mjs",
+    "check:chapter-copy:selftest": "node scripts/check-chapter-copy.mjs --selftest",
     "check:bundle": "node scripts/check-game-bundle.mjs",
     "check:paint-art": "node --experimental-strip-types scripts/check-paint-art.mjs",
     "check:body-silhouette": "node --experimental-strip-types scripts/check-body-silhouette.mjs",

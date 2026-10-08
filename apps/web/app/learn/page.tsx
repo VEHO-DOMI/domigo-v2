@@ -1,38 +1,39 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
 import { getDb, getPathSummary } from "@domigo/db";
 import { listApprovedUnits } from "@domigo/content-loader";
-import { resolveVisibleGrades } from "@/lib/grade-scope";
 
 export const dynamic = "force-dynamic";
 
-export default async function LearnIndex() {
-  const session = await auth();
-  if (!session) redirect("/signin");
-  if (session.user.role === "teacher") redirect("/admin");
+export default async function LearnIndex({ searchParams }: { searchParams: Promise<{ jahrgang?: string | string[] }> }) {
+  const query = await searchParams;
+  const view = await resolveStudentView(query.jahrgang);
+  if (!view) redirect("/signin");
+  const acting = view.kind === "student" ? view.player : null;
+  const preview = view.kind === "preview";
+  const grades = view.grades;
 
   const units = listApprovedUnits();
   // Index reads only the per-unit summary (no per-unit content load) — fast at ~58 units.
   let summary = new Map<string, { completedNodes: number; totalStars: number }>();
   try {
-    summary = await getPathSummary(getDb(), session.user.id);
+    summary = acting ? await getPathSummary(getDb(), acting.userId) : new Map();
   } catch {
     /* keep empty — never 500 the landing */
   }
 
-  // P1 (P-R1.5): a child sees only its own class's school year. The viewer here
-  // is always a student (no session → /signin, teacher → /admin, both above), so
-  // the class's grade decides; an unresolvable grade degrades to all four years.
-  const grades = await resolveVisibleGrades(session.user.classId);
   return (
+    <>
+      {preview && <PreviewBanner grade={grades.length === 1 ? grades[0] : undefined} />}
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8 }}>
         <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Study Path</h1>
-        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
+        <Link href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Zur Schüleransicht" : "← Home"}</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        Work through each unit: learn the words and grammar, practise step by step, then pass the checkpoint.
+        Work through each Chapter: learn the words and grammar, practise step by step, then pass the checkpoint.
       </p>
       {grades.map((g) => {
         const inGrade = units.filter((s) => s.startsWith(`g${g}-`));
@@ -43,10 +44,10 @@ export default async function LearnIndex() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8 }}>
               {inGrade.map((slug) => {
                 const s = summary.get(slug);
-                const label = s ? `${s.completedNodes} done · ★ ${s.totalStars}` : "Not started";
+                const label = preview ? "Vorschau · alle Schritte offen" : s ? `${s.completedNodes} done · ★ ${s.totalStars}` : "Not started";
                 return (
-                  <Link key={slug} href={`/learn/${slug}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 16px" }}>
-                    <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</span>
+                  <Link key={slug} href={`/learn/${slug}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "13px 16px" }}>
+                    <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.slice(-2))}</span>
                     <span style={{ fontSize: 13, color: s ? "var(--accent-deep)" : "var(--muted)", fontWeight: 600 }}>{label}</span>
                   </Link>
                 );
@@ -56,5 +57,6 @@ export default async function LearnIndex() {
         );
       })}
     </main>
+    </>
   );
 }

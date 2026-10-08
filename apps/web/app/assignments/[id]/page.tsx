@@ -9,9 +9,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { loadUnitWithOverrides, type UnitContent } from "@/lib/content-service";
-import { CHECKUP_DEFAULT_DISPLAY, EMPTY_SCOPE, formatCheckupPoints, getDb, getStudentAssignmentView, isSessionLive, parseCheckupSectionConfig, parseDisplayConfig, startOrResumeSession, type CheckupKind } from "@domigo/db";
+import { AHS_DEFAULT_NOTENSCHLUESSEL, CHECKUP_DEFAULT_DISPLAY, TIER_POINTS, formatCheckupPoints, getDb, getStudentAssignmentView, isSessionLive, parseCheckupSectionConfig, parseDisplayConfig, sessionExpiry, startOrResumeSession, type CheckupKind, type NotenSchluessel } from "@domigo/db";
 import { sectionItemPools } from "@/lib/checkup";
-import { getActingUserForPage } from "@/lib/identity";
+import { resolveStudentView } from "@/lib/student-view";
+import PreviewBanner from "@/app/PreviewBanner";
+import { getPreviewAssignment } from "../preview";
 import { parseItemRef } from "@/lib/itemRef";
 import AssignmentRunner, { type RunnerSection } from "./AssignmentRunner";
 import CheckupRunner, { type CheckupRunnerSection } from "./CheckupRunner";
@@ -44,20 +46,30 @@ function resolveItems(itemIds: string[], cache: Map<string, UnitContent>): Array
   return out;
 }
 
-export default async function AssignmentPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function AssignmentPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ jahrgang?: string | string[] }> }) {
   const { id } = await params;
-  const acting = await getActingUserForPage();
-  if (!acting) redirect("/signin");
+  const query = await searchParams;
+  const studentView = await resolveStudentView(query.jahrgang);
+  if (!studentView) redirect("/signin");
+  const acting = studentView.kind === "student" ? studentView.player : null;
+  const preview = studentView.kind === "preview";
 
-  const view = await getStudentAssignmentView(getDb(), acting?.classScope ?? EMPTY_SCOPE, id, acting.userId).catch(() => null);
-  if (!view || view.assignment.classId !== acting.classId) redirect("/assignments");
+  const view = studentView.kind === "preview"
+    ? await getPreviewAssignment(studentView.teacher, id, studentView.grades)
+    : await getStudentAssignmentView(getDb(), acting!.classScope, id, acting!.userId).catch(() => null);
+  if (!view || (acting && view.assignment.classId !== acting.classId)) redirect("/assignments");
   const { assignment, sections, sessions } = view;
 
   async function begin() {
     "use server";
-    const a = await getStudentAssignmentView(getDb(), acting?.classScope ?? EMPTY_SCOPE, id, acting!.userId).catch(() => null);
-    if (a && a.assignment.classId === acting!.classId) {
-      await startOrResumeSession(getDb(), a.assignment, acting!.userId, new Date()).catch(() => null);
+    // Server actions are callable independently: resolve the current visitor
+    // again before opening a sitting. Preview never reads or creates one.
+    const current = await resolveStudentView();
+    if (preview || current?.kind !== "student") redirect(`/assignments/${id}`);
+    const player = current.player;
+    const a = await getStudentAssignmentView(getDb(), player.classScope, id, player.userId).catch(() => null);
+    if (a && a.assignment.classId === player.classId) {
+      await startOrResumeSession(getDb(), a.assignment, player.userId, new Date()).catch(() => null);
     }
     redirect(`/assignments/${id}`);
   }
@@ -68,7 +80,16 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
   const attemptsLeft = assignment.attemptsPerTest - attemptsUsed;
 
   // ── active sitting → the runner ──
-  if (live) {
+  if (preview || live) {
+    // The preview has a fresh local clock, no persisted session and no attempts.
+    const sessionId = live?.id ?? "preview";
+    const expiresAt = preview
+      ? (sessionExpiry(new Date(), assignment.sessionDurationMinutes)?.toISOString() ?? null)
+      : live!.expiresAt?.toISOString() ?? null;
+    const previewScoring = preview ? {
+      tierPoints: TIER_POINTS,
+      notenSchluessel: (assignment.notenSchluessel as NotenSchluessel | null) ?? AHS_DEFAULT_NOTENSCHLUESSEL,
+    } : undefined;
     // Pre-load every unit this assignment references, WITH the Studio prose
     // overlay applied (once, async), so resolveItems can stay synchronous.
     const cache = new Map<string, UnitContent>();
@@ -99,41 +120,56 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
         const cfg = parseCheckupSectionConfig(s.sectionConfig);
         return {
           position: s.position,
+          itemIds: (s.itemIds as string[] | null) ?? [],
           kind: s.kind as "vocab" | "grammar",
           titleDe: cfg ? CHECKUP_TITLE[cfg.checkupKind] : s.kind === "vocab" ? "Vokabel" : "Grammatik",
-          points: cfg?.points ?? items.length,
+          points: cfg?.points ?? (preview ? ((s.itemIds as string[] | null) ?? []).length : items.length),
           mask: cfg?.mask === "first-letter",
           pools: cfg ? sectionItemPools(cfg, items.length) : items.map(() => "carrier" as const),
           items,
         };
       });
       return (
+        <>
+        {preview && <PreviewBanner grade={studentView.grades.length === 1 ? studentView.grades[0] : undefined} />}
         <CheckupRunner
+          key={acting?.userId ?? "preview"}
+          preview={preview}
+          previewScoring={previewScoring}
           assignmentId={id}
-          sessionId={live.id}
+          sessionId={sessionId}
           title={assignment.title}
-          expiresAt={live.expiresAt ? live.expiresAt.toISOString() : null}
+          expiresAt={expiresAt}
           sections={checkupSections}
           feedback={display.feedback}
         />
+        </>
       );
     }
 
     const runnerSections: RunnerSection[] = sections.map((s) => ({
       position: s.position,
+      itemIds: (s.itemIds as string[] | null) ?? [],
+      weightPct: s.weightPct,
       kind: s.kind as "vocab" | "grammar",
       titleDe: s.kind === "vocab" ? "Vokabel" : "Grammatik",
       items: resolveItems((s.itemIds as string[] | null) ?? [], cache),
     }));
     return (
+      <>
+      {preview && <PreviewBanner grade={studentView.grades.length === 1 ? studentView.grades[0] : undefined} />}
       <AssignmentRunner
+        key={acting?.userId ?? "preview"}
+        preview={preview}
+        previewScoring={previewScoring}
         assignmentId={id}
-        sessionId={live.id}
+        sessionId={sessionId}
         title={assignment.title}
         mode={assignment.mode as "practice" | "mock_test"}
-        expiresAt={live.expiresAt ? live.expiresAt.toISOString() : null}
+        expiresAt={expiresAt}
         sections={runnerSections}
       />
+      </>
     );
   }
 

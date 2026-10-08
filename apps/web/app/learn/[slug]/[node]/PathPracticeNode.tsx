@@ -5,7 +5,7 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { XP_WEIGHT, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
@@ -17,7 +17,7 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: { ownerId: string;
+export default function PathPracticeNode({ preview = false, ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: { preview?: boolean; ownerId: string | null;
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
@@ -35,7 +35,7 @@ export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoi
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
   const [stars, setStars] = useState(0);
-  useOutboxFlush(true, ownerId);
+  useOutboxFlush(!preview, ownerId);
 
   const current = items[i];
   const title = isCheckpoint ? "Checkpoint" : "Practice";
@@ -46,14 +46,14 @@ export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoi
     setResults((prev) => [...prev, { tier, xp: xpForTier(current.item.difficulty * 10, tier) }]);
 
     // Per-item attempt → the existing graded/idempotent path (feeds review_queue + streak + XP).
-    void sendAttempt({
+    void attemptSender(preview, ownerId)({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, ownerId).then((r) => {
+    }).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
@@ -66,7 +66,7 @@ export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoi
     setStars(starsFor(correctEquiv, total));
     // A journey node's progress is DERIVED from the attempts just posted — it must
     // NOT write study_path_progress (F3: no separate path-state table for journeys).
-    if (isJourney) return;
+    if (preview || isJourney) return;
     // Legacy Study Path: best-effort node-completion (no outbox — cosmetic + keep-best heals a lost write).
     void fetch("/api/study-path", {
       method: "POST",
@@ -96,6 +96,7 @@ export default function PathPracticeNode({ ownerId, unitSlug, nodeId, isCheckpoi
   if (done || !current) {
     return (
       <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
         <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title} complete</h1>
         <p style={{ fontSize: 28, margin: "4px 0", color: "#e6a700", letterSpacing: 2 }}>
           {"★".repeat(stars)}
