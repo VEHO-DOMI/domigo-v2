@@ -27,8 +27,8 @@ Offene Altbefunde bei unverändertem Schlüssel: `saras-channel` (has got / does
 
 ## Offene Abnahmegrenzen
 
-- Der bestehende `apply-g3-feedback --check` ist bereits in CI. Er ersetzt Aufgabenobjekte vollständig aus `content/overlays/g3-fourteen-feedback.json` und verwirft damit die neuen Kennungen. Er ist rot; Overlay und Anwenderskript liegen außerhalb des Änderungszauns. Erforderlicher Folgeschritt: die 13 neu markierten Overlay-Aufgaben in der handverfassten Quelle ebenfalls additiv kennzeichnen (die beiden Aufgaben aus Folge 1 liegen nicht im Overlay).
-- Der Herkunftswächter `check-claim-filter` verlangt für den zusätzlichen Aufruf der reservierten Klassenaufgaben eine Eintragung in `scripts/claim-filter-aufrufer.json`. Die Kennung kommt in beiden Aufrufern aus der angemeldeten Kindersitzung. Das Register liegt außerhalb des Zauns; keine Umgehung oder Lockerung der Prüfung.
+- Nachzug 1 (GG-Freigabe vom 08.10.2026): Die 13 Struktur-Kennungen stehen jetzt auch additiv in `content/overlays/g3-fourteen-feedback.json`. Der bereits in CI enthaltene `apply-g3-feedback --check` bewahrt damit alle 15 Zuordnungen; die beiden Aufgaben aus Folge 1 liegen nicht im Overlay. Aufgabenwortlaut und Antwortschlüssel bleiben unverändert.
+- Nachzug 1 registriert den zusätzlichen Aufruf der reservierten Klassenaufgaben in `scripts/claim-filter-aufrufer.json` mit Herkunftssatz: Die Kennung kommt in beiden Seiteneinstiegen aus der angemeldeten Kindersitzung. Der Herkunftswächter bleibt unverändert; `claim-filter-required.json` braucht keine Änderung.
 - Der lokale gespielte Nachweis ersetzt Identität und SQL-Transport durch künstliche Testdaten. Der echte PostgreSQL-Betrieb sowie die vollständige Performance-Messung aller Phasen bleiben für die GG-Kette offen.
 
 Vollbatterie: UNVERIFIZIERT, läuft in der GG-Kette. Der PR enthält die tatsächlichen lokalen Exit-Codes, Manipulationsnachweise und Bildpfade.
