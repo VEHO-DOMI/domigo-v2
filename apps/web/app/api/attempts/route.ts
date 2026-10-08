@@ -21,6 +21,8 @@ import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
 import { parseTestRef } from "@/lib/testRef";
 import { parseComprehensionRef } from "@/lib/comprehensionRef";
+import { speedSessionValid } from "@/lib/modi/speed-session";
+import { validModeInput } from "@/lib/modi/attempt-policy";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -78,6 +80,9 @@ export async function POST(req: Request): Promise<Response> {
   if (parsed.data.ownerId !== acting.userId) {
     return NextResponse.json({ ok: false, error: "wrong_owner" }, { status: 409 });
   }
+
+  if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
+  if (mode === "speed" && !speedSessionValid(context, acting.userId)) return NextResponse.json({ ok: false, error: "speed_expired" }, { status: 410 }); // cgo-109 SPEED-DEADLINE
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
@@ -175,6 +180,7 @@ export async function POST(req: Request): Promise<Response> {
   // 6b. D-2: name the KIND of wrong (trap-registry@1 id) into the attempt's
   // context jsonb — classification never changes the tier or the XP; a null
   // trap is the common case and writes nothing.
+  if (mode === "flashcards") xpAwarded = 0; // cgo-109 FLASHCARDS-ZERO: self-report feeds review, earns no XP.
   const trap = tier === "wrong" && typedValue !== null && classifiable ? classifyWrong(classifiable, typedValue) : null;
   const contextWithTrap = trap
     ? { ...(typeof context === "object" && context !== null && !Array.isArray(context) ? context : {}), trap }

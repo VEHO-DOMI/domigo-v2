@@ -27,6 +27,28 @@ const PREVIEW_PAGES = ["learn/page.tsx", "learn/[slug]/page.tsx", "learn/[slug]/
 const MODALITY_CLIENTS = ["learn/[slug]/[node]/PathPracticeNode.tsx", "review/session/ReviewSession.tsx", "tests/[slug]/TestSession.tsx", "listening/[slug]/ListeningSession.tsx"];
 const ALL_CLIENTS = [...STORY_CLIENTS.map((c) => c.file), "practice/[slug]/PracticeSession.tsx", ...MODALITY_CLIENTS];
 
+describe("cgo-109 five mode access walls", () => {
+  it("C17 every mode resolves the real student view and uses the shared page", () => {
+    for (const mode of ["flashcards", "memory", "spelling", "wordhunt", "speed"]) {
+      assert.match(code(read(`modi/${mode}/page.tsx`)), /await resolveStudentView\(query\.jahrgang\)/);
+      assert.match(code(read(`modi/${mode}/page.tsx`)), /renderModePage\(view, query\.chapters,/);
+    }
+    const page = read("modi/ModePage.tsx");
+    assert.match(page, /trainerGrade\(view\)/);
+    assert.match(page, /const preview = view\.kind === "preview"/);
+    assert.match(page, /ownerId=\{acting\?\.userId \?\? null\}/);
+    assert.match(page, /key=\{acting\?\.userId \?\? `preview-\$\{grade\}`\}/);
+    assert.match(fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8"), /"\/modi\/:path\*"/);
+  });
+  it("C18 shared mode sender mutes preview, isolates owners and never calls storage directly", () => {
+    const source = code(read("modi/ModeSession.tsx"));
+    assert.match(source, /useOutboxFlush\(!preview, ownerId\)/);
+    assert.match(source, /attemptSender\(preview, ownerId\)\(body\)/);
+    assert.match(source, /if \(preview \|\| !ownerId\) return/);
+    assert.doesNotMatch(source, /\bsendAttempt\b|localStorage|sessionStorage|indexedDB|method:\s*["']POST/);
+  });
+});
+
 describe("client guards — nothing leaves a preview", () => {
   for (const file of ALL_CLIENTS) {
     it(`${file}: attempts and the outbox`, () => {
@@ -639,11 +661,13 @@ async function renderTrainer(file: string, props: Record<string, unknown>): Prom
   const { renderToStaticMarkup } = await import("react-dom/server");
   const levels = await import("./levels.ts");
   const avatar = await import("./avatar.ts");
+  const modeCatalog = await import("./modi/catalog.ts");
   const modules: Record<string, unknown> = {
     react: React, "react/jsx-runtime": jsx,
     "next/link": { default: "a" }, "next/image": { default: "img" },
     "../le/konto-aktion": { abmelden: async () => {} },
     "@/lib/levels": levels, "@/lib/avatar": avatar,
+    "@/lib/modi/catalog": modeCatalog,
   };
   const compiled = ts.transpileModule(read(file), { compilerOptions: {
     module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
@@ -662,9 +686,9 @@ it("Nachzug 1 modes render original subtitles and honest XP for every existing m
   assert.match(read("api/attempts/route.ts"), /xpForTier\(item\.difficulty \* 10, tier\)/);
   for (const grade of [1, 2, 3, 4]) {
     const html = await renderTrainer("modi/ModePicker.tsx", { grade, preview: true, chapters: [`g${grade}-u01`], due: null, story: { title: "Test Story", href: `/play/${grade}` }, areas: false });
-    assert.equal((html.match(/class="og-mode-xp"/g) ?? []).length, 5);
+    assert.equal((html.match(/class="og-mode-xp"/g) ?? []).length, 10);
     const word = grade === 1 ? "Wort" : "word";
-    assert.equal((html.match(new RegExp(`10–30 XP / ${word}`, "g")) ?? []).length, 3);
+    assert.equal((html.match(new RegExp(`10–30 XP / ${word}`, "g")) ?? []).length, 5);
     assert.ok(html.includes(grade === 1 ? "10–30 XP / Aufgabe" : "10–30 XP / question"));
     for (const text of grade === 1
       ? ["Alle gewählten Wörter, gemischte Aufgaben", "10 zufällige Wörter, schnelle Runde", "Wähle aus 4 Möglichkeiten", "XP für bewertete Antworten", "XP für eine richtige Antwort · je nach Schwierigkeit"]

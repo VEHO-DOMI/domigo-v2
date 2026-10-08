@@ -65,6 +65,56 @@ DomiGo without feeling like any one grade — and the moment you enter a grade c
 - **Where it shows:** home profile card (see §5), session-end screens (already show
   per-session XP — gain a level-progress bar), the hub.
 
+### Übungsmodi · W2 (cgo-109, CODEX DRAFT — NOT CANON)
+
+Die fünf Original-Modi verwenden die Jahrgangsfarben und Hell-/Dunkelwerte aus W1:
+Flashcards mit Richtungswahl, großer Wendekarte, Wischgesten und zwei Knöpfen;
+Memory mit vier Spalten, EN-/DE-Karten, Zug- und Zeitzähler; Spelling mit
+Buchstabenfeldern, gemischten Kacheln, festen Phrasenteilen und Hinweis;
+Word Hunt mit Chapter-Frage, Wortkacheln und Rundenergebnis; Speed mit
+60-Sekunden-Balken, Übersetzungsfeld und Ergebnis der beantworteten Wörter.
+
+Entscheidungen mit Original-Beleg (`design-study-og-trainers.md` §6 und
+Labor `cgo-106/og/<grade>/index.html`):
+
+- Memory: 8/12/10/12 Paare in Jahrgang 1/2/3/4, bei kleinerem freigegebenem
+  Wortbestand entsprechend weniger. Acht entsprechen dem aktuellen
+  `1st/startMemoryMatchRound`; 12/10/12 dem ausdrücklichen W2-Auftrag und §6.
+  Die aktuellen Originaldateien begrenzen auch Jahrgang 2–4 auf acht;
+  hier hat die beauftragte Paarzahl Vorrang. Fehlpaare zählen als Zug,
+  nur gefundene Paare als Wortversuch, wie im Original.
+- Spelling: bis 18 Wörter laut W2-Auftrag/§6 (aktueller 4th-Quelltext: 15).
+  Die Engine liefert die festen Phrasenteile (`to/a/an/the`, Klammern,
+  `sth./sb.`); die eingegebenen Buchstaben werden unverändert zur vollständigen
+  Antwort zusammengesetzt. Der bestehende Server-Grader entscheidet auch
+  über Tippfehler. Ein Textfeld ergänzt die Original-Kacheln für Tastaturbedienung.
+- Word Hunt: acht Runden mit 8–10 Wörtern. Der v2-Wortbestand besitzt kein
+  Themenfeld, deshalb Chapters statt erfundener Themen; mindestens zwei
+  ausgewählte Chapters mit genügend verfügbaren Wörtern sind nötig.
+  Auswahl wird gesammelt und dann geprüft, entsprechend dem W2-Mehrfachauswahlauftrag.
+  Die Fragen werden nach dem Reservefilter gebaut. Fremde Chapter-Wörter,
+  die der bestehende Grader als teilweise richtig erkennen könnte, werden
+  beim Zusammenstellen ausgeschlossen.
+- Flashcards: Selbstauskunft „Got it“ sendet die freigegebene richtige Antwort,
+  „Again“ eine leere Antwort. Beide verwenden dieselbe Leitner-Queue,
+  Flashcards serverseitig 0 XP. „Again“ wird mit dem vorhandenen Abstand der
+  ersten Box nach zehn Minuten fällig. Jede Karte kommt einmal pro Lauf.
+- Speed: Start erst auf Knopfdruck, mit signierter und an das Kind gebundener
+  Serverzeit. Ab 60 Sekunden werden auch verzögerte Offline-Antworten abgewiesen.
+  Die bestehende Outbox bewahrt unbestätigte Antworten weiter auf; eine
+  gesonderte Bereinigung abgelaufener Versuche liegt außerhalb dieses Zauns.
+- Punkte: Nur bestätigte Serverantworten werden summiert. **Original-Abweichung,
+  Koki-Ruling (GG 09.10.):** Paar-/Tempo-/Streak-Boni und Spelling-Hinweis-Halbierung
+  fehlen in W2. Die Hinweise versprechen deshalb die bestehenden 10–30 XP
+  für eine richtige Antwort; Flashcards 0. Kein Speed-Demon-Badge (W7).
+
+Die Modus-Wahl folgt der Original-Reihenfolge (Full, Sprint, Speed, MC,
+Flashcards, Memory, Spelling, Word Hunt), danach der bestehenden Grammatik-
+und Story-Kachel. Die Verknüpfung zum Wörterbuch heißt dort
+„Dictionary & Flashcards“. Die Startseiten-Kachel bleibt wegen des W2-Zauns
+unverändert. Die zusätzliche Grammar-Memory-Variante des 1st-Originals ist
+nicht Teil dieser fünf Vokabelmodi.
+
 ## 4 · Leaderboard (Koki-gated: yes, teacher-toggleable)
 
 **Weekly-XP window** (Monday reset, Vienna time) — deliberately NOT the OG's all-time
