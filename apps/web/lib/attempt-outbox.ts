@@ -54,15 +54,36 @@ const DB_VERSION = 2;
 const hasIDB = (): boolean => typeof indexedDB !== "undefined";
 const storageKey = (body: OwnedAttempt): string => JSON.stringify([body.ownerId, body.clientAttemptId]);
 
+export type OutboxReplyListener = (clientAttemptId: string, result: AttemptResult) => void;
+const replyListeners = new Map<string, Set<OutboxReplyListener>>();
+
+/** Replies belong to an owner and a mounted consumer; they are never buffered. */
+export function subscribeOutboxReplies(ownerId: string, listener: OutboxReplyListener): () => void {
+  let listeners = replyListeners.get(ownerId);
+  if (!listeners) replyListeners.set(ownerId, listeners = new Set());
+  // Separate subscriptions remain independent even when they share a callback.
+  const forward: OutboxReplyListener = (id, result) => listener(id, result);
+  listeners.add(forward);
+  return () => {
+    listeners.delete(forward);
+    if (listeners.size === 0 && replyListeners.get(ownerId) === listeners) replyListeners.delete(ownerId);
+  };
+}
+
 type OwnerBinding = { ownerId: string | null };
 let activeBinding: OwnerBinding | undefined;
 const drains = new WeakMap<OwnerBinding, Promise<number>>();
 
 /** A page lifetime, not an authority: the server still verifies the live session. */
 export function bindOutboxOwner(ownerId: string | null): () => void {
+  if (activeBinding?.ownerId && activeBinding.ownerId !== ownerId) replyListeners.delete(activeBinding.ownerId);
   const binding = { ownerId };
   activeBinding = binding;
-  return () => { if (activeBinding === binding) activeBinding = undefined; };
+  return () => {
+    if (activeBinding !== binding) return;
+    activeBinding = undefined;
+    if (ownerId) replyListeners.delete(ownerId);
+  };
 }
 
 class OutboxOpenError extends Error {}
@@ -158,6 +179,14 @@ function confirmed(res: Response | null, data: AttemptResponse | null): boolean 
   return res?.ok === true && data?.ok === true;
 }
 
+/** The direct and replay paths expose exactly the same server receipt. */
+function attemptResult(data: AttemptResponse | null): AttemptResult {
+  const tier = ["correct", "partial", "close", "wrong"].includes(data?.tier ?? "") ? data?.tier : undefined;
+  const xpAwarded = Number.isFinite(data?.xpAwarded) && data!.xpAwarded! >= 0
+    ? (data?.duplicate ? 0 : data?.xpAwarded) : undefined;
+  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded };
+}
+
 /**
  * The owner comes from the server-rendered page, never from the game payload.
  * A delayed callback retains that owner and cannot send through a newer page.
@@ -178,10 +207,7 @@ export async function sendAttempt(body: AttemptBody, ownerId: string | null): Pr
   // A receipt from a previous page must not update the new child's reward UI.
   if (!isCurrent()) return { ok: false, queued: false };
   void flushOutbox(ownerId);
-  const tier = ["correct", "partial", "close", "wrong"].includes(data?.tier ?? "") ? data?.tier : undefined;
-  const xpAwarded = Number.isFinite(data?.xpAwarded) && data!.xpAwarded! >= 0
-    ? (data?.duplicate ? 0 : data?.xpAwarded) : undefined;
-  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded };
+  return attemptResult(data);
 }
 
 /** Drain only this mounted child's rows; switching/unmounting invalidates the whole run. */
@@ -202,6 +228,13 @@ export function flushOutbox(ownerId: string | null): Promise<number> {
       if (confirmed(res, data)) {
         await dequeue(body);
         flushed++;
+        const result = attemptResult(data);
+        for (const listener of replyListeners.get(ownerId) ?? []) {
+          // Check each delivery: a callback itself can switch/unmount the page.
+          if (activeBinding !== binding) break;
+          try { listener(body.clientAttemptId, result); }
+          catch { /* a view failure must not interrupt durable delivery */ }
+        }
       }
       // Lost session / another tab's account switch: preserve this and every remaining row.
       if (!res || [401, 403, 409].includes(res.status)) break;

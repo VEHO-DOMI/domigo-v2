@@ -9,7 +9,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
-import type { EpisodeStats, GameAttempt, NovelSave, NovelArt } from "@domigo/game-novel";
+import type { EpisodeStats, GameAttempt, NovelSave, NovelArt, StoryReviewItem } from "@domigo/game-novel";
 import type { ResolvedItem } from "@domigo/game-core";
 import { flushOutbox } from "@/lib/attempt-outbox";
 import { attemptSender } from "@/lib/preview-attempt";
@@ -31,7 +31,7 @@ export default function NovelClient(props: {
   chapter: Chapter;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
-  reviewItems: ResolvedItem[];
+  reviewItems: StoryReviewItem[];
   serverSave: SavePayload | null;
   novelArt: NovelArt | null;
   economy: EpisodeStats[];

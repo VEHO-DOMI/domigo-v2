@@ -10,3 +10,5 @@ export type { NovelGameProps, NovelSave, NovelArt, GameAttempt, AttemptFn } from
 export { CastAvatar, CommentSection } from "./art.tsx";
 export { SeasonBoard, type EpisodeProgress } from "./season-board.tsx";
 export type { Comment, CommentBand, EpisodeStats } from "./novel-copy.ts";
+
+export { storyReviewItems, type StoryReviewItem } from "./episode-state.ts";

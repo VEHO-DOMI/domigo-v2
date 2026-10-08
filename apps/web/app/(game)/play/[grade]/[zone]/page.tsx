@@ -17,9 +17,9 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryEconomy, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
+import { loadUnit, loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryEconomy, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
 import { loadUnitWithOverrides } from "@/lib/content-service";
-import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
+import { getDb, getDueStoryRefs, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { isPreview, resolveStudentView, yearRedirect } from "@/lib/student-view";
@@ -31,6 +31,7 @@ import { worldCopyFor } from "@/lib/world-copy";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
 import NovelClient from "../NovelClient";
+import { storyReviewItems } from "@domigo/game-novel";
 import TripClient from "../TripClient";
 
 export const dynamic = "force-dynamic";
@@ -176,6 +177,13 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
     const unit = await loadUnitWithOverrides(slug);
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
+    const releasedChapters = story!.chapters.filter((c) => released.includes(c.id));
+    const structures = Object.fromEntries(releasedChapters.map((c) => [c.unit,
+      loadUnit(`g3-u${String(c.unit).padStart(2, "0")}`).grammar.map((g) => g.structureId)]));
+    const candidates = storyReviewItems(releasedChapters, loadStoryComprehension(storyId)?.items ?? [], structures, loadStoryEconomy(storyId)?.episodes ?? []);
+    const scope = { storyId, itemIds: candidates.map((r) => r.item.id) };
+    const dueRefs = acting ? await getDueStoryRefs(getDb(), acting.userId, acting.classId, scope, 3).catch(() => []) : [];
+    const reviewItems = dueRefs.flatMap((ref) => candidates.filter((r) => r.item.id === ref.itemId));
     const novelArt = resolveNovelArt(storyId, grade, chapter);
     const following = story?.chapters[(story?.chapters.findIndex((c) => c.id === chapter.id) ?? -1) + 1];
     const nextEpisode = following && released.includes(following.id)
@@ -191,7 +199,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         chapter={chapter}
         castNames={castNames}
         storyItems={storyItems}
-        reviewItems={[]}
+        reviewItems={reviewItems}
         serverSave={serverSave}
         novelArt={novelArt}
         nextEpisode={nextEpisode}

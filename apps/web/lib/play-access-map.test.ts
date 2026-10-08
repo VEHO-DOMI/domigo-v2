@@ -112,7 +112,7 @@ describe("server pages — who is a preview is decided on the server", () => {
     for (const c of clients) assert.equal(c[2], "preview={preview}", `${c[1]} without preview`);
   });
   it("the preview reads no save, review queue or solved ledger", () => {
-    for (const call of ["getGameSave", "getDueRefs", "getSolvedGameItemIds"]) {
+    for (const call of ["getGameSave", "getDueRefs", "getDueStoryRefs", "getSolvedGameItemIds"]) {
       for (const m of zone.matchAll(new RegExp(`[^\\n]*\\b${call}\\(`, "g"))) {
         assert.match(m[0], /acting \? await /, `${call} without the child guard: ${m[0].trim()}`);
       }
@@ -202,7 +202,7 @@ describe("cgo-092 every modality uses the shared viewer", () => {
   it("all child-specific learn and review reads require an actual child", () => {
     for (const file of PREVIEW_PAGES.filter((p) => /^(learn|review)\//.test(p))) {
       const src = code(read(file));
-      for (const call of ["getPathSummary", "getUnitPathProgress", "getJourneyAttempts", "getDueRefs", "getDueCounts", "listReservedForClass"]) {
+      for (const call of ["getPathSummary", "getUnitPathProgress", "getJourneyAttempts", "getDueRefs", "getDueCounts", "getDueStoryRefs", "getDueStoryCount", "listReservedForClass"]) {
         for (const hit of src.matchAll(new RegExp(`[^\\n]*\\b${call}\\(`, "g"))) assert.match(hit[0], /acting \? await /, `${file}: ${call} lacks child guard`);
       }
     }
@@ -267,6 +267,14 @@ const bookLaws = [
     (s: string) => (s.match(/onAttempt=\{send\}/g) ?? []).length === 1
       && (s.match(/onAttempt=/g) ?? []).length === 1,
     (s: string) => s.replace("onAttempt={send}", "onAttempt={body => sendAttempt(body, ownerId)}")],
+  ["client: reply subscription excludes preview, bench and absent owner", bookClient,
+    (s: string) => /const attemptReplies = useMemo\(\(\) => !preview && cardBench === undefined && ownerId\s*\? \(listener: OutboxReplyListener\) => subscribeOutboxReplies\(ownerId, listener\)\s*: undefined, \[preview, cardBench, ownerId\]\)/.test(s)
+      && (s.match(/subscribeOutboxReplies\(/g) ?? []).length === 1,
+    (s: string) => s.replace("!preview && cardBench === undefined && ownerId", "ownerId")],
+  ["client: optional subscription reaches only the game", bookClient,
+    (s: string) => (s.match(/attemptReplies=\{attemptReplies\}/g) ?? []).length === 1
+      && !/<PaintDevGallery[^>]*attemptReplies/.test(s),
+    (s: string) => s.replace("attemptReplies={attemptReplies}", "attemptReplies={undefined}")],
   ["page: only teacher without student is preview", bookPage,
     (s: string) => /const preview = student === null && teacher !== null;/.test(s)
       && (s.match(/preview=/g) ?? []).length === 1 && /preview=\{preview\}/.test(s),
@@ -286,7 +294,7 @@ describe("painted book preview wiring and tamper proofs", () => {
     for (const [index, before, after] of [
       [1, "!preview && cardBench === undefined", "!preview"],
       [3, "onAttempt={send}", "onAttempt={send} onAttempt={send}"],
-      [4, "preview={preview}", "preview={false}"],
+      [6, "preview={preview}", "preview={false}"],
     ] as const) {
       const law = bookLaws[index]!;
       const broken = law[1].replace(before, after);
@@ -294,4 +302,54 @@ describe("painted book preview wiring and tamper proofs", () => {
       assert.equal(law[2](broken), false);
     }
   });
+});
+
+// cgo-095: execute the real review page with synthetic identity/storage only.
+it("story review door renders counts/deep links for a child and never reads a preview queue", async () => {
+  const ts = await import("typescript");
+  const content = await import("@domigo/content-loader");
+  const { storyReviewItems } = await import("../../../packages/game-novel/src/episode-state.ts");
+  const compiled = ts.transpileModule(read("review/page.tsx"), { compilerOptions: {
+    module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+  } }).outputText;
+  const dueId = "g3u13.ci.listen-if-he-asks.gf.001";
+  for (const preview of [false, true]) {
+    const calls: string[] = [];
+    let scopeIds: string[] = [];
+    const modules: Record<string, unknown> = {
+      "react/jsx-runtime": { jsx: (type: unknown, props: unknown) => ({ type, props }), jsxs: (type: unknown, props: unknown) => ({ type, props }) },
+      "next/link": { default: "Link" }, "next/navigation": { redirect: () => assert.fail("unexpected redirect") },
+      "@domigo/content-loader": content, "@domigo/game-novel": { storyReviewItems },
+      "@/lib/student-view": { resolveStudentView: async () => preview ? { kind: "preview", grades: [3] } : { kind: "student", grades: [3], player: { userId: "fixture-child", classId: "fixture-class" } } },
+      "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
+      "@/app/PreviewBanner": { default: "PreviewBanner" },
+      "@domigo/db": {
+        getDb: () => { calls.push("db"); return {}; },
+        getDueCounts: async () => ({ total: 0, vocab: 0, grammar: 0 }),
+        getDueStoryCount: async (_db: unknown, userId: string, classId: string, scope: { itemIds: string[] }) => {
+          assert.equal(userId, "fixture-child"); assert.equal(classId, "fixture-class"); scopeIds = scope.itemIds; calls.push("count"); return 3;
+        },
+        getDueStoryRefs: async () => { calls.push("refs"); return [{ itemId: dueId }]; },
+      },
+    };
+    const loaded: { exports: { default?: (props: unknown) => Promise<unknown> } } = { exports: {} };
+    new Function("require", "exports", "module", compiled)((id: string) => {
+      assert.ok(id in modules, id); return modules[id];
+    }, loaded.exports, loaded);
+    const tree = await loaded.exports.default!({ searchParams: Promise.resolve({ jahrgang: "3" }) });
+    const serialized = JSON.stringify(tree);
+    assert.match(serialized, /Wiederholung in der Geschichte/);
+    assert.doesNotMatch(serialized, /GrammarItemView|listen-if-he-asks|Your words:/, "the door cannot render a task outside its scene");
+    if (preview) {
+      assert.deepEqual(calls, []);
+      assert.match(serialized, /ohne persönlichen Wiederholungsstand/);
+    } else {
+      assert.equal(scopeIds.length, 15);
+      assert.ok(scopeIds.includes(dueId));
+      assert.match(serialized, /3 Aufgaben fällig/);
+      assert.match(serialized, /\/play\/3\/ch13/);
+      assert.doesNotMatch(serialized, /caught up|Start review/);
+      assert.ok(calls.includes("refs") && calls.includes("count"));
+    }
+  }
 });

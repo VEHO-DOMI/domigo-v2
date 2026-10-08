@@ -9,6 +9,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 import { chapterRegelSeiten, refreshChapterRegelbuch, regelbuchSnapshot, regelbuchServerSnapshot, subscribeRegelbuch, rememberRegelSeite } from "@/lib/regelbuch";
 import { auftaktSeen, rememberAuftakt } from "@/lib/auftakt";
 import { attemptSender } from "@/lib/preview-attempt";
+import { subscribeOutboxReplies, type OutboxReplyListener } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 import { CH01_STORY_VERSION, PAINT_CLASSMATES } from "@domigo/game-paint/story";
@@ -58,6 +59,9 @@ export default function BuchClient(props: BuchClientProps) {
 function AccountBuchClient(props: BuchClientProps) {
   const { cardBench, cardBenchTask, playerKey, preview, ownerId, ...game } = props;
   useOutboxFlush(!preview && cardBench === undefined, ownerId);
+  const attemptReplies = useMemo(() => !preview && cardBench === undefined && ownerId
+    ? (listener: OutboxReplyListener) => subscribeOutboxReplies(ownerId, listener)
+    : undefined, [preview, cardBench, ownerId]);
   const send = useMemo(() => attemptSender(preview, ownerId), [preview, ownerId]);
   // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
   // opening and tear it down a frame later, and a card that flashes is worse
@@ -100,6 +104,7 @@ function AccountBuchClient(props: BuchClientProps) {
     <PaintGame
       {...game}
       onAttempt={send}
+      attemptReplies={attemptReplies}
       liberationProgress={liberation}
       onLiberationProgress={next => setLiberationPersisted(saveLiberation(playerKey, props.level.chapter, allowedLiberations, next))}
       onLiberationRestart={() => { saveLiberation(playerKey, props.level.chapter, allowedLiberations, {}); }}

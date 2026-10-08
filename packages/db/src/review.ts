@@ -4,7 +4,7 @@
  * getDueRefs, getDueCounts) are the shared service that powers Smart Review AND
  * game encounters (10_game_layer Law 6).
  */
-import { and, asc, eq, inArray, lte, notInArray, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, lte, notInArray, notLike, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { reservedItems, reviewQueue } from "./schema.ts";
 import type { Db } from "./index.ts";
@@ -103,6 +103,22 @@ export interface DueRef {
   dueAt: Date;
 }
 
+/** The review context is encoded in the item ID; no persisted context is needed. */
+export function isStoryReviewItemId(itemId: string): boolean {
+  return itemId.includes(".ci.");
+}
+
+/**
+ * Supplied by the server from one loaded story's scene-assigned grammar items.
+ * .ci. IDs contain a UNIT prefix, not their story ID, so a prefix/grade query
+ * cannot establish story membership. An exact allowlist also drops old items
+ * whose source scene has disappeared instead of producing an empty card.
+ */
+export interface StoryReviewScope {
+  storyId: string;
+  itemIds: readonly string[];
+}
+
 /**
  * dach-018 · Die reservierten Items EINER Klasse, ohne Ausschnitt — modul-privat.
  *
@@ -141,7 +157,9 @@ export async function getDueRefs(
   now: Date = new Date(),
 ): Promise<DueRef[]> {
   const reserved = await reservierteFuerKlasse(db, classId);
-  const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
+  // Filter before LIMIT: story items must neither render as unit cards nor
+  // crowd valid unit cards out of the requested page.
+  const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now), notLike(reviewQueue.itemId, "%.ci.%")];
   if (scope.kind === "unit") where.push(eq(reviewQueue.unitSlug, scope.slug));
   if (scope.kind === "grade") where.push(eq(reviewQueue.grade, scope.grade));
   if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
@@ -172,7 +190,7 @@ export interface DueCounts {
  *  the class's reserved (`mock`) items are excluded, matching getDueRefs (F2). */
 export async function getDueCounts(db: Db, userId: string, classId: string, now: Date = new Date()): Promise<DueCounts> {
   const reserved = await reservierteFuerKlasse(db, classId);
-  const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
+  const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now), notLike(reviewQueue.itemId, "%.ci.%")];
   if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
   const rows = await db
     .select({ kind: reviewQueue.kind, grade: reviewQueue.grade, n: sql<number>`count(*)::int` })
@@ -189,4 +207,64 @@ export async function getDueCounts(db: Db, userId: string, classId: string, now:
     byGrade[r.grade] = (byGrade[r.grade] ?? 0) + n;
   }
   return { total: vocab + grammar, vocab, grammar, byGrade };
+}
+
+/** Shared exact scope for the scene reader and its uncapped /review count. */
+async function dueStoryConditions(db: Db, userId: string, classId: string, scope: StoryReviewScope, now: Date) {
+  // A missing story or an empty corpus scope must not become a broad query.
+  const itemIds = scope.storyId ? [...new Set(scope.itemIds.filter(isStoryReviewItemId))] : [];
+  if (itemIds.length === 0) return null;
+  const reserved = await reservierteFuerKlasse(db, classId);
+  const where = [
+    eq(reviewQueue.userId, userId),
+    lte(reviewQueue.dueAt, now),
+    eq(reviewQueue.kind, "grammar"),
+    inArray(reviewQueue.itemId, itemIds),
+  ];
+  if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
+  return and(...where);
+}
+
+/** Due grammar from exactly one story, reserved items excluded, soonest first. */
+export async function getDueStoryRefs(
+  db: Db,
+  userId: string,
+  classId: string,
+  scope: StoryReviewScope,
+  limit = 20,
+  now: Date = new Date(),
+): Promise<DueRef[]> {
+  const where = await dueStoryConditions(db, userId, classId, scope, now);
+  if (!where) return [];
+  const rows = await db
+    .select({
+      itemId: reviewQueue.itemId,
+      kind: reviewQueue.kind,
+      unitSlug: reviewQueue.unitSlug,
+      grade: reviewQueue.grade,
+      box: reviewQueue.box,
+      dueAt: reviewQueue.dueAt,
+    })
+    .from(reviewQueue)
+    .where(where)
+    .orderBy(asc(reviewQueue.dueAt), asc(reviewQueue.itemId))
+    .limit(Math.max(0, Math.min(Math.floor(limit), 100)));
+  return rows as DueRef[];
+}
+
+/** Uncapped count for a story's door on /review; identical eligibility to refs. */
+export async function getDueStoryCount(
+  db: Db,
+  userId: string,
+  classId: string,
+  scope: StoryReviewScope,
+  now: Date = new Date(),
+): Promise<number> {
+  const where = await dueStoryConditions(db, userId, classId, scope, now);
+  if (!where) return 0;
+  const rows = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(reviewQueue)
+    .where(where);
+  return Number(rows[0]?.n ?? 0);
 }

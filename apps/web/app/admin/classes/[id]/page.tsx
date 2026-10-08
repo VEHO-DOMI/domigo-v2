@@ -208,12 +208,12 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   const versucheGesamt = attempts.reduce((n, a) => n + a.attempts, 0);
 
   return (
-    <main style={{ maxWidth: 980, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 6 }}>
-        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+    <main style={{ width: "100%", maxWidth: 980, minWidth: 0, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 6 }}>
+        <h1 style={{ minWidth: 0, overflowWrap: "anywhere", fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
           {ueberschrift} {purposes.get(cls.id) === "test" && <span className="dg-chip">Testklasse</span>} <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}>· Stufe {cls.grade} · Fortschritt</span>
         </h1>
-        <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, minWidth: 0 }}>
           {/* K6a · der Einstieg in die Schreib-Abgaben. Nur ein Link: eine eigene
               Zugangs-Karte gehört auf die Klassen-Übersicht, nicht in diesen Kopf. */}
           <Link href={`/admin/classes/${cls.id}/schreiben`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Schreib-Abgaben</Link>

@@ -4,6 +4,7 @@
   "items": [
     {
       "id": "g3u01.ci.saras-channel.gf.001",
+      "structureId": "g3u01.s.present-simple",
       "rev": 1,
       "difficulty": 1,
       "format": "gap-fill",
@@ -40,6 +41,7 @@
     },
     {
       "id": "g3u01.ci.bens-line.ec.001",
+      "structureId": "g3u01.s.present-simple",
       "rev": 1,
       "difficulty": 1,
       "format": "error-correction",
@@ -346,6 +348,7 @@
     },
     {
       "id": "g3u02.ci.reading-for-camera.gf.001",
+      "structureId": "g3u02.s.past-continuous",
       "rev": 1,
       "difficulty": 2,
       "format": "gap-fill",
@@ -382,6 +385,7 @@
     },
     {
       "id": "g3u03.ci.travel-question.sb.001",
+      "structureId": "g3u03.s.it-takes",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -400,6 +404,7 @@
     },
     {
       "id": "g3u04.ci.hard-lines-comparison.sb.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -454,6 +459,7 @@
     },
     {
       "id": "g3u05.ci.leahs-click-plan.sb.001",
+      "structureId": "g3u05.s.first-conditional",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -472,6 +478,7 @@
     },
     {
       "id": "g3u06.ci.london-video-line.sb.001",
+      "structureId": "g3u06.s.relative-clauses",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -508,6 +515,7 @@
     },
     {
       "id": "g3u07.ci.ben-since-first-video.sb.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -544,6 +552,7 @@
     },
     {
       "id": "g3u09.ci.camera-permission.sb.001",
+      "structureId": "g3u09.s.be-allowed-to",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -598,6 +607,7 @@
     },
     {
       "id": "g3u10.ci.ask-before-showing.sb.001",
+      "structureId": "g3u10.s.be-allowed-to-tenses",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -616,6 +626,7 @@
     },
     {
       "id": "g3u11.ci.saras-words-stay.gf.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
       "rev": 1,
       "difficulty": 2,
       "format": "gap-fill",
@@ -652,6 +663,7 @@
     },
     {
       "id": "g3u12.ci.name-our-responsibility.sb.001",
+      "structureId": "g3u12.s.passive-voice",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -688,6 +700,7 @@
     },
     {
       "id": "g3u13.ci.listen-if-he-asks.gf.001",
+      "structureId": "g3u13.s.second-conditional",
       "rev": 1,
       "difficulty": 2,
       "format": "gap-fill",
@@ -742,6 +755,7 @@
     },
     {
       "id": "g3u14.ci.steady-the-phone.sb.001",
+      "structureId": "g3u14.s.going-to-evidence",
       "rev": 1,
       "difficulty": 2,
       "format": "sentence-building",
@@ -778,6 +792,7 @@
     },
     {
       "id": "g3u08.ci.channel-reaches-people.gf.001",
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
       "rev": 1,
       "difficulty": 2,
       "format": "gap-fill",
