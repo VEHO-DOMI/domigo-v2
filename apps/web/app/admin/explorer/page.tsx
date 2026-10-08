@@ -81,6 +81,7 @@ export default async function ExplorerPage() {
                 <span style={{ fontSize: 12, color: "var(--muted)" }}>{gradeUnits} Chapters</span>
               </Link>
               {[
+                { href: `/woerterbuch?jahrgang=${grade}`, label: "Wörterbuch", count: gradeUnits },
                 { href: `/learn?jahrgang=${grade}`, label: "Lernpfad", count: gradeUnits },
                 { href: `/listening?jahrgang=${grade}`, label: "Hören", count: listening.filter((s) => s.startsWith(`g${grade}-`)).length },
                 { href: `/tests?jahrgang=${grade}`, label: "Tests", count: tests.filter((s) => s.startsWith(`g${grade}-`)).length },
