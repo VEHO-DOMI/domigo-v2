@@ -5,6 +5,7 @@ import { child, fixture, reset, teacher } from "../app/admin/story-world.harness
 const { readStoryWorlds, listOpenStories, openStoryIdForGrade } = await import("./story-world.ts");
 const { POST } = await import("../app/admin/story-world/route.ts");
 const { default: AdminPage } = await import("../app/admin/page.tsx");
+const { default: ExplorerPage } = await import("../app/admin/explorer/page.tsx");
 const { default: HomePage } = await import("../app/home/page.tsx");
 const { default: PlayPage } = await import("../app/(game)/play/page.tsx");
 const { default: HubPage } = await import("../app/(game)/play/[grade]/page.tsx");
@@ -74,6 +75,21 @@ describe("runtime story world", () => {
     fixture.grade = 2;
     await assert.rejects(hub("2"), { message: "REDIRECT:/play" });
     await assert.rejects(ZonePage({ params: Promise.resolve({ grade: "2", zone: "ch01" }), searchParams: Promise.resolve({}) }), { message: "REDIRECT:/home" });
+  });
+  it("explorer follows the runtime switch while keeping every v2 preview door", async () => {
+    for (const isOpen of [true, false, true]) {
+      fixture.settings.set(1, isOpen);
+      fixture.settings.set(3, isOpen);
+      const markup = renderToStaticMarkup(await ExplorerPage());
+      for (const grade of [1, 3]) assert.equal(markup.includes(`href="/play/${grade}"`), isOpen);
+      assert.match(markup, /href="\/play\/1\/buch\/ch01"/);
+      if (isOpen) assert.match(markup, /1 Kapitel freigegeben/);
+      for (const path of ["practice", "learn", "listening", "tests", "review"]) {
+        assert.match(markup, new RegExp(`href="/${path}\\?jahrgang=2"`));
+      }
+      assert.match(markup, /Chapter-Übungen ansehen und zuweisen/);
+      assert.match(markup, /href="\/admin\/assignments\/new\?source=unit&amp;grade=1&amp;unit=/);
+    }
   });
   it("an open year 3 renders the child's hub without redirecting", async () => {
     fixture.settings.set(3, true);
@@ -150,6 +166,8 @@ describe("painted book runtime door", () => {
         const page = await book();
         assert.equal(page.type, "main");
         const game = page.props.children;
+        assert.equal(game.props.preview, false);
+        assert.equal(game.props.ownerId, child.user.id);
         assert.equal(game.props.startPhase, undefined);
         assert.equal(game.props.debugPerf, false);
         assert.equal(game.props.debugGrid, false);
@@ -182,6 +200,8 @@ describe("painted book runtime door", () => {
         const page = await book(chapter);
         assert.equal(page.type, "main");
         assert.equal(page.props.children.props.debugPerf, true);
+        assert.equal(page.props.children.props.preview, true);
+        assert.equal(page.props.children.props.ownerId, null);
       }
     } finally {
       if (previousNodeEnv === undefined) Reflect.deleteProperty(process.env, "NODE_ENV");

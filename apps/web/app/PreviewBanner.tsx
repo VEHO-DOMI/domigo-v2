@@ -6,6 +6,7 @@
  * scripts/check-umbrella-tokens.mjs bytegenau fest.
  */
 import Link from "next/link";
+import PreviewAssignmentLink from "./PreviewAssignmentLink";
 
 export default function PreviewBanner({ grade, note }: { grade?: number; note?: string }) {
   return (
@@ -20,6 +21,7 @@ export default function PreviewBanner({ grade, note }: { grade?: number; note?: 
         {note ? ` · ${note}` : ""}
       </span>
       <Link href="/admin/explorer" style={{ color: "var(--accent)", fontWeight: 700 }}>← Zur Schüleransicht</Link>
+      <PreviewAssignmentLink />
     </div>
   );
 }

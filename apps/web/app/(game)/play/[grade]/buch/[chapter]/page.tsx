@@ -23,7 +23,7 @@
  */
 import { notFound, redirect } from "next/navigation";
 import { allPhases, checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
-import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { openStoryIdForGrade } from "@/lib/story-world";
 import { resolveStudentView, yearRedirect } from "@/lib/student-view";
 import { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel, loadPaintTasksV2 } from "@/lib/paint-content";
@@ -48,6 +48,9 @@ export default async function BuchPage({
   if (!CHAPTER_ID.test(chapter) || !listPaintChapters(STORY).includes(chapter)) notFound();
   // Runtime visibility and the existing school-year wall; teachers retain preview.
   const teacher = await getTeacherForPage();
+  const student = await getActingUserForPage();
+  const preview = student === null && teacher !== null;
+  const ownerId = student?.userId ?? null;
   const acting = await getPlayerForPage();
   if (!acting) redirect("/signin");
   if (teacher === null) {
@@ -124,6 +127,8 @@ export default async function BuchPage({
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
       <BuchClient
         playerKey={acting.userId}
+        preview={preview}
+        ownerId={ownerId}
         level={level}
         art={art}
         tasks={tasks}

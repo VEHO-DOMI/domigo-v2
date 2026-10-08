@@ -13,7 +13,9 @@
  * any item manually; points stay editable per section, Σ must be exactly 20.
  */
 import Link from "next/link";
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import type { AssignmentPrefill } from "@/lib/assignment-prefill";
+import { assignmentSubmissionId } from "@/lib/assignment-submit";
 
 interface ClassRow { id: string; name: string; grade: number }
 interface CatalogItem { id: string; label: string; format: string; difficulty: number }
@@ -68,25 +70,28 @@ const card: CSSProperties = { border: "1px solid var(--card-border)", borderRadi
 const label: CSSProperties = { fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 };
 const input: CSSProperties = { fontFamily: "var(--font-body)", fontSize: 15, padding: "8px 11px", borderRadius: 10, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", color: "var(--text)", width: "100%" };
 
-export default function AssignmentBuilder({ classes, checkupPresets }: { classes: ClassRow[]; checkupPresets: Record<number, CheckupPreset[]> }) {
-  const [title, setTitle] = useState("");
-  const [mode, setModeState] = useState<Mode>("mock_test");
-  const [classId, setClassId] = useState(classes[0]?.id ?? "");
+export default function AssignmentBuilder({ classes, checkupPresets, prefill = null, ownerId }: { classes: ClassRow[]; checkupPresets: Record<number, CheckupPreset[]>; prefill?: AssignmentPrefill | null; ownerId: string }) {
+  const [title, setTitle] = useState(prefill?.title ?? "");
+  const [mode, setModeState] = useState<Mode>(prefill ? "practice" : "mock_test");
+  const [classId, setClassId] = useState(prefill ? "" : classes[0]?.id ?? "");
   const [dueAt, setDueAt] = useState("");
   const [attemptsPerTest, setAttempts] = useState(1);
   const [durationMin, setDurationMin] = useState<number | "">("");
   const [ns, setNs] = useState<{ 1: number; 2: number; 3: number; 4: number }>(AHS);
-  const [sections, setSections] = useState<Section[]>([]);
+  const [sections, setSections] = useState<Section[]>(prefill?.sections ?? []);
   const [catalog, setCatalog] = useState<CatalogUnit[]>([]);
   const [loadingCat, setLoadingCat] = useState(false);
   const [catError, setCatError] = useState<string | null>(null);
   const [preview, setPreview] = useState(false);
   const [saving, setSaving] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
+  const [confirming, setConfirming] = useState(false);
+  const [savedId, setSavedId] = useState<string | null>(null);
+  const inFlight = useRef(false);
   // C-1 checkup state: verdict visibility (default on-submit, §4b), the unit
   // for "Automatisch füllen", and its in-flight flag.
   const [feedback, setFeedback] = useState<FeedbackMode>("on-submit");
-  const [fillUnit, setFillUnit] = useState("");
+  const [fillUnit, setFillUnit] = useState(prefill?.source.unit ?? "");
   const [filling, setFilling] = useState(false);
 
   const grade = classes.find((c) => c.id === classId)?.grade ?? 0;
@@ -109,7 +114,7 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
     // All state writes live inside this async fn (never synchronously in the
     // effect body — that would cascade renders; see the react-hooks lint).
     const load = async () => {
-      if (!classId || !grade) { if (alive) { setCatalog([]); setCatError(null); } return; }
+      if (!classId || !grade) { if (alive) { setCatalog([]); setCatError(null); setLoadingCat(false); } return; }
       if (alive) { setLoadingCat(true); setCatError(null); }
       // A failed/empty catalog must be VISIBLE, never mistaken for "no class
       // picked" — this exact silence hid the missing-corpus deploy bug
@@ -211,6 +216,8 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
     const e: string[] = [];
     if (title.trim() === "") e.push("Give the assignment a title.");
     if (!classId) e.push("Choose a class.");
+    if (loadingCat || catError) e.push("Warte, bis der Aufgaben-Katalog geladen ist.");
+    if (classId && !loadingCat && !catError && sections.some((s) => s.itemIds.some((id) => !labelOf.has(id)))) e.push("Die Auswahl enthält zurückgehaltene oder nicht verfügbare Aufgaben. Entferne sie vor dem Zuweisen.");
     if (sections.length === 0) e.push("Add at least one section.");
     sections.forEach((s, i) => { if (s.itemIds.length === 0) e.push(`Section ${i + 1}: pick at least one item.`); });
     if (mode === "mock_test") {
@@ -227,12 +234,15 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
       });
     }
     return e;
-  }, [title, classId, sections, mode, totalWeight, totalPoints, ns]);
+  }, [title, classId, sections, mode, totalWeight, totalPoints, ns, loadingCat, catError, labelOf]);
 
   const save = async () => {
+    if (inFlight.current || savedId || !confirming || issues.length > 0) return;
+    inFlight.current = true;
     setSaving(true);
     setServerErrors([]);
     const draft = {
+      ...(prefill ? { source: prefill.source } : {}),
       title, mode, classId, dueAt: dueAt || null,
       attemptsPerTest,
       sessionDurationMinutes: (mode === "mock_test" || mode === "checkup") && durationMin !== "" ? Number(durationMin) : null,
@@ -255,14 +265,24 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
       })),
     };
     try {
-      const res = await fetch("/api/admin/assignments", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(draft) });
+      const submissionId = await assignmentSubmissionId(ownerId, draft, sessionStorage);
+      const res = await fetch("/api/admin/assignments", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...draft, submissionId }) });
       const d = await res.json().catch(() => ({}));
-      if (res.ok && d.ok) { window.location.href = "/admin/assignments"; return; }
-      setServerErrors(d.errors ?? [d.error ?? "Could not save."]);
+      if (res.ok && d.ok && typeof d.id === "string") { setSavedId(d.id); return; }
+      const messages: Record<string, string> = {
+        persist_failed: "Die Zuweisung konnte nicht bestätigt werden. Bitte sende denselben Auftrag erneut; er wird nur einmal angelegt.",
+        not_your_class: "Diese Klasse ist für dein Konto nicht verfügbar.",
+        class_check_failed: "Die Klassenberechtigung konnte nicht geprüft werden. Bitte versuche es erneut.",
+        content_check_failed: "Die Inhaltsfreigabe konnte nicht geprüft werden. Bitte versuche es erneut.",
+        source_unavailable: "Dieser Chapter ist für diese Klasse nicht zuweisbar.",
+        forbidden: "Bitte melde dich erneut als Lehrkraft an.",
+      };
+      setServerErrors(d.errors ?? [messages[d.error] ?? "Die Aufgabe konnte nicht zugewiesen werden. Bitte prüfe die Auswahl."]);
     } catch {
-      setServerErrors(["Network error — try again."]);
+      setServerErrors(["Die Zuweisung konnte nicht bestätigt werden. Du kannst denselben Auftrag erneut senden; er wird nur einmal angelegt."]);
     } finally {
       setSaving(false);
+      inFlight.current = false;
     }
   };
 
@@ -273,11 +293,19 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
         <Link href="/admin/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All assignments</Link>
       </div>
 
+      {prefill && <div style={card}>
+        <strong>Aus der Schüleransicht · Jahrgang {prefill.source.grade} · {prefill.title}</strong>
+        <p>Übernommen werden die Wortschatz- und Grammatikübungen ({sections.reduce((n, s) => n + s.itemIds.length, 0)} Aufgaben). Wähle eine eigene Klasse und prüfe die Auswahl vor dem Zuweisen.</p>
+        <Link href={prefill.returnHref}>Abbrechen und zurück zur Vorschau</Link>
+        {classes.length === 0 && <p role="alert">Keine berechtigte Klasse in diesem Jahrgang verfügbar. Es wurde nichts gespeichert.</p>}
+      </div>}
+
+      <fieldset disabled={saving || confirming || savedId !== null} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
       <div style={card}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 14 }}>
           <div style={{ gridColumn: "1 / -1" }}>
-            <label style={label}>Title</label>
-            <input style={input} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Schularbeit 1 – Units 1–3" />
+            <label style={label} htmlFor="assignment-title">Title</label>
+            <input id="assignment-title" style={input} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. Schularbeit 1 – Units 1–3" />
           </div>
           <div>
             <label style={label}>Mode</label>
@@ -291,8 +319,9 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
             </div>
           </div>
           <div>
-            <label style={label}>Class</label>
-            <select style={input} value={classId} onChange={(e) => setClassId(e.target.value)}>
+            <label style={label} htmlFor="assignment-class">Class</label>
+            <select id="assignment-class" style={input} value={classId} onChange={(e) => setClassId(e.target.value)}>
+              {prefill && classes.length > 0 && <option value="">Eigene Klasse wählen…</option>}
               {classes.length === 0 && <option value="">(no classes found)</option>}
               {classes.map((c) => <option key={c.id} value={c.id}>{c.name} (G{c.grade})</option>)}
             </select>
@@ -423,7 +452,12 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
               <button type="button" onClick={() => removeSection(i)} style={{ background: "none", border: "none", color: "var(--incorrect)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Remove</button>
             </div>
           </div>
-          <ItemPicker units={catalog} kind={s.kind} selected={s.itemIds} onToggle={(id) => toggleItem(i, id)} loading={loadingCat} />
+          <ItemPicker units={catalog} kind={s.kind} selected={s.itemIds} onToggle={(id) => toggleItem(i, id)} loading={loadingCat} initialFilter={prefill?.source.unit} />
+          {classId && !loadingCat && !catError && s.itemIds.some((id) => !labelOf.has(id)) && (
+            <button type="button" className="dg-btn-secondary" style={{ marginTop: 8 }} onClick={() => setSection(i, { itemIds: s.itemIds.filter((id) => labelOf.has(id)) })}>
+              Nicht zuweisbare Aufgaben aus Auswahl entfernen ({s.itemIds.filter((id) => !labelOf.has(id)).length})
+            </button>
+          )}
         </div>
       ))}
 
@@ -441,15 +475,28 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
       </div>
 
       {/* preview + save */}
+      </fieldset>
       <div style={{ ...card, marginTop: 24 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", alignItems: "center" }}>
           <button type="button" className="dg-chip" onClick={() => setPreview((p) => !p)} aria-expanded={preview}>
             {preview ? "Hide preview" : "👁 Preview as student"}
           </button>
-          <button type="button" className="dg-btn" disabled={saving || issues.length > 0} onClick={save} style={{ opacity: issues.length > 0 ? 0.5 : 1 }}>
-            {saving ? "Saving…" : "Save assignment"}
-          </button>
+          {!confirming && !savedId && <button type="button" className="dg-btn" disabled={issues.length > 0} onClick={() => setConfirming(true)}>Zuweisung prüfen</button>}
         </div>
+        {confirming && !savedId && <div role="region" aria-label="Zuweisung bestätigen" style={{ marginTop: 16 }}>
+          <strong>{title}</strong>
+          <p>{classes.find((c) => c.id === classId)?.name} · Jahrgang {grade} · {mode === "practice" ? "Übung" : mode === "checkup" ? "Check-up" : "Schularbeit-Übung"} · {sections.reduce((n, s) => n + s.itemIds.length, 0)} Aufgaben</p>
+          <p>Erst mit „Jetzt zuweisen“ erscheint der Auftrag unter „Deine Aufgaben“ bei den Kindern dieser Klasse.</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+            <button type="button" className="dg-btn" disabled={saving || issues.length > 0} onClick={save}>{saving ? "Wird zugewiesen…" : "Jetzt zuweisen"}</button>
+            <button type="button" className="dg-btn-secondary" disabled={saving} onClick={() => setConfirming(false)}>Zurück zur Auswahl</button>
+          </div>
+        </div>}
+        {savedId && <div role="status" style={{ marginTop: 16 }}>
+          <strong>Aufgabe zugewiesen</strong>
+          <p>Die Kinder dieser Klasse finden „{title}“ unter „Deine Aufgaben“.</p>
+          <Link href={`/admin/assignments/${savedId}`}>Zuweisung öffnen →</Link>
+        </div>}
 
         {issues.length > 0 && (
           <ul style={{ marginTop: 12, paddingLeft: 18, color: "var(--incorrect)", fontSize: 13 }}>
@@ -487,15 +534,15 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
   );
 }
 
-function ItemPicker({ units, kind, selected, onToggle, loading }: {
-  units: CatalogUnit[]; kind: Kind; selected: string[]; onToggle: (id: string) => void; loading: boolean;
+function ItemPicker({ units, kind, selected, onToggle, loading, initialFilter = "" }: {
+  units: CatalogUnit[]; kind: Kind; selected: string[]; onToggle: (id: string) => void; loading: boolean; initialFilter?: string;
 }) {
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(initialFilter);
   const sel = new Set(selected);
   const f = filter.trim().toLowerCase();
   if (loading) return <p style={{ color: "var(--muted)", fontSize: 13 }}>Loading items…</p>;
   const withItems = units
-    .map((u) => ({ unitSlug: u.unitSlug, items: (kind === "vocab" ? u.vocab : u.grammar).filter((it) => f === "" || it.label.toLowerCase().includes(f) || it.id.includes(f)) }))
+    .map((u) => ({ unitSlug: u.unitSlug, items: (kind === "vocab" ? u.vocab : u.grammar).filter((it) => f === "" || u.unitSlug.includes(f) || it.label.toLowerCase().includes(f) || it.id.includes(f)) }))
     .filter((u) => u.items.length > 0);
   if (units.length === 0) return <p style={{ color: "var(--muted)", fontSize: 13 }}>Pick a class to load its items.</p>;
 

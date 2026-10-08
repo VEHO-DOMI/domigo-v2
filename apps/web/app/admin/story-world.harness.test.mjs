@@ -73,6 +73,7 @@ const modules = new Map([
     ["@domigo/game-trip", "export const JournalBoard = () => null; export const tripCopyFor = () => null;"],
     ["@domigo/game-2d/board", "export const ZoneBoard = () => null;"],
     ["@/lib/content-service", "export const loadUnitWithOverrides = async () => null;"],
+    ["@/app/assignments/preview", "export const listPreviewAssignments = async () => [];"],
     ["@/app/PreviewBanner", empty],
     ["./BuchClient", empty],
     ["./ProfileCard", empty],

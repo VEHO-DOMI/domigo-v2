@@ -1460,7 +1460,7 @@ const FAELLE = [
       const c = klon(s);
       const rel = "apps/web/app/learn/page.tsx";
       const src = c.web.get(rel);
-      const neu = src.replace("getPathSummary(getDb(), session.user.id)", "getPathSummary(getDb(), (await searchParams).kind ?? session.user.id)");
+      const neu = src.replace("getPathSummary(getDb(), acting.userId)", "getPathSummary(getDb(), (await searchParams).kind ?? acting.userId)");
       if (neu === src) throw new Error(`Selbsttest: ${rel} traegt den Aufruf von getPathSummary nicht mehr`);
       c.web.set(rel, neu);
       return c;

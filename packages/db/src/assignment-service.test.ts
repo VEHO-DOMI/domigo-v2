@@ -13,6 +13,7 @@ import { drizzle } from "drizzle-orm/neon-http";
 import { LEGACY_CLASS_LABEL_SUFFIX, listClasses, listClassesInScope } from "./assignment-service.ts";
 import { UNKNOWN_TEACHER_LABEL } from "./class-service.ts";
 import type { Db } from "./index.ts";
+import * as schema from "./schema.ts";
 import { classScope, EMPTY_SCOPE, type ClassScope } from "./scope.ts";
 
 /** Synthetic session scope; the SQL tests below exercise the actual boundary. */
@@ -408,5 +409,66 @@ describe("cgo-063 · class rights in the emitted query", () => {
     ]);
     expectScopedRead(reads[1]!, MIXED_SCOPE, false);
     expect(reads[1]!.returnedIds).toEqual(["v1-b", "v1-a"]);
+  });
+});
+
+// cgo-066: real Drizzle SQL and batch dispatch, synthetic driver only. No Neon.
+describe("createAssignment — atomic, replay-safe existing persistence", () => {
+  const draft = { title: "Synthetic task", classId: "v2-a", mode: "practice" as const, attemptsPerTest: 1,
+    sections: [{ position: 0, kind: "vocab" as const, itemIds: ["g2u01.w.along"], weightPct: 0 }] };
+  const submission = "00000000-0000-4000-8000-000000000001";
+  function driver() {
+    const batches: Array<Array<{ sql: string; params: unknown[] }>> = [];
+    let fails = false;
+    const client = {
+      query: (sql: string, params: unknown[]) => ({ sql, params }),
+      transaction: async (queries: Array<{ sql: string; params: unknown[] }>) => {
+        if (fails) throw new Error("synthetic transaction rejected");
+        batches.push(queries);
+        return queries.map(() => ({ rows: [], rowCount: 1 }));
+      },
+    };
+    return { db: drizzle({ client: client as never, schema }), batches, fail: (value: boolean) => { fails = value; } };
+  }
+  it("uses one atomic batch and both primary-key conflict guards", async () => {
+    const { db, batches } = driver();
+    const { createAssignment } = await import("./assignment-service.ts");
+    const id = await createAssignment(db, SCOPE, draft, "teacher-a", submission);
+    expect(batches).toHaveLength(1);
+    expect(batches[0]).toHaveLength(2);
+    expect(batches[0]![0]!.sql).toContain('insert into "domigo_v2"."assignments"');
+    expect(batches[0]![1]!.sql).toContain('insert into "domigo_v2"."assignment_sections"');
+    for (const q of batches[0]!) { expect(q.sql).toMatch(/on conflict \("id"\) do nothing/); expect(q.params).toContain(id); }
+  });
+  it("two concurrent exact retries have the same assignment AND section keys", async () => {
+    const { db, batches } = driver();
+    const { createAssignment } = await import("./assignment-service.ts");
+    const ids = await Promise.all([createAssignment(db, SCOPE, draft, "teacher-a", submission), createAssignment(db, SCOPE, structuredClone(draft), "teacher-a", submission)]);
+    expect(ids[0]).toBe(ids[1]);
+    expect(batches[0]).toEqual(batches[1]);
+  });
+  it("does not reuse another teacher's, another payload's or an intentional new submission's keys", async () => {
+    const { db } = driver();
+    const { createAssignment } = await import("./assignment-service.ts");
+    const ids = await Promise.all([
+      createAssignment(db, SCOPE, draft, "teacher-a", submission),
+      createAssignment(db, SCOPE, draft, "teacher-b", submission),
+      createAssignment(db, SCOPE, { ...draft, title: "Other task" }, "teacher-a", submission),
+      createAssignment(db, SCOPE, draft, "teacher-a", "00000000-0000-4000-8000-000000000002"),
+    ]);
+    expect(new Set(ids).size).toBe(4);
+  });
+  it("failed batch is an error, retry sends the intact batch; foreign scopes never reach storage", async () => {
+    const d = driver();
+    const { createAssignment } = await import("./assignment-service.ts");
+    d.fail(true);
+    await expect(createAssignment(d.db, SCOPE, draft, "teacher-a", submission)).rejects.toThrow("synthetic transaction rejected");
+    expect(d.batches).toHaveLength(0);
+    d.fail(false);
+    await createAssignment(d.db, SCOPE, draft, "teacher-a", submission);
+    expect(d.batches).toHaveLength(1);
+    await expect(createAssignment(d.db, EMPTY_SCOPE, draft, "teacher-a", submission)).rejects.toThrow();
+    await expect(createAssignment(d.db, SCOPE, { ...draft, classId: "foreign" }, "teacher-a", submission)).rejects.toThrow();
+    expect(d.batches).toHaveLength(1);
   });
 });

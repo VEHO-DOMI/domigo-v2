@@ -1,12 +1,15 @@
 "use client";
 // The ssr:false seam: Phaser only ever loads in the browser (next/dynamic with
 // ssr:false; keeps the bundle guard's one-lazy-chunk law intact).
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
+import { readLiberation, saveLiberation, type LiberationProgress } from "@domigo/game-paint/liberation-store";
 import type { PaintLevel } from "@domigo/game-paint/level";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { chapterRegelSeiten, refreshChapterRegelbuch, regelbuchSnapshot, regelbuchServerSnapshot, subscribeRegelbuch, rememberRegelSeite } from "@/lib/regelbuch";
 import { auftaktSeen, rememberAuftakt } from "@/lib/auftakt";
+import { attemptSender } from "@/lib/preview-attempt";
+import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 import { CH01_STORY_VERSION, PAINT_CLASSMATES } from "@domigo/game-paint/story";
 import { readPaintStoryProfile, savePaintStoryProfile, paintPrologueSeen, withPaintPrologueRead, withPaintClassmateRescued, cleanPaintDisplayName, createPaintRunSeed, type PaintStoryProfile } from "@/lib/paint-story-profile";
@@ -25,6 +28,8 @@ const PaintDevGallery = dynamic(() => import("@domigo/game-paint/game").then((m)
 });
 
 type BuchClientProps = {
+  preview: boolean;
+  ownerId: string | null;
   playerKey: string;
   level: PaintLevel;
   art: Record<string, string>;
@@ -47,11 +52,13 @@ type BuchClientProps = {
 
 export default function BuchClient(props: BuchClientProps) {
   // Switching accounts must discard the previous account's in-memory profile.
-  return <AccountBuchClient key={props.playerKey} {...props} />;
+  return <AccountBuchClient key={`${props.playerKey}:${props.level.chapter}`} {...props} />;
 }
 
 function AccountBuchClient(props: BuchClientProps) {
-  const { cardBench, cardBenchTask, playerKey, ...game } = props;
+  const { cardBench, cardBenchTask, playerKey, preview, ownerId, ...game } = props;
+  useOutboxFlush(!preview && cardBench === undefined, ownerId);
+  const send = useMemo(() => attemptSender(preview, ownerId), [preview, ownerId]);
   // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
   // opening and tear it down a frame later, and a card that flashes is worse
   // than a card that stays. The SSR pass answers `false` (show it), which is
@@ -74,6 +81,12 @@ function AccountBuchClient(props: BuchClientProps) {
     setProfilePersisted(saved.persisted);
   };
 
+  const allowedLiberations = props.level.chapter === "ch01"
+    ? props.level.phases.flatMap(p => p.entities.filter(e => e.params?.liberation).map(e => e.id)) : [];
+  // Like the story profile, read once before the browser-only game mounts.
+  const [liberation] = useState<LiberationProgress>(() => readLiberation(playerKey, props.level.chapter, allowedLiberations));
+  const [liberationPersisted, setLiberationPersisted] = useState(true);
+
   if (cardBench !== undefined) {
     return <PaintDevGallery level={props.level} art={props.art} tasks={props.tasks} which={cardBench} karte={cardBenchTask} />;
   }
@@ -82,8 +95,14 @@ function AccountBuchClient(props: BuchClientProps) {
   // the run. The game itself stays network- and storage-free (its proof tapes
   // replay the whole chapter in CI on exactly that property).
   return (
+    <>
+    {!liberationPersisted && <p role="status">Der Browser konnte deinen neuen Fortschritt nicht speichern. Lass diese Seite offen, damit er erhalten bleibt.</p>}
     <PaintGame
       {...game}
+      onAttempt={send}
+      liberationProgress={liberation}
+      onLiberationProgress={next => setLiberationPersisted(saveLiberation(playerKey, props.level.chapter, allowedLiberations, next))}
+      onLiberationRestart={() => { saveLiberation(playerKey, props.level.chapter, allowedLiberations, {}); }}
       // R5-W2 · J1-B · THE OPENING'S OWN SEAM. Read ONCE, at first render,
       // through a state initialiser (the GameClient idiom): localStorage is
       // client-only, and this component still gets a server pass. No hydration
@@ -125,5 +144,6 @@ function AccountBuchClient(props: BuchClientProps) {
         });
       }}
     />
+    </>
   );
 }

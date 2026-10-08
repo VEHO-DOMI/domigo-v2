@@ -9,12 +9,22 @@ import { GRADE_STRUCTURES } from "@/lib/checkup";
 import { getTeacherForPage } from "@/lib/identity";
 import { assignableClasses } from "@/lib/class-wall";
 import AssignmentBuilder, { type CheckupPreset } from "./AssignmentBuilder";
+import Link from "next/link";
+import { resolveAssignmentPrefill } from "@/lib/assignment-prefill";
 
 export const dynamic = "force-dynamic";
 
-export default async function NewAssignmentPage() {
+export default async function NewAssignmentPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
+  const query = await searchParams;
+  const hasSource = "source" in query;
+  const prefill = hasSource ? resolveAssignmentPrefill(query) : null;
+  if (hasSource && !prefill) return <main className="dg-card" style={{ maxWidth: 760, margin: "28px auto", padding: 20 }}>
+    <h1>Inhalt nicht zuweisbar</h1>
+    <p>Dieser Inhalt oder dieser Chapter ist nicht für Aufgaben freigegeben. Es wurde nichts gespeichert.</p>
+    <Link href="/admin/explorer">Zur Schüleransicht</Link>
+  </main>;
 
   // P3: WHICH class list this page shows is an explicit branch, never a default
   // parameter — the grandmaster (platform operator) picks from every active class
@@ -37,5 +47,5 @@ export default async function NewAssignmentPage() {
       })),
     ]),
   );
-  return <AssignmentBuilder classes={classes} checkupPresets={checkupPresets} />;
+  return <AssignmentBuilder classes={prefill ? classes.filter((c) => c.grade === prefill.source.grade) : classes} checkupPresets={checkupPresets} prefill={prefill} ownerId={teacher.userId} />;
 }

@@ -2070,7 +2070,26 @@ export const PAINT_OVERLAY_CSS = `
 }
 
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
+/* B1: the same restless, earned-name, then peaceful presence as the world.
+   Base styles are static; reduced-motion never loses a state cue. */
+.pb-plate-wrap[data-liberation]:not([data-liberation="peaceful"]) .pb-plate {
+  box-shadow: 0 0 15px 3px rgba(213, 181, 123, .42);
+}
+.pb-liberation-name {
+  display: block; margin-top: 4px; color: #54432a;
+  font: 600 16px var(--font-label, sans-serif);
+}
+.pb-liberation-call {
+  animation: pb-liberation-call 1.1s ease-in-out infinite alternate;
+  transform-origin: 50% 100%;
+}
+@keyframes pb-liberation-call {
+  from { transform: translate(-1px, 0) rotate(-1.5deg); }
+  to { transform: translate(1px, -3px) rotate(1.5deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .pb-liberation-call { animation: none !important; }
   .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
   .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
   .pb-row-in, .pb-door-bloom, .pb-building-quiet {

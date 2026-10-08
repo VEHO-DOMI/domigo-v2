@@ -1,5 +1,7 @@
 # DomiGo v2 — Build Status & Executable Roadmap
 
+> **CODEX DRAFT — NOT CANON · cgo-092 · 08.10.2026 · IN REVIEW.** Explorer v2 öffnet Lernpfad, Hören, Tests, Wiederholung und eigene Aufgaben als speicherfreie Lehrervorschau (11 Seiten; vier vorhandene Server-Schreibwände durch Verhaltenstests abgesichert). Wiederholung nutzt Chapter-Beispielaufgaben, keine Kinder-Queue. Der Lernpfad-Knoten erhält zusätzlich die bisher fehlende Jahrgangswand. Nachzug 1 (erweiterter Zaun): Die Übungsübersicht und Übungsseite zeigen ebenfalls Chapter-Beschriftungen; `check:chapter-copy`, Produktionsbau und Bündelprüfung sind grün. Keine weiteren Verhaltensänderungen. Vollbatterie: UNVERIFIZIERT, läuft in der GG-Kette. Kein Merge durch Codex.
+
 > **⛔ Stand 24.08.; lebende Wahrheit: GG_DOMIGO/MASTERPLAN_INVENTAR_2026-10-07.md bis zum Neuschrieb.** (Programm-Ordner in iCloud, `PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/`.) Alles unten ist der gemessene Stand vom 24.08.2026. (Banner cgo-086, 07.10.2026.)
 
 _Last updated: **2026-08-24** (PLATT-K9a Doku-Sync). Repo-seitiger Abzug von "was ist fertig / was kommt". Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). **Der lebende Plattform-Stand steht im iCloud-Kanon, Blatt "Rahmen P1"** — nicht mehr hier; dieses Blatt trägt den gemessenen Stand plus die Historie. When you finish a step, check its box and update the snapshot in §3._

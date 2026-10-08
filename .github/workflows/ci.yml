@@ -112,6 +112,8 @@ jobs:
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: Umhang-, Register- und Zitat-Gesetz über der Schalen-Kopie
       - run: node scripts/check-copy-register.mjs --selftest # C2: das rote Licht des Register-Tors muss erreichbar sein
       - run: node scripts/check-copy-register.mjs # C2: jede deutsche Zeile, die ein Kind liest, ist österreichisch (scripts/lexikon-at.json)
+      - run: node scripts/check-chapter-copy.mjs --selftest # cgo-092/F2: JSX und Kachel-Texte müssen falsche Chapter-Bezeichnungen erkennen
+      - run: node scripts/check-chapter-copy.mjs # cgo-092/F2: Schülerflächen sagen Chapter, einschließlich title/sub/label/blurb/note
       - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278 + W5/D-424: das Register-Gesetz trennt den Schrei vom Schreiben (Teilkette gegen Wortgrenze) und lässt den Kanon-Begriff »Tinten-Geister« durch, ohne »Geist« freizugeben
       - run: node scripts/check-design-sheets.mjs # W4/K5: kein Angst-Wort auf einem Design-Blatt, alle Korpus-ids und Abschnitte vorhanden
       - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: das rote Licht des Karten-Tors muss erreichbar sein — je Klasse eine vorbereitete Verräter-Karte

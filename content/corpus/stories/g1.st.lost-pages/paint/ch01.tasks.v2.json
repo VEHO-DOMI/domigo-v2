@@ -154,7 +154,7 @@
         "showsDe": "Der Radiergummi wischt an drei Sätzen herum.",
         "art": "eraser_act"
       },
-      "storyDe": "Nur ein Satz ist richtig. Welcher?",
+      "storyDe": "Welcher Satz ist richtig geschrieben?",
       "options": [
         "It's a book.",
         "Its a book.",
@@ -186,7 +186,7 @@
         "showsDe": "Der Radiergummi hat an drei Sätzen herumgewischt.",
         "art": "eraser_b"
       },
-      "storyDe": "Welcher Satz bedeutet, dass es kein Fenster ist?",
+      "storyDe": "Welcher Satz ist richtig geschrieben?",
       "options": [
         "It isn't a window.",
         "It don't a window.",
@@ -318,6 +318,7 @@
     },
     {
       "id": "g1.paint.ch01.door.p1.d1",
+      "corpusItem": "g1u01.gi.imperatives.mc.001",
       "use": "door",
       "kind": "choice",
       "form": "command",
@@ -381,6 +382,7 @@
     },
     {
       "id": "g1.paint.ch01.door.p1.d3",
+      "corpusItem": "g1u01.gi.questions-personal-info.mc.001",
       "use": "door",
       "kind": "choice",
       "form": "ask-it",
@@ -476,6 +478,7 @@
     },
     {
       "id": "g1.paint.ch01.door.p2.d3",
+      "corpusItem": "g1u01.gi.questions-personal-info.cp.001",
       "use": "door",
       "kind": "choice",
       "form": "ask-it",
@@ -644,6 +647,7 @@
     },
     {
       "id": "g1.paint.ch01.enc.pen.k1",
+      "corpusItem": "g1u01.gi.questions-personal-info.cp.001",
       "use": "encounter",
       "kind": "choice",
       "form": "ask-it",
@@ -1354,6 +1358,7 @@
     },
     {
       "id": "g1.paint.ch01.awk.merle.r4",
+      "corpusItem": "g1u01.gi.imperatives.cp.002",
       "use": "rescue",
       "kind": "choice",
       "form": "command",
@@ -1635,6 +1640,7 @@
     },
     {
       "id": "g1.paint.ch01.boss.k3",
+      "corpusItem": "g1u01.gi.questions-personal-info.mc.001",
       "use": "boss",
       "kind": "choice",
       "form": "ask-it",

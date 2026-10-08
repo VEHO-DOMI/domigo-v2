@@ -18,11 +18,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier, VocabPool } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { rememberPreviewTier, scorePreviewCheckup, type PreviewScoring } from "./preview-score";
 
 export type CheckupFeedbackMode = "immediate" | "on-submit" | "on-release";
 
 export interface CheckupRunnerSection {
   position: number;
+  itemIds: string[];
   kind: "vocab" | "grammar";
   titleDe: string;
   points: number;
@@ -54,7 +56,9 @@ function fmtClock(sec: number): string {
 
 const SECTION_LETTERS = "ABCDEFGH";
 
-export default function CheckupRunner({ assignmentId, sessionId, title, expiresAt, sections, feedback }: {
+export default function CheckupRunner({ assignmentId, sessionId, title, expiresAt, sections, feedback, preview, previewScoring }: {
+  preview: boolean;
+  previewScoring?: PreviewScoring;
   assignmentId: string;
   sessionId: string;
   title: string;
@@ -66,6 +70,7 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
   const [submitting, setSubmitting] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(() => (expiresAt ? Math.max(0, Math.round((new Date(expiresAt).getTime() - Date.now()) / 1000)) : null));
   const submittedRef = useRef(false);
+  const previewAttempts = useRef(new Map<string, Tier>());
   const outOf = sections.reduce((n, s) => n + s.points, 0);
   const submitted = result !== null;
   // Verdicts stay hidden until the paper is in (unless 'immediate'); 'on-release'
@@ -77,6 +82,11 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
     if (submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
+    if (preview) {
+      if (previewScoring) setResult(scorePreviewCheckup(sections, previewAttempts.current, previewScoring));
+      setSubmitting(false);
+      return;
+    }
     try {
       const res = await fetch("/api/assignments/submit", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ assignmentId, sessionId }) });
       const d = await res.json().catch(() => ({}));
@@ -90,7 +100,7 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
     } finally {
       setSubmitting(false);
     }
-  }, [assignmentId, sessionId]);
+  }, [assignmentId, sessionId, preview, previewScoring, sections]);
 
   // Server clock: tick down; auto-submit at 0 (state writes only inside the
   // timer callback — never synchronously in the effect body).
@@ -103,7 +113,11 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
     return () => clearTimeout(t);
   }, [remaining, submitted, submit]);
 
-  const onResult = (_tier: Tier, detail: ResultDetail) => {
+  const onResult = (tier: Tier, detail: ResultDetail) => {
+    if (preview) {
+      rememberPreviewTier(previewAttempts.current, detail.itemId, tier);
+      return;
+    }
     // detail.input carries the vocab pool — the server regrades the SAME pool.
     void fetch("/api/assignments/attempt", {
       method: "POST",
@@ -116,10 +130,10 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
   if (submitted && feedback === "on-release") {
     return (
       <main style={{ maxWidth: 560, margin: "0 auto", padding: "40px 20px", fontFamily: "var(--font-body)", color: "var(--text)", textAlign: "center" }}>
-        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Abgegeben ✓</h1>
+        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? "Vorschau — nichts gespeichert" : "Abgegeben ✓"}</h1>
         <p style={{ fontSize: 18 }}><strong>{title}</strong></p>
         <p style={{ color: "var(--text-secondary)" }}>Dein Ergebnis bekommst du, sobald es freigegeben ist.</p>
-        <Link href={`/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
+        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
       </main>
     );
   }
@@ -139,6 +153,8 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
       <div style={{ fontSize: 15, fontWeight: 800, color: "var(--ink)", marginBottom: 14 }} aria-live="polite">
         {showScore && result ? <>{fmtPoints(result.points)} / {result.outOf} Punkte</> : <>___ / {outOf} Punkte</>}
       </div>
+
+      {submitted && preview && <p role="status">Vorschau — nichts gespeichert</p>}
 
       {/* the paper: every section on ONE page, in order. fieldset locks the
           whole sheet after submit (the server wall enforces it regardless). */}
@@ -190,7 +206,7 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
 
       <div style={{ marginTop: 10, display: "flex", justifyContent: submitted ? "center" : "flex-end" }}>
         {submitted ? (
-          <Link href={`/assignments/${assignmentId}`} className="dg-btn">Zur Übersicht</Link>
+          <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn">Zur Übersicht</Link>
         ) : (
           <button className="dg-btn" disabled={submitting} onClick={() => void submit()}>{submitting ? "Wird abgegeben…" : "Abgeben"}</button>
         )}

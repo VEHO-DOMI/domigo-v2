@@ -18,13 +18,15 @@ import { pictureWindowPercent, type PictureWindow } from "../story/picture-windo
  *  ActPlate). `wash` keeps the portrait exactly as drained as the being in the
  *  world (the desaturation law, doc 41 §2): a full-colour face over a grey desk
  *  would hand a restore card's own answer away. */
-export const Plate = ({ url, behindUrl, behindWindow, curseUrl, altDe, wash = 0, height = 132, mark }: {
+export const Plate = ({ url, behindUrl, behindWindow, curseUrl, altDe, wash = 0, height = 132, mark, liberationStage, knownName }: {
   url: string; behindUrl?: string; behindWindow?: PictureWindow; curseUrl?: string;
   altDe: string; wash?: number; height?: number; mark?: ActMark;
+  liberationStage?: "unnamed" | "named" | "coloured" | "peaceful";
+  knownName?: string;
 }): React.ReactElement => {
   const window = behindWindow ? pictureWindowPercent(behindWindow) : undefined;
   return (
-    <div className="pb-plate-wrap">
+    <div className="pb-plate-wrap" data-liberation={liberationStage}>
       <div className="pb-plate">
         {/* This box is exactly the shell image's box. A wide card or a tall
             occupant must never change the registered window's position. */}
@@ -49,6 +51,7 @@ export const Plate = ({ url, behindUrl, behindWindow, curseUrl, altDe, wash = 0,
             />
           )}
           <img src={url} alt={altDe} data-picture-layer="shell"
+            className={liberationStage && liberationStage !== "peaceful" ? "pb-liberation-call" : undefined}
             style={{
               display: "block", position: "relative",
               maxHeight: height, maxWidth: "100%", height: "auto",
@@ -64,6 +67,7 @@ export const Plate = ({ url, behindUrl, behindWindow, curseUrl, altDe, wash = 0,
           />}
         </div>
       </div>
+      {knownName && <span className="pb-liberation-name">{knownName}</span>}
       {mark !== undefined && <span className="pb-stamp"><ActIcon mark={mark} size={26} /></span>}
     </div>
   );

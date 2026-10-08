@@ -23,7 +23,9 @@ const STORY_CLIENTS = [
   { file: `${PLAY}/NovelClient.tsx`, save: "NovelSave" },
   { file: `${PLAY}/TripClient.tsx`, save: "TripSave" },
 ];
-const ALL_CLIENTS = [...STORY_CLIENTS.map((c) => c.file), "practice/[slug]/PracticeSession.tsx"];
+const PREVIEW_PAGES = ["learn/page.tsx", "learn/[slug]/page.tsx", "learn/[slug]/[node]/page.tsx", "listening/page.tsx", "listening/[slug]/page.tsx", "tests/page.tsx", "tests/[slug]/page.tsx", "review/page.tsx", "review/session/page.tsx", "assignments/page.tsx", "assignments/[id]/page.tsx"];
+const MODALITY_CLIENTS = ["learn/[slug]/[node]/PathPracticeNode.tsx", "review/session/ReviewSession.tsx", "tests/[slug]/TestSession.tsx", "listening/[slug]/ListeningSession.tsx"];
+const ALL_CLIENTS = [...STORY_CLIENTS.map((c) => c.file), "practice/[slug]/PracticeSession.tsx", ...MODALITY_CLIENTS];
 
 describe("client guards — nothing leaves a preview", () => {
   for (const file of ALL_CLIENTS) {
@@ -141,7 +143,7 @@ describe("server pages — who is a preview is decided on the server", () => {
 });
 
 describe("server write walls — a teacher session records nothing", () => {
-  for (const file of ["api/attempts/route.ts"]) {
+  for (const file of ["api/attempts/route.ts", "api/study-path/route.ts", "api/writing-submission/route.ts", "api/assignments/attempt/route.ts", "api/assignments/submit/route.ts"]) {
     it(`${file} answers only a child`, () => {
       const src = read(file);
       assert.match(src, /const acting = await getActingUser\(req\);\n\s*if \(!acting\) return NextResponse\.json\(\{ ok: false, error: "no_identity" \}, \{ status: 401 \}\);/);
@@ -155,10 +157,10 @@ describe("answer owners travel from the trusted page into every client", () => {
   const pages = [
     { file: `${PLAY}/[zone]/page.tsx`, clients: ["GameClient", "DetectiveClient", "NovelClient", "TripClient"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
     { file: "practice/[slug]/page.tsx", clients: ["PracticeSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
-    { file: "learn/[slug]/[node]/page.tsx", clients: ["PathPracticeNode", "PathPracticeNode"], owner: "acting.userId", key: "acting.userId" },
-    { file: "review/session/page.tsx", clients: ["ReviewSession"], owner: "session.user.id", key: "session.user.id" },
-    { file: "tests/[slug]/page.tsx", clients: ["TestSession"], owner: "session.user.id", key: "session.user.id" },
-    { file: "listening/[slug]/page.tsx", clients: ["ListeningSession"], owner: "session.user.id", key: "session.user.id" },
+    { file: "learn/[slug]/[node]/page.tsx", clients: ["PathPracticeNode", "PathPracticeNode"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
+    { file: "review/session/page.tsx", clients: ["ReviewSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
+    { file: "tests/[slug]/page.tsx", clients: ["TestSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
+    { file: "listening/[slug]/page.tsx", clients: ["ListeningSession"], owner: "acting?.userId ?? null", key: 'acting?.userId ?? "preview"' },
   ];
   for (const p of pages) {
     it(p.file, () => {
@@ -179,8 +181,121 @@ describe("answer owners travel from the trusted page into every client", () => {
   for (const file of ["learn/[slug]/[node]/PathPracticeNode.tsx", "review/session/ReviewSession.tsx", "tests/[slug]/TestSession.tsx", "listening/[slug]/ListeningSession.tsx"]) {
     it(`${file}: both immediate sends and background retries carry the same owner`, () => {
       const src = code(read(file));
-      assert.match(src, /useOutboxFlush\(true, ownerId\)/);
-      assert.match(src, /sendAttempt\(\{[\s\S]*?\}, ownerId\)/);
+      assert.match(src, /useOutboxFlush\(!preview, ownerId\)/);
+      assert.match(src, /attemptSender\(preview, ownerId\)\(/);
     });
   }
+});
+
+
+describe("cgo-092 every modality uses the shared viewer", () => {
+  for (const file of PREVIEW_PAGES) it(file, () => {
+    const src = code(read(file));
+    assert.match(src, /await resolveStudentView\([^)]*jahrgang/);
+    assert.doesNotMatch(src, /resolveVisibleGrades|getActingUserForPage|\.role\s*===?/);
+    assert.match(src, /PreviewBanner/);
+    const tree = createSourceFile(file, src, ScriptTarget.Latest, true, ScriptKind.TSX);
+    const visit = (node: Node): void => {
+      if (isJsxSelfClosingElement(node) && /^(PathPracticeNode|TeachingNode|ListeningSession|TestSession|ReviewSession|AssignmentRunner|CheckupRunner)$/.test(node.tagName.getText(tree))) {
+        assert.match(node.getText(tree), /preview=\{preview\}/);
+      }
+      forEachChild(node, visit);
+    };
+    visit(tree);
+  });
+  it("all child-specific learn and review reads require an actual child", () => {
+    for (const file of PREVIEW_PAGES.filter((p) => /^(learn|review)\//.test(p))) {
+      const src = code(read(file));
+      for (const call of ["getPathSummary", "getUnitPathProgress", "getJourneyAttempts", "getDueRefs", "getDueCounts", "listReservedForClass"]) {
+        for (const hit of src.matchAll(new RegExp(`[^\\n]*\\b${call}\\(`, "g"))) assert.match(hit[0], /acting \? await /, `${file}: ${call} lacks child guard`);
+      }
+    }
+  });
+  it("legacy practice completion never sends study-path in preview", () => {
+    assert.match(code(read("learn/[slug]/[node]/PathPracticeNode.tsx")), /if \(preview \|\| isJourney\) return;[\s\S]*?fetch\("\/api\/study-path"/);
+    assert.match(code(read("learn/[slug]/[node]/TeachingNode.tsx")), /if \(preview\) \{[^\n]*return; \}[\s\S]*?fetch\("\/api\/study-path"/);
+  });
+  it("writing and both assignment writes return locally in preview", () => {
+    assert.match(code(read("tests/[slug]/TestSession.tsx")), /if \(preview\) return;[\s\S]*?fetch\("\/api\/writing-submission"/);
+    for (const file of ["assignments/[id]/AssignmentRunner.tsx", "assignments/[id]/CheckupRunner.tsx"]) {
+      const src = code(read(file));
+      assert.equal((src.match(/if \(preview\)/g) ?? []).length, 2);
+      assert.match(src, /Vorschau — nichts gespeichert/);
+    }
+  });
+  it("assignment preview never opens a sitting or reads a child's view", () => {
+    const src = code(read("assignments/[id]/page.tsx"));
+    assert.match(src, /studentView\.kind === "preview"\s*\? await getPreviewAssignment[\s\S]*?: await getStudentAssignmentView/);
+    assert.match(src, /if \(preview \|\| current\?\.kind !== "student"\) redirect\([^;]+;[\s\S]*?startOrResumeSession\(/);
+    assert.match(src, /if \(preview \|\| live\)/);
+    assert.equal((src.match(/startOrResumeSession\(/g) ?? []).length, 1, "only the guarded begin action may create a session");
+    assert.match(read("assignments/preview.ts"), /sessions: \[\]/);
+    assert.doesNotMatch(code(read("assignments/preview.ts")), /getStudentAssignmentView|startOrResumeSession|getSessionAttempts/);
+  });
+  it("preview unlocks both learn maps and bypasses both server locks", () => {
+    const map = code(read("learn/[slug]/page.tsx"));
+    assert.equal((map.match(/preview \? \{ \.\.\.node, status: "available"/g) ?? []).length, 2);
+    const runner = code(read("learn/[slug]/[node]/page.tsx"));
+    assert.equal((runner.match(/if \(!preview && (?:jview|nodeView)\?\.status === "locked"\)/g) ?? []).length, 2);
+    assert.match(runner, /!preview && !isSlugAllowed\(slug, view\.grades\)/);
+  });
+  it("explorer uses live corpus counts and own-class assignment definitions", () => {
+    const src = code(read("admin/explorer/page.tsx"));
+    for (const name of ["listApprovedUnits", "listListeningUnits", "listTestUnits", "listPreviewAssignments"]) assert.match(src, new RegExp(`${name}\\(`));
+    for (const route of ["learn", "listening", "tests", "review"]) assert.ok(src.includes(`/${route}?jahrgang=`));
+    assert.doesNotMatch(src, /Noch nicht in der Schüleransicht/);
+    assert.match(src, /Chapter-Übungen ansehen und zuweisen/);
+  });
+  it("assignment list preview calls the teacher definitions helper, never the child list", () => {
+    const src = code(read("assignments/page.tsx"));
+    assert.match(src, /const rows = view\.kind === "preview"\s*\? await listPreviewAssignments\(view\.teacher, view\.grades\)\s*: await listAssignmentsForStudent\(/);
+  });
+});
+
+// G-2: the painted book has a deliberate extra outbox wall for the card bench.
+const BOOK = `${PLAY}/buch/[chapter]`;
+const bookClient = code(read(`${BOOK}/BuchClient.tsx`));
+const bookPage = code(read(`${BOOK}/page.tsx`));
+const bookLaws = [
+  ["client: no direct sendAttempt", bookClient, (s: string) => !/\bsendAttempt\b/.test(s),
+    (s: string) => s + "\nsendAttempt(body, ownerId);"],
+  ["client: neither preview nor bench flushes", bookClient,
+    (s: string) => /useOutboxFlush\(!preview && cardBench === undefined, ownerId\)/.test(s)
+      && (s.match(/useOutboxFlush\(/g) ?? []).length === 1 && !/\bflushOutbox\(/.test(s),
+    (s: string) => s.replace("!preview && cardBench === undefined", "true")],
+  ["client: sender uses server preview and owner", bookClient,
+    (s: string) => /const send = useMemo\(\(\) => attemptSender\(preview, ownerId\)/.test(s)
+      && (s.match(/attemptSender\(/g) ?? []).length === 1,
+    (s: string) => s.replace("attemptSender(preview, ownerId)", "attemptSender(false, ownerId)")],
+  ["client: exactly one onAttempt uses that sender", bookClient,
+    (s: string) => (s.match(/onAttempt=\{send\}/g) ?? []).length === 1
+      && (s.match(/onAttempt=/g) ?? []).length === 1,
+    (s: string) => s.replace("onAttempt={send}", "onAttempt={body => sendAttempt(body, ownerId)}")],
+  ["page: only teacher without student is preview", bookPage,
+    (s: string) => /const preview = student === null && teacher !== null;/.test(s)
+      && (s.match(/preview=/g) ?? []).length === 1 && /preview=\{preview\}/.test(s),
+    (s: string) => s.replace("student === null && teacher !== null", "false")],
+] as const;
+
+describe("painted book preview wiring and tamper proofs", () => {
+  for (const [law, src, passes, mutate] of bookLaws) {
+    it(`${BOOK}: ${law}`, () => assert.equal(passes(src), true));
+    it(`${BOOK}: tamper is red: ${law}`, () => {
+      const broken = mutate(src);
+      assert.notEqual(broken, src);
+      assert.equal(passes(broken), false);
+    });
+  }
+  it("the bench condition, duplicate sender and server-to-client flag cannot disappear", () => {
+    for (const [index, before, after] of [
+      [1, "!preview && cardBench === undefined", "!preview"],
+      [3, "onAttempt={send}", "onAttempt={send} onAttempt={send}"],
+      [4, "preview={preview}", "preview={false}"],
+    ] as const) {
+      const law = bookLaws[index]!;
+      const broken = law[1].replace(before, after);
+      assert.notEqual(broken, law[1]);
+      assert.equal(law[2](broken), false);
+    }
+  });
 });
