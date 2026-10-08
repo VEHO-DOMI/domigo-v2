@@ -6,7 +6,7 @@ _Created 2026-07-06 with the completion-program blueprint (`docs/BLUEPRINT.md`).
 
 A Klasse 1–4 student can open DomiGo on a cheap phone and get from any starting point to A2+ mastery **without Koki in the room** — every concept taught before it is tested, every wrong answer turned into a transferable skill named in kid-German, every unit carried by story-pull, nothing above their level unglossed, and nothing they do able to lose their progress. Koki's class time converts to speaking and projects; parents can read honest progress in German.
 
-Three vision tests applied to every merged PR (the weekly Vision log in BLUEPRINT.md):
+Three vision tests applied to every merged PR (the weekly [Vision log in BLUEPRINT_V2.md](BLUEPRINT_V2.md#vision-log)):
 1. **Standalone** — does this move a child closer to needing no teacher for it?
 2. **Trust** — could this ever mark a correct child wrong, show them something untaught, or lose their progress?
 3. **One brain** — does anything grade, score, or award outside `@domigo/engine` + `practice_attempts`?
