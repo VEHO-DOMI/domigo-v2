@@ -25,7 +25,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 // Input machines are needed only when an actual task opens. Keeping this
 // boundary outside the component preserves its identity across reference views.
 import type { PaintAttemptSender } from "./cards/attempt.ts";
-import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply } from "./ack.ts";
+import { ACK_FLASH_MS, acknowledgeAttempt, attemptAckValue, emptyAttemptAck, type AttemptReply, type AttemptAck } from "./ack.ts";
 
 const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
@@ -475,7 +475,12 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
 
 /** The sender stays in the app. Only its unchanged receipt reaches this HUD. */
 function useAttemptAck(sender: PaintAttemptSender | undefined, attemptReplies?: AttemptReplies) {
-  const [state, receive] = React.useReducer(acknowledgeAttempt, undefined, emptyAttemptAck);
+  const [state, receive] = React.useReducer((state: AttemptAck, action: { clientAttemptId: string; reply: AttemptReply }) => {
+    // An unneeded zero receipt must not settle ahead of a still-travelling award.
+    // Pending zero receipts still clear their marker through the same reducer.
+    if (action.reply.xpAwarded === 0 && !state.pending.has(action.clientAttemptId)) return state;
+    return acknowledgeAttempt(state, action);
+  }, undefined, emptyAttemptAck);
   const alive = useRef(false);
   const submitted = useRef(new Map<string, { waiting: boolean; replay?: AttemptReply }>());
   const [lit, setLit] = useState(false);

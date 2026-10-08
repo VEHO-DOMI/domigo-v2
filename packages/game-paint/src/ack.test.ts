@@ -81,8 +81,8 @@ function hookHost(sender: PaintAttemptSender | undefined, source = sources[0]!, 
   let state = emptyAttemptAck();
   let writes = 0;
   const mount = new Function("React", "useRef", "useEffect", "useState", "acknowledgeAttempt", "emptyAttemptAck", `${js}; return useAttemptAck;`)(
-    { useReducer: () => [state, (action: Parameters<typeof acknowledgeAttempt>[1]) => {
-      writes++; state = acknowledgeAttempt(state, action);
+    { useReducer: (reducer: typeof acknowledgeAttempt) => [state, (action: Parameters<typeof acknowledgeAttempt>[1]) => {
+      writes++; state = reducer(state, action);
     }], useMemo: (fn: () => unknown) => fn() },
     (current: unknown) => ({ current }), (effect: () => (() => void) | undefined) => effects.push(effect),
     (initial: boolean) => [initial, () => {}], acknowledgeAttempt, emptyAttemptAck,
@@ -229,6 +229,32 @@ describe("outbox reply subscription", () => {
     resolve(award); await waiting;
     c.emit();
     expect([host.state().total, host.state().revision]).toEqual([3, 1]);
+    host.unmount();
+  });
+  it.each([true, false])("a direct duplicate cannot hide a positive replay (replay first: %s)", async replayFirst => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body);
+    if (replayFirst) c.emit();
+    resolve({ ...award, xpAwarded: 0 }); await waiting;
+    if (!replayFirst) { c.emit("current", { ...award, xpAwarded: 0 }); c.emit(); }
+    expect([host.state().total, host.state().revision]).toEqual([3, 1]);
+    host.unmount();
+  });
+  it("a buffered zero replay clears the later queued result", async () => {
+    const c = channel(); let resolve!: (reply: AttemptReply) => void;
+    const host = hookHost(() => new Promise(r => { resolve = r; }), sources[0], c.subscribe);
+    const waiting = host.send!(body); c.emit("current", { ...award, xpAwarded: 0 });
+    resolve({ ok: false, queued: true }); await waiting;
+    expect(host.state().pending.size).toBe(0); expect(host.state().settled.has("current")).toBe(true);
+    expect([host.state().total, host.state().revision]).toEqual([0, 0]);
+    host.unmount();
+  });
+  it("a zero replay clears a durable pending marker without a new award", async () => {
+    const c = channel(), host = hookHost(async () => ({ ok: false, queued: true }), sources[0], c.subscribe);
+    await host.send!(body); c.emit("current", { ...award, xpAwarded: 0 });
+    expect(host.state().pending.size).toBe(0); expect(host.state().settled.has("current")).toBe(true);
+    expect([host.state().total, host.state().revision]).toEqual([0, 0]);
     host.unmount();
   });
   it("a duplicate replay cannot settle before the original positive receipt", async () => {
