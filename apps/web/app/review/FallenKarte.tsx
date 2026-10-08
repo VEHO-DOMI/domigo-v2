@@ -18,7 +18,7 @@ export default function FallenKarte({ traps }: { traps: StudentTrapCount[] }) {
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 12 }}>
         {recurring.map((trap) => {
           const label = trapLabel(known, trap.trapId);
-          const chapter = Number(trap.unitSlug.match(/-u(\d+)$/)?.[1]);
+          const chapter = trap.unitSlug.match(/-u(\d+)$/)?.[1];
           return (
             <li key={trap.trapId} className="dg-tile" style={{ padding: "16px 18px", overflowWrap: "anywhere" }}>
               <h3 style={{ margin: 0, fontSize: 17, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
@@ -26,7 +26,7 @@ export default function FallenKarte({ traps }: { traps: StudentTrapCount[] }) {
               </h3>
               <p style={{ margin: "6px 0", fontSize: 14, color: "var(--text-secondary)" }}>{trap.count}-mal in den letzten 30 Tagen</p>
               {label.oneLinerDe && <p style={{ margin: "8px 0", lineHeight: 1.5 }}>{label.oneLinerDe}</p>}
-              <Link href={`/practice/${trap.unitSlug}`} style={{ display: "inline-block", padding: "10px 0", color: "var(--accent)", fontWeight: 600 }}>Chapter {chapter} üben →</Link>
+              <Link href={`/practice/${trap.unitSlug}`} style={{ display: "inline-block", padding: "10px 0", color: "var(--accent)", fontWeight: 600 }}>{chapter ? `Chapter ${Number(chapter)}` : "Chapter"} üben →</Link>
             </li>
           );
         })}

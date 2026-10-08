@@ -40,7 +40,7 @@ describe("student trap ledger", () => {
   });
   it("uses an inclusive rolling window on the existing attempt timestamp", async () => {
     const { where, params } = await capture();
-    expect(where).toContain('"created_at" >= now() - $5 * interval \'1 day\'');
+    expect(where).toContain('"created_at" >= now() - make_interval(days => $5::int)');
     expect(params[4]).toBe(30);
     expect((await capture(undefined, { sinceDays: 7 })).params[4]).toBe(7);
   });

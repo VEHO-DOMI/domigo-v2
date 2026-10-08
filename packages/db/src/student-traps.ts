@@ -36,7 +36,7 @@ export async function listStudentTraps(
       eq(practiceAttempts.classId, classId),
       eq(practiceAttempts.userId, userId),
       eq(practiceAttempts.tier, "wrong"),
-      sql`${practiceAttempts.createdAt} >= now() - ${sinceDays} * interval '1 day'`,
+      sql`${practiceAttempts.createdAt} >= now() - make_interval(days => ${sinceDays}::int)`,
       sql`${practiceAttempts.context}->>'trap' is not null`,
       sql`jsonb_typeof(${practiceAttempts.context}->'trap') = 'string'`,
       sql`${practiceAttempts.context}->>'trap' <> ''`,

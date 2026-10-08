@@ -470,7 +470,16 @@ it("student traps: three register explanations, frequencies and Chapter doors", 
     assert.ok(html.includes(`href="/practice/g1-u0${i + 1}"`));
     assert.ok(html.includes(`Chapter ${i + 1} üben`));
   }
-  assert.doesNotMatch(html, /fourth-trap|\bUnit\b|Du schaffst das/);
+  assert.doesNotMatch(html, /fourth-trap|\bUnit\b|Du schaffst das|Super|Weiter so|Gut gemacht/);
+});
+
+it("student traps: a slug without a Chapter number renders Chapter without NaN", async () => {
+  const { card, render, traps } = await trapReviewHarness();
+  for (const unitSlug of ["legacy-story", "g1-u", "g1-u03-extra", ""]) {
+    const html = render(card({ traps: [{ ...traps[0], unitSlug }] } as never));
+    assert.match(html, />Chapter üben →<\/a>/);
+    assert.doesNotMatch(html, /Chapter NaN/);
+  }
 });
 
 it("student traps: an unknown id keeps its name and door without invented explanation", async () => {
