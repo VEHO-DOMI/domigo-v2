@@ -66,7 +66,7 @@ export default async function HomePage() {
     /* keep the chooser fallback */
   }
 
-  const dailyWord = grade === null ? null : wortDesTages(grade, viennaDateKey());
+  const dailyWord = grade === null ? null : await wortDesTages(grade, viennaDateKey());
 
   // dach-074 · the one sign-out of the app: a konto session goes on to konto's
   // /logout, a PIN session ends here (app/le/konto-aktion.ts).

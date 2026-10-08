@@ -57,5 +57,5 @@ export default auth((req) => {
 // (lib/konto/callback.ts decides which `from` counts). Deeper /play paths still
 // redirect on their own, as before.
 export const config = {
-  matcher: ["/home", "/play/:grade", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
+  matcher: ["/home", "/woerterbuch", "/play/:grade", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
 };
