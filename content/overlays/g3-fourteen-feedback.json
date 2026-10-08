@@ -3331,12 +3331,12 @@
           "scope": null
         },
         {
-          "word": "Make it about something real",
-          "de": "Zeig mit dem Kanal etwas Echtes",
+          "word": "about",
+          "de": "über; zum Thema",
           "scope": null
         }
       ],
-      "hintDe": "Sara will, dass der Kanal echt wird.",
+      "hintDe": "Lies noch einmal, was Sara vorschlägt.",
       "hintEn": null,
       "explainDe": "Sara sagt, sie sollen den Kanal um etwas Echtes machen, nicht um Bens Fehler.",
       "explainEn": null,

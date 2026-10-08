@@ -34,9 +34,11 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { STAT_PLACEHOLDERS, audienceMetrics, fillChapterStats, formatCount, likesFor, uploadStats } from "../packages/game-novel/src/novel-copy.ts";
+import { audienceWiringFailures } from "../packages/game-novel/src/source-contract.ts";
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), "..");
 const STORY_DIR = join(REPO, "content/corpus/stories/g3.st.fourteen");
+const gameSource = readFileSync(join(REPO, "packages/game-novel/src/NovelGame.tsx"), "utf8");
 
 /** The authorised dips of the ruled curve (REVIEWPLAN_YEAR3 §3 table, Koki via GG 16.09.). */
 export const AUTHORISED_DIPS = new Set([9, 12, 13]);
@@ -164,6 +166,9 @@ if (process.argv.includes("--selftest")) {
   const row = (eco, ch) => eco.episodes.find((e) => e.chapterId.endsWith(ch));
   const scene = (st, id) => st.chapters.flatMap((c) => c.scenes).find((s) => s.id.endsWith(id));
   const faelle = [
+    ["Antwortguete veraendert Views in NovelGame", () => ({ failures: audienceWiringFailures(gameSource.replace("current={audience}", "current={audience && { ...audience, views: audience.views + 100 * Object.values(results).filter(r => r.tier === 'correct').length }}")) }), "E9: Audience.current", "unchanged"],
+    ["results werden in audienceAt eingespeist", () => ({ failures: audienceWiringFailures(gameSource.replace("audienceAt(props.chapter, sceneId, done, economy)", "audienceAt(props.chapter, sceneId, done, economy, results)")) }), "E9: audience must", "unchanged"],
+    ["NICHT-TAMPER: echte Kanal-Verdrahtung", () => ({ failures: audienceWiringFailures(gameSource) }), null, null],
     ["Views aus fremder Quelle im echten Vergleich", () => analyse({ economy: economyOnDisk, story: storyOnDisk,
       metrics: (current, previous) => audienceMetrics(current, previous).map((m) => m.label === "Views" && current.chapterId.endsWith("ch01") ? { ...m, value: 999 } : m),
     }), "E9: ch01", "outside economy.json"],
@@ -256,12 +261,13 @@ if (process.argv.includes("--selftest")) {
     } else console.log(`  ✓ ${name} — gruen`);
   }
   if (schlecht > 0) { console.error("check-g3-economy --selftest: FEHLGESCHLAGEN"); process.exit(1); }
-  console.log(`check-g3-economy --selftest: OK — ${faelle.length - 1} Verfaelschungen rot, der echte Stand gruen`);
+  console.log(`check-g3-economy --selftest: OK — ${faelle.filter(([, , must]) => must !== null).length} Verfaelschungen rot, der echte Stand gruen`);
   process.exit(0);
 }
 
 // ── ECHTER LAUF ──────────────────────────────────────────────────────────────
 const { failures, episodes, cumulative } = analyse({ economy: economyOnDisk, story: storyOnDisk });
+failures.push(...audienceWiringFailures(gameSource));
 for (const file of ["NovelGame.tsx", "audience.tsx", "season-board.tsx"]) {
   const source = readFileSync(join(REPO, "packages/game-novel/src", file), "utf8");
   // Inspect text inside tags, not style values followed by a label (padding: 12 + Views).
