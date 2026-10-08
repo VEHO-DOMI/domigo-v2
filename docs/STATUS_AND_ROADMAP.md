@@ -59,6 +59,7 @@ LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vo
 | Explorer: Üben, Lernpfad, Hören, Tests, Wiederholung und eigene Aufgaben aus Kindersicht ohne Lernschreiben | LIVE | [Explorer](../apps/web/app/admin/explorer/page.tsx); PR 477, 478, 494 |
 | Chapter-Übungen aus der Vorschau der eigenen Klasse zuweisen | LIVE | PR 492; [Aufgaben erstellen](../apps/web/app/admin/assignments/new/page.tsx) |
 | Studio: Aufgaben anlegen, bearbeiten, prüfen und als Kind ansehen; Veröffentlichung hinter automatischen Prüfungen | LIVE — Produktions-Veröffentlichen in dieser Sitzung UNVERIFIZIERT | [Studio](../apps/web/app/admin/studio/page.tsx); PR 166–171 |
+| Studio-Grammatik (3 Formate), Checkup-Bündelprüfung und wiederholbare Prüfstörungen | GEBAUT nicht freigegeben — cgo-100; echter Sandbox-/DB-Lauf UNVERIFIZIERT | [Umsetzung und Grenzen](handover/21_checkup_presets.md#11--cgo-100-as-built--studio-grammar-and-the-publication-gate) |
 | Schreibabgaben bewerten, Checkups konfigurieren und Hör-Transkripte lesen | LIVE | PR 153, 373, 382; [Schreibabgaben](../apps/web/app/admin/classes/[id]/schreiben/page.tsx) |
 | Testklassen markieren und aus gemeinsamen Kennzahlen herausnehmen | IN REVIEW PR 498 — wartet auf Migration und GG-Kette; kein eigener Lehrer-Lernstand damit geliefert | [PR 498](https://github.com/VEHO-DOMI/domigo-v2/pull/498); cgo-094, cgo-096 |
 | Story-Welten je Jahrgang freigeben oder parken | IN REVIEW PR 490 — wartet auf Migration | [PR 490](https://github.com/VEHO-DOMI/domigo-v2/pull/490); cgo-070, cgo-089 |

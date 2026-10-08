@@ -786,6 +786,22 @@ export const GrammarItemId = z
     /^g[1-4]u\d{2}\.gi\.[a-z0-9-]+\.(gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/,
   );
 
+/** Allocate a schema-coherent Studio id without reusing a corpus/draft id.
+ * The caller supplies every occupied id in the unit; persistence must still
+ * reject conflicting creates because two open forms can share a snapshot. */
+export function nextGrammarItemId(structureId: string, format: GrammarFormat, occupiedIds: readonly string[]): string {
+  const structure = StructureId.parse(structureId);
+  const checkedFormat = GrammarFormat.parse(format);
+  const [unit, , key] = structure.split(".");
+  const prefix = `${unit}.gi.${key}.${FORMAT_CODES[checkedFormat]}.`;
+  const occupied = new Set(occupiedIds);
+  for (let sequence = 1; sequence <= 999; sequence += 1) {
+    const id = `${prefix}${String(sequence).padStart(3, "0")}`;
+    if (!occupied.has(id)) return GrammarItemId.parse(id);
+  }
+  throw new Error("Für diese Struktur und dieses Format sind alle Aufgabennummern vergeben.");
+}
+
 export const TranslationDirection = z.enum(["deToEn", "enToDe"]);
 export type TranslationDirection = z.infer<typeof TranslationDirection>;
 
