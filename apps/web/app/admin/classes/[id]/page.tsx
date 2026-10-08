@@ -38,6 +38,7 @@ import { redirect } from "next/navigation";
 import {
   UNKNOWN_TEACHER_LABEL,
   getClassForGrandmaster,
+  getClassPurposes,
   getClassForTeacher,
   getDb,
   listClassTraps,
@@ -202,6 +203,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   const mitLernweg = new Set(listJourneyUnits());
   const anpassbareEinheiten = sichtbareEinheiten.map((slug) => ({ slug, journey: mitLernweg.has(slug) }));
 
+  const purposes = await getClassPurposes(getDb(), teacher.classScope, [cls.id]);
   const aktive = attempts.length;
   const versucheGesamt = attempts.reduce((n, a) => n + a.attempts, 0);
 
@@ -209,7 +211,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
     <main style={{ width: "100%", maxWidth: 980, minWidth: 0, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "baseline", gap: 12, marginBottom: 6 }}>
         <h1 style={{ minWidth: 0, overflowWrap: "anywhere", fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
-          {ueberschrift} <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}>· Stufe {cls.grade} · Fortschritt</span>
+          {ueberschrift} {purposes.get(cls.id) === "test" && <span className="dg-chip">Testklasse</span>} <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}>· Stufe {cls.grade} · Fortschritt</span>
         </h1>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, minWidth: 0 }}>
           {/* K6a · der Einstieg in die Schreib-Abgaben. Nur ein Link: eine eigene

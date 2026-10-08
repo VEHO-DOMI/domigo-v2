@@ -27,7 +27,7 @@
     "class-service.ts#renameClass": 1,
     "class-service.ts#archiveClass": 2,
     "class-service.ts#unarchiveClass": 2,
-    "class-service.ts#listAllClassesForGrandmaster": 2,
+    "class-service.ts#listAllClassesForGrandmaster": 3,
     "class-service.ts#getClassForGrandmaster": 1,
     "class-service.ts#getOwnerIdForStudentForGrandmaster": 1,
     "game-progress.ts#getUnitMastery": 1,
@@ -44,7 +44,10 @@
     "roster-service.ts#removeStudent": 1,
     "studypath.ts#recordNodeCompletion": 1,
     "writing-review.ts#listSubmissionsForClass": 1,
-    "writing-review.ts#gradeSubmission": 2
+    "writing-review.ts#gradeSubmission": 2,
+    "class-settings-service.ts#getClassPurposes": 1,
+    "class-settings-service.ts#setClassPurpose": 1,
+    "class-progress.ts#getUnitMastery": 2
   },
   "bestand": {
     "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",

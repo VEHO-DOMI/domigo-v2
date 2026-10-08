@@ -7,6 +7,7 @@
 import { sql } from "drizzle-orm";
 import {
   pgSchema,
+  check,
   uuid,
   text,
   integer,
@@ -778,3 +779,10 @@ export const v2OpsLinkUses = v2.table("ops_link_uses", {
   usedAt: timestamp("used_at", { withTimezone: true }).notNull().defaultNow(),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
 });
+
+/** cgo-094 · DomiGo-owned purpose, never overwritten by the account class mirror. */
+export const classSettings = v2.table("class_settings", {
+  classId: uuid("class_id").primaryKey(),
+  purpose: text("purpose").notNull().default("regular"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [check("class_settings_purpose_check", sql`${t.purpose} in ('regular', 'test')`)]);

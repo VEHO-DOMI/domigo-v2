@@ -12,6 +12,7 @@
  */
 import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
+import { getClassPurposes } from "./class-settings-service.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
@@ -338,6 +339,8 @@ export interface GrandmasterLegacyClassRow {
  */
 export interface GrandmasterOverview {
   v2: GrandmasterClassRow[];
+  /** Active test classes, excluded from v2 and all its totals. */
+  testClasses: GrandmasterClassRow[];
   legacy: GrandmasterLegacyClassRow[];
   v2Failed: boolean;
   /**
@@ -487,7 +490,12 @@ export async function listAllClassesForGrandmaster(db: Db, classScope: ClassScop
     console.error("[class-service] legacy class overview failed:", errText(err));
   }
 
-  return { v2, legacy, v2Failed, legacyFailed };
+  const purposes = await getClassPurposes(db, classScope, [...v2, ...legacy].map((c) => c.id));
+  const testClasses = v2.filter((c) => purposes.get(c.id) === "test");
+  v2 = v2.filter((c) => purposes.get(c.id) !== "test");
+  // A mirrored legacy row with the same id must not reintroduce a test class.
+  legacy = legacy.filter((c) => purposes.get(c.id) !== "test");
+  return { v2, legacy, testClasses, v2Failed, legacyFailed };
 }
 
 /** A v2 class the grandmaster is reaching into — the owning teacherId comes WITH it. */
