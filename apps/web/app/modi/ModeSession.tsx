@@ -15,9 +15,11 @@ import Memory from "./memory/Memory";
 import Spelling from "./spelling/Spelling";
 import WordHunt from "./wordhunt/WordHunt";
 import Speed from "./speed/Speed";
+import type { Direction } from "../practice/options";
 
-export default function ModeSession({ ownerId, preview, grade, mode, words, rounds }: {
+export default function ModeSession({ ownerId, preview, grade, mode, words, rounds, direction = "auto" }: {
   ownerId: string | null; preview: boolean; grade: number; mode: TrainerMode; words: VocabItem[]; rounds: HuntRound[];
+  direction?: Direction;
 }) {
   const [deck, setDeck] = useState<VocabItem[] | null>(null);
   const [done, setDone] = useState(false);
@@ -97,7 +99,7 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
       {mode === "memory" && <Memory {...props} />}
       {mode === "spelling" && <Spelling {...props} />}
       {mode === "wordhunt" && <WordHunt {...props} rounds={rounds} />}
-      {mode === "speed" && <Speed {...props} duration={duration} />}
+      {mode === "speed" && <Speed {...props} duration={duration} direction={direction} score={confirmed.filter((receipt) => receipt.tier === "correct").length} />}
     </>}
   </main>;
 }

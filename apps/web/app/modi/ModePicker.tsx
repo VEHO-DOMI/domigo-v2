@@ -34,7 +34,7 @@ export default function ModePicker({ grade, preview, chapters, due, story, areas
       {story && <Link className="og-mode" href={`${story.href}${suffix}`}><span className="og-mode-icon">📖</span><span className="og-mode-info"><strong>Story</strong><small>{story.title}</small><span className="og-mode-xp">{grade === 1 ? "XP für bewertete Antworten" : "XP for graded answers"}</span></span></Link>}
     </div>
     <p className="og-xp-note">{grade === 1 ? "XP für eine richtige Antwort · je nach Schwierigkeit" : "XP for a correct answer · based on difficulty"}</p>
-    {mode !== "grammar" && !(mode in extra) && <fieldset className="og-directions"><legend>{grade === 1 ? "Übungsformat" : "Exercise Type"}</legend>
+    {mode !== "grammar" && (!(mode in extra) || mode === "speed") && <fieldset className="og-directions"><legend>{grade === 1 ? "Übungsformat" : "Exercise Type"}</legend>
       {([["auto", "🔄 Mix", "Random mix of all types"], ["carrier", "📝 Context", "Fill in the blank"], ["definition", "📖 Definition", "Find the word"], ["deToEn", "🇩🇪 → 🇬🇧", "Deutsch → English"], ["enToDe", "🇬🇧 → 🇩🇪", "English → Deutsch"]] as const)
         .filter(([id]) => mode !== "mc" || id === "definition" || id === "deToEn").map(([id, title, sub]) => <label className="og-direction" key={id}><input type="radio" name="direction" checked={(mode === "mc" && direction !== "deToEn" ? "definition" : direction) === id} onChange={() => setDirection(id)} /><span><strong>{title}</strong><small>{sub}</small></span></label>)}
     </fieldset>}

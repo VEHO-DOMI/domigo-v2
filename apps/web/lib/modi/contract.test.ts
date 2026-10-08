@@ -6,6 +6,7 @@ import { huntRounds, spellingWords, fullAnswer } from "./decks.ts";
 import { loadUnit } from "@domigo/content-loader";
 import { gradeVocab, spellingLayout, spellingAnswer } from "@domigo/engine";
 import { validModeInput } from "./attempt-policy.ts";
+import { speedPool } from "./speed-pool.ts";
 import ts from "typescript";
 const read = (name: string) => readFileSync(new URL(`../../app/modi/${name}`, import.meta.url), "utf8");
 
@@ -127,5 +128,24 @@ describe("cgo-109 mode contracts", () => {
     const session = read("ModeSession.tsx");
     assert.match(session, /mounted\.current && ids\.current\.has\(id\)/);
     assert.match(session, /ids\.current\.clear\(\); setReceipts\(\{\}\)/);
+  });
+  it("C21 speed preserves the selected exercise, mixed pools, hint flag and confirmed score", () => {
+    const pools = ["carrier", "definition", "deToEn", "enToDe"] as const;
+    assert.deepEqual([0, 1, 2, 3, 4].map((index) => speedPool("auto", index)), [...pools, "carrier"]);
+    const word = loadUnit("g2-u01").vocab[0]!;
+    for (const pool of pools) {
+      assert.equal(speedPool(pool, 7), pool);
+      assert.equal(validModeInput("speed", word.id, { kind: "vocab", pool }), true);
+      assert.equal(gradeVocab(word, fullAnswer(word, pool), pool).tier, "correct");
+    }
+    assert.equal(validModeInput("speed", word.id, { kind: "vocab", pool: "unknown" }), false);
+    assert.match(read("speed/page.tsx"), /"speed", query\.direction/);
+    assert.match(read("ModePage.tsx"), /direction=\{practiceDirection\(directionRaw\)\}/);
+    assert.match(read("ModePicker.tsx"), /!\(mode in extra\) \|\| mode === "speed"/);
+    const source = read("speed/Speed.tsx");
+    assert.match(source, /vocabPrompt\(word, pool\)/);
+    assert.match(source, /kind: "vocab", value, pool \}, hint/);
+    assert.match(source, /setHint\(true\)/);
+    assert.match(read("ModeSession.tsx"), /score=\{confirmed\.filter\(\(receipt\) => receipt\.tier === "correct"\)\.length\}/);
   });
 });

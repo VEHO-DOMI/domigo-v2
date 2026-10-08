@@ -99,12 +99,16 @@ Labor `cgo-106/og/<grade>/index.html`):
   „Again“ eine leere Antwort. Beide verwenden dieselbe Leitner-Queue,
   Flashcards serverseitig 0 XP. „Again“ wird mit dem vorhandenen Abstand der
   ersten Box nach zehn Minuten fällig. Jede Karte kommt einmal pro Lauf.
-- Speed: Start erst auf Knopfdruck, mit signierter und an das Kind gebundener
+- Speed: Wie `2nd/startSpeedRound` übernimmt die Zeitrunde die gewählte
+  Aufgabenart (Satzlücke, Definition, beide Übersetzungsrichtungen). Mix
+  durchläuft alle vier; laufender Punktestand zählt bestätigte richtige Antworten.
+  Die Erste-Buchstabe-Hilfe setzt `hintUsed`, ohne lokalen Punkteabzug.
+  Start erst auf Knopfdruck, mit signierter und an das Kind gebundener
   Serverzeit. Ab 60 Sekunden werden auch verzögerte Offline-Antworten abgewiesen.
   Die bestehende Outbox bewahrt unbestätigte Antworten weiter auf; eine
   gesonderte Bereinigung abgelaufener Versuche liegt außerhalb dieses Zauns.
 - Punkte: Nur bestätigte Serverantworten werden summiert. **Original-Abweichung,
-  Koki-Ruling (GG 09.10.):** Paar-/Tempo-/Streak-Boni und Spelling-Hinweis-Halbierung
+  Koki-Ruling (GG 09.10.):** Paar-/Tempo-/Streak-Boni, Spelling-Hinweis-Halbierung und Speed-Hinweis-Abzug
   fehlen in W2. Die Hinweise versprechen deshalb die bestehenden 10–30 XP
   für eine richtige Antwort; Flashcards 0. Kein Speed-Demon-Badge (W7).
 
