@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import { transpileModule } from "typescript";
+import { acknowledgeAttempt, emptyAttemptAck } from "../../../packages/game-paint/src/ack.ts";
+import type { PaintAttemptSender } from "../../../packages/game-paint/src/cards/attempt.ts";
 import { afterEach, beforeEach, test } from "node:test";
-import { bindOutboxOwner, flushOutbox, sendAttempt } from "./attempt-outbox.ts";
+import { bindOutboxOwner, flushOutbox, sendAttempt, subscribeOutboxReplies, type AttemptResult } from "./attempt-outbox.ts";
 import { attemptSender } from "./preview-attempt.ts";
 import { startOutboxFlush, type OnlineTarget } from "./useOutboxFlush.ts";
 
@@ -107,7 +111,7 @@ test("A offline / B online / A returns: only A can replay A's durable answer", a
 test("A / teacher / A: preview writes and sends nothing, reconnect is safe", async () => {
   await offline();
   const original = structuredClone([...store.rows]);
-  release(); release = startOutboxFlush(false, A, flushOutbox, target);
+  release(); release = startOutboxFlush(false, A, undefined, flushOutbox, target);
   let sends = 0;
   globalThis.fetch = async () => { sends++; return receipt(); };
   assert.deepEqual(await attemptSender(true, A)(body), { ok: true, queued: false });
@@ -115,7 +119,7 @@ test("A / teacher / A: preview writes and sends nothing, reconnect is safe", asy
   assert.equal(listeners.size, 0);
   assert.equal(sends, 0);
   assert.deepEqual([...store.rows], original);
-  release(); release = startOutboxFlush(true, A, flushOutbox, target);
+  release(); release = startOutboxFlush(true, A, undefined, flushOutbox, target);
   await flushOutbox(A);
   assert.equal(sends, 1);
   assert.equal(store.rows.size, 0);
@@ -327,7 +331,7 @@ test("hook unmount releases its binding without needing a replacement mount", as
     return new Promise<Response>(resolve => { answer = resolve; });
   };
   // Exercise the exact cleanup returned to useEffect, with the real outbox.
-  const cleanup = startOutboxFlush(true, A, owner => (pending = flushOutbox(owner)), target);
+  const cleanup = startOutboxFlush(true, A, undefined, owner => (pending = flushOutbox(owner)), target);
   release = cleanup;
   await started;
   cleanup();
@@ -339,7 +343,7 @@ test("hook unmount releases its binding without needing a replacement mount", as
   assert.equal(await flushOutbox(A), 0);
   assert.equal(sends, 1);
   // Returning to the same account starts a fresh lifetime and drains the remainder.
-  release = startOutboxFlush(true, A, flushOutbox, target);
+  release = startOutboxFlush(true, A, undefined, flushOutbox, target);
   assert.equal(await flushOutbox(A), 1);
   assert.equal(sends, 2);
   assert.equal(store.rows.size, 0);
@@ -412,4 +416,251 @@ test("a blocked drain keeps saved rows and a later unblocked open can replay the
   assert.equal(await flushOutbox(A), 1);
   assert.equal(sends, 1);
   assert.equal(store.rows.size, 0);
+});
+
+
+test("replay delivers the original id and exact normalized server receipt only to its owner", async () => {
+  await offline();
+  const own: unknown[] = [], foreign: unknown[] = [];
+  const stopA = subscribeOutboxReplies(A, (id, reply) => own.push([id, reply]));
+  const stopB = subscribeOutboxReplies(B, (id, reply) => foreign.push([id, reply]));
+  globalThis.fetch = async () => Response.json({ ok: true, tier: "partial", xpAwarded: 3, streak: 4 });
+  assert.equal(await flushOutbox(A), 1);
+  assert.deepEqual(own, [[body.clientAttemptId, { ok: true, queued: false, tier: "partial", xpAwarded: 3, streak: 4 }]]);
+  assert.deepEqual(foreign, []);
+  assert.equal(store.rows.size, 0);
+  stopA(); stopB();
+});
+
+for (const [label, data, points, tier] of [
+  ["duplicate", { duplicate: true, tier: "correct", xpAwarded: 20 }, 0, "correct"],
+  ["missing points", { tier: "wrong" }, undefined, "wrong"],
+  ["invalid points and tier", { tier: "invented", xpAwarded: -1 }, undefined, undefined],
+] as const) {
+  test(`replay normalization matches direct send: ${label}`, async () => {
+    await offline();
+    const replies: AttemptResult[] = [];
+    const stop = subscribeOutboxReplies(A, (_id, reply) => replies.push(reply));
+    globalThis.fetch = async () => Response.json({ ok: true, ...data });
+    assert.equal(await flushOutbox(A), 1);
+    const direct = await sendAttempt({ ...body, clientAttemptId: "direct" }, A);
+    assert.deepEqual(replies, [direct]);
+    assert.equal(replies[0]?.xpAwarded, points);
+    assert.equal(replies[0]?.tier, tier);
+    stop();
+  });
+}
+
+test("unconfirmed replay never publishes a reply", async () => {
+  await offline();
+  let calls = 0;
+  const stop = subscribeOutboxReplies(A, () => { calls++; });
+  for (const response of [() => Response.json({ ok: false, xpAwarded: 20 }), () => Response.json({ ok: true, xpAwarded: 20 }, { status: 500 }), () => new Response("broken")]) {
+    globalThis.fetch = async () => response();
+    assert.equal(await flushOutbox(A), 0);
+    assert.equal(calls, 0);
+    assert.equal(store.rows.size, 1);
+  }
+  stop();
+});
+
+for (const next of [A, B, null]) {
+  test(`late replay cannot publish across a replaced binding (${next})`, async () => {
+    await offline();
+    const seen: unknown[] = [];
+    const stop = subscribeOutboxReplies(A, (id, r) => seen.push([id, r]));
+    let entered!: () => void, answer!: (r: Response) => void;
+    const started = new Promise<void>(r => { entered = r; });
+    globalThis.fetch = async () => { entered(); return new Promise<Response>(r => { answer = r; }); };
+    const pending = flushOutbox(A); await started;
+    release = bindOutboxOwner(next);
+    const stopNext = next ? subscribeOutboxReplies(next, (id, r) => seen.push([id, r])) : () => {};
+    answer(receipt());
+    assert.equal(await pending, 1);
+    assert.deepEqual(seen, []);
+    stop(); stopNext();
+  });
+}
+
+test("switching away and back never revives old subscribers", async () => {
+  await offline();
+  let old = 0, current = 0;
+  const stopOld = subscribeOutboxReplies(A, () => { old++; });
+  bindOutboxOwner(B);
+  release = bindOutboxOwner(A);
+  const stopCurrent = subscribeOutboxReplies(A, () => { current++; });
+  globalThis.fetch = async () => receipt();
+  await flushOutbox(A);
+  assert.equal(old, 0); assert.equal(current, 1);
+  stopOld(); stopCurrent();
+});
+
+test("unsubscription is independent, idempotent and leaves replay without listeners unchanged", async () => {
+  await offline();
+  let calls = 0;
+  const listener = () => { calls++; };
+  const first = subscribeOutboxReplies(A, listener), second = subscribeOutboxReplies(A, listener);
+  first(); first();
+  globalThis.fetch = async () => receipt();
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(calls, 1);
+  second();
+  await offline(A, { ...body, clientAttemptId: "without-listener" });
+  globalThis.fetch = async () => receipt();
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(calls, 1); assert.equal(store.rows.size, 0);
+});
+
+test("binding release removes old subscriptions before same-owner remount", async () => {
+  await offline();
+  let old = 0, current = 0;
+  subscribeOutboxReplies(A, () => { old++; });
+  release(); release = bindOutboxOwner(A);
+  const stop = subscribeOutboxReplies(A, () => { current++; });
+  globalThis.fetch = async () => receipt();
+  await flushOutbox(A);
+  assert.equal(old, 0); assert.equal(current, 1);
+  stop();
+});
+
+test("a subscriber changing owner prevents delivery to the next subscriber", async () => {
+  await offline();
+  let calls = 0;
+  const first = subscribeOutboxReplies(A, () => { release = bindOutboxOwner(B); });
+  const second = subscribeOutboxReplies(A, () => { calls++; });
+  globalThis.fetch = async () => receipt();
+  await flushOutbox(A);
+  assert.equal(calls, 0);
+  first(); second();
+});
+
+test("a broken subscriber cannot stop the other subscriber or the next durable row", async () => {
+  await offline(); await offline(A, { ...body, clientAttemptId: "second" });
+  const bad = subscribeOutboxReplies(A, () => { throw new Error("view failure"); });
+  const ids: string[] = [];
+  const good = subscribeOutboxReplies(A, id => ids.push(id));
+  globalThis.fetch = async () => receipt();
+  assert.equal(await flushOutbox(A), 2);
+  assert.deepEqual(ids, [body.clientAttemptId, "second"]);
+  assert.equal(store.rows.size, 0);
+  bad(); good();
+});
+
+
+// Execute the actual BuchClient wiring and PaintGame hook, with only React's
+// mounting boundary recorded. Owner binding, send, replay, subscription and
+// reducer remain production code; the existing IDB fixture supplies storage.
+function mountBookOwner(ownerId: string) {
+  const src = fs.readFileSync(new URL("../app/(game)/play/[grade]/buch/[chapter]/BuchClient.tsx", import.meta.url), "utf8");
+  const from = src.indexOf("  const { cardBench, cardBenchTask, playerKey, preview, ownerId, ...game } = props;");
+  const to = src.indexOf("  // R5-W2 · J1-B:", from);
+  assert.ok(from >= 0 && to > from, "the real BuchClient wiring must be present");
+  const js = transpileModule(`function wiring(props) { ${src.slice(from, to)}; return { send, attemptReplies }; }`, {}).outputText;
+  let releaseOwner = () => {};
+  let initialDrain = Promise.resolve(0);
+  const mount = new Function("useMemo", "useOutboxFlush", "subscribeOutboxReplies", "attemptSender", `${js}; return wiring;`)(
+    (fn: () => unknown) => fn(),
+    (enabled: boolean, owner: string | null) => {
+      releaseOwner = startOutboxFlush(enabled, owner, undefined, id => (initialDrain = flushOutbox(id)), target);
+    }, subscribeOutboxReplies, attemptSender,
+  ) as (props: { preview: boolean; ownerId: string }) => {
+    send: PaintAttemptSender;
+    attemptReplies: (listener: (id: string, reply: AttemptResult) => void) => () => void;
+  };
+  const wiring = mount({ preview: false, ownerId });
+  return { ...wiring, initialDrain, release: releaseOwner };
+}
+
+function mountBookGame(book: ReturnType<typeof mountBookOwner>) {
+  const src = fs.readFileSync(new URL("../../../packages/game-paint/src/PaintGame.tsx", import.meta.url), "utf8");
+  const from = src.indexOf("function useAttemptAck("), to = src.indexOf("export default function PaintGame(");
+  assert.ok(from >= 0 && to > from, "the real PaintGame hook must be present");
+  const js = transpileModule(src.slice(from, to), {}).outputText;
+  const effects: Array<() => (() => void) | undefined> = [];
+  let state = emptyAttemptAck(), writes = 0, deliveries = 0;
+  const mount = new Function("React", "useRef", "useEffect", "useState", "acknowledgeAttempt", "emptyAttemptAck", `${js}; return useAttemptAck;`)(
+    { useReducer: (reducer: typeof acknowledgeAttempt) => [state, (action: Parameters<typeof acknowledgeAttempt>[1]) => {
+      writes++; state = reducer(state, action);
+    }], useMemo: (fn: () => unknown) => fn() },
+    (current: unknown) => ({ current }), (effect: () => (() => void) | undefined) => effects.push(effect),
+    (initial: boolean) => [initial, () => {}], acknowledgeAttempt, emptyAttemptAck,
+  ) as (sender: PaintAttemptSender, replies: typeof book.attemptReplies) => { send: PaintAttemptSender };
+  const hook = mount(book.send, listener => book.attemptReplies((id, reply) => { deliveries++; listener(id, reply); }));
+  const cleanup = effects.map(effect => effect());
+  return { ...hook, state: () => state, writes: () => writes, deliveries: () => deliveries, unmount: () => cleanup.forEach(fn => fn?.()) };
+}
+
+const paintBody = { ...body, mode: "game:g1", input: { kind: "choice", value: "Open!" }, latencyMs: 1 } as const;
+
+test("book parent release kills its child subscription before same-owner remount", async () => {
+  release();
+  const parent = mountBookOwner(A); release = parent.release;
+  await parent.initialDrain; // dynamic child mounts after its parent's binding
+  const child = mountBookGame(parent);
+  globalThis.fetch = async () => { throw new Error("offline"); };
+  await child.send(paintBody);
+  const state = child.state(), writes = child.writes();
+  assert.equal(state.pending.has(paintBody.clientAttemptId), true);
+  parent.release(); // deliberately keep the old child alive: isolate the parent's responsibility
+  const nextParent = mountBookOwner(A); release = nextParent.release;
+  await nextParent.initialDrain; // still offline; row remains for the new child
+  const nextChild = mountBookGame(nextParent);
+  try {
+    globalThis.fetch = async () => receipt();
+    assert.equal(await flushOutbox(A), 1);
+    assert.equal(child.deliveries(), 0, "parent release must remove the old child's listener");
+    assert.equal(child.writes(), writes); assert.equal(child.state(), state);
+    assert.equal(nextChild.deliveries(), 1, "the newly mounted child has a live subscription");
+    assert.equal(nextChild.writes(), 0, "a new book ignores the earlier book's id");
+    assert.equal(nextChild.state().total, 0);
+    assert.equal(store.rows.size, 0);
+  } finally { child.unmount(); nextChild.unmount(); nextParent.release(); }
+});
+
+test("book account switch couples owner release with both PaintGame subscriptions", async () => {
+  release();
+  const parentA = mountBookOwner(A); release = parentA.release;
+  await parentA.initialDrain;
+  const childA = mountBookGame(parentA);
+  globalThis.fetch = async () => { throw new Error("offline"); };
+  await childA.send(paintBody);
+  const stateA = childA.state(), writesA = childA.writes(), savedA = structuredClone([...store.rows]);
+  parentA.release();
+  const parentB = mountBookOwner(B); release = parentB.release;
+  await parentB.initialDrain;
+  const childB = mountBookGame(parentB);
+  try {
+    globalThis.fetch = async () => receipt();
+    assert.equal(await flushOutbox(B), 0);
+    assert.deepEqual([...store.rows], savedA);
+    assert.equal(childA.deliveries(), 0); assert.equal(childB.deliveries(), 0);
+    globalThis.fetch = async () => { throw new Error("offline"); };
+    await childB.send(paintBody); // same id in both accounts: a leaked reply would be countable
+    globalThis.fetch = async () => receipt();
+    assert.equal(await flushOutbox(B), 1);
+    assert.equal(childB.deliveries(), 1); assert.equal(childB.state().total, 20);
+    assert.equal(childB.state().pending.size, 0);
+    assert.equal(childA.deliveries(), 0); assert.equal(childA.writes(), writesA); assert.equal(childA.state(), stateA);
+    assert.deepEqual([...store.rows], savedA);
+    const stateB = childB.state(), writesB = childB.writes();
+    parentB.release();
+    const returning = mountBookOwner(A); release = returning.release;
+    assert.equal(await returning.initialDrain, 1);
+    assert.equal(store.rows.size, 0);
+    assert.equal(childA.deliveries(), 0, "returning to A must not revive its old child");
+    assert.equal(childA.writes(), writesA); assert.equal(childA.state(), stateA);
+    assert.equal(childB.deliveries(), 1); assert.equal(childB.writes(), writesB); assert.equal(childB.state(), stateB);
+  } finally { childA.unmount(); childB.unmount(); release(); }
+});
+
+test("replay notifies only after its successful local dequeue has completed", async () => {
+  await offline();
+  const observed: Array<{ id: string; queuedRows: number }> = [];
+  const stop = subscribeOutboxReplies(A, id => { observed.push({ id, queuedRows: store.rows.size }); });
+  try {
+    globalThis.fetch = async () => receipt();
+    assert.equal(await flushOutbox(A), 1);
+    // Check outside the listener: the outbox intentionally catches listener errors.
+    assert.deepEqual(observed, [{ id: body.clientAttemptId, queuedRows: 0 }]);
+  } finally { stop(); }
 });
