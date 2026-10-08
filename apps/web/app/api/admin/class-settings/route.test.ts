@@ -126,6 +126,11 @@ const strip = (src: string) => src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s
 const md5 = (src: string) => createHash("md5").update(src).digest("hex");
 type Guard = { name: string; path: string; passes: (s: string) => boolean; break: (s: string) => string };
 const guards: Guard[] = [
+  { name: "class wall reads scoped purpose and labels only test classes in the heading", path: "apps/web/app/admin/classes/[id]/page.tsx",
+    passes: s => s.includes('const purposes = await getClassPurposes(getDb(), teacher.classScope, [cls.id]);')
+      && /<h1\b[\s\S]*?\{purposes\.get\(cls\.id\) === "test" && <span className="dg-chip">Testklasse<\/span>\}[\s\S]*?<\/h1>/.test(s),
+    break: s => s.replace('{purposes.get(cls.id) === "test" && <span className="dg-chip">Testklasse</span>}', ''),
+  },
   { name: "dashboard purpose read uses trusted scope", path: "apps/web/app/admin/page.tsx",
     passes: s => s.includes('getClassPurposes(getDb(), teacher.classScope, classes.value.map((cls) => cls.id))'),
     break: s => s.replace('getClassPurposes(getDb(), teacher.classScope,', 'getClassPurposes(getDb(), [],') },

@@ -125,6 +125,15 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     created_at: sachlich(),
   },
 
+  // cgo-094 · GG-Entscheid, Nachzug 1: Inventarpflege, alle drei Spalten sachlich.
+  // Zweck: Kennzeichen Testklasse (Lehrer-Eigentest), kein Kind, kein Name.
+  // Löschweg: mit der Klasse.
+  class_settings: {
+    class_id: sachlich("Zuordnung der Einstellung zur Klasse, keine Personenkennung"),
+    purpose: sachlich("Kennzeichen Testklasse (Lehrer-Eigentest), kein Kind, kein Name"),
+    updated_at: sachlich("Zeitpunkt der Einstellungsänderung, keine Aktivität eines Kindes"),
+  },
+
   practice_attempts: {
     id: sachlich(),
     user_id: kennung(W.konto),
