@@ -23,6 +23,13 @@ import {
 /** Every v2-owned table lives here. */
 export const v2 = pgSchema("domigo_v2");
 
+/** Sparse platform settings: an absent grade uses the corpus release default. */
+export const storyWorldSettings = v2.table("story_world_settings", {
+  grade: smallint("grade").primaryKey(),
+  isOpen: boolean("is_open").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [check("story_world_settings_grade_check", sql`${t.grade} between 1 and 4`)]);
+
 /**
  * One unified attempt ledger (vocab + grammar), `kind`-discriminated. Game tasks
  * reuse it verbatim (`mode:'game:g1'` + `context` jsonb). `userId`/`classId` are

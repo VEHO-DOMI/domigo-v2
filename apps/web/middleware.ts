@@ -9,6 +9,13 @@ export default auth((req) => {
   const session = req.auth;
   const { pathname, search } = req.nextUrl;
 
+  // The JSON write endpoint has an HTTP refusal contract, including at the
+  // outer door. Page navigation keeps its existing sign-in/home redirects.
+  if (pathname === "/admin/story-world" && req.method === "POST"
+    && (!session?.user?.id || session.user.role !== "teacher")) {
+    return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+  }
+
   // cgo-094: an API refusal is JSON, before page redirects or development bypass.
   if (pathname === "/api/admin/class-settings") {
     if (!session?.user?.id || session.user.role !== "teacher") {

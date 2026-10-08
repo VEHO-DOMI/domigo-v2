@@ -45,6 +45,8 @@
     "studypath.ts#recordNodeCompletion": 1,
     "writing-review.ts#listSubmissionsForClass": 1,
     "writing-review.ts#gradeSubmission": 2,
+    "story-world-service.ts#listStoryWorldGrades": 2,
+    "story-world-service.ts#setStoryWorld": 1,
     "class-settings-service.ts#getClassPurposes": 1,
     "class-settings-service.ts#setClassPurpose": 1,
     "class-progress.ts#getUnitMastery": 2

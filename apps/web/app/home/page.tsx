@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { abmelden } from "../le/konto-aktion";
-import { listReleasedStories } from "@domigo/content-loader";
+import { listOpenStories } from "@/lib/story-world";
 import { getClassGrade, getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
 import { registerFor } from "@/lib/levels";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
@@ -47,23 +47,21 @@ export default async function HomePage() {
 
   // Story tile — the grade's game, first on the landing (the story modes are the
   // app's engagement heart and must be one tap from sign-in). The grade→story map
-  // is derived from the corpus; the lookup is wrapped like the badges: a DB hiccup
-  // degrades to the /play chooser, never a dead link and never a 500.
+  // uses the shared runtime setting; a parked or unknown year has no story tile.
   // The grade is read ONCE and serves two readers: the story tile below and the
   // profile card's title register (1st grade reads the gentle ladder, 2nd-4th
-  // the gamer one). A failed read leaves it null — the chooser fallback here,
-  // the gamer register there. Both are cosmetic misses, never a dead page.
+  // the gamer one). A failed grade lookup leaves the story tile absent.
   let grade: number | null = null;
-  let storyTile = { href: "/play", icon: DEFAULT_STORY_UI.icon, title: "Story", sub: "Story adventures by grade" };
+  let storyTile: { href: string; icon: string; title: string; sub: string } | null = null;
   try {
     grade = session.user.classId ? await getClassGrade(getDb(), session.user.classId) : null;
-    const story = grade === null ? undefined : listReleasedStories().find((s) => s.grade === grade);
+    const story = grade === null ? undefined : (await listOpenStories()).find((s) => s.grade === grade);
     if (story) {
       const ui = STORY_UI[story.grade] ?? DEFAULT_STORY_UI;
       storyTile = { href: `/play/${story.grade}`, icon: ui.icon, title: "Story", sub: `${story.titleEn} — ${ui.blurb}` };
     }
   } catch {
-    /* keep the chooser fallback */
+    /* No story tile when the class year cannot be resolved. */
   }
 
   const dailyWord = grade === null ? null : await wortDesTages(grade, viennaDateKey());
@@ -76,7 +74,7 @@ export default async function HomePage() {
   }
 
   const items: { href: string; icon: string; title: string; sub: string; badge?: string | null }[] = [
-    storyTile,
+    ...(storyTile ? [storyTile] : []),
     { href: "/practice", icon: "📚", title: "Practice", sub: "Vocabulary & grammar by Chapter" },
     { href: "/review", icon: "🔁", title: "Review", sub: dueLabel, badge: dueBadge },
     { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided Chapters with checkpoints" },

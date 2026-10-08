@@ -7,11 +7,9 @@
  * except the ink skin, where they render half-erased (the Blank took them; the
  * board itself tells the story).
  *
- * YEAR 1 (cgo-047, Koki 02.10.; cgo-086, 07.10.): the year-1 game is the painted
- * book (/play/1/buch), still teacher-only. The overworld "Die verlorenen Seiten"
- * (g1 book-rooms) is parked with 0 released chapters, so year 1 has no canonical
- * story here: a child goes to the /play chooser, a teacher sees the Regelbuch.
- * The Keen story mode is deleted, not just unlinked (play-access-map.test.ts).
+ * YEAR 1 (cgo-070): the runtime setting chooses between the /play chooser
+ * (parked) and the painted book /play/1/buch (open). The retired overworld
+ * stays parked in the corpus. Teachers retain the Regelbuch preview here.
  *
  * K1b · GRADE SCOPE (the deep-link half of the /play binding). A CHILD is sent
  * back to its own school year; a TEACHER keeps every year, because the pre-release
@@ -27,7 +25,7 @@
 import Link from "next/link";
 import RegelbuchBoard from "./RegelbuchBoard";
 import { redirect } from "next/navigation";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryEconomy, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryEconomy } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
@@ -43,6 +41,8 @@ import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
+
+import { openStoryIdForGrade } from "@/lib/story-world";
 
 export const dynamic = "force-dynamic";
 
@@ -75,14 +75,11 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // One released story per grade, derived from the corpus (no stale hand-maintained
   // maps). Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
   const devStory = devStoryOverride(grade);
-  const storyId = devStory?.storyId ?? storyIdForGrade(grade);
+  const storyId = devStory?.storyId ?? await openStoryIdForGrade(grade);
+  if (student && grade === 1 && storyId !== null) redirect("/play/1/buch");
   const map = storyId ? loadGameMap(storyId) : null;
   const story = storyId ? loadStory(storyId) : null;
-  // cgo-047 · SUNSET (Koki 02.10.): the year-1 overworld "Die verlorenen Seiten"
-  // is parked (release.json, 0 chapters); the painted book (/play/1/buch) is the
-  // year-1 game being built and is not yet released to children. A child whose
-  // year has no released story goes to the /play chooser, which says so honestly
-  // — never an empty hub.
+  // A parked year has no student hub; the same reader drives tiles and mastery.
   if (student && storyId === null) redirect("/play");
   const released = devStory
     ? devReleasedChapters(devStory, story?.chapters.map((c) => c.id) ?? [])

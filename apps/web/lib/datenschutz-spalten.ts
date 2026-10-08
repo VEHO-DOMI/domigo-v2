@@ -102,6 +102,12 @@ const W = {
 
 /** table (SQL name) → column (SQL name) → mark */
 export const SPALTEN: Record<string, Record<string, Eintrag>> = {
+  story_world_settings: {
+    grade: sachlich("platform-wide school year, no class or person identifier"),
+    is_open: sachlich("story visibility for the whole school year"),
+    updated_at: sachlich("configuration timestamp; no actor is recorded"),
+  },
+
   users: {
     id: kennung(W.konto, "the id every other table stores instead of a name"),
     role: sachlich("whether an account belongs to a child or to a teacher — the page is built on exactly that split, one section each"),

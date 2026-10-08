@@ -2,9 +2,8 @@
  * /play — the story index. A signed-in student lands straight on THEIR grade's
  * hub; when the grade can't be resolved (DB hiccup, dev identity) — or their
  * grade's story isn't released yet — render the chooser of released stories.
- * The list is DERIVED from the corpus (listReleasedStories), so a new grade's
- * game appears here the moment its release.json ships and an unreleased grade
- * never renders a dead tile (Law 9: no dead toggles).
+ * The shared server reader combines runtime settings with corpus defaults.
+ * Parked grades have no tile. Chapter releases stay in the corpus.
  *
  * K1b · GRADE SCOPE. This chooser was the LAST child-facing surface where a
  * second-year could open all four school years: P1 bound the four practice lists
@@ -33,7 +32,7 @@
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { listReleasedStories } from "@domigo/content-loader";
+import { listOpenStories } from "@/lib/story-world";
 import { resolveStudentView } from "@/lib/student-view";
 import PreviewBanner from "@/app/PreviewBanner";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
@@ -50,7 +49,7 @@ export default async function PlayIndexPage({ searchParams }: { searchParams: Pr
   // year, the same preview she gets on /play/[grade]. (redirect() throws by design
   // in Next, so it stays outside anything that catches.)
   const grades = view.grades;
-  const stories = listReleasedStories().filter((s) => grades.includes(s.grade));
+  const stories = (await listOpenStories()).filter((s) => grades.includes(s.grade));
 
   // Fast path: exactly one year in scope and a story released for it. Only a
   // STUDENT is sent straight through — a teacher who lands here wants the list.

@@ -147,7 +147,7 @@ const laws: Law[] = [
     { name: `${i === 0 ? "page" : "cards"}: no pupil name fields`, source,
       passes: noPersonNames, break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>{student.name}</span>') },
     { name: `${i === 0 ? "page" : "cards"}: reviewed literals contain no fixed pupil names`, source,
-      passes: (s: string) => literalPin(s) === (i === 0 ? "812aac2af06a3b6f80cbc32b47a66c1e" : "801d14d802024432c4fc00499e7f3bc6"),
+      passes: (s: string) => literalPin(s) === (i === 0 ? "ca83f96f191bfcb7a350982b820a9951" : "801d14d802024432c4fc00499e7f3bc6"),
       break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>Max Mustermann</span>') },
   ]),
   { name: "grandmaster link under its own rank guard", source: page,

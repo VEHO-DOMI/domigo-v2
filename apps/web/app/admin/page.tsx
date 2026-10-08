@@ -12,6 +12,7 @@ import KlassenKarten from "./KlassenKarten";
 export const dynamic = "force-dynamic";
 
 const doors = [
+  { title: "Story world", description: "Open or park story worlds by grade. View story mastery.", href: "/admin/story-worlds", label: "Story world settings" },
   { title: "Schüleransicht", description: "Üben, Lernpfad, Hören, Tests und Geschichten in der Kinderansicht öffnen.", href: "/admin/explorer", label: "Schüleransicht öffnen" },
   { title: "Aufgaben", description: "Eigene Aufgaben zusammenstellen, zuweisen und ihre Ergebnisse ansehen.", href: "/admin/assignments", label: "Aufgaben öffnen" },
   { title: "Studio", description: "Aufgaben bearbeiten, eigene Aufgaben entwerfen und ausprobieren.", href: "/admin/studio", label: "Studio öffnen" },
@@ -88,7 +89,7 @@ export default async function AdminPage() {
         ))}
         <section className="dg-card" style={{ minWidth: 0 }}>
           <h3 style={{ fontSize: 18, margin: "0 0 8px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Das gemalte Buch</h3>
-          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 14px", lineHeight: 1.5 }}>Das Spiel für Jahrgang 1 ist noch nicht für Kinder freigegeben. Hier kannst du die vorhandenen Chapter ausprobieren; dein Stand bleibt auf diesem Gerät.</p>
+          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 14px", lineHeight: 1.5 }}>Child access follows Story world. Draft Chapters are teacher-only. Preview existing Chapters here; your progress stays on this device.</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {paintChapters.map((ch) => (
               <Link key={ch} href={`/play/1/buch/${ch}`} className="dg-chip" style={{ fontSize: 14, padding: "6px 10px" }}>Chapter {Number(ch.slice(2))} →</Link>
