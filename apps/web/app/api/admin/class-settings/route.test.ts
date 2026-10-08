@@ -17,13 +17,13 @@ let writeError: Error | null;
 function loadTs(url: URL, dependencies: Record<string, unknown>) {
   const source = readFileSync(url, "utf8");
   const compiled = transpileModule(source, { compilerOptions: { module: ModuleKind.CommonJS, target: ScriptTarget.ES2022 } }).outputText;
-  const module = { exports: {} as Record<string, (...args: never[]) => unknown> };
+  const loadedModule = { exports: {} as Record<string, (...args: never[]) => unknown> };
   const require = (id: string) => {
     if (!(id in dependencies)) throw new Error(`Unexpected dependency: ${id}`);
     return dependencies[id];
   };
-  new Function("require", "module", "exports", compiled)(require, module, module.exports);
-  return module.exports;
+  new Function("require", "module", "exports", compiled)(require, loadedModule, loadedModule.exports);
+  return loadedModule.exports;
 }
 const { POST } = loadTs(new URL("./route.ts", import.meta.url), {
   "@/auth": { auth: async () => session, KONTO_PROVIDER: "konto" },
