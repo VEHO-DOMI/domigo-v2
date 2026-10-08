@@ -3,10 +3,11 @@
 // child's own class; a teacher session (the preview) books nothing. The real
 // route, identity, grader and content; session and storage replaced (harness).
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import fs, { readFileSync } from "node:fs";
 import { beforeEach, describe, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
-import { loadUnit } from "@domigo/content-loader";
+import { loadStoryComprehension, loadUnit } from "@domigo/content-loader";
+import { StoryComprehensionFile } from "@domigo/content-schema";
 import { vocabAnswers } from "@domigo/engine";
 const { POST } = await import("../app/api/attempts/route.ts");
 
@@ -199,5 +200,81 @@ describe("POST /api/attempts — Paint uses the same server grading and learner 
     assert.equal(body.xpAwarded, firstBody.xpAwarded);
     assert.equal(fixture.storageCalls, 2);
     assert.deepEqual(fixture.writes.map((write) => write.data.clientAttemptId), [paintClientAttemptId, paintClientAttemptId]);
+  });
+});
+
+// cgo-095: original story grammar uses the existing grammar ledger and review context.
+const storyAttempt = (itemId: string, value: string, clientAttemptId = "55555555-5555-4555-8555-555555555555") => new Request("https://attempts.invalid/api/attempts", {
+  method: "POST", headers: { "content-type": "application/json" },
+  body: JSON.stringify({ ownerId: "child-own", clientAttemptId, itemId, mode: "game:g3", input: { kind: itemId.includes(".mc.") ? "choice" : "text", value }, hintUsed: false }),
+});
+const storyChild = () => {
+  fixture.grade = 3;
+  fixture.session = { user: { id: "child-own", classId: "class-own", role: "student", scope: ["class-own"] } };
+};
+describe("FOURTEEN scene grammar — same server grader, separate review context", () => {
+  for (const [value, tier] of [["would stop", "correct"], ["stops", "wrong"]]) {
+    it(`structure-tagged ci books grammar/story for ${tier}`, async () => {
+      storyChild();
+      const response = await POST(storyAttempt("g3u13.ci.listen-if-he-asks.gf.001", value!));
+      const body = await response.json();
+      assert.equal(response.status, 200);
+      assert.equal(body.tier, tier);
+      assert.equal(body.xpAwarded, tier === "wrong" ? 0 : 20);
+      assert.equal(fixture.writes.length, 1);
+      assert.equal(fixture.writes[0]!.data.kind, "grammar");
+      assert.equal(fixture.writes[0]!.data.reviewContext, "story");
+      assert.equal(fixture.writes[0]!.data.unitSlug, "g3-u13");
+      assert.equal(fixture.writes[0]!.data.xpAwarded, body.xpAwarded);
+    });
+  }
+  it("rejects a schema-valid story structure absent from its unit with 400 and no booking", async (t) => {
+    storyChild();
+    const content = loadStoryComprehension("g3.st.fourteen")!;
+    const itemId = "g3u13.ci.listen-if-he-asks.gf.001";
+    const candidate = content.items.find((entry) => entry.id === itemId)!;
+    candidate.structureId = "g3u13.s.fixture-unlisted";
+    // Keep the unit prefix valid: rejection must come from the route's catalog
+    // check, not the schema parser or an unreadable content file.
+    StoryComprehensionFile.parse(content);
+    assert.ok(!loadUnit("g3-u13").grammar.some((entry) => entry.structureId === candidate.structureId));
+    const realRead = fs.readFileSync;
+    let injectedReads = 0;
+    t.mock.method(fs, "readFileSync", ((file, options) => {
+      if (String(file).endsWith("/content/corpus/stories/g3.st.fourteen/comprehension.json")) {
+        injectedReads++;
+        assert.equal(options, "utf8");
+        return JSON.stringify(content);
+      }
+      return realRead(file, options);
+    }) as typeof fs.readFileSync);
+    const response = await POST(storyAttempt(itemId, "would stop"));
+    assert.equal(injectedReads, 1);
+    assert.equal(response.status, 400);
+    assert.deepEqual(await response.json(), { ok: false, error: "bad_request" });
+    assert.equal(fixture.storageCalls, 0);
+    assert.equal(fixture.writes.length, 0);
+  });
+  it("untagged ci stays reading and does not request story grammar review", async () => {
+    storyChild();
+    const response = await POST(storyAttempt("g3u13.ci.sara-advice.mc.001", "Make it about something real."));
+    assert.equal((await response.json()).tier, "correct");
+    assert.equal(fixture.writes[0]!.data.kind, "reading");
+    assert.equal(fixture.writes[0]!.data.reviewContext, undefined);
+  });
+  it("teacher story answer returns 401 without storage", async () => {
+    fixture.session = { user: { id: "teacher-own", role: "teacher", classId: null, scope: ["class-own"] } };
+    assert.equal((await POST(storyAttempt("g3u13.ci.listen-if-he-asks.gf.001", "would stop"))).status, 401);
+    assert.equal(fixture.storageCalls, 0);
+  });
+  it("preserves the receipt identity on retries and reports a duplicate", async () => {
+    storyChild();
+    const id = "66666666-6666-4666-8666-666666666666";
+    await POST(storyAttempt("g3u13.ci.listen-if-he-asks.gf.001", "would stop", id));
+    fixture.recordReturn = { duplicate: true, box: 2, dueAt: new Date(), streak: 1 };
+    const response = await POST(storyAttempt("g3u13.ci.listen-if-he-asks.gf.001", "would stop", id));
+    assert.equal((await response.json()).duplicate, true);
+    assert.equal(fixture.writes[0]!.data.clientAttemptId, id);
+    assert.equal(fixture.writes[1]!.data.clientAttemptId, id);
   });
 });

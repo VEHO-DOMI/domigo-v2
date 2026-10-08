@@ -50,6 +50,7 @@ export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-fli
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
+export * from "./student-traps.ts"; // cgo-105: own recurring traps and the latest Chapter door
 export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)
 export * from "./teacher-events.ts"; // K2a: the teacher-scoped audit journal roster_events could never be (class_id is NOT NULL)
 // K2b · ops-links is SAFE to re-export: it holds no crypto at all (the nonce hash

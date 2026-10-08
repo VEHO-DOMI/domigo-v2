@@ -11,8 +11,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { loadUnit, normalizePatchColumn } from "@domigo/content-loader";
 import { getDb, loadOverridesForUnit } from "@domigo/db";
-import type { GrammarItem, VocabItem } from "@domigo/content-schema";
+import { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { getTeacherForPage } from "@/lib/identity";
+import { loadCheckedStudioDraftsForUnit } from "../../../../../../packages/db/src/content-check-journal.ts";
 import { StudioEditor, type StudioField, type StudioItem } from "./StudioEditor";
 
 function vocabFields(v: VocabItem): StudioField[] {
@@ -43,11 +44,13 @@ export default async function StudioUnitPage({ params }: { params: Promise<{ slu
   } catch {
     redirect("/admin/studio");
   }
-  const rows = await loadOverridesForUnit(getDb(), slug).catch(() => []);
+  const [rows, drafts] = await Promise.all([loadOverridesForUnit(getDb(), slug), teacher.classScope[0] ? loadCheckedStudioDraftsForUnit(getDb(), { scope: teacher.classScope, classId: teacher.classScope[0], teacherId: teacher.userId }, slug) : Promise.resolve([])]);
   const byItem = new Map(rows.map((r) => [r.itemId, { patch: normalizePatchColumn(r.patch), status: r.status }]));
 
+  const visibleDrafts = drafts.filter((draft) => draft.action === "create" || draft.action === "replace");
+  const fullDraftIds = new Set(visibleDrafts.map((draft) => draft.itemId));
   const items: StudioItem[] = [
-    ...unit.vocab.map((v): StudioItem => ({
+    ...unit.vocab.filter((item) => !fullDraftIds.has(item.id)).map((v): StudioItem => ({
       id: v.id,
       kind: "vocab",
       label: v.w,
@@ -58,7 +61,7 @@ export default async function StudioUnitPage({ params }: { params: Promise<{ slu
       ],
       override: byItem.get(v.id) ?? null,
     })),
-    ...unit.grammar.map((g): StudioItem => ({
+    ...unit.grammar.filter((item) => !fullDraftIds.has(item.id)).map((g): StudioItem => ({
       id: g.id,
       kind: "grammar",
       label: g.prompt.text.slice(0, 60),
@@ -69,6 +72,24 @@ export default async function StudioUnitPage({ params }: { params: Promise<{ slu
       ],
       override: byItem.get(g.id) ?? null,
     })),
+    ...visibleDrafts.flatMap((draft): StudioItem[] => {
+      const kind = draft.kind === "grammar" ? "grammar" : "vocab";
+      const parsed = (kind === "grammar" ? GrammarItem : VocabItem).safeParse(normalizePatchColumn(draft.item));
+      if (!parsed.success) return [];
+      const item = parsed.data;
+      const grammar = item as GrammarItem;
+      const vocab = item as VocabItem;
+      return [{
+        id: draft.itemId, kind,
+        label: kind === "grammar" ? grammar.prompt.text.slice(0, 60) : vocab.w,
+        fields: kind === "grammar" ? grammarFields(grammar) : vocabFields(vocab),
+        locked: kind === "grammar"
+          ? [{ labelDe: "Typ", value: grammar.format }, { labelDe: "Lösung", value: grammar.answers.map((answer) => answer.text).join(" / ") }]
+          : [{ labelDe: "Wort", value: vocab.w }, { labelDe: "Übersetzung", value: vocab.g }],
+        override: null,
+        fullDraft: { draftId: draft.id, item, action: draft.action as "create" | "replace", status: draft.status },
+      }];
+    }),
   ];
 
   return (
@@ -81,7 +102,7 @@ export default async function StudioUnitPage({ params }: { params: Promise<{ slu
         </div>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {unit.vocab.length} Vokabeln · {unit.grammar.length} Grammatik. Ändere den Text, <strong>Speichern</strong> legt einen Entwurf an, <strong>Veröffentlichen</strong> macht ihn live.
+        {items.filter((item) => item.kind === "vocab").length} Wortschatz · {items.filter((item) => item.kind === "grammar").length} Grammatik. <strong>Speichern</strong> legt einen Entwurf an. Neue Aufgaben werden erst nach bestandener KI-Prüfung live.
       </p>
       <StudioEditor slug={slug} items={items} />
     </main>

@@ -7,6 +7,8 @@ import { getClassGrade, getDb, getDueCounts, getUserProgress, isStreakActive } f
 import { registerFor } from "@/lib/levels";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 import ProfileCard from "./ProfileCard";
+import { viennaDateKey, wortDesTages } from "@/lib/wort-des-tages";
+import WordOfTheDay from "../woerterbuch/WordOfTheDay";
 
 export const dynamic = "force-dynamic";
 
@@ -62,6 +64,8 @@ export default async function HomePage() {
     /* No story tile when the class year cannot be resolved. */
   }
 
+  const dailyWord = grade === null ? null : await wortDesTages(grade, viennaDateKey());
+
   // dach-074 · the one sign-out of the app: a konto session goes on to konto's
   // /logout, a PIN session ends here (app/le/konto-aktion.ts).
   async function doSignOut() {
@@ -86,6 +90,8 @@ export default async function HomePage() {
         <ProfileCard xp={progress.xp} grammarXp={progress.grammarXp} streak={progress.streak} register={registerFor(grade)} />
       )}
       <p style={{ color: "var(--text-secondary)", margin: progress ? "18px 0 0" : "0" }}>What would you like to do?</p>
+
+      {dailyWord && <WordOfTheDay entry={dailyWord} />}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 20 }}>
         {items.map((it) => (

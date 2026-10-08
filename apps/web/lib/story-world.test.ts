@@ -5,6 +5,7 @@ import { child, fixture, reset, teacher } from "../app/admin/story-world.harness
 const { readStoryWorlds, listOpenStories, openStoryIdForGrade } = await import("./story-world.ts");
 const { POST } = await import("../app/admin/story-world/route.ts");
 const { default: AdminPage } = await import("../app/admin/page.tsx");
+const { default: StoryWorldPage } = await import("../app/admin/story-worlds/page.tsx");
 const { default: ExplorerPage } = await import("../app/admin/explorer/page.tsx");
 const { default: HomePage } = await import("../app/home/page.tsx");
 const { default: PlayPage } = await import("../app/(game)/play/page.tsx");
@@ -46,13 +47,13 @@ describe("runtime story world", () => {
     const state = await readStoryWorlds();
     assert.equal(state.available, false);
     assert.deepEqual(state.grades, [1, 2, 3, 4].map((grade) => ({ grade, isOpen: grade !== 1 })));
-    assert.match(renderToStaticMarkup(await AdminPage()), /Settings are unavailable/);
+    assert.match(renderToStaticMarkup(await StoryWorldPage()), /Settings are unavailable/);
   });
   it("open → parked → open reaches home, chooser, hub and mastery without process restart", async () => {
     for (const isOpen of [true, false, true]) {
       fixture.session = teacher;
       assert.equal((await POST(post({ grade: 1, isOpen }))).status, 200);
-      const admin = renderToStaticMarkup(await AdminPage());
+      const admin = renderToStaticMarkup(await StoryWorldPage());
       assert.equal(admin.includes('data-grade="1"'), isOpen, "the mastery section follows the setting");
       assert.equal(fixture.masteryGrades.includes(1), isOpen, "parked mastery is not even queried");
       fixture.masteryGrades = [];
@@ -84,11 +85,28 @@ describe("runtime story world", () => {
       for (const grade of [1, 3]) assert.equal(markup.includes(`href="/play/${grade}"`), isOpen);
       assert.match(markup, /href="\/play\/1\/buch\/ch01"/);
       if (isOpen) assert.match(markup, /1 Kapitel freigegeben/);
-      for (const path of ["practice", "learn", "listening", "tests", "review"]) {
+      for (const path of ["practice", "learn", "listening", "tests", "review", "woerterbuch"]) {
         assert.match(markup, new RegExp(`href="/${path}\\?jahrgang=2"`));
       }
       assert.match(markup, /Chapter-Übungen ansehen und zuweisen/);
       assert.match(markup, /href="\/admin\/assignments\/new\?source=unit&amp;grade=1&amp;unit=/);
+    }
+  });
+  it("keeps the class-first dashboard and a working story settings door", async () => {
+    const markup = renderToStaticMarkup(await AdminPage());
+    assert.match(markup, /Deine Klassen/);
+    assert.match(markup, /href="\/admin\/story-worlds"/);
+    assert.match(markup, /href="\/admin\/explorer"/);
+    assert.doesNotMatch(markup, /<table\b|story-world-heading/);
+    const settings = renderToStaticMarkup(await StoryWorldPage());
+    assert.match(settings, /story-world-heading/);
+    assert.match(settings, /href="\/admin"/);
+  });
+  it("protects the moved story settings page before any mastery read", async () => {
+    for (const session of [child, null]) {
+      fixture.session = session;
+      await assert.rejects(StoryWorldPage(), { message: "REDIRECT:/admin/signin" });
+      assert.deepEqual(fixture.masteryGrades, []);
     }
   });
   it("an open year 3 renders the child's hub without redirecting", async () => {

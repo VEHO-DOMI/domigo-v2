@@ -51,7 +51,7 @@ test("every authored feedback task resolves, uses a different form, accepts all 
   }
   for (const authored of overlay.items) {
     const live = items.find((i) => i.id === authored.id);
-    assert.deepEqual(live, authored, `${authored.id}: overlay drift`);
+    assert.deepEqual(live, authored, `${authored.id}: overlay drift (including structureId)`);
     const item = authored as unknown as GrammarItem;
     const kind = ["multiple-choice", "context-picker"].includes(item.format) ? "choice" : "text";
     if (item.pairs.length) {
@@ -99,4 +99,28 @@ test("sentence tiles really build every accepted word order", async () => {
   assert.equal(commentsAfter(11, "fix-bens-line"), false);
   assert.equal(commentsAfter(11, "recap"), true);
   assert.equal(commentsAfter(12, "recap"), false);
+});
+
+test("newly bound script slots do not inherit pre-460 cosmetic counts", async () => {
+  const { restoredTakes } = await import("./episode-state.ts");
+  for (const chapter of story.chapters.filter((c) => c.unit >= 2 && c.unit <= 11)) {
+    const old = ["script-gap", "script-mc", "fix-bens-line"];
+    assert.deepEqual(restoredTakes(chapter, old, {}), ["fix-bens-line"], chapter.id);
+    const post460 = validTakes(chapter, { "script-gap": { tier: "correct" } });
+    assert.deepEqual(restoredTakes(chapter, old, post460), ["script-gap", "fix-bens-line"], chapter.id);
+  }
+  assert.deepEqual(restoredTakes(story.chapters[0]!, ["script-gap"], {}), ["script-gap"]);
+});
+
+test("saved answers belong to an item, not only a reusable slot name", async () => {
+  const { restoredTakes } = await import("./episode-state.ts");
+  const chapter = story.chapters[1]!;
+  const slot = chapter.scenes.flatMap((s) => s.taskSlots).find((s) => s.slot === "script-gap")!;
+  const raw = { [slot.slot]: { tier: "correct", itemKey: "retired-item", status: "saved" } };
+  const validated = validTakes(chapter, raw);
+  assert.deepEqual(validated, {});
+  assert.deepEqual(restoredTakes(chapter, [slot.slot], validated, raw), []);
+  const waiting = { [slot.slot]: { tier: "correct", itemKey: slot.itemId, status: "queued" } };
+  assert.deepEqual(validTakes(chapter, waiting), waiting);
+  assert.deepEqual(restoredTakes(chapter, "broken save", {}), []);
 });

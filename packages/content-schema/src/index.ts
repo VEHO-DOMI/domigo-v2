@@ -786,6 +786,22 @@ export const GrammarItemId = z
     /^g[1-4]u\d{2}\.gi\.[a-z0-9-]+\.(gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/,
   );
 
+/** Allocate a schema-coherent Studio id without reusing a corpus/draft id.
+ * The caller supplies every occupied id in the unit; persistence must still
+ * reject conflicting creates because two open forms can share a snapshot. */
+export function nextGrammarItemId(structureId: string, format: GrammarFormat, occupiedIds: readonly string[]): string {
+  const structure = StructureId.parse(structureId);
+  const checkedFormat = GrammarFormat.parse(format);
+  const [unit, , key] = structure.split(".");
+  const prefix = `${unit}.gi.${key}.${FORMAT_CODES[checkedFormat]}.`;
+  const occupied = new Set(occupiedIds);
+  for (let sequence = 1; sequence <= 999; sequence += 1) {
+    const id = `${prefix}${String(sequence).padStart(3, "0")}`;
+    if (!occupied.has(id)) return GrammarItemId.parse(id);
+  }
+  throw new Error("Für diese Struktur und dieses Format sind alle Aufgabennummern vergeben.");
+}
+
 export const TranslationDirection = z.enum(["deToEn", "enToDe"]);
 export type TranslationDirection = z.infer<typeof TranslationDirection>;
 
@@ -1664,6 +1680,8 @@ export type ReadingItem = z.infer<typeof ReadingItem>;
 /** A gradeable comprehension item — same fields as ReadingItem, `.ci.` id. */
 export const ComprehensionItem = z.object({
   id: StoryComprehensionRef,
+  /** Story grammar retains its original scene; absent means reading comprehension. */
+  structureId: StructureId.optional(),
   rev: z.number().int().min(1),
   difficulty: Difficulty,
   format: GrammarFormat,
@@ -1683,8 +1701,24 @@ export const ComprehensionItem = z.object({
   explainDe: z.string().min(1),
   explainEn: z.string().nullable(),
   strict: z.boolean(),
+}).superRefine((item, ctx) => {
+  if (item.structureId && item.id.split(".")[0] !== item.structureId.split(".")[0]) {
+    ctx.addIssue({ code: "custom", path: ["structureId"], message: "story item and structure must belong to the same unit" });
+  }
 });
 export type ComprehensionItem = z.infer<typeof ComprehensionItem>;
+
+/** Cross-file coherence: the introducing unit, original scene and structure
+ * catalog must agree. Callers supply authored content, never client metadata. */
+export function storyGrammarMatches(
+  item: ComprehensionItem, chapter: Chapter, structureIds: readonly string[],
+): boolean {
+  return item.structureId !== undefined
+    && ComprehensionItem.safeParse(item).success
+    && item.id.startsWith(`g${chapter.id[1]}u${String(chapter.unit).padStart(2, "0")}.ci.`)
+    && structureIds.includes(item.structureId)
+    && chapter.scenes.some((scene) => scene.taskSlots.some((slot) => slot.itemId === item.id));
+}
 
 export const StoryComprehensionFile = z
   .object({

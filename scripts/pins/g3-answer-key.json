@@ -1,0 +1,156 @@
+{
+  "source": "caf680545efd4a792f270986e505856c616b8af5 — PR 495 before Nachzug 1; prompts and keys unchanged",
+  "algorithm": "sha256 of protected G3 task fields, including variants; glossary/hints/explanations excluded",
+  "files": [
+    {
+      "path": "content/corpus/stories/g3.st.fourteen/comprehension.json",
+      "tasks": 44,
+      "sha256": "2a57e910b352f6e0d0db42ce90e72296baef82ecab2dc3eebf4a594681c75c5e"
+    },
+    {
+      "path": "content/corpus/units/g3-u01/grammar.json",
+      "tasks": 24,
+      "sha256": "7d97287e135cf433b301e87b3362207ea0fc8ae7513c7db8eb05887380c2957c"
+    },
+    {
+      "path": "content/corpus/units/g3-u01/vocab.json",
+      "tasks": 40,
+      "sha256": "35f9773977cd55d09cbe2ccd9b46e3713ba73d60c278feeeec97ed3fd24bcc2e"
+    },
+    {
+      "path": "content/corpus/units/g3-u02/grammar.json",
+      "tasks": 51,
+      "sha256": "b638a1f9c57b64c5d2318731ddee2dce7bd0b8d36edbce177a097fb6883f2f25"
+    },
+    {
+      "path": "content/corpus/units/g3-u02/vocab.json",
+      "tasks": 42,
+      "sha256": "13cd8c674e1d905486bc72583384dccac31378af5cc6b59d4f85db6ac0b9ce73"
+    },
+    {
+      "path": "content/corpus/units/g3-u03/grammar.json",
+      "tasks": 114,
+      "sha256": "b145e27953e44a38d34383a21c588b7aacaee5f95f0f6e650ce73247dcc67fe4"
+    },
+    {
+      "path": "content/corpus/units/g3-u03/vocab.json",
+      "tasks": 54,
+      "sha256": "91793035400600fc260cd620c7ba9abc30035ef9fd4d4ea19a12da3ff1e9e380"
+    },
+    {
+      "path": "content/corpus/units/g3-u04/grammar.json",
+      "tasks": 44,
+      "sha256": "9fb956103196bf215771e9085d9f1a3ae642ad61b6e49dddef73d1666430a8e3"
+    },
+    {
+      "path": "content/corpus/units/g3-u04/vocab.json",
+      "tasks": 46,
+      "sha256": "bbbe99cffa4afd8a61d4353e397c9538053ed894e93331289a048e99a125da6c"
+    },
+    {
+      "path": "content/corpus/units/g3-u05/grammar.json",
+      "tasks": 101,
+      "sha256": "a4bf4db8b882b5f3f993cb3e9b8ab8e94a167a0aad15d2ba9a1f698f75257ef5"
+    },
+    {
+      "path": "content/corpus/units/g3-u05/vocab.json",
+      "tasks": 41,
+      "sha256": "62b0a47ea6bcf8485984d94186ebf9b9c84c697aadcf5a9aefe8ac0e4accaa4e"
+    },
+    {
+      "path": "content/corpus/units/g3-u06/grammar.json",
+      "tasks": 55,
+      "sha256": "c2ae9bca19f68758c26bd3c2349227b8984e1a7880298bd65eb6c503566013b9"
+    },
+    {
+      "path": "content/corpus/units/g3-u06/vocab.json",
+      "tasks": 45,
+      "sha256": "4762a8d1ddd4bbe4dce8f0844bc067353345e11acc8f99950d0223ef63c409d1"
+    },
+    {
+      "path": "content/corpus/units/g3-u07/grammar.json",
+      "tasks": 47,
+      "sha256": "20c5d7c69c69b158806eb835eaeeb882fc70152fc1cb518f7a2f4981e0e1d2de"
+    },
+    {
+      "path": "content/corpus/units/g3-u07/vocab.json",
+      "tasks": 34,
+      "sha256": "0f6706c6e4f9904657d269c462701eaf21ba5f49264baccfc1aa50e2379eefee"
+    },
+    {
+      "path": "content/corpus/units/g3-u08/grammar.json",
+      "tasks": 50,
+      "sha256": "c6b2a404a9ffd1c7d670f12830be7e4bf51c853cfca21eafdf79c68382c2490d"
+    },
+    {
+      "path": "content/corpus/units/g3-u08/vocab.json",
+      "tasks": 47,
+      "sha256": "ccbff8045c113bf215570c2cfc5b0261dfed3971d4287cf63010e51bd889cffc"
+    },
+    {
+      "path": "content/corpus/units/g3-u09/grammar.json",
+      "tasks": 93,
+      "sha256": "919916f33953b9123297e8237bcca27fafd2c45b603ca2beb671b3b836d2d062"
+    },
+    {
+      "path": "content/corpus/units/g3-u09/vocab.json",
+      "tasks": 39,
+      "sha256": "d01dff06a9d0acac7d17c1df06d77f4e6e13a41ed884f0fb56dce41e3faf1b88"
+    },
+    {
+      "path": "content/corpus/units/g3-u10/grammar.json",
+      "tasks": 117,
+      "sha256": "ed08b742c3fd77975ff571560556a686514395304491cab09ef0085060dc0cb9"
+    },
+    {
+      "path": "content/corpus/units/g3-u10/vocab.json",
+      "tasks": 53,
+      "sha256": "985222f78e69e77111a56d1d263f562e7162a6b3dcda9f4dfc055bca7317bb9b"
+    },
+    {
+      "path": "content/corpus/units/g3-u11/grammar.json",
+      "tasks": 28,
+      "sha256": "f703c369665d3780da587f8867378fcde6fed892fa75b7b9514f8383bf28505c"
+    },
+    {
+      "path": "content/corpus/units/g3-u11/vocab.json",
+      "tasks": 37,
+      "sha256": "a4c02291285caa23e54f3262debd376edbf044a256021b60af76ea691001a0b7"
+    },
+    {
+      "path": "content/corpus/units/g3-u12/grammar.json",
+      "tasks": 29,
+      "sha256": "7e053ad24f175b83b6caf17ff0cb66250152a4114fcf66562be9f9a2e077a9bd"
+    },
+    {
+      "path": "content/corpus/units/g3-u12/vocab.json",
+      "tasks": 50,
+      "sha256": "4447d0a9eefc04bae1f67a6925bd5b874b3d75225c7ed3a78646cc56eda943bd"
+    },
+    {
+      "path": "content/corpus/units/g3-u13/grammar.json",
+      "tasks": 32,
+      "sha256": "dc3f5b8e673c90d3882f990b700bdba947d3399c40edbb43cdd6c1352d0fd9b8"
+    },
+    {
+      "path": "content/corpus/units/g3-u13/vocab.json",
+      "tasks": 34,
+      "sha256": "62e0e027ff2ac06f0594c3fd19a3d424ed8f5eb361be1616887b746ff3a60659"
+    },
+    {
+      "path": "content/corpus/units/g3-u14/grammar.json",
+      "tasks": 28,
+      "sha256": "b49da5fc442d1d144a0233ed26588f458b816285fa2eadafad016840d1a61c19"
+    },
+    {
+      "path": "content/corpus/units/g3-u14/vocab.json",
+      "tasks": 37,
+      "sha256": "6ad1bea94bc80495dd8c252a7fff14aa73c27bbc40b50fe8f196e4dd06b8d196"
+    },
+    {
+      "path": "content/overlays/g3-fourteen-feedback.json",
+      "tasks": 29,
+      "sha256": "fb70dd95c1e2f040cb715fb159ef0215302d6c09861df9221a64a2895a219486"
+    }
+  ]
+}

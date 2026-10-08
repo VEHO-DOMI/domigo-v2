@@ -112,13 +112,13 @@ describe("server pages — who is a preview is decided on the server", () => {
     for (const c of clients) assert.equal(c[2], "preview={preview}", `${c[1]} without preview`);
   });
   it("the preview reads no save, review queue or solved ledger", () => {
-    for (const call of ["getGameSave", "getDueRefs", "getSolvedGameItemIds"]) {
+    for (const call of ["getGameSave", "getDueRefs", "getDueStoryRefs", "getSolvedGameItemIds"]) {
       for (const m of zone.matchAll(new RegExp(`[^\\n]*\\b${call}\\(`, "g"))) {
         assert.match(m[0], /acting \? await /, `${call} without the child guard: ${m[0].trim()}`);
       }
     }
   });
-  for (const file of ["(game)/play/page.tsx", "practice/page.tsx", "practice/[slug]/page.tsx"]) {
+  for (const file of ["(game)/play/page.tsx", "practice/page.tsx", "practice/[slug]/page.tsx", "woerterbuch/page.tsx"]) {
     it(`${file} resolves the viewer through student-view`, () => {
       const src = code(read(file));
       assert.match(src, /resolveStudentView\(/);
@@ -139,6 +139,64 @@ describe("server pages — who is a preview is decided on the server", () => {
     assert.match(book, /yearRedirect\(await resolveStudentView\(\), 1\)/);
     assert.match(book, /if \(await openStoryIdForGrade\(1\) === null\) redirect\("\/play"\)/);
     assert.match(book, /if \(raw\.draft === true && teacher === null\)/);
+  });
+});
+
+describe("cgo-099 dictionary is a read-only child surface", () => {
+  it("uses the resolved year for data and the teacher's daily word preview", () => {
+    const src = code(read("woerterbuch/page.tsx"));
+    assert.match(src, /await resolveStudentView\(\(await searchParams\)\.jahrgang\)/);
+    assert.match(src, /if \(!view\) redirect\("\/signin"\)/);
+    assert.match(src, /const grades = view\.kind === "student" && view\.grades\.length !== 1 \? \[\] : view\.grades/);
+    assert.match(src, /await loadDictionary\(grades\)/);
+    assert.match(src, /preview && <PreviewBanner/);
+    assert.match(src, /preview && grades\.map/);
+    assert.match(src, /selectDailyWord\(entries, grade, dateKey\)/);
+  });
+  it("has no learner-state, attempt or browser storage/network path", () => {
+    const folder = new URL("../app/woerterbuch/", import.meta.url);
+    const files = fs.readdirSync(folder).filter((name) => /\.(ts|tsx)$/.test(name) && !name.includes(".test."));
+    const sources = files.map((name) => fs.readFileSync(new URL(name, folder), "utf8"));
+    for (const name of ["woerterbuch.ts", "wort-des-tages.ts"]) sources.push(fs.readFileSync(new URL(name, import.meta.url), "utf8"));
+    for (const src of sources.map(code)) {
+      assert.doesNotMatch(src, /@domigo\/db|attempt-outbox|preview-attempt|\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|getUserProgress|getDueCounts|recordAttempt)\b|["']use server["']/);
+    }
+    assert.doesNotMatch(code(read("woerterbuch/Dictionary.tsx")), /content-service/);
+    assert.doesNotMatch(code(read("woerterbuch/page.tsx")), /view\.player/);
+  });
+  it("home and explorer expose the dictionary and share the daily card", () => {
+    const home = code(read("home/page.tsx"));
+    assert.match(home, /grade === null \? null : await wortDesTages\(grade, viennaDateKey\(\)\)/);
+    assert.match(home, /dailyWord && <WordOfTheDay entry=\{dailyWord\}/);
+    assert.match(read("admin/explorer/page.tsx"), /\/woerterbuch\?jahrgang=\$\{grade\}/);
+    const card = read("woerterbuch/WordOfTheDay.tsx");
+    assert.match(card, /Im Wörterbuch/);
+    assert.match(card, /#wort-\$\{entry.id\}/);
+  });
+  it("dictionary loads approved Chapters and links each word to existing practice", () => {
+    const data = code(fs.readFileSync(new URL("woerterbuch.ts", import.meta.url), "utf8"));
+    assert.match(data, /const slugs = listApprovedUnits\(\)\.filter/);
+    assert.match(data, /await Promise\.all\(slugs\.map\(\(slug\) => loadUnitWithOverrides\(slug\)\)\)/);
+    assert.doesNotMatch(data, /readdir|loadWordbank/);
+    const client = code(read("woerterbuch/Dictionary.tsx"));
+    assert.match(client, /dictionaryResults\(entries, query\)/);
+    assert.match(client, /href=\{`\/practice\/\$\{entry.slug\}`\}/);
+    assert.match(client, /id=\{`wort-\$\{entry.id\}`\}/);
+    assert.match(client, /prefetch=\{false\}/);
+  });
+  it("dictionary is in the sign-in matcher and preview has exactly one return door", () => {
+    const middleware = code(fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8"));
+    assert.match(middleware, /matcher:\s*\[[^\]]*"\/woerterbuch"/);
+    const page = code(read("woerterbuch/page.tsx"));
+    assert.match(page, /!preview && <Link href="\/home"/);
+    assert.doesNotMatch(page, /\/admin\/explorer/);
+    assert.equal((read("PreviewBanner.tsx").match(/href="\/admin\/explorer"/g) ?? []).length, 1);
+  });
+  it("explorer counts the current dictionary words in each year alongside Chapters", () => {
+    const explorer = code(read("admin/explorer/page.tsx"));
+    assert.match(explorer, /const dictionary = await loadDictionary\(GRADES\)/);
+    assert.match(explorer, /const gradeWords = dictionary\.filter\(\(entry\) => entry\.grade === grade\)\.length/);
+    assert.match(explorer, /\{gradeWords\} Wörter · \{gradeUnits\} Chapters/);
   });
 });
 
@@ -206,7 +264,7 @@ describe("cgo-092 every modality uses the shared viewer", () => {
   it("all child-specific learn and review reads require an actual child", () => {
     for (const file of PREVIEW_PAGES.filter((p) => /^(learn|review)\//.test(p))) {
       const src = code(read(file));
-      for (const call of ["getPathSummary", "getUnitPathProgress", "getJourneyAttempts", "getDueRefs", "getDueCounts", "listReservedForClass"]) {
+      for (const call of ["getPathSummary", "getUnitPathProgress", "getJourneyAttempts", "getDueRefs", "getDueCounts", "getDueStoryRefs", "getDueStoryCount", "listStudentTraps", "listReservedForClass"]) {
         for (const hit of src.matchAll(new RegExp(`[^\\n]*\\b${call}\\(`, "g"))) assert.match(hit[0], /acting \? await /, `${file}: ${call} lacks child guard`);
       }
     }
@@ -271,6 +329,14 @@ const bookLaws = [
     (s: string) => (s.match(/onAttempt=\{send\}/g) ?? []).length === 1
       && (s.match(/onAttempt=/g) ?? []).length === 1,
     (s: string) => s.replace("onAttempt={send}", "onAttempt={body => sendAttempt(body, ownerId)}")],
+  ["client: reply subscription excludes preview, bench and absent owner", bookClient,
+    (s: string) => /const attemptReplies = useMemo\(\(\) => !preview && cardBench === undefined && ownerId\s*\? \(listener: OutboxReplyListener\) => subscribeOutboxReplies\(ownerId, listener\)\s*: undefined, \[preview, cardBench, ownerId\]\)/.test(s)
+      && (s.match(/subscribeOutboxReplies\(/g) ?? []).length === 1,
+    (s: string) => s.replace("!preview && cardBench === undefined && ownerId", "ownerId")],
+  ["client: optional subscription reaches only the game", bookClient,
+    (s: string) => (s.match(/attemptReplies=\{attemptReplies\}/g) ?? []).length === 1
+      && !/<PaintDevGallery[^>]*attemptReplies/.test(s),
+    (s: string) => s.replace("attemptReplies={attemptReplies}", "attemptReplies={undefined}")],
   ["page: only teacher without student is preview", bookPage,
     (s: string) => /const preview = student === null && teacher !== null;/.test(s)
       && (s.match(/preview=/g) ?? []).length === 1 && /preview=\{preview\}/.test(s),
@@ -290,7 +356,7 @@ describe("painted book preview wiring and tamper proofs", () => {
     for (const [index, before, after] of [
       [1, "!preview && cardBench === undefined", "!preview"],
       [3, "onAttempt={send}", "onAttempt={send} onAttempt={send}"],
-      [4, "preview={preview}", "preview={false}"],
+      [6, "preview={preview}", "preview={false}"],
     ] as const) {
       const law = bookLaws[index]!;
       const broken = law[1].replace(before, after);
@@ -298,4 +364,165 @@ describe("painted book preview wiring and tamper proofs", () => {
       assert.equal(law[2](broken), false);
     }
   });
+});
+
+// cgo-095: execute the real review page with synthetic identity/storage only.
+it("story review door renders counts/deep links for a child and never reads a preview queue", async () => {
+  const ts = await import("typescript");
+  const content = await import("@domigo/content-loader");
+  const { storyReviewItems } = await import("../../../packages/game-novel/src/episode-state.ts");
+  const compiled = ts.transpileModule(read("review/page.tsx"), { compilerOptions: {
+    module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+  } }).outputText;
+  const dueId = "g3u13.ci.listen-if-he-asks.gf.001";
+  for (const preview of [false, true]) {
+    const calls: string[] = [];
+    let scopeIds: string[] = [];
+    const modules: Record<string, unknown> = {
+      "react/jsx-runtime": { jsx: (type: unknown, props: unknown) => ({ type, props }), jsxs: (type: unknown, props: unknown) => ({ type, props }) },
+      "next/link": { default: "Link" }, "next/navigation": { redirect: () => assert.fail("unexpected redirect") },
+      "@domigo/content-loader": content, "@domigo/game-novel": { storyReviewItems },
+      "@/lib/student-view": { resolveStudentView: async () => preview ? { kind: "preview", grades: [3] } : { kind: "student", grades: [3], player: { userId: "fixture-child", classId: "fixture-class" } } },
+      "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
+      "@/app/PreviewBanner": { default: "PreviewBanner" },
+      "./FallenKarte": { default: "FallenKarte" },
+      "@domigo/db": {
+        getDb: () => { calls.push("db"); return {}; },
+        getDueCounts: async () => ({ total: 0, vocab: 0, grammar: 0 }),
+        listStudentTraps: async () => { calls.push("traps"); return []; },
+        getDueStoryCount: async (_db: unknown, userId: string, classId: string, scope: { itemIds: string[] }) => {
+          assert.equal(userId, "fixture-child"); assert.equal(classId, "fixture-class"); scopeIds = scope.itemIds; calls.push("count"); return 3;
+        },
+        getDueStoryRefs: async () => { calls.push("refs"); return [{ itemId: dueId }]; },
+      },
+    };
+    const loaded: { exports: { default?: (props: unknown) => Promise<unknown> } } = { exports: {} };
+    new Function("require", "exports", "module", compiled)((id: string) => {
+      assert.ok(id in modules, id); return modules[id];
+    }, loaded.exports, loaded);
+    const tree = await loaded.exports.default!({ searchParams: Promise.resolve({ jahrgang: "3" }) });
+    const serialized = JSON.stringify(tree);
+    assert.match(serialized, /Wiederholung in der Geschichte/);
+    assert.doesNotMatch(serialized, /GrammarItemView|listen-if-he-asks|Your words:/, "the door cannot render a task outside its scene");
+    if (preview) {
+      assert.deepEqual(calls, []);
+      assert.match(serialized, /ohne persönlichen Wiederholungsstand/);
+    } else {
+      assert.equal(scopeIds.length, 15);
+      assert.ok(scopeIds.includes(dueId));
+      assert.match(serialized, /3 Aufgaben fällig/);
+      assert.match(serialized, /\/play\/3\/ch13/);
+      assert.doesNotMatch(serialized, /caught up|Start review/);
+      assert.ok(calls.includes("refs") && calls.includes("count"));
+    }
+  }
+});
+
+// cgo-105: render the real page and card; replace only identity and storage.
+async function trapReviewHarness() {
+  const ts = await import("typescript");
+  const jsx = await import("react/jsx-runtime");
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const content = await import("@domigo/content-loader");
+  const { trapLabel } = await import("../../../packages/db/src/class-progress.ts");
+  const modules: Record<string, unknown> = {
+    "react/jsx-runtime": jsx,
+    "next/link": { default: ({ children, ...props }: Record<string, unknown>) => createElement("a", props, children as never) },
+    "next/navigation": { redirect: () => assert.fail("unexpected redirect") },
+    "@domigo/content-loader": content,
+    "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
+    "@/app/PreviewBanner": { default: () => createElement("p", {}, "Vorschau") },
+    "@domigo/db": { trapLabel },
+  };
+  const compile = (file: string) => {
+    const compiled = ts.transpileModule(read(file), { compilerOptions: {
+      module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+    } }).outputText;
+    const loaded = { exports: {} as { default: (props: never) => unknown } };
+    new Function("require", "exports", "module", compiled)((id: string) => {
+      assert.ok(id in modules, id); return modules[id];
+    }, loaded.exports, loaded);
+    return loaded.exports.default;
+  };
+  const card = compile("review/FallenKarte.tsx");
+  const render = (tree: unknown) => renderToStaticMarkup(tree as Parameters<typeof renderToStaticMarkup>[0]);
+  const registry = content.loadTrapRegistry()!.traps;
+  const traps = registry.slice(0, 3).map((trap, i) => ({ trapId: trap.id, count: 4 - i, unitSlug: `g1-u0${i + 1}`, itemId: `fixture-item-${i}` }));
+  return { modules, compile, card, render, registry, traps };
+}
+
+it("student traps: the source and render both hide fewer than two occurrences", async () => {
+  const { card, render, traps } = await trapReviewHarness();
+  const src = code(read("review/FallenKarte.tsx"));
+  assert.match(src, /traps\.filter\(\(trap\) => trap\.count >= 2\)\.slice\(0, 3\)/);
+  assert.match(src, /if \(recurring\.length === 0\) return null;/);
+  for (const rows of [[], [{ ...traps[0], count: 1 }], [{ ...traps[0], count: 0 }]]) {
+    assert.equal(render(card({ traps: rows } as never)), "");
+  }
+});
+
+it("student traps: three register explanations, frequencies and Chapter doors", async () => {
+  const { card, render, registry, traps } = await trapReviewHarness();
+  const html = render(card({ traps: [...traps, { ...traps[0], trapId: "fourth-trap", count: 2 }] } as never));
+  assert.match(html, /Deine häufigsten Fallen/);
+  assert.equal((html.match(/<li /g) ?? []).length, 3);
+  const escape = (text: string) => text.replaceAll("&", "&amp;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+  for (let i = 0; i < 3; i++) {
+    for (const field of ["nameDe", "icon", "oneLinerDe"] as const) assert.ok(html.includes(escape(registry[i]![field])), field);
+    assert.ok(html.includes(`${4 - i}-mal in den letzten 30 Tagen`));
+    assert.ok(html.includes(`href="/practice/g1-u0${i + 1}"`));
+    assert.ok(html.includes(`Chapter ${i + 1} üben`));
+  }
+  assert.doesNotMatch(html, /fourth-trap|\bUnit\b|Du schaffst das|Super|Weiter so|Gut gemacht/);
+});
+
+it("student traps: a slug without a Chapter number renders Chapter without NaN", async () => {
+  const { card, render, traps } = await trapReviewHarness();
+  for (const unitSlug of ["legacy-story", "g1-u", "g1-u03-extra", ""]) {
+    const html = render(card({ traps: [{ ...traps[0], unitSlug }] } as never));
+    assert.match(html, />Chapter üben →<\/a>/);
+    assert.doesNotMatch(html, /Chapter NaN/);
+  }
+});
+
+it("student traps: an unknown id keeps its name and door without invented explanation", async () => {
+  const { card, render, traps } = await trapReviewHarness();
+  const html = render(card({ traps: [{ ...traps[0], trapId: "future-trap" }] } as never));
+  assert.match(html, /<h3[^>]*>future-trap<\/h3>/);
+  assert.match(html, /4-mal in den letzten 30 Tagen/);
+  assert.match(html, /href="\/practice\/g1-u01"/);
+  assert.equal((html.match(/<p /g) ?? []).length, 1);
+});
+
+it("student traps: actual child scope only; preview makes zero personal reads", async () => {
+  const { modules, compile, card, render, traps } = await trapReviewHarness();
+  for (const kind of ["child", "empty", "unavailable", "preview"]) {
+    const calls: string[] = [];
+    const db = {};
+    const scope = ["fixture-class"];
+    modules["@/lib/student-view"] = { resolveStudentView: async () => kind === "preview"
+      ? { kind: "preview", grades: [1] }
+      : { kind: "student", grades: [1], player: { userId: "fixture-child", classId: "fixture-class", classScope: scope } } };
+    modules["./FallenKarte"] = { default: card };
+    modules["@domigo/db"] = {
+      getDb: () => { calls.push("db"); return db; },
+      getDueCounts: async () => { calls.push("due"); return { total: 1, vocab: 1, grammar: 0 }; },
+      getDueStoryCount: async () => { calls.push("story-count"); return 0; },
+      getDueStoryRefs: async () => { calls.push("story-refs"); return []; },
+      listStudentTraps: async (...args: unknown[]) => {
+        calls.push("traps");
+        assert.deepEqual(args, [db, scope, "fixture-class", "fixture-child", { sinceDays: 30, limit: 3 }]);
+        if (kind === "unavailable") throw new Error("synthetic storage outage");
+        return kind === "empty" ? [] : traps;
+      },
+    };
+    const html = render(await compile("review/page.tsx")({ searchParams: Promise.resolve({}) } as never));
+    if (kind === "preview") assert.deepEqual(calls, []);
+    else assert.equal(calls.filter((call) => call === "traps").length, 1);
+    if (kind === "child") {
+      assert.ok(html.indexOf("Deine häufigsten Fallen") < html.indexOf("Start review"));
+      assert.match(html, /4-mal in den letzten 30 Tagen/);
+    } else assert.doesNotMatch(html, /Deine häufigsten Fallen|student-traps-title/);
+  }
 });

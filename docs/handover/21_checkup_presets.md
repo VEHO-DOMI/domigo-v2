@@ -262,3 +262,105 @@ builder "Checkup" template → runner one-page layout → `/20` scoring extensio
 `scripts/verify-checkup.mjs` per the Part-V exit criteria. The M-wave reuse surface
 (tables, wall, Notenschlüssel, pure scoring) is inventoried with file:line anchors in the
 2026-07-13 session log; `mode:'checkup'` is open text — **no DDL beyond the one column.**
+
+## 11 · cgo-100 as built — Studio grammar and the publication gate
+
+**CODEX DRAFT — NOT CANON · IN REVIEW (2026-10-08).** No migration, live database
+operation or real account-funded Sandbox run was performed for this change.
+
+The Studio create form now supports **multiple-choice, gap-fill and context-picker**.
+Its structure selector comes from the unit's structure catalogue. The additive schema
+helper allocates a coherent structure/format/number ID; the server validates the whole
+item and catalogue membership. First save inserts a new draft; subsequent edits carry
+its confirmed draft-row ID. This prevents a second, stale form from overwriting the
+first. Owned draft reads and conditional save/publish/delete operations enforce the
+same owner and checked bytes, including concurrent requests. Reloaded checking drafts
+have a **Prüfung fortsetzen** action. Grammar and vocabulary use the same free pre-gate,
+draft save, Sandbox check, live status and existing student-card preview.
+
+Every checkup starts with a **server-issued workflow UUID**, created for the authenticated
+teacher and selected class by `compose-checkup` action `begin`. Automatic fill appends
+an irreversible automatic-origin event to that workflow in `content_checks`; publication
+requires the workflow ID and rechecks ownership. Removing the browser's origin field
+cannot turn an automatic sheet into a manual one. A distinct manual workflow stays
+opt-out even if it reuses items from earlier automatic sheets. Changing class clears the
+checkup selection and begins a separate workflow. Manual **Auch prüfen** opts into the
+same intelligence gate. The existing `/20`, reserved-item, content and retry-identity
+checks remain before publication.
+
+Both modes first check **every full answer** through the existing grading engine in
+the actual selected pool. Checkup frames include direction and the rendered first-letter
+mask; they exclude hidden hints, collapsed glosses and undisplayed grammar-focus labels.
+Studio uses the same first-view restriction. The runtime reads published display overlays
+without silently falling back on read failure. Because assignment answers currently grade
+against the canonical library, an overlay that changes grading fields blocks publication.
+
+Intelligence evidence is keyed by a stable digest of the **complete item, exact frame and
+resolved pool**; object-field order does not affect it. A primary-key insert in the existing
+append-only journal claims each such revision before any Sandbox launch. Repeated and
+concurrent requests share that claim. A verified passed journal entry costs no new run;
+passed/blocked are permanent content verdicts. Infrastructure failures are `error`, not
+content judgments; an explicit later publication attempt can atomically claim the next
+attempt for the same revision. Attempt identities fence late old responses. The journal records the
+actor, class reference, time, item/revision, model, enabled thinking, candidates and verdict;
+it contains no student records. Content verdicts can be reused across authorized teachers;
+workflow history and unpublished Studio drafts remain owned.
+
+The existing subscription Sandbox transport uses the configured default capable Studio
+model with adaptive thinking. The API-key fallback is removed; no new provider or secret
+is introduced. All missing items on one sheet share **one Sandbox environment and one model session**.
+The model solves the keyless student prompts in order; the platform grades and journals
+each item separately. Claims stay per item, so concurrent teachers share existing work.
+Batch membership is durable: even a smaller overlapping sheet, including a blocked one,
+must leave the environment readable until all original member verdicts are recorded.
+Studio continues using its single-item transport. The builder polls the same immutable assignment request and shows
+**Prüfung läuft … n/m geprüft**. Only all-green persists the assignment. A blocked item
+returns HTTP 422, a reason and **Item tauschen**; a known content rejection prevents
+new spending while already-running sibling answers are still collected. Infrastructure
+errors return HTTP 503 and **Prüfung konnte nicht laufen — später erneut.**, without
+**Item tauschen**. The next explicit attempt retries only missing/error items; already
+passed siblings remain free hits. Batch runtime is bounded to 15 minutes (16-minute
+stale threshold); Studio retains 6/7 minutes. A final source reread after asynchronous work catches observed content
+changes before persistence and sends changed bytes through the next check.
+
+### Offline import and measured evidence
+
+`scripts/import-checkup-journal.mjs --out /absolute/path/outside/repo` emits reviewed SQL,
+a receipt and application instructions; it never connects to a database. Its deterministic
+sweep mirrors `verify-checkup.mjs`: **57 approved units, 1,140 unique item/frame pairs**.
+Deterministic records are `checkup_deterministic` and **cannot unlock the intelligence gate**.
+Optional `--evidence` accepts historical Sandbox evidence only when exact current bytes,
+frame, attribution, model, enabled thinking and engine-graded candidates match the runtime
+contract. No historical evidence was supplied here: **0/1,140 reusable intelligence hits
+are established by this offline run**. This is not a measurement of the production journal.
+GG must verify archive authenticity and review/apply the emitted SQL separately.
+
+### Boundaries for GG review
+
+Local acceptance uses synthetic accounts/classes and protocol-shaped Sandbox responses;
+it proves application behavior, not a real model's judgment or the live database driver.
+No snapshot of an assignment's wording is introduced: the existing student renderer still
+loads mutable content by item ID. Later corpus/Studio changes, or its display fallback on a
+later database failure, can alter an already published sheet. The final publication reread
+reduces the checking-time race; it does not provide an immutable, transactionally bound
+student snapshot. That renderer/persistence follow-up lies outside this card's allowed
+files and remains explicitly **UNVERIFIZIERT**. The same applies to the real account path
+and execution of the generated import SQL. `/30?` is a GG hint only; this implementation
+retains exactly `/20`.
+
+### Nachzug 1 · GG review of PR 503 (2026-10-08)
+
+The changes above supersede the original per-item launch and permanent infrastructure
+failure policy. Synthetic transport and actual-route tests measure **one environment and
+one model query for a 20-item uncached sheet**, then zero launches on journal reuse.
+The real POST regression adds a full-tier answer that cannot round-trip through the
+actual engine; it returns 422 before any Sandbox claim/start. Removing the actual
+`checkCheckupTaskKeys` call makes that integration test fail.
+
+The offline importer now inspects its own executable syntax in `--selftest`, rejecting
+process launchers, unapproved database modules and indirect `createRequire` aliases.
+CI runs that selftest as a dedicated line and also runs the actual offline sweep into
+a fresh temporary directory. Neither command executes the emitted SQL. Exact requested
+source-guard probes and the one-frame/per-item-loop mutation are retained outside the
+repo with original/mutated/restored checksums. Real account/DB operation and the earlier
+immutable-student-snapshot boundary remain unverified.

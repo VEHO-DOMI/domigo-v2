@@ -25,6 +25,7 @@ import { getTeacherForPage } from "@/lib/identity";
 import { listPreviewAssignments } from "@/app/assignments/preview";
 import { listOpenStories } from "@/lib/story-world";
 import { listPaintChapters, loadPaintLevel } from "@/lib/paint-content";
+import { loadDictionary } from "@/lib/woerterbuch";
 
 const GRADES = [1, 2, 3, 4] as const;
 
@@ -45,6 +46,7 @@ export default async function ExplorerPage() {
   const listening = listListeningUnits();
   const tests = listTestUnits();
   const assignments = await listPreviewAssignments(teacher, [...GRADES]);
+  const dictionary = await loadDictionary(GRADES);
 
   return (
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -65,6 +67,7 @@ export default async function ExplorerPage() {
           ? listPaintChapters(story.storyId).filter((chapter) => loadPaintLevel(story.storyId, chapter).draft !== true).length
           : loadReleasedChapters(story.storyId).length;
         const gradeUnits = units.filter((u) => u.startsWith(`g${grade}-`)).length;
+        const gradeWords = dictionary.filter((entry) => entry.grade === grade).length;
         const doors = TEACHER_DOORS[grade] ?? [];
         return (
           <section key={grade} className="dg-card" data-grade={grade} style={{ marginTop: 16 }}>
@@ -84,6 +87,10 @@ export default async function ExplorerPage() {
               <Link href={`/practice?jahrgang=${grade}`} className="dg-tile" style={{ display: "flex", flexDirection: "column", gap: 4, padding: "10px 12px" }}>
                 <span style={{ fontWeight: 700 }}>Üben · Wortschatz und Grammatik</span>
                 <span style={{ fontSize: 12, color: "var(--muted)" }}>{gradeUnits} Chapters</span>
+              </Link>
+              <Link href={`/woerterbuch?jahrgang=${grade}`} className="dg-tile" style={{ display: "flex", flexDirection: "column", gap: 4, padding: "10px 12px" }}>
+                <span style={{ fontWeight: 700 }}>Wörterbuch</span>
+                <span style={{ fontSize: 12, color: "var(--muted)" }}>{gradeWords} Wörter · {gradeUnits} Chapters</span>
               </Link>
               {[
                 { href: `/learn?jahrgang=${grade}`, label: "Lernpfad", count: gradeUnits },

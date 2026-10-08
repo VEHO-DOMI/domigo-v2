@@ -51,6 +51,9 @@ const modules = new Map([
     export const getDb = () => ({});
     export const getClassGrade = async () => f.grade;
     export const getDueCounts = async () => ({total: 0});
+    export const listClassesForTeacher = async () => [];
+    export const listClassRegistrationCountsForTeacher = async () => [];
+    export const listAssignmentsByCreator = async () => [];
     export const getUserProgress = async () => null;
     export const getUnitMastery = async (_db, scope, grade) => {
       f.masteryGrades.push(grade);
@@ -69,10 +72,10 @@ const modules = new Map([
       f.settings.set(grade, isOpen);
     };`],
     ["@domigo/game-detective", "export const EVIDENCE = {}; export const EvidenceGallery = () => null;"],
-    ["@domigo/game-novel", "export const SeasonBoard = () => null;"],
+    ["@domigo/game-novel", "export const SeasonBoard = () => null; export const storyReviewItems = () => [];"],
     ["@domigo/game-trip", "export const JournalBoard = () => null; export const tripCopyFor = () => null;"],
     ["@domigo/game-2d/board", "export const ZoneBoard = () => null;"],
-    ["@/lib/content-service", "export const loadUnitWithOverrides = async () => null;"],
+    ["@/lib/content-service", `export { loadUnit as loadUnitWithOverrides } from ${JSON.stringify(import.meta.resolve("@domigo/content-loader"))};`],
     ["@/app/assignments/preview", "export const listPreviewAssignments = async () => [];"],
     ["@/app/PreviewBanner", empty],
     ["./BuchClient", empty],

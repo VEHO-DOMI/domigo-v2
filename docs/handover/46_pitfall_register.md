@@ -1783,3 +1783,44 @@ Liste aufgeht.
 **Warum.** Die bekannte Regel heisst „deutsche Anführungszeichen nie in Code" und wird gelesen als „nicht in Zeichenketten". Sie gilt aber genauso in KOMMENTAREN, sobald irgendein Werkzeug die Datei als Text liest statt als Syntaxbaum — und mehrere Tore dieses Repos tun genau das. Ein gemischtes Paar (`„` … `"`) ist dabei schlimmer als zwei deutsche, weil es aussieht wie ein Paar.
 
 **Der Check, der es künftig fängt.** Zehn Sekunden, vor jedem Commit an einer Datei, die ein Tor als TEXT liest: `tr -cd '"' < datei | wc -c` muss GERADE sein. In diesem Repo schreibt man Zitate in Kommentaren als `»…«` — die Konvention stand schon in der Datei, sie wurde nur nicht befolgt.
+
+
+**cgo-104 (2026-10-08): Eine Erfolgsmeldung ist noch kein beendeter Prozess.**
+
+**Das Gesetz.** Ein Zeitwaechter fuer synchronen Code und das native Prozessende
+muss ausserhalb des ueberwachten Prozesses laufen; dessen eigener Timer kann
+bei einem blockierten Hauptlauf nicht mehr aufgerufen werden.
+
+**Der Vorfall.** Der GG meldete zwei nach der Erfolgszeile schlafende
+PNG-Selbsttests (Ketten 492 und 504). Die ersten 20 instrumentierten Laeufe
+unter `nohup`, eigener Sitzung, Dateiausgabe und leerer Eingabe blieben gruen
+(0,173–0,240 s). Weitere Laeufe OHNE Instrumentierung reproduzierten den
+Stillstand zweimal nach der Erfolgszeile. Ein Betriebssystem-Sample des
+haengenden Node-24.20.0-Prozesses (macOS 26.5.2) zeigte die gegenseitige
+Blockade: `Environment::Exit` → `DefaultProcessExitHandlerInternal` →
+`WorkerThreadsTaskRunner::Shutdown` → `uv_thread_join` wartet auf den
+V8-Hintergrundcompiler; dieser wartet in
+`CollectionBarrier::AwaitCollectionBackground` auf die Speicherbereinigung
+durch den Hauptthread. Der erzwungene Exit aus der Modul-Auswertung, die
+innerhalb einer Promise-Mikrotask laeuft, erreicht das native Ende, kommt aber
+nicht zurueck. Ein Timer in demselben Prozess koennte dort nicht mehr feuern.
+
+Die anderen Verdachte wurden getrennt gemessen: 1.128 Ausgabebytes, kein
+Ausgaberueckstau, keine aktiven JavaScript-Handles oder Requests bei
+Dateiausgabe; weder Dateiwaechter noch Server oder Timer im alten Selbsttest.
+Die neun `new PNG()`-Testbilder erzeugten zusaetzlich neun ungenutzte,
+nicht geschlossene Deflate-Streams. Dieser Ressourcenfehler ist beseitigt;
+der beobachtete wartende Thread gehoert aber zum V8-Compiler, nicht zu zlib.
+
+**Die Regel.** Synchrone PNG-Testbilder bestehen aus Abmessungen und einem
+Pixelpuffer, ohne asynchronen PNG-Stream. Erfolgs- und Fehlercodes werden mit
+`process.exitCode` nach natuerlichem Abschluss zurueckgegeben. Der eigene
+Elternprozess ueberwacht das wirkliche Prozessende: 60 s im Selbsttest,
+10 min im Normallauf, Timer mit `unref()`, dann Meldung mit den zuletzt
+gemeldeten Ressourcentypen und Exit 124. Die normale Dateiausgabe wird direkt
+vererbt; der Waechter fuegt keine Ausgabepipe hinzu. Interne kurze Proben
+lassen einen lokalen Server offen (beide Betriebsarten) oder blockieren den
+Hauptlauf absichtlich; alle drei muessen mit 124 enden. Sauberes Ende,
+Fehlercode und Signalabbruch bleiben unterscheidbar. Der bestehende
+CI-Selbsttest fuehrt diese Proben mit aus. Ein haengender Lauf bleibt ein
+rotes Tor; 124 bedeutet keine Freigabe fuer weitere Schritte.
