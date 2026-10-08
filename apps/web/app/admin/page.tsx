@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, listClassesForTeacher, listClassRegistrationCountsForTeacher, listAssignmentsByCreator } from "@domigo/db";
+import { getDb, getClassPurposes, listClassesForTeacher, listClassRegistrationCountsForTeacher, listAssignmentsByCreator } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
 import { kontoBaseUrl } from "@/lib/konto/basis";
@@ -31,6 +31,9 @@ export default async function AdminPage() {
     readStart(() => listClassRegistrationCountsForTeacher(getDb(), teacher.classScope, teacher.userId)),
     readStart(() => listAssignmentsByCreator(getDb(), teacher.classScope, teacher.userId)),
   ]);
+  const purposes = classes.ok
+    ? await getClassPurposes(getDb(), teacher.classScope, classes.value.map((cls) => cls.id))
+    : new Map();
   const paintChapters = listPaintChapters("g1.st.lost-pages");
   const lehrerraumUrl = `${kontoBaseUrl()}/lehrerraum/lehrgruppen`;
 
@@ -59,7 +62,7 @@ export default async function AdminPage() {
         </section>
       ) : (
         <>
-          <KlassenKarten classes={classes.value} registrations={registrations} assignments={assignments} now={new Date()} />
+          <KlassenKarten purposes={purposes} classes={classes.value} registrations={registrations} assignments={assignments} now={new Date()} />
           <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.6, margin: "14px 0 0" }}>
             Die Kinderzahlen beziehen sich auf die DomiGo-Liste. „Angemeldet“ zählt die bereits aktivierten Zugänge.
             Offene Aufgaben sind deine nicht archivierten Aufgaben ohne abgelaufene Frist, unabhängig von den Abgaben der Kinder.

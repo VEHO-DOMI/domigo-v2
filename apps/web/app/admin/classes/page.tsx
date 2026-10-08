@@ -7,7 +7,7 @@
  * dev fallback).
  */
 import { redirect } from "next/navigation";
-import { getDb, listArchivedClassesForTeacher, listClassesForTeacher } from "@domigo/db";
+import { getDb, getClassPurposes, listArchivedClassesForTeacher, listClassesForTeacher } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { kontoBaseUrl } from "@/lib/konto/basis";
 import ClassesManager from "./ClassesManager";
@@ -26,5 +26,6 @@ export default async function ClassesPage() {
     listClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
     listArchivedClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
   ]);
-  return <ClassesManager initialClasses={classes} initialArchived={archived} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />;
+  const purposes = await getClassPurposes(getDb(), teacher.classScope, [...classes, ...archived].map((cls) => cls.id));
+  return <ClassesManager initialPurposes={Object.fromEntries(purposes)} initialClasses={classes} initialArchived={archived} lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`} />;
 }

@@ -21,6 +21,8 @@
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { practiceAttempts, reviewQueue, studyPathProgress, userProgress, v2IdentityUsers } from "./schema.ts";
 import type { Db } from "./index.ts";
+import { getClassPurposes } from "./class-settings-service.ts";
+import { gameModeFor, type UnitMastery } from "./game-progress.ts";
 import { type ClassScope } from "./scope.ts";
 
 /** One student's attempt-ledger roll-up. `lastActiveAt` null ⇒ never practised. */
@@ -241,4 +243,23 @@ export function trapLabel(
   const hit = known.get(id);
   if (!hit) return { nameDe: id, icon: null, oneLinerDe: null, known: false };
   return { nameDe: hit.nameDe, icon: hit.icon, oneLinerDe: hit.oneLinerDe, known: true };
+}
+
+/** cgo-094: public multi-class mastery, with scope first and test purposes removed.
+ * The single-class readers above intentionally keep test-class learning visible.
+ * Raw game-progress.ts stays internal; index.ts exports this reader as getUnitMastery.
+ */
+export async function getUnitMastery(db: Db, classScope: ClassScope, grade: number): Promise<UnitMastery[]> {
+  const purposes = await getClassPurposes(db, classScope, classScope);
+  const regularIds = [...purposes].filter(([, purpose]) => purpose === "regular").map(([id]) => id);
+  const rows = await db.select({
+    unitSlug: practiceAttempts.unitSlug,
+    attempts: sql<number>`count(*)::int`,
+    itemsSolved: sql<number>`count(distinct ${practiceAttempts.itemId}) filter (where ${practiceAttempts.tier} <> 'wrong')::int`,
+    correct: sql<number>`count(*) filter (where ${practiceAttempts.tier} = 'correct')::int`,
+  }).from(practiceAttempts)
+    .where(and(inArray(practiceAttempts.classId, [...classScope]), inArray(practiceAttempts.classId, regularIds), eq(practiceAttempts.grade, grade), eq(practiceAttempts.mode, gameModeFor(grade))))
+    .groupBy(practiceAttempts.unitSlug);
+  return rows.map((r) => ({ unitSlug: r.unitSlug, attempts: r.attempts, itemsSolved: r.itemsSolved, correctRate: r.attempts > 0 ? r.correct / r.attempts : 0 }))
+    .sort((a, b) => a.unitSlug.localeCompare(b.unitSlug));
 }

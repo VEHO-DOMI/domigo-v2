@@ -14,6 +14,8 @@
  * stays is everything a teacher reads on this page: the classes, their sizes,
  * their class codes to copy, and the way into a class.
  */
+import { useRouter } from "next/navigation";
+import type { ClassPurpose } from "@domigo/db";
 import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 
@@ -39,12 +41,50 @@ export default function ClassesManager({
   initialClasses,
   initialArchived,
   lehrerraumUrl,
+  initialPurposes = {},
 }: {
   initialClasses: ClassSummary[];
+  initialPurposes?: Record<string, ClassPurpose>;
   initialArchived: ArchivedClassSummary[];
   /** Where classes are made now. Resolved on the server — no address in client code. */
   lehrerraumUrl: string;
 }) {
+  const router = useRouter();
+  const [overrides, setOverrides] = useState<Record<string, ClassPurpose>>({});
+  const [saving, setSaving] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ id: string; text: string } | null>(null);
+  const purposes = { ...initialPurposes, ...overrides };
+  const togglePurpose = async (id: string) => {
+    if (saving) return;
+    const purpose = purposes[id] === "test" ? "regular" : "test";
+    setSaving(id);
+    setNotice(null);
+    try {
+      const response = await fetch("/api/admin/class-settings", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ classId: id, purpose }),
+      });
+      const result = await response.json();
+      if (!response.ok || response.redirected || result?.ok !== true) throw new Error("not_saved");
+      setOverrides((previous) => ({ ...previous, [id]: purpose }));
+      setNotice({ id, text: "Gespeichert." });
+      router.refresh();
+    } catch {
+      setNotice({ id, text: "Nicht gespeichert. Bitte versuche es später erneut." });
+    } finally { setSaving(null); }
+  };
+  const purposeControl = (id: string) => (
+    <div style={{ marginTop: 14 }}>
+      <button type="button" role="switch" aria-checked={purposes[id] === "test"} aria-describedby={`purpose-${id}`}
+        disabled={saving !== null} onClick={() => togglePurpose(id)} className="dg-chip" style={{ minHeight: 44 }}>
+        Testklasse: {purposes[id] === "test" ? "Ein" : "Aus"}{saving === id ? " · Speichert …" : ""}
+      </button>
+      <p id={`purpose-${id}`} style={{ fontSize: 13, lineHeight: 1.5, color: "var(--text-secondary)", margin: "8px 0 0" }}>
+        Zählt nicht in Statistiken, Großmeister-Übersicht und Klassenaggregaten — für deinen eigenen Lehrertest
+      </p>
+      {notice?.id === id && <p role="status" style={{ fontSize: 13, marginBottom: 0 }}>{notice.text}</p>}
+    </div>
+  );
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const copyCode = async (c: ClassSummary) => {
@@ -86,7 +126,7 @@ export default function ClassesManager({
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontWeight: 700, fontSize: 17, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
-                    {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
+                    {c.name} {purposes[c.id] === "test" && <span className="dg-chip">Testklasse</span>} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
                   </div>
                   <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
                     {c.studentCount === 0 ? "No students yet" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
@@ -98,6 +138,8 @@ export default function ClassesManager({
                   <Link href={`/admin/classes/${c.id}/roster`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Roster</Link>
                 </div>
               </div>
+
+              {purposeControl(c.id)}
 
               {/* class code — prominent; students type it at the account service */}
               <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12, background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 12, padding: "10px 14px" }}>
@@ -124,12 +166,13 @@ export default function ClassesManager({
             {initialArchived.map((c) => (
               <div key={c.id} className="dg-card" style={{ opacity: 0.75 }}>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
-                  {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
+                  {c.name} {purposes[c.id] === "test" && <span className="dg-chip">Testklasse</span>} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
                 </div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
                   {c.studentCount === 0 ? "No students" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
                   {" · archiviert "}{new Date(c.archivedAt).toLocaleDateString("de-AT")}
                 </div>
+                {purposeControl(c.id)}
               </div>
             ))}
           </div>
