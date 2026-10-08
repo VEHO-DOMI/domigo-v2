@@ -37,3 +37,84 @@
 .fourteen button:focus-visible, .fourteen a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 480px) { .fourteen { padding: 14px 12px 32px; } .fourteen-dialogue { padding: 15px; } .fourteen-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fourteen-line { font-size: 18px; } }
 @media (prefers-reduced-motion: reduce) { .fourteen *, .fourteen *::before, .fourteen *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+.fourteen-before, .fourteen-delta { display: block; margin-top: 5px; overflow-wrap: anywhere; }
+.fourteen-before { font-size: 11px; color: var(--text-secondary); }
+.fourteen-comparison { font-weight: 700; color: var(--ink); margin: 12px 0 0; }
+.fourteen-save-state { padding-top: 10px; border-top: 1px solid var(--card-border); margin-top: 12px !important; font-size: 13px; line-height: 1.5; }
+.fourteen-compare-control { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.fourteen-compare-control label { font-size: 14px; font-weight: 600; }
+.fourteen-compare-control select { min-height: 44px; max-width: 100%; }
+.fourteen-end-help summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 600; }
+.fourteen-end-help p { margin-top: 0; line-height: 1.5; }
+
+/* cgo-091: a sequence of picture, dialogue and working cards. No timed advance. */
+.fourteen { max-width: 1080px; padding: 24px 24px 48px; background: var(--bg); border-radius: 24px; }
+.fourteen-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 22px; }
+.fourteen-brand > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px 11px 11px 2px; background: var(--accent); color: white; font-size: 22px; }
+.fourteen-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.fourteen-title h1 { margin-bottom: 12px; }
+.fourteen-header nav { font-size: 12px; }
+.fourteen-scene { min-height: 340px; border-radius: 24px 24px 24px 5px; border-width: 2px; }
+.fourteen-illustrated { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+.fourteen-illustrated > .fourteen-beat { height: 100%; min-height: 340px; object-fit: cover; }
+.fourteen-dialogue { padding: clamp(20px, 3vw, 34px); display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.fourteen-text-card { max-width: 780px; margin: 0 auto; border-left: 5px solid var(--accent); background: linear-gradient(145deg, var(--card), var(--accent-soft)); }
+.fourteen-text-card .fourteen-line { font-size: clamp(22px, 3.1vw, 32px); line-height: 1.45; }
+.fourteen-speaker { font-size: 14px; }
+.fourteen-line { font-size: clamp(20px, 2.2vw, 25px); line-height: 1.5; }
+.fourteen-narrator .fourteen-line { font-size: clamp(20px, 2.2vw, 25px); }
+.fourteen[data-band="tense"] .fourteen-text-card { border-left-color: #a36a24; }
+.fourteen[data-band="reckoning"] .fourteen-scene { border-radius: 5px; }
+.fourteen[data-card="task"] .fourteen-illustrated { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); }
+.fourteen[data-card="task"] .fourteen-line { font-size: 17px; }
+.fourteen[data-card="task"] .fourteen-dialogue { padding: 22px; }
+.fourteen[data-card="task"] .fourteen-task { border-top: 2px solid var(--accent); }
+.fourteen-task-step { font-size: 19px; font-weight: 750; margin-bottom: 8px; color: var(--ink); }
+.fourteen-task-label { color: var(--text-secondary); font-size: 13px; line-height: 1.5; }
+.fourteen-task[data-phase="response"] { border-top-color: var(--card-border); }
+.fourteen-result { padding: 16px; border-width: 4px; line-height: 1.5; }
+.fourteen-result strong { display: block; color: var(--ink); margin-bottom: 6px; }
+.fourteen-save-state { display: flex; gap: 8px; align-items: baseline; padding-top: 10px; border-top: 1px solid var(--card-border); }
+.fourteen-save-state::before { content: "●"; font-size: 10px; }
+.fourteen-save-state[data-save-state="failed"] { color: var(--wrong, #a92d39); }
+.fourteen-channel-peek { margin-top: 22px; border-top: 1px solid var(--card-border); }
+.fourteen-channel-peek > summary { min-height: 44px; padding: 16px 0 8px; cursor: pointer; font-size: 12px; font-weight: 650; color: var(--text-secondary); }
+.fourteen-ending { max-width: 780px; margin: 0 auto; }
+.fourteen-ending > .fourteen-beat { aspect-ratio: 21 / 8; border-radius: 18px 18px 0 0; }
+.fourteen-end-quote { margin: 0; padding: 24px; font-size: clamp(24px, 4vw, 35px); line-height: 1.35; border-radius: 0 0 18px 4px; }
+.fourteen-ending > p { line-height: 1.6; }
+.fourteen-metrics > div { border-top: 2px solid var(--card-border); padding-top: 10px; }
+.fourteen-audience[data-quiet] { border-left: 3px solid var(--text-secondary); }
+.fourteen-comparison { font-size: 17px; color: var(--ink); font-weight: 750; }
+.fourteen-delta { display: block; line-height: 1.5; font-weight: 650; }
+.fourteen-metric-bar { display: flex; flex-direction: column; gap: 3px; height: 11px; margin-top: 9px; }
+.fourteen-metric-bar i { display: block; height: 4px; min-width: 2px; border-radius: 2px; background: var(--text-secondary); }
+.fourteen-metric-bar i + i { background: var(--accent); }
+.fourteen-channel-note { font-size: 15px; line-height: 1.5; max-width: 66ch; }
+@media (max-width: 640px) {
+  .fourteen { padding: 14px 10px 32px; border-radius: 0; }
+  .fourteen-header { gap: 8px; margin-bottom: 18px; }
+  .fourteen-header nav { gap: 8px; }
+  .fourteen-brand { font-size: 18px; gap: 7px; }
+  .fourteen-brand > span { height: 30px; width: 30px; font-size: 18px; border-radius: 8px 8px 8px 2px; }
+  .fourteen-title { display: block; }
+  .fourteen-title > .fourteen-caption { display: block; margin: -7px 0 12px; }
+  .fourteen-scene, .fourteen[data-card="task"] .fourteen-illustrated { display: block; min-height: 0; }
+  .fourteen-illustrated > .fourteen-beat { min-height: 0; height: 190px; aspect-ratio: auto; }
+  .fourteen[data-card="task"] .fourteen-illustrated > .fourteen-beat { height: 125px; }
+  .fourteen-dialogue, .fourteen[data-card="task"] .fourteen-dialogue { padding: 18px 16px; }
+  .fourteen-line, .fourteen-narrator .fourteen-line { font-size: 19px; }
+  .fourteen-text-card .fourteen-line { font-size: 24px; }
+  .fourteen-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fourteen-metrics > div:first-child { grid-column: 1 / -1; }
+  .fourteen-metrics > div:first-child dd { font-size: 30px; }
+  .fourteen-actions > .dg-btn { flex: 1 1 100%; text-align: center; }
+  .fourteen-ending > .fourteen-beat { aspect-ratio: 16/9; }
+}
+@media (prefers-color-scheme: dark) {
+  .fourteen, .fourteen-season { --bg: #111827; --card: #1b2536; --bg-sunken: #141e2e; --card-border: #3c4b63; --ink: #f2f4fa; --text: #e4eaf4; --text-secondary: #b5c2d8; --muted: #aebcd1; --accent: #82b5ff; --accent-deep: #afd0ff; --accent-soft: #243959; --wrong: #ffabb3; --shadow-card: 0 12px 32px #0003; color-scheme: dark; }
+  .fourteen .dg-btn { background: #245cb5; color: #fff; }
+  .fourteen .dg-btn-secondary, .fourteen .dg-chip { background: var(--card); color: var(--ink); border-color: var(--card-border); }
+  .fourteen .dg-input { background: var(--bg-sunken); color: var(--ink); }
+  .fourteen-brand > span { background: #245cb5; }
+}
