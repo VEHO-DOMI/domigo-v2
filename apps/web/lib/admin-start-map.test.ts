@@ -3,12 +3,108 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
-import { createSourceFile, forEachChild, isBinaryExpression, isJsxAttribute, ScriptKind, ScriptTarget, SyntaxKind, type Node } from "typescript";
+import {
+  createSourceFile, forEachChild, isArrowFunction, isBinaryExpression, isCallExpression,
+  isIdentifier, isImportDeclaration, isJsxAttribute, isJsxText, isNamedImports,
+  isPropertyAccessExpression, isStringLiteralLike, isTemplateExpression, isTypeNode,
+  ScriptKind, ScriptTarget, SyntaxKind, type Node,
+} from "typescript";
 
 const page = readFileSync(new URL("../app/admin/page.tsx", import.meta.url), "utf8");
 const cards = readFileSync(new URL("../app/admin/KlassenKarten.tsx", import.meta.url), "utf8");
 const code = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
 const hash = (s: string) => createHash("md5").update(s).digest("hex");
+
+const DB_READERS = new Set(["getDb", "listClassesForTeacher", "listClassRegistrationCountsForTeacher", "listAssignmentsByCreator"]);
+// Type-only imports do not read data; keep their names explicit too.
+const DB_TYPES = new Set(["ClassSummary", "AssignmentRow"]);
+const PAGE_CALLS = new Set([...DB_READERS, "getTeacherForPage", "redirect", "readStart", "isGrandmaster", "kontoBaseUrl", "listPaintChapters", "abmelden", "Number", "summarizeAssignments", "deadlineLabel"]);
+const METHODS = new Set(["all", "map", "get", "slice", "toISOString"]);
+const PERSON_FIELDS = /^(?:displayName|firstName|givenName|lastName|surname|nickname|display_name|first_name|given_name|last_name|identity_users|v2IdentityUsers)$/i;
+
+/** Fail closed on unknown imports AND calls (including unimported reader g2).
+ * Parsing syntax, rather than matching import text, also sees renamed imports. */
+function onlySummaryReaders(src: string): boolean {
+  const tree = createSourceFile("admin.tsx", src, ScriptTarget.Latest, true, ScriptKind.TSX);
+  const calls = new Set(PAGE_CALLS);
+  let ok = true;
+  const visit = (node: Node) => {
+    if (isImportDeclaration(node) && isStringLiteralLike(node.moduleSpecifier)) {
+      const importPath = node.moduleSpecifier.text;
+      if (importPath === "@domigo/db" || importPath.startsWith("@domigo/db/")) {
+        const clause = node.importClause;
+        const bindings = clause?.namedBindings;
+        if (importPath !== "@domigo/db" || !clause || clause.name || !bindings || !isNamedImports(bindings)) ok = false;
+        else for (const spec of bindings.elements) {
+          const original = (spec.propertyName ?? spec.name).text;
+          if (clause.isTypeOnly || spec.isTypeOnly) {
+            if (!DB_TYPES.has(original)) ok = false;
+          } else if (!DB_READERS.has(original)) ok = false;
+          else calls.add(spec.name.text);
+        }
+      }
+    }
+    if (isIdentifier(node) && (/^listRoster|Students|StudentNames/i.test(node.text) || PERSON_FIELDS.test(node.text))) ok = false;
+    if (isStringLiteralLike(node) && PERSON_FIELDS.test(node.text)) ok = false;
+    if (isCallExpression(node)) {
+      const callee = node.expression;
+      if (isIdentifier(callee)) {
+        if (!calls.has(callee.text)) ok = false;
+      } else if (isPropertyAccessExpression(callee)) {
+        if (!METHODS.has(callee.name.text)) ok = false;
+      } else ok = false; // dynamic imports, require/element access and indirect calls
+    }
+    forEachChild(node, visit);
+  };
+  visit(tree);
+  return ok;
+}
+
+/** Only the class label may be rendered as a name: cls must be bound by
+ * classes.map, not by a pupils/roster loop with a convenient variable name. */
+function noPersonNames(src: string): boolean {
+  const tree = createSourceFile("admin.tsx", src, ScriptTarget.Latest, true, ScriptKind.TSX);
+  let ok = true;
+  const visit = (node: Node) => {
+    if (isTypeNode(node)) return;
+    if ((isIdentifier(node) || isStringLiteralLike(node)) && PERSON_FIELDS.test(node.text)) ok = false;
+    if ((isIdentifier(node) || isStringLiteralLike(node)) && node.text === "name") {
+      const access = node.parent;
+      let classLabel = false;
+      if (isPropertyAccessExpression(access) && access.name === node && access.expression.getText(tree) === "cls") {
+        for (let p: Node | undefined = access.parent; p; p = p.parent) {
+          if (!isArrowFunction(p) || !p.parameters.some(param => param.name.getText(tree) === "cls")) continue;
+          const call = p.parent;
+          classLabel = isCallExpression(call) && call.expression.getText(tree) === "classes.map";
+          break;
+        }
+      }
+      if (!classLabel) ok = false;
+    }
+    forEachChild(node, visit);
+  };
+  visit(tree);
+  return ok;
+}
+
+/** Reviewed literal inventory, not a heuristic for what a person's name looks
+ * like. Covers JSX text, expressions, templates and indirect string constants;
+ * comments are ignored. Copy changes need an explicit review and a new pin. */
+function literalPin(src: string): string {
+  const tree = createSourceFile("admin.tsx", src, ScriptTarget.Latest, true, ScriptKind.TSX);
+  const literals: string[] = [];
+  const add = (s: string) => { const text = s.replace(/\s+/g, " ").trim(); if (text) literals.push(text); };
+  const visit = (node: Node) => {
+    if (isStringLiteralLike(node) || isJsxText(node)) add(node.text);
+    if (isTemplateExpression(node)) {
+      add(node.head.text);
+      for (const span of node.templateSpans) add(span.literal.text);
+    }
+    forEachChild(node, visit);
+  };
+  visit(tree);
+  return hash(JSON.stringify(literals.sort()));
+}
 
 /** Inspect the actual link's ancestors; a stray isGrandmaster elsewhere is no guard. */
 function guardedGrandmaster(src: string): boolean {
@@ -45,9 +141,15 @@ const laws: Law[] = [
       passes: (s: string) => code(s).includes(`${name}(getDb(), teacher.classScope, teacher.userId)`),
       break: (s: string) => s.replace(`${name}(getDb(), teacher.classScope, teacher.userId)`, `${name}(getDb(), teacher.classScope, "foreign")`) },
   ]),
-  { name: "no platform-wide or pupil-level readers", source: page + cards,
-    passes: s => !/\b(?:listClassesInScope|listAllClassIds|listAllClassesForGrandmaster|assignableClasses|listRoster|listStudentProgress|listStudentMeta|holeKlassenliste)\b/.test(code(s)),
-    break: s => s + '\nlistClassesInScope(getDb(), teacher.classScope);' },
+  ...[page, cards].flatMap((source, i) => [
+    { name: `${i === 0 ? "page" : "cards"}: only approved summary readers`, source,
+      passes: onlySummaryReaders, break: (s: string) => s + '\nlistStudentNames(getDb());' },
+    { name: `${i === 0 ? "page" : "cards"}: no pupil name fields`, source,
+      passes: noPersonNames, break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>{student.name}</span>') },
+    { name: `${i === 0 ? "page" : "cards"}: reviewed literals contain no fixed pupil names`, source,
+      passes: (s: string) => literalPin(s) === (i === 0 ? "812aac2af06a3b6f80cbc32b47a66c1e" : "8b16a9c08961b53097dae62247495007"),
+      break: (s: string) => s.replace(i === 0 ? "</h1>" : "</h2>", (i === 0 ? "</h1>" : "</h2>") + '<span>Max Mustermann</span>') },
+  ]),
   { name: "grandmaster link under its own rank guard", source: page,
     passes: guardedGrandmaster, break: s => s.replace('isGrandmaster(teacher.userId) &&', 'true &&') },
   { name: "no sunset game links", source: page + cards,
@@ -73,8 +175,35 @@ const laws: Law[] = [
     break: s => s.replace('href: "/admin/explorer"', 'href: "/admin"') },
 ];
 
+const privacyVariants: Law[] = [
+  ...["listStudentNames", "futureReader", "listRosterDetails", "listStudents"].map(reader => ({
+    name: `renamed DB import: ${reader}`, source: page, passes: onlySummaryReaders,
+    break: (s: string) => s.replace("{ getDb,", `{ ${reader} as hiddenRead, getDb,`),
+  })),
+  ...[
+    'import * as db from "@domigo/db";',
+    'import { futureReader } from "@domigo/db/roster-service";',
+    'const db = await import("@domigo/db");',
+    'import { readIdentity as hiddenRead } from "@/lib/identity"; hiddenRead();',
+  ].map((extra, i) => ({
+    name: `indirect reader ${i + 1}`, source: page, passes: onlySummaryReaders,
+    break: (s: string) => `${s}\n${extra}`,
+  })),
+  ...["student.displayName", "student.firstName", "identity_users.display_name"].map(field => ({
+    name: `pupil field: ${field}`, source: cards, passes: noPersonNames,
+    break: (s: string) => s.replace("{cls.name}</h2>", `{${field}}</h2>`),
+  })),
+  { name: "a pupil loop cannot masquerade as the class label", source: cards, passes: noPersonNames,
+    break: s => s.replace("classes.map((cls)", "students.map((cls)") },
+  ...['{"Max Mustermann"}', '{`Max Mustermann`}'].map(expression => ({
+    name: `fixed pupil name in expression: ${expression}`, source: cards,
+    passes: (s: string) => literalPin(s) === "8b16a9c08961b53097dae62247495007",
+    break: (s: string) => s.replace("{cls.name}</h2>", `${expression}</h2>`),
+  })),
+];
+
 describe("teacher start source contracts", () => {
-  for (const law of laws) {
+  for (const law of [...laws, ...privacyVariants]) {
     it(law.name, () => assert.equal(law.passes(law.source), true));
     it(`tamper is red: ${law.name}`, () => {
       const before = hash(law.source);
