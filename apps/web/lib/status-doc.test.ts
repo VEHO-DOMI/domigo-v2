@@ -4,8 +4,12 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
+import * as ts from "typescript";
 
 const source = readFileSync(new URL("../../../docs/STATUS_AND_ROADMAP.md", import.meta.url), "utf8");
+const archive = readFileSync(new URL("../../../docs/handover/STATUS_ARCHIV_2026-08.md", import.meta.url));
+const archivePin = "4b62b91fafac4863d8ed62a7e0faabec";
+const classWall = readFileSync(new URL("../app/admin/classes/[id]/page.tsx", import.meta.url), "utf8");
 const sections = ["Was LIVE ist", "Was offen ist", "Entscheide seit 07.10.", "Bei Koki offen", "So wird hier gearbeitet"];
 const areas = ["Schülerseite", "Spiele Y1–Y4", "Lehrerseite", "Identität/Konto", "Inhalte", "Betrieb/Qualität"];
 const headFields: [string, RegExp][] = [
@@ -17,7 +21,7 @@ const headFields: [string, RegExp][] = [
   ["CI-Einzeiler", /^- \*\*CI-Einzeiler:\*\* [1-9]\d* `- run:`-Zeilen/m],
   ["Migrationen", /^- \*\*Migrationen:\*\* Repository-Journal \d{4}–\d{4};/m],
 ];
-const md5 = (text: string) => createHash("md5").update(text).digest("hex");
+const md5 = (text: string | Uint8Array) => createHash("md5").update(text).digest("hex");
 const cells = (line: string) => line.trim().slice(1, -1).split("|").map((s) => s.trim());
 const plain = (cell: string) => cell.replace(/\*\*/g, "");
 
@@ -93,4 +97,77 @@ test("STATUS selftest: each broken contract is rejected, valid old snapshots sta
   assert.match(oldSnapshot, /\*\*Datum:\*\* 2000-01-01/);
   assert.deepEqual(statusErrors(oldSnapshot), [], "no calendar expiry");
   assert.deepEqual(statusErrors(source.replace("| LIVE |", "| **LIVE** |")), [], "Markdown emphasis is valid");
+});
+
+test("STATUS archive stays byte-identical to the pinned historical document", () => {
+  assert.equal(md5(archive), archivePin, "STATUS archive bytes changed");
+});
+
+test("STATUS archive selftest rejects one removed line", (t) => {
+  const shortened = archive.subarray(0, archive.lastIndexOf("\n", archive.length - 2) + 1);
+  assert.notEqual(shortened.length, archive.length);
+  assert.notEqual(md5(shortened), md5(archive));
+  assert.throws(() => assert.equal(md5(shortened), archivePin), assert.AssertionError);
+  t.diagnostic(`archive line removed: red; md5 ${md5(archive)} -> ${md5(shortened)}`);
+});
+
+/** Inspect the actual JSX elements, not incidental text or another wrapping div.
+ * These are the measures proved at 390/1440 px; this source guard does not replace
+ * that browser evidence or introduce a second layout implementation. */
+function classWallLayoutErrors(raw: string): string[] {
+  const tree = ts.createSourceFile("page.tsx", raw, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const elements: ts.JsxElement[] = [];
+  const visit = (node: ts.Node) => {
+    if (ts.isJsxElement(node)) elements.push(node);
+    ts.forEachChild(node, visit);
+  };
+  visit(tree);
+  const tag = (element: ts.JsxElement) => element.openingElement.tagName.getText(tree);
+  const children = (element?: ts.JsxElement) => element?.children.filter(ts.isJsxElement) ?? [];
+  const style = (element?: ts.JsxElement): Record<string, string> => {
+    const attribute = element?.openingElement.attributes.properties.find(
+      (a): a is ts.JsxAttribute => ts.isJsxAttribute(a) && a.name.getText(tree) === "style",
+    );
+    const expression = attribute?.initializer && ts.isJsxExpression(attribute.initializer) ? attribute.initializer.expression : undefined;
+    if (!expression || !ts.isObjectLiteralExpression(expression)) return {};
+    return Object.fromEntries(expression.properties.flatMap((property) => {
+      if (!ts.isPropertyAssignment(property)) return [];
+      const value = property.initializer;
+      return ts.isStringLiteral(value) || ts.isNumericLiteral(value)
+        ? [[property.name.getText(tree).replace(/["']/g, ""), value.text]] : [];
+    }));
+  };
+  const main = elements.find((element) => tag(element) === "main");
+  const header = children(main).find((element) => tag(element) === "div");
+  const heading = children(header).find((element) => tag(element) === "h1");
+  const links = children(header).find((element) => tag(element) === "div");
+  const errors: string[] = [];
+  const expect = (element: ts.JsxElement | undefined, label: string, required: Record<string, string>) => {
+    const actual = style(element);
+    for (const [property, value] of Object.entries(required)) {
+      if (actual[property] !== value) errors.push(`${label}: ${property} must be ${value}`);
+    }
+  };
+  expect(main, "main", { width: "100%", maxWidth: "980", minWidth: "0" });
+  expect(header, "header", { display: "flex", flexWrap: "wrap" });
+  expect(heading, "heading", { minWidth: "0", overflowWrap: "anywhere" });
+  expect(links, "links", { display: "flex", flexWrap: "wrap", minWidth: "0" });
+  const tables = elements.filter((element) => tag(element) === "table");
+  if (tables.length === 0) errors.push("tables: no scrollable tables found");
+  for (const table of tables) {
+    const parent = ts.isJsxElement(table.parent) && tag(table.parent) === "div" ? table.parent : undefined;
+    expect(parent, "table wrapper", { overflowX: "auto" });
+  }
+  return errors;
+}
+
+test("class wall source retains the measures proved at 390 px", () => {
+  assert.deepEqual(classWallLayoutErrors(classWall), []);
+});
+
+test("class wall selftest rejects removed header flexWrap despite other wrapping divs", (t) => {
+  const noWrap = classWall.replace('flexWrap: "wrap", ', "");
+  assert.notEqual(md5(noWrap), md5(classWall));
+  assert.deepEqual(classWallLayoutErrors(noWrap), ["header: flexWrap must be wrap"]);
+  t.diagnostic(`header flexWrap removed: red; md5 ${md5(classWall)} -> ${md5(noWrap)}`);
 });
