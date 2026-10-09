@@ -1,0 +1,41 @@
+.og-grammar { max-width:520px; }
+.og-grammar .og-player { margin-bottom:16px; }
+.og-grammar-heading { margin:20px 0 14px; }
+.og-grammar-heading h2,.og-grammar-focus h2 { font:600 22px var(--font-display); color:var(--text); }
+.og-grammar-heading p { margin:6px 0; color:var(--muted); font-size:14px; line-height:1.5; }
+.og-grammar-tabs,.og-grammar-formats { display:flex; gap:8px; flex-wrap:wrap; }
+.og-grammar-tabs button,.og-grammar-formats button { border:1px solid var(--card-border); border-radius:14px; padding:10px 12px; background:var(--card); color:var(--text); font:600 13px var(--font-body); cursor:pointer; }
+.og-grammar button[aria-pressed="true"] { border-color:var(--accent); background:var(--accent-light); box-shadow:0 0 0 1px var(--accent); }
+.og-grammar-chapters details { margin-bottom:10px; background:var(--card); border:1px solid var(--card-border); border-radius:16px; overflow:hidden; }
+.og-grammar-chapters summary { padding:16px; font:600 18px var(--font-display); color:var(--accent); cursor:pointer; }
+.og-grammar-topic { display:grid; grid-template-columns:1fr auto; width:calc(100% - 20px); margin:0 10px 10px; text-align:left; padding:14px; border:1px solid var(--card-border); border-radius:12px; background:var(--card); color:var(--text); cursor:pointer; }
+.og-grammar-topic strong { font:600 16px var(--font-display); overflow-wrap:anywhere; }
+.og-grammar-topic small { grid-row:2; color:var(--muted); margin-top:5px; }
+.og-grammar-topic>span { grid-column:2; grid-row:1/3; align-self:center; color:var(--accent); padding-left:10px; }
+.og-grammar-focus,.og-grammar-exercise { background:var(--card); border:1px solid var(--card-border); border-radius:24px; padding:22px; margin:16px 0; box-shadow:var(--shadow-card); }
+.og-grammar fieldset { border:0; padding:0; margin:12px 0; min-width:0; }
+.og-grammar legend { margin-bottom:10px; color:var(--muted); font-size:13px; }
+.og-grammar-focus>.og-primary { margin-top:16px; width:100%; }
+.og-grammar-format { color:var(--accent); font-size:12px; font-weight:700; margin-bottom:12px; }
+.og-grammar-exercise h2 { font:600 21px/1.45 var(--font-display); margin:0 0 18px; overflow-wrap:anywhere; }
+.og-grammar-input { display:flex; flex-direction:column; gap:6px; margin:12px 0; color:var(--muted); font-size:13px; }
+.og-grammar input,.og-grammar select { width:100%; min-width:0; padding:12px; border:1px solid var(--card-border); border-radius:12px; background:var(--bg); color:var(--text); font:16px var(--font-body); }
+.og-grammar-options { display:grid; gap:10px; }
+.og-grammar-options button { padding:14px; text-align:left; border:1px solid var(--card-border); border-radius:14px; background:var(--bg); color:var(--text); font:16px/1.4 var(--font-body); cursor:pointer; }
+.og-grammar-match { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:8px; margin:10px 0; font-size:14px; overflow-wrap:anywhere; }
+.og-grammar-hint { display:block; border:0; border-radius:10px; background:transparent; color:var(--accent); padding:12px 0; cursor:pointer; font:600 14px var(--font-body); }
+.og-grammar-hint-text,.og-grammar-gloss { font-size:14px; color:var(--text); line-height:1.5; margin:12px 0; }
+.og-grammar .og-game-feedback { line-height:1.55; overflow-wrap:anywhere; }
+.og-grammar .og-game-feedback p { margin:10px 0; }
+.og-grammar .og-game-result { display:grid; gap:18px; }
+.og-grammar .og-game-stats { gap:16px; }
+.og-grammar .og-game-stats span:last-child { text-align:right; }
+.og-grammar-memory p { font-size:13px; color:var(--muted); margin-bottom:12px; }
+.og-grammar-memory .og-memory-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; }
+.og-grammar-memory .og-memory-card { min-height:90px; padding:8px 4px; font-size:12px; overflow-wrap:anywhere; }
+.og-grammar-memory .og-memory-card small { display:block; color:var(--muted); }
+.og-grammar-memory .is-matched { opacity:.75; }
+.og-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.og-grammar button:focus-visible,.og-grammar summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.og-grammar button:disabled { cursor:default; }
+@media(max-width:420px) { .og-grammar-focus,.og-grammar-exercise { padding:16px; } .og-grammar-match { grid-template-columns:1fr; } }

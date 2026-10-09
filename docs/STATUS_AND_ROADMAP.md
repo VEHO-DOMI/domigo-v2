@@ -19,6 +19,10 @@ Noch nicht LIVE. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`
 
 **In Prüfung, noch nicht LIVE.** Fünf Modi unter `/modi/flashcards`, `/modi/memory`, `/modi/spelling`, `/modi/wordhunt`, `/modi/speed` sind auf W1/PR 507 aufgebaut. Antworten laufen über `/api/attempts` und die gemeinsame Wiederholungsqueue; Flashcards geben serverseitig 0 XP. Speed startet mit einer signierten Serverzeit und weist Antworten ab Sekunde 60 ab. Die Vorschau speichert nichts. Word Hunt verwendet Chapters aus den vorhandenen Wortbänken. Original-Boni und die Hinweis-Halbierung sind nicht umgesetzt: Original-Abweichung, Koki-Ruling gemäß GG-Entscheid 09.10.; eine gewünschte Änderung gehört in eine Folgekarte. Prüfung, GG-Abnahme und Merge stehen aus.
 
+## In Prüfung: cgo-110 · OG-Parität W3
+
+**In Prüfung, noch nicht LIVE.** Auf PR 508 aufgebaut: `/modi/grammar` ergänzt Struktur-Auswahl nach Chapter, 13 vorhandene Formate, zehn Aufgaben je Runde und die Hinweisleiter. Namen kommen aus dem Struktur-Katalog; Klassenreserve und Jahrgangsgrenze bleiben im gemeinsamen Lader. Jede Antwort läuft mit `mode: grammar` durch `/api/attempts`; die Anzeige verwendet nur bestätigte XP. Vorschau ohne Schreibanfragen. Jahrgang 1 erhält Grammar Memory Match aus vollständigen vorhandenen Zuordnungssätzen, ohne neue Inhalte. Gerätemodus Vocab/Grammar und bestehende Grammatik-Titelleiter sind verbunden. Lokale synthetische Abnahme und Prüfbelege gehören zum PR; Produktionsabnahme, GG-Kette und Merge bleiben offen. Keine Migration in W3.
+
 ## Was LIVE ist
 
 LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vorgesehenen Zugang erreichbar. Code, Freigabedateien und Programm-Inventar belegen den Umfang; ein neuer vollständiger Durchlauf mit echten Konten wurde nicht durchgeführt. Gebautes ohne Kinderfreigabe, offene PRs und pausierter Weiterbau stehen deshalb getrennt. Ein bloßer Merge ist keine Unterrichtsabnahme.

@@ -3,8 +3,9 @@ import { abmelden } from "../le/konto-aktion";
 import { avatarPath, AVATAR_NAMES } from "@/lib/avatar";
 import { levelFor, vocabTitle, grammarTitle, registerFor, barFraction, formatXp, prestigeStars } from "@/lib/levels";
 import type { TrainerProfile } from "./trainer-data";
+import ModeSwitch from "./ModeSwitch";
 
-export default function PlayerCard({ profile, grade, preview }: { profile: TrainerProfile; grade: number; preview: boolean }) {
+export default function PlayerCard({ profile, grade, preview, mode }: { profile: TrainerProfile; grade: number; preview: boolean; mode?: "vocab" | "grammar" }) {
   const level = levelFor(profile.xp ?? 0);
   const title = vocabTitle(level.level, level.prestige, registerFor(grade));
   const grammar = levelFor(profile.grammarXp ?? 0);
@@ -34,7 +35,7 @@ export default function PlayerCard({ profile, grade, preview }: { profile: Train
     </div>
     <div className="og-player-actions">
       {!preview && <form action={logOut}><button className="og-logout" type="submit">Log Out</button></form>}
-      <Link className="og-switch" href={`/modi${suffix}${suffix ? "&" : "?"}bereich=1`}>🔄 Switch to Grammar or Story Mode</Link>
+      <ModeSwitch grade={grade} preview={preview} mode={mode} />
     </div>
   </section>;
 }

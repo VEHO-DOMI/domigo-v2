@@ -669,6 +669,16 @@ async function renderTrainer(file: string, props: Record<string, unknown>): Prom
     "@/lib/levels": levels, "@/lib/avatar": avatar,
     "@/lib/modi/catalog": modeCatalog,
   };
+  const preference = await import("./modi/preference.ts");
+  modules["@/lib/modi/preference"] = preference;
+  const switchCode = ts.transpileModule(read("home/ModeSwitch.tsx"), { compilerOptions: {
+    module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
+  } }).outputText;
+  const switchModule = { exports: {} };
+  new Function("require", "exports", "module", switchCode)((id: string) => {
+    assert.ok(id in modules, id); return modules[id];
+  }, switchModule.exports, switchModule);
+  modules["./ModeSwitch"] = switchModule.exports;
   const compiled = ts.transpileModule(read(file), { compilerOptions: {
     module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022,
   } }).outputText;
@@ -763,4 +773,29 @@ it("Nachzug 1 original button metrics and year 1 mode backdrop", () => {
     '.og-root[data-grade="1"][data-screen="modi"]::before { display:none; }',
     '.og-root[data-grade="1"] .og-directions legend { font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.5rem; }',
   ]) assert.ok(css.includes(recipe), recipe);
+});
+
+it("G13 grammar page resolves grade, preview, reserve-filtered items and real catalog before rendering", () => {
+  const page = code(read("modi/grammar/page.tsx"));
+  for (const pattern of [/await resolveStudentView\(query\.jahrgang\)/, /trainerGrade\(view\)/, /const preview = view\.kind === "preview"/, /loadPracticeWords\(view, grade, chapters\)/, /listApprovedUnits\(\)\.filter/, /chapters\.flatMap\(loadUnitStructures\)/, /ownerId=\{acting\?\.userId \?\? null\}/]) assert.match(page, pattern);
+  assert.match(fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8"), /"\/modi\/:path\*"/);
+});
+it("G14 grammar preview has zero write paths and live receipts remain owner-bound", () => {
+  const session = code(read("modi/grammar/GrammarSession.tsx"));
+  assert.match(session, /useOutboxFlush\(!preview, ownerId\)/);
+  assert.match(session, /attemptSender\(preview, ownerId\)\(body\)/);
+  assert.match(session, /if \(preview \|\| !ownerId\) return/);
+  assert.match(session, /subscribeOutboxReplies\(ownerId/);
+  assert.doesNotMatch(session, /\bsendAttempt\b|localStorage|sessionStorage|indexedDB|method:\s*["']POST/);
+});
+it("G15 grammar entry routes are live and player titles still use both official registers", async () => {
+  assert.match(code(read("modi/ModePicker.tsx")), /mode === "grammar" \|\| mode in extra \? `\/modi\/\$\{mode\}/);
+  assert.match(code(read("home/ModeSwitch.tsx")), /"\/modi\/grammar"/);
+  for (const grade of [1, 2, 3, 4]) {
+    const html = await renderTrainer("home/PlayerCard.tsx", { grade, preview: true, mode: "grammar", profile: { name: "Test", avatar: 1, xp: 0, grammarXp: 80, streak: 0 } });
+    const { levelFor, grammarTitle, registerFor } = await import("./levels.ts");
+    const level = levelFor(80);
+    assert.ok(html.includes(grammarTitle(level.level, level.prestige, registerFor(grade)).name));
+    assert.ok(html.includes("Switch to Vocab or Story Mode"));
+  }
 });

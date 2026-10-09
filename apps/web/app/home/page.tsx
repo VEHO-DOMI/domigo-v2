@@ -9,6 +9,7 @@ import { loadDailyChallenge } from "../practice/load-practice";
 import TrainerShell from "./TrainerShell";
 import PlayerCard from "./PlayerCard";
 import { readTrainerProfile } from "./trainer-data";
+import { ModeStart } from "./ModeSwitch";
 
 export const dynamic = "force-dynamic";
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ jahrgang?: string }> } = { searchParams: Promise.resolve({}) }) {
@@ -29,7 +30,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
   return <TrainerShell grade={grade} preview={preview}>
     <main className="og-screen">
       <PlayerCard profile={profile} grade={grade} preview={preview} />
-      <Link href={`/modi${suffix}`} className="og-primary og-start"><span>🎯 Start Practice</span><span className="og-start-sub">{grade === 1 ? "Chapter und Übungsformat auswählen" : "Choose Chapters and exercise type"}</span></Link>
+      <ModeStart grade={grade} preview={preview} />
       <Link className="og-nav-card" href={`/woerterbuch${suffix}`}><span className="og-nav-icon">📖</span><span><strong>Dictionary</strong><small>Browse your full vocabulary library</small></span><span className="og-arrow">→</span></Link>
       {story && <Link className="og-nav-card" href={`/play/${grade}${suffix}`}><span className="og-nav-icon">{storyUi.icon}</span><span><strong>Story Mode</strong><small>{story.titleEn}</small></span><span className="og-arrow">→</span></Link>}
       <div className="og-action-row"><Link href={`/fortschritt${suffix}`} className="og-action-card"><span>📊</span><strong>Fortschritt</strong></Link><Link href={`/profil${suffix}`} className="og-action-card"><span>👤</span><strong>Profil</strong></Link></div>
