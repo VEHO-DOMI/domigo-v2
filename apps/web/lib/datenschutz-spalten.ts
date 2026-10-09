@@ -179,6 +179,11 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     updated_at: sachlich("row bookkeeping"),
   },
 
+  student_profile: {
+    user_id: kennung(W.konto, "Löschweg: deleteUserData entfernt student_profile mit dem Kind."),
+    avatar: sachlich("Nummer 1–50 aus Kokis festem Bildsatz; keine hochgeladenen Bilder oder Personendaten im Wert."),
+    updated_at: sachlich("Technischer Änderungszeitpunkt der Einstellung."),
+  },
   user_progress: {
     user_id: kennung(W.konto),
     xp: person(W.xp),

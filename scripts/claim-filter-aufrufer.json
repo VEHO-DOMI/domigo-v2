@@ -92,7 +92,6 @@
       "apps/web/lib/konto/anmeldung.ts · vorhanden.id, kindKlasse"
     ],
     "auth.ts#getClassGrade": [
-      "apps/web/app/home/page.tsx · session.user.classId",
       "apps/web/lib/grade-scope.ts · classId",
       "apps/web/lib/school-access.ts · student.classId",
       "apps/web/lib/student-view.ts · classId"

@@ -7,7 +7,6 @@
 import { sql } from "drizzle-orm";
 import {
   pgSchema,
-  check,
   uuid,
   text,
   integer,
@@ -18,10 +17,18 @@ import {
   jsonb,
   index,
   uniqueIndex,
+  check,
 } from "drizzle-orm/pg-core";
 
 /** Every v2-owned table lives here. */
 export const v2 = pgSchema("domigo_v2");
+
+/** Local cosmetic choice; the account-owned identity mirror is unchanged. */
+export const studentProfile = v2.table("student_profile", {
+  userId: uuid("user_id").primaryKey(),
+  avatar: smallint("avatar").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({ avatarRange: check("student_profile_avatar_check", sql`${t.avatar} between 1 and 50`) }));
 
 /** Sparse platform settings: an absent grade uses the corpus release default. */
 export const storyWorldSettings = v2.table("story_world_settings", {

@@ -6,10 +6,14 @@ Die gesamte vorherige Datei bleibt im [Status-Archiv](handover/STATUS_ARCHIV_202
 - **main-sha:** `d19c4b673c15a77cdb26cebbc1bbb9c9cab7c360` — Ausgangsstand dieser Bestandsaufnahme.
 - **Gemergte PRs:** 487 insgesamt; 123 seit 2026-08-24. **Letzter Merge:** PR 497. PR bedeutet Pull Request, eine zusammengeführte Änderung; gezählt nach Merge-Zeit, nicht nach Nummernfolge.
 - **LIVE:** https://eng-unterstufe.lautereinser.at — `/api/version` antwortet mit HTTP 200 und bestätigt den oben genannten Hauptstand.
-- **CI-Einzeiler:** 100 `- run:`-Zeilen in `.github/workflows/ci.yml`, einschließlich 5 Installationszeilen; damit 95 lokal auszuführende Prüfzeilen. CI ist die automatische Prüfkette. Die Zahl ist kein Testergebnis.
+- **CI-Einzeiler:** 102 `- run:`-Zeilen in `.github/workflows/ci.yml`, einschließlich 5 Installationszeilen; damit 97 lokal auszuführende Prüfzeilen. CI ist die automatische Prüfkette. Die Zahl ist kein Testergebnis.
 - **Migrationen:** Repository-Journal 0000–0019; 0019 laut Kartenbrief angewendet. Der gesonderte Produktionsbeleg für 0015–0019 bleibt bei Koki offen (cgo-054). 0020 vorbereitet in PR 490, 0021 vorbereitet in PR 498, beide OPEN und noch nicht Teil dieses Hauptstands. Migration bedeutet Änderung der Datenbankstruktur; diese Sitzung hat keine Datenbank abgefragt oder verändert.
 
 Messweg: `git rev-parse origin/main`; `gh pr list --state merged --limit 400 --json number,title,mergedAt` (Zeitfenster), für die ungekappte Gesamtzahl derselbe Befehl mit `--limit 1000`; `git log origin/main --oneline --since=2026-08-24`; `rg -c '^\s*- run:' .github/workflows/ci.yml`; `node -p 'JSON.stringify(require("./packages/db/drizzle/meta/_journal.json").entries.map(e=>e.tag))'`; `gh pr view 490 --json state` und entsprechend PR 498. Vollständige Befehle → Ausgaben, Zählgrenzen und Bildbelege stehen im PR dieser Bestandsaufnahme (cgo-097).
+
+## In Prüfung: cgo-108 · OG-Parität W1
+
+Noch nicht LIVE. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`, 50 Original-Avatare und Daily Challenge sind in PR 507 vorbereitet. Migration 0022 ist additiv und wird hier nicht ausgeführt. Nachzug 2 integriert PR 490/498 aus main: Journal 0019–0022 in Reihenfolge, Snapshot 0022 neu erzeugt. Die Kontolöschung toleriert ausschließlich eine fehlende Avatar-Tabelle. Der Daily-Tagessatz entsteht jahrgangsweit vor der Klassenreserve; gesperrte Wörter werden übersprungen und gezählt. Die Kachel heißt bis W2 „Dictionary“. Prüfungen sichern Schülerwortlaut und Zugangsschutz. Mockup-Gate: cgo-106/107 bestanden. Nachzug 1 ergänzt XP-Hinweise, Original-Stilwerte und Jahrgangsdekorationen; Grammatik zeigt nur Level/Titel und XP. Der GG hat Kopf, fehlende Zukunftskacheln (W4–W6) und Story-Kachel als beabsichtigte Unterschiede bestätigt. Die erneute Bildprüfung bewertet `/home` und `/modi` mit benanntem Erkennungsmerkmal. Produktionsabnahme, Migration, GG-Kette und Merge bleiben offen.
 
 ## Was LIVE ist
 

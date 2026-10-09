@@ -155,6 +155,13 @@
       "when": 1791426000000,
       "tag": "0021_class_settings",
       "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1791464400000,
+      "tag": "0022_student_profile",
+      "breakpoints": true
     }
   ]
 }
