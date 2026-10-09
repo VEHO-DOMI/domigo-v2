@@ -17,7 +17,7 @@ export default auth((req) => {
   }
 
   // cgo-094: an API refusal is JSON, before page redirects or development bypass.
-  if (pathname === "/api/admin/class-settings") {
+  if (pathname === "/api/admin/class-settings" || pathname === "/api/admin/class-leaderboard") {
     if (!session?.user?.id || session.user.role !== "teacher") {
       return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
     }
@@ -75,5 +75,5 @@ export default auth((req) => {
 // (lib/konto/callback.ts decides which `from` counts). Deeper /play paths still
 // redirect on their own, as before.
 export const config = {
-  matcher: ["/api/admin/class-settings", "/home", "/modi", "/modi/:path*", "/profil", "/fortschritt", "/woerterbuch", "/play/:grade", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
+  matcher: ["/api/admin/class-settings", "/api/admin/class-leaderboard", "/bestenliste", "/home", "/modi", "/modi/:path*", "/profil", "/fortschritt", "/woerterbuch", "/play/:grade", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
 };

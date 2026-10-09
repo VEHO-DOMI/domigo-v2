@@ -1,7 +1,17 @@
 import assert from "node:assert/strict";
+import * as nodeModule from "node:module";
 import { beforeEach, describe, it } from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { child, fixture, reset, teacher } from "../app/admin/story-world.harness.test.mjs";
+// Node renders the page for these tests; the browser checks the actual Home CSS.
+type ResolveResult = { url: string; shortCircuit?: boolean };
+const { registerHooks } = nodeModule as unknown as { registerHooks(hooks: { resolve(specifier: string, context: { parentURL?: string }, next: (specifier: string, context: { parentURL?: string }) => ResolveResult): ResolveResult }): void };
+registerHooks({ resolve(specifier, context, next) {
+  if (specifier === "./home.css" && context.parentURL === new URL("../app/home/page.tsx", import.meta.url).href) {
+    return { url: "data:text/javascript,export {};", shortCircuit: true };
+  }
+  return next(specifier, context);
+} });
 const { readStoryWorlds, listOpenStories, openStoryIdForGrade } = await import("./story-world.ts");
 const { POST } = await import("../app/admin/story-world/route.ts");
 const { default: AdminPage } = await import("../app/admin/page.tsx");

@@ -138,8 +138,8 @@ describe("cgo-108 truthful own progress", () => {
     expect(sql).toMatch(/CHECK \("avatar" between 1 and 50\)/);
     expect(sql).not.toMatch(/\b(ALTER|DROP|DELETE|UPDATE|INSERT)\b/i);
     const journal = JSON.parse(read("meta/_journal.json"));
-    expect(journal.entries.map((e: { idx: number }) => e.idx)).toEqual(Array.from({ length: 23 }, (_, i) => i));
-    expect(journal.entries.slice(-3).map((e: { tag: string }) => e.tag)).toEqual(["0020_story_world_settings", "0021_class_settings", "0022_student_profile"]);
+    expect(journal.entries.slice(0, 23).map((e: { idx: number }) => e.idx)).toEqual(Array.from({ length: 23 }, (_, i) => i));
+    expect(journal.entries.slice(20, 23).map((e: { tag: string }) => e.tag)).toEqual(["0020_story_world_settings", "0021_class_settings", "0022_student_profile"]);
     expect(journal.entries.filter((e: { idx: number }) => e.idx === 22)).toEqual([expect.objectContaining({ tag: "0022_student_profile", version: "7" })]);
     const snapshot = JSON.parse(read("meta/0022_snapshot.json"));
     const previous = JSON.parse(read("meta/0021_snapshot.json"));

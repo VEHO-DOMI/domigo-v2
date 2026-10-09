@@ -124,13 +124,15 @@ nicht Teil dieser fünf Vokabelmodi.
 
 ## 4 · Leaderboard (Koki-gated: yes, teacher-toggleable)
 
-**Weekly-XP window** (Monday reset, Vienna time) — deliberately NOT the OG's all-time
-ranking, so late joiners and slow starters re-enter the race every week. Three tabs like the
-OG minus battle: *Meine Klasse* / *Alle Klassen* (class chips) / *Wochenziel* (the class
-ladder: collective bar toward the 5,000-XP weekly goal). Row = rank medal · avatar · nickname
-· zone-colored title pill · weekly XP. Per-class toggle lives on the teacher's class page
-(default ON; nicknames are already pseudonyms). Excludes assignment/checkup attempts by
-construction (they award 0 XP).
+**W4 · CODEX DRAFT — NOT CANON, in Prüfung (cgo-111).** Kokis Urteil vom 08.10.: A nur eigene Klasse; B nur Klassen desselben Jahrgangs, deren Lehrkräfte jeweils zugestimmt haben. Die eigene Klasse braucht selbst B, bevor sie fremde freigegebene Klassen sieht. Testklassen und archivierte Klassen sind ausgeschlossen.
+
+Wochen-XP beginnen Montag 00:00 Europe/Vienna; Woche ist Standard, Gesamt ist umschaltbar. Beide Werte kommen aus bestätigten Lernleistungen; Gesamt = Vocab-XP + Grammar-XP einschließlich Lehrkraft-Gutschriften aus user_progress; Woche = nur bewertete Versuche. Zuweisungen einschließlich Check-ups geben 0 XP und sind zusätzlich aus der Wochen-Summe ausgeschlossen. Tabs: Meine Klasse / Alle Klassen (nur bei B und vorhandenen fremden Klassenzeilen) / Wochenziel. Jahrgang 1 deutsch, 2–4 englisch. Wochenziel: 5.000 Klassen-XP, darunter die kollektive Klassen-Leiter aus Original §3e. Die eigene Tages-Challenge bleibt ein separater Abschnitt; Battle folgt W5, Badges W7 oder eigener Karte.
+
+Zeile: Medaille/Rang · Avatar 34 px · Vorname (Spitzname; keine doppelte Ausgabe bei Gleichheit) · farbige Titel-Pille mit Prestige-Sternen · Klassen-Chip in B · eigener Pfeil und .me · bestätigte XP. Aktive Lernserie wird angezeigt. Die Gesamt-Leiter auf Fortschritt verwendet `overallLevelFor` unverändert aus levels.ts.
+
+Zwei Schalter auf der Lehrer-Klassenseite: Bestenliste in der Klasse und Jahrgangs-Bestenliste. **Beide standardmäßig AUS** (0023); die eingefrorene Datenschutzseite wird separat vom GG korrigiert, bevor Koki Klassen freigibt. B öffnet vorher einen widerrufbaren, beidseitigen Datenaustausch erklärenden Dialog. A aus widerruft B. Testklassen gesperrt; Großmeister-Fremdübersicht nur lesend. AUS zeigt einen ruhigen Hinweis, die Home-Kachel bleibt erreichbar. Vorschau: nur Beispiel 1–5 in Jahrgang 1, Example 1–5 in 2–4, keine Kinderlesung und kein Schreibweg.
+
+Nachzug 2 (GG-Entscheid): Nur angemeldete Kinder (`claimed_at` gesetzt), erster Vorname plus Spitzname; Nutzer-Kennungen werden serverseitig durch laufende Zeilennummern ersetzt. Titel-Pille aus Vokabel-XP wie auf der Spielerkarte. Tages-Challenge zählt unterschiedliche Wörter, maximal zehn. Störungen heißen „gerade nicht erreichbar“. Profil bleibt als dritte Startseiten-Kachel erhalten. Dialog benennt Lern-Serie und Klassenname; Wechsel zur Testklasse widerruft A/B.
 
 ## 5 · Avatars & unlockables (v2's own trick beats the OG's 50 PNGs)
 

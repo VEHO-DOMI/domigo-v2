@@ -798,5 +798,7 @@ export const v2OpsLinkUses = v2.table("ops_link_uses", {
 export const classSettings = v2.table("class_settings", {
   classId: uuid("class_id").primaryKey(),
   purpose: text("purpose").notNull().default("regular"),
+  leaderboard: boolean("leaderboard").notNull().default(false),
+  gradeBoardOptIn: boolean("grade_board_opt_in").notNull().default(false),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => [check("class_settings_purpose_check", sql`${t.purpose} in ('regular', 'test')`)]);

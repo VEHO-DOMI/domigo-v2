@@ -162,6 +162,13 @@
       "when": 1791464400000,
       "tag": "0022_student_profile",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1791509930739,
+      "tag": "0023_class_leaderboard",
+      "breakpoints": true
     }
   ]
 }

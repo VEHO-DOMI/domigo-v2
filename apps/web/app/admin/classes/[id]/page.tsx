@@ -57,6 +57,8 @@ import { holeKlassenliste } from "@/lib/konto/claims";
 import { mergeKlassenliste } from "@/lib/konto/klassenliste-merge";
 import { isGrandmaster } from "@/lib/grandmaster";
 import { isSlugAllowed, visibleGradesFor } from "@/lib/grade-scope";
+import LeaderboardSettings from "./LeaderboardSettings";
+import { getClassLeaderboardSettings } from "@/lib/leaderboard";
 import ProgressAdjustCell from "./ProgressAdjustCell";
 
 // Liest den Korpus zur Laufzeit über fs — nie statisch vorgerendert.
@@ -145,6 +147,8 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
 
   if (!cls) redirect("/admin/classes"); // nicht die Klasse dieser Lehrkraft (oder es gibt sie nicht)
 
+  const boardSettings = await getClassLeaderboardSettings(getDb(), teacher.classScope, id);
+
   // dach-123 · E1 + E6. Die Klassenliste wird im Namen der Person geholt, die
   // gerade SCHAUT — konto entscheidet selbst, wer sie sehen darf, und
   // protokolliert den wahren Abrufer; mit der id der Besitzerin zu fragen hiesse,
@@ -204,6 +208,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   const anpassbareEinheiten = sichtbareEinheiten.map((slug) => ({ slug, journey: mitLernweg.has(slug) }));
 
   const purposes = await getClassPurposes(getDb(), teacher.classScope, [cls.id]);
+  const classPurpose = purposes.get(cls.id) ?? "regular";
   const aktive = attempts.length;
   const versucheGesamt = attempts.reduce((n, a) => n + a.attempts, 0);
 
@@ -233,6 +238,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
       </p>
 
       {/* ── 1 · Die Kinder ─────────────────────────────────────────────── */}
+      <LeaderboardSettings key={`${id}-${classPurpose}`} classId={id} initial={boardSettings} testClass={classPurpose === "test"} readOnly={fremd} />
       <section className="dg-card" style={{ marginTop: 20 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Die Kinder</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>

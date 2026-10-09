@@ -3,9 +3,19 @@
  * Future leaderboards (cgo-068) must use the same regular-class restriction.
  */
 import { and, eq, inArray, sql } from "drizzle-orm";
+import { text, timestamp, uuid } from "drizzle-orm/pg-core";
 import type { Db } from "./index.ts";
-import { classSettings, v2Classes } from "./schema.ts";
+import { classSettings, v2, v2Classes } from "./schema.ts";
 import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
+
+// A projection of the existing table, NOT another database table. Drizzle's
+// INSERT SELECT requires every declared column. Keep the pre-0023 purpose writer
+// on its original three columns so it still works before the additive migration.
+const purposeSettings = v2.table("class_settings", {
+  classId: uuid("class_id").primaryKey(),
+  purpose: text("purpose").notNull().default("regular"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
 
 export type ClassPurpose = "regular" | "test";
 export class ClassSettingsForbiddenError extends Error {
@@ -42,11 +52,66 @@ export async function setClassPurpose(db: Db, classScope: ClassScope, classId: s
   assertWritableScope(classScope, "setClassPurpose");
   if (!inScope(classScope, classId) || !teacherId) throw new ClassSettingsForbiddenError();
   if (purpose !== "regular" && purpose !== "test") throw new TypeError("invalid_class_purpose");
-  const changed = await db.insert(classSettings).select(
+  try {
+    const changed = await db.insert(classSettings).select(
+      db.select({ classId: v2Classes.id, purpose: sql<string>`${purpose}`.as("purpose"),
+        leaderboard: sql<boolean>`false`.as("leaderboard"), gradeBoardOptIn: sql<boolean>`false`.as("grade_board_opt_in"), updatedAt: sql<Date>`now()`.as("updated_at") })
+        .from(v2Classes)
+        .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), grandmaster ? undefined : eq(v2Classes.teacherId, teacherId))),
+    ).onConflictDoUpdate({ target: classSettings.classId, set: { purpose, updatedAt: new Date(),
+      ...(purpose === "test" ? { leaderboard: sql`false`, gradeBoardOptIn: sql`false` } : {}) } })
+      .returning({ classId: classSettings.classId });
+    if (changed.length === 0) throw new ClassSettingsForbiddenError();
+    return;
+  } catch (error) {
+    // Before 0023 there are no consent flags to revoke. Only PostgreSQL's missing-
+    // column error permits the old guarded writer; every other failure propagates.
+    const cause = error as { code?: string; cause?: { code?: string } };
+    if (cause?.code !== "42703" && cause?.cause?.code !== "42703") throw error;
+    return setLegacyClassPurpose(db, classScope, classId, teacherId, purpose, grandmaster);
+  }
+}
+
+/** Pre-0023 only: no consent columns exist to revoke. Same scope and owner wall. */
+async function setLegacyClassPurpose(db: Db, classScope: ClassScope, classId: string, teacherId: string, purpose: ClassPurpose, grandmaster: boolean): Promise<void> {
+  assertWritableScope(classScope, "setLegacyClassPurpose");
+  if (!inScope(classScope, classId) || !teacherId) throw new ClassSettingsForbiddenError();
+  const changed = await db.insert(purposeSettings).select(
     db.select({ classId: v2Classes.id, purpose: sql<string>`${purpose}`.as("purpose"), updatedAt: sql<Date>`now()`.as("updated_at") })
       .from(v2Classes)
       .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), grandmaster ? undefined : eq(v2Classes.teacherId, teacherId))),
-  ).onConflictDoUpdate({ target: classSettings.classId, set: { purpose, updatedAt: new Date() } })
-    .returning({ classId: classSettings.classId });
+  ).onConflictDoUpdate({ target: purposeSettings.classId, set: { purpose, updatedAt: new Date() } })
+    .returning({ classId: purposeSettings.classId });
+  if (changed.length === 0) throw new ClassSettingsForbiddenError();
+}
+
+export interface ClassLeaderboardSettings { leaderboard: boolean; gradeBoardOptIn: boolean }
+
+/** Fail closed before 0023. Even defaults are restricted to the session's classes. */
+export async function getClassLeaderboardSettings(db: Db, classScope: ClassScope, classId: string): Promise<ClassLeaderboardSettings> {
+  const off = { leaderboard: false, gradeBoardOptIn: false };
+  if (!inScope(classScope, classId)) return off;
+  try {
+    const [row] = await db.select({ leaderboard: classSettings.leaderboard, gradeBoardOptIn: classSettings.gradeBoardOptIn })
+      .from(classSettings).where(and(inArray(classSettings.classId, [...classScope]), eq(classSettings.classId, classId)));
+    return row ?? off;
+  } catch { return off; }
+}
+
+/** One owner+scope+purpose guarded SQL. A off also revokes B. No student writer. */
+export async function setClassLeaderboardSettings(db: Db, classScope: ClassScope, classId: string, teacherId: string, settings: ClassLeaderboardSettings, grandmaster = false): Promise<void> {
+  assertWritableScope(classScope, "setClassLeaderboardSettings");
+  if (!inScope(classScope, classId) || !teacherId) throw new ClassSettingsForbiddenError();
+  if (typeof settings.leaderboard !== "boolean" || typeof settings.gradeBoardOptIn !== "boolean"
+    || (!settings.leaderboard && settings.gradeBoardOptIn)) throw new TypeError("invalid_leaderboard_settings");
+  const { leaderboard, gradeBoardOptIn } = settings;
+  const changed = await db.insert(classSettings).select(
+    db.select({ classId: v2Classes.id, purpose: sql<string>`'regular'`.as("purpose"),
+      leaderboard: sql<boolean>`${leaderboard}`.as("leaderboard"), gradeBoardOptIn: sql<boolean>`${gradeBoardOptIn}`.as("grade_board_opt_in"), updatedAt: sql<Date>`now()`.as("updated_at") })
+      .from(v2Classes).leftJoin(classSettings, eq(classSettings.classId, v2Classes.id))
+      .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), grandmaster ? undefined : eq(v2Classes.teacherId, teacherId),
+        sql`${v2Classes.archivedAt} is null`, sql`coalesce(${classSettings.purpose}, 'regular') = 'regular'`)),
+  ).onConflictDoUpdate({ target: classSettings.classId, set: { leaderboard, gradeBoardOptIn, updatedAt: new Date() },
+    setWhere: eq(classSettings.purpose, "regular") }).returning({ classId: classSettings.classId });
   if (changed.length === 0) throw new ClassSettingsForbiddenError();
 }
