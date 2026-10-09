@@ -161,11 +161,23 @@ switching, no second cookie, teacher stays signed in.
 
 ## 7 · Scope fences (so D-2..4 stay shippable)
 
-Battle Arena (Live Battle / Word Duel / Class Quiz) = **its own future lane** (needs
-realtime infra; the study §9 documents the mechanics for that day) · practice-mode variants
-(Sprint/Speed Round/Memory Match…) = post-D-4 candy, the pool rotation already covers the
-pedagogy · 28-badge system = later (levels+titles first) · Word of the Day / Daily Challenge
-= J-wave journeys territory.
+**Word Duel + Battle history: gebaut, IN PRÜFUNG (cgo-112, CODEX DRAFT — NOT CANON).**
+W5 übernimmt die volle Home-Karte unter Dictionary/Story, Gegnerwahl, Zug-Pillen,
+fünf Rundenzeilen, vier vertikale Antwortoptionen und die Ergebnis-Emojis 🏆/🤝/💪
+aus der Originalstudie §5b/5d. Stats und Verlauf liegen zusammen im Arena-Hub.
+Fünf Runden × drei Fragen nach Kartenbrief (OG-Quelltext derzeit fünf Fragen).
+Jahrgang 1 deutsche Führung, 2–4 englisch; sichtbare Gliederung Chapter.
+Bestenlisten-Schalter A öffnet Arena nur innerhalb der eigenen Klasse; Vorschau
+zeigt ausschließlich Beispiele. Original-Boni 100/50/25 und Zusatz 8 × Treffer
+entfallen: XP nur aus bewerteten Antworten, Siege nur Statistik. Grammatik-Duell
+benannt verschoben. Eine zusätzliche Tabelle 0024, noch nicht angewendet.
+
+**Live Battle und Class Quiz = eigene künftige Spur**, Ruling cgo-120 zu Kosten
+und Echtzeit-Betrieb noch offen. Keine Kachel und kein Ankündigungssatz auf der
+Kinderseite. Der ursprüngliche Sammelaufschub der Arena gilt damit nur noch für
+diese synchronen Teile; Word Duel benötigt keine Echtzeit-Infrastruktur.
+28-badge system bleibt später (W7/eigene Karte). Andere Flächen behalten ihren
+jeweils dokumentierten Prüf-/Freigabestand.
 
 ## 8 · The mockup gate (next Fable session — the D-1 exit)
 

@@ -1,0 +1,60 @@
+/* cgo-112: original duel cards, round blocks and four stacked options. */
+.og-root .arena-screen { max-width:520px; margin:0 auto; padding:0 16px 24px; }
+.arena-heading { display:flex; align-items:center; gap:14px; margin:0 0 18px; }
+.arena-heading h1 { margin:0; font:700 1.35rem var(--font-display); }
+.arena-heading .og-back { white-space:nowrap; margin-bottom:0; }
+.arena-screen h2 { font:700 1.02rem var(--font-display); margin:0 0 10px; }
+.arena-screen button { cursor:pointer; }
+.arena-screen button:disabled { cursor:default; opacity:.65; }
+.arena-screen button:focus-visible,.arena-screen a:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.arena-stats,.arena-challenge,.arena-picker,.arena-scoreboard,.arena-chapters,.arena-history { border:1px solid var(--card-border); border-radius:var(--radius-lg,24px); background:var(--card); box-shadow:var(--shadow-card); padding:20px; margin-bottom:18px; }
+.arena-stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:20px 10px; text-align:center; }
+.arena-stats strong { display:block; color:var(--accent); font-size:1.4rem; }
+.arena-stats span { display:block; font-size:.7rem; color:var(--muted); margin-top:4px; }
+.arena-challenge .og-primary { display:block; width:100%; }
+.arena-section-heading,.arena-card-heading,.arena-card-bottom { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.arena-section-heading h2 { margin:0; }
+.arena-section-heading > span { background:var(--accent-soft); color:var(--accent); padding:3px 10px; border-radius:20px; font-weight:700; }
+.arena-muted,.arena-picker > p { color:var(--muted); font-size:.78rem; }
+.arena-list { margin:22px 0; }
+.arena-empty { text-align:center; color:var(--muted); font-size:.83rem; padding:18px 4px; }
+.arena-duel-card { display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius,16px); padding:16px; margin:12px 0; }
+.arena-card-heading strong { overflow-wrap:anywhere; font-size:.88rem; }
+.arena-card-bottom { margin-top:12px; }
+.arena-status { flex-shrink:0; font-size:.68rem; border-radius:7px; padding:4px 8px; font-weight:700; }
+.arena-status.your-turn { color:var(--accent); background:var(--accent-soft); }
+.arena-status.waiting { color:var(--muted); background:var(--bg); }
+.arena-mini-rounds { display:flex; gap:6px; }
+.arena-blocks { display:inline-flex; gap:3px; }
+.arena-block { width:13px; height:13px; border-radius:2px; display:inline-flex; align-items:center; justify-content:center; font:700 9px Arial,sans-serif; }
+.arena-block.empty { background:var(--bg); border:1px solid var(--card-border); }
+.arena-block.correct { background:#16a34a; color:#fff; }.arena-block.wrong { background:#dc2626; color:#fff; }
+.arena-mini-rounds .arena-block { width:7px; height:9px; font-size:0; }.arena-mini-rounds .arena-blocks { gap:2px; }
+.arena-peer { width:100%; display:flex; align-items:center; gap:12px; border:0; border-bottom:1px solid var(--card-border); padding:12px 0; color:var(--ink); background:transparent; font:600 .86rem var(--font-body); text-align:left; }
+.arena-peer span:nth-child(2) { flex:1; overflow-wrap:anywhere; }
+.arena-peer img,.arena-players img { object-fit:contain; border-radius:12px; background:var(--bg); border:1px solid var(--card-border); }
+.arena-history-row { display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid var(--card-border); color:var(--ink); text-decoration:none; }
+.arena-history-row > div:nth-child(2) { flex:1; min-width:0; overflow-wrap:anywhere; }
+.arena-history-row strong { font-size:.8rem; }.arena-history-row small { display:block; color:var(--muted); font-size:.68rem; margin-top:4px; }
+.arena-history-emoji { font-size:1.5rem; }.arena-history-score { text-align:right; white-space:nowrap; }.arena-history-score b { font-size:1.2rem; }
+.arena-history-row.win .arena-history-score b { color:var(--accent); }
+.arena-players { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:12px; align-items:center; text-align:center; padding:12px 0 24px; }
+.arena-players > div { display:flex; align-items:center; flex-direction:column; gap:5px; }
+.arena-players strong { font-size:.78rem; overflow-wrap:anywhere; }.arena-players small { font-size:.68rem; color:var(--muted); }
+.arena-players > b { font-size:2rem; color:var(--accent); }
+.arena-round-row { display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--card-border); padding:12px 0; gap:10px; }
+.arena-round-row > div { text-align:center; color:var(--muted); font-size:.76rem; }.arena-round-row small { display:block; font-size:.68rem; margin-top:3px; }
+.arena-result { text-align:center; margin-bottom:22px; }.arena-result h2 { font-size:1.5rem; }.arena-result p,.arena-wait { color:var(--muted); font-size:.8rem; }
+.arena-chapter-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.arena-chapter { padding:16px 5px; border:1px solid var(--card-border); border-radius:12px; background:var(--card); color:var(--ink); font-weight:700; }
+.arena-question { text-align:center; padding:10px 0 20px; }.arena-question h2 { margin-bottom:8px; }
+.arena-question-progress { display:flex; gap:5px; margin:20px auto; max-width:320px; }.arena-question-progress span { height:5px; flex:1; background:var(--card-border); border-radius:4px; }.arena-question-progress .filled { background:var(--accent); }
+.arena-prompt-label { margin:42px 0 8px; font-size:.8rem; color:var(--muted); }.arena-prompt { font-size:1.5rem; font-weight:700; margin:0 0 30px; overflow-wrap:anywhere; }
+.arena-options { display:flex; flex-direction:column; gap:10px; max-width:340px; margin:0 auto; }
+.arena-option { border:1px solid var(--card-border); border-radius:16px; background:var(--card); color:var(--ink); padding:16px 20px; text-align:left; font:600 .95rem var(--font-body); overflow-wrap:anywhere; }
+.arena-option:hover:not(:disabled),.arena-chapter:hover:not(:disabled) { border-color:var(--accent); background:var(--accent-soft); }
+.arena-option.correct:disabled { opacity:1; border-color:#16a34a; background:color-mix(in srgb,#16a34a 15%,var(--card)); }.arena-option.wrong:disabled { opacity:1; border-color:#dc2626; background:color-mix(in srgb,#dc2626 12%,var(--card)); }
+.arena-receipt { display:flex; flex-direction:column; gap:12px; align-items:center; margin-top:24px; }.arena-receipt span { font-size:.8rem; color:var(--muted); }
+.arena-notice { padding:20px; background:var(--card); border:1px solid var(--card-border); border-radius:16px; font-size:.88rem; line-height:1.6; }
+.arena-text-button { border:0; background:transparent; color:var(--accent); font:inherit; text-decoration:underline; padding:8px; }
+@media (max-width:360px) { .arena-chapter-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.arena-mini-rounds { gap:4px; }.arena-players { gap:6px; } }

@@ -23,6 +23,7 @@ import { parseTestRef } from "@/lib/testRef";
 import { parseComprehensionRef } from "@/lib/comprehensionRef";
 import { speedSessionValid } from "@/lib/modi/speed-session";
 import { validModeInput } from "@/lib/modi/attempt-policy";
+import { arenaError, checkDuelAttempt, writeDuelAnswer } from "@/lib/arena/server";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -43,7 +44,7 @@ const Body = z.object({
   ownerId: z.string().min(1).max(256).optional(),
   clientAttemptId: z.string().regex(UUID),
   itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
-  mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
+  mode: z.string().min(1).max(41).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([
     GrammarInputSchema,
     z.object({
@@ -84,6 +85,14 @@ export async function POST(req: Request): Promise<Response> {
   if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
   if (mode === "speed" && !speedSessionValid(context, acting.userId)) return NextResponse.json({ ok: false, error: "speed_expired" }, { status: 410 }); // cgo-109 SPEED-DEADLINE
 
+  // A duel question is authorized before grading, then rechecked under its row
+  // lock when recording. Neither replays nor forged participants can earn XP.
+  let duelCoordinates: Awaited<ReturnType<typeof checkDuelAttempt>> | null = null;
+  if (mode.startsWith("duel:")) {
+    try { duelCoordinates = await checkDuelAttempt(req, acting, mode, context, itemId, input.kind === "choice" ? input.value : ""); }
+    catch (error) { return arenaError(error); }
+  }
+
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
   const ref = parseItemRef(itemId);
@@ -119,7 +128,7 @@ export async function POST(req: Request): Promise<Response> {
         const item = unit.vocab.find((v) => v.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
         const value = "value" in input && typeof input.value === "string" ? input.value : "";
-        const pool = input.kind === "vocab" ? input.pool : undefined;
+        const pool = duelCoordinates ? "deToEn" : input.kind === "vocab" ? input.pool : undefined;
         tier = gradeVocab(item, value, pool).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
         classifiable = { answers: vocabAnswers(item, pool ?? "carrier") };
@@ -188,7 +197,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
-    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), acting.classScope, {
+    const attempt = {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
@@ -203,7 +212,10 @@ export async function POST(req: Request): Promise<Response> {
       hintUsed: hintUsed ?? false,
       context: contextWithTrap,
       clientAttemptId,
-    });
+    };
+    const { duplicate, box, dueAt, streak } = duelCoordinates
+      ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
+      : await recordAttempt(getDb(), acting.classScope, attempt);
     return NextResponse.json({
       ok: true,
       tier,
@@ -214,7 +226,8 @@ export async function POST(req: Request): Promise<Response> {
       streak,
       ...(trap ? { trap } : {}),
     });
-  } catch {
+  } catch (error) {
+    if (duelCoordinates) return arenaError(error);
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded, ...(trap ? { trap } : {}) });
   }
 }

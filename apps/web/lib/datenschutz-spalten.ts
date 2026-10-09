@@ -102,6 +102,21 @@ const W = {
 
 /** table (SQL name) → column (SQL name) → mark */
 export const SPALTEN: Record<string, Record<string, Eintrag>> = {
+  duels: {
+    id: sachlich("Kennung der Duell-Partie; keine zusätzliche Personenkennung"),
+    class_id: kennung(W.klasse, "Duell nur zwischen zwei angemeldeten Kindern derselben Klasse; folgt Bestenlisten-Schalter A"),
+    grade: sachlich("Korpus-Jahrgang der Klasse"),
+    p1: kennung(W.konto, "Teilnehmer; konto-loeschung.ts entfernt die gesamte Partie bei Löschung eines Kindes"),
+    p2: kennung(W.konto, "Zweiter Teilnehmer derselben Klasse; derselbe Löschweg"),
+    mode: sachlich("Vokabel- oder Grammatik-Aufgabentyp"),
+    status: sachlich("Partiestand active/complete/expired"),
+    rounds: person(W.richtigFalsch, "Chapter, Aufgabenkennungen, vier Optionen und je Kind nur richtig/falsch; keine Rohantworten, Namen oder Antwortschlüssel"),
+    p1_score: person(W.richtigFalsch, "Summe der richtigen Antworten, höchstens 15; kein XP-Bonus"),
+    p2_score: person(W.richtigFalsch, "Summe der richtigen Antworten, höchstens 15; kein XP-Bonus"),
+    winner: kennung(W.konto, "Nur Sieger-Kennung oder null, aus Antworten abgeleitet; kein zweiter Statistik-Schreiber"),
+    created_at: person(W.zeitpunkt, "Zeitpunkt der Herausforderung"),
+    updated_at: person(W.zeitpunkt, "Letzter Zug; nach sieben Tagen ohne Zug abgelaufen, kein Sieger"),
+  },
   story_world_settings: {
     grade: sachlich("platform-wide school year, no class or person identifier"),
     is_open: sachlich("story visibility for the whole school year"),

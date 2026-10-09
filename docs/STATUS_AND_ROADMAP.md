@@ -29,6 +29,12 @@ Noch nicht LIVE. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`
 
 Nachzug 2 in PR 510 ergänzt lokale PostgreSQL-Verhaltenstests für die Sichtbarkeitsmatrix. Nicht angemeldete Import-Platzhalter bleiben unsichtbar; Kinderzeilen enthalten erste Vornamen und laufende Nummern statt Nutzer-Kennungen. Tages-Challenge zählt unterschiedliche Wörter, höchstens zehn; Fehler werden als Nichterreichbarkeit angezeigt. Titel folgen Vokabel-XP, Gesamtpunkte enthalten auch Lehrkraft-Gutschriften. Die Startseite behält Fortschritt, Bestenliste und Profil; der Dialog nennt auch Lern-Serie und Klassenname. Wechsel zur Testklasse widerruft beide Freigaben atomar.
 
+## In Prüfung: cgo-112 · OG-Parität W5
+
+**In Prüfung, noch nicht LIVE.** Auf PR 510 (`3600a6a9`) aufgebaut: Home-Eingang Battle Arena, asynchrones Word Duel mit fünf Runden zu drei Vokabelfragen sowie Verlauf und abgeleitete Statistiken. Zugang folgt dem Klassen-Bestenlisten-Schalter A; nur angemeldete Kinder derselben regulären, nicht archivierten Klasse. Die gemeinsame Antwort-Route bewertet; eine Transaktion verbindet den vorhandenen Lernversuch-Schreiber mit der Duellantwort. Wiederholung 409, abgelaufen 410, fremde Teilnehmer/Klassen 403. Keine Bonus-XP, kein zweiter Statistik-Schreiber. Sieben Tage ohne Zug ergeben abgelaufen ohne Sieger. Vorschau mit erfundenen Platzhaltern, ohne Kinderlesung oder POST. Grammatik-Duell benannt verschoben; Live Battle/Class Quiz liegen beim Ruling cgo-120 und erscheinen nicht auf der Kinderseite. Migration 0024 nur vorbereitet, nicht angewendet: [Neon-Blatt](cgo-112_NEON_BLATT_0024.md). Lokale Nachweise im PR; echte Neon-Verbindung, Migration, GG-Kette, Produktionsabnahme und Merge bleiben offen. Datenschutzseite unverändert.
+
+Der lokale Gesamttest bleibt wegen einer bestehenden Spalten-Erlaubnisliste im Kontolöschungs-Test rot: `p1`/`p2` fehlen dort. Die alte Testdatei liegt außerhalb des Karten-Zauns; die genaue Ergänzung wird dem GG im Belegordner übergeben. Keine Freigabe bei roter Batterie.
+
 ## Was LIVE ist
 
 LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vorgesehenen Zugang erreichbar. Code, Freigabedateien und Programm-Inventar belegen den Umfang; ein neuer vollständiger Durchlauf mit echten Konten wurde nicht durchgeführt. Gebautes ohne Kinderfreigabe, offene PRs und pausierter Weiterbau stehen deshalb getrennt. Ein bloßer Merge ist keine Unterrichtsabnahme.
