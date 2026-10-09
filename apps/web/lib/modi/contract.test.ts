@@ -60,7 +60,8 @@ describe("cgo-109 mode contracts", () => {
     assert.deepEqual([1, 2, 3, 4].map(memoryPairCount), [8, 12, 10, 12]);
     const source = read("memory/Memory.tsx");
     assert.match(source, /a\.pair === b\.pair && a\.side !== b\.side/);
-    assert.equal((source.match(/await submit\(/g) ?? []).length, 1);
+    assert.equal((source.match(/\bsubmit\s*\(/g) ?? []).length, 1);
+    assert.match(source, /await submit\(/);
     assert.match(source, /kind: "choice", value: fullAnswer\(word\)/);
     assert.match(source, /setTimeout\(\(\) => \{ setOpen\(\[\]\); lock\.current = false; \}, 900\)/);
   });
@@ -77,7 +78,7 @@ describe("cgo-109 mode contracts", () => {
     assert.match(source, /value: spellingAnswer\(layout, letters\), pool: "deToEn" \}, hint/);
     assert.match(source, /setHint\(true\)/);
   });
-  it("C07 hunt has eight Chapter rounds, 8–12 choices, all self-grade through engine", () => {
+  it("C07 hunt has eight Chapter rounds, targets self-grade and decoys have no ledger reference", () => {
     for (let grade = 1; grade <= 4; grade++) {
       const words = [1, 2, 3].flatMap((chapter) => loadUnit(`g${grade}-u0${chapter}`).vocab);
       const rounds = huntRounds(words, () => 0.5);
@@ -86,10 +87,15 @@ describe("cgo-109 mode contracts", () => {
         assert.ok(round.tiles.length >= 8 && round.tiles.length <= 12);
         let right = 0, wrong = 0;
         for (const tile of round.tiles) {
-          assert.ok(tile.item.id.startsWith(`g${grade}u${String(round.chapter).padStart(2, "0")}.`));
-          const tier = gradeVocab(tile.item, tile.word).tier;
-          assert.ok(["correct", "wrong"].includes(tier));
-          if (tier === "correct") right++; else wrong++;
+          const target = words.find((word) => Number(word.id.match(/u(\d+)\./)?.[1]) === round.chapter && word.w === tile.word);
+          if (target) {
+            assert.equal(tile.item?.id, target.id);
+            assert.equal(gradeVocab(tile.item!, tile.word).tier, "correct");
+            right++;
+          } else {
+            assert.equal(tile.item, null, "a distractor must not carry another word's reference");
+            wrong++;
+          }
         }
         assert.ok(right >= 3 && wrong >= 2);
       }

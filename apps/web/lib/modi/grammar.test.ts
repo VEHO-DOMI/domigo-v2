@@ -4,7 +4,7 @@ import { it } from "node:test";
 import { loadUnit, loadUnitStructures, listApprovedUnits } from "@domigo/content-loader";
 import { gradeGrammar, type GrammarInput } from "@domigo/engine";
 import { grammarTopics, grammarRound, memoryEligible, GRAMMAR_FORMATS } from "./grammar.ts";
-import { validModeInput } from "./attempt-policy.ts";
+import { knownAttemptMode, validModeInput } from "./attempt-policy.ts";
 const read = (file: string) => fs.readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 const items = listApprovedUnits().flatMap((slug) => loadUnit(slug).grammar);
 const catalog = listApprovedUnits().flatMap(loadUnitStructures);
@@ -56,6 +56,7 @@ it("G05 memory keeps whole authored pairs, rejects ambiguous or oversized decks"
   assert.equal(memoryEligible({ ...item, format: "gap-fill" }), false);
 });
 it("G06 grammar policy rejects vocab items and vocab inputs", () => {
+  assert.equal(knownAttemptMode("grammar"), true);
   for (const kind of ["text", "choice", "matching", "groupSort"]) assert.equal(validModeInput("grammar", items[0]!.id, { kind }), true);
   assert.equal(validModeInput("grammar", "g1u01.w.001", { kind: "text" }), false);
   assert.equal(validModeInput("grammar", items[0]!.id, { kind: "vocab" }), false);
