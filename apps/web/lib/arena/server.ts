@@ -12,6 +12,7 @@ import { arenaEnabled, createDuel, duelContext, DuelError, emptyArena, getDuel, 
 export type { ArenaData, DuelView, DuelSummary } from "../../../../packages/db/src/duel-service.ts";
 
 export function arenaError(error: unknown): Response {
+  console.warn("[arena] write_failed");
   const known = error instanceof DuelError;
   return Response.json({ ok: false, error: known ? error.code : "arena_unavailable" }, { status: known ? error.status : 503, headers: { "Cache-Control": "no-store" } });
 }
@@ -27,7 +28,7 @@ export async function readArena(view: StudentView): Promise<ArenaData> {
     return { ...emptyArena(), enabled: true, peers: Array.from({ length: 3 }, (_, i) => ({ number: i + 1, name: `${label} ${i + 2}`, avatar: i + 2 })), active: [exampleDuel(grade)], waiting: 1 };
   }
   try { return await listDuels(getDb(), view.player.classScope, view.player.userId); }
-  catch { return emptyArena(true); }
+  catch { console.warn("[arena] read_failed"); return emptyArena(true); }
 }
 
 export async function arenaPool(grade: number) {
@@ -36,21 +37,23 @@ export async function arenaPool(grade: number) {
 }
 export async function showArenaCard(view: StudentView): Promise<boolean> {
   if (view.kind === "preview") return true;
-  try { return await arenaEnabled(getDb(), view.player.classScope, view.player.userId); } catch { return false; }
+  try { return await arenaEnabled(getDb(), view.player.classScope, view.player.userId); }
+  catch { console.warn("[arena] read_failed"); return false; }
 }
-export interface DuelScreenData { duel: DuelView; prompt: string | null; chapters: { key: string; chapter: number }[] }
+async function promptFor(itemId: string): Promise<string> {
+  const ref = itemId.match(/^g([1-4])u(\d{2})\.w\./);
+  if (!ref) throw new DuelError(409, "duel_question_closed");
+  const unit = await loadUnitWithOverrides(`g${ref[1]}-u${ref[2]}`);
+  const prompt = unit.vocab.find(item => item.id === itemId)?.g;
+  if (!prompt) throw new DuelError(409, "duel_question_closed");
+  return prompt;
+}
+export interface DuelScreenData { duel: DuelView; chapters: { key: string; chapter: number }[] }
 export async function readDuel(view: StudentView, id: string): Promise<DuelScreenData> {
-  if (view.kind === "preview") return { duel: exampleDuel(trainerGrade(view) ?? 1), prompt: null, chapters: [] };
+  if (view.kind === "preview") return { duel: exampleDuel(trainerGrade(view) ?? 1), chapters: [] };
+  try {
   const player = view.player;
-  const duel = await getDuel(getDb(), player.classScope, player.userId, id);
-  let prompt: string | null = null;
-  if (duel.next) {
-    const ref = duel.next.itemId.match(/^g([1-4])u(\d{2})\.w\./);
-    if (!ref || Number(ref[1]) !== duel.grade) throw new DuelError(409, "duel_question_closed");
-    const unit = await loadUnitWithOverrides(`g${ref[1]}-u${ref[2]}`);
-    prompt = unit.vocab.find(item => item.id === duel.next!.itemId)?.g ?? null;
-    if (!prompt) throw new DuelError(409, "duel_question_closed");
-  }
+  const duel = await getDuel(getDb(), player.classScope, player.userId, id, promptFor);
   const chapters: DuelScreenData["chapters"] = [];
   if (duel.canOpen) {
     const pool = await arenaPool(duel.grade);
@@ -62,22 +65,23 @@ export async function readDuel(view: StudentView, id: string): Promise<DuelScree
       catch (error) { if (!(error instanceof DuelError && error.code === "duel_chapter_empty")) throw error; }
     }
   }
-  return { duel, prompt, chapters };
+  return { duel, chapters };
+  } catch (error) { console.warn("[arena] read_failed"); throw error; }
 }
 export async function startDuel(player: ActingUser, number: number, version: string) {
   return runDuelTransaction(tx => createDuel(tx, player.classScope, player.userId, number, version));
 }
 export async function startRound(player: ActingUser, id: string, unitKey: string) {
-  const detail = await getDuel(getDb(), player.classScope, player.userId, id);
+  const detail = await getDuel(getDb(), player.classScope, player.userId, id, promptFor);
   const pool = await arenaPool(detail.grade);
   return runDuelTransaction(tx => openRound(tx, player.classScope, player.userId, id, unitKey, pool));
 }
-export async function checkDuelAttempt(req: Request, player: ActingUser, mode: string, context: unknown, itemId: string, choice: string): Promise<DuelContext> {
+export async function checkDuelAttempt(req: Request, player: ActingUser, mode: string, context: unknown, choice: string): Promise<{ coordinates: DuelContext; itemId: string }> {
   const session = await auth();
   if (session?.user?.role !== "student" || req.headers.get("origin") !== new URL(req.url).origin) throw new DuelError(403, "duel_forbidden");
   const coordinates = duelContext(mode, context);
-  await validateDuelAnswer(getDb(), player.classScope, player.userId, coordinates, itemId, choice);
-  return coordinates;
+  const { itemId } = await validateDuelAnswer(getDb(), player.classScope, player.userId, coordinates, choice);
+  return { coordinates, itemId };
 }
 export async function writeDuelAnswer(player: ActingUser, attempt: RecordAttemptInput, coordinates: DuelContext, choice: string) {
   return runDuelTransaction(tx => recordAnswer(tx, player.classScope, attempt, coordinates, choice));

@@ -1,8 +1,8 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import type { Db } from "./index.ts";
 import { classScope } from "./scope.ts";
-import { completeDuel, createDuel, duelContext, emptyArena, getDuel, listDuels, openRound, selectDuelQuestions, whoseTurn } from "./duel-service.ts";
+import { arenaEnabled, completeDuel, createDuel, duelContext, emptyArena, getDuel, listDuels, openRound, selectDuelQuestions, whoseTurn } from "./duel-service.ts";
 import { listApprovedUnits, loadUnit } from "../../content-loader/src/index.ts";
 import { gradeVocab } from "@domigo/engine";
 import type { DuelRound } from "./schema.ts";
@@ -33,8 +33,13 @@ describe("duel fake boundaries and pure rules", () => {
   });
   it("D02 unavailable storage returns anonymous empty arena", async () => {
     const db = { select: () => { throw Error("synthetic private identity"); } } as unknown as Db;
-    expect(await listDuels(db, classScope([id]), id)).toEqual(emptyArena(true));
-    await expect(getDuel(db, classScope([id]), id, "not-a-duel")).rejects.toMatchObject({ status: 403 });
+    const log = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      expect(await listDuels(db, classScope([id]), id)).toEqual(emptyArena(true));
+      expect(await arenaEnabled(db, classScope([id]), id)).toBe(false);
+      expect(log.mock.calls).toEqual([["[arena] read_failed"], ["[arena] read_failed"]]);
+      await expect(getDuel(db, classScope([id]), id, "not-a-duel", async () => "unused")).rejects.toMatchObject({ status: 403 });
+    } finally { log.mockRestore(); }
   });
   it("D03 coordinates bind mode, duel, round and question; reject malformed or out-of-range", () => {
     const valid = { duelId: id, round: 0, question: 0 };
@@ -85,7 +90,7 @@ describe("duel fake boundaries and pure rules", () => {
     expect(selectDuelQuestions(all, 1, "g1-u01", "seed", blocked).every(q => q.itemId.startsWith("g1u01.w.") && !blocked.has(q.itemId))).toBe(true);
   });
   it("D08 corpus sweep: every offered Chapter has fifteen safe questions over five seeds", () => {
-    let offered = 0;
+    let offered = 0; const positions = [0, 0, 0, 0];
     for (const slug of listApprovedUnits()) {
       const pool = loadUnit(slug).vocab, grade = Number(slug[1]);
       if (pool.length < 3) continue;
@@ -94,11 +99,15 @@ describe("duel fake boundaries and pure rules", () => {
         expect(questions).toHaveLength(3);
         for (const q of questions) {
           const item = pool.find(i => i.id === q.itemId)!;
+          positions[q.options.findIndex(o => gradeVocab(item, o, "deToEn").tier === "correct")]!++;
           expect(q.options.map(o => gradeVocab(item, o, "deToEn").tier).sort()).toEqual(["correct", "wrong", "wrong", "wrong"]);
         }
       }
       offered++;
     }
-    expect(offered).toBeGreaterThanOrEqual(20);
+    expect(offered).toBe(57);
+    const count = positions.reduce((a, b) => a + b, 0);
+    expect(count).toBeGreaterThanOrEqual(200);
+    for (const position of positions) expect(position / count).toBeLessThan(.6);
   });
 });

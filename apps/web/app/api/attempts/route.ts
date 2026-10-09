@@ -43,7 +43,7 @@ const GrammarInputSchema = z.union([
 const Body = z.object({
   ownerId: z.string().min(1).max(256).optional(),
   clientAttemptId: z.string().regex(UUID),
-  itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
+  itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]).optional(),
   mode: z.string().min(1).max(41).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([
     GrammarInputSchema,
@@ -69,7 +69,8 @@ export async function POST(req: Request): Promise<Response> {
   // 2. Validate body.
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+  const { clientAttemptId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+  let itemId = parsed.data.itemId;
 
   // Old pages delete queued answers on permanent 4xx responses. Keep them
   // retryable until a reload upgrades the outbox and isolates ownerless rows.
@@ -87,11 +88,15 @@ export async function POST(req: Request): Promise<Response> {
 
   // A duel question is authorized before grading, then rechecked under its row
   // lock when recording. Neither replays nor forged participants can earn XP.
-  let duelCoordinates: Awaited<ReturnType<typeof checkDuelAttempt>> | null = null;
+  let duelCoordinates: Awaited<ReturnType<typeof checkDuelAttempt>>["coordinates"] | null = null;
   if (mode.startsWith("duel:")) {
-    try { duelCoordinates = await checkDuelAttempt(req, acting, mode, context, itemId, input.kind === "choice" ? input.value : ""); }
+    try {
+      const resolved = await checkDuelAttempt(req, acting, mode, context, input.kind === "choice" ? input.value : "");
+      duelCoordinates = resolved.coordinates; itemId = resolved.itemId;
+    }
     catch (error) { return arenaError(error); }
   }
+  if (itemId === undefined) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
@@ -182,7 +187,8 @@ export async function POST(req: Request): Promise<Response> {
       xpAwarded = xpForTier(item.difficulty * 10, tier);
       classifiable = item as unknown as ClassifiableItem;
     }
-  } catch {
+  } catch (error) {
+    if (duelCoordinates) return arenaError(error);
     return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 

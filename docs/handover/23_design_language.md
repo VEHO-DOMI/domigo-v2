@@ -191,6 +191,28 @@ tragen ausdrücklich `export const runtime = "nodejs"`. `finally` schließt den
 Client nach Erfolg oder Fehler/Rücknahme; reale Neon-Verbindung und Betrieb
 bleiben bis zur GG-/Koki-Abnahme ungetestet.
 
+**Nachzug 2 (PR 511):** Aufgabenkennungen bleiben im Server, weil ihr Wortende
+häufig die Übersetzung verrät. Eine offene Frage liefert ausschließlich
+`{round, question, prompt, options}`. Duell-Antworten müssen `itemId` weglassen;
+ein mitgesendetes Feld wird mit 400 abgelehnt. Die Bewertungsroute löst die
+Kennung aus den Duell-Koordinaten auf und prüft Zug, Option und Klassenreserve;
+beim Speichern erfolgt die zweite Prüfung unter `FOR UPDATE` (Zeilensperre).
+Der vorhandene deutsche Korpustext bleibt unverändert, auch bei Lehnwörtern,
+deren deutsche und englische Schreibweise übereinstimmt.
+Die Detailabfrage lädt höchstens 50 Partien, der Verlauf zeigt höchstens 20.
+Eine gesonderte Datenbankaggregation hält Played/Won/Win rate/XP über die gesamte
+berechtigte Historie vollständig. Lesen und Neuanlegen speichern den Ablauf
+nach sieben Tagen. Ausgetretene oder wieder unangemeldete Teilnehmer lassen
+auch bereits abgeschlossene betroffene Partien ohne Sieger ablaufen; sie sind
+bis zur erneuten Klassenzugehörigkeit weiterhin unsichtbar. Die Ablaufmeldung
+nennt deshalb nur den fehlenden Sieger, keinen ungesicherten Ablaufgrund.
+Fehler im Arena-Pfad werden ausschließlich als `[arena] read_failed`,
+`[arena] write_failed` oder `[arena] connection_error` protokolliert. Der
+Verbindungs-Client hat einen Fehler-Listener, damit ein asynchroner Fehler
+nicht als unbehandeltes Ereignis den Prozess beendet. Lokale Tests prüfen die
+Kennungsfreiheit über alle 57 Einheiten/2.446 Vokabeln, tatsächliche SQL-Sperren,
+Antwortverteilung, beide Löschrichtungen und die Klassen-/Modus-/Art-Bindung.
+
 **Live Battle und Class Quiz = eigene künftige Spur**, Ruling cgo-120 zu Kosten
 und Echtzeit-Betrieb noch offen. Keine Kachel und kein Ankündigungssatz auf der
 Kinderseite. Der ursprüngliche Sammelaufschub der Arena gilt damit nur noch für

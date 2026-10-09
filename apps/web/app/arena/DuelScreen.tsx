@@ -7,7 +7,7 @@ import { arenaCopy, arenaMessage } from "@/lib/arena/copy";
 import { DuelResult, RoundBlocks } from "./ArenaScreen";
 
 export default function DuelScreen({ data, grade, preview, ownerId }: { data: DuelScreenData; grade: number; preview: boolean; ownerId: string | null }) {
-  const c = arenaCopy(grade), router = useRouter(), { duel, prompt, chapters } = data, next = duel.next;
+  const c = arenaCopy(grade), router = useRouter(), { duel, chapters } = data, next = duel.next;
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [receipt, setReceipt] = useState<{ tier: string; xpAwarded: number } | null>(null), [selected, setSelected] = useState<string | null>(null);
   const inFlight = useRef(false);
   async function post(path: string, body: unknown) {
@@ -25,7 +25,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
   function answer(value: string) {
     if (preview || !ownerId || !next || inFlight.current || receipt) return;
     setSelected(value);
-    void post("/api/attempts", { ownerId, clientAttemptId: crypto.randomUUID(), itemId: next.itemId, mode: `duel:${duel.id}`,
+    void post("/api/attempts", { ownerId, clientAttemptId: crypto.randomUUID(), mode: `duel:${duel.id}`,
       input: { kind: "choice", value }, context: { duelId: duel.id, round: next.round, question: next.question } });
   }
   return <main className="og-screen arena-screen" lang={grade === 1 ? "de" : "en"}>
@@ -35,7 +35,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
     {next && !preview ? <section className="arena-question" aria-label={c.question}>
       <h2>{c.round} {next.round + 1} · Chapter {duel.rounds[next.round]?.chapter}</h2><p className="arena-muted">{c.question} {next.question + 1} {c.of} 3</p>
       <div className="arena-question-progress" aria-hidden="true">{[0, 1, 2].map(i => <span key={i} className={i <= next.question ? "filled" : ""} />)}</div>
-      <p className="arena-prompt-label">{c.translate}</p><p className="arena-prompt">{prompt}</p>
+      <p className="arena-prompt-label">{c.translate}</p><p className="arena-prompt">{next.prompt}</p>
       <div className="arena-options">{next.options.map(option => <button type="button" key={option} disabled={busy || !!receipt} onClick={() => answer(option)} className={`arena-option${receipt && selected === option ? receipt.tier === "correct" ? " correct" : " wrong" : ""}`}>{option}</button>)}</div>
       {receipt && <div className="arena-receipt" role="status"><strong>{receipt.tier === "correct" ? `✓ ${c.correct}` : `× ${c.wrong}`}</strong><span>+{receipt.xpAwarded} XP · {c.saved}</span><button type="button" className="og-primary" onClick={() => router.refresh()}>{c.continue}</button></div>}
     </section> : <>
@@ -45,7 +45,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
         {[0, 1, 2, 3, 4].map(i => <div className="arena-round-row" key={i}><RoundBlocks answers={duel.rounds[i]?.mine ?? []} label={`${c.me} · ${c.round} ${i + 1}`} /><div>{c.round} {i + 1}{duel.rounds[i] && <small>Chapter {duel.rounds[i]!.chapter}</small>}</div><RoundBlocks answers={duel.rounds[i]?.theirs ?? []} label={`${duel.opponent} · ${c.round} ${i + 1}`} /></div>)}
         {!duel.canOpen && duel.status === "active" && !preview && <p className="arena-wait">{c.waitHint} <button className="arena-text-button" type="button" onClick={() => router.refresh()}>{c.refresh}</button></p>}
       </section>
-      {duel.canOpen && !preview && <section className="arena-chapters"><h2>{c.chooseChapter}</h2><p className="arena-muted">{c.round} {duel.rounds.length + 1} {c.of} 5 · 3 {c.question.toLowerCase()}</p>{chapters.length === 0 ? <p>{c.noChapters}</p> : <div className="arena-chapter-grid">{chapters.map(chapter => <button className="arena-chapter" type="button" disabled={busy} key={chapter.key} onClick={() => void post("/api/arena/rounds", { duelId: duel.id, unitKey: chapter.key })}>Chapter {chapter.chapter}</button>)}</div>}</section>}
+      {duel.canOpen && !preview && <section className="arena-chapters"><h2>{c.chooseChapter}</h2><p className="arena-muted">{c.round} {duel.rounds.length + 1} {c.of} 5 · 3 {c.questions}</p>{chapters.length === 0 ? <p>{c.noChapters}</p> : <div className="arena-chapter-grid">{chapters.map(chapter => <button className="arena-chapter" type="button" disabled={busy} key={chapter.key} onClick={() => void post("/api/arena/rounds", { duelId: duel.id, unitKey: chapter.key })}>Chapter {chapter.chapter}</button>)}</div>}</section>}
     </>}
   </main>;
 }

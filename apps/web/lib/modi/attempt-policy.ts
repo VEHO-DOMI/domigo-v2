@@ -19,9 +19,10 @@ export function knownAttemptMode(mode: string): boolean {
 }
 
 /** Established modes keep their input contracts. Trainer modes are vocab-only. */
-export function validModeInput(mode: string, itemId: string, input: { kind: string; pool?: string }): boolean {
+export function validModeInput(mode: string, itemId: string | undefined, input: { kind: string; pool?: string }): boolean {
   if (!knownAttemptMode(mode)) return false;
-  if (mode.startsWith("duel:")) return /^g[1-4]u\d{2}\.w\./.test(itemId) && input.kind === "choice";
+  if (mode.startsWith("duel:")) return itemId === undefined && input.kind === "choice";
+  if (itemId === undefined) return false;
   if (mode === "grammar") return /^g[1-4]u\d{2}\.gi\./.test(itemId) && ["text", "choice", "matching", "groupSort"].includes(input.kind);
   if (!(TRAINER_MODES as readonly string[]).includes(mode)) return true;
   if (!/^g[1-4]u\d+\.w\./.test(itemId)) return false;

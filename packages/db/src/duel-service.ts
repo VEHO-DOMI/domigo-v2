@@ -42,6 +42,7 @@ export async function runDuelTransaction<T>(work: (tx: Db) => Promise<T>): Promi
   const connectionString = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
   if (!connectionString) throw new DuelError(503, "arena_unavailable");
   const client = new Client({ connectionString, connectionTimeoutMillis: 10000 });
+  client.on("error", () => { console.warn("[arena] connection_error"); });
   try {
     await client.connect();
     return await drizzle(client, { schema }).transaction(async tx => {
@@ -69,8 +70,9 @@ export interface ArenaData {
 }
 export interface DuelView extends DuelSummary {
   me: string; myAvatar: number; grade: number; canOpen: boolean;
-  next: { round: number; question: number; itemId: string; options: string[] } | null;
+  next: { round: number; question: number; prompt: string; options: string[] } | null;
 }
+export type DuelPrompt = (itemId: string) => Promise<string>;
 export const emptyArena = (unavailable = false): ArenaData => ({ enabled: false, unavailable, peers: [], rosterVersion: "", active: [], history: [], waiting: 0, stats: { played: 0, won: 0, winRate: 0, xp: 0 } });
 
 async function arenaGate(db: Db, classScope: ClassScope, userId: string): Promise<Gate> {
@@ -93,7 +95,8 @@ async function arenaRoster(db: Db, classScope: ClassScope, classId: string): Pro
 }
 /** Home reads access only, never other children's names or results. */
 export async function arenaEnabled(db: Db, classScope: ClassScope, userId: string): Promise<boolean> {
-  try { return (await arenaGate(db, classScope, userId)).grade > 0; } catch { return false; }
+  try { return (await arenaGate(db, classScope, userId)).grade > 0; }
+  catch (error) { if (!(error instanceof DuelError && error.status === 403)) console.warn("[arena] read_failed"); return false; }
 }
 const avatarOf = (peer: Peer) => peer.avatar && peer.avatar >= 1 && peer.avatar <= 50 ? peer.avatar : 1;
 const nameOf = (peer: Peer) => leaderboardName(peer.givenName, peer.nickname);
@@ -115,7 +118,8 @@ export function whoseTurn(rounds: readonly DuelRound[]): Seat | "complete" {
   return rounds.length === DUEL_ROUNDS ? "complete" : rounds.length % 2 === 0 ? "p1" : "p2";
 }
 const seatOf = (duel: Duel, userId: string): Seat => duel.p1 === userId ? "p1" : "p2";
-function nextQuestion(duel: Duel, seat: Seat): DuelView["next"] {
+const vocabularyInGrade = (itemId: string, grade: number) => new RegExp(`^g${grade}u\\d{2}\\.w\\.`).test(itemId);
+function nextQuestion(duel: Duel, seat: Seat): { round: number; question: number; itemId: string; options: string[] } | null {
   const round = duel.rounds.findIndex(r => r[`${seat}Answers`].length < DUEL_QUESTIONS);
   if (round < 0) return null;
   const question = duel.rounds[round]![`${seat}Answers`].length;
@@ -131,8 +135,29 @@ async function ownDuels(db: Db, classScope: ClassScope, userId: string, gate: Ga
     .innerJoin(p1, and(eq(p1.id, entry.p1), eq(p1.classId, entry.classId), eq(p1.role, "student"), isNotNull(p1.claimedAt)))
     .innerJoin(p2, and(eq(p2.id, entry.p2), eq(p2.classId, entry.classId), eq(p2.role, "student"), isNotNull(p2.claimedAt)))
     .where(and(inArray(entry.classId, [...classScope]), eq(entry.classId, gate.classId), eq(entry.grade, gate.grade),
-      or(eq(entry.p1, userId), eq(entry.p2, userId)), duelId ? eq(entry.id, duelId) : undefined)).orderBy(desc(entry.updatedAt), asc(entry.id));
+      or(eq(entry.p1, userId), eq(entry.p2, userId)), duelId ? eq(entry.id, duelId) : undefined)).orderBy(desc(entry.updatedAt), asc(entry.id)).limit(duelId ? 1 : 50);
   return (await (lock ? query.for("update", { of: entry }) : query)).map(row => row.duel);
+}
+/** Correlated to the already scoped duel, without returning identity fields. */
+function missingParticipant() {
+  return sql`not exists (select 1 from ${v2IdentityUsers} where ${v2IdentityUsers.id} = ${duels.p1}
+    and ${v2IdentityUsers.classId} = ${duels.classId} and ${v2IdentityUsers.role} = 'student' and ${v2IdentityUsers.claimedAt} is not null)
+    or not exists (select 1 from ${v2IdentityUsers} where ${v2IdentityUsers.id} = ${duels.p2}
+    and ${v2IdentityUsers.classId} = ${duels.classId} and ${v2IdentityUsers.role} = 'student' and ${v2IdentityUsers.claimedAt} is not null)`;
+}
+/** Aggregate all eligible history in SQL; the fifty-row detail cap must not
+ * truncate Played/Won/XP. No copied counters and no result bonus. */
+async function arenaStats(db: Db, classScope: ClassScope, userId: string, gate: Gate): Promise<ArenaData["stats"]> {
+  const [row] = await db.select({
+    played: sql<number>`count(distinct ${duels.id}) filter (where ${duels.status} = 'complete')::int`,
+    won: sql<number>`count(distinct ${duels.id}) filter (where ${duels.status} = 'complete' and ${duels.winner} = ${userId})::int`,
+    xp: sql<number>`coalesce(sum(${practiceAttempts.xpAwarded}), 0)::int`,
+  }).from(duels).leftJoin(practiceAttempts, and(eq(practiceAttempts.classId, duels.classId), eq(practiceAttempts.userId, userId),
+    eq(practiceAttempts.mode, sql`'duel:' || ${duels.id}::text`)))
+    .where(and(inArray(duels.classId, [...classScope]), eq(duels.classId, gate.classId), eq(duels.grade, gate.grade),
+    or(eq(duels.p1, userId), eq(duels.p2, userId)), sql`not (${missingParticipant()})`));
+  const played = Number(row?.played ?? 0), won = Number(row?.won ?? 0);
+  return { played, won, winRate: played ? Math.round(won / played * 100) : 0, xp: Number(row?.xp ?? 0) };
 }
 async function duelXp(db: Db, classScope: ClassScope, userId: string, classId: string, rows: Duel[]): Promise<Map<string, number>> {
   if (rows.length === 0) return new Map();
@@ -154,24 +179,26 @@ function summary(duel: Duel, userId: string, peer: Peer, xp: number, at: Date): 
 export async function listDuels(db: Db, classScope: ClassScope, userId: string, at = new Date()): Promise<ArenaData> {
   try {
     const gate = await arenaGate(db, classScope, userId);
+    await expire(db, classScope, userId, at);
     const rows = await ownDuels(db, classScope, userId, gate);
     const roster = await arenaRoster(db, classScope, gate.classId);
     const peers = roster.filter(r => r.id !== userId);
     const xp = await duelXp(db, classScope, userId, gate.classId, rows);
     const summaries = rows.map(d => summary(d, userId, roster.find(r => r.id === (d.p1 === userId ? d.p2 : d.p1))!, xp.get(d.id) ?? 0, at));
-    const complete = summaries.filter(d => d.status === "complete"), active = summaries.filter(d => d.status === "active");
-    const won = complete.filter(d => d.result === "win").length;
+    const active = summaries.filter(d => d.status === "active");
     return { enabled: true, unavailable: false, rosterVersion: await rosterFingerprint(peers),
       peers: peers.map((p, i) => ({ number: i + 1, name: nameOf(p), avatar: avatarOf(p) })), active,
       history: summaries.filter(d => d.status !== "active").slice(0, 20), waiting: active.filter(d => d.myTurn).length,
-      stats: { played: complete.length, won, winRate: complete.length ? Math.round(won / complete.length * 100) : 0, xp: summaries.reduce((sum, d) => sum + d.xp, 0) } };
+      stats: await arenaStats(db, classScope, userId, gate) };
   } catch (error) {
+    if (!(error instanceof DuelError && error.status === 403)) console.warn("[arena] read_failed");
     return emptyArena(!(error instanceof DuelError && error.status === 403));
   }
 }
-export async function getDuel(db: Db, classScope: ClassScope, userId: string, id: string, at = new Date()): Promise<DuelView> {
+export async function getDuel(db: Db, classScope: ClassScope, userId: string, id: string, promptFor: DuelPrompt, at = new Date()): Promise<DuelView> {
   if (!DUEL_ID.test(id)) throw new DuelError(403, "duel_forbidden");
   const gate = await arenaGate(db, classScope, userId);
+  await expire(db, classScope, userId, at);
   const [duel] = await ownDuels(db, classScope, userId, gate, id);
   if (!duel) throw new DuelError(403, "duel_forbidden");
   const roster = await arenaRoster(db, classScope, gate.classId);
@@ -180,10 +207,12 @@ export async function getDuel(db: Db, classScope: ClassScope, userId: string, id
   const xp = await duelXp(db, classScope, userId, gate.classId, [duel]);
   const s = summary(duel, userId, peer, xp.get(id) ?? 0, at);
   const next = s.myTurn ? nextQuestion(duel, seat) : null;
+  if (next && !vocabularyInGrade(next.itemId, gate.grade)) throw new DuelError(409, "duel_question_closed");
   // A newly reserved question is never exposed, even if it was drawn earlier.
   if (next && (await listReservedForClass(db, classScope, gate.classId)).has(next.itemId)) throw new DuelError(409, "duel_question_reserved");
   return { ...s, me: nameOf(me), myAvatar: avatarOf(me), grade: gate.grade,
-    canOpen: s.myTurn && !next && duel.rounds.length < DUEL_ROUNDS, next };
+    canOpen: s.myTurn && !next && duel.rounds.length < DUEL_ROUNDS,
+    next: next ? { round: next.round, question: next.question, prompt: await promptFor(next.itemId), options: next.options } : null };
 }
 
 /** Expiry never sets a winner or changes updated_at (reads cannot revive a duel). */
@@ -191,7 +220,8 @@ export async function expire(db: Db, classScope: ClassScope, userId: string, at 
   assertWritableScope(classScope, "expire");
   const gate = await arenaGate(db, classScope, userId);
   await db.update(duels).set({ status: "expired", winner: null }).where(and(inArray(duels.classId, [...classScope]), eq(duels.classId, gate.classId),
-    or(eq(duels.p1, userId), eq(duels.p2, userId)), eq(duels.status, "active"), sql`${duels.updatedAt} <= ${new Date(at.getTime() - DUEL_EXPIRY_MS)}`));
+    or(eq(duels.p1, userId), eq(duels.p2, userId)), sql`${duels.status} <> 'expired'`,
+    or(and(eq(duels.status, "active"), sql`${duels.updatedAt} <= ${new Date(at.getTime() - DUEL_EXPIRY_MS)}`), sql`(${missingParticipant()})`)));
 }
 export async function createDuel(db: Db, classScope: ClassScope, userId: string, peerNumber: number, rosterVersion: string, at = new Date()): Promise<string> {
   assertWritableScope(classScope, "createDuel");
@@ -262,13 +292,13 @@ export async function openRound(db: Db, classScope: ClassScope, userId: string, 
   await db.update(duels).set({ rounds: [...duel.rounds, { unitKey, questions, p1Answers: [], p2Answers: [] }], updatedAt: at })
     .where(and(inArray(duels.classId, [...classScope]), eq(duels.id, id), eq(duels.classId, duel.classId)));
 }
-export async function validateDuelAnswer(db: Db, classScope: ClassScope, userId: string, context: DuelContext, itemId: string, choice: string, at = new Date(), lock = false): Promise<Duel> {
+export async function validateDuelAnswer(db: Db, classScope: ClassScope, userId: string, context: DuelContext, choice: string, at = new Date(), lock = false): Promise<{ duel: Duel; itemId: string }> {
   const duel = await activeDuel(db, classScope, userId, context.duelId, at, lock), seat = seatOf(duel, userId);
   const next = nextQuestion(duel, seat);
   if (duel.mode !== "vocab" || whoseTurn(duel.rounds) !== seat || !next || next.round !== context.round || next.question !== context.question
-    || next.itemId !== itemId || !next.options.includes(choice)) throw new DuelError(409, "duel_question_closed");
-  if ((await listReservedForClass(db, classScope, duel.classId)).has(itemId)) throw new DuelError(409, "duel_question_reserved");
-  return duel;
+    || !vocabularyInGrade(next.itemId, duel.grade) || !next.options.includes(choice)) throw new DuelError(409, "duel_question_closed");
+  if ((await listReservedForClass(db, classScope, duel.classId)).has(next.itemId)) throw new DuelError(409, "duel_question_reserved");
+  return { duel, itemId: next.itemId };
 }
 /** Pure completion, derived only from the fifteen recorded correctness flags. */
 export function completeDuel(rounds: readonly DuelRound[], p1: string, p2: string): { p1Score: number; p2Score: number; status: "active" | "complete"; winner: string | null } {
@@ -282,7 +312,8 @@ export function completeDuel(rounds: readonly DuelRound[], p1: string, p2: strin
  * id is a conflict, never a free duel answer. Any failure rolls ALL writes back. */
 export async function recordAnswer(db: Db, classScope: ClassScope, attempt: RecordAttemptInput, context: DuelContext, choice: string, at = new Date()): Promise<RecordAttemptResult> {
   assertWritableScope(classScope, "recordAnswer");
-  const duel = await validateDuelAnswer(db, classScope, attempt.userId, context, attempt.itemId, choice, at, true);
+  const { duel, itemId } = await validateDuelAnswer(db, classScope, attempt.userId, context, choice, at, true);
+  if (attempt.itemId !== itemId) throw new DuelError(409, "duel_question_closed");
   if (attempt.classId !== duel.classId || attempt.grade !== duel.grade || attempt.mode !== `duel:${duel.id}` || attempt.kind !== duel.mode) throw new DuelError(403, "duel_forbidden");
   const recorded = await recordAttempt(db, classScope, { ...attempt, context });
   if (recorded.duplicate) throw new DuelError(409, "duel_question_closed");

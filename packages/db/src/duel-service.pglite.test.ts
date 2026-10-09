@@ -7,19 +7,34 @@ import { eq } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import * as schema from "./schema.ts";
 import { classScope } from "./scope.ts";
-import { arenaEnabled, createDuel, expire, getDuel, listDuels, openRound, recordAnswer, runDuelTransaction, validateDuelAnswer } from "./duel-service.ts";
+import { arenaEnabled, createDuel, getDuel as serviceGetDuel, listDuels, openRound, recordAnswer, runDuelTransaction, validateDuelAnswer } from "./duel-service.ts";
 import { deleteUserData } from "./konto-loeschung.ts";
-import { loadUnit } from "../../content-loader/src/index.ts";
+import { listApprovedUnits, loadUnit } from "../../content-loader/src/index.ts";
 import { gradeVocab, xpForTier } from "@domigo/engine";
 const uuid = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
 const A = uuid(101), B = uuid(102), ME = uuid(1), PEER = uuid(2), OTHER = uuid(3), FOURTH = uuid(4), OUTSIDE = uuid(5), PLACEHOLDER = uuid(6), TEACHER = uuid(99);
 const at = new Date("2026-10-09T08:00:00Z"), scope = classScope([A]), pg = new PGlite();
-const database = drizzle(pg, { schema }), db = database as unknown as Db;
-const transport = vi.hoisted(() => ({ database: null as unknown, connects: 0, closes: 0 }));
-vi.mock("@neondatabase/serverless", () => ({ Client: class { async connect() { transport.connects++; } async end() { transport.closes++; } } }));
+const statements: string[] = [];
+const queryLog: { sql: string; params: unknown[] }[] = [];
+const database = drizzle(pg, { schema, logger: { logQuery(query, params) { statements.push(query); queryLog.push({ sql: query, params }); } } }), db = database as unknown as Db;
+const transport = vi.hoisted(() => ({ database: null as unknown, connects: 0, closes: 0, emitError: false, listeners: [] as string[] }));
+vi.mock("@neondatabase/serverless", async () => {
+  const { EventEmitter } = await import("node:events");
+  return { Client: class extends EventEmitter {
+    async connect() { transport.connects++; transport.listeners = this.eventNames().map(String); if (transport.emitError) this.emit("error", Error("synthetic private connection detail")); }
+    async end() { transport.closes++; }
+  } };
+});
 vi.mock("drizzle-orm/neon-serverless", () => ({ drizzle: () => transport.database }));
 const tx = <T>(work: (db: Db) => Promise<T>) => runDuelTransaction(work);
 const pool = [1, 2, 3, 4, 5].flatMap(chapter => loadUnit(`g1-u0${chapter}`).vocab);
+const corpus = listApprovedUnits().flatMap(slug => loadUnit(slug).vocab);
+const promptFor = async (itemId: string) => corpus.find(i => i.id === itemId)!.g;
+const getDuel = (db: Db, scope: ReturnType<typeof classScope>, user: string, id: string, date: Date) => serviceGetDuel(db, scope, user, id, promptFor, date);
+async function storedItem(id: string, next: { round: number; question: number }) {
+  const [row] = await db.select().from(schema.duels).where(eq(schema.duels.id, id));
+  return row!.rounds[next.round]!.questions[next.question]!.itemId;
+}
 const arena = (user = ME) => listDuels(db, scope, user, at);
 async function create(user = ME, peer = 1) {
   const board = await arena(user);
@@ -28,11 +43,11 @@ async function create(user = ME, peer = 1) {
 async function open(id: string, user = ME, chapter = "g1-u01") { return tx(d => openRound(d, scope, user, id, chapter, pool, at)); }
 async function answer(id: string, user: string, right = true, clientAttemptId = crypto.randomUUID()) {
   const view = await getDuel(db, scope, user, id, at), next = view.next!;
-  const item = pool.find(i => i.id === next.itemId)!;
+  const itemId = await storedItem(id, next), item = pool.find(i => i.id === itemId)!;
   const choice = next.options.find(o => (gradeVocab(item, o, "deToEn").tier === "correct") === right)!;
   const tier = gradeVocab(item, choice, "deToEn").tier;
   const context = { duelId: id, round: next.round, question: next.question };
-  const attempt = { userId: user, classId: A, itemId: next.itemId, kind: "vocab" as const, unitSlug: `g1-u${item.id.slice(3, 5)}`, grade: 1, mode: `duel:${id}`, tier, xpAwarded: xpForTier(item.difficulty * 10, tier), clientAttemptId };
+  const attempt = { userId: user, classId: A, itemId, kind: "vocab" as const, unitSlug: `g1-u${item.id.slice(3, 5)}`, grade: 1, mode: `duel:${id}`, tier, xpAwarded: xpForTier(item.difficulty * 10, tier), clientAttemptId };
   const result = await tx(d => recordAnswer(d, scope, attempt, context, choice, at));
   return { result, attempt, context, choice };
 }
@@ -90,12 +105,12 @@ describe("PostgreSQL duel contracts", () => {
     const id = await create(); await open(id);
     for (const user of [OUTSIDE, OTHER, TEACHER, PLACEHOLDER]) {
       await expect(getDuel(db, scope, user, id, at)).rejects.toMatchObject({ status: 403 });
-      await expect(validateDuelAnswer(db, scope, user, { duelId: id, round: 0, question: 0 }, "g1u01.w.any", "x", at)).rejects.toMatchObject({ status: 403 });
+      await expect(validateDuelAnswer(db, scope, user, { duelId: id, round: 0, question: 0 }, "x", at)).rejects.toMatchObject({ status: 403 });
     }
     expect(await listDuels(db, classScope([B]), ME, at)).toMatchObject({ enabled: false, active: [] });
     await expect(create(ME, 4)).rejects.toMatchObject({ status: 403 });
     const b = await arena();
-    await expect(tx(d => createDuel(d, scope, ME, 1, `${b.rosterVersion}bad`, at))).rejects.toMatchObject({ status: 409 });
+    await expect(tx(d => createDuel(d, scope, ME, 1, `${b.rosterVersion}bad`, at))).rejects.toMatchObject({ status: 409, code: "roster_changed" });
   });
   it("D12 disabled, test or archived class closes read and write access", async () => {
     for (const mutation of ["UPDATE domigo_v2.class_settings SET leaderboard=false", "UPDATE domigo_v2.class_settings SET purpose='test'", "UPDATE domigo_v2.classes SET archived_at=now()"] ) {
@@ -133,11 +148,11 @@ describe("PostgreSQL duel contracts", () => {
     const candidates = pool.filter(i => i.id.startsWith("g1u01."));
     await db.insert(schema.reservedItems).values(candidates.map(i => ({ classId: B, itemId: i.id, active: true })));
     await open(id);
-    const next = (await getDuel(db, scope, ME, id, at)).next!;
-    await db.insert(schema.reservedItems).values({ classId: A, itemId: next.itemId, active: true });
+    const next = (await getDuel(db, scope, ME, id, at)).next!, itemId = await storedItem(id, next);
+    await db.insert(schema.reservedItems).values({ classId: A, itemId, active: true });
     await expect(getDuel(db, scope, ME, id, at)).rejects.toMatchObject({ status: 409, code: "duel_question_reserved" });
-    await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round: 0, question: 0 }, next.itemId, next.options[0]!, at)).rejects.toMatchObject({ status: 409 });
-    await db.insert(schema.reservedItems).values(candidates.filter(i => i.id !== next.itemId).map(i => ({ classId: A, itemId: i.id, active: true })));
+    await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round: 0, question: 0 }, next.options[0]!, at)).rejects.toMatchObject({ status: 409 });
+    await db.insert(schema.reservedItems).values(candidates.filter(i => i.id !== itemId).map(i => ({ classId: A, itemId: i.id, active: true })));
     const second = await create(ME, 2);
     await expect(open(second)).rejects.toMatchObject({ status: 409, code: "duel_chapter_empty" });
   });
@@ -150,14 +165,15 @@ describe("PostgreSQL duel contracts", () => {
     const stored = JSON.stringify(row!.rounds);
     expect(stored).not.toMatch(/correctIdx|"answer"|"correct"|"english"|"name"|"xp"/i);
     for (const p of [ME, PEER, A]) expect(JSON.stringify(v)).not.toContain(p);
-    expect(JSON.stringify(v)).not.toContain(row!.rounds[0]!.questions[1]!.itemId);
+    expect(JSON.stringify(v)).not.toMatch(/itemId|g[1-4]u\d{2}\.w\./);
+    expect(Object.keys(v.next!).sort()).toEqual(["options", "prompt", "question", "round"]);
   });
   it("D17 only open question/item/option is accepted; skipped/foreign round and tampered choices rejected", async () => {
     const id = await create(); await open(id); const v = (await getDuel(db, scope, ME, id, at)).next!;
-    for (const [round, question, item, choice] of [[0, 1, v.itemId, v.options[0]!], [1, 0, v.itemId, v.options[0]!], [0, 0, "g1u01.w.fake", v.options[0]!], [0, 0, v.itemId, "forged"]] as const) {
-      await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round, question }, item, choice, at)).rejects.toMatchObject({ status: 409 });
+    for (const [round, question, choice] of [[0, 1, v.options[0]!], [1, 0, v.options[0]!], [0, 0, "forged"]] as const) {
+      await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round, question }, choice, at)).rejects.toMatchObject({ status: 409 });
     }
-    await expect(validateDuelAnswer(db, scope, PEER, { duelId: id, round: 0, question: 0 }, v.itemId, v.options[0]!, at)).rejects.toMatchObject({ status: 409 });
+    await expect(validateDuelAnswer(db, scope, PEER, { duelId: id, round: 0, question: 0 }, v.options[0]!, at)).rejects.toMatchObject({ status: 409 });
     expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
   });
   it("D18 replay with same OR different client id is 409 and books one ledger row/XP increment", async () => {
@@ -169,8 +185,8 @@ describe("PostgreSQL duel contracts", () => {
     const [row] = await db.select().from(schema.duels); expect(row!.rounds[0]!.p1Answers).toEqual([true]);
   });
   it("D19 simultaneous answers serialize; exactly one succeeds and the other conflicts", async () => {
-    const id = await create(); await open(id); const next = (await getDuel(db, scope, ME, id, at)).next!;
-    const item = pool.find(i => i.id === next.itemId)!, choice = next.options.find(o => gradeVocab(item, o, "deToEn").tier === "correct")!;
+    const id = await create(); await open(id); const next = (await getDuel(db, scope, ME, id, at)).next!, itemId = await storedItem(id, next);
+    const item = pool.find(i => i.id === itemId)!, choice = next.options.find(o => gradeVocab(item, o, "deToEn").tier === "correct")!;
     const a = { userId: ME, classId: A, itemId: item.id, kind: "vocab" as const, unitSlug: "g1-u01", grade: 1, mode: `duel:${id}`, tier: "correct" as const, xpAwarded: 20 };
     const results = await Promise.allSettled([1, 2].map(() => tx(d => recordAnswer(d, scope, { ...a, clientAttemptId: crypto.randomUUID() }, { duelId: id, round: 0, question: 0 }, choice, at))));
     expect(results.filter(r => r.status === "fulfilled")).toHaveLength(1); expect(results.filter(r => r.status === "rejected")).toHaveLength(1);
@@ -197,9 +213,8 @@ describe("PostgreSQL duel contracts", () => {
     expect((await listDuels(db, scope, ME, new Date(later.getTime() - 1))).active).toHaveLength(1);
     const b = await listDuels(db, scope, ME, later);
     expect(b.active).toHaveLength(0); expect(b.history[0]!.status).toBe("expired"); expect(b.stats.played).toBe(0);
-    await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round: 0, question: 0 }, "fake", "x", later)).rejects.toMatchObject({ status: 410 });
-    await tx(d => expire(d, scope, ME, later));
-    const [row] = await db.select().from(schema.duels); expect(row!.winner).toBe(null); expect(row!.updatedAt).toEqual(at);
+    await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round: 0, question: 0 }, "x", later)).rejects.toMatchObject({ status: 410 });
+    const [row] = await db.select().from(schema.duels); expect(row!.status).toBe("expired"); expect(row!.winner).toBe(null); expect(row!.updatedAt).toEqual(at);
     expect(await tx(d => createDuel(d, scope, ME, 1, b.rosterVersion, later))).not.toBe(id);
   });
   it("D23 complete thirty-answer duel: scores/sides/history/XP all derived with no bonus", async () => {
@@ -225,12 +240,12 @@ describe("PostgreSQL duel contracts", () => {
     await expect(open(id, ME, "g1-u06")).rejects.toMatchObject({ status: 409 });
   });
   it("D24 history is latest twenty; totals are all completed duels, and XP is own/current-class/duel-only", async () => {
-    const rows = Array.from({ length: 22 }, (_, i) => ({ id: uuid(201 + i), classId: A, grade: 1, p1: ME, p2: PEER, mode: "vocab", status: "complete", p1Score: i % 2, p2Score: 0, winner: i % 2 ? ME : null, updatedAt: new Date(at.getTime() + i * 1000) }));
+    const rows = Array.from({ length: 62 }, (_, i) => ({ id: uuid(201 + i), classId: A, grade: 1, p1: ME, p2: PEER, mode: "vocab", status: "complete", p1Score: i % 2, p2Score: 0, winner: i % 2 ? ME : null, updatedAt: new Date(at.getTime() + i * 1000) }));
     await db.insert(schema.duels).values(rows);
-    for (const [userId, classId, mode, xpAwarded] of [[ME, A, `duel:${rows[21]!.id}`, 20], [PEER, A, `duel:${rows[21]!.id}`, 900], [ME, B, `duel:${rows[21]!.id}`, 800], [ME, A, "practice", 700], [ME, A, `duel:${uuid(999)}`, 600]] as const) await db.insert(schema.practiceAttempts).values({ userId, classId, mode, xpAwarded, itemId: "g1u01.w.synthetic", kind: "vocab", unitSlug: "g1-u01", grade: 1, tier: "correct", correct: true });
+    for (const [userId, classId, mode, xpAwarded] of [[ME, A, `duel:${rows[61]!.id}`, 20], [PEER, A, `duel:${rows[61]!.id}`, 900], [ME, B, `duel:${rows[61]!.id}`, 800], [ME, A, "practice", 700], [ME, A, `duel:${uuid(999)}`, 600]] as const) await db.insert(schema.practiceAttempts).values({ userId, classId, mode, xpAwarded, itemId: "g1u01.w.synthetic", kind: "vocab", unitSlug: "g1-u01", grade: 1, tier: "correct", correct: true });
     // Even a broader authenticated scope must not mix the viewer's current class with another class.
-    const b = await listDuels(db, classScope([A, B]), ME, at); expect(b.history).toHaveLength(20); expect(b.history[0]!.id).toBe(rows[21]!.id);
-    expect(b.history.at(-1)!.id).toBe(rows[2]!.id); expect(b.stats).toEqual({ played: 22, won: 11, winRate: 50, xp: 20 });
+    const b = await listDuels(db, classScope([A, B]), ME, at); expect(b.history).toHaveLength(20); expect(b.history[0]!.id).toBe(rows[61]!.id);
+    expect(b.history.at(-1)!.id).toBe(rows[42]!.id); expect(b.stats).toEqual({ played: 62, won: 31, winRate: 50, xp: 20 });
     expect(b.history[0]!.xp).toBe(20); expect(b.history[1]!.result).toBe("draw");
   });
   it("D25 missing migration fails closed without an exception or identity output", async () => {
@@ -239,11 +254,11 @@ describe("PostgreSQL duel contracts", () => {
     finally { await pg.exec("ALTER TABLE domigo_v2.synthetic_hidden_duels RENAME TO duels"); }
   });
   it("D26 deletion removes both participant directions and tolerates absent duels", async () => {
-    const mine = await create(), others = await create(OTHER, 3);
+    const mine = await create(), asSecond = await create(OTHER, 1), others = await create(OTHER, 3);
     const report = await deleteUserData(db, ME);
-    expect(report.zeilen.duels).toBe(1);
+    expect(report.zeilen.duels).toBe(2);
     expect((await db.select().from(schema.duels)).map(d => d.id)).toEqual([others]);
-    expect((await db.select().from(schema.duels)).some(d => d.id === mine)).toBe(false);
+    expect((await db.select().from(schema.duels)).some(d => d.id === mine || d.id === asSecond)).toBe(false);
     // Restore this entirely synthetic viewer, then exercise the pre-migration path.
     await db.insert(schema.v2IdentityUsers).values({ id: ME, classId: A, role: "student", displayName: "Synthetic 01", givenName: "Example Invented", pinHash: "unused", claimedAt: at, createdAt: at });
     await pg.exec("ALTER TABLE domigo_v2.duels RENAME TO synthetic_hidden_duels");
@@ -296,6 +311,115 @@ describe("PostgreSQL duel contracts", () => {
     expect(await db.select().from(schema.duels)).toEqual(before);
     expect(before[0]!.id).toBe(id);
     await expect(create(PEER)).rejects.toMatchObject({ status: 409 });
+  });
+
+  it("D31 actual locked duel SELECT uses FOR UPDATE OF own_duel", async () => {
+    const id = await create(); statements.length = 0; await open(id);
+    const lockQueries = statements.filter(q => q.includes('from "domigo_v2"."duels" "own_duel"'));
+    expect(lockQueries).toHaveLength(1);
+    expect(lockQueries[0]).toMatch(/for update of "own_duel"/i);
+    statements.length = 0; await answer(id, ME);
+    expect(statements.filter(q => /for update of "own_duel"/i.test(q))).toHaveLength(1);
+  });
+  it("D32 stale ordinal roster fails with roster_changed before any active pair exists", async () => {
+    const old = await arena();
+    await db.update(schema.v2IdentityUsers).set({ claimedAt: null }).where(eq(schema.v2IdentityUsers.id, PEER));
+    expect((await arena()).peers[0]!.name).not.toBe(old.peers[0]!.name);
+    await expect(tx(d => createDuel(d, scope, ME, 1, old.rosterVersion, at))).rejects.toMatchObject({ status: 409, code: "roster_changed" });
+    expect(await db.select().from(schema.duels)).toHaveLength(0);
+  });
+  it("D33 recordAnswer rejects foreign class, mode, kind and grade with 403 before persistence", async () => {
+    const id = await create(); await open(id);
+    const next = (await getDuel(db, scope, ME, id, at)).next!, itemId = await storedItem(id, next);
+    const attempt = { userId: ME, classId: A, itemId, kind: "vocab" as const, unitSlug: "g1-u01", grade: 1, mode: `duel:${id}`, tier: "correct" as const, xpAwarded: 20, clientAttemptId: crypto.randomUUID() };
+    for (const mutation of [{ classId: B }, { mode: "practice" }, { kind: "grammar" as const }, { grade: 2 }]) {
+      await expect(tx(d => recordAnswer(d, scope, { ...attempt, ...mutation }, { duelId: id, round: 0, question: 0 }, next.options[0]!, at))).rejects.toMatchObject({ status: 403, code: "duel_forbidden" });
+    }
+    await expect(tx(d => recordAnswer(d, scope, { ...attempt, itemId: "g1u01.w.forged" }, { duelId: id, round: 0, question: 0 }, next.options[0]!, at))).rejects.toMatchObject({ status: 409 });
+    expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
+    expect((await getDuel(db, scope, ME, id, at)).next!.question).toBe(0);
+  });
+  it("D34 asynchronous connection error has a listener, stays anonymous and closes normally", async () => {
+    const log = vi.spyOn(console, "warn").mockImplementation(() => {}), closed = transport.closes;
+    transport.emitError = true;
+    try {
+      expect(await tx(async () => "alive")).toBe("alive");
+      expect(transport.listeners).toContain("error");
+      expect(log.mock.calls).toEqual([["[arena] connection_error"]]);
+      expect(transport.closes).toBe(closed + 1);
+    } finally { transport.emitError = false; log.mockRestore(); }
+  });
+  it("D35 create and list independently persist eight-day expiry, no winner or revived date", async () => {
+    const board = await arena(), old = new Date(at.getTime() - 8 * 86400000);
+    const first = uuid(801), second = uuid(802);
+    await db.insert(schema.duels).values([first, second].map((id, i) => ({ id, classId: A, grade: 1, p1: ME, p2: i ? OTHER : PEER, mode: "vocab", status: "active", winner: null, createdAt: old, updatedAt: old })));
+    await tx(d => createDuel(d, scope, ME, 1, board.rosterVersion, at));
+    expect((await db.select().from(schema.duels).where(eq(schema.duels.id, first)))[0]).toMatchObject({ status: "expired", winner: null, updatedAt: old });
+    await db.update(schema.duels).set({ status: "active", winner: null }).where(eq(schema.duels.id, second));
+    await arena();
+    expect((await db.select().from(schema.duels).where(eq(schema.duels.id, second)))[0]).toMatchObject({ status: "expired", winner: null, updatedAt: old });
+  });
+  it("D36 moved or unclaimed participants expire on next list or detail read, without winner", async () => {
+    for (const status of ["active", "complete"]) {
+      for (const read of ["list", "detail"]) {
+        await db.update(schema.v2IdentityUsers).set({ classId: A, claimedAt: at }).where(eq(schema.v2IdentityUsers.id, PEER));
+        const id = await create();
+        await db.update(schema.duels).set({ status, winner: status === "complete" ? ME : null }).where(eq(schema.duels.id, id));
+        await db.update(schema.v2IdentityUsers).set(read === "list" ? { classId: B } : { claimedAt: null }).where(eq(schema.v2IdentityUsers.id, PEER));
+        if (read === "list") expect((await arena()).active).toHaveLength(0);
+        else await expect(getDuel(db, scope, ME, id, at)).rejects.toMatchObject({ status: 403 });
+        expect((await db.select().from(schema.duels).where(eq(schema.duels.id, id)))[0]).toMatchObject({ status: "expired", winner: null, updatedAt: at });
+      }
+    }
+  });
+  it("D37 own-duel SQL is bounded at fifty (detail one); history twenty; aggregate stats retain older XP", async () => {
+    const rows = Array.from({ length: 62 }, (_, i) => ({ id: uuid(901 + i), classId: A, grade: 1, p1: ME, p2: PEER, mode: "vocab", status: "complete", p1Score: 1, winner: ME, updatedAt: new Date(at.getTime() + i * 1000) }));
+    await db.insert(schema.duels).values(rows);
+    await db.insert(schema.practiceAttempts).values({ userId: ME, classId: A, mode: `duel:${rows[0]!.id}`, xpAwarded: 37, itemId: "g1u01.w.synthetic", kind: "vocab", unitSlug: "g1-u01", grade: 1, tier: "correct", correct: true });
+    statements.length = 0; const board = await arena();
+    expect(statements.find(q => q.includes('from "domigo_v2"."duels" "own_duel"'))).toMatch(/limit \$/i);
+    expect(board.history).toHaveLength(20); expect(board.history[0]!.id).toBe(rows[61]!.id);
+    expect(board.stats).toEqual({ played: 62, won: 62, winRate: 100, xp: 37 });
+    // Check the actual bound parameter independently of the source expression.
+    const own = queryLog.filter(q => q.sql.includes('from "domigo_v2"."duels" "own_duel"')).at(-1)!;
+    expect(own.params.at(-1)).toBe(50);
+    await getDuel(db, scope, ME, rows[0]!.id, at);
+    expect(queryLog.filter(q => q.sql.includes('from "domigo_v2"."duels" "own_duel"')).at(-1)!.params.at(-1)).toBe(1);
+  });
+  it("D38 all 57 units: getDuel serializes every corpus word without task IDs or answer fields", async () => {
+    const id = await create(); let checked = 0;
+    expect(listApprovedUnits()).toHaveLength(57);
+    for (const slug of listApprovedUnits()) {
+      const grade = Number(slug[1]);
+      await db.update(schema.v2Classes).set({ grade }).where(eq(schema.v2Classes.id, A));
+      for (const item of loadUnit(slug).vocab) {
+        const options = [item.w, ...item.mc.slice(0, 3)];
+        await db.update(schema.duels).set({ grade, rounds: [{ unitKey: slug, questions: [{ itemId: item.id, options }], p1Answers: [], p2Answers: [] }] }).where(eq(schema.duels.id, id));
+        const view = await getDuel(db, scope, ME, id, at);
+        expect(view.next).toEqual({ round: 0, question: 0, prompt: item.g, options });
+        expect(JSON.stringify(view)).not.toMatch(/itemId|g[1-4]u\d{2}\.w\./);
+        const { next, ...metadata } = view;
+        expect(metadata).toEqual({ id, opponent: "Example (Synthetic 02)", avatar: 1, mode: "vocab", status: "active", myTurn: true, myScore: 0, theirScore: 0,
+          result: null, date: at.toISOString(), xp: 0, rounds: [{ chapter: Number(slug.slice(-2)), mine: [], theirs: [] }], me: "Example (Synthetic 01)", myAvatar: 1, grade, canOpen: false });
+        // The authored German prompt may itself be a loanword (e.g. cool).
+        // Outside the options the question has only this prompt and two numbers.
+        const { options: _options, ...outsideOptions } = next!;
+        expect(outsideOptions).toEqual({ round: 0, question: 0, prompt: item.g }); checked++;
+      }
+    }
+    expect(checked).toBe(2446);
+  }, 90000);
+
+  it("D39 server resolution preserves vocabulary/year whitelist before reveal or grading", async () => {
+    const id = await create(); await open(id);
+    const [stored] = await db.select().from(schema.duels).where(eq(schema.duels.id, id));
+    for (const itemId of ["g2u01.w.foreign", "g1u01.gi.grammar"]) {
+      const rounds = structuredClone(stored!.rounds); rounds[0]!.questions[0]!.itemId = itemId;
+      await db.update(schema.duels).set({ rounds }).where(eq(schema.duels.id, id));
+      await expect(getDuel(db, scope, ME, id, at)).rejects.toMatchObject({ status: 409, code: "duel_question_closed" });
+      await expect(validateDuelAnswer(db, scope, ME, { duelId: id, round: 0, question: 0 }, rounds[0]!.questions[0]!.options[0]!, at)).rejects.toMatchObject({ status: 409, code: "duel_question_closed" });
+    }
+    expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
   });
 
 });
