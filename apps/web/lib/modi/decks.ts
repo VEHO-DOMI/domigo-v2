@@ -1,5 +1,5 @@
 import type { VocabItem } from "@domigo/content-schema";
-import { canonical, gradeVocab, spellingLayout, vocabAnswers, type VocabPool } from "@domigo/engine";
+import { canonical, spellingLayout, vocabAnswers, type VocabPool } from "@domigo/engine";
 
 export function shuffle<T>(items: readonly T[], random: () => number = Math.random): T[] {
   const result = [...items];
@@ -28,14 +28,14 @@ export function spellingWords(words: readonly VocabItem[]): VocabItem[] {
     return count >= 3 && count <= 30;
   }).slice(0, 18);
 }
-export interface HuntTile { word: string; item: VocabItem }
+export interface HuntTile { word: string; item: VocabItem | null }
 export interface HuntRound { chapter: number; tiles: HuntTile[] }
 /**
  * The question is Chapter membership. An authored carrier answer is the raw
- * choice sent to the unchanged grader. A target word uses its own reference;
- * distractors use a target-Chapter reference against which they grade wrong.
- * No client invents a correct/wrong answer or awards a reward. Construction is
- * server-side, after reserve filtering, and every choice is self-graded here.
+ * choice sent to the unchanged grader. A target word uses its own reference.
+ * Distractors have no persistence reference: a wrong Chapter choice must not
+ * change an unrelated word's Leitner status. Construction follows the reserve
+ * filter; only selected targets can become assessed word attempts.
  */
 export function huntRounds(words: readonly VocabItem[], random: () => number = Math.random): HuntRound[] {
   const unique = distinctWords(words).filter((item) => canonical(fullAnswer(item)) === canonical(item.w));
@@ -48,10 +48,7 @@ export function huntRounds(words: readonly VocabItem[], random: () => number = M
     if (targets.length < 3) continue;
     const targetNames = new Set(words.filter((item) => chapterOf(item) === chapter).map((item) => canonical(item.w)));
     const decoys = shuffle(unique.filter((item) => chapterOf(item) !== chapter && !targetNames.has(canonical(item.w))), random)
-      .flatMap((candidate) => {
-        const anchor = targets.find((target) => gradeVocab(target, candidate.w).tier === "wrong");
-        return anchor ? [{ word: candidate.w, item: anchor }] : [];
-      }).slice(0, 10 - targets.length);
+      .slice(0, 10 - targets.length).map((candidate) => ({ word: candidate.w, item: null }));
     if (targets.length + decoys.length < 8) continue;
     rounds.push({ chapter, tiles: shuffle([...targets.map((item) => ({ word: item.w, item })), ...decoys], random) });
   }

@@ -92,9 +92,12 @@ Labor `cgo-106/og/<grade>/index.html`):
   Themenfeld, deshalb Chapters statt erfundener Themen; mindestens zwei
   ausgewählte Chapters mit genügend verfügbaren Wörtern sind nötig.
   Auswahl wird gesammelt und dann geprüft, entsprechend dem W2-Mehrfachauswahlauftrag.
-  Die Fragen werden nach dem Reservefilter gebaut. Fremde Chapter-Wörter,
-  die der bestehende Grader als teilweise richtig erkennen könnte, werden
-  beim Zusammenstellen ausgeschlossen.
+  Die Fragen werden nach dem Reservefilter gebaut. **Nachzug 1:** Nur angetippte
+  Zielwörter buchen einen Versuch gegen genau ihr eigenes Item. Tarnwörter
+  tragen keine Speicherreferenz und geben ausschließlich sichtbares Falsch-Feedback;
+  nicht angetippte Zielwörter bleiben ungebucht. Beleg: Im Original markiert
+  `2nd/wordHuntFinishRound` ausgelassene Wörter nur als `missed`, ohne Wortversuch.
+  So verändert eine Chapter-Fehlwahl keinen fremden Leitner-Eintrag (Gesetz 6).
 - Flashcards: Selbstauskunft „Got it“ sendet die freigegebene richtige Antwort,
   „Again“ eine leere Antwort. Beide verwenden dieselbe Leitner-Queue,
   Flashcards serverseitig 0 XP. „Again“ wird mit dem vorhandenen Abstand der

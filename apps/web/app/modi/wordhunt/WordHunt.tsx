@@ -18,7 +18,11 @@ function HuntRoundView({ grade, submit, index, round, next }: GameProps & { inde
     lock.current = true; setBusy(true);
     for (const index of selected) {
       const tile = round.tiles[index]!;
-      const reply = await submit(tile.item, { kind: "choice", value: tile.word });
+      // A distractor gives round feedback only. No word was answered, so it
+      // must never move another word in the shared review queue.
+      const reply: ModeReply = tile.item
+        ? await submit(tile.item, { kind: "choice", value: tile.word })
+        : { ok: true, queued: false, tier: "wrong" };
       setPicked((old) => ({ ...old, [index]: reply }));
     }
     setBusy(false); setChecked(true);
