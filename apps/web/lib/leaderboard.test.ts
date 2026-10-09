@@ -94,7 +94,7 @@ describe("W4 source contracts, each with md5-pinned red tamper", () => {
     for (const name of ["leaderboard", "grade_board_opt_in"]) { assert.equal(cols[name].default, false); assert.equal(cols[name].notNull, true); delete cols[name]; }
     assert.deepEqual(after.tables, before.tables);
     const journal = JSON.parse(read("packages/db/drizzle/meta/_journal.json")).entries;
-    assert.equal(journal.at(-1).idx, 23); assert.equal(journal.at(-2).idx, 22);
+    assert.equal(journal[23].idx, 23); assert.equal(journal[22].idx, 22);
     const mutation = structuredClone(after); mutation.tables["domigo_v2.class_settings"].columns.extra = {};
     assert.notDeepEqual(mutation.tables, before.tables);
     console.log(`TAMPER L55 RED md5-before=${md5(JSON.stringify(after))} mutant=${md5(JSON.stringify(mutation))} after=${md5(JSON.stringify(after))}`);

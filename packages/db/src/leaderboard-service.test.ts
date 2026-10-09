@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { drizzle } from "drizzle-orm/neon-http";
 import type { Db } from "./index.ts";
 import * as schema from "./schema.ts";
@@ -22,6 +23,42 @@ function recorder(replies: (unknown[][] | Error)[] = []) {
 }
 const row = (id = USER, cls = CLASS, xp = 80, grammar = 40, weekly = 35, last = "2026-10-08") =>
   [CLASS, "Synthetic A", true, id, "Beispiel", "Fuchs", cls, cls === CLASS ? "Synthetic A" : "Synthetic B", null, xp, grammar, 4, last, weekly, 2, 3];
+
+describe("cgo-111 migration 0023", () => {
+  const read = (file: string) => JSON.parse(readFileSync(new URL(`../drizzle/meta/${file}`, import.meta.url), "utf8"));
+
+  it("pins the journal prefix and entry 23 while allowing later migrations", () => {
+    const { entries } = read("_journal.json");
+    expect(entries.slice(0, 24).map((entry: { idx: number }) => entry.idx)).toEqual(Array.from({ length: 24 }, (_, i) => i));
+    expect(entries.slice(22, 24).map((entry: { tag: string }) => entry.tag)).toEqual(["0022_student_profile", "0023_class_leaderboard"]);
+    expect(entries.filter((entry: { idx: number }) => entry.idx === 23)).toEqual([
+      expect.objectContaining({ idx: 23, tag: "0023_class_leaderboard", version: "7" }),
+    ]);
+  });
+
+  it("snapshot is 0022 plus exactly the two disabled non-null boolean settings", () => {
+    const previous = read("0022_snapshot.json");
+    const snapshot = read("0023_snapshot.json");
+    const settings = previous.tables["domigo_v2.class_settings"];
+    expect(snapshot.id).not.toBe(previous.id);
+    expect(snapshot).toEqual({
+      ...previous,
+      id: expect.any(String),
+      prevId: previous.id,
+      tables: {
+        ...previous.tables,
+        "domigo_v2.class_settings": {
+          ...settings,
+          columns: {
+            ...settings.columns,
+            leaderboard: { name: "leaderboard", type: "boolean", primaryKey: false, notNull: true, default: false },
+            grade_board_opt_in: { name: "grade_board_opt_in", type: "boolean", primaryKey: false, notNull: true, default: false },
+          },
+        },
+      },
+    });
+  });
+});
 
 describe("cgo-111 leaderboard: fake database, invented identities", () => {
   it("empty scope / no user short circuits without reading", async () => {
