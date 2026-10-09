@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { it } from "node:test";
+import { readdirSync } from "node:fs";
 import * as React from "react";
 import * as jsx from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -73,5 +74,13 @@ it("W15 result uses original win/draw/loss emojis; history displays confirmed sc
     const html = render(screen, { arena: { ...emptyArena(), enabled: true, history: [d] }, grade: 2, preview: false });
     const label = result === "win" ? "Victory!" : result === "draw" ? "Draw" : "Defeat";
     assert.ok(html.includes(`${emoji} ${label}`)); assert.match(html, /3–2/); assert.match(html, /\+40 XP/); assert.match(html, /Battle history/);
+  }
+});
+it("W16 every Arena transaction route explicitly selects the Node runtime", () => {
+  const arenaRoutes = readdirSync(new URL("../../app/api/arena/", import.meta.url), { recursive: true, encoding: "utf8" })
+    .filter(file => file.endsWith("/route.ts"));
+  assert.ok(arenaRoutes.length >= 2, "Arena routes must actually be discovered");
+  for (const file of ["apps/web/app/api/attempts/route.ts", ...arenaRoutes.map(file => `apps/web/app/api/arena/${file}`)]) {
+    assert.match(source(file), /^export const runtime = ["']nodejs["'];/m, `${file}: interactive transactions require Node`);
   }
 });

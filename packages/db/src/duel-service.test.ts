@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import type { Db } from "./index.ts";
 import { classScope } from "./scope.ts";
 import { completeDuel, createDuel, duelContext, emptyArena, getDuel, listDuels, openRound, selectDuelQuestions, whoseTurn } from "./duel-service.ts";
@@ -9,6 +10,21 @@ const id = "00000000-0000-4000-8000-000000000001";
 const round = (a: boolean[] = [], b: boolean[] = []): DuelRound => ({ unitKey: "g1-u01", questions: [], p1Answers: a, p2Answers: b });
 
 describe("duel fake boundaries and pure rules", () => {
+  it("D29 migration 0024 pins repeatable individual statements, journal position and Neon instructions", () => {
+    const sql = readFileSync(new URL("../drizzle/0024_word_duels.sql", import.meta.url), "utf8");
+    const statements = sql.split("--> statement-breakpoint").map(s => s.trim()).filter(Boolean);
+    expect(statements).toHaveLength(5);
+    expect(statements[0]).toMatch(/^CREATE TABLE IF NOT EXISTS "domigo_v2"\."duels"/);
+    for (const statement of statements.slice(1, 4)) expect(statement).toMatch(/^CREATE INDEX IF NOT EXISTS /);
+    expect(statements[4]).toMatch(/^CREATE UNIQUE INDEX IF NOT EXISTS "duels_active_pair_unique"/);
+    const { entries } = JSON.parse(readFileSync(new URL("../drizzle/meta/_journal.json", import.meta.url), "utf8"));
+    expect(entries.slice(0, 25).map((e: { idx: number }) => e.idx)).toEqual(Array.from({ length: 25 }, (_, i) => i));
+    expect(entries.slice(23, 25).map((e: { tag: string }) => e.tag)).toEqual(["0023_class_leaderboard", "0024_word_duels"]);
+    expect(entries.filter((e: { idx: number }) => e.idx === 24)).toEqual([expect.objectContaining({ idx: 24, tag: "0024_word_duels", version: "7" })]);
+    const sheet = readFileSync(new URL("../../../docs/cgo-112_NEON_BLATT_0024.md", import.meta.url), "utf8");
+    const documentedCreates = [...sheet.matchAll(/```sql\n([\s\S]*?)\n```/g)].map(m => m[1]!.trim()).filter(s => s.startsWith("CREATE "));
+    expect(documentedCreates).toEqual(statements);
+  });
   it("D01 empty scope performs no database reads or writes", async () => {
     const db = new Proxy({}, { get() { throw Error("unexpected database access"); } }) as Db;
     expect(await listDuels(db, classScope([]), id)).toEqual(emptyArena());

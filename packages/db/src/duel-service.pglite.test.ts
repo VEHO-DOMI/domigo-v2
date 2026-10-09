@@ -254,8 +254,14 @@ describe("PostgreSQL duel contracts", () => {
   it("D27 transaction transport closes after success/failure and never connects without configuration", async () => {
     const start = transport.closes;
     expect(await tx(async () => "ok")).toBe("ok");
-    await expect(tx(async () => { throw Error("synthetic failure"); })).rejects.toThrow("synthetic failure");
+    expect(transport.closes - start).toBe(1);
+    const board = await arena();
+    await expect(tx(async d => {
+      await createDuel(d, scope, ME, 1, board.rosterVersion, at);
+      throw Error("synthetic failure");
+    })).rejects.toThrow("synthetic failure");
     expect(transport.closes - start).toBe(2);
+    expect(await db.select().from(schema.duels)).toHaveLength(0);
     const connections = transport.connects;
     vi.stubEnv("DATABASE_URL", ""); vi.stubEnv("POSTGRES_URL", "");
     try { await expect(tx(async () => "never")).rejects.toMatchObject({ status: 503 }); expect(transport.connects).toBe(connections); }
@@ -273,6 +279,23 @@ describe("PostgreSQL duel contracts", () => {
       await pg.exec("DROP TRIGGER synthetic_reject_delete ON domigo_v2.duels; DROP FUNCTION domigo_v2.synthetic_reject_delete()");
       log.mockRestore();
     }
+  });
+  it("D30 migration statements may be repeated individually and finish a partial run without losing data", async () => {
+    const columns = await pg.query("SELECT column_name FROM information_schema.columns WHERE table_schema='domigo_v2' AND table_name='duels'");
+    const indexes = () => pg.query("SELECT indexname FROM pg_indexes WHERE schemaname='domigo_v2' AND tablename='duels' AND indexname <> 'duels_pkey'");
+    expect(columns.rows).toHaveLength(13); expect((await indexes()).rows).toHaveLength(4);
+    expect(await db.select().from(schema.duels)).toHaveLength(0);
+    const id = await create();
+    const before = await db.select().from(schema.duels);
+    // Simulate the Chrome workflow stopping before the last CREATE INDEX.
+    await pg.exec('DROP INDEX "domigo_v2"."duels_active_pair_unique"');
+    const statements = readFileSync(new URL("../drizzle/0024_word_duels.sql", import.meta.url), "utf8")
+      .split("--> statement-breakpoint").map(s => s.trim()).filter(Boolean);
+    for (let pass = 0; pass < 2; pass++) for (const statement of statements) await pg.exec(statement);
+    expect((await indexes()).rows).toHaveLength(4);
+    expect(await db.select().from(schema.duels)).toEqual(before);
+    expect(before[0]!.id).toBe(id);
+    await expect(create(PEER)).rejects.toMatchObject({ status: 409 });
   });
 
 });

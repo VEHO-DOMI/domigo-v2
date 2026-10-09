@@ -10,25 +10,84 @@ Eine Tabelle `domigo_v2.duels`, ohne Namen oder fremde Klassenfreigabe. Spalten:
 
 Arena-Zugang folgt ausschließlich dem bestehenden Klassen-Bestenlisten-Schalter A. Beide Kinder müssen angemeldet, aktuell derselben Klasse und demselben Jahrgang zugeordnet sein; Testklassen und archivierte Klassen sind ausgeschlossen. Ein breiterer Klassen-Ausschnitt erlaubt kein Duell außerhalb der eigenen Klasse. Keine neue Lehrer-Einstellung, Großmeister-Fremdansicht bleibt lesend.
 
-## Anwendung durch Koki
+## Anwendung durch Koki — Nachzug 1
 
-1. Freigabe und Anwendung von 0022/0023 bestätigen. Im Neon-SQL-Editor das bekannte Projekt und den freigegebenen Branch wählen; keine Verbindungswerte kopieren.
-2. Den vollständigen Inhalt von `packages/db/drizzle/0024_word_duels.sql` aus diesem PR ausführen. Die Datei ist additiv, aber absichtlich nicht wiederholt ausführbar: bei bereits vorhandener Tabelle nicht erneut anwenden.
-3. Nur Struktur und Zahlen prüfen, keine Kinderzeilen abfragen:
+Im freigegebenen Neon-Projekt und Branch arbeiten; keine Verbindungswerte kopieren. **Der Chrome-Agent führt genau EINE SQL-Anweisung je Lauf aus.** Die fünf CREATE-Anweisungen verwenden `IF NOT EXISTS`: eine bereits erfolgreich ausgeführte Anweisung darf wiederholt werden, ohne Tabelle oder Daten neu anzulegen. Das repariert keine abweichende vorhandene Struktur; bei abweichender Nachprüfung an den GG zurückgeben, nichts löschen.
+
+**Lauf 1 — Kennprüfung vor der ersten Anwendung:** beide 0023-Spalten müssen vorhanden sein (`spalten_0023 = 2`), die neue Tabelle muss noch fehlen (`duels_fehlt = true`). Bei einer Wiederaufnahme kann die Tabelle schon vorhanden sein; dann die wiederholbaren Schritte fortsetzen und nachprüfen.
 
 ```sql
-SELECT table_name FROM information_schema.tables
-WHERE table_schema = 'domigo_v2' AND table_name = 'duels';
-SELECT column_name, data_type, is_nullable
-FROM information_schema.columns
-WHERE table_schema = 'domigo_v2' AND table_name = 'duels'
-ORDER BY ordinal_position;
-SELECT indexname FROM pg_indexes
-WHERE schemaname = 'domigo_v2' AND tablename = 'duels'
-ORDER BY indexname;
+SELECT
+  (SELECT count(*) FROM information_schema.columns
+   WHERE table_schema = 'domigo_v2' AND table_name = 'class_settings'
+     AND column_name IN ('leaderboard', 'grade_board_opt_in')) AS spalten_0023,
+  to_regclass('domigo_v2.duels') IS NULL AS duels_fehlt;
 ```
 
-Erwartung: eine Tabelle, 13 Spalten, fünf Indexeinträge einschließlich Primärschlüssel. Anwendung/Uhrzeit und Strukturbeleg an GG-DomiGo zurückgeben. Kein `DROP`, keine Bestandsänderung und keine Löschung zum Testen.
+**Lauf 2 — Tabelle:**
+
+```sql
+CREATE TABLE IF NOT EXISTS "domigo_v2"."duels" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"class_id" uuid NOT NULL,
+	"grade" smallint NOT NULL,
+	"p1" uuid NOT NULL,
+	"p2" uuid NOT NULL,
+	"mode" text NOT NULL,
+	"status" text DEFAULT 'active' NOT NULL,
+	"rounds" jsonb DEFAULT '[]'::jsonb NOT NULL,
+	"p1_score" integer DEFAULT 0 NOT NULL,
+	"p2_score" integer DEFAULT 0 NOT NULL,
+	"winner" uuid,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "duels_mode_check" CHECK ("domigo_v2"."duels"."mode" in ('vocab', 'grammar')),
+	CONSTRAINT "duels_status_check" CHECK ("domigo_v2"."duels"."status" in ('active', 'complete', 'expired')),
+	CONSTRAINT "duels_grade_check" CHECK ("domigo_v2"."duels"."grade" between 1 and 4),
+	CONSTRAINT "duels_pair_check" CHECK ("domigo_v2"."duels"."p1" <> "domigo_v2"."duels"."p2"),
+	CONSTRAINT "duels_scores_check" CHECK ("domigo_v2"."duels"."p1_score" between 0 and 15 and "domigo_v2"."duels"."p2_score" between 0 and 15),
+	CONSTRAINT "duels_winner_check" CHECK ("domigo_v2"."duels"."winner" is null or ("domigo_v2"."duels"."status" = 'complete' and "domigo_v2"."duels"."winner" in ("domigo_v2"."duels"."p1", "domigo_v2"."duels"."p2"))),
+	CONSTRAINT "duels_rounds_check" CHECK (jsonb_typeof("domigo_v2"."duels"."rounds") = 'array' and jsonb_array_length("domigo_v2"."duels"."rounds") <= 5)
+);
+```
+
+**Lauf 3 — Klasse/Status-Index:**
+
+```sql
+CREATE INDEX IF NOT EXISTS "duels_class_status_idx" ON "domigo_v2"."duels" USING btree ("class_id","status");
+```
+
+**Lauf 4 — Teilnehmer-1-Index:**
+
+```sql
+CREATE INDEX IF NOT EXISTS "duels_p1_idx" ON "domigo_v2"."duels" USING btree ("p1");
+```
+
+**Lauf 5 — Teilnehmer-2-Index:**
+
+```sql
+CREATE INDEX IF NOT EXISTS "duels_p2_idx" ON "domigo_v2"."duels" USING btree ("p2");
+```
+
+**Lauf 6 — eindeutiges aktives Paar:**
+
+```sql
+CREATE UNIQUE INDEX IF NOT EXISTS "duels_active_pair_unique" ON "domigo_v2"."duels" USING btree (least("p1", "p2"),greatest("p1", "p2")) WHERE "domigo_v2"."duels"."status" = 'active';
+```
+
+**Lauf 7 — Nachprüfung, ausschließlich Struktur und Anzahl:** Erwartung nach Erstinstallation `spalten = 13`, `indizes = 4`, `zeilen = 0`. Die Indexzählung über `pg_indexes` schließt den automatisch erzeugten Primärschlüssel-Index `duels_pkey` ausdrücklich aus; einschließlich dieses Indexes gibt es fünf. Bei Wiederholung nach Nutzung darf die Zeilenzahl höher sein; keine Daten löschen, um Null herzustellen.
+
+```sql
+SELECT
+  (SELECT count(*) FROM information_schema.columns
+   WHERE table_schema = 'domigo_v2' AND table_name = 'duels') AS spalten,
+  (SELECT count(*) FROM pg_indexes
+   WHERE schemaname = 'domigo_v2' AND tablename = 'duels'
+     AND indexname <> 'duels_pkey') AS indizes,
+  (SELECT count(*) FROM domigo_v2.duels) AS zeilen;
+```
+
+Anwendung/Uhrzeit und Strukturbeleg an GG-DomiGo zurückgeben. Kein `DROP`, keine Bestandsänderung und keine Löschung zum Testen. Codex führt keinen dieser Läufe gegen Neon aus.
 
 ## Verhalten vor Anwendung und bei Fehlern
 
@@ -48,12 +107,12 @@ Dafür verwendet die bereits installierte Neon-Serverless-Bibliothek eine kurze,
 
 Belege: `docs/handover/design-study-og-trainers.md` §5b/5d und Original `og/4th/index.html` im lesenden Labor cgo-106, Funktionen `getWhoseTurn`, `showDuelUnitPicker`, `renderScoreboard`, `generateDuelQuestions`, `finishDuelTurn`. Originalansicht und Entscheidungen stehen im externen Belegordner `SEHEN-W5.md`.
 
-- Fünf Runden mit je drei Fragen nach Kartenbrief. Der aktuelle Original-Code erzeugt tatsächlich fünf Fragen; diese Abweichung ist ausdrücklich dokumentiert. Höchstscore hier 15.
+- Fünf Runden mit je drei Fragen folgen dem verbindlichen Kartenbrief und der Design-Studie §5b (Zeilen 435–441). Der lesende Original-Snapshot widerspricht der Studie: alle vier Jahrgänge rufen `generateDuelQuestions(unitKey, 5)` auf; der Generator liefert `min(5, verfügbare Wörter)`, Abschluss nach fünf Runden, damit maximal 25 richtige Antworten. Konkreter Beleg 4th: `onDuelUnitPicked` Zeile 9046, `generateDuelQuestions` Zeilen 9317–9320, `finishDuelTurn` Zeile 9228. W5 behält ausdrücklich 5 × 3 und Höchstscore 15; es behauptet keine identische Rundengröße mit diesem Original-Snapshot.
 - Chapter-Wahl wechselt zwischen den Teilnehmern; zuerst offene Fragen beantworten. Fünf verschiedene Chapters, vier Optionen aus dem vorhandenen Aufgabenbestand, deterministische Auswahl, keine neuen Aufgaben.
 - Nur Vokabelduelle in W5. Grammatik-Duell ist benannt verschoben und erhält keine tote Auswahl.
 - Sieben Tage ohne Zug: abgelaufen, kein Sieger. Lesen verlängert die Frist nicht. Abgelaufene Partien zählen nicht als abgeschlossener Sieg/gespielter Abschluss; Punkte schon bewerteter Antworten bleiben erhalten.
 - Kein Zeitlimit bei asynchronen Fragen; Fortschrittsanzeige statt Original-Timer. Unterbrochene Fragen bleiben offen, beantwortete Fragen werden nicht erneut gewertet.
-- Keine Original-Boni 100/50/25 und kein Zusatz `8 × richtig`. XP entstehen ausschließlich durch Englisch-Antworten. Sieg, Played und Win rate sind abgeleitete Statistiken, ohne zusätzlichen Schreiber. Verlauf: letzte 20 beendete/abgelaufene Partien; Gesamtstatistik über alle eigenen sichtbaren Partien, XP ausschließlich aus eigenen Duell-Lernversuchen der aktuellen Klasse.
+- Keine Original-Boni: 2nd–4th verwenden 100/50/25 plus `8 × richtig`; 1st verwendet für die eigene Abschlussbuchung 200/100/50 plus `20 × richtig`, für den Gegner weiterhin 100/50/25 plus `8 × richtig` (Original `finishDuelTurn`, Zeilen 11870–11871 und 11915–11916). Keine dieser Zusatzbuchungen wird übernommen. XP entstehen ausschließlich durch Englisch-Antworten. Sieg, Played und Win rate sind abgeleitete Statistiken, ohne zusätzlichen Schreiber. Verlauf: letzte 20 beendete/abgelaufene Partien; Gesamtstatistik über alle eigenen sichtbaren Partien, XP ausschließlich aus eigenen Duell-Lernversuchen der aktuellen Klasse.
 - Live Battle und Class Quiz bleiben außerhalb W5 (Ruling cgo-120); die Kinderoberfläche nennt sie nicht.
 
 ## Verifikation und verbleibende Abnahme
@@ -62,4 +121,4 @@ Lokale Verhaltenstests prüfen die echte Migration im Arbeitsspeicher, Paar-Eind
 
 Offen bis GG/Koki: Anwendung von 0024 in Neon, produktive Verbindungs-/Anmeldeprüfung, GG-Merge-Kette und endgültige Original-/Produktabnahme. Codex öffnet den PR gegen `main`, führt keinen Merge durch.
 
-**Freigabehindernis im lokalen Gesamttest:** Der bestehende Test `packages/db/src/claim-filter-laufzeit.test.ts` erlaubt für die Kontolöschung noch nicht die neuen Teilnehmer-Spalten `p1` und `p2`. Diese Testdatei liegt außerhalb des Karten-Zauns und bleibt unverändert. Die genaue Ein-Zeilen-Ergänzung liegt als `GG-claim-filter.patch` im externen Belegordner. Mit ausschließlich dieser Ergänzung im Arbeitsspeicher bestehen alle 40 Tests der Datei; der unveränderte Gesamttest bleibt ausdrücklich rot. Die neuen PGlite-Tests belegen die Löschung beider Teilnehmer-Richtungen und den Erhalt fremder Partien. Freigabe erst nach der GG-Ergänzung und erneut grüner Batterie.
+**Nachzug 1:** Der GG hat den Zaun für `packages/db/src/claim-filter-laufzeit.test.ts` geöffnet; die bestehende Kontolöschungs-Erlaubnisliste enthält jetzt `p1` und `p2`. Migration und Neon-Schritte sind wiederholbar und im Test bytegleich gegeneinander geprüft, Journal-Eintrag 24 ist festgelegt. Die lokalen PostgreSQL-Tests führen jede CREATE-Anweisung zweimal einzeln aus, vervollständigen einen unterbrochenen Lauf und bewahren vorhandene synthetische Partien. Alle Arena-Schreibrouten sind ausdrücklich `runtime = "nodejs"`; der Laufzeit-Test erfasst auch künftig ergänzte Arena-Routen. Der Transaktionstest wirft nach einem echten Datenbankschreibzug einen Fehler und belegt sowohl vollständige Rücknahme als auch Verbindungsschließung. Ergebnisse und Prüfwerte stehen im Nachzug-1-Bericht des PRs.

@@ -1,4 +1,4 @@
-CREATE TABLE "domigo_v2"."duels" (
+CREATE TABLE IF NOT EXISTS "domigo_v2"."duels" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"class_id" uuid NOT NULL,
 	"grade" smallint NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE "domigo_v2"."duels" (
 	CONSTRAINT "duels_rounds_check" CHECK (jsonb_typeof("domigo_v2"."duels"."rounds") = 'array' and jsonb_array_length("domigo_v2"."duels"."rounds") <= 5)
 );
 --> statement-breakpoint
-CREATE INDEX "duels_class_status_idx" ON "domigo_v2"."duels" USING btree ("class_id","status");--> statement-breakpoint
-CREATE INDEX "duels_p1_idx" ON "domigo_v2"."duels" USING btree ("p1");--> statement-breakpoint
-CREATE INDEX "duels_p2_idx" ON "domigo_v2"."duels" USING btree ("p2");--> statement-breakpoint
-CREATE UNIQUE INDEX "duels_active_pair_unique" ON "domigo_v2"."duels" USING btree (least("p1", "p2"),greatest("p1", "p2")) WHERE "domigo_v2"."duels"."status" = 'active';
+CREATE INDEX IF NOT EXISTS "duels_class_status_idx" ON "domigo_v2"."duels" USING btree ("class_id","status");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "duels_p1_idx" ON "domigo_v2"."duels" USING btree ("p1");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "duels_p2_idx" ON "domigo_v2"."duels" USING btree ("p2");--> statement-breakpoint
+CREATE UNIQUE INDEX IF NOT EXISTS "duels_active_pair_unique" ON "domigo_v2"."duels" USING btree (least("p1", "p2"),greatest("p1", "p2")) WHERE "domigo_v2"."duels"."status" = 'active';

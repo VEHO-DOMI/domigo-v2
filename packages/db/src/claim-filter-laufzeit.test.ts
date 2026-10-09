@@ -171,7 +171,7 @@ const EIGENE: { schluessel: string; spalten: string[]; oder?: true; lauf: (db: D
   { schluessel: "konto-identity.ts#findKontoIdentity", spalten: ["id"], lauf: (db) => findKontoIdentity(db, ICH) },
   // Die Loeschung nennt die Person in vier Rollen: als Lernende, im Jahresabschluss,
   // als Lehrkraft/Handelnde im Journal, und zuletzt die Zeile der Person selbst.
-  { schluessel: "konto-loeschung.ts#deleteUserData", spalten: ["user_id", "v1_user_id", "teacher_id", "actor_id", "id"], oder: true, lauf: (db) => deleteUserData(db, ICH) },
+  { schluessel: "konto-loeschung.ts#deleteUserData", spalten: ["user_id", "v1_user_id", "teacher_id", "actor_id", "id", "p1", "p2"], oder: true, lauf: (db) => deleteUserData(db, ICH) },
 ];
 
 describe("dach-100 · die Ausnahmen ohne Ausschnitt fragen nur nach der eigenen Kennung", () => {
