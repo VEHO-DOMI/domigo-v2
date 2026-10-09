@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, it } from "node:test";
 import { fixture, resetSchoolFixture } from "../../scripts/lib/school-test-harness.mjs";
-import { loadUnit } from "@domigo/content-loader";
+import { listApprovedUnits, loadJourney, loadUnit } from "@domigo/content-loader";
 import { vocabAnswers, spellingAnswer, spellingLayout } from "@domigo/engine";
 import { startSpeedSession, speedSessionValid } from "./speed-session.ts";
 import { ATTEMPT_MODES } from "./attempt-policy.ts";
@@ -90,7 +90,11 @@ it("C25 every existing attempt mode passes; unknown and assignment-only tags fai
   // Independent inventory of actual producers, not a copy generated from the allowlist.
   const fixed = ["practice", "daily", "review", "listening", "test:vocab", "test:grammar", "test:listening", "test:reading", "game:g1", "game:g2", "game:g3", "game:g4", "flashcards", "memory", "spelling", "wordhunt", "speed"];
   assert.deepEqual([...ATTEMPT_MODES].sort(), [...fixed].sort());
-  const modes = [...fixed, "study:checkpoint", ...["vocab", "grammar"].flatMap((kind) => [1, 2, 3].map((level) => `study:${kind}-practice-${level}`)), "journey:g2-u03:practice-1", "journey:g2-u03:2-review"];
+  const journeys = listApprovedUnits().flatMap((slug) => (loadJourney(slug)?.nodes ?? [])
+    .filter((node) => ["practice", "review", "side-quest"].includes(node.kind))
+    .map((node) => `journey:${slug}:${node.id}`));
+  assert.ok(journeys.length > 0, "the current authored journey must be covered");
+  const modes = [...fixed, "study:checkpoint", ...["vocab", "grammar"].flatMap((kind) => [1, 2, 3].map((level) => `study:${kind}-practice-${level}`)), ...journeys, "journey:g2-u03:2-review"];
   for (const mode of modes) {
     const input = mode === "memory" || mode === "wordhunt"
       ? { kind: "choice", value: vocabAnswers(item, "carrier").find((a) => a.tier === "full")!.text }
