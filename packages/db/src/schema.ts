@@ -23,6 +23,40 @@ import {
 /** Every v2-owned table lives here. */
 export const v2 = pgSchema("domigo_v2");
 
+/** cgo-112: no names or answer keys; each participant stores only correctness. */
+export interface DuelRound {
+  unitKey: string;
+  questions: { itemId: string; options: string[] }[];
+  p1Answers: boolean[];
+  p2Answers: boolean[];
+}
+export const duels = v2.table("duels", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  classId: uuid("class_id").notNull(),
+  grade: smallint("grade").notNull(),
+  p1: uuid("p1").notNull(),
+  p2: uuid("p2").notNull(),
+  mode: text("mode").notNull(),
+  status: text("status").notNull().default("active"),
+  rounds: jsonb("rounds").$type<DuelRound[]>().notNull().default([]),
+  p1Score: integer("p1_score").notNull().default(0),
+  p2Score: integer("p2_score").notNull().default(0),
+  winner: uuid("winner"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [
+  index("duels_class_status_idx").on(t.classId, t.status),
+  index("duels_p1_idx").on(t.p1), index("duels_p2_idx").on(t.p2),
+  uniqueIndex("duels_active_pair_unique").on(sql`least(${t.p1}, ${t.p2})`, sql`greatest(${t.p1}, ${t.p2})`).where(sql`${t.status} = 'active'`),
+  check("duels_mode_check", sql`${t.mode} in ('vocab', 'grammar')`),
+  check("duels_status_check", sql`${t.status} in ('active', 'complete', 'expired')`),
+  check("duels_grade_check", sql`${t.grade} between 1 and 4`),
+  check("duels_pair_check", sql`${t.p1} <> ${t.p2}`),
+  check("duels_scores_check", sql`${t.p1Score} between 0 and 15 and ${t.p2Score} between 0 and 15`),
+  check("duels_winner_check", sql`${t.winner} is null or (${t.status} = 'complete' and ${t.winner} in (${t.p1}, ${t.p2}))`),
+  check("duels_rounds_check", sql`jsonb_typeof(${t.rounds}) = 'array' and jsonb_array_length(${t.rounds}) <= 5`),
+]);
+
 /** Local cosmetic choice; the account-owned identity mirror is unchanged. */
 export const studentProfile = v2.table("student_profile", {
   userId: uuid("user_id").primaryKey(),

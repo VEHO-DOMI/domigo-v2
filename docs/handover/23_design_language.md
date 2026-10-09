@@ -161,11 +161,64 @@ switching, no second cookie, teacher stays signed in.
 
 ## 7 · Scope fences (so D-2..4 stay shippable)
 
-Battle Arena (Live Battle / Word Duel / Class Quiz) = **its own future lane** (needs
-realtime infra; the study §9 documents the mechanics for that day) · practice-mode variants
-(Sprint/Speed Round/Memory Match…) = post-D-4 candy, the pool rotation already covers the
-pedagogy · 28-badge system = later (levels+titles first) · Word of the Day / Daily Challenge
-= J-wave journeys territory.
+**Word Duel + Battle history: gebaut, IN PRÜFUNG (cgo-112, CODEX DRAFT — NOT CANON).**
+W5 übernimmt die volle Home-Karte unter Dictionary/Story, Gegnerwahl, Zug-Pillen,
+fünf Rundenzeilen, vier vertikale Antwortoptionen und die Ergebnis-Emojis 🏆/🤝/💪
+aus der Originalstudie §5b/5d. Stats und Verlauf liegen zusammen im Arena-Hub.
+Fünf Runden × drei Fragen folgen dem Kartenbrief und der Design-Studie §5b.
+Der lesende Original-Snapshot aller vier Jahrgänge fordert dagegen fünf Fragen
+je Runde an (`onDuelUnitPicked`); `generateDuelQuestions` begrenzt auf den
+verfügbaren Bestand. Beleg 4th: Zeilen 9046 und 9317–9320, Abschluss nach fünf
+Runden in Zeile 9228. Das ergibt im Snapshot maximal 25 richtige Antworten; W5
+behält gemäß Auftrag maximal 15. Studie und Quelltext sind hier nicht identisch.
+Jahrgang 1 deutsche Führung, 2–4 englisch; sichtbare Gliederung Chapter.
+Bestenlisten-Schalter A öffnet Arena nur innerhalb der eigenen Klasse; Vorschau
+zeigt ausschließlich Beispiele. Original-Boni (2nd–4th: 100/50/25 plus
+8 × Treffer; 1st eigene Abschlussbuchung: 200/100/50 plus 20 × Treffer,
+Gegnerbuchung weiterhin 100/50/25 plus 8 × Treffer) entfallen: XP nur aus bewerteten Antworten, Siege nur Statistik. Grammatik-Duell
+benannt verschoben. Eine zusätzliche Tabelle 0024, noch nicht angewendet.
+
+**Arena-Transaktionen (Nachzug 1):** Die erste interaktive Datenbanktransaktion
+der Plattform läuft ausschließlich im Arena-Pfad: Duell anlegen, Runde öffnen
+und `duel:`-Antwort in `/api/attempts`. Eine Transaktion speichert die betroffenen
+Änderungen gemeinsam oder nimmt sie bei einem Fehler vollständig zurück. Dafür
+öffnet der vorhandene Neon-WebSocket-Client eine Verbindung je Anfrage; andere
+Antwortmodi und Leser bleiben beim HTTP-Zugriff. Verbindungsnamen sind
+`DATABASE_URL` und ersatzweise `POSTGRES_URL`; Werte werden nicht ausgegeben.
+Kaltstart-Kosten ≈ ein Verbindungsaufbau je Zug, zusätzlich zur normalen
+Abfragearbeit; keine Latenz- oder Preiszahl wurde gemessen. Alle drei Schreibrouten
+tragen ausdrücklich `export const runtime = "nodejs"`. `finally` schließt den
+Client nach Erfolg oder Fehler/Rücknahme; reale Neon-Verbindung und Betrieb
+bleiben bis zur GG-/Koki-Abnahme ungetestet.
+
+**Nachzug 2 (PR 511):** Aufgabenkennungen bleiben im Server, weil ihr Wortende
+häufig die Übersetzung verrät. Eine offene Frage liefert ausschließlich
+`{round, question, prompt, options}`. Duell-Antworten müssen `itemId` weglassen;
+ein mitgesendetes Feld wird mit 400 abgelehnt. Die Bewertungsroute löst die
+Kennung aus den Duell-Koordinaten auf und prüft Zug, Option und Klassenreserve;
+beim Speichern erfolgt die zweite Prüfung unter `FOR UPDATE` (Zeilensperre).
+Der vorhandene deutsche Korpustext bleibt unverändert, auch bei Lehnwörtern,
+deren deutsche und englische Schreibweise übereinstimmt.
+Die Detailabfrage lädt höchstens 50 Partien, der Verlauf zeigt höchstens 20.
+Eine gesonderte Datenbankaggregation hält Played/Won/Win rate/XP über die gesamte
+berechtigte Historie vollständig. Lesen und Neuanlegen speichern den Ablauf
+nach sieben Tagen. Ausgetretene oder wieder unangemeldete Teilnehmer lassen
+auch bereits abgeschlossene betroffene Partien ohne Sieger ablaufen; sie sind
+bis zur erneuten Klassenzugehörigkeit weiterhin unsichtbar. Die Ablaufmeldung
+nennt deshalb nur den fehlenden Sieger, keinen ungesicherten Ablaufgrund.
+Fehler im Arena-Pfad werden ausschließlich als `[arena] read_failed`,
+`[arena] write_failed` oder `[arena] connection_error` protokolliert. Der
+Verbindungs-Client hat einen Fehler-Listener, damit ein asynchroner Fehler
+nicht als unbehandeltes Ereignis den Prozess beendet. Lokale Tests prüfen die
+Kennungsfreiheit über alle 57 Einheiten/2.446 Vokabeln, tatsächliche SQL-Sperren,
+Antwortverteilung, beide Löschrichtungen und die Klassen-/Modus-/Art-Bindung.
+
+**Live Battle und Class Quiz = eigene künftige Spur**, Ruling cgo-120 zu Kosten
+und Echtzeit-Betrieb noch offen. Keine Kachel und kein Ankündigungssatz auf der
+Kinderseite. Der ursprüngliche Sammelaufschub der Arena gilt damit nur noch für
+diese synchronen Teile; Word Duel benötigt keine Echtzeit-Infrastruktur.
+28-badge system bleibt später (W7/eigene Karte). Andere Flächen behalten ihren
+jeweils dokumentierten Prüf-/Freigabestand.
 
 ## 8 · The mockup gate (next Fable session — the D-1 exit)
 

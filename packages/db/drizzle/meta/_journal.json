@@ -169,6 +169,13 @@
       "when": 1791509930739,
       "tag": "0023_class_leaderboard",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1791515963119,
+      "tag": "0024_word_duels",
+      "breakpoints": true
     }
   ]
 }

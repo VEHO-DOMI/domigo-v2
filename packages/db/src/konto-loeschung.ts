@@ -37,6 +37,7 @@ import { eq, or } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import {
   assignmentSessions,
+  duels,
   gameSaves,
   practiceAttempts,
   reviewQueue,
@@ -65,21 +66,22 @@ export async function deleteUserData(db: Db, userId: string): Promise<Loeschberi
     try {
       zeilen[name] = (await lauf()).length;
     } catch (err) {
-      // Only the optional avatar table may be absent before migration 0022.
+      // Optional avatar/duel tables may be absent before migrations 0022/0024.
       // Drizzle wraps the PostgreSQL error in `cause`; never hide other errors.
       let cause: unknown = err;
       const seen = new Set<unknown>();
-      while (name === "student_profile" && cause && typeof cause === "object" && !seen.has(cause)) {
+      while ((name === "student_profile" || name === "duels") && cause && typeof cause === "object" && !seen.has(cause)) {
         seen.add(cause);
         const failure = cause as { code?: unknown; cause?: unknown };
         if (failure.code === "42P01") {
           zeilen[name] = 0;
-          console.info("[konto] student_profile: missing relation (42P01), 0 rows deleted; migration 0022 pending");
+          console.info(`[konto] ${name}: missing relation (42P01), 0 rows deleted; migration ${name === "duels" ? "0024" : "0022"} pending`);
           return;
         }
         cause = failure.cause;
       }
       // Mandatory tables and every other failure still require konto to retry.
+      if (name === "duels") { console.error("[konto] deletion of duels failed"); throw err; }
       console.error(`[konto] deletion of ${name} failed:`, err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
       throw err;
     }
@@ -102,6 +104,8 @@ export async function deleteUserData(db: Db, userId: string): Promise<Loeschberi
   // Teacher-side rows about this account.
   await weg("teacher_events", () => db.delete(v2TeacherEvents).where(or(eq(v2TeacherEvents.teacherId, userId), eq(v2TeacherEvents.actorId, userId))!).returning({ id: v2TeacherEvents.id }));
   await weg("teacher_reset_tokens", () => db.delete(v2TeacherResetTokens).where(eq(v2TeacherResetTokens.teacherId, userId)).returning({ id: v2TeacherResetTokens.tokenHash }));
+
+  await weg("duels", () => db.delete(duels).where(or(eq(duels.p1, userId), eq(duels.p2, userId))!).returning({ id: duels.id }));
 
   // Optional cosmetics follow all mandatory data tables.
   await weg("student_profile", () => db.delete(studentProfile).where(eq(studentProfile.userId, userId)).returning({ id: studentProfile.userId }));

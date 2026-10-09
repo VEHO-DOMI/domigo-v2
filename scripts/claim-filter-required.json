@@ -57,7 +57,21 @@
     "student-profile-service.ts#getStudentChapterProgress": 1,
     "class-settings-service.ts#getClassLeaderboardSettings": 2,
     "class-settings-service.ts#setClassLeaderboardSettings": 1,
-    "leaderboard-service.ts#getLeaderboard": 1
+    "leaderboard-service.ts#getLeaderboard": 1,
+    "duel-service.ts#arenaGate": 1,
+    "duel-service.ts#arenaRoster": 1,
+    "duel-service.ts#arenaEnabled": 1,
+    "duel-service.ts#ownDuels": 1,
+    "duel-service.ts#duelXp": 1,
+    "duel-service.ts#arenaStats": 1,
+    "duel-service.ts#listDuels": 6,
+    "duel-service.ts#getDuel": 6,
+    "duel-service.ts#expire": 2,
+    "duel-service.ts#createDuel": 3,
+    "duel-service.ts#activeDuel": 2,
+    "duel-service.ts#openRound": 3,
+    "duel-service.ts#validateDuelAnswer": 2,
+    "duel-service.ts#recordAnswer": 3
   },
   "bestand": {
     "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",

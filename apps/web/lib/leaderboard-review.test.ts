@@ -91,6 +91,7 @@ it("F13 home renders all three established action links in a three-column row", 
     "@/lib/student-view": { resolveStudentView: async () => ({ kind: "preview", grades: [1] }), trainerGrade: () => 1 },
     "@/lib/wort-des-tages": { wortDesTages: async () => null, viennaDateKey: () => "2026-10-09" },
     "@/lib/stories": { STORY_UI: {}, DEFAULT_STORY_UI: {} }, "../practice/load-practice": { loadDailyChallenge: async () => null },
+    "@/lib/arena/server": { showArenaCard: async () => true },
     "./TrainerShell": { default: ({ children }: { children: React.ReactNode }) => children }, "./PlayerCard": { default: () => null },
     "./trainer-data": { readTrainerProfile: async () => ({}) }, "./ModeSwitch": { ModeStart: () => null }, "./home.css": {} });
   const html = renderToStaticMarkup(await m.default!() as React.ReactNode);

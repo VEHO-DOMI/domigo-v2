@@ -239,6 +239,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
 
       {/* ── 1 · Die Kinder ─────────────────────────────────────────────── */}
       <LeaderboardSettings key={`${id}-${classPurpose}`} classId={id} initial={boardSettings} testClass={classPurpose === "test"} readOnly={fremd} />
+      <p className="dg-meta">Battle Arena: {boardSettings.leaderboard && classPurpose === "regular" ? "an" : "aus"} (folgt der Bestenliste)</p>
       <section className="dg-card" style={{ marginTop: 20 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Die Kinder</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
