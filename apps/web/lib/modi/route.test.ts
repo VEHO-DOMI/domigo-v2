@@ -10,8 +10,8 @@ const { GET } = await import("../../app/modi/speed/start/route.ts");
 const item = loadUnit("g2-u01").vocab[0]!;
 const answer = vocabAnswers(item, "deToEn").find((a) => a.tier === "full")!.text;
 const owner = "child-own";
-function request(mode: string, input: unknown, context?: unknown, hintUsed = false) {
-  return new Request("https://fixture.invalid/api/attempts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ clientAttemptId: crypto.randomUUID(), ownerId: owner, itemId: item.id, mode, input, context, hintUsed }) });
+function request(mode: string, input: unknown, context?: unknown, hintUsed = false, itemId = item.id) {
+  return new Request("https://fixture.invalid/api/attempts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ clientAttemptId: crypto.randomUUID(), ownerId: owner, itemId, mode, input, context, hintUsed }) });
 }
 beforeEach(() => {
   resetSchoolFixture();
@@ -88,7 +88,7 @@ it("C23 server start and expiry ignore clientNow in the URL, body and context", 
 });
 it("C25 every existing attempt mode passes; unknown and assignment-only tags fail before storage", async () => {
   // Independent inventory of actual producers, not a copy generated from the allowlist.
-  const fixed = ["practice", "daily", "review", "listening", "test:vocab", "test:grammar", "test:listening", "test:reading", "game:g1", "game:g2", "game:g3", "game:g4", "flashcards", "memory", "spelling", "wordhunt", "speed"];
+  const fixed = ["practice", "daily", "review", "listening", "grammar", "test:vocab", "test:grammar", "test:listening", "test:reading", "game:g1", "game:g2", "game:g3", "game:g4", "flashcards", "memory", "spelling", "wordhunt", "speed"];
   assert.deepEqual([...ATTEMPT_MODES].sort(), [...fixed].sort());
   const journeys = listApprovedUnits().flatMap((slug) => (loadJourney(slug)?.nodes ?? [])
     .filter((node) => ["practice", "review", "side-quest"].includes(node.kind))
@@ -96,11 +96,12 @@ it("C25 every existing attempt mode passes; unknown and assignment-only tags fai
   assert.ok(journeys.length > 0, "the current authored journey must be covered");
   const modes = [...fixed, "study:checkpoint", ...["vocab", "grammar"].flatMap((kind) => [1, 2, 3].map((level) => `study:${kind}-practice-${level}`)), ...journeys, "journey:g2-u03:2-review"];
   for (const mode of modes) {
-    const input = mode === "memory" || mode === "wordhunt"
+    const grammar = loadUnit("g2-u01").grammar.find((entry) => entry.format === "gap-fill")!;
+    const input = mode === "grammar" ? { kind: "text", value: grammar.answers.find((a) => a.tier === "full")!.text } : mode === "memory" || mode === "wordhunt"
       ? { kind: "choice", value: vocabAnswers(item, "carrier").find((a) => a.tier === "full")!.text }
       : { kind: "vocab", value: answer, pool: "deToEn" };
     const context = mode === "speed" ? { speedSession: startSpeedSession(owner) } : undefined;
-    const response = await POST(request(mode, input, context));
+    const response = await POST(request(mode, input, context, false, mode === "grammar" ? grammar.id : item.id));
     assert.equal(response.status, 200, mode);
     assert.equal((await response.json()).tier, "correct", mode);
     assert.equal(fixture.writes.at(-1)!.data.mode, mode);

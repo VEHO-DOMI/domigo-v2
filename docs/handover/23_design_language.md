@@ -182,3 +182,13 @@ D-2 surface waves (Opus, per grade) → D-3 preview (Opus) → D-4 XP/titles/lea
 cosmetics (Opus; one additive migration) — all interleaved with the C-1→B-2 lanes per the
 plan. Every wave: standing gate + screenshot-vs-mockup + the no-second-grader / 0-XP-tests /
 level-gate invariants re-asserted in tests.
+
+### Grammar Mode · OG-Parität W3 (cgo-110, in Prüfung)
+
+`/modi/grammar` nutzt die Trainerfläche mit den vorhandenen vier Jahrgangsakzenten und Hell/Dunkel. Die Reihenfolge ist Chapter → Struktur → Format oder Mix → Runde → Ergebnis. Namen kommen aus dem Struktur-Katalog (`loadUnitStructures`, `nameDe` in Jahrgang 1, sonst `name`); ein fehlender Name wird als Chapter-Nummer plus vorhandener Schlüssel angezeigt. Angeboten werden ausschließlich Formate mit verfügbaren, nicht reservierten Aufgaben. Zehn Aufgaben bilden eine Runde; die Originalauswahl bietet dafür „Sprint (10 random)“.
+
+Alle 13 vorhandenen Grammatikformate verwenden die bestehende Bewertung über `/api/attempts`, Modus `grammar`. Jede abgegebene Antwort erreicht diese Bewertung, auch Wiederholungsversuche. Die Anzeige summiert ausschließlich bestätigte XP. Hinweise und Erklärungen stammen unverändert aus den Aufgaben; nach dem zweiten Fehler erscheint der Hinweis, nach dem dritten die Auflösung. Die Vorschau bewertet ohne Schreibanfrage und speichert auch keinen Gerätemodus.
+
+Nachzug 1: Worterklärungen sind vor dem Hinweis nur sichtbar, wenn ihr Wort im Aufgabentext vorkommt oder die Aufgabe eine Übersetzung ist. Dadurch verraten unaufgeforderte Lösungswörter nicht vorzeitig die Antwort. Gewählte Struktur-Kacheln verwenden für Titel und Aufgabenanzahl dunkle Schrift auf dem Jahrgangsakzent; alle acht Kombinationen aus Jahrgang und Hell/Dunkel halten mindestens 4,5:1 Kontrast. Verhaltensprüfungen sichern Abgabe, Memory-Zuordnung, Reserve/Jahrgang, Hinweis-/Erklärungszeitpunkt, Umschalter und bestätigte Ergebniszähler.
+
+Grammar Memory Match ist nur in Jahrgang 1 verfügbar. Die Themenwahl bietet vorhandene `matching-pairs`-Aufgaben mit zwei bis acht eindeutigen Paaren. Karten aufdecken, A und B zuordnen, dann den vollständigen Satz gemeinsam prüfen: Diese Anpassung wahrt die vorhandene Alles-oder-nichts-Bewertung des Formats. Keine erfundenen Formen-Paare, kein lokales Richtig/Falsch und keine lokalen Punkte. Der Vocab/Grammar-Umschalter merkt ausschließlich die Moduswahl pro Jahrgang auf dem Gerät; die Grammatik-Leiter bleibt die vorhandene `levels.ts`-Leiter mit dem Jahrgangsregister.

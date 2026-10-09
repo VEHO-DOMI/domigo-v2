@@ -23,7 +23,7 @@ export default function ModePicker({ grade, preview, chapters, due, story, areas
   ];
   const params = new URLSearchParams({ mode, chapters: selected.join(","), direction });
   if (preview) params.set("jahrgang", String(grade));
-  const modePath = mode in extra ? `/modi/${mode}?${params.toString()}` : `/practice?${params.toString()}`;
+  const modePath = mode === "grammar" || mode in extra ? `/modi/${mode}?${params.toString()}` : `/practice?${params.toString()}`;
   return <main className="og-setup">
     <header className="og-setup-header"><Link href={`/home${suffix}`}>← {grade === 1 ? "Zurück" : "Back"}</Link><h1>{grade === 1 ? "Modus wählen" : "Choose Mode"}</h1></header>
     <details className="og-chapters"><summary>{selected.length} Chapters · {grade === 1 ? "Chapter auswählen" : "Choose Chapters"}</summary><div>
