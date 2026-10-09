@@ -14,6 +14,12 @@ export const FORMAT_NAMES: Record<GrammarFormat, { de: string; en: string }> = {
   "free-form": { de: "Antwort schreiben", en: "Write an answer" },
 };
 export interface GrammarTopic { id: string; chapter: number; name: string; nameDe: string; count: number; formats: GrammarFormat[]; memoryCount: number }
+/** Unprompted vocabulary can reveal the answer, so it belongs to the hint. */
+export function visibleGrammarGloss(item: GrammarItem, hintVisible: boolean): GrammarItem["gloss"] {
+  const words = (value: string) => value.normalize("NFKC").toLowerCase().replaceAll("’", "'").match(/[\p{L}\p{N}]+(?:'[\p{L}\p{N}]+)*/gu)?.join(" ") ?? "";
+  const prompt = ` ${words(item.prompt.text)} `;
+  return item.gloss.filter((entry) => hintVisible || item.format === "translation" || (words(entry.word).length > 0 && prompt.includes(` ${words(entry.word)} `)));
+}
 export function memoryEligible(item: GrammarItem): boolean {
   return item.format === "matching-pairs" && item.pairs.length >= 2 && item.pairs.length <= 8
     && new Set(item.pairs.map((p) => canonical(p.left))).size === item.pairs.length
