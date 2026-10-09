@@ -118,4 +118,3 @@ describe("class-leaderboard route", () => {
     assert.equal(outer().status, 200);
   });
 });
-
