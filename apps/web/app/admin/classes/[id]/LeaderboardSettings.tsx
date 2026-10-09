@@ -38,7 +38,7 @@ export default function LeaderboardSettings({ classId, initial, testClass, readO
     {saving && <p role="status">Speichert …</p>}{notice && <p role="status">{notice}</p>}
     <dialog ref={dialog} className="class-board-dialog" aria-labelledby="grade-board-question" aria-describedby="grade-board-explanation">
       <h2 id="grade-board-question">Jahrgangs-Bestenliste einschalten?</h2>
-      <p id="grade-board-explanation">Damit sehen die Kinder deiner Klasse die Vornamen (mit Spitznamen), Avatare, Level und bestätigten Lernpunkte der Kinder aller anderen freigegebenen Klassen dieses Jahrgangs — und umgekehrt. Die Tages-Challenge bleibt in der eigenen Klasse. Du kannst die Freigabe jederzeit ausschalten.</p>
+      <p id="grade-board-explanation">Damit sehen die Kinder deiner Klasse die Vornamen (mit Spitznamen), Avatare, Level, Lern-Serie, bestätigten Lernpunkte und den Klassennamen der Kinder aller anderen freigegebenen Klassen dieses Jahrgangs — und umgekehrt. Die Tages-Challenge bleibt in der eigenen Klasse. Du kannst die Freigabe jederzeit ausschalten.</p>
       <div><button type="button" autoFocus onClick={() => dialog.current?.close()}>Abbrechen</button><button type="button" onClick={() => { dialog.current?.close(); void save({ leaderboard: true, gradeBoardOptIn: true }); }}>Für meine Klasse einschalten</button></div>
     </dialog>
   </section>;

@@ -52,6 +52,30 @@ export async function setClassPurpose(db: Db, classScope: ClassScope, classId: s
   assertWritableScope(classScope, "setClassPurpose");
   if (!inScope(classScope, classId) || !teacherId) throw new ClassSettingsForbiddenError();
   if (purpose !== "regular" && purpose !== "test") throw new TypeError("invalid_class_purpose");
+  try {
+    const changed = await db.insert(classSettings).select(
+      db.select({ classId: v2Classes.id, purpose: sql<string>`${purpose}`.as("purpose"),
+        leaderboard: sql<boolean>`false`.as("leaderboard"), gradeBoardOptIn: sql<boolean>`false`.as("grade_board_opt_in"), updatedAt: sql<Date>`now()`.as("updated_at") })
+        .from(v2Classes)
+        .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), grandmaster ? undefined : eq(v2Classes.teacherId, teacherId))),
+    ).onConflictDoUpdate({ target: classSettings.classId, set: { purpose, updatedAt: new Date(),
+      ...(purpose === "test" ? { leaderboard: sql`false`, gradeBoardOptIn: sql`false` } : {}) } })
+      .returning({ classId: classSettings.classId });
+    if (changed.length === 0) throw new ClassSettingsForbiddenError();
+    return;
+  } catch (error) {
+    // Before 0023 there are no consent flags to revoke. Only PostgreSQL's missing-
+    // column error permits the old guarded writer; every other failure propagates.
+    const cause = error as { code?: string; cause?: { code?: string } };
+    if (cause?.code !== "42703" && cause?.cause?.code !== "42703") throw error;
+    return setLegacyClassPurpose(db, classScope, classId, teacherId, purpose, grandmaster);
+  }
+}
+
+/** Pre-0023 only: no consent columns exist to revoke. Same scope and owner wall. */
+async function setLegacyClassPurpose(db: Db, classScope: ClassScope, classId: string, teacherId: string, purpose: ClassPurpose, grandmaster: boolean): Promise<void> {
+  assertWritableScope(classScope, "setLegacyClassPurpose");
+  if (!inScope(classScope, classId) || !teacherId) throw new ClassSettingsForbiddenError();
   const changed = await db.insert(purposeSettings).select(
     db.select({ classId: v2Classes.id, purpose: sql<string>`${purpose}`.as("purpose"), updatedAt: sql<Date>`now()`.as("updated_at") })
       .from(v2Classes)

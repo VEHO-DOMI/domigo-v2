@@ -24,7 +24,7 @@ const guards: [string, string, string][] = [
   ["L04 other purpose + A", DB, 'eq(classSettings.purpose, "regular"), eq(classSettings.leaderboard, true)'],
   ["L05 BOTH teachers opt in", DB, 'and(eq(ownSettings.gradeBoardOptIn, true), eq(classSettings.gradeBoardOptIn, true))'],
   ["L06 metadata confined to allowed roster", DB, 'eq(userProgress.userId, v2IdentityUsers.id)'],
-  ["L07 only student roster", DB, 'and(eq(v2IdentityUsers.classId, v2Classes.id), eq(v2IdentityUsers.role, "student"))'],
+  ["L07 only student roster", DB, 'and(eq(v2IdentityUsers.classId, v2Classes.id), eq(v2IdentityUsers.role, "student"), isNotNull(v2IdentityUsers.claimedAt))'],
   ["L08 sum both confirmed pools", DB, 'Number(r.xp ?? 0) + Number(r.grammarXp ?? 0)'],
   ["L09 Monday calendar", DB, '(calendar.getUTCDay() + 6) % 7'],
   ["L10 Vienna midnight", DB, "${week}::date::timestamp at time zone 'Europe/Vienna'"],
@@ -38,10 +38,10 @@ const guards: [string, string, string][] = [
   ["L18 avatar fallback", DB, 'r.avatar && r.avatar >= 1 && r.avatar <= 50 ? r.avatar : 1'],
   ["L19 weekly class aggregate", DB, 'rows.filter((r) => r.ownClass)'],
   ["L20 goal 5000", DB, 'WEEKLY_GOAL = 5000'],
-  ["L21 fail closed without migration", DB, '} catch { return off; }'],
+  ["L21 fail closed without migration", DB, '} catch { return unavailableLeaderboard(at); }'],
   ["L22 preview exits before database", "apps/web/lib/leaderboard.ts", 'if (view.kind === "preview") return'],
   ["L23 server session, no client class id", "apps/web/lib/leaderboard.ts", 'getLeaderboard(getDb(), view.player.classScope, view.player.userId)'],
-  ["L24 hidden All Classes without own consent", UI, 'board.gradeOptIn && <button'],
+  ["L24 hidden All Classes without own consent", UI, 'hasOtherClass && <button'],
   ["L25 week is default", UI, 'useState<"week" | "total">("week")'],
   ["L26 me + you", UI, 'row.me ? " me" : ""'],
   ["L27 title and stars", UI, '{prestigeStars(level.prestige)}{title.name}'],
@@ -111,14 +111,14 @@ it("preview runs real reader with zero DB handles and only five placeholders", a
   let reads = 0;
   const m = load("apps/web/lib/leaderboard.ts", { "server-only": {}, "@domigo/db": { getDb: () => { reads++; throw Error("preview must not read"); } },
     "../../../packages/db/src/leaderboard-service.ts": { getLeaderboard: () => { reads++; throw Error("child reader"); } }, "../../../packages/db/src/class-settings-service.ts": {} });
-  const b = await m.readLeaderboard!({ kind: "preview" } as never) as { rows: { name: string }[] };
+  const b = await m.readLeaderboard!({ kind: "preview", grades: [1] } as never) as { rows: { name: string }[] };
   assert.equal(reads, 0); assert.deepEqual(b.rows.map(r => r.name), ["Beispiel 1", "Beispiel 2", "Beispiel 3", "Beispiel 4", "Beispiel 5"]);
 });
 it("student reader receives only session scope/user, never an arbitrary class parameter", async () => {
   const calls: unknown[][] = [];
   const m = load("apps/web/lib/leaderboard.ts", { "server-only": {}, "@domigo/db": { getDb: () => "db" },
     "../../../packages/db/src/leaderboard-service.ts": { getLeaderboard: (...args: unknown[]) => { calls.push(args); return {}; } }, "../../../packages/db/src/class-settings-service.ts": {} });
-  await m.readLeaderboard!({ kind: "student", player: { userId: "synthetic-child", classScope: ["own"], classId: "forged" } } as never);
+  await m.readLeaderboard!({ kind: "student", grades: [1], player: { userId: "synthetic-child", classScope: ["own"], classId: "forged" } } as never);
   assert.deepEqual(calls, [["db", ["own"], "synthetic-child"]]);
 });
 it("all four grades render row anatomy, no B tab without opt-in, honest off state", () => {
@@ -126,7 +126,7 @@ it("all four grades render row anatomy, no B tab without opt-in, honest off stat
   deps["./WeeklyGoal"] = load("apps/web/app/bestenliste/WeeklyGoal.tsx", deps);
   const Screen = load(UI, deps).default as React.ComponentType<Record<string, unknown>>;
   for (const grade of [1, 2, 3, 4]) {
-    const board = { enabled: true, gradeOptIn: false, className: "Synthetic A", weeklyXp: 1234, totalXp: 31000, target: 5000, rows: [{ id: "child", name: "Beispiel (Fuchs)", avatar: 1, ownClass: true, me: true, weeklyXp: 1234, totalXp: 31000, streak: 2, dailyCorrect: 3, dailyTotal: 4 }] };
+    const board = { enabled: true, gradeOptIn: false, className: "Synthetic A", weeklyXp: 1234, totalXp: 31000, target: 5000, rows: [{ id: 1, vocabXp: 31000, name: "Beispiel (Fuchs)", avatar: 1, ownClass: true, me: true, weeklyXp: 1234, totalXp: 31000, streak: 2, dailyCorrect: 3, dailyTotal: 4 }] };
     const html = renderToStaticMarkup(React.createElement(Screen, { board, grade, preview: false }));
     for (const marker of ['lb-row me', 'width="34"', '⭐', '1,234 XP', '3/4', 'Beispiel (Fuchs)']) assert.ok(html.includes(marker), marker);
     assert.doesNotMatch(html, /All Classes|Alle Klassen/);

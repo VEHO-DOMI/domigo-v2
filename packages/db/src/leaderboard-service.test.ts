@@ -5,7 +5,7 @@ import type { Db } from "./index.ts";
 import * as schema from "./schema.ts";
 import { classScope, EMPTY_SCOPE } from "./scope.ts";
 import { getLeaderboard, leaderboardName, sortLeaderboard, viennaMonday } from "./leaderboard-service.ts";
-import { getClassLeaderboardSettings, setClassLeaderboardSettings, ClassSettingsForbiddenError } from "./class-settings-service.ts";
+import { getClassLeaderboardSettings, setClassLeaderboardSettings, setClassPurpose, ClassSettingsForbiddenError } from "./class-settings-service.ts";
 
 const CLASS = "00000000-0000-4000-8000-000000000001";
 const USER = "00000000-0000-4000-8000-000000000002";
@@ -105,13 +105,13 @@ describe("cgo-111 leaderboard: fake database, invented identities", () => {
     expect(b.weeklyXp).toBe(35); expect(b.totalXp).toBe(120); expect(b.target).toBe(5000);
     const own = b.rows.find(r => r.me)!;
     expect(own).toMatchObject({ name: "Beispiel (Fuchs)", avatar: 1, totalXp: 120, streak: 4, dailyCorrect: 2, dailyTotal: 3 });
-    expect(b.rows[0]).toMatchObject({ id: OTHER, streak: 0, dailyCorrect: 0, dailyTotal: 0 });
-    expect(sortLeaderboard(b.rows, "total")[0]!.id).toBe(OTHER);
+    expect(b.rows[0]).toMatchObject({ id: 2, streak: 0, dailyCorrect: 0, dailyTotal: 0 });
+    expect(sortLeaderboard(b.rows, "total")[0]!.id).toBe(2);
   });
   it("zero-XP roster members remain present and deterministic tie order", async () => {
     const { db } = recorder([[row(USER, CLASS, 0, 0, 0), row(OTHER, CLASS, 0, 0, 0)]]);
     const b = await getLeaderboard(db, scope, USER, at); expect(b.rows).toHaveLength(2);
-    expect(sortLeaderboard([...b.rows].reverse(), "week").map(r => r.id)).toEqual([USER, OTHER]);
+    expect(sortLeaderboard([...b.rows].reverse(), "week").map(r => r.id)).toEqual([1, 2]);
   });
   it("missing migration/unavailable database fail closed without error details", async () => {
     const { db } = recorder([new Error("synthetic missing 0023")]);
@@ -119,6 +119,7 @@ describe("cgo-111 leaderboard: fake database, invented identities", () => {
   });
   it("name rule omits duplicate and missing first names", () => {
     expect(leaderboardName("Beispiel", "Beispiel")).toBe("Beispiel");
+    expect(leaderboardName("Anna Muster", "Fuchs")).toBe("Anna (Fuchs)");
     expect(leaderboardName(null, "Fuchs")).toBe("Fuchs");
     expect(leaderboardName(" Beispiel ", "Fuchs")).toBe("Beispiel (Fuchs)");
   });
@@ -130,6 +131,20 @@ describe("cgo-111 leaderboard: fake database, invented identities", () => {
 });
 
 describe("cgo-111 settings: one guarded write", () => {
+  it("purpose before 0023 retries only the missing-column error through the original guarded writer", async () => {
+    const missing = Object.assign(new Error("synthetic missing column"), { code: "42703" });
+    const { db, log } = recorder([missing, [[CLASS]]]);
+    await setClassPurpose(db, scope, CLASS, TEACHER, "test");
+    expect(log).toHaveLength(2);
+    expect(log[1]!.sql).not.toMatch(/leaderboard|grade_board_opt_in/);
+    expect(log[1]!.sql).toContain('"classes"."id" in');
+    expect(log[1]!.sql).toContain('"classes"."teacher_id" =');
+  });
+  it("purpose never retries other database errors", async () => {
+    const { db, log } = recorder([Object.assign(new Error("synthetic failure"), { code: "08006" })]);
+    await expect(setClassPurpose(db, scope, CLASS, TEACHER, "test")).rejects.toThrow();
+    expect(log).toHaveLength(1);
+  });
   it("settings default to all off before migration; foreign class does not read", async () => {
     const { db, log } = recorder([new Error("missing")]);
     expect(await getClassLeaderboardSettings(db, scope, CLASS)).toEqual({ leaderboard: false, gradeBoardOptIn: false });

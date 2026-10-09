@@ -41,7 +41,7 @@ Erwartet: genau zwei Zeilen, jeweils `boolean`, `NO`, `false`. Danach bestätigt
 
 ## Ohne Migration, Protokoll und Löschweg
 
-Fehlende Spalten oder fehlende Lesbarkeit ergeben beide Freigaben aus, ohne Identitäten oder Fehlerdetails zu protokollieren. Ein gescheiterter Schreibversuch wird als nicht gespeichert gemeldet. Der bestehende Testklassen-Schalter verwendet weiterhin ausschließlich die drei Spalten aus 0021 und bleibt vor 0023 schreibbar. Dafür beschreibt der Dienst eine Drei-Spalten-Projektion derselben bestehenden Tabelle; es wird keine weitere Tabelle angelegt. 0023 vor dem produktiven Merge anwenden.
+Fehlende Spalten oder fehlende Lesbarkeit ergeben keine sichtbaren Kinderzeilen. Die Kinderseite meldet dann „gerade nicht erreichbar“ statt „nicht eingeschaltet“; das einzige Log lautet `[leaderboard] read_failed`, ohne Identitäten oder Fehlerdetails. Ein gescheiterter Schreibversuch wird als nicht gespeichert gemeldet. Nach 0023 widerruft der Wechsel zur Testklasse beide Freigaben in derselben Schreibabfrage. Nur bei PostgreSQL-Fehler 42703 (fehlende Spalte) verwendet der Testklassen-Schalter den alten, ebenfalls klassen- und eigentumsgeprüften Drei-Spalten-Schreibweg aus 0021; vor 0023 existieren keine Freigaben, die zurückzusetzen wären. Keine weitere Tabelle. 0023 vor dem produktiven Merge anwenden.
 
 Eine erfolgreiche Freigabe schreibt die Server-Journalzeile `[class-leaderboard] settings_saved` mit ausschließlich den zwei booleschen Einstellungen. Sie enthält keine Namen, Kontokennungen oder Klassenkennungen. Sie erweitert nicht das personenbezogene Roster-Journal.
 
