@@ -103,7 +103,7 @@ describe("cgo-109 mode contracts", () => {
     assert.match(session, /fetch\("\/modi\/speed\/start", \{ cache: "no-store" \}\)/);
     assert.match(session, /context: \{ speedSession \}/);
     assert.match(read("speed/Speed.tsx"), /max=\{60_000\}/);
-    assert.match(read("speed/Speed.tsx"), /performance\.now\(\) >= deadline\.current/);
+    assert.match(read("speed/Speed.tsx"), /event\.timeStamp >= deadline\.current/);
     assert.match(read("speed/Speed.tsx"), /if \(left === 0\)/);
   });
   it("C09 new mode tags only accept their vocab/input contract", () => {
