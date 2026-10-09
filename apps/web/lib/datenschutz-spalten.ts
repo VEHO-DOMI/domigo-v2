@@ -137,6 +137,8 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
   class_settings: {
     class_id: sachlich("Zuordnung der Einstellung zur Klasse, keine Personenkennung"),
     purpose: sachlich("Kennzeichen Testklasse (Lehrer-Eigentest), kein Kind, kein Name"),
+    leaderboard: sachlich("Einstellung der Lehrkraft: Klassen-Bestenliste freigegeben; keine Kinderdaten"),
+    grade_board_opt_in: sachlich("Einstellung der Lehrkraft: Teilnahme an der Jahrgangs-Bestenliste; keine Kinderdaten"),
     updated_at: sachlich("Zeitpunkt der Einstellungsänderung, keine Aktivität eines Kindes"),
   },
 

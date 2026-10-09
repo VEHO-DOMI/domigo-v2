@@ -23,6 +23,10 @@ Noch nicht LIVE. Vier Kinderflächen `/home`, `/modi`, `/profil`, `/fortschritt`
 
 **In Prüfung, noch nicht LIVE.** Auf PR 508 aufgebaut: `/modi/grammar` ergänzt Struktur-Auswahl nach Chapter, 13 vorhandene Formate, zehn Aufgaben je Runde und die Hinweisleiter. Namen kommen aus dem Struktur-Katalog; Klassenreserve und Jahrgangsgrenze bleiben im gemeinsamen Lader. Jede Antwort läuft mit `mode: grammar` durch `/api/attempts`; die Anzeige verwendet nur bestätigte XP. Vorschau ohne Schreibanfragen. Jahrgang 1 erhält Grammar Memory Match aus vollständigen vorhandenen Zuordnungssätzen, ohne neue Inhalte. Gerätemodus Vocab/Grammar und bestehende Grammatik-Titelleiter sind verbunden. Lokale synthetische Abnahme und Prüfbelege gehören zum PR; Produktionsabnahme, GG-Kette und Merge bleiben offen. Keine Migration in W3.
 
+## In Prüfung: cgo-111 · OG-Parität W4
+
+**In Prüfung, noch nicht LIVE.** Auf PR 509 (`49eec3eb`) aufgebaut: Bestenliste A/B mit doppeltem Klassen-Opt-in, Wochen-/Gesamtwertung, Tages-Challenge, 5.000-XP-Wochenziel und Fortschritt-Gesamtleiter. Lehrkraft-Schalter samt B-Bestätigungsdialog; Testklassen/Archiv ausgeschlossen. Vorschau ausschließlich fünf Platzhalter. Migration 0023 ergänzt zwei standardmäßig ausgeschaltete Einstellungen; [Neon-Blatt](cgo-111_NEON_BLATT_0023.md), keine Anwendung durch Codex. Datenschutzseite bleibt unverändert und wird vor Freigabe separat vom GG korrigiert. Battle: W5; Badges: W7/eigene Karte. Lokale Prüfungen und Bildabnahme im PR; Produktionsabnahme und Merge bleiben beim GG.
+
 ## Was LIVE ist
 
 LIVE heißt hier: im oben bestätigten Produktionsbau vorhanden und über den vorgesehenen Zugang erreichbar. Code, Freigabedateien und Programm-Inventar belegen den Umfang; ein neuer vollständiger Durchlauf mit echten Konten wurde nicht durchgeführt. Gebautes ohne Kinderfreigabe, offene PRs und pausierter Weiterbau stehen deshalb getrennt. Ein bloßer Merge ist keine Unterrichtsabnahme.

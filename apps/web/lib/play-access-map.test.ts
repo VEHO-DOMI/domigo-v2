@@ -551,7 +551,7 @@ it("student traps: actual child scope only; preview makes zero personal reads", 
 
 // cgo-108: the new trainer surfaces inherit the existing preview and year wall.
 describe("OG W1 surfaces", () => {
-  for (const route of ["home", "modi", "profil", "fortschritt"]) it(`${route}: pinned sign-in matcher`, () => {
+  for (const route of ["home", "modi", "profil", "fortschritt", "bestenliste"]) it(`${route}: pinned sign-in matcher`, () => {
     const middleware = fs.readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
     const matcher = code(middleware).match(/matcher:\s*\[([^\]]+)\]/)?.[1] ?? "";
     assert.ok([...matcher.matchAll(/"([^"]+)"/g)].some((m) => m[1] === `/${route}`), `${route} requires sign-in`);
@@ -583,11 +583,12 @@ describe("OG W1 surfaces", () => {
       assert.doesNotMatch(src, /listReleasedStories/);
     }
   });
-  for (const route of ["home", "modi", "profil", "fortschritt"]) it(`${route}: server-resolved year and preview`, () => {
+  for (const route of ["home", "modi", "profil", "fortschritt", "bestenliste"]) it(`${route}: server-resolved year and preview`, () => {
     const src = code(read(`${route}/page.tsx`));
     assert.match(src, /await resolveStudentView\(/);
     assert.match(src, /trainerGrade\(view\)/);
-    assert.match(src, /view\.kind === "student" \? view\.player : null/);
+    if (route === "bestenliste") assert.match(src, /await readLeaderboard\(view\)/);
+    else assert.match(src, /view\.kind === "student" \? view\.player : null/);
     assert.match(src, /preview=\{preview\}/);
     assert.doesNotMatch(src, /\b(fetch|localStorage|sessionStorage|recordAttempt|setStudentAvatar)\(/);
   });
@@ -611,7 +612,7 @@ describe("OG W1 surfaces", () => {
     const known = new Set<string>();
     for (const f of tiles) {
       const src = code(read(f));
-      assert.doesNotMatch(src, /Activity Game|Battle Arena|Bestenliste|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
+      assert.doesNotMatch(src, /Activity Game|Battle Arena|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
       for (const match of src.matchAll(/(?:href=\{?[`"]|path:\s*")(\/[a-z][a-z/-]*)/g)) known.add(match[1]!);
     }
     for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review"]) known.add(path);

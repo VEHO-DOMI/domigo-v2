@@ -1,0 +1,2 @@
+ALTER TABLE "domigo_v2"."class_settings" ADD COLUMN IF NOT EXISTS "leaderboard" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE "domigo_v2"."class_settings" ADD COLUMN IF NOT EXISTS "grade_board_opt_in" boolean DEFAULT false NOT NULL;

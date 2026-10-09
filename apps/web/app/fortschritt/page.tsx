@@ -3,9 +3,13 @@ import { redirect } from "next/navigation";
 import { listApprovedUnits, loadUnit } from "@domigo/content-loader";
 import { getDb, getStudentChapterProgress } from "@domigo/db";
 import { resolveStudentView, trainerGrade } from "@/lib/student-view";
-import { LEVEL_XP, levelFor, vocabTitle, registerFor, formatXp } from "@/lib/levels";
+import { LEVEL_XP, levelFor, vocabTitle, registerFor, formatXp, overallLevelFor } from "@/lib/levels";
 import TrainerShell from "../home/TrainerShell";
 import { readTrainerProfile } from "../home/trainer-data";
+
+import { readLeaderboard } from "@/lib/leaderboard";
+import WeeklyGoal from "../bestenliste/WeeklyGoal";
+import "../bestenliste/leaderboard.css";
 
 export const dynamic = "force-dynamic";
 export default async function ProgressPage({ searchParams }: { searchParams: Promise<{ jahrgang?: string }> }) {
@@ -25,6 +29,9 @@ export default async function ProgressPage({ searchParams }: { searchParams: Pro
   const correct = vocabRows.reduce((n, row) => n + row.correct, 0);
   const pct = total ? Math.min(100, Math.round(correct / total * 100)) : 0;
   const level = levelFor(profile.xp ?? 0);
+  const board = await readLeaderboard(view);
+  const combinedXp = profile.xp !== null && profile.grammarXp !== null ? profile.xp + profile.grammarXp : null;
+  const overall = overallLevelFor(combinedXp ?? 0);
   return <TrainerShell grade={grade} preview={preview} screen="fortschritt">
     <main className="og-screen og-progress">
       <Link className="og-back" href={`/home${suffix}`}>← Back</Link>
@@ -42,6 +49,8 @@ export default async function ProgressPage({ searchParams }: { searchParams: Pro
         {[[total, "Total words"], [progress ? correct : "—", "Correct"], [progress ? practiced : "—", "Practiced"], [progress ? Math.max(0, practiced - correct) : "—", "Not yet correct"], [progress ? Math.max(0, total - practiced) : "—", "Not yet practiced"]].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}
       </div>
       {preview ? <p lang="de">Vorschau ohne persönlichen Lernstand.</p> : !progress ? <p lang="de">Dein Lernstand konnte gerade nicht geladen werden.</p> : <p className="og-progress-note" lang="de">Richtig: mindestens einmal vollständig richtig beantwortet. · 🔥 Streak: {profile.streak ?? "—"}</p>}
+      <section className="og-card lb-overall"><h2>{grade === 1 ? "Gesamt-Level" : "Overall level"}</h2><p><span>Vocabulary + Grammar</span><strong>{combinedXp === null ? "—" : formatXp(combinedXp)} XP</strong></p>{combinedXp !== null && <p><span>Level {overall.level}</span><span className={`og-rank zone-${overall.zone}`}>{overall.name}</span></p>}</section>
+      {board.enabled && <WeeklyGoal weeklyXp={board.weeklyXp} totalXp={board.totalXp} target={board.target} grade={grade} />}
       <section className="og-card og-roadmap"><h2>Level Roadmap</h2>{LEVEL_XP.map((threshold, i) => {
         const reached = profile.xp !== null && i + 1 <= level.level;
         const title = vocabTitle(i + 1, 0, registerFor(grade));
