@@ -1,0 +1,7 @@
+.og-action-row.og-action-row--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.og-action-row--3 .og-action-card strong {
+  white-space: nowrap;
+}

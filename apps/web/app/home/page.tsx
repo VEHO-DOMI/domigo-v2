@@ -10,6 +10,7 @@ import TrainerShell from "./TrainerShell";
 import PlayerCard from "./PlayerCard";
 import { readTrainerProfile } from "./trainer-data";
 import { ModeStart } from "./ModeSwitch";
+import "./home.css";
 
 export const dynamic = "force-dynamic";
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ jahrgang?: string }> } = { searchParams: Promise.resolve({}) }) {
@@ -33,7 +34,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
       <ModeStart grade={grade} preview={preview} />
       <Link className="og-nav-card" href={`/woerterbuch${suffix}`}><span className="og-nav-icon">📖</span><span><strong>Dictionary</strong><small>Browse your full vocabulary library</small></span><span className="og-arrow">→</span></Link>
       {story && <Link className="og-nav-card" href={`/play/${grade}${suffix}`}><span className="og-nav-icon">{storyUi.icon}</span><span><strong>Story Mode</strong><small>{story.titleEn}</small></span><span className="og-arrow">→</span></Link>}
-      <div className="og-action-row" style={{ gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}><Link href={`/fortschritt${suffix}`} className="og-action-card"><span>📊</span><strong>{grade === 1 ? "Fortschritt" : "Progress"}</strong></Link><Link href={`/bestenliste${suffix}`} className="og-action-card"><span>🏆</span><strong>{grade === 1 ? "Bestenliste" : "Leaderboard"}</strong></Link><Link href={`/profil${suffix}`} className="og-action-card"><span>👤</span><strong>{grade === 1 ? "Profil" : "Profile"}</strong></Link></div>
+      <div className="og-action-row og-action-row--3"><Link href={`/fortschritt${suffix}`} className="og-action-card"><span>📊</span><strong>{grade === 1 ? "Fortschritt" : "Progress"}</strong></Link><Link href={`/bestenliste${suffix}`} className="og-action-card"><span>🏆</span><strong>{grade === 1 ? "Bestenliste" : "Leaderboard"}</strong></Link><Link href={`/profil${suffix}`} className="og-action-card"><span>👤</span><strong>{grade === 1 ? "Profil" : "Profile"}</strong></Link></div>
       <section className="og-today">
         {word && <div className="og-today-section"><div className="og-today-heading"><h2>📝 Word of the Day</h2><span>Chapter {word.chapter}</span></div><div className="og-word"><strong>{word.word}</strong><span>{word.german}</span></div><p className="og-definition">{word.example}</p></div>}
         <div className="og-today-section"><div className="og-today-heading"><h2>⚡ Daily Challenge</h2><span>{new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", timeZone: "Europe/Vienna" }).format(new Date())}</span></div>

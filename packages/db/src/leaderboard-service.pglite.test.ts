@@ -125,9 +125,28 @@ describe("PGlite visibility and returned data", () => {
   it("vocabulary XP remains separate; total includes teacher's stored awards", async () => {
     expect(await ownRow()).toMatchObject({ vocabXp: 40, totalXp: 30040, weeklyXp: 0 });
   });
+  it("yesterday's Vienna streak stays active; three days ago expires", async () => {
+    await pg.query("UPDATE domigo_v2.user_progress SET streak=4, last_session_date=$1 WHERE user_id=$2", ["2026-10-08", ME]);
+    await pg.query("UPDATE domigo_v2.user_progress SET streak=4, last_session_date=$1 WHERE user_id=$2", ["2026-10-06", PEER]);
+    const b = await board();
+    expect(b.rows.find((r) => r.me)?.streak).toBe(4);
+    expect(b.rows.find((r) => r.ownClass && !r.me)?.streak).toBe(0);
+  });
 });
 
 describe("PGlite week and daily", () => {
+  it("weekly XP ignores ME's attempts recorded under another class", async () => {
+    await attempt({ xpAwarded: 20 });
+    expect((await ownRow()).weeklyXp).toBe(20);
+    await attempt({ userId: ME, classId: B, xpAwarded: 500 });
+    expect((await ownRow()).weeklyXp).toBe(20);
+  });
+  it("daily ignores ME's attempts recorded under another class", async () => {
+    await attempt({ userId: ME, classId: B, mode: "daily", xpAwarded: 500 });
+    expect(await ownRow()).toMatchObject({ weeklyXp: 0, dailyCorrect: 0, dailyTotal: 0 });
+    await attempt({ mode: "daily", itemId: "own-class-word", xpAwarded: 7 });
+    expect(await ownRow()).toMatchObject({ weeklyXp: 7, dailyCorrect: 1, dailyTotal: 1 });
+  });
   it.each(["assign:synthetic-checkup", "assignment", "checkup"])("%s awards zero weekly XP", async (mode) => {
     await attempt(); await attempt({ mode, xpAwarded: 999 });
     expect((await ownRow()).weeklyXp).toBe(20);

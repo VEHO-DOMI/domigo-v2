@@ -92,9 +92,13 @@ it("F13 home renders all three established action links in a three-column row", 
     "@/lib/wort-des-tages": { wortDesTages: async () => null, viennaDateKey: () => "2026-10-09" },
     "@/lib/stories": { STORY_UI: {}, DEFAULT_STORY_UI: {} }, "../practice/load-practice": { loadDailyChallenge: async () => null },
     "./TrainerShell": { default: ({ children }: { children: React.ReactNode }) => children }, "./PlayerCard": { default: () => null },
-    "./trainer-data": { readTrainerProfile: async () => ({}) }, "./ModeSwitch": { ModeStart: () => null } });
+    "./trainer-data": { readTrainerProfile: async () => ({}) }, "./ModeSwitch": { ModeStart: () => null }, "./home.css": {} });
   const html = renderToStaticMarkup(await m.default!() as React.ReactNode);
   assert.equal((html.match(/class="og-action-card"/g) ?? []).length, 3);
   for (const path of ["fortschritt", "bestenliste", "profil"]) assert.ok(html.includes(`href="/${path}?jahrgang=1"`));
-  assert.match(html, /grid-template-columns:repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(html, /class="og-action-row og-action-row--3"/);
+  assert.doesNotMatch(html, /<div class="og-action-row[^>]*style=/);
+  const css = read("apps/web/app/home/home.css");
+  assert.match(css, /\.og-action-row\.og-action-row--3\s*\{\s*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/);
+  assert.match(css, /\.og-action-row--3 \.og-action-card strong\s*\{\s*white-space:\s*nowrap/);
 });
