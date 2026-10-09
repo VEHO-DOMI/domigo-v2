@@ -37,3 +37,5 @@ export * from "./grade.ts";
 
 // Wrong-answer trap classifier (trap-registry@1 ids; never changes grading).
 export * from "./classify.ts";
+
+export * from "./spelling.ts";
