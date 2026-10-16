@@ -1,0 +1,21 @@
+{
+  "modus": "reihe",
+  "armed": true,
+  "deadCamera": false,
+  "accepted": 2,
+  "rejected": [],
+  "tainted": false,
+  "frames": [
+    {
+      "name": "n7a2c_vorher_p3_rutsche_001",
+      "hash": "a3403a6d63f3b4d3e29c589a3a52256d",
+      "tick": 600
+    },
+    {
+      "name": "n7a2c_vorher_p3_rutsche_002",
+      "hash": "8d571995b6cb8c57eb21ea85f357bcc9",
+      "tick": 606
+    }
+  ],
+  "brauchbar": true
+}
