@@ -147,6 +147,22 @@ Goal: the dormant `dAnswers` + `translation.deToEn/enToDe` pools of ~2,446 vocab
 Files: `packages/task-ui/src/index.tsx` — `VocabItemView` gains `pool?: VocabPool` (default `"carrier"`); prompt source per pool (carrier: `d`+`s` · definition: `d` only, ask the word — NEVER renders `w` · deToEn: show `g` ask English · enToDe: show `w` ask German); grading via `gradeVocab(item, value, pool)`; emitted `detail.input` = `{kind:"vocab", value, pool}` (server already validates+regrades per pool); Feedback Card uses `vocabAnswers(item, pool)` — not raw `sAnswers`. `apps/web/app/practice/[slug]/…` — deterministic rotation per (itemId, Vienna-day) across existing pools + manual mode chips. **`/review` stays carrier** this PR (recorded-tier comparability; follow-up decision noted in the PR body). DO NOT TOUCH: `xpForTier`, the outbox, the retry ladder.
 Exit criteria: task-ui unit tests (per-pool: authored first full answer grades `correct`; headword-leak impossible in definition mode); dev-server POST one attempt per pool ⇒ `tier:"correct"`; full gate incl. `check:bundle` (task-ui rides the ≤150KB budget).
 
+### IV.1b · WS-A7 — Practice intelligence + vocabulary knowledge layer (Koki feedback 2026-07-15)
+
+**A7 is the new planned workstream opened by Koki's Grade-2 Unit-3 walkthrough.** It extends A-6 from pool rotation into self-sufficient teaching: authored vocabulary introductions with calibrated group visuals · progressive carrier hints (meaning → first letter → word lengths) · the cold-student answerability gate · an appendix-backed vocabulary index with first-occurrence/task references · student word cards + a private practice vault · a later grammar analogue · and a companion Fable test-design skill. The existing A-6 four pools and one grading brain remain in force; this workstream does not reopen the completed A-5 article/contraction waves.
+
+**A7.1 · calibration-first content contract:** freeze `vocab-intro@1`, `vocabulary-index@1`, hint-state behavior, and the cold-student validator; hand-author `g2-u03` examples for `guys`, `wild`, `apple bobbing`, `shall`, `keep` plus representative easy/medium/hard items; Koki gates the rendered calibration before volume.
+
+**A7.2 · runtime:** extend `@domigo/task-ui` and `/practice` with non-repeating hint escalation and a grouped vocabulary-intro view; derive first letters/word lengths from the selected authored answer pool; no hint behavior changes in checkups/tests.
+
+**A7.3 · source/index:** reconcile the four master lists, committed banks/items, transcripts, and the MORE! appendix word-list pages. The appendix is image-based and needs bounded render/OCR/manual QA; each index row carries source hash/page/occurrence provenance and links to canonical item IDs.
+
+**A7.4 · vault:** add canonical word lookup, tap/long-press word help, and journalled idempotent student saves; review uses existing authored definition/carrier/translation material in a different pool. Unknown words are a later private sandbox lane, never silent shared-corpus additions.
+
+**A7.5 · method:** amend the workflow method with a cold-student gate and create `fable-method-test-design` for level, clue, answerability, near-synonym, comparable-shape, and leak checks. Both skills point to machine validators and the frozen calibration artifact.
+
+Exit criteria: the `g2-u03` calibration is approved in the real UX; deterministic and LLM content checks are green; three fresh-context blind solvers unanimously solve every touched keyed item; tamper checks turn red when prompts, hints, index links, or vault idempotency are deliberately broken; practice → help → answer → vault → different-pool review works end-to-end; wave stats are recorded for every ≤25-item PR.
+
 ### IV.2 · WS-N — The narrative program (**Fable-reserved**)
 
 _Three campaign bibles authored by Fable 5 directly (Koki's instruction: curated with model intelligence, never delegated, never templated). Each bible = premise · cast sheet (canon-checked against the art prompt libraries) · per-unit beat map (**the unit's vocabulary + grammar is the level's substance — the story IS the task**; the student should feel they're solving the story, not tasks) · fork/flag manifest + endings matrix (G4) · register sheet · **chapter 1 authored through the pipeline, validate-story green, rendered preview** (the voice test). Each campaign has a Koki narrative gate BEFORE any volume authoring. Premises below are approved direction; the bibles refine them._
@@ -314,6 +330,7 @@ Exit criteria: `verify-deploy` + `verify-design` green against prod; scripted au
 11. B-3 G4 swap engineering ✅ (#123) → G4 chapter waves (WS-C) ✅ (#120)
 12. B-2 G2 overworld engineering → G2 campaign waves (WS-C, + art loop) — story authored ✅ (#119); the overworld ENGINE is the remaining piece
 13. P-1 identity ✅ (#141 migration 0006 · #142 class CRUD) → P-2 roster ✅ (#143 stacked-merge miss, re-landed #144, migration 0007 nickname guard) → C-1 checkups ✅ BUILT (2026-07-13, migration 0008, PR pending — apply 0008 in Neon before merge)
+13b. A-7 practice intelligence + vocabulary knowledge layer — calibration → hint ladder/intro runtime → appendix-backed index → canonical word vault → Grade 1–4 content waves → grammar analogue/unknown-word sandbox (PLANNED; this roadmap)
 14. S-1 overlay → S-2 full CRUD
 15. J-1 journeys runtime → J-2 pilot + wave
 16. W-1 writing capture → W-2 sandbox correction
