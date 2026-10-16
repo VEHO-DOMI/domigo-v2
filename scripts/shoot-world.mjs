@@ -33,7 +33,7 @@
  * Benutzung (der Dev-Server muss schon laufen — die Lehrer-Tür ist dev-only):
  *   node scripts/shoot-world.mjs <outDir> --phase p1 --port 3021 \
  *        [--visible] [--sink-port 3921] [--cdp-port 9341] \
- *        [--warp c,r] [--settle 240] [--shots 14] [--every 6] [--pure] \
+ *        [--chapter ch02] [--warp c,r] [--settle 240] [--shots 14] [--every 6] [--pure] \
  *        [--press left|right|jump] [--name uns_kaefig] [--tick 900]
  *        [--standbild] [--toast]
  *
@@ -400,6 +400,18 @@ if (!outDir) {
   process.exit(1);
 }
 const phase = flag("--phase", "p1");
+// L0d · R263 · DAS WERKZEUG KONNTE NUR KAPITEL 1 FOTOGRAFIEREN.
+// Die Adresse stand fest auf `/play/1/buch?phase=…`, und die leitet seit L0
+// IMMER auf ch01 weiter (`buch/page.tsx`: bewusst fest, damit ein gespeicherter
+// Link sein Kapitel behaelt). Ein Vorher/Nachher-Paar ueber zwei Kapitel — der
+// Beweis, dass ch02 dieselbe Figur zeigt wie ch01 — war damit nicht zu
+// fotografieren. `--chapter` ist rein additiv: ohne die Flagge ist die Adresse
+// dieselbe, auf die die alte Adresse weitergeleitet haette.
+const chapter = flag("--chapter", "ch01");
+if (/^ch\d\d$/.test(chapter) === false) {
+  console.error(`--chapter ${chapter}: erwartet wird chNN (z. B. ch01)`);
+  process.exit(1);
+}
 const port = Number(flag("--port", 3021));
 const sinkPort = Number(flag("--sink-port", 3921));
 const cdpPort = Number(flag("--cdp-port", 9341));
@@ -575,7 +587,7 @@ const bail = async (code) => {
 
 try {
   // ── 1 · die Lehrer-Tür ────────────────────────────────────────────────────
-  const url = `http://localhost:${port}/play/1/buch?phase=${phase}`;
+  const url = `http://localhost:${port}/play/1/buch/${chapter}?phase=${phase}`;
 
   // ── 1a · R5-W7 · W6 · D-443 · liefert der Server ueberhaupt DIESES Level? ──
   // Vor dem ersten Bild, nicht danach: eine Bildreihe gegen eine alte Fassung
@@ -585,7 +597,7 @@ try {
   {
     const fsMod = await import("node:fs");
     const levelAufDerPlatte = JSON.parse(
-      fsMod.readFileSync("content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json", "utf8"));
+      fsMod.readFileSync(`content/corpus/stories/g1.st.lost-pages/paint/${chapter}.level.json`, "utf8"));
     let html = null;
     try {
       const r = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(30_000) });
