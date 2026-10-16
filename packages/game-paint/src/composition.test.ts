@@ -1468,7 +1468,7 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
 
     const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
     let phasesChecked = 0;
-    let phasesWithSlope = 0;
+    const phasesWithSlope:string[] = [];
     if (fs.existsSync(CONTENT)) {
       for (const story of fs.readdirSync(CONTENT)) {
         const paintDir = path.join(CONTENT, story, "paint");
@@ -1481,12 +1481,12 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
             arena?: { id: string; rows: string[] } | null;
             bonus?: { id: string; rows: string[] } | null;
           };
-          if (level.draft === true) continue;
+
           const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
           for (const ph of all) {
             phasesChecked += 1;
             if (!needsRampSheets(ph.rows)) continue;
-            phasesWithSlope += 1;
+            phasesWithSlope.push(`${level.chapter}/${ph.id}`);
             const spec = compositionFor(level.chapter, ph.id);
             if (spec === null) continue;
             for (const [field, stem] of [["rampUp", spec.mass.rampUp], ["rampDown", spec.mass.rampDown]] as const) {
@@ -1505,7 +1505,10 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
     }
     // Der Lauf muss überhaupt etwas gesehen haben — sonst prüft er nichts.
     expect(phasesChecked).toBeGreaterThan(0);
-    // Heute ist der Stand: keine einzige Steigung im ganzen Bestand (D-267).
-    expect(phasesWithSlope).toBe(0);
+    // R1b: ch02/p2 deliberately uses two traversable ramps.  The invariant is
+    // not "no ramps" but that every room containing one names both artwork
+    // stems above; `phasesWithSlope` is retained as a smoke check so this test
+    // cannot silently stop inspecting the new room.
+    expect(phasesWithSlope).toContain("ch02/p2");
   });
 });

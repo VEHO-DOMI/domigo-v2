@@ -1911,3 +1911,12 @@ export type Quest = z.infer<typeof Quest>;
 
 // ── gameTasks@2 — the Painted-Book in-game task contract (PB-T6) ─────────────
 export * from "./game-tasks.ts";
+
+export * from "./paint-zoo.ts";
+export * from "./paint-coverage.ts";
+
+export * from "./paint-art.ts";
+
+export { SceneSnapshot, sceneSnapshotText, type SceneSnapshotData } from "./paint-scene.ts";
+
+export * from "./paint-proof.ts";

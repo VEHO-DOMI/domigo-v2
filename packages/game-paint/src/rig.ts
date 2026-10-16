@@ -686,3 +686,14 @@ export const withBrace = (pose: RigPose, t: number): RigPose => {
     },
   };
 };
+
+/** CODEX DRAFT — NOT CANON · temporary parts poses until the zoo action art arrives.
+ * This moves only painted parts; feet and the simulation never move for an image. */
+export const withZooAction = (pose: RigPose, cell: string | null | undefined): RigPose => {
+  if (!cell || !/^hero2_(throw|catch|release|hangjump)/.test(cell)) return pose;
+  const n = structuredClone(pose);
+  if (cell.startsWith("hero2_throw")) { n.body.rot += .10; n.handB.dy -= 4; }
+  else if (cell.startsWith("hero2_catch")) { n.handF={...n.handF,dx:8,dy:-10,rot:.4}; n.body.dy+=cell.endsWith("0")?1:0; }
+  else { n.handF={...n.handF,dx:10,dy:-17,rot:.5}; n.handB={...n.handB,dx:5,dy:-15,rot:-.4}; }
+  return n;
+};

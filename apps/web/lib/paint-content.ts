@@ -14,7 +14,7 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
-import { GameTasksFileV2, type GameTaskV2 } from "@domigo/content-schema";
+import { GameTasksFileV2, ZooArtSet, PaintCollectSkin, PaintGunnerAim, PaintProjectileSkin, StageV2, TaskSequenceV2, SequenceTransfer, ZooGuardian, ZooRide, ZooCell, type GameTaskV2 } from "@domigo/content-schema";
 import { REPO_ROOT } from "@domigo/content-loader";
 import { ENTITY_ROLES } from "@domigo/game-paint/level";
 
@@ -74,6 +74,16 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
       if ("ticksPerStation" in g && (!Number.isInteger(g.ticksPerStation) || (g.ticksPerStation as number) <= 0)) {
         ctx.issues.push({ code: "custom", input: p, path: ["stage", "ticksPerStation"], message: "params.stage.ticksPerStation must be a whole number ≥ 1" });
       }
+    }
+  }
+  // New engine contracts remain opt-in but must fail loudly on a malformed
+  // authored object. The open params record still preserves unrelated legacy
+  // tuning knobs.
+  for (const [key, schema] of Object.entries({ artSet: ZooArtSet, gunnerAim: PaintGunnerAim, projectileSkin: PaintProjectileSkin, taskSequenceV2: TaskSequenceV2, stageV2: StageV2, guardian: ZooGuardian, ride: ZooRide, encounterObserver: ZooCell, onSequenceComplete: SequenceTransfer })) {
+    if (!(key in p)) continue;
+    const result = schema.safeParse(p[key]);
+    if (!result.success) for (const issue of result.error.issues) {
+      ctx.issues.push({ code: "custom", input: p, path: [key, ...issue.path], message: issue.message });
     }
   }
   if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
@@ -179,6 +189,14 @@ const PaintPhase = z.object({
   entities: z.array(PaintEntity).default([]),
   links: z.array(PaintLink).default([]),
   exit: z.object({ to: z.string().min(1) }),
+  // These room-local declarations must survive the closed browser loader. The
+  // engine treats both as opt-in, preserving every pre-zoo chapter.
+  collectSkin: PaintCollectSkin.optional(),
+  collectAnimation: ZooArtSet.optional(),
+  exitRequires: z.object({
+    rides: z.array(z.string().min(1)).optional(),
+    sequences: z.array(z.string().min(1)).optional(),
+  }).optional(),
   // B1 · W0-F3 v2 · the declared ink return (level.ts InkReturnSpec). MUST be
   // named here: this object STRIPS what it does not list, so an unlisted field
   // reaches checkLevelLaws at authoring time and vanishes at runtime — the
@@ -255,7 +273,8 @@ const PaintLevelFile = z.object({
    *  „letters"). MUSS hier stehen — dieses Schema strippt still, und ein
    *  Kapitel, dessen Sammel-Skin verschwindet, sammelt im Browser wieder
    *  Buchstaben, während jedes Tor grün bleibt. */
-  collectSkin: z.string().min(1).optional(),
+  collectSkin: PaintCollectSkin.optional(),
+  heroArtSet: ZooArtSet.optional(),
   /** L0 · N2 · wie die `cloth`-Fundstücke dieses Kapitels heissen (D-921).
    *  Vier Felder, weil die vier Lesestellen drei deutsche Formen brauchen —
    *  siehe `level.ts`. Auch sie MÜSSEN hier stehen: was das Schema nicht kennt,

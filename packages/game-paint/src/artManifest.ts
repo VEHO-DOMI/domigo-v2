@@ -1,3 +1,5 @@
+export { ZOO_HERO_STEMS, ZOO_CELLS, zooSkinStems } from "./zoo-visuals.ts";
+import { ZOO_LION_CELLS } from "./zoo-art.ts";
 // PB-T2 · the ART MANIFEST: what painted stems a level REQUIRES to render
 // without procedural placeholders. ONE source of truth, imported by BOTH the
 // scene's fallback layer (conceptually — the fallbacks stay as dev safety)
@@ -160,8 +162,8 @@ export const GUARDIAN_RIG_CELLS = [
 ] as const;
 
 /** What a GUARDIAN skin owes, as full stems. */
-export const guardianSkinStems = (skin: string): string[] =>
-  GUARDIAN_RIG_CELLS.map((c) => `${skin}_${c}`);
+export const guardianSkinStems = (skin: string, mode?: string): string[] =>
+  (mode === "zoo-lion" ? ZOO_LION_CELLS : GUARDIAN_RIG_CELLS).map((c) => `${skin}_${c}`);
 
 /** PK-R6 · H3 · the hero's FULL-POSE override cells (batch-ap hero_rig_v2,
  *  consumed by rigSpec.heroFullCell). Required: the core locomotion states

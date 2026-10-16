@@ -22,11 +22,13 @@
  *    superRefine AND scripts/check-game-tasks.mjs (guardrails by construction).
  */
 import { z } from "zod";
+import { sceneSnapshotText, type SceneSnapshotData } from "./paint-scene.ts";
 
 // ── stimulus: the on-screen carrier of the answer (the F22/G10 law) ──────────
 export const TaskStimulus = z.discriminatedUnion("type", [
   // the German story line (storyDe) is the whole context
   z.object({ type: z.literal("text") }),
+  z.object({type:z.literal("scene"),altDe:z.string().min(1),viewId:z.string().min(1)}),
   // a painted picture is the context (stem = the pb-* art stem; altDe describes it
   // for the blind-solve projection + accessibility)
   z.object({ type: z.literal("image"), stem: z.string().min(1), altDe: z.string().min(1) }),
@@ -170,6 +172,15 @@ const base = {
   // the question referred to something that did not exist. A boss card of an
   // evidence kind must now put its material in the world first.
   evidence: z.array(z.string().min(1)).min(1).optional(),
+  /** A witnessed scene card names its exact actor and stopped station. */
+  sceneRef: z.object({
+    entityId: z.string().min(1),
+    station: z.number().int().nonnegative().optional(),
+    // V2 freezes a named visual beat with the question. Optional keeps every
+    // older task file byte-compatible.
+    beatId: z.string().min(1).optional(),
+    viewId: z.string().min(1).optional(),
+  }).optional(),
   ...Binding,
 };
 
@@ -376,12 +387,14 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
   // ask about a rubber. Conversely an unbound card lives in the fallback pool
   // and may fire at a spike or an unmatched being, so it may not claim a
   // being at all. Structural, so no future card can regress it.
-  if (t.stimulus.type === "entity" && t.skins === undefined) {
+  if ((t.stimulus.type === "entity" || t.stimulus.type === "scene") && t.skins === undefined) {
     errs.push("binding: an entity stimulus must declare skins (it claims a being is on screen)");
   }
-  if (t.stimulus.type !== "entity" && t.skins !== undefined) {
+  if (t.stimulus.type !== "entity" && t.stimulus.type !== "scene" && t.skins !== undefined) {
     errs.push("binding: skins are declared but the stimulus is not an entity (bind the card to what it shows)");
   }
+  if(t.stimulus.type==="scene" && (!t.sceneRef?.beatId || t.sceneRef.viewId!==t.stimulus.viewId)) errs.push("scene stimulus needs its observed beat and matching viewId");
+  if(t.sceneRef && t.sceneRef.station===undefined && (!t.sceneRef.beatId || !t.sceneRef.viewId)) errs.push("sceneRef needs a station or a named beat/view pair");
   if (t.skins && dup(t.skins)) errs.push("duplicate skin");
   if (t.phases && dup(t.phases)) errs.push("duplicate phase");
   // ── THE FORM LAW (R5-W2 · G1), both directions ────────────────────────────
@@ -410,7 +423,7 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
   } else if (t.evidence !== undefined) {
     errs.push(`kind ${t.kind} carries evidence but asks about no written material`);
   }
-  if (t.evidence !== undefined && t.stimulus.type !== "entity") {
+  if (t.evidence !== undefined && t.stimulus.type !== "entity" && t.stimulus.type !== "scene") {
     errs.push("evidence is written ON a being — the stimulus must be an entity");
   }
   switch (t.kind) {
@@ -597,8 +610,14 @@ export function seededShuffle<T>(arr: readonly T[], seed: string): T[] {
 /** A plain-text rendering of EXACTLY what a student sees at first sight — the
  *  single source consumed by the blind-solve agents, golden tests, and the
  *  authoring checker. Never leaks more than the screen shows. */
-export function renderTaskText(t: GameTaskV2): string {
+export function renderTaskText(t: GameTaskV2, snapshot?: SceneSnapshotData): string {
   const lines: string[] = [];
+  if(t.stimulus.type==="scene" && !snapshot)throw new Error(`Scene task ${t.id} needs its observed snapshot`);
+  if(snapshot) {
+    if(!t.sceneRef || snapshot.entityId!==t.sceneRef.entityId || snapshot.beatId!==t.sceneRef.beatId || snapshot.viewId!==t.sceneRef.viewId)throw new Error(`Scene task ${t.id} received another view`);
+    lines.push(sceneSnapshotText(snapshot));
+  }
+  if(t.stimulus.type==="scene")lines.push(`[${t.stimulus.altDe}]`);
   if (t.stimulus.type === "image") lines.push(`[Bild: ${t.stimulus.altDe}]`);
   else if (t.stimulus.type === "entity") lines.push(`[${t.stimulus.showsDe}]`);
   // R3-12: the guardian's board is part of what the student SEES — a blind

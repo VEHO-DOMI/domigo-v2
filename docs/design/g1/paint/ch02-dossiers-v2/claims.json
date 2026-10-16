@@ -1,76 +1,85 @@
 {
- "schema": "paintClaims@1",
- "chapter": "ch02",
- "note": "L2-P1v2 (2026-09-05) · Vokabel-Ansprüche des Zoo-Kapitels, jetzt MIT Seitenzahlen (R256) im note je Wort (SB/WB = Buchseiten). Klassen wie ch01 (being/thing/architecture/cards/pickup/debt). p1 v2 gebaut: parrot (being: Bühnen-Darsteller papagei; dog und car sind KEINE wordfile-Einträge der u02-Wortbank — das Tor nennt sie tote Schlüssel, also stehen sie nur im README), penguin (being), ticket (thing), tree (architecture: Bühnen-Props sind Bilder, keine Entities). p2/p3/Arena-Wesen als debt bis L2-G2. Die sechs Ortswort-Ansprüche sind cards (T1-Karten antworten; D-77 hat die Ausnahmen am 04.09. gestrichen).",
- "claims": {
-  "tree": {
-   "kind": "architecture",
-   "stems": [],
-   "note": "Prop der Buddy-Bühne (Bild baum, keine Geometrie) · SB 16 (Giraffe unter dem Baum, Affen im Baum) · WB 20 WORD FILE"
-  },
-  "monkey": {
-   "kind": "debt",
-   "stems": [],
-   "note": "p2 Kokos-Affe (gunner) · SB 16 (drei Affen im Baum), SB 18 Chant, WB 17 (Affen auf dem Bus) — L2-G2"
-  },
-  "parrot": {
-   "kind": "being",
-   "stems": [
-    "papagei"
-   ],
-   "note": "Darsteller der Bühne p1-buehne-papagei · SB 16 Story (Where's the parrot?) · SB 19"
-  },
-  "giraffe": {
-   "kind": "debt",
-   "stems": [],
-   "note": "p3 Giraffe × Baum (Bühne) + Giraffen-Turm · SB 16, WB 18 — L2-G2"
-  },
-  "train": {
-   "kind": "debt",
-   "stems": [],
-   "note": "p2 Zoo-Zug (Käfig-Insasse + Ausfahrt) · SB 17 Poster (There is a train), WB 14 — L2-G2"
-  },
-  "penguin": {
-   "kind": "being",
-   "stems": [
-    "pinguin",
-    "pinguin_rutscher"
-   ],
-   "note": "grauer Pinguin (restore) + Rutscher (bouncer) in p1 · SB 17 Poster (There are penguins) · WB 17 (Pinguine im Bus)"
-  },
-  "guide": {
-   "kind": "debt",
-   "stems": [],
-   "note": "Zoowärter-Schubkarre steht in p1 (chaser schubkarre, Fiktion des Wärters); das Wort selbst antwortet eine T2-Karte · SB 17, WB 20 — L2-T2"
-  },
-  "lion": {
-   "kind": "debt",
-   "stems": [],
-   "note": "Arena: der Käfig-König (R237) · SB 17 Poster (See a lion), WB 20 — L2-M-b/G2"
-  },
-  "next to": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
-  },
-  "in": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
-  },
-  "behind": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
-  },
-  "under": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
-  },
-  "on": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
-  },
-  "in front of": {
-   "kind": "cards",
-   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
+  "schema": "paintClaims@1",
+  "chapter": "ch02",
+  "note": "CODEX DRAFT — NOT CANON. R1a: die 14 Word-File-Einträge; 52+11 Lernziele separat in coverage.md. Weltkörper gebaut, Kunst offen.",
+  "claims": {
+    "tree": {
+      "kind": "architecture",
+      "stems": [],
+      "note": "Baum-Requisiten und Turmkulisse p1/p3/p4; SB 16, WB 20. Keine Leiterflecken."
+    },
+    "monkey": {
+      "kind": "being",
+      "stems": [
+        "affe"
+      ],
+      "note": "p2 Werfer am Steg; SB 16, WB 17/20. B01/B06/D03."
+    },
+    "parrot": {
+      "kind": "being",
+      "stems": [
+        "papagei",
+        "papagei_sturz"
+      ],
+      "note": "p1 Auto-Bühne und p3 Sturzfigur; SB 16/19, WB 20. A07–A12/D02."
+    },
+    "giraffe": {
+      "kind": "being",
+      "stems": [
+        "giraffe"
+      ],
+      "note": "p3 Bühne und bestellter Heimweg; SB 16, WB 20. C02/C05."
+    },
+    "train": {
+      "kind": "thing",
+      "stems": [
+        "zoozug"
+      ],
+      "note": "p1/p2 Plattformkörper; p2 Zug-Käfig als Bild. SB 17, WB 20. B18/C09."
+    },
+    "penguin": {
+      "kind": "being",
+      "stems": [
+        "pinguin",
+        "pinguin_rutscher"
+      ],
+      "note": "p1 entfärbt und Rutscher; SB 17, WB 17/20. A06/B06."
+    },
+    "guide": {
+      "kind": "cards",
+      "stems": [],
+      "note": "A01 und C09 beantworten guide; Guide als sichtbarer Darsteller bestellt. SB 17, WB 20."
+    },
+    "lion": {
+      "kind": "being",
+      "stems": [
+        "loewe"
+      ],
+      "note": "p4 Wächter mit Löwen-Identität. SB 17, WB 20. C09/D01. M-3 fehlt."
+    },
+    "next to": {
+      "kind": "cards",
+      "note": "A07/B06; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    },
+    "in": {
+      "kind": "cards",
+      "note": "A08/B06; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    },
+    "behind": {
+      "kind": "cards",
+      "note": "A13/B07; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    },
+    "under": {
+      "kind": "cards",
+      "note": "A09/B07; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    },
+    "on": {
+      "kind": "cards",
+      "note": "A10/B06; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    },
+    "in front of": {
+      "kind": "cards",
+      "note": "A12/B07; SB 19/20 und WB 17. Bildbeweis als stageV2-Vertrag; kein tatsächlicher Vollweg-Nachweis."
+    }
   }
- }
 }

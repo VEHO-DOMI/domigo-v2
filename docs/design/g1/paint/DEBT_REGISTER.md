@@ -1414,6 +1414,25 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 #### L2-A
 
+#### L2-W
+
+**CODEX DRAFT — NOT CANON · R1a Werkstatt, 2026-09-05.** Nur lokale Befunde; Fable vergibt die Nummern. Kein Eintrag in Mission Control.
+
+| D | Befund | Beleg | Route / verbleibende Arbeit |
+|---|---|---|---|
+| D-neu | `slope-purpose` misst in geschlossenen Räumen die Decke statt der lokalen Rampenanschlüsse. | p2 behält zwei vierstufige 45°-Rampen; drei Kandidatenläufe rot. Gegenprobe am frühen Sechs-Zellen-Stand ohne r0-Decke beseitigt dessen sechs Rampenfehler und erzeugt korrekt den Deckenfehler; finale Suite meldet acht Rampenzellen. | R1b: lokale Standflächen an der Rampenzelle messen, auch bei Stegen darüber. BLOCKIERT für R1a; Geometrie nicht eingeebnet. |
+| D-neu | Strikte Probe erwartet weiterhin null Räume mit Rampen. | `composition.test.ts:1509`: phasesWithSlope ist wegen p2 nun 1, erwartet wird 0. Draft-Suite: 1700 bestanden, dieser Test und der Rampenhöhenscan rot. | R1b: veraltete Bestands-Nullannahme ersetzen; später echte Rampen-Kit-Bilder prüfen. Keine Rampen entfernen. |
+| D-neu | `classmatesAwake` zählt einen fertig erweckten gehenden Freund nicht. | p2 final: Fenn `awakenStep:6`, `redeemed:true`, `state:roam`; sechs Round-Ereignisse. `tape.ts` zählt nur settle/joy/rest/wave, meldet daher 0. | M-6: roam als gültigen Wachzustand aufnehmen; keine kosmetische Pilot-Wartezeit. |
+| D-neu | Wiederanheften an eine fallende Plattform kann einen Körper durch trockenen Boden tragen. | Unabhängige p3-Probe: langsamer Abgang, Umkehr und erneutes Anheften; finaler einfacher Pilot springt rechtzeitig ab. | Motorprüfung Plattform/Kollision. Fangboden und Plattformen bleiben im Raum. |
+| D-neu | Neue Szenen-/Folgen-/Löwen-/Fahrtdaten sind geschrieben, aber noch ohne Leser. | Vollständige Feldtabelle `werkstatt/out/R1/ENGINE_BEDARF.md`; `params` bleibt beim Laden offen, neue Phasen-/Szenenref-Felder werden teils entfernt. | M-1 bis M-6. `taskSequenceV2` absichtlich getrennt vom gültigen numerischen `taskSequence`. Keine bestehende Kette mit einem Objekt überschreiben. |
+| D-neu | Bestandsbänder lösen Aufgabenereignisse direkt; grüne Ausgänge sind kein 56-Karten-/Bild-/Heimwegbeweis. | 72 Karten / 56 Pflicht; 19 gültige numerische Bühnenstationen, 37 eindeutige Szenenbindungen. p1/p2/p3 haben im Band 11/12/5 Aufgabenereignisse. | M-6: echte IDs, Bildmomentaufnahmen und gelöste Pflichtfolgen nachweisen; vollständige Abdeckung erst dann freigeben. |
+| D-neu | 63 Reserveabrufe sind vorgesehen; 21 wiederholen bewusst einen vorhandenen Pflichtkartentext. | `coverage.md`, `taskSequenceV2.reserveSlots`; alle freiwillig und `countsAsRequired:false`. | M-2: abrufbare Reserven; Wiederholungen niemals als dritte verschiedene Anwendung oder zweite Pflicht-ID zählen. |
+| D-neu | Freie Einladungen haben mehr passende Formulierungen, als ein fester Vergleich sicher akzeptiert. | Zwei unabhängige Kaltlesungen zu D09; mehrere quellengedeckte Einladungen und Gesprächsangebote inzwischen im Schlüssel. | Spätere Eingabeabnahme: weitere kommunikativ passende Schülerantworten prüfen, Lexikon-Ausweitung nur bewusst. |
+| D-neu | Die Kunst fehlt; ein präziser Bildauftrag ersetzt keine geprüfte Schüleransicht. | Alle 72 Bild-/Quellenaufträge plus stageV2; Kaltleser sahen ausschließlich Textprojektionen. | Kunst bauen, danach blinde Bildprüfung von Orten, Maßverhältnissen, Passrollen, Hunderegel und Löwenschild. |
+
+
+**Abgleich mit R0b:** Die frühere offene 60–72-Kartenwelle ist mit dem lokalen R1a-Kartencommit erledigt. Der damalige Flugwächter- und Blasenbefund bleibt unter M-3 beziehungsweise M-5 in der obigen Tabelle offen; keine zweite abweichende Warteliste.
+
 ### LW · ch03 (D-830…859)
 #### L3-G
 

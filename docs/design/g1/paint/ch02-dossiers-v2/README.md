@@ -1,60 +1,63 @@
-# ch02 Design-Dossiers v2 — Kapitel-Bilanz (L2-P1 2026-09-03 · L2-P1v2 2026-09-05; Entwurf)
+# CODEX DRAFT — NOT CANON
+# ch02 · Kapitel-Bilanz R1a
 
-_Kapitel „Der Zoo im Buch" (U2 „At the zoo"). Gesetz: `docs/design/g1/paint/README.md` §L0; Blaupause:
-`PLATFORM MASTER/SESSION-PROMPTS/LEVELWELLE/BLAUPAUSE_L2_v5_2026-09-02.md`. p1 ist als **v2 MIT Signatur** gebaut (Kalibrier-Exemplar, R255: zwei Bühnen, drei Griffe, Poster);
-p2/p3/p9/arena sind L0-Gerüst mit Stub-Dossiers, bis L2-G2 sie vollendet. Neuheiten: `pending.md`._
+**Status: fünf Räume gebaut und aufgezeichnet, 72 Karten ausgeschrieben und lokal committet. Karten-, Sprach-, Register- und Dossiertore grün. Gesamtsuite: 1692 bestanden, 1 Rampenprüftest rot. Draft-Probe: 1700 bestanden, 2 Rampenprüftests rot; Entwurfsstatus exakt wiederhergestellt. Kunsttor im Entwurf grün. Die vollständige Lernfolge und Löwen-Choreografie bleiben Motorauftrag.**
 
-## §Käfig-Zensus (doc 44 §2.3: ≥1 Käfig, genau EIN Klassenkind-Käfig, jede erklärte Befreiung erreichbar)
+Grundlage: R0-Memo §2 im Werkstatt-Labor; R1a baut Inhalt und kompatible Daten. Ausgänge sind mit dem bestehenden Motor erreicht. Keine Kunst- oder Oberflächenabnahme; alle Bilder bleiben Platzhalter. Dieses Dokument ist eine unabhängige Laborfassung für Fables Übernahme, kein Produktionsstand.
 
-| # | Phase | Hülle (Skin) | Insasse (Koki 02.09.) | Status |
-|---|---|---|---|---|
-| 2 | p1 | `zookaefig` | **das Ticket** (`captive ticket`) | gebaut (11,10), auf dem Dach des Kassenhäuschens ✓ |
-| 3 | p2 | `zookaefig` | **der Zoo-Zug** (`train`) | L2-G2 |
-| 1 | p3 | `zookaefig` | **der bunte Stein** (`stone`) | L2-G2 |
-| Fenn | p2 | `loewenkaefig` (PERSON) | **FENN** | Gerüst ✓ (`p2-cage-fenn`, `p2-fenn`) |
-| Neck #5 | p1 | Geometrie (Voliere-Nische c29–32 r6–8) | **OFFEN** — das rote Auto ist seit p1 v2 der Bühnen-Prop (SB 19); Vorschlag: die Katze (SB 19/WB 20) | ch03 setzt das Entity (`pending.md` §4) |
-| Neck #4 | p3 | Geometrie (Reifen-Lücke) | der Baum-Setzling | ch03 |
+## §Käfig-Zensus
 
-Summe ch02 = 3 Wesens-Käfige + 1 Klassenkind-Käfig (kein Arena-Käfig: die Tiere SIND die Freigaben des Löwen).
-
-## §Abdeckung — die Vokabel-Vergabe (Maschinen-Check: `check-level-design` Block 2, sobald Karten liegen)
-
-Dedup-Prädikat wie ch01 (kein Asset-Stem zweimal unter chaser|gunner|flyer|bouncer|crusher|guardian ∪ drained).
-Vergabe p1 (Unit g1-u02, Wortbank `content/corpus/units/g1-u02/wordbank.json`):
-
-| Vokabel (wordfile) | Erscheint als | Phase | Kunst |
+| Phase | Wesen / Anker | Inhalt | Bauzustand |
 |---|---|---|---|
-| dog | **Buddy = Darsteller der Bühne `buddy` (Buddy × Baum)** · der graue Hund `hund` (restore) seit p1 v2 in p2 | p1 · p2 | Platzhalter |
-| parrot | **Darsteller der Bühne `papagei` (Papagei × Auto, SB 19)** | p1 | Platzhalter |
-| car | Prop der Papagei-Bühne (Bild `auto`) | p1 | Kunst-Zeit |
-| penguin | Entfärbtes Tier `pinguin` (restore) · Rutscher `pinguin_rutscher` (bouncer) | p1 | Platzhalter |
-| ticket | Käfig-Insasse (`captive ticket`) | p1 | Platzhalter |
-| tree | Prop der Buddy-Bühne (Bild `baum`, keine Geometrie) | p1 | Kunst-Zeit |
-| guide | Zoowärter-Schubkarre `schubkarre` (chaser) — Fiktion des Wärters | p1 | Platzhalter |
-| in · on · under · behind · next to · in front of | die zwei Bühnen (gesehen, dann gefragt: `qf.papagei.b1`, `qf.buddy.b1`) · Regelseite „Ortswörter" jetzt in p2 · Fenn r1–r6 | p1 · p2 | — |
-| there is · there are | das Park-Poster am Tor (`tip` `p1-poster`, SB 17) + Schubkarre k1/k2 | p1 | — |
-| monkey · giraffe · lion · train · stone | p2/p3/Arena (L2-G2) | — | — |
+| p1 | Ticket-Käfig `p1-cage2` (11,10) | Ticket | Befreit im Band; A15/A16 bestellt |
+| p2 | Zug-Käfig `p2-cage-zug` (32,10) | Gemalte Zugvignette | Befreit im Band; B18/B19 und Übergabe zum Fahrkörper bestellt |
+| p3 | Stein-Käfig `p3-cage-stein` (39,17) | Stein | Befreit im Band; C13/C14 bestellt |
+| p2 | Fenn-Käfig `p2-cage-fenn` (50,17), Fenn (51,17) | Einziges Klassenkind | Sechs Runden abgeschlossen; Fenn ist farbig und geht herum |
+| p1 | Versiegelte Nische c29–32/r6–8 | Nur eine spätere Bildandeutung | Kein Wesen, kein Käfigzähler, kein Pflichtweg |
+| p3 | Versiegelte Nische c35–37/r4–6 | Baum-Setzling als spätere Bildandeutung | Kein Wesen, kein Käfigzähler, kein Pflichtweg |
 
-Rest (adult, at, beautiful, big, but, child, family, free, from, Grandma, group, long, small, to bring, to want,
-year, he, she, they, we, for, happy, to let somebody out, us, to talk, where, zoo, At last., How strange!, Let me
-see.): Karten-Abdeckung (T1/T2) — `claims.json` führt sie als `cards` mit Ausnahme „Welle L2-T2" bis 2026-12-31.
+**3 Sachkäfige + 1 Personenkäfig = 4 echte Käfige.** Arena-Tiergruppen sind Bühnenakteure, keine zusätzlichen Käfige. Im Fenn-Band ist `awakenStep:6`, `redeemed:true`, `state:roam` gemessen. Der alte Zähler `classmatesAwake` meldet dort 0, weil er den gültigen Gehzustand übersieht; das ist unter L2-W als D-neu offen.
 
-## §Regel-Seiten-Budget (4 = die Grammatik der Unit; D-785: jede Seite VOR ihrer Aufgabe)
+## §Abdeckung
 
-| # | Phase | topicDe | lehrtEn | Status |
-|---|---|---|---|---|
-| 1 | **p2 (10,21)** — aus p1 v2 gezogen: in p1 lehrt die Bühne die Ortswörter (Signatur §3); G2 stellt sie VOR die Bus-Bühne | Ortswörter: wo etwas ist | in · under · behind · next to | gebaut ✓ (versetzt) |
-| 2 | p1 (5,17) | Das Park-Plakat: there is / there are (SB 17 als Welt-Objekt) | there is · there are | gebaut ✓ (v2) |
-| 3 | p2 | to be: Kurzformen (I'm, you're, he's, we're, they're) | — | L2-G2 |
-| 4 | p3 | he / she / it / they | — | L2-G2 |
+| Raum | Karten | Pflicht | Varianten | Sammlung im letzten Band |
+|---|---:|---:|---:|---:|
+| p1 · Die Spur über den Gehegen | 20 | 14 | 6 | 21/21 Federn |
+| p2 · Der Bus voller falscher Plätze | 25 | 18 | 7 | 23/24 Federn |
+| p3 · Über den Köpfen des Zoos | 18 | 15 | 3 | 18/22 Federn |
+| p4 · Der Löwe, bei dem alle bleiben sollen | 9 | 9 | 0 | 0/0 |
+| p9 · Die Blasen im Aquarium | 0 | 0 | 0 | 12/12 Blasenplätze |
+| Gesamt | **72** | **56** | **16** | **79 Sammelstellen im Kapitelentwurf** |
 
-`tipsTotal` = 2 (platziert), G2 zieht auf 4.
+`claims.json` klassifiziert ausschließlich die 14 Word-File-Einträge: acht Parkwörter (davon fünf Tierwörter) und sechs Ortswörter. Das vollständige Zielregister steht in [coverage.md](coverage.md): **52 Masterlisten-IDs plus elf Zusatzlernziele, je zwei verschiedene Pflichtkarten und ein benannter Reserveabruf**. 21 Reserveabrufe verwenden bewusst eine der zwei Karten erneut; keine dritte verschiedene Anwendung behauptet. Die 72 Karten tragen echte Texte, Schlüssel, Hilfen und Quellenbezug; keine ungelösten Karten-Platzhalter.
 
-## §Anker (Kokis Entscheid 02.09.: je Raum EINE Tinten-Querung, `C` auf der `near`-Bank)
+Die zugelassene Feldpalette ist choice/restore/spell/match/order. mistake und typed bleiben Boss/Finale. Neun erklärte Familien ersetzen die alte großzügige Ausnahmenliste; jede fordert eigene Aufträge/Antworten oder eigene Farbzeilen. `vocabLedger` ist leer: alle 52 IDs stehen auf beantwortbaren Feldkarten. Das Kartentor prüft diese deklarierte Antwortabdeckung; erst M-6 kann die tatsächlichen Lösungen eines vollständigen Laufs zählen.
 
-p1 Tinten-Graben c59–60, `C` (58,17) ✓ · p2 Flamingo-Teich, vor Fenn (G2) · p3 Tinten-Tal, vor dem Giraffen-Turm (G2).
+## §Regel-Seiten-Budget
 
-## Status (2026-09-05, L2-P1v2)
+| Seite | Phase / Anker | Sichtbarer Inhalt | Reihenfolge |
+|---|---|---|---|
+| Park-Plakat | p1 (5,17) | there is / there are; vier Parkbeispiele | Vor A01 und den Zählbildern |
+| Ortswörter | p2 (5,17) | Alle sechs Ortswörter in drei Bildgegenüberstellungen | Vor B06/B07; p1 bestellt eigene Lehransichten je Auto-Halt |
+| Kurzformen | p2 (41,17) | I'm / you're / he's / she's / it's / we're / they're in vier Vergleichszeilen | A08/B08 vorher Vollformen; Pflicht-Kurzformen erst B12/B16/C07/C09/C11/C12/D09 |
+| Pronomen | p3 (6,10) | he / she / it / they / we, vier Beispielzeilen | Vor C09/C11/C12; Fenns Ich-/Wir-Sprecher schon über Pass und Gruppenbild gebunden |
 
-p1 **v2** gebaut + Tape (21/21 Federn, zwei Bühnen fragen, drei Griffe) · p2/p3/p9/arena Gerüst (+ zwei Zuzüge in p2) ·
-Karten: T1 gemergt (#398) + zwei Bühnen-Karten (Walk-Minimum) · Welle: L2-G2 (Räume) → L2-T2 ∥ L2-S · Motor-Rest: L2-M-b · Neuheiten/Pflichten: `pending.md`.
+**4 echte Seiten, `tipsTotal:4`.** `lehrtEn` nennt je höchstens vier exemplarische Formen, wie das bestehende Datenformat verlangt. Alle sechs Ortswörter und sieben Kurzformen stehen trotzdem vollständig in den sichtbaren Beispielen. Die kleinen Lehransichten vor den Autoaufgaben sind Teil der Bühne, keine fünfte Regelseite. Ihr Leser gehört zu M-1 und ist noch nicht gebaut.
+
+## §Anker und Bewegung
+
+| Phase | Schwelle | Sicherer Anker | Nachgewiesene Bewegung |
+|---|---|---|---|
+| p1 | Tinte c59–60 | C (58,17) | Drei echte Griffe, anschließend 77 Wagentakte |
+| p2 | Tinte c45–46 | C (44,17) | Griff, Dachsteg, trockener Unterweg, zwei 45°-Rampen, 113 Wagentakte |
+| p3 | Tinte c48–49 | C (47,17) | Beide Äste, beide Fallschilder, trockene Fangwege, zwei Schlussgriffe |
+| p4 | Keine Tinte | Kein C | Zwei Podeste, vier Fenster des Bestandswächters, Ausgang done |
+| p9 | Keine Tinte | Kein C | Zwei Sprungbögen, fünf Plattformen, 12/12 in 462 Takten |
+
+Alle fünf Aufnahmen enden ohne Tintenberührung oder Zurücksetzen. Der p2-Rampenprüfer ist **BLOCKIERT**: Er misst die Pflichtdecke statt der lokalen Bodenanschlüsse. Die Geometrie behält beide Rampen und die Decke. Die unabhängige Gegenprobe und drei Fehlversuche stehen im R1a-Journal.
+
+## §Status und Übergabe
+
+Die Dossiers [p1](p1.md), [p2](p2.md), [p3](p3.md), [Arena](arena.md), [Aquarium](p9.md) tragen jeweils §3-Manifest und §10-Bauvertrag mit THRESHOLD-Zeilen. [pending.md](pending.md) nennt den verbleibenden Motor-/Kunstauftrag. Die Laborlieferung enthält `KETTE_R1A.md`, `ENGINE_BEDARF.md`, `BAUBERICHT_R1A.md`, Prüfberichte und den Patch gegen `baseline`. Fable übernimmt über seine eigene Prüfung; Codex verändert keine Produktionsoberfläche.
+
+Kapitel 1: alle fünf Ausgänge erneut grün; Originalband bytegleich erhalten. Die Neuaufnahme hat zwei bekannte Laufdauer-Abweichungen (D-851); ihr Diff liegt separat im Labor. Aquarium-Timeout genau einmal bei Takt 1919 (32 Sekunden einschließlich Nachsicht); Rückkehr über gespeicherte IDs erhält Fenn mit sechs abgeschlossenen Runden sowie Hund/Affe. Das ist eine Motorprobe, kein gerenderter Rundgang durch die Oberfläche.

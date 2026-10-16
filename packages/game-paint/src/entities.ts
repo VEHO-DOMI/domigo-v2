@@ -1,3 +1,6 @@
+import { stepZooGuardian, stepZooPlate, type ZooState } from "./guardian-zoo.ts";
+import { stepShuttle, type ShuttleState } from "./train-ride.ts";
+import type { StageRuntime } from "./stage-v2.ts";
 /**
  * entities — the chapter's living things, as PURE BRAINS (the arcade.ts law:
  * fixed 60 Hz ticks, integer subpixels, Phaser-free, fully unit-testable).
@@ -16,9 +19,11 @@
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { glyphAt, groundSurfaceAt, isHazard, isSolid, walkSurfaceAhead } from "./collide.ts";
 import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
-import type { EntitySpec, LinkSpec } from "./level.ts";
+import type { EntitySpec, EntityParams, LinkSpec } from "./level.ts";
 
 export interface EntityState {
+  /** Ticks since an actual projectile release or completed dive return. */
+  projectileReleaseTick?: number;
   id: string;
   role: EntitySpec["role"] | "guardian";
   skin: string;
@@ -113,7 +118,16 @@ export interface EntityState {
    *  Zeile weiter oben. Damit ist der Abstand zwischen zwei Anfällen wieder das,
    *  was sein Name sagt, statt der längsten zufälligen Geraden eines Raums. */
   fitTick: number;
-  params: Record<string, unknown>;
+  /** scene.stage: stations which have already raised their witnessed card. */
+  stageAsked: number;
+  zoo?: ZooState;
+  shuttle?: ShuttleState;
+  stageRuntime?: StageRuntime;
+  friendly?: boolean;
+  engagePending?: boolean;
+  actingCell?: string;
+  classmateScene?: import("./scene-v2.ts").SceneSnapshot;
+  params: EntityParams;
 }
 
 export interface ProjectileState {
@@ -121,7 +135,10 @@ export interface ProjectileState {
   /** PK-R6 · E: `shard` is the piece a landed chalk leaves behind — it does not
    *  fly, it LIES there for SHARD_TICKS as a floor hazard (doc 44 §4 ch01 C4:
    *  „chalk shards linger 1 s as floor hazards"). */
-  kind: "chalk" | "blob" | "shard";
+  kind: "chalk" | "blob" | "shard" | "plate";
+  skin?: string;
+  groundReturn?: boolean;
+  grounded?: boolean;
   x: number;
   y: number;
   vx: number;
@@ -145,11 +162,16 @@ export interface ProjectileState {
 }
 
 export type EntityEvent =
+  | { type: "rideComplete"; id: string }
+  | { type: "zooQuestion"; id: string; taskId: string; finale: boolean }
+  | { type: "zooRound"; id: string; round: number; actorId: string }
+  | { type: "zooHome"; id: string; round: number; actorId: string }
+  | { type: "zooMiss"; id: string }
   | { type: "encounter"; id: string; role: string; skin: string }
   /** PK-R6 · C1: the child stepped up to a drained object and pressed ↑. The
    *  sim turns this into the being's `restore` card; solving it redeems the
    *  object and the colour floods back (anim.washAlphaFor). */
-  | { type: "engaged"; id: string; role: string; skin: string }
+  | { type: "engaged"; id: string; role: string; skin: string; sceneStation?: number }
   | { type: "cageHit"; id: string; hpLeft: number }
   | { type: "cageBurst"; id: string; skin: string }
   /** R5-W2 · H1: the child stepped up to an already-open cage whose rescue is
@@ -184,6 +206,7 @@ export type EntityEvent =
   | { type: "shooed"; id: string };
 
 export interface WorldInput {
+  ridingId?: string | null;
   playerX: number; // subs
   playerY: number;
   playerIframes: number;
@@ -604,6 +627,8 @@ const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
   // because every branch below resets `timer` and a reset used to send the
   // colour back out of a being the child had already got it back into.
   e.freedTick += 1;
+  if (e.params.onSequenceComplete && e.role !== "cage") { e.vx=0;e.vy=0;return; }
+  if (e.stageRuntime || e.zoo) return;
   // PK-R6 · D · THE FREED CLASSMATE'S OWN AFTERLIFE. She does not fly a lap
   // (she is a person, not a moth) and she may not be parked either: doc 44 §1
   // makes presence the point of freeing someone. So her states are her painted
@@ -1121,7 +1146,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     // R5-A4: a kinematic platform spawns ON its path. The swing's path hangs
     // rope-length under the author cell — spawning at the cell popped the bob
     // down 40 px in its first tick (and spiked the ride delta with it).
-    const p0 = s.role === "platform.move" || s.role === "platform.swing"
+    const p0 = !s.params?.ride && (s.role === "platform.move" || s.role === "platform.swing")
       ? platformPathAt(s.role, cellX, cellY, s.params ?? {}, 0)
       : null;
     return {
@@ -1145,8 +1170,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     // Plattformen — `scene.stage` faellt sonst still auf „patrol" und stuende
     // fuer immer still. Sie beginnt beim GEHEN.
     state: s.role === "cage" ? "closed" : s.role === "classmate" ? "caged"
-      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly"
-      : s.role === "scene.stage" ? "walk"
+      : s.params?.ride?.mode === "shuttle" ? "shuttle-wait" : s.role.startsWith("platform") ? "carry" : s.role === "guardian" && (s.params?.guardian as { mode?: unknown } | undefined)?.mode === "zoo-lion" ? "prowl" : s.role === "guardian" ? "fly"
+      : s.role === "scene.stage" ? s.params?.stageV2 ? "waiting" : "walk"
       : s.role === "pump.trigger" ? "ready" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
@@ -1162,6 +1187,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     awakenStep: 0,
     freedTick: 0,
     fitTick: 0,
+    stageAsked: -1,
     params: s.params ?? {},
     };
   }),
@@ -1210,8 +1236,8 @@ export const ENGAGE_REACH_Y_PX = 34;
 export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage", "classmate", "scene.stage"]);
 
 const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolean =>
-  Math.abs(e.x - playerX) / SUBS < ENGAGE_REACH_PX
-  && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
+  Math.abs((e.params.encounterObserver ? (e.params.encounterObserver.c+.5)*TILE*SUBS : e.x) - playerX) / SUBS < ENGAGE_REACH_PX
+  && Math.abs((e.params.encounterObserver ? (e.params.encounterObserver.r+1)*TILE*SUBS : e.y) - playerY) / SUBS < ENGAGE_REACH_Y_PX;
 
 /** Dasselbe für die gelandete Tafel, mit IHRER Reichweite (`GUARDIAN_WIPE_REACH_PX`
  *  — die Kante, nicht die Mitte). Die Höhen-Bedingung bleibt die gemeinsame:
@@ -1247,19 +1273,19 @@ export const engageTargetId = (
 ): string | null => {
   let best: { id: string; d: number } | null = null;
   for (const e of w.entities) {
-    if (e.hidden || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    if (e.hidden || (!ENGAGEABLE_ROLES.has(e.role) && !e.params.taskSequenceV2)) continue;
     // Blinder Leser, Fund 12: eine Buehne, die noch GEHT, ist nicht ansprechbar
     // — der `stepEntities`-Zweig beantwortet ein ↑ erst im Zustand `posed`.
     // Ohne diese Zeile zeigte der Kreide-Pfeil ueber einem laufenden Darsteller
     // eine Handlung an, die nichts tut: eine tote Zusage, und die verwirrt ein
     // Kind mehr als gar kein Zeichen. `ENGAGEABLE_ROLES` kennt nur die ROLLE,
     // nicht den Zustand — deshalb steht die Bedingung hier.
-    if (e.role === "scene.stage" && e.state !== "posed") continue;
+    if (e.role === "scene.stage" && e.state !== "posed" && e.state !== "complete" && e.state !== "asking") continue;
     // R5-W2 · H1: redemption normally ends the conversation — except for a cage,
     // which is `redeemed` from the moment its lid comes off, long before its
     // rescue has been answered. One that still owes a card stays askable, or
     // „Später" strands its captive for good.
-    if (e.redeemed && !cageOwesCard(w, e)) continue;
+    if (e.redeemed && !cageOwesCard(w, e) && !e.params.taskSequenceV2) continue;
     if (!inEngageReach(e, playerX, playerY)) continue;
     const d = Math.abs(e.x - playerX);
     if (best === null || d < best.d) best = { id: e.id, d };
@@ -1418,8 +1444,30 @@ export const stepEntities = (
 
   for (const e of w.entities) {
     if (e.hidden) continue;
+    if (e.role === "scene.stage" && e.params.stageV2) continue; // Sim owns observation and card delivery.
+    const sequencedSpeaker=e.params.taskSequenceV2 && ["chaser","gunner","flyer","bouncer","crusher","swarm","drained"].includes(e.role);
+    if(sequencedSpeaker && e.id===engageId) {e.friendly=true;e.engagePending=true;}
+    if(sequencedSpeaker && e.friendly) {
+      e.timer++; e.vx=0;e.vy=0;
+      const observer=e.params.encounterObserver;
+      if(observer) {
+        const dx=(observer.c+.5)*TILE*SUBS-e.x,dy=(observer.r+1)*TILE*SUBS-e.y,d=Math.hypot(dx,dy);
+        const f=d===0?1:Math.min(1,1.5*SUBS/d);
+        e.vx=Math.round(dx*f);e.vy=Math.round(dy*f);e.x+=e.vx;e.y+=e.vy;
+      }
+      e.state=e.redeemed?"rest":"ready";
+      if(e.engagePending && (!observer || Math.hypot(e.x-(observer.c+.5)*TILE*SUBS,e.y-(observer.r+1)*TILE*SUBS)<2*SUBS)) {
+        e.engagePending=false;events.push({type:"engaged",id:e.id,role:e.role,skin:e.skin});
+      }
+      if(e.redeemed)e.freedTick++;
+      continue;
+    }
+    if(e.id===engageId && e.params.taskSequenceV2 && (e.redeemed || e.role==="door.trigger" && e.friendly) && (e.role==="cage"||e.role==="door.trigger")) {
+      events.push({type:"engaged",id:e.id,role:e.role,skin:e.skin});continue;
+    }
     // R3-5: a freed friend keeps LIVING (joy → rest); it is no longer skipped
     if (e.redeemed) {
+      if (e.zoo) continue;
       stepRedeemed(e, grid);
       // R5-W2 · H1 · THE ROAD BACK, and it has to live here rather than in the
       // `cage` case below, because this short-circuit is exactly what made the
@@ -1501,20 +1549,26 @@ export const stepEntities = (
         break;
       }
       case "gunner": {
+        if (e.projectileReleaseTick !== undefined) e.projectileReleaseTick++;
         const every = e.tier === "E" ? 210 : e.tier === "M" ? 160 : 120;
         const inRange = Math.abs(e.x - inp.playerX) / SUBS < 140;
-        if (e.state === "patrol" && inRange && e.timer > every) { e.state = "telegraph"; e.timer = 0; }
+        if (e.state === "patrol" && inRange && e.timer > every) {
+          e.state = "telegraph"; e.timer = 0;
+          if (e.params.gunnerAim === "lock-on-telegraph") e.dir = inp.playerX >= e.x ? 1 : -1;
+        }
         else if (e.state === "telegraph" && e.timer > 30) {
           e.state = "patrol"; e.timer = 0;
-          const dir = inp.playerX >= e.x ? 1 : -1;
+          const dir = e.params.gunnerAim === "lock-on-telegraph" ? e.dir : inp.playerX >= e.x ? 1 : -1;
+          if (e.params.artSet === "zoo-v2") e.projectileReleaseTick = 0;
           w.projectiles.push({
-            id: w.nextProjectileId++, kind: "blob", x: e.x, y: e.y - 10 * SUBS,
+            id: w.nextProjectileId++, kind: "blob", ...(e.params.projectileSkin ? {skin:e.params.projectileSkin} : {}), x: e.x, y: e.y - 10 * SUBS,
             vx: Math.round(1.4 * SUBS) * dir, vy: -Math.round(2.2 * SUBS), deflected: false, fromId: e.id, dead: false, age: 0, colour: "",
           });
         }
         break;
       }
       case "flyer": {
+        if (e.projectileReleaseTick !== undefined) e.projectileReleaseTick++;
         // sine patrol around home altitude; dive when the player is below
         const t = e.timer;
         if (e.state === "patrol") {
@@ -1529,7 +1583,7 @@ export const stepEntities = (
           if (e.y >= inp.playerY || e.timer > 40) { e.state = "recover"; e.timer = 0; }
         } else if (e.state === "recover") {
           e.y -= Math.round(1.2 * SUBS);
-          if (e.y <= e.homeY) { e.y = e.homeY; e.state = "patrol"; e.timer = 0; }
+          if (e.y <= e.homeY) { e.y = e.homeY; e.state = "patrol"; e.timer = 0; if (e.params.artSet === "zoo-v2") e.projectileReleaseTick = 0; }
         }
         break;
       }
@@ -1603,6 +1657,9 @@ export const stepEntities = (
         break;
       }
       case "platform.move": {
+        if ((e.params.ride as { mode?: string } | undefined)?.mode === "shuttle") {
+          stepShuttle(e, inp, events); break;
+        }
         const p = platformPathAt("platform.move", e.homeX, e.homeY, e.params, e.timer);
         e.vx = p.x - e.x; e.vy = p.y - e.y; // per-tick delta for the ride contract
         e.x = p.x; e.y = p.y;
@@ -1666,7 +1723,11 @@ export const stepEntities = (
         e.vx = p.x - e.x;
         e.x = p.x;
         e.y = p.y;
-        if (e.state === "walk" && p.angekommen) {
+        const seq = Array.isArray(e.params.taskSequence) ? e.params.taskSequence : [];
+        if (seq.includes(p.station) && e.stageAsked !== p.station) {
+          e.stageAsked = p.station;
+          events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin, sceneStation: p.station });
+        } else if (seq.length === 0 && e.state === "walk" && p.angekommen) {
           e.state = "posed";
           events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin });
         } else if (e.state === "posed" && e.id === engageId) {
@@ -1761,6 +1822,10 @@ export const stepEntities = (
         break;
       }
       case "guardian": {
+        if ((e.params.guardian as { mode?: string } | undefined)?.mode === "zoo-lion") {
+          stepZooGuardian(e, w, grid, inp, events);
+          break;
+        }
         const script = GUARDIAN_SCRIPT[e.tier];
         if (w.guardianKnots < 0) w.guardianKnots = script.knots;
         /** THE FLIGHT CENTRE follows the child — slowly, and clamped inside the
@@ -2135,6 +2200,7 @@ export const stepEntities = (
 
   for (const p of w.projectiles) {
     if (p.dead) continue;
+    if (p.kind === "plate") { stepZooPlate(p, w, grid, inp, events); continue; }
     // ── PK-R6 · E · THE LINGERING SHARD (doc 44 §4 ch01 C4) ─────────────────
     // „chalk shards linger 1 s as floor hazards". It does not move, it cannot be
     // deflected, and it is NOT a dodge — the dodge was already paid for by the
@@ -2229,7 +2295,7 @@ export const stepEntities = (
     // a deflected chalk piece staggers its guardian
     if (p.deflected && p.kind === "chalk") {
       const g0 = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
-      if (g0 && Math.abs(p.x - g0.x) / SUBS < 30 && Math.abs(p.y - (g0.y - 20 * SUBS)) / SUBS < 40) {
+      if (g0 && !g0.params.guardian && Math.abs(p.x - g0.x) / SUBS < 30 && Math.abs(p.y - (g0.y - 20 * SUBS)) / SUBS < 40) {
         p.dead = true;
         events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" }); // it breaks ON the board
         // PK-R6 · E: `dip` joins the two states a deflect may not interrupt —
@@ -2398,6 +2464,10 @@ export const rideAttachCheck = (
   playerVySubs: number,
 ): boolean => {
   if (!e.role.startsWith("platform")) return false;
+  // A falling sign is a one-way lesson: once armed it is no longer a deck.
+  // Otherwise a dry landing beneath it can reattach the player on the next
+  // physics tick and erase the consequence of the fall.
+  if (e.role === "platform.fall" && e.state !== "carry") return false;
   if (e.state === "gone") return false;
   const tolPx = Math.max(Math.abs(playerVySubs) / SUBS + 2, 4); // G3 verbatim
   const topPx = (e.y - 6 * SUBS) / SUBS;

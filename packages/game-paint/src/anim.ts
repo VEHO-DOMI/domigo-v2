@@ -1,3 +1,5 @@
+import { zooEntityCell, ZOO_DISPLAY_HEIGHTS } from "./zoo-visuals.ts";
+import { zooLionCell } from "./zoo-art.ts";
 // THE PAINTED BOOK — deterministic sheet-frame selection (the proven game-2d
 // pattern): frames advance on accumulated WALK TIME / entity ticks, never on
 // wall-clock, so manual-step harness runs and real RAF agree exactly.
@@ -711,7 +713,8 @@ export interface EntSizeInput { role: string; skin: string; params?: Record<stri
  * same fix, aimed at beings instead of terrain.
  */
 export const entDisplayH = (e: EntSizeInput): number => {
-  if (e.role === "guardian") return GUARDIAN_DISPLAY_H;
+  if (e.params?.artSet === "zoo-v2" && ZOO_DISPLAY_HEIGHTS[e.skin] !== undefined) return ZOO_DISPLAY_HEIGHTS[e.skin]!;
+  if (e.role === "guardian") return (e.params?.guardian as {mode?:string}|undefined)?.mode === "zoo-lion" ? 64 : GUARDIAN_DISPLAY_H;
   if (e.role === "swarm") return 34;
   if (e.role === "crusher") return 30;
   if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
@@ -1002,6 +1005,11 @@ const windupCell = (timer: number): string =>
   timer < WINDUP_DWELL_TICKS ? "windup0" : timer < WINDUP_DWELL_TICKS * 2 ? "windup1" : "windup";
 
 export interface EntPoseInput {
+  skin?: string;
+  freedTick?: number;
+  actingCell?: string;
+  projectileReleaseTick?: number;
+  params?: Record<string, unknown>;
   role: string;
   state: string;
   timer: number;
@@ -1087,6 +1095,10 @@ export const classmateCell = (state: string, timer: number): string => {
 };
 
 export const entPoseCell = (e: EntPoseInput): string => {
+  if (e.params?.artSet === "zoo-v2") {
+    if (e.role === "classmate" && e.state === "roam" && roamHopT(e.timer) > 0) return "joy";
+    return zooEntityCell(e);
+  }
   // PK-R6 · D: read FIRST, like the guardian's branch and for the same reason —
   // every generic rule below (the `dazed` catch-all, the run threshold) would
   // put a cell on her that her sheet does not have, and entTex would silently
@@ -1120,6 +1132,7 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // grounded is right. Nothing here can reach `sad`/`dazed`/`stagger`/
   // `telegraph`: those are the retired easel (GUARDIAN_GROUNDED_CELLS).
   if (e.role === "guardian") {
+    if ((e.params?.guardian as { mode?: string } | undefined)?.mode === "zoo-lion") return zooLionCell(e.state, e.timer);
     // the console beat's payoff — the blackboard as a friend. Read first: it is
     // TERMINAL (guardianKnotSolved never sets `redeemed`), so the dazed
     // catch-all below would otherwise eat it.

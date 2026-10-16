@@ -1,3 +1,4 @@
+import { PaintProof } from "../packages/content-schema/src/paint-proof.ts";
 // R5-P1 · CHECK-LEVEL-DESIGN — die Maschinen-Checks der Design-Gesetze (doc 45 B8/B11).
 //
 // Fünf Prüfungen gegen das shipped Level + die v2-Dossiers (4 und 5 kamen mit
@@ -38,6 +39,9 @@ import path from "node:path";
 // `paint-chapters.mjs` (die eine geteilte Aufloesung), und jedes Kapitel
 // bringt seine eigenen Eingaben mit.
 import { paintChapters, skipLedger } from "./paint-chapters.mjs";
+import { checkPaintCoverage } from "../packages/content-schema/src/paint-coverage.ts";
+import { askerUsesOf } from "../packages/game-paint/src/cards/serving.ts";
+import { replayPhaseTape, newChapterShell, worldAssertionErrors } from "../packages/game-paint/src/tape.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -265,6 +269,51 @@ const coverageFails = (cx, claims) => {
     // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
     new Set(cx.phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
   ).map((f) => `${cx.chapter} ${f}`);
+};
+
+/** M-6: I/O stays in the CLI adapter. The imported checker sees exact source
+ * documents and newly replayed events, never an author's expectation list. */
+const playedCoverageFails = (cx) => {
+  if (!cx.hasPolicy) return [];
+  const policy = JSON.parse(fs.readFileSync(cx.policyPath, "utf8"));
+  if (policy.coverage === undefined) return [];
+  const out = [];
+  const read = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
+  const planPath = path.join(cx.dossiers, "coverage.json");
+  if (!fs.existsSync(planPath) || !cx.hasTasks || !cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) {
+    return [`${cx.chapter} coverage: opt-in needs coverage.json, tasks and the actual wordbank (also in draft)`];
+  }
+  const plan = read(planPath);
+  const items = read(cx.tasksPath).items;
+  const sources = {};
+  for (const target of plan.targets ?? []) {
+    const sourcePath = target.source?.path;
+    if (typeof sourcePath !== "string") continue;
+    const absolute = path.resolve(ROOT, sourcePath);
+    // Sources are files inside this checkout; a malformed plan cannot read
+    // outside the workspace or quietly count a missing document.
+    if (absolute.startsWith(ROOT + path.sep) && fs.existsSync(absolute)) sources[sourcePath] = fs.readFileSync(absolute, "utf8");
+  }
+  const played = [];
+  const proof = cx.hasProof ? PaintProof.parse(read(cx.proofPath)) : { phases: {} };
+  if (!cx.hasProof) out.push(`${cx.chapter} coverage: no replay proof`);
+  const shell = { ...newChapterShell(), tasks: items };
+  for (const phase of cx.phases) {
+    const tape = proof.phases?.[phase.id];
+    if (!tape) { if (phase.entities.some(e => e.params?.taskSequenceV2?.requiredIds.length)) out.push(`${cx.chapter} coverage: no ${phase.id} tape`); continue; }
+    try {
+      const result = replayPhaseTape(cx.level, phase.id, tape, [], shell);
+      const assertions = worldAssertionErrors(tape.expect ?? {}, result.world);
+      out.push(...assertions.map(e => `${cx.chapter} coverage replay ${phase.id}: ${e}`));
+      played.push({ phaseId: phase.id, solvedTaskIds: result.world.solvedTaskIds,
+        sceneBeatsSeen: result.world.sceneBeatsSeen, exited: result.exited });
+    } catch (e) { out.push(`${cx.chapter} coverage replay ${phase.id}: ${e.message}`); }
+  }
+  const checked = checkPaintCoverage({ chapter: cx.chapter, policy: policy.coverage, plan,
+    wordbank: read(cx.wordbankPath).entries, items, phases: cx.phases, played, sources, usesForEntity: askerUsesOf });
+  out.push(...checked.errors.map(e => `${cx.chapter} ${e}`));
+  console.log(`check-level-design: ${cx.chapter} coverage — ${checked.targets.length} targets, ${checked.requiredTaskIds.length} required cards; ${checked.targets.filter(t => t.answered.length >= policy.coverage.minDistinctAnsweredCards).length} targets answered twice in replay`);
+  return out;
 };
 
 // ── 2b · L0c · P18 · DIE DIFFERENZ ZWISCHEN ZWEI LESARTEN VON »EINGELOEST« ──
@@ -880,6 +929,7 @@ for (const cx of CHAPTERS) {
   // wie zwei Defekte.
   const claims = claimsOf(cx);
   fails.push(...coverageFails(cx, claims));
+  fails.push(...playedCoverageFails(cx));
   // …und die Zahl kommt aus der GEPRUEFTEN Tabelle, nicht aus der Wortbank
   // daneben. Die alte Zeile zaehlte die Wortbank und stand deshalb bei 45 —
   // vor UND nach der Reparatur einer leeren Anspruchsdatei (L6-G1b).

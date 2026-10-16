@@ -79,6 +79,16 @@ describe("scene.stage · die Tier-Bühne", () => {
     expect(w.entities[0]!.state).toBe("posed");
   });
 
+  it("fragt eine gebundene Kartenfolge genau an ihren beobachteten Halten", () => {
+    const w = spawnEntities([buehne({ params: {
+      stage: { propSkin: "auto", stations: [{ dc: -2, dr: 0 }, { dc: 0, dr: -1 }, { dc: 2, dr: 0 }], ticksPerStation: 10 },
+      taskSequence: [1, 2],
+    } })], []);
+    const asked = laufe(w, idle(), 80).filter((v) => v.type === "engaged");
+    expect(asked.map((v) => v.sceneStation)).toEqual([1, 2]);
+    expect(laufe(w, idle(), 80).filter((v) => v.type === "engaged")).toEqual([]);
+  });
+
   it("Berührung tut NICHTS — ein Zoo ist kein Hinterhalt", () => {
     const w = spawnEntities([buehne()], []);
     laufe(w, idle(), 200); // sie steht und hat gefragt

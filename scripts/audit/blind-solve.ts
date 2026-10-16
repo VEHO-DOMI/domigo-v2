@@ -49,6 +49,7 @@
  * this enters app chunks. Engine + pipeline are imported from source (node ≥22
  * type-stripping; realpaths live outside node_modules, so stripping applies).
  */
+import { auditPaintKeys } from "./paint-keys.ts";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -364,6 +365,8 @@ async function mapPool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): P
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const { entries, skipped } = collectEntries(args);
+  const paintKeys=args.noLlm && (args.grade==="g1" || args.grade==="all")?auditPaintKeys(ROOT):null;
+  if(paintKeys)console.log(`paint key audit: ${paintKeys.cards} cards, ${paintKeys.observedScenes} observed scenes, scene stimulus visited=${paintKeys.sceneStimulusVisited}`);
   const scope =
     args.only ??
     args.unit ??
@@ -452,6 +455,7 @@ async function main(): Promise<void> {
 
   const report = {
     schema: "blind-solve@2",
+    ...(paintKeys?{paintKeys}:{}),
     // Freshness stamp (V-2b): binds this committed report to the exact corpus state.
     generatedAt: new Date().toISOString(),
     corpusHash: corpusStamp(),

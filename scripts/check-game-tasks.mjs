@@ -396,7 +396,7 @@ function firstSightOf(t) {
   if (t.promptEn) out.push({ field: "promptEn", text: t.promptEn, de: false });
   out.push({ field: "storyDe", text: t.storyDe, de: true });
   if (t.stimulus?.type === "entity") out.push({ field: "showsDe", text: t.stimulus.showsDe, de: true });
-  if (t.stimulus?.type === "image") out.push({ field: "altDe", text: t.stimulus.altDe, de: true });
+  if ((t.stimulus?.type === "image" || t.stimulus?.type === "scene")) out.push({ field: "altDe", text: t.stimulus.altDe, de: true });
   if (t.kind === "restore") out.push({ field: "colourAskDe", text: t.colourAskDe, de: true });
   return out;
 }
@@ -676,7 +676,7 @@ function checkItem(chId, t) {
   checkDe(w, t.storyDe);
   checkDe(w, t.hints?.deDesc);
   checkDe(w, t.hints?.deWord);
-  if (t.stimulus?.type === "image") checkDe(w, t.stimulus.altDe);
+  if (t.stimulus?.type === "image" || t.stimulus?.type === "scene") checkDe(w, t.stimulus.altDe);
   if (t.stimulus?.type === "entity") checkDe(w, t.stimulus.showsDe);
   // 9 · the distribution map: is this kind allowed out in this chapter's field?
   const palette = CHAPTER_NOW ? fieldKindsOf(CHAPTER_NOW) : null;
@@ -1380,6 +1380,7 @@ if (process.argv.includes("--selftest")) {
     ["match · the German carries a word from the answer column", laws(card({ ...honestMatch, storyDe: "Der Affe sitzt in the tree — bring die Schilder zurück!" })), (l) => l.includes("18a")],
     // ── the leak that really shipped, reproduced (A5's rule: a tamper is worth
     //    most when it is the defect that was live) ──
+    ["scene.altDe visits the same 18b first-sight check", laws({...honestMistake,stimulus:{type:"scene",altDe:"Die Tafel schreibt einen Satz über sich selbst",viewId:"v"},sceneRef:{entityId:"g",beatId:"b",viewId:"v"}}), (l)=>l.includes("18b")],
     ["boss.m1 · showsDe said »Die Tafel« while the answer was `board`", laws(card({ ...honestMistake, stimulus: { type: "entity", showsDe: "Die Tafel schreibt einen Satz über sich selbst" } })), (l) => l.includes("18b")],
     // ── the same-language leak, on a kind that already had a rule ──
     ["choice · the answer word stands in the story line", laws(card({ storyDe: "Sag: Listen!", options: ["Listen!", "Look!", "Come on!"], answer: "Listen!" })), (l) => l.includes("18a")],

@@ -32,6 +32,7 @@
 // Ohne `--dry` werden bestehende Dateien überschrieben — das ist der Zweck,
 // aber es steht absichtlich hier, weil `eraser_b.png` Produktionsmaterial ist.
 
+import { registeredCell, registrationErrors } from "./art-registration.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
@@ -54,6 +55,8 @@ const arg = (name, fallback = null) => {
   return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
 };
 const dry = process.argv.includes("--dry");
+const registrationGroup = arg("registration-group");
+const registrations = new Map();
 const sheetPath = arg("sheet");
 const cellNames = (arg("cells") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 const ART_ROOT = "apps/web/public/art/g1/paint";
@@ -143,6 +146,8 @@ for (let i = 0; i < cellNames.length; i++) {
   if (maxX < 0) { console.log(`  ${name}: LEER (nur Schlüssel) — übersprungen`); continue; }
 
   // ── 2 · auf den belegten Kasten trimmen (das Spiel skaliert nach Höhe) ──
+  const inkBounds = {x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1};
+  if (registrationGroup) { minX=0; minY=0; maxX=CELL-1; maxY=CELL-1; }
   const w = maxX - minX + 1, h = maxY - minY + 1;
   const out = new PNG({ width: w, height: h });
   for (let y = 0; y < h; y++) {
@@ -164,8 +169,24 @@ for (let i = 0; i < cellNames.length; i++) {
   if (!dry) {
     fs.mkdirSync(ziel, { recursive: true });
     fs.writeFileSync(file, PNG.sync.write(out));
+    if (registrationGroup) {
+      const metadata=registeredCell(registrationGroup,name,inkBounds);
+      const list=registrations.get(ziel)??[]; list.push(metadata); registrations.set(ziel,list);
+    }
     wrote++;
   }
+}
+for (const [ziel,cells] of registrations) {
+  const errors=registrationErrors(cells);
+  if(errors.length) throw new Error(errors.join("; "));
+  const file=path.join(ziel,`${registrationGroup}.registration.json`);
+  const previous=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,"utf8")):[];
+  const byStem=new Map(previous.map(cell=>[cell.stem,cell]));
+  for(const cell of cells) byStem.set(cell.stem,cell);
+  const merged=[...byStem.values()];
+  const invalid=registrationErrors(merged);
+  if(invalid.length) throw new Error(invalid.join("; "));
+  fs.writeFileSync(file,JSON.stringify(merged,null,2)+"\n");
 }
 console.log(dry
   ? `dry-run, nichts geschrieben (Ziele waeren: ${[...zieleGeschrieben].join(", ") || "keine"})`

@@ -1,3 +1,10 @@
+import { zooSnapshot } from "./guardian-zoo.ts";
+import { zooEntityCell, effectiveCollectSkin, collectCell, bubblePopAlive, zooHeroCell, type HeroVisualClock } from "./zoo-visuals.ts";
+import type { GameTaskV2 } from "../../content-schema/src/game-tasks.ts";
+import type { ChapterLearningState } from "./learning.ts";
+import { sceneDrawItems, worldSceneSnapshot } from "./scene-v2.ts";
+import { zooEvidenceRect } from "./zoo-art.ts";
+import type { StageV2Spec, ZooGuardianSpec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — the phase scene: a THIN renderer over the pure brains.
 // One instance renders ONE phase. All simulation runs on the fixed 60Hz
 // accumulator (never wall-clock); the rig compositor applies rig.ts poses to
@@ -47,7 +54,7 @@ import {
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, overlayFit, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
-import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
+import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace, withZooAction } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
   SPARK_COUNT, burstShape, contactPoint, fleckOf, shardOutline, starPoints,
@@ -278,6 +285,8 @@ export interface PaintCallbacks {
 }
 
 export interface PaintSceneCfg {
+  tasks?: readonly GameTaskV2[];
+  learningProgress?: ChapterLearningState;
   level: PaintLevel;
   phaseId: string;
   art: Record<string, string>; // stem → url (only-present)
@@ -921,6 +930,9 @@ export class PaintScene extends Phaser.Scene {
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
   /** L2-M-a: das Objekt einer Tier-Buehne — ein zweites Bild je Buehnen-Wesen,
    *  am Anker festgenagelt, waehrend der Darsteller es umrundet. */
+  private zooSceneImgs = new Map<string, Phaser.GameObjects.Image>();
+  private zooSceneG: Phaser.GameObjects.Graphics | null = null;
+  private zooSceneLabels = new Map<string,Phaser.GameObjects.Text>();
   private stagePropImgs = new Map<string, Phaser.GameObjects.Image>();
   /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
@@ -1107,6 +1119,8 @@ export class PaintScene extends Phaser.Scene {
    *  gesetzt. Platzhalter-Blau — die gemalte Fassung ist Kunst-Zeit. */
   private bilgeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
+  private zooPops: {img:Phaser.GameObjects.Image;tick:number}[] = [];
+  private zooHeroClock: HeroVisualClock = {};
   /** PB-F3: checkpoint art by column, so the ACTIVE one can light up.
    *  R5-W4 · B4 · R44: empty for the whole phase when the chapter is `silent`. */
   private checkpointImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -1170,6 +1184,8 @@ export class PaintScene extends Phaser.Scene {
       // so a new SimCfg field that is not named HERE arrives as `undefined` and
       // the ledger silently does nothing. One line, and it is load-bearing.
       resolvedEntityIds: cfg.resolvedEntityIds,
+      learningProgress: cfg.learningProgress,
+      tasks: cfg.tasks,
       // R5-W6 · S2: die gefalteten EntityEvents hören mit — vier Klänge hätten
       // sonst keinen Auslöser (siehe SimCfg#onEntityAudio).
       onEntityAudio: (ev) => cfg.audio?.on("entity", ev.type, ev),
@@ -1626,7 +1642,17 @@ export class PaintScene extends Phaser.Scene {
       // PK-R6 · H1: the fall speed the tick is ABOUT to cancel — after the step
       // a landed player reads vy 0, so „how hard did that land" only exists here
       const fallVy = this.player.grounded ? 0 : fromSubs(this.player.vy);
+      const previousPose = this.player.pose;
+      const previousFist = this.fist;
       this.handleSimEvents(this.sim.step(this.readPad()));
+      if (this.cfg.level.heroArtSet === "zoo-v2") {
+        if (!previousFist && this.fist) this.zooHeroClock.throwAt = this.tickCount;
+        if (previousPose !== "hang" && this.player.pose === "hang") this.zooHeroClock.grabAt = this.tickCount;
+        if (previousPose === "hang" && this.player.pose !== "hang") {
+          if (this.player.pose === "jump") this.zooHeroClock.hangJumpAt = this.tickCount;
+          else this.zooHeroClock.releaseAt = this.tickCount;
+        }
+      }
       this.footwork(fallVy);
     }
     this.render();
@@ -1693,6 +1719,7 @@ export class PaintScene extends Phaser.Scene {
       this.cfg.audio?.on("sim", ev.type, ev as unknown as Record<string, unknown>);
       switch (ev.type) {
         case "toast": this.toast(ev.msg); break;
+        case "fistCaught": this.zooHeroClock.catchAt = this.tickCount; break;
         case "task": cb.onTask(ev.req); break;
         case "powerup": cb.onPowerup(ev.grants, ev.gabeDe); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
@@ -2066,8 +2093,8 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** pb-<skin>_<state> → pb-<skin>_a → fb-ent-<skin> (the only-present law). */
-  private entTex(skin: string, state: string): string {
-    for (const k of [`pb-${skin}_${state}`, `pb-${skin}_a`, `fb-ent-${skin}`]) {
+  private entTex(skin: string, state: string, strict = false): string {
+    for (const k of [`pb-${skin}_${state}`, ...(strict ? [] : [`pb-${skin}_a`]), `fb-ent-${skin}`]) {
       if (this.textures.exists(k)) return k;
     }
     return "fb-ent-generic";
@@ -2092,7 +2119,8 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** W4: delegated to the pure hook in anim.ts (unit-tested there). */
-  private entStateCell(e: EntPoseInput): string {
+  private entStateCell(e: EntPoseInput & { actingCell?: string }): string {
+    if(e.actingCell && !e.redeemed)return e.actingCell;
     return entPoseCell(e);
   }
 
@@ -2259,6 +2287,60 @@ export class PaintScene extends Phaser.Scene {
     copy.setFlipX(img.flipX);
   }
 
+  private scenePlaceholder(kind:"actor"|"prop"):string {
+    const key=`fb-zoo-scene-${kind}`;
+    if(!this.textures.exists(key)){
+      const g=this.add.graphics();g.fillStyle(kind==="actor"?0xcfad73:0x839b92,1).fillRoundedRect(1,1,30,46,kind==="actor"?9:3);
+      g.lineStyle(1,0x423c32,1).strokeRoundedRect(1,1,30,46,3);
+      if(kind==="actor")g.fillStyle(0x423c32,1).fillCircle(22,12,2);
+      g.generateTexture(key,32,48);g.destroy();
+    }
+    return key;
+  }
+
+  private renderZooScenes(): void {
+    const scenes = this.world.entities.filter(e => !e.hidden && (e.zoo || e.stageRuntime || e.classmateScene));
+    const graphics = this.zooSceneG ??= this.add.graphics().setDepth(7.2);
+    graphics.clear();
+    for (const img of this.zooSceneImgs.values()) img.setVisible(false);
+    for (const label of this.zooSceneLabels.values()) label.setVisible(false);
+    for (const t of this.sim.learning.transfers) {
+      if(t.tick<0||t.tick>=t.ticks||!this.world.entities.some(e=>e.id===t.targetId))continue;
+      graphics.fillStyle(0xcfad73,1).fillRoundedRect(t.x-12,t.y-32,24,32,8);
+      graphics.lineStyle(1,0x423c32,1).strokeRoundedRect(t.x-12,t.y-32,24,32,8);
+    }
+    for (const e of scenes) {
+      if (e.state === "mark") {
+        graphics.lineStyle(2, 0xbb8549, .8).lineBetween(fromSubs(e.x), fromSubs(e.y)-18, fromSubs(e.x)+e.dir*100, fromSubs(e.y)-18);
+      }
+      const scene = e.zoo?.scene ?? e.stageRuntime?.scene;
+      if (!scene && !e.classmateScene) continue;
+      const snapshot = e.classmateScene ? structuredClone(e.classmateScene) : e.zoo ? zooSnapshot(e) : worldSceneSnapshot(e.id, e.homeX, e.homeY, scene!, e.params.stageV2 as StageV2Spec, 0);
+      if(e.classmateScene){
+        snapshot.view.x=fromSubs(e.x)-80;snapshot.view.y=fromSubs(e.y)-120;
+        if(e.redeemed) {snapshot.actors[0]!.cell=zooEntityCell(e);for(const a of snapshot.actors.slice(1))a.cell=e.state==="roam"?"walk0":"wave_a";}
+      }
+      if(scene?.label){
+        let label=this.zooSceneLabels.get(e.id);
+        if(!label){label=this.add.text(0,0,"",{fontFamily:"sans-serif",fontSize:"13px",color:"#302819",backgroundColor:"#fff5d9",padding:{x:6,y:3}}).setOrigin(.5,0).setDepth(7.4);this.zooSceneLabels.set(e.id,label);}
+        label.setText(scene.label).setPosition(snapshot.view.x+snapshot.view.width/2,snapshot.view.y+4).setVisible(true);
+      }
+      snapshot.actors=snapshot.actors.filter(a=>!this.sim.learning.transfers.some(t=>t.targetId===e.id&&t.actorId===a.id&&t.tick>=0&&t.tick<t.ticks));
+      const inScene = !!e.classmateScene || !!e.stageRuntime || ["observe", "report", "release", "home", "lonely", "finale", "review-observe", "review-report"].includes(e.state);
+      if (e.stageRuntime) this.stagePropImgs.get(e.id)?.setVisible(false);
+      if (inScene) {this.entityImgs.get(e.id)?.setVisible(false);this.washImgs.get(e.id)?.setVisible(false);this.bloomImgs.get(e.id)?.setVisible(false);}
+      else snapshot.actors = snapshot.actors.filter(a => a.id !== "lion");
+      for (const item of sceneDrawItems(snapshot)) {
+        const artKey = `pb-${item.stem}`;
+        const key=this.textures.exists(artKey)?artKey:this.scenePlaceholder(item.kind);
+        const id = `${e.id}:${item.id}`;
+        let img = this.zooSceneImgs.get(id);
+        if (!img) { img = this.add.image(item.x, item.y, key).setOrigin(.5, 1); this.zooSceneImgs.set(id, img); }
+        img.setVisible(true).setTexture(key).setPosition(item.x,item.y).setDisplaySize(item.w,item.h).setDepth(7.21+item.depth*.01);
+      }
+    }
+  }
+
   private renderEntities(): void {
     for (const e of this.world.entities) {
       const img = this.entityImgs.get(e.id);
@@ -2290,7 +2372,7 @@ export class PaintScene extends Phaser.Scene {
         // ohne eine Zeile Code hier oder in anim.ts.
         hasStretch: this.textures.exists(`pb-${e.skin}_stretch`),
       });
-      img.setTexture(this.entTex(e.skin, cell));
+      img.setTexture(this.entTex(e.skin, cell, e.params.artSet === "zoo-v2"));
       const targetH = this.entTargetH(e);
       const frameH = img.frame.height || 1;
       if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
@@ -2615,6 +2697,11 @@ export class PaintScene extends Phaser.Scene {
     // dritten Knoten wächst die Marke in die Rutschlinie hinein, damit der
     // Splitter immer an etwas entlangfährt, das dem Kind vorher gezeigt wurde.
     for (const pr of this.world.projectiles) {
+      if (pr.kind === "plate") {
+        this.projG.fillStyle(0xc19a60, 1).fillRoundedRect(fromSubs(pr.x)-12, fromSubs(pr.y)-4, 24, 8, 3);
+        this.projG.lineStyle(1.5, 0x59442f, 1).strokeRoundedRect(fromSubs(pr.x)-12, fromSubs(pr.y)-4, 24, 8, 3);
+        continue;
+      }
       if (pr.kind !== "chalk" || pr.deflected || this.cfg.reducedMotion) continue;
       const left = CHALK_FLIGHT_TICKS - pr.age;
       if (left <= 0) continue;
@@ -2633,6 +2720,7 @@ export class PaintScene extends Phaser.Scene {
     }
     let used = 0;
     for (const pr of this.world.projectiles) {
+      if (pr.kind === "plate") continue;
       const thrower = this.world.entities.find((e) => e.id === pr.fromId);
       // PK-R6 · E · THE SIX PAINTED STICKS. The colour rides on the piece
       // (entities.CHALK_COLOURS, cycled by throw index), so the stick that flies
@@ -2755,6 +2843,18 @@ export class PaintScene extends Phaser.Scene {
         img.setScale(CHALK_DISPLAY_H / (img.frame.height || 1));
         img.setRotation(this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
         img.setAlpha(1);
+        continue;
+      }
+      if (pr.skin) {
+        const skinKey = `pb-${pr.skin}`;
+        if (this.textures.exists(skinKey)) {
+          let img=this.projImgs[used];
+          if (!img) { img=this.add.image(0,0,skinKey).setDepth(8).setOrigin(.5,.5); this.projImgs[used]=img; }
+          used++; img.setVisible(true).setTexture(skinKey).setPosition(fromSubs(pr.x),fromSubs(pr.y)-4).setDisplaySize(12,7).setRotation(this.cfg.reducedMotion?0:pr.age*.12).setAlpha(1);
+        } else {
+          this.projG.fillStyle(0xf1d392,1).fillRect(fromSubs(pr.x)-6,fromSubs(pr.y)-7,12,7);
+          this.projG.lineStyle(1,0x493725,1).strokeRect(fromSubs(pr.x)-6,fromSubs(pr.y)-7,12,7);
+        }
         continue;
       }
       // the ink blob keeps its dot (no painted sheet — the only-present law)
@@ -2921,14 +3021,17 @@ export class PaintScene extends Phaser.Scene {
   /** Where the chalk lands on THIS guardian right now, in world px — read off
    *  the sprite as it is actually drawn, so the writing follows the cell she is
    *  wearing rather than a number measured once against a retired one. */
-  private boardAnchor(entityId: string): { y: number; w: number } | null {
+  private boardAnchor(entityId: string): { x: number; y: number; w: number } | null {
     const e = this.world?.entities.find((x) => x.id === entityId);
+    if (e && (e.params.guardian as ZooGuardianSpec | undefined)?.mode === "zoo-lion") {
+      return zooEvidenceRect(e.params.guardian as ZooGuardianSpec, e.params.stageV2 as StageV2Spec);
+    }
     const board = e ? GUARDIAN_BOARDS[e.skin] : undefined;
     if (!e || !board) return null;
     const img = this.entityImgs.get(entityId);
     const h = img?.displayHeight || this.entTargetH(e);
     const w = img?.displayWidth || h;
-    return { y: fromSubs(e.y) + board.dyFrac * h, w: Math.max(w * board.wFrac, 8) };
+    return { x: fromSubs(e.x), y: fromSubs(e.y) + board.dyFrac * h, w: Math.max(w * board.wFrac, 8) };
   }
 
   /**
@@ -2981,7 +3084,7 @@ export class PaintScene extends Phaser.Scene {
     this.evidenceFull = lines.join("  ");
     this.evidenceTick = 0;
     this.evidenceText = this.add
-      .text(fromSubs(e.x), anchor.y, "", {
+      .text(anchor.x, anchor.y, "", {
         fontFamily: "system-ui, sans-serif",
         fontSize: "6px",
         color: "#f6f2e8", // chalk on slate
@@ -3115,7 +3218,7 @@ export class PaintScene extends Phaser.Scene {
     const e = this.world?.entities.find((x) => x.id === this.evidenceOwner);
     const anchor = this.boardAnchor(this.evidenceOwner);
     if (!e || !anchor) return;
-    t.setPosition(fromSubs(e.x), anchor.y);
+    t.setPosition(anchor.x, anchor.y);
     this.evidenceTick++;
     const shown = this.cfg.reducedMotion
       ? this.evidenceFull.length
@@ -3167,6 +3270,12 @@ export class PaintScene extends Phaser.Scene {
    *  `Back.easeIn` while fading, with the puff underneath it. Reduced motion
    *  keeps the puff (it is a still picture) and simply removes the letter. */
   private collectBurst(img: Phaser.GameObjects.Image): void {
+    if (this.phase.collectAnimation === "zoo-v2" && effectiveCollectSkin(this.cfg.level,this.phase) === "bubble") {
+      const key = "pb-collect_bubble_pop";
+      img.setTexture(this.textures.exists(key) ? key : this.placeholderCollectTex("bubble-pop"));
+      this.zooPops.push({img,tick:this.tickCount});
+      return;
+    }
     this.puff(img.x, img.y + 4, "chalk");
     if (this.cfg.reducedMotion) { img.destroy(); return; }
     this.tweens.add({
@@ -4260,7 +4369,8 @@ export class PaintScene extends Phaser.Scene {
     this.bossPushMs += this.frameMs;
     this.renderTrail();
     this.renderPull();
-    const pose0 = rigPose({
+    const zooCell = this.cfg.level.heroArtSet === "zoo-v2" ? zooHeroCell(this.player,this.tickCount,!!this.fist,this.zooHeroClock) : undefined;
+    const basePose = rigPose({
       pose: this.player.pose,
       walkTime: this.player.walkTime,
       tick: this.tickCount,
@@ -4276,6 +4386,7 @@ export class PaintScene extends Phaser.Scene {
       reach: this.reachT(),
       reducedMotion: this.cfg.reducedMotion,
     });
+    const pose0 = withZooAction(basePose,zooCell);
     const pose1 = this.fist ? withFistAway(pose0) : pose0;
     // PK-R6 · H1 (round-1 critique, finding 7): …and he ANSWERS her. The brace
     // rides the boss's own telegraph clock, so he sets himself as she rears and
@@ -4295,11 +4406,12 @@ export class PaintScene extends Phaser.Scene {
     // The container keeps position + facing; the PROCEDURAL squash is dropped
     // under the override because the landing cell carries its squash in paint —
     // stacking both would over-squash the one frame that finally has it.
-    const fullCell = heroFullCell(
+    const legacyFullCell = heroFullCell(
       this.player.pose, this.player.walkTime, this.player.vy,
       this.player.landedAgo, cheer > 0,
       this.player.jumpedAgo, // R5-F4: die Uhr, an der die Hocke hängt
     );
+    const fullCell = zooCell === undefined ? legacyFullCell : zooCell;
     const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
     // L0d · R263 · …und wenn die bestellte Zelle fehlt, ist das ein DEFEKT, kein
     // Zustand. Gezeichnet wird trotzdem weiter (der Baukasten haelt das Spiel am
@@ -4475,6 +4587,7 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderEntities();
+    this.renderZooScenes();
     // PK-R6 · H2: the boss's halo, her roll-blur and her knot cord are all READ
     // OFF her sprite as `renderEntities` has just left it (position, scale, roll,
     // cell) — so they run after it. Before it they would have been drawing last
@@ -5854,7 +5967,10 @@ export class PaintScene extends Phaser.Scene {
     // R3-16 · the magnet lives in the SIM, so the letter is DRAWN wherever the
     // sim says it is — the drift and the pickup are the same number. The bob and
     // glint ride on top of that place, never instead of it.
+    for (const pop of this.zooPops) if (!bubblePopAlive(pop.tick,this.tickCount)) pop.img.destroy();
+    this.zooPops = this.zooPops.filter(pop=>bubblePopAlive(pop.tick,this.tickCount));
     for (const [key, img] of this.letterImgs) {
+      if (this.phase.collectAnimation === "zoo-v2") img.setTexture(this.collectTex(""));
       const p = this.sim.letterPos.get(key);
       if (!p) continue;
       const parts = key.split(",");
@@ -6306,9 +6422,13 @@ export class PaintScene extends Phaser.Scene {
    *  gezeichneter Platzhalter, damit ein Kapitel im Bau SPIELBAR ist und man
    *  sieht, WO die Dinger liegen, auch wenn man noch nicht sieht, was sie sind. */
   private collectTex(char: string): string {
-    const skin = this.cfg.level.collectSkin ?? "letters";
+    // A room may override the chapter collectible (the aquarium's bubbles are
+    // not feathers).  Falling back to the chapter declaration preserves every
+    // existing level that has no per-phase skin.
+    const skin = effectiveCollectSkin(this.cfg.level,this.phase);
     if (skin === "letters") return this.letterTex(char);
-    if (this.textures.exists(`pb-collect_${skin}`)) return `pb-collect_${skin}`;
+    const stem = collectCell(skin,this.phase.collectAnimation,this.tickCount);
+    if (this.textures.exists(`pb-${stem}`)) return `pb-${stem}`;
     return this.placeholderCollectTex(skin);
   }
 
