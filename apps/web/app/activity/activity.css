@@ -9,7 +9,7 @@
   --activity-score: 2.5rem;
   --activity-target: calc(var(--activity-unit) * 11);
   --activity-width: calc(var(--activity-unit) * 120);
-  --activity-border: color-mix(in srgb, var(--text-secondary) 70%, var(--card-solid));
+  --activity-border: var(--text-secondary);
   --activity-on-primary: var(--zone-prestige-text);
   --activity-draw: var(--wrong);
   --activity-show: var(--correct);
