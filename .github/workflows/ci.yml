@@ -65,6 +65,8 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm check:arena-a11y:selftest --out "${{ runner.temp }}/arena-selftest" # cgo-112: deliberate size, colour, graphic and token failures
       - run: pnpm check:arena-a11y --out "${{ runner.temp }}/arena-display" # cgo-112: 144 views, 44px targets and text/control/graphic contrast
+      - run: pnpm check:activity-display:selftest --out "${{ runner.temp }}/activity-selftest" # cgo-113: deliberately broken controls, text and design values
+      - run: pnpm check:activity-display --out "${{ runner.temp }}/activity-display" # cgo-113: actual UI transitions, timer, undo, privacy, 144 displays including preview
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -72,6 +74,8 @@ jobs:
           path: |
             ${{ runner.temp }}/arena-selftest
             ${{ runner.temp }}/arena-display
+            ${{ runner.temp }}/activity-selftest
+            ${{ runner.temp }}/activity-display
           retention-days: 7
 
   content-validate:

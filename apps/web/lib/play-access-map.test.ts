@@ -612,10 +612,11 @@ describe("OG W1 surfaces", () => {
     const known = new Set<string>();
     for (const f of tiles) {
       const src = code(read(f));
-      assert.doesNotMatch(src, /Activity Game|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
+      // cgo-113: Activity is now a real route, checked with every tile below.
+      assert.doesNotMatch(src, /Speed Round|Memory Match|Spelling Bee|Word Hunt/);
       for (const match of src.matchAll(/(?:href=\{?[`"]|path:\s*")(\/[a-z][a-z/-]*)/g)) known.add(match[1]!);
     }
-    for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review"]) known.add(path);
+    for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review", "/activity"]) known.add(path);
     assert.ok(known.size >= 7);
     for (const path of known) {
       const route = path === "/play/" ? "(game)/play/[grade]" : path.slice(1).replace(/\/$/, "");
