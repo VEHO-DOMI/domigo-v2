@@ -102,7 +102,7 @@
 .og-root[data-screen="arena"] .og-primary {
   background: var(--accent-deep);
   color: var(--arena-on-status);
-  border: var(--arena-hairline) solid var(--arena-control-border);
+  border: var(--arena-hairline) solid var(--text-secondary);
 }
 .og-root[data-screen="arena"] :is(.arena-option, .arena-chapter, .og-back) {
   border-color: var(--arena-control-border);
