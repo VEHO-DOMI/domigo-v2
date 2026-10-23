@@ -32,7 +32,11 @@ const arenaCss = fs.readFileSync(path.join(root, 'apps/web/app/arena/arena.css')
 function tokenViolations(css) {
   const bad = [];
   postcss.parse(css).walkDecls(d => {
-    if (!d.prop.startsWith('--') && /(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(d.value)) bad.push(`${d.prop}: ${d.value}`);
+    if (d.prop.startsWith('--')) {
+      if (d.parent.type !== 'rule' || d.parent.selector !== '.og-root[data-screen="arena"][data-grade]' || !/^(--arena-[a-z-]+|--muted)$/.test(d.prop)) bad.push(`token outside the Arena design layer: ${d.prop}`);
+      return;
+    }
+    if ( /(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(d.value)) bad.push(`${d.prop}: ${d.value}`);
   });
   return bad;
 }
@@ -134,7 +138,7 @@ const executablePath = process.env.CHROME_BIN || (fs.existsSync(localChrome) ? l
 const browser = await chromium.launch({ headless: true, executablePath, args: ['--disable-background-networking'] });
 const records = [], mutants = [];
 try {
-  for (const width of [375, 1400]) for (const theme of ['light', 'dark']) {
+  for (const width of args.includes('--selftest') ? [375] : [375, 1400]) for (const theme of args.includes('--selftest') ? ['light'] : ['light', 'dark']) {
     const context = await browser.newContext({ viewport: { width, height: 1000 }, colorScheme: theme, deviceScaleFactor: 1 });
     await context.route('**/*', route => {
       const u = new URL(route.request().url());
@@ -144,7 +148,7 @@ try {
       return route.fulfill({ body: html(Number(u.searchParams.get('grade')), theme, u.searchParams.get('state')), contentType: 'text/html' });
     });
     const page = await context.newPage();
-    for (const grade of [1, 2, 3, 4]) for (const state of states) {
+    for (const grade of args.includes('--selftest') ? [1] : [1, 2, 3, 4]) for (const state of args.includes('--selftest') ? ['question'] : states) {
       await page.goto(`http://arena-fixture.test/?grade=${grade}&state=${state}`); await page.evaluate(() => document.fonts.ready);
       const file = `g${grade}-${state}-${width}-${theme}.png`;
       if (['hub', 'question', 'result', 'unavailable'].includes(state)) await page.screenshot({ path: path.join(out, file), animations: 'disabled' });
@@ -168,7 +172,7 @@ try {
       const failures = violations(await measure(page));
       assert(failures.some(f => f.startsWith('graphic ')), 'Invisible round markers not detected');
       mutants.push({ name: 'invisible-rounds', violations: failures }); await style.evaluate(e => e.remove());
-      for (const value of ['padding:19px', 'color:#aaa', 'color:rgb(1,2,3)', 'color:hsl(120,50%,50%)']) {
+      for (const value of ['padding:19px', 'color:#aaa', 'color:rgb(1,2,3)', 'color:hsl(120,50%,50%)', '--local-size:19px; padding:var(--local-size)']) {
         assert(tokenViolations(arenaCss + `\n.arena-prompt { ${value}; }`).length > 0, `Raw token value not detected: ${value}`);
         mutants.push({ name: 'raw-value', violations: [value] });
       }
@@ -178,5 +182,5 @@ try {
 } finally { await browser.close(); }
 const failures = records.filter(r => r.violations.length);
 fs.writeFileSync(path.join(out, 'measurements.json'), JSON.stringify({ records, mutants }, null, 2) + '\n');
-console.log(JSON.stringify({ views: records.length, images: 64, failedViews: failures.length, detectedMutants: mutants.length, out }));
+console.log(JSON.stringify({ views: records.length, images: records.filter(r => ['hub', 'question', 'result', 'unavailable'].includes(r.state)).length, failedViews: failures.length, detectedMutants: mutants.length, out }));
 if (failures.length) { console.error(JSON.stringify(failures.map(({ file, violations }) => ({ file, violations })), null, 2)); process.exitCode = 1; }

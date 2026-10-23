@@ -52,6 +52,28 @@ jobs:
       - run: node --test scripts/gg-gate-policy/register.test.mjs # cgo-017/476 (Leser S1): das Register-Gesetz der Prüfausnahmen hat seinen eigenen Test — ohne diese Zeile liefe er nirgends (adapters.test.mjs bleibt lokal: 178 s, schreibt in getrackte Dateien)
       - run: pnpm test
 
+  arena-display:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # cgo-112 / F7: real components, synthetic data, no server or database.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm check:arena-a11y:selftest --out "${{ runner.temp }}/arena-selftest" # cgo-112: deliberate size, colour, graphic and token failures
+      - run: pnpm check:arena-a11y --out "${{ runner.temp }}/arena-display" # cgo-112: 144 views, 44px targets and text/control/graphic contrast
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arena-display
+          path: |
+            ${{ runner.temp }}/arena-selftest
+            ${{ runner.temp }}/arena-display
+          retention-days: 7
+
   content-validate:
     runs-on: ubuntu-latest
     # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
