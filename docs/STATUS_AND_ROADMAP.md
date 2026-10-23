@@ -31,7 +31,7 @@ Nachzug 2 in PR 510 ergänzt lokale PostgreSQL-Verhaltenstests für die Sichtbar
 
 ## In Prüfung: cgo-113 · OG-Parität W6
 
-**In Prüfung, noch nicht LIVE (CODEX DRAFT — NOT CANON).** Activity Game auf dem Word-Duel-Zweig (PR 511, `d4fd8df4`) gestapelt: zwei bis acht Gruppen, Zeichnen/Darstellen/Erklären aus Originalzuordnungen, Chapter-Auswahl, 30/60/90-Sekunden-Runden, Richtig/Weiter/Rücknahme, Punktetafel und Gleichstände. Gruppenpunkte bleiben ausschließlich im geöffneten Spiel; keine XP und keine Speicherung von Namen oder Ergebnissen. Jahrgang und Klassenreserve gelten vor Ausgabe; Vorschau ohne Datenbank. Original-Speicherhistorie bewusst nicht übernommen. Lokale/Browser-Nachweise im PR; GG-Kette, Produktionsabnahme und Merge offen.
+**In Prüfung, noch nicht LIVE (PR 512).** Activity Game auf dem Word-Duel-Zweig (PR 511, `d4fd8df4`) gestapelt: zwei bis acht Gruppen, Zeichnen/Darstellen/Erklären aus Originalzuordnungen, Chapter-Auswahl, 30/60/90-Sekunden-Runden, Richtig/Weiter/Rücknahme, Punktetafel und Gleichstände. Gruppenpunkte bleiben ausschließlich im geöffneten Spiel; keine XP und keine Speicherung von Namen oder Ergebnissen. Jahrgang und Klassenreserve gelten vor Ausgabe; Vorschau ohne Datenbank. Original-Speicherhistorie bewusst nicht übernommen. Lokale/Browser-Nachweise im PR; GG-Kette, Produktionsabnahme und Merge offen.
 
 ## In Prüfung: cgo-112 · OG-Parität W5
 

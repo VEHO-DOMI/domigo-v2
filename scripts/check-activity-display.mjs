@@ -46,7 +46,10 @@ async function tokenViolations(text, page) {
   postcss.parse(text).walkDecls(d => {
     if (d.prop.startsWith('--')) {
       if (d.parent.type !== 'rule' || d.parent.selector !== '.og-root[data-screen="activity"][data-grade]' || !/^(--activity-[a-z-]+|--muted)$/.test(d.prop)) bad.push('local token: ' + d.prop);
-      return;
+      // Only the six base scale constants are literal definitions. Derived
+      // lengths and every colour must still use the shared named values.
+      const primitives = { '--activity-hairline':'1px', '--activity-small':'.875rem', '--activity-body':'1rem', '--activity-heading':'1.5rem', '--activity-word':'1.75rem', '--activity-score':'2.5rem' };
+      if (Object.hasOwn(primitives,d.prop) && d.value===primitives[d.prop]) return;
     }
     if (/(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(d.value)) bad.push(d.prop + ': ' + d.value);
     // Ask the browser whether a bare identifier is a colour. This includes CSS
@@ -163,6 +166,18 @@ try {
       } else {
         await click(t.correct);await page.clock.fastForward(61000);await capture(grade,'summary');await click(t.next);await click(t.end);await capture(grade,'confirm');await click(t.confirm);await capture(grade,'final');
         await open(grade,'&unavailable');await capture(grade,'unavailable');await open(grade,'&empty');await capture(grade,'empty');
+      }
+      if (selftest) for (const value of ['--activity-on-primary:#fff','--activity-width:481px','--activity-draw:red']) {
+        const failures=await tokenViolations(sourceCss+`\n.og-root[data-screen="activity"][data-grade] {${value}}`,page);
+        assert(failures.length>0,value+' must fail');mutants.push({name:'raw-derived-token',failures});
+      }
+      // The teacher preview adds real navigation targets outside the game.
+      // Include it in every year/theme/width combination, not just the flow test.
+      await open(grade,'&preview');await capture(grade,'preview-setup');
+      if (selftest) {
+        const node=await page.addStyleTag({content:'.og-root[data-screen="activity"] .og-preview a {min-width:0;min-height:0}'});
+        const failures=violations(await measure(page));assert(failures.some(f=>f.startsWith('target')), 'preview links must fail when undersized');
+        mutants.push({name:'small-preview-target',failures});await node.evaluate(e=>e.remove());
       }
     }
     // Actual event handlers, complete 2-group/3-round game, timer and undo.
