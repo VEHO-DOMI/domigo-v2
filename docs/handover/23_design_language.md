@@ -199,7 +199,10 @@ Kennung aus den Duell-Koordinaten auf und prüft Zug, Option und Klassenreserve;
 beim Speichern erfolgt die zweite Prüfung unter `FOR UPDATE` (Zeilensperre).
 Der vorhandene deutsche Korpustext bleibt unverändert, auch bei Lehnwörtern,
 deren deutsche und englische Schreibweise übereinstimmt.
-Die Detailabfrage lädt höchstens 50 Partien, der Verlauf zeigt höchstens 20.
+Offene Partien werden vollständig und getrennt von der abgeschlossenen Historie geladen,
+damit 50 neuere Ergebnisse keinen noch offenen Zug verdrängen. Die historische
+Listenabfrage lädt höchstens 50 Partien, der sichtbare Verlauf zeigt höchstens 20;
+die einzelne Detailabfrage lädt höchstens eine Partie.
 Eine gesonderte Datenbankaggregation hält Played/Won/Win rate/XP über die gesamte
 berechtigte Historie vollständig. Lesen und Neuanlegen speichern den Ablauf
 nach sieben Tagen. Ausgetretene oder wieder unangemeldete Teilnehmer lassen
@@ -212,6 +215,15 @@ Verbindungs-Client hat einen Fehler-Listener, damit ein asynchroner Fehler
 nicht als unbehandeltes Ereignis den Prozess beendet. Lokale Tests prüfen die
 Kennungsfreiheit über alle 57 Einheiten/2.446 Vokabeln, tatsächliche SQL-Sperren,
 Antwortverteilung, beide Löschrichtungen und die Klassen-/Modus-/Art-Bindung.
+
+**F7-Nachprüfung 23.10. (PR 511):** Die Arena verwendet benannte lokale Größen-
+und Farbrollen auf dem gemeinsamen Heft-Raster. Links und Schaltflächen sind
+mindestens 44 × 44 Pixel groß; kleine Texte und Statusmarkierungen verwenden
+kontraststarke Farben. `pnpm check:arena-a11y --out /absoluter/belegordner`
+kompiliert die aktuellen Styles und stellt die tatsächlichen Komponenten mit
+synthetischen Beispielen in vier Jahrgängen, neun Zuständen, zwei Breiten und
+zwei Themen dar. `--selftest` prüft zusätzlich absichtlich verletzte Grenzen.
+Das ist eine lokale Darstellungsprüfung, kein angemeldetes End-to-End-Duell.
 
 **Live Battle und Class Quiz = eigene künftige Spur**, Ruling cgo-120 zu Kosten
 und Echtzeit-Betrieb noch offen. Keine Kachel und kein Ankündigungssatz auf der

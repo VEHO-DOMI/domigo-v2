@@ -36,11 +36,14 @@
     "test:claim-filter": "node scripts/check-claim-filter.mjs",
     "test:claim-filter:selftest": "node scripts/check-claim-filter.mjs --selftest",
     "test:no-local-login": "node scripts/check-no-local-login.mjs",
-    "test:no-local-login:selftest": "node scripts/check-no-local-login.mjs --selftest"
+    "test:no-local-login:selftest": "node scripts/check-no-local-login.mjs --selftest",
+    "check:arena-a11y": "node scripts/check-arena-a11y.mjs",
+    "check:arena-a11y:selftest": "node scripts/check-arena-a11y.mjs --selftest"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
     "js-yaml": "4.2.0",
+    "playwright": "1.64.0",
     "pngjs": "^7.0.0"
   }
 }

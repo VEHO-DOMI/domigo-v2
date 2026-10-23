@@ -372,12 +372,12 @@ describe("PostgreSQL duel contracts", () => {
       }
     }
   });
-  it("D37 own-duel SQL is bounded at fifty (detail one); history twenty; aggregate stats retain older XP", async () => {
+  it("D37 history SQL is bounded at fifty (detail one); history twenty; aggregate stats retain older XP", async () => {
     const rows = Array.from({ length: 62 }, (_, i) => ({ id: uuid(901 + i), classId: A, grade: 1, p1: ME, p2: PEER, mode: "vocab", status: "complete", p1Score: 1, winner: ME, updatedAt: new Date(at.getTime() + i * 1000) }));
     await db.insert(schema.duels).values(rows);
     await db.insert(schema.practiceAttempts).values({ userId: ME, classId: A, mode: `duel:${rows[0]!.id}`, xpAwarded: 37, itemId: "g1u01.w.synthetic", kind: "vocab", unitSlug: "g1-u01", grade: 1, tier: "correct", correct: true });
     statements.length = 0; const board = await arena();
-    expect(statements.find(q => q.includes('from "domigo_v2"."duels" "own_duel"'))).toMatch(/limit \$/i);
+    expect(statements.find(q => q.includes('from "domigo_v2"."duels" "own_duel"') && /limit/i.test(q))).toMatch(/limit \$/i);
     expect(board.history).toHaveLength(20); expect(board.history[0]!.id).toBe(rows[61]!.id);
     expect(board.stats).toEqual({ played: 62, won: 62, winRate: 100, xp: 37 });
     // Check the actual bound parameter independently of the source expression.
@@ -385,6 +385,19 @@ describe("PostgreSQL duel contracts", () => {
     expect(own.params.at(-1)).toBe(50);
     await getDuel(db, scope, ME, rows[0]!.id, at);
     expect(queryLog.filter(q => q.sql.includes('from "domigo_v2"."duels" "own_duel"')).at(-1)!.params.at(-1)).toBe(1);
+  });
+  it("D40 open turns survive more than fifty newer completed duels", async () => {
+    const id = await create();
+    const newer = Array.from({ length: 62 }, (_, i) => ({ id: uuid(1201 + i), classId: A, grade: 1, p1: ME, p2: PEER, mode: "vocab", status: "complete", p1Score: 1, winner: ME, updatedAt: new Date(at.getTime() + (i + 1) * 1000) }));
+    await db.insert(schema.duels).values(newer);
+    const board = await arena();
+    expect(board.active.map(duel => duel.id)).toEqual([id]);
+    expect(board.waiting).toBe(1);
+    expect(board.history).toHaveLength(20);
+    expect(board.history[0]!.id).toBe(newer.at(-1)!.id);
+    expect(board.stats.played).toBe(62);
+    await expect(create()).rejects.toMatchObject({ code: "duel_already_active" });
+    expect((await getDuel(db, scope, ME, id, at)).canOpen).toBe(true);
   });
   it("D38 all 57 units: getDuel serializes every corpus word without task IDs or answer fields", async () => {
     const id = await create(); let checked = 0;

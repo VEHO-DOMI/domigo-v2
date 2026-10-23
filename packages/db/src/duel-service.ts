@@ -1,7 +1,7 @@
 /** cgo-112 · Class-only asynchronous duels. No XP writer: recordAttempt remains
  * the sole ledger/XP entry point. Mutations run inside runDuelTransaction;
  * the locked duel row serializes turns and closes the double-answer race. */
-import { and, asc, desc, eq, inArray, isNotNull, isNull, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNotNull, isNull, ne, or, sql } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
 import { Client } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -128,15 +128,20 @@ function nextQuestion(duel: Duel, seat: Seat): { round: number; question: number
 
 /** Both participants must STILL belong to the current claimed roster. A moved,
  * unclaimed or removed child never exposes old names/results to a former class. */
-async function ownDuels(db: Db, classScope: ClassScope, userId: string, gate: Gate, duelId?: string, lock = false): Promise<Duel[]> {
+async function ownDuels(db: Db, classScope: ClassScope, userId: string, gate: Gate, duelId?: string, lock = false, window?: "active" | "history"): Promise<Duel[]> {
   const entry = alias(duels, "own_duel");
   const p1 = alias(v2IdentityUsers, "duel_p1"), p2 = alias(v2IdentityUsers, "duel_p2");
   const query = db.select({ duel: entry }).from(entry)
     .innerJoin(p1, and(eq(p1.id, entry.p1), eq(p1.classId, entry.classId), eq(p1.role, "student"), isNotNull(p1.claimedAt)))
     .innerJoin(p2, and(eq(p2.id, entry.p2), eq(p2.classId, entry.classId), eq(p2.role, "student"), isNotNull(p2.claimedAt)))
     .where(and(inArray(entry.classId, [...classScope]), eq(entry.classId, gate.classId), eq(entry.grade, gate.grade),
-      or(eq(entry.p1, userId), eq(entry.p2, userId)), duelId ? eq(entry.id, duelId) : undefined)).orderBy(desc(entry.updatedAt), asc(entry.id)).limit(duelId ? 1 : 50);
-  return (await (lock ? query.for("update", { of: entry }) : query)).map(row => row.duel);
+      or(eq(entry.p1, userId), eq(entry.p2, userId)), duelId ? eq(entry.id, duelId) : undefined,
+      window === "active" ? eq(entry.status, "active") : window === "history" ? ne(entry.status, "active") : undefined))
+    .orderBy(desc(entry.updatedAt), asc(entry.id));
+  // Open turns cannot be displaced by newer history. One active duel per pair
+  // bounds this window by the current claimed roster; only history is capped.
+  const bounded = !duelId && window === "active" ? query : query.limit(duelId ? 1 : 50);
+  return (await (lock ? bounded.for("update", { of: entry }) : bounded)).map(row => row.duel);
 }
 /** Correlated to the already scoped duel, without returning identity fields. */
 function missingParticipant() {
@@ -180,7 +185,11 @@ export async function listDuels(db: Db, classScope: ClassScope, userId: string, 
   try {
     const gate = await arenaGate(db, classScope, userId);
     await expire(db, classScope, userId, at);
-    const rows = await ownDuels(db, classScope, userId, gate);
+    const [openRows, historyRows] = await Promise.all([
+      ownDuels(db, classScope, userId, gate, undefined, false, "active"),
+      ownDuels(db, classScope, userId, gate, undefined, false, "history"),
+    ]);
+    const rows = [...openRows, ...historyRows];
     const roster = await arenaRoster(db, classScope, gate.classId);
     const peers = roster.filter(r => r.id !== userId);
     const xp = await duelXp(db, classScope, userId, gate.classId, rows);
