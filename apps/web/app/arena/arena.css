@@ -109,3 +109,9 @@
 }
 
 .og-root[data-screen="arena"] .og-tagline { opacity:1; }
+
+/* Mini rounds hide their glyphs, so the coloured graphic itself needs contrast.
+ * Full-sized blocks retain the darker fill for legible white tick/cross text. */
+.arena-mini-rounds .arena-block.correct { background:var(--correct); }
+.arena-mini-rounds .arena-block.wrong { background:var(--wrong); }
+.arena-block.empty { border-color:var(--arena-control-border); }

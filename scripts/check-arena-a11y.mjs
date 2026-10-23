@@ -32,7 +32,7 @@ const arenaCss = fs.readFileSync(path.join(root, 'apps/web/app/arena/arena.css')
 function tokenViolations(css) {
   const bad = [];
   postcss.parse(css).walkDecls(d => {
-    if (!d.prop.startsWith('--') && /(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b/i.test(d.value)) bad.push(`${d.prop}: ${d.value}`);
+    if (!d.prop.startsWith('--') && /(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(d.value)) bad.push(`${d.prop}: ${d.value}`);
   });
   return bad;
 }
@@ -63,10 +63,11 @@ function html(grade, theme, state) {
   const react = { ...React, useState: initial => [state === 'picker' ? call++ === 0 : ['correct', 'wrong'].includes(state) ? duelState[call++] : initial, () => {}] };
   const arena = load('apps/web/app/arena/ArenaScreen.tsx', { ...base, react });
   const duel = load('apps/web/app/arena/DuelScreen.tsx', { ...base, react, './ArenaScreen': arena });
-  const d = { id: '00000000-0000-4000-8000-000000000112', opponent: grade === 1 ? 'Beispiel 2' : 'Example 2', me: grade === 1 ? 'Beispiel 1' : 'Example 1', avatar: 2, myAvatar: 1, mode: 'vocab', status: 'active', myTurn: true, myScore: 2, theirScore: 2, result: null, date: '2026-10-23T10:00:00Z', xp: 20, rounds: [{ chapter: 1, mine: [true, false, true], theirs: [true, true, false] }], grade, canOpen: state === 'chapters', next: null };
-  if (['question', 'correct', 'wrong'].includes(state)) d.next = { round: 0, question: 0, prompt: 'der Stuhl', options: ['chair', 'table', 'book', 'bag'] };
-  if (state === 'result') Object.assign(d, { status: 'complete', result: 'win', myScore: 12, theirScore: 8, xp: 120, rounds: Array.from({ length: 5 }, (_, i) => ({ chapter: i + 1, mine: [true, i % 2 === 0, true], theirs: [false, true, i % 2 === 0] })) });
-  const a = { enabled: state !== 'unavailable', unavailable: state === 'unavailable', rosterVersion: 'synthetic', peers: [{ number: 1, name: d.opponent, avatar: 2 }], active: [d], history: [{ ...d, id: '00000000-0000-4000-8000-000000000113', status: 'complete', result: 'win' }], waiting: 1, stats: { played: 1, won: 1, winRate: 100, xp: 20 } };
+  const d = { id: '00000000-0000-4000-8000-000000000112', opponent: grade === 1 ? 'Beispiel 2' : 'Example 2', me: grade === 1 ? 'Beispiel 1' : 'Example 1', avatar: 2, myAvatar: 1, mode: 'vocab', status: 'active', myTurn: true, myScore: 2, theirScore: 2, result: null, date: '2026-10-23T10:00:00Z', xp: 20, rounds: [{ chapter: 1, mine: [true, false, true], theirs: [true, true, false] }], grade, canOpen: ['hub', 'picker', 'chapters'].includes(state), next: null };
+  if (['question', 'correct', 'wrong'].includes(state)) Object.assign(d, { myScore: 0, theirScore: 2, xp: 0, rounds: [{ chapter: 1, mine: [], theirs: [true, true, false] }], next: { round: 0, question: 0, prompt: 'der Stuhl', options: ['chair', 'table', 'book', 'bag'] } });
+  if (state === 'waiting') Object.assign(d, { myTurn: false, theirScore: 0, rounds: [{ chapter: 1, mine: [true, false, true], theirs: [] }] });
+  if (state === 'result') Object.assign(d, { status: 'complete', result: 'win', myScore: 12, theirScore: 8, xp: 120, rounds: Array.from({ length: 5 }, (_, i) => ({ chapter: i + 1, mine: [true, i < 2, true], theirs: [false, true, i % 2 === 0] })) });
+  const a = { enabled: state !== 'unavailable', unavailable: state === 'unavailable', rosterVersion: 'synthetic', peers: [{ number: 1, name: d.opponent, avatar: 2 }], active: [d], history: [{ ...d, id: '00000000-0000-4000-8000-000000000113', status: 'complete', result: 'win', myScore: 12, theirScore: 8, xp: 120 }], waiting: 1, stats: { played: 1, won: 1, winRate: 100, xp: 140 } };
   const hub = ['hub', 'picker', 'unavailable'].includes(state);
   const child = React.createElement(hub ? arena.default : duel.default, hub ? { arena: a, grade, preview: false } : { data: { duel: d, chapters: [{ key: 'synthetic-1', chapter: 1 }, { key: 'synthetic-2', chapter: 2 }] }, grade, preview: false, ownerId: 'synthetic' });
   const Shell = load('apps/web/app/home/TrainerShell.tsx', { ...base, react: { ...React, useSyncExternalStore: () => theme } }).default;
@@ -96,7 +97,7 @@ async function measure(page) {
       const size = parseFloat(cs.fontSize), weight = parseInt(cs.fontWeight) || 400;
       text.push({ label, selector: e.className, colour: colour.slice(0, 3), opacity, rects, minimum: size >= 24 || size >= 18.667 && weight >= 700 ? 3 : 4.5 });
     }
-    const controls = [...document.querySelectorAll('.arena-option:not(:disabled),.arena-chapter:not(:disabled),.og-back,.og-primary:not(:disabled)')].map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { label: e.textContent.trim(), x: r.x + r.width / 2, y: r.y, stroke }; });
+    const controls = [...document.querySelectorAll('.arena-option:not(:disabled),.arena-chapter:not(:disabled),.og-back,.og-primary:not(:disabled),.arena-mini-rounds .arena-block,.arena-block.empty')].map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { kind: e.matches('.arena-block') ? 'graphic' : 'control', label: e.textContent.trim() || e.getAttribute('aria-label'), x: r.x + r.width / 2, y: r.y, stroke }; });
     return { controls, overflow: document.documentElement.scrollWidth > innerWidth, targets: [...document.querySelectorAll('button,a')].filter(e => e.getClientRects().length).map(e => { const r = e.getBoundingClientRect(); return { label: e.textContent.trim(), width: r.width, height: r.height }; }), text, excluded };
   });
   const hide = await page.addStyleTag({ content: '* { color:transparent!important; -webkit-text-fill-color:transparent!important; text-shadow:none!important; } .og-wordmark { visibility:hidden!important; }' });
@@ -121,12 +122,12 @@ async function measure(page) {
     const edge = c.stroke.slice(0, 3).map((n, i) => n * c.stroke[3] / 255 + inside[i] * (1 - c.stroke[3] / 255));
     const pair = (a, b) => (Math.max(luminance(a), luminance(b)) + .05) / (Math.min(luminance(a), luminance(b)) + .05);
     const ratio = Math.max(Math.min(pair(edge, outside), pair(edge, inside)), pair(inside, outside));
-    return { label: c.label, ratio: Math.round(ratio * 1000) / 1000, pass: ratio >= 3 };
+    return { kind: c.kind, label: c.label, ratio: Math.round(ratio * 1000) / 1000, pass: ratio >= 3 };
   });
-  return { ...rest, contrast, controls };
+  return { ...rest, contrast, controls: controls.filter(c => c.kind === 'control'), graphics: controls.filter(c => c.kind === 'graphic') };
 }
 function violations(record) {
-  return [...(record.overflow ? ['horizontal overflow'] : []), ...record.controls.filter(c => !c.pass).map(c => `control ${c.label}: ${c.ratio}/3`), ...record.targets.filter(t => t.width < 44 || t.height < 44).map(t => `target ${t.label}: ${t.width}×${t.height}`), ...record.contrast.filter(c => !c.pass).map(c => `contrast ${c.label}: ${c.ratio}/${c.minimum}`)];
+  return [...(record.overflow ? ['horizontal overflow'] : []), ...record.graphics.filter(c => !c.pass).map(c => `graphic ${c.label}: ${c.ratio}/3`), ...record.controls.filter(c => !c.pass).map(c => `control ${c.label}: ${c.ratio}/3`), ...record.targets.filter(t => t.width < 44 || t.height < 44).map(t => `target ${t.label}: ${t.width}×${t.height}`), ...record.contrast.filter(c => !c.pass).map(c => `contrast ${c.label}: ${c.ratio}/${c.minimum}`)];
 }
 const localChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const executablePath = process.env.CHROME_BIN || (fs.existsSync(localChrome) ? localChrome : undefined);
@@ -162,8 +163,15 @@ try {
         assert(failures.some(f => f.startsWith(expected)), `Mutation not detected: ${name}`);
         mutants.push({ name, violations: failures }); await style.evaluate(e => e.remove());
       }
-      assert(tokenViolations(arenaCss + '\n.arena-prompt { padding:19px; }').length > 0);
-      mutants.push({ name: 'free-size', violations: ['padding: 19px'] });
+      await page.goto('http://arena-fixture.test/?grade=3&state=hub'); await page.evaluate(() => document.fonts.ready);
+      const style = await page.addStyleTag({ content: '.arena-mini-rounds .arena-block { background:var(--card)!important; border-color:transparent!important; }' });
+      const failures = violations(await measure(page));
+      assert(failures.some(f => f.startsWith('graphic ')), 'Invisible round markers not detected');
+      mutants.push({ name: 'invisible-rounds', violations: failures }); await style.evaluate(e => e.remove());
+      for (const value of ['padding:19px', 'color:#aaa', 'color:rgb(1,2,3)', 'color:hsl(120,50%,50%)']) {
+        assert(tokenViolations(arenaCss + `\n.arena-prompt { ${value}; }`).length > 0, `Raw token value not detected: ${value}`);
+        mutants.push({ name: 'raw-value', violations: [value] });
+      }
     }
     await context.close();
   }
