@@ -115,3 +115,6 @@
 .arena-mini-rounds .arena-block.correct { background:var(--correct); }
 .arena-mini-rounds .arena-block.wrong { background:var(--wrong); }
 .arena-block.empty { border-color:var(--arena-control-border); }
+
+/* Result limits are readable before a challenge, using the existing scale. */
+.arena-bonus-note { font-size:var(--arena-type-body); line-height:1.6; color:var(--ink); margin:0 0 calc(var(--arena-unit) * 4.5); }

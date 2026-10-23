@@ -5,6 +5,7 @@
  * structurally incapable of dropping/altering a v1 table.
  */
 import { sql } from "drizzle-orm";
+import type { DuelBonusReceipt } from "./duel-bonus.ts";
 import {
   pgSchema,
   uuid,
@@ -29,6 +30,8 @@ export interface DuelRound {
   questions: { itemId: string; options: string[] }[];
   p1Answers: boolean[];
   p2Answers: boolean[];
+  /** cgo-122: final settlement, inside the existing JSON column; no DDL. */
+  bonus?: DuelBonusReceipt;
 }
 export const duels = v2.table("duels", {
   id: uuid("id").primaryKey().defaultRandom(),

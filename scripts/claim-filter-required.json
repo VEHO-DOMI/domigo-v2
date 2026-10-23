@@ -32,7 +32,7 @@
     "class-service.ts#getOwnerIdForStudentForGrandmaster": 1,
     "game-progress.ts#getUnitMastery": 1,
     "gamesave.ts#upsertGameSave": 1,
-    "persist.ts#recordAttempt": 1,
+    "persist.ts#recordAttempt": 2,
     "persist.ts#recordWritingSubmission": 1,
     "progress-adjust.ts#grantXp": 1,
     "progress-adjust.ts#markUnitDone": 2,
@@ -71,7 +71,8 @@
     "duel-service.ts#activeDuel": 2,
     "duel-service.ts#openRound": 3,
     "duel-service.ts#validateDuelAnswer": 2,
-    "duel-service.ts#recordAnswer": 3
+    "duel-service.ts#recordAnswer": 3,
+    "duel-service.ts#settleBonus": 2
   },
   "bestand": {
     "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",
