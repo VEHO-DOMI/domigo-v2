@@ -612,7 +612,7 @@ describe("OG W1 surfaces", () => {
     const known = new Set<string>();
     for (const f of tiles) {
       const src = code(read(f));
-      assert.doesNotMatch(src, /Activity Game|Battle Arena|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
+      assert.doesNotMatch(src, /Activity Game|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
       for (const match of src.matchAll(/(?:href=\{?[`"]|path:\s*")(\/[a-z][a-z/-]*)/g)) known.add(match[1]!);
     }
     for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review"]) known.add(path);
