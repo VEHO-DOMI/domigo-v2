@@ -20,7 +20,7 @@ export function arenaError(error: unknown): Response {
 export function exampleDuel(grade: number): DuelView {
   const label = grade === 1 ? "Beispiel" : "Example";
   return { id: "example", opponent: `${label} 2`, me: `${label} 1`, avatar: 2, myAvatar: 1, mode: "vocab", status: "active", myTurn: true,
-    myScore: 0, theirScore: 0, result: null, date: "", xp: 0, rounds: [{ chapter: 1, mine: [], theirs: [] }], grade, canOpen: false, next: null };
+    myScore: 0, theirScore: 0, result: null, date: "", xp: 0, bonusXp: 0, rounds: [{ chapter: 1, mine: [], theirs: [] }], grade, canOpen: false, next: null };
 }
 export async function readArena(view: StudentView): Promise<ArenaData> {
   if (view.kind === "preview") {

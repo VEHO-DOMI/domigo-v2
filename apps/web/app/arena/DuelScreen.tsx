@@ -43,7 +43,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
     </section> : <>
       <section className="arena-scoreboard" aria-label={c.score}>
         <div className="arena-players"><div><img src={`/avatars/${String(duel.myAvatar).padStart(2, "0")}.png`} width={48} height={48} alt="" /><strong>{duel.me}</strong><small>{c.me}</small></div><b>{duel.myScore}–{duel.theirScore}</b><div><img src={`/avatars/${String(duel.avatar).padStart(2, "0")}.png`} width={48} height={48} alt="" /><strong>{duel.opponent}</strong></div></div>
-        {duel.status !== "active" && <div className="arena-result"><h2><DuelResult duel={duel} grade={grade} /></h2><p>{duel.status === "expired" ? c.expiredHint : `${duel.myScore}/15 ${c.points} · +${duel.xp} XP`}</p></div>}
+        {duel.status !== "active" && <div className="arena-result"><h2><DuelResult duel={duel} grade={grade} /></h2><p>{duel.status === "expired" ? c.expiredHint : `${duel.myScore}/15 ${c.points} · +${duel.xp} ${c.answerXp}`}</p>{duel.status === "complete" && <p>+{duel.bonusXp} {c.bonusXp}</p>}</div>}
         {[0, 1, 2, 3, 4].map(i => <div className="arena-round-row" key={i}><RoundBlocks answers={duel.rounds[i]?.mine ?? []} label={`${c.me} · ${c.round} ${i + 1}`} /><div>{c.round} {i + 1}{duel.rounds[i] && <small>Chapter {duel.rounds[i]!.chapter}</small>}</div><RoundBlocks answers={duel.rounds[i]?.theirs ?? []} label={`${duel.opponent} · ${c.round} ${i + 1}`} /></div>)}
         {!duel.canOpen && duel.status === "active" && !preview && <p className="arena-wait">{c.waitHint} <button className="arena-text-button" type="button" onClick={() => router.refresh()}>{c.refresh}</button></p>}
       </section>

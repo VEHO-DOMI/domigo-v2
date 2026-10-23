@@ -7,7 +7,8 @@ import { eq } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import * as schema from "./schema.ts";
 import { classScope } from "./scope.ts";
-import { arenaEnabled, createDuel, getDuel as serviceGetDuel, listDuels, openRound, recordAnswer, runDuelTransaction, validateDuelAnswer } from "./duel-service.ts";
+import { arenaEnabled, createDuel, getDuel as serviceGetDuel, listDuels, openRound, recordAnswer, runDuelTransaction, selectDuelQuestions, validateDuelAnswer } from "./duel-service.ts";
+import { recordAttempt } from "./persist.ts";
 import { deleteUserData } from "./konto-loeschung.ts";
 import { listApprovedUnits, loadUnit } from "../../content-loader/src/index.ts";
 import { gradeVocab, xpForTier } from "@domigo/engine";
@@ -413,7 +414,7 @@ describe("PostgreSQL duel contracts", () => {
         expect(JSON.stringify(view)).not.toMatch(/itemId|g[1-4]u\d{2}\.w\./);
         const { next, ...metadata } = view;
         expect(metadata).toEqual({ id, opponent: "Example (Synthetic 02)", avatar: 1, mode: "vocab", status: "active", myTurn: true, myScore: 0, theirScore: 0,
-          result: null, date: at.toISOString(), xp: 0, rounds: [{ chapter: Number(slug.slice(-2)), mine: [], theirs: [] }], me: "Example (Synthetic 01)", myAvatar: 1, grade, canOpen: false });
+          result: null, date: at.toISOString(), xp: 0, bonusXp: 0, rounds: [{ chapter: Number(slug.slice(-2)), mine: [], theirs: [] }], me: "Example (Synthetic 01)", myAvatar: 1, grade, canOpen: false });
         // The authored German prompt may itself be a loanword (e.g. cool).
         // Outside the options the question has only this prompt and two numbers.
         const { options: _options, ...outsideOptions } = next!;
@@ -435,4 +436,108 @@ describe("PostgreSQL duel contracts", () => {
     expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
   });
 
+});
+
+/** Seed the previous 29 scored answers, then exercise the REAL final answer,
+ * transaction, quotas, receipt and persistence. Full thirty-answer flow above
+ * remains separate; fixtures below are not claimed as thirty network requests. */
+async function finishBonus(p1=ME,p2=PEER,p1Score=15,p2Score=10,when=at) {
+  const id=crypto.randomUUID();
+  const rounds=Array.from({length:5},(_,r)=>({unitKey:`g1-u0${r+1}`,questions:selectDuelQuestions(pool,1,`g1-u0${r+1}`,`${id}:${r}`,new Set<string>()),
+    p1Answers:Array.from({length:3},(_,q)=>r*3+q<p1Score),p2Answers:Array.from({length:r===4?2:3},(_,q)=>r*3+q<p2Score)}));
+  await db.insert(schema.duels).values({id,classId:A,grade:1,p1,p2,mode:"vocab",status:"active",rounds,createdAt:when,updatedAt:when});
+  const next=rounds[4]!.questions[2]!,item=pool.find(i=>i.id===next.itemId)!,right=p2Score===15;
+  const choice=next.options.find(o=>(gradeVocab(item,o,"deToEn").tier==="correct")===right)!;
+  const tier=gradeVocab(item,choice,"deToEn").tier,context={duelId:id,round:4,question:2};
+  const attempt={userId:p2,classId:A,itemId:item.id,kind:"vocab" as const,unitSlug:"g1-u05",grade:1,mode:`duel:${id}`,tier,xpAwarded:xpForTier(item.difficulty*10,tier),clientAttemptId:crypto.randomUUID()};
+  await tx(d=>recordAnswer(d,scope,attempt,context,choice,when));
+  const [stored]=await db.select().from(schema.duels).where(eq(schema.duels.id,id));
+  return {id,attempt,context,choice,receipt:stored!.rounds[4]!.bonus!};
+}
+describe("cgo-122 PostgreSQL result bonuses",()=>{
+ it("B06 credits a real complete duel once, separately from 30 answer records",async()=>{
+  const id=await create();let mine=0,theirs=0;
+  for(let r=0;r<5;r++){const picker=r%2===0?ME:PEER;await open(id,picker,`g1-u0${r+1}`);for(const user of [picker,picker===ME?PEER:ME])for(let q=0;q<3;q++){
+   const receipt=await answer(id,user,user===ME||q<2);if(user===ME)mine+=receipt.attempt.xpAwarded;else theirs+=receipt.attempt.xpAwarded;
+  }}
+  const a=await arena(),b=await arena(PEER);expect(a.history[0]).toMatchObject({xp:mine,bonusXp:100});expect(b.history[0]).toMatchObject({xp:theirs,bonusXp:0});
+  expect(a.stats.xp).toBe(mine+100);expect(b.stats.xp).toBe(theirs);expect(await db.select().from(schema.practiceAttempts)).toHaveLength(30);
+  expect((await db.select().from(schema.userProgress).where(eq(schema.userProgress.userId,ME)))[0]!.xp).toBe(mine+100);
+ });
+ it("B07 draw gives fifty each; below-half accuracy gives neither a bonus",async()=>{
+  expect((await finishBonus(ME,PEER,8,8)).receipt).toMatchObject({p1:50,p2:50});
+  expect((await finishBonus(ME,OTHER,15,7)).receipt).toMatchObject({p1:0,p2:0});
+ });
+ it("B08 ten repeated duels including reversed seats cannot farm result bonuses",async()=>{
+  const receipts=[];for(let i=0;i<10;i++)receipts.push((await finishBonus(i%2?PEER:ME,i%2?ME:PEER,15,15,new Date(at.getTime()+i*60000))).receipt);
+  expect(receipts.map(r=>r.p1+r.p2)).toEqual([100,0,0,0,0,0,0,0,0,0]);
+  expect((await finishBonus(ME,PEER,15,15,new Date(at.getTime()+86400000))).receipt).toMatchObject({p1:0,p2:0});
+  expect((await finishBonus(ME,PEER,15,15,new Date(at.getTime()+2*86400000))).receipt).toMatchObject({p1:50,p2:50});
+ });
+ it("B09 the third weekly pair bonus is zero, Monday after DST starts a new week",async()=>{
+  for(const [day,total]of [["2026-10-19T08:00:00Z",100],["2026-10-20T08:00:00Z",100],["2026-10-21T08:00:00Z",0],["2026-10-26T08:00:00Z",100]] as const){
+   const r=(await finishBonus(ME,PEER,15,15,new Date(day))).receipt;expect(r.p1+r.p2).toBe(total);
+  }
+ });
+ it("B10 daily three-award cap follows the recipient across opponents and seat order",async()=>{
+  const extra=uuid(700);await db.insert(schema.v2IdentityUsers).values({id:extra,classId:A,role:"student",displayName:"Synthetic extra",pinHash:"unused",claimedAt:at});
+  try{
+   expect((await finishBonus(ME,PEER,15,8)).receipt.p1).toBe(100);
+   expect((await finishBonus(OTHER,ME,8,15)).receipt.p2).toBe(100);
+   expect((await finishBonus(ME,FOURTH,15,8)).receipt.p1).toBe(100);
+   expect((await finishBonus(ME,extra,15,15)).receipt).toMatchObject({p1:0,p2:50});
+  }finally{await db.delete(schema.v2IdentityUsers).where(eq(schema.v2IdentityUsers.id,extra));}
+ });
+ it("B11 closing replay and direct persistence retry cannot credit either recipient again",async()=>{
+  const f=await finishBonus(ME,PEER,15,15),before=await db.select().from(schema.userProgress);
+  await expect(tx(d=>recordAnswer(d,scope,f.attempt,f.context,f.choice,at))).rejects.toMatchObject({status:409});
+  expect(await tx(d=>recordAttempt(d,scope,{...f.attempt,context:f.context},f.id))).toMatchObject({duplicate:true});
+  for(const mutation of [{clientAttemptId:crypto.randomUUID()},{userId:ME}])await expect(tx(d=>recordAttempt(d,scope,{...f.attempt,...mutation},f.id))).rejects.toThrow("invalid_duel_bonus_settlement");
+  await expect(tx(d=>recordAttempt(d,scope,{...f.attempt,classId:B},f.id))).rejects.toThrow("class outside");
+  expect(await db.select().from(schema.userProgress)).toEqual(before);
+ });
+ it("B12 peer bonus failure rolls back the final answer, completion and both XP changes",async()=>{
+  await pg.exec(`CREATE FUNCTION domigo_v2.synthetic_bonus_reject() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.user_id = '${ME}'::uuid THEN RAISE EXCEPTION 'synthetic bonus failure'; END IF; RETURN NEW; END; $$; CREATE TRIGGER synthetic_bonus_reject BEFORE INSERT OR UPDATE ON domigo_v2.user_progress FOR EACH ROW EXECUTE FUNCTION domigo_v2.synthetic_bonus_reject()`);
+  try{await expect(finishBonus(ME,PEER,15,15)).rejects.toThrow();}finally{await pg.exec("DROP TRIGGER synthetic_bonus_reject ON domigo_v2.user_progress; DROP FUNCTION domigo_v2.synthetic_bonus_reject()");}
+  expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);expect(await db.select().from(schema.userProgress)).toHaveLength(0);
+  const [row]=await db.select().from(schema.duels);expect(row!.status).toBe("active");expect(row!.rounds[4]!.bonus).toBeUndefined();expect(row!.rounds[4]!.p2Answers).toHaveLength(2);
+ });
+ it("B13 sorted participant locks precede quota reads and every XP write",async()=>{
+  const start=queryLog.length;await finishBonus(PEER,ME,15,15);const q=queryLog.slice(start),locks=q.filter(q=>q.sql.includes("pg_advisory_xact_lock"));
+  expect(locks).toHaveLength(2);expect(locks.map(q=>q.params[0])).toEqual([`domigo:duel-bonus:${ME}`,`domigo:duel-bonus:${PEER}`]);
+  const last=q.indexOf(locks[1]!),quota=q.findIndex(q=>q.sql.includes("count(*) filter(where")),write=q.findIndex(q=>q.sql.startsWith('insert into "domigo_v2"."user_progress"'));
+  expect(quota).toBeGreaterThan(last);expect(write).toBeGreaterThan(quota);
+ });
+});
+
+describe("cgo-122 bonus boundary receipts",()=>{
+ it("B15 Vienna midnight resets daily counters even before UTC midnight",async()=>{
+  const extra=uuid(700),beforeMidnight=new Date("2026-10-25T22:59:59Z"),afterMidnight=new Date("2026-10-25T23:00:00Z");
+  await db.insert(schema.v2IdentityUsers).values({id:extra,classId:A,role:"student",displayName:"Synthetic extra",pinHash:"unused",claimedAt:at});
+  try{
+   for(const peer of [PEER,OTHER,FOURTH])expect((await finishBonus(ME,peer,15,8,beforeMidnight)).receipt.p1).toBe(100);
+   expect((await finishBonus(ME,extra,15,8,afterMidnight)).receipt.p1).toBe(100);
+  }finally{await db.delete(schema.v2IdentityUsers).where(eq(schema.v2IdentityUsers.id,extra));}
+ });
+ it("B16 later invalidation cannot erase earned quotas or shift the bonus day",async()=>{
+  const first=await finishBonus(ME,PEER,15,15,new Date("2026-10-19T08:00:00Z"));
+  await finishBonus(ME,PEER,15,15,new Date("2026-10-20T08:00:00Z"));
+  await db.update(schema.duels).set({status:"expired",winner:null,updatedAt:new Date("2026-10-21T07:00:00Z")}).where(eq(schema.duels.id,first.id));
+  expect((await finishBonus(ME,PEER,15,15,new Date("2026-10-21T08:00:00Z"))).receipt).toMatchObject({p1:0,p2:0});
+ });
+ it("B17 overlapping closures with one remaining daily slot award it once",async()=>{
+  const extra=uuid(700);await db.insert(schema.v2IdentityUsers).values({id:extra,classId:A,role:"student",displayName:"Synthetic extra",pinHash:"unused",claimedAt:at});
+  try{
+   await finishBonus(ME,PEER,15,8);await finishBonus(ME,OTHER,15,8);
+   const results=await Promise.all([finishBonus(ME,FOURTH,15,8),finishBonus(ME,extra,15,8)]);
+   expect(results.map(r=>r.receipt.p1).sort((a,b)=>a-b)).toEqual([0,100]);
+  }finally{await db.delete(schema.v2IdentityUsers).where(eq(schema.v2IdentityUsers.id,extra));}
+  // PGlite serialises its connection. B13 independently pins the production
+  // transaction-lock order; this is not a multi-connection Neon load claim.
+ });
+ it("B18 result bonus never manufactures a streak day for the earlier participant",async()=>{
+  await db.insert(schema.userProgress).values({userId:ME,xp:41,grammarXp:23,streak:2,lastSessionDate:"2026-10-01"});
+  await finishBonus(ME,PEER,15,8);const [p]=await db.select().from(schema.userProgress).where(eq(schema.userProgress.userId,ME));
+  expect(p).toMatchObject({xp:141,grammarXp:23,streak:2,lastSessionDate:"2026-10-01"});
+ });
 });

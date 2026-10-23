@@ -12,7 +12,9 @@ import * as schema from "./schema.ts";
 import { classSettings, duels, practiceAttempts, studentProfile, v2Classes, v2IdentityUsers, type DuelRound } from "./schema.ts";
 import { assertWritableScope, type ClassScope } from "./scope.ts";
 import { listReservedForClass } from "./assignment-service.ts";
-import { leaderboardName } from "./leaderboard-service.ts";
+import { leaderboardName, viennaMonday } from "./leaderboard-service.ts";
+import { viennaDayString } from "./streak.ts";
+import { bonusReceipt, resultBonus, type DuelBonusReceipt } from "./duel-bonus.ts";
 import { recordAttempt, type RecordAttemptInput, type RecordAttemptResult } from "./persist.ts";
 
 export const DUEL_ROUNDS = 5;
@@ -60,7 +62,7 @@ export interface ArenaPeer { number: number; name: string; avatar: number }
 export interface DuelSummary {
   id: string; opponent: string; avatar: number; mode: "vocab" | "grammar";
   status: DuelStatus; myTurn: boolean; myScore: number; theirScore: number;
-  result: "win" | "loss" | "draw" | null; date: string; xp: number;
+  result: "win" | "loss" | "draw" | null; date: string; xp: number; bonusXp: number;
   rounds: { chapter: number; mine: boolean[]; theirs: boolean[] }[];
 }
 export interface ArenaData {
@@ -151,14 +153,17 @@ function missingParticipant() {
     and ${v2IdentityUsers.classId} = ${duels.classId} and ${v2IdentityUsers.role} = 'student' and ${v2IdentityUsers.claimedAt} is not null)`;
 }
 /** Aggregate all eligible history in SQL; the fifty-row detail cap must not
- * truncate Played/Won/XP. No copied counters and no result bonus. */
+ * truncate Played/Won/XP. Answer and result XP aggregate once per duel. */
 async function arenaStats(db: Db, classScope: ClassScope, userId: string, gate: Gate): Promise<ArenaData["stats"]> {
+  // Qualify the correlated outer columns explicitly: Drizzle's single-table
+  // selection otherwise strips their qualifier inside the nested answer query.
   const [row] = await db.select({
     played: sql<number>`count(distinct ${duels.id}) filter (where ${duels.status} = 'complete')::int`,
     won: sql<number>`count(distinct ${duels.id}) filter (where ${duels.status} = 'complete' and ${duels.winner} = ${userId})::int`,
-    xp: sql<number>`coalesce(sum(${practiceAttempts.xpAwarded}), 0)::int`,
-  }).from(duels).leftJoin(practiceAttempts, and(eq(practiceAttempts.classId, duels.classId), eq(practiceAttempts.userId, userId),
-    eq(practiceAttempts.mode, sql`'duel:' || ${duels.id}::text`)))
+    xp: sql<number>`coalesce(sum(coalesce((select sum(duel_answer.xp_awarded) from ${practiceAttempts} as duel_answer
+      where duel_answer.class_id = "duels"."class_id" and duel_answer.user_id = ${userId}
+      and duel_answer.mode = 'duel:' || "duels"."id"::text),0) + ${storedBonusFor(userId)}),0)::int`,
+  }).from(duels)
     .where(and(inArray(duels.classId, [...classScope]), eq(duels.classId, gate.classId), eq(duels.grade, gate.grade),
     or(eq(duels.p1, userId), eq(duels.p2, userId)), sql`not (${missingParticipant()})`));
   const played = Number(row?.played ?? 0), won = Number(row?.won ?? 0);
@@ -178,7 +183,7 @@ function summary(duel: Duel, userId: string, peer: Peer, xp: number, at: Date): 
   return { id: duel.id, opponent: nameOf(peer), avatar: avatarOf(peer), mode: duel.mode as "vocab" | "grammar", status,
     myTurn: status === "active" && whoseTurn(duel.rounds) === seat, myScore, theirScore,
     result: status !== "complete" ? null : myScore > theirScore ? "win" : myScore < theirScore ? "loss" : "draw",
-    date: duel.updatedAt.toISOString(), xp,
+    date: duel.updatedAt.toISOString(), xp, bonusXp: bonusReceipt(duel.rounds)?.[seat] ?? 0,
     rounds: duel.rounds.map(r => ({ chapter: Number(r.unitKey.slice(-2)), mine: r[`${seat}Answers`], theirs: r[`${other}Answers`] })) };
 }
 export async function listDuels(db: Db, classScope: ClassScope, userId: string, at = new Date()): Promise<ArenaData> {
@@ -316,6 +321,44 @@ export function completeDuel(rounds: readonly DuelRound[], p1: string, p2: strin
   const complete = rounds.length === DUEL_ROUNDS && rounds.every(r => r.p1Answers.length === DUEL_QUESTIONS && r.p2Answers.length === DUEL_QUESTIONS);
   return { p1Score, p2Score, status: complete ? "complete" : "active", winner: !complete || p1Score === p2Score ? null : p1Score > p2Score ? p1 : p2 };
 }
+/** The receipt lives in existing rounds JSON; legacy duels have no bonus. */
+function storedBonus(seat: Seat) {
+  return sql<number>`case when ${duels.rounds}->4->'bonus'->>'version' = '1'
+    and ${duels.rounds}->4->'bonus'->>${seat} in ('50','100')
+    then (${duels.rounds}->4->'bonus'->>${seat})::int else 0 end`;
+}
+function storedBonusFor(userId: string) {
+  return sql<number>`case when ${duels.p1} = ${userId} then ${storedBonus("p1")}
+    when ${duels.p2} = ${userId} then ${storedBonus("p2")} else 0 end`;
+}
+/** Same-class scope remains mandatory. Serialise BOTH participants before quota
+ * reads or any XP write, so concurrent final answers in different duels cannot
+ * consume the same daily slot. Sorted locks avoid opposite-order deadlocks. */
+async function settleBonus(db: Db, classScope: ClassScope, duel: Duel, scores: ReturnType<typeof completeDuel>, attemptId: string, at: Date): Promise<DuelBonusReceipt> {
+  for (const userId of [duel.p1,duel.p2].sort()) {
+    const locked = await db.select({ lock: sql`pg_advisory_xact_lock(hashtextextended(${`domigo:duel-bonus:${userId}`},0))` })
+      .from(v2IdentityUsers).where(and(inArray(v2IdentityUsers.classId,[...classScope]),eq(v2IdentityUsers.classId,duel.classId),eq(v2IdentityUsers.id,userId)));
+    if (locked.length !== 1) throw new DuelError(403,"duel_forbidden");
+  }
+  const pair = sql`((${duels.p1} = ${duel.p1} and ${duels.p2} = ${duel.p2}) or (${duels.p1} = ${duel.p2} and ${duels.p2} = ${duel.p1}))`;
+  const finishedAt = sql`coalesce((${duels.rounds}->4->'bonus'->>'at')::timestamptz,${duels.updatedAt})`;
+  const weekStart = sql`(${viennaMonday(at)}::date::timestamp at time zone 'Europe/Vienna')`;
+  const today = viennaDayString(at), recent = new Date(at.getTime() - 24*60*60*1000);
+  const [usage] = await db.select({
+    pairWeek: sql<number>`count(*) filter(where ${pair} and (${storedBonus("p1")} > 0 or ${storedBonus("p2")} > 0) and ${finishedAt} >= ${weekStart})::int`,
+    p1Day: sql<number>`count(*) filter(where ${storedBonusFor(duel.p1)} > 0 and (${finishedAt} at time zone 'Europe/Vienna')::date = ${today}::date)::int`,
+    p2Day: sql<number>`count(*) filter(where ${storedBonusFor(duel.p2)} > 0 and (${finishedAt} at time zone 'Europe/Vienna')::date = ${today}::date)::int`,
+    lastPairAt: sql<string|null>`max(${finishedAt}) filter(where ${pair})`,
+  }).from(duels).where(and(inArray(duels.classId,[...classScope]),eq(duels.classId,duel.classId),ne(duels.id,duel.id),
+    or(inArray(duels.p1,[duel.p1,duel.p2]),inArray(duels.p2,[duel.p1,duel.p2])),
+    sql`(${duels.status} = 'complete' or ${duels.rounds}->4->'bonus'->>'version' = '1')`,
+    sql`${duels.updatedAt} >= least(${weekStart},${recent.toISOString()}::timestamptz)`));
+  if (!usage) throw new DuelError(503,"arena_unavailable");
+  return {version:1,at:at.toISOString(),attemptId,...resultBonus(scores.p1Score,scores.p2Score,{
+    pairWeek:Number(usage.pairWeek),p1Day:Number(usage.p1Day),p2Day:Number(usage.p2Day),lastPairAt:usage.lastPairAt ? new Date(usage.lastPairAt) : null,
+  },at)};
+}
+
 /** Called only by /api/attempts AFTER engine grading, inside the same transaction
  * as the lock/recheck, ordinary recordAttempt and duel update. A reused attempt
  * id is a conflict, never a free duel answer. Any failure rolls ALL writes back. */
@@ -324,11 +367,13 @@ export async function recordAnswer(db: Db, classScope: ClassScope, attempt: Reco
   const { duel, itemId } = await validateDuelAnswer(db, classScope, attempt.userId, context, choice, at, true);
   if (attempt.itemId !== itemId) throw new DuelError(409, "duel_question_closed");
   if (attempt.classId !== duel.classId || attempt.grade !== duel.grade || attempt.mode !== `duel:${duel.id}` || attempt.kind !== duel.mode) throw new DuelError(403, "duel_forbidden");
-  const recorded = await recordAttempt(db, classScope, { ...attempt, context });
-  if (recorded.duplicate) throw new DuelError(409, "duel_question_closed");
   const rounds = structuredClone(duel.rounds), seat = seatOf(duel, attempt.userId);
   rounds[context.round]![`${seat}Answers`].push(attempt.tier === "correct");
-  await db.update(duels).set({ rounds, ...completeDuel(rounds, duel.p1, duel.p2), updatedAt: at })
+  const completion = completeDuel(rounds,duel.p1,duel.p2);
+  if (completion.status === "complete") rounds[DUEL_ROUNDS-1]!.bonus = await settleBonus(db,classScope,duel,completion,attempt.clientAttemptId,at);
+  await db.update(duels).set({ rounds, ...completion, updatedAt: at })
     .where(and(inArray(duels.classId, [...classScope]), eq(duels.id, duel.id), eq(duels.classId, duel.classId)));
+  const recorded = await recordAttempt(db, classScope, { ...attempt, context },completion.status === "complete" ? duel.id : undefined);
+  if (recorded.duplicate) throw new DuelError(409, "duel_question_closed");
   return recorded;
 }

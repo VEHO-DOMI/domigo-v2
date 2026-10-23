@@ -110,7 +110,7 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     p2: kennung(W.konto, "Zweiter Teilnehmer derselben Klasse; derselbe Löschweg"),
     mode: sachlich("Vokabel- oder Grammatik-Aufgabentyp"),
     status: sachlich("Partiestand active/complete/expired"),
-    rounds: person(W.richtigFalsch, "Chapter, Aufgabenkennungen, vier Optionen und je Kind nur richtig/falsch; keine Rohantworten, Namen oder Antwortschlüssel"),
+    rounds: person(W.richtigFalsch, "Chapter, Aufgabenkennungen, vier Optionen und je Kind richtig/falsch; letzte Runde zusätzlich einmaliger Bonusbeleg (Version, Zeitpunkt, Versuchkennung, Punkte je Sitz), keine Rohantworten, Namen oder Antwortschlüssel"),
     p1_score: person(W.richtigFalsch, "Summe der richtigen Antworten, höchstens 15; kein XP-Bonus"),
     p2_score: person(W.richtigFalsch, "Summe der richtigen Antworten, höchstens 15; kein XP-Bonus"),
     winner: kennung(W.konto, "Nur Sieger-Kennung oder null, aus Antworten abgeleitet; kein zweiter Statistik-Schreiber"),

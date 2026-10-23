@@ -57,7 +57,7 @@ it("W12 client source: preview guards before POST; receipts alone supply XP and 
   assert.match(client, /setReceipt\(\{ tier: reply.tier, xpAwarded: reply.xpAwarded \}\)/);
   assert.doesNotMatch(client, /\bitemId\b/);
   assert.match(client, /context: \{ duelId: duel.id, round: next.round, question: next.question \}/);
-  for (const code of [hub, client]) assert.doesNotMatch(code, /xpForTier|gradeVocab|correctIdx|localStorage|sessionStorage|indexedDB|xp\s*\+=|xpAwarded\s*:\s*\d|\bbonus\b/i);
+  for (const code of [hub, client]) assert.doesNotMatch(code, /xpForTier|gradeVocab|correctIdx|localStorage|sessionStorage|indexedDB|xp\s*\+=|xpAwarded\s*:\s*\d|bonusXp\s*[:=]\s*\d|bonusXp\s*[+*/]/i);
 });
 it("W13 arena pages use server identity/year and preview, and are covered by middleware", () => {
   for (const file of ["apps/web/app/arena/page.tsx", "apps/web/app/arena/duel/[id]/page.tsx"]) {
@@ -77,7 +77,7 @@ it("W15 result uses original win/draw/loss emojis; history displays confirmed sc
     const d = { ...example.duel, status: "complete", result, myScore: 3, theirScore: 2, date: "2026-10-09T08:00:00Z", xp: 40 };
     const html = render(screen, { arena: { ...emptyArena(), enabled: true, history: [d] }, grade: 2, preview: false });
     const label = result === "win" ? "Victory!" : result === "draw" ? "Draw" : "Defeat";
-    assert.ok(html.includes(`${emoji} ${label}`)); assert.match(html, /3–2/); assert.match(html, /\+40 XP/); assert.match(html, /Battle history/);
+    assert.ok(html.includes(`${emoji} ${label}`)); assert.match(html, /3–2/); assert.match(html, /\+40 answer XP/); assert.match(html, /\+0 bonus XP/); assert.match(html, /Battle history/);
   }
 });
 it("W16 every Arena transaction route explicitly selects the Node runtime", () => {
@@ -109,8 +109,12 @@ it("W21 question guidance is German in grade one and English in grades two to fo
 it("W22 completed duel displays only recorded XP for victory, draw and defeat", async () => {
   for (const grade of [1, 2, 3, 4]) for (const result of ["win", "draw", "loss"]) {
     const data = await readDuel({ kind: "preview", grades: [grade] }, "example") as { duel: Record<string, unknown> };
-    const html = render(duelScreen, { data: { ...data, duel: { ...data.duel, status: "complete", result, xp: 37, myScore: 7 } }, grade, preview: false, ownerId: "synthetic" });
-    assert.match(html, /7\/15 [^<]+ · \+37 XP/); assert.equal((html.match(/\+\d+ XP/g) ?? []).join(), "+37 XP");
+    for (const bonusXp of [0, result === "win" ? 100 : result === "draw" ? 50 : 0]) {
+      const html = render(duelScreen, { data: { ...data, duel: { ...data.duel, status: "complete", result, xp: 37, bonusXp, myScore: 8 } }, grade, preview: false, ownerId: "synthetic" });
+      assert.match(html, /8\/15 [^<]+ · \+37 (?:Antwort-XP|answer XP)/);
+      assert.match(html, new RegExp(`\\+${bonusXp} (?:Bonus-XP|bonus XP)`));
+      assert.doesNotMatch(html, /\+(?:87|137) /,"answer and result XP must not be merged by the client");
+    }
   }
 });
 it("W23 actual Home page and access helper hide Arena when A is off; preview reads no children", async () => {
@@ -168,7 +172,7 @@ it("W25 all 57 units: actual page props and key carry only prompt/options/coordi
     assert.doesNotMatch(html, /g[1-4]u\d{2}\.w\./);
     const data = captured!.data as { duel: { next: Record<string, unknown> } };
     assert.deepEqual(Object.keys(data).sort(), ["chapters", "duel"]);
-    assert.deepEqual(Object.keys(data.duel).sort(), ["avatar", "canOpen", "date", "grade", "id", "me", "mode", "myAvatar", "myScore", "myTurn", "next", "opponent", "result", "rounds", "status", "theirScore", "xp"]);
+    assert.deepEqual(Object.keys(data.duel).sort(), ["avatar", "bonusXp", "canOpen", "date", "grade", "id", "me", "mode", "myAvatar", "myScore", "myTurn", "next", "opponent", "result", "rounds", "status", "theirScore", "xp"]);
     const metadata = Object.fromEntries(Object.entries(data.duel).filter(([key]) => key !== "next"));
     const expectedMetadata = Object.fromEntries(Object.entries((server.exampleDuel as (g: number) => Record<string, unknown>)(grade)).filter(([key]) => key !== "next"));
     assert.deepEqual(metadata, expectedMetadata);
