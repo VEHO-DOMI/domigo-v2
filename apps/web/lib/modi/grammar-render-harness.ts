@@ -49,7 +49,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
       compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 },
     }).outputText);
     const exports: Record<string, unknown> = {}; loaded.set(path, exports);
-    const relatives: Record<string, string> = { "./GrammarMemory": "app/modi/grammar/GrammarMemory.tsx", "./GrammarExercise": "app/modi/grammar/GrammarExercise.tsx", "@/lib/modi/preference": "lib/modi/preference.ts" };
+    const relatives: Record<string, string> = { "./GrammarMemory": "app/modi/grammar/GrammarMemory.tsx", "./GrammarExercise": "app/modi/grammar/GrammarExercise.tsx", "@/lib/modi/preference": "lib/modi/preference.ts", "@/lib/trainer/preferences": "lib/trainer/preferences.tsx", "./register": "lib/trainer/register.ts" };
     runInNewContext(compiled.get(path)!, { exports, crypto, Event,
       localStorage: { getItem: (key: string) => stored.get(key) ?? null, setItem: (key: string, value: string) => { writes.push([key, value]); stored.set(key, value); } },
       window: { dispatchEvent() {}, addEventListener() {}, removeEventListener() {} },

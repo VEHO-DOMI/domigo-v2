@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { VocabItem } from "@domigo/content-schema";
@@ -40,8 +41,9 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
       if (ids.current.has(id)) setReceipts((old) => ({ ...old, [id]: receipt }));
     });
   }, [preview, ownerId]);
-  const detail = modeDetails(grade)[mode];
-  const de = grade === 1;
+  const language = useTrainerLanguage(grade);
+  const detail = modeDetails(grade, language)[mode];
+  const de = language === "de";
   const suffix = preview ? `?jahrgang=${grade}` : "";
   const submit = useCallback(async (item: VocabItem, input: ModeInput, hintUsed = false) => {
     const id = crypto.randomUUID();
@@ -92,7 +94,7 @@ export default function ModeSession({ ownerId, preview, grade, mode, words, roun
       <div className="og-game-totals"><div><strong>{all.length}</strong><span>{de ? "Antworten" : "Answers"}</span></div><div><strong>{confirmed.filter((receipt) => receipt.tier === "correct").length}</strong><span>{de ? "Richtig" : "Correct"}</span></div>{!preview && <div><strong>{total}</strong><span>XP</span></div>}</div>
       {summary.length > 0 && <div className="og-game-totals">{summary.map((entry) => <div key={entry.label}><strong>{entry.value}</strong><span>{entry.label}</span></div>)}</div>}
       {pending > 0 && <p role="status">{de ? `${pending} Antworten noch nicht bestätigt.` : `${pending} answers not yet confirmed.`}</p>}
-      {mode === "flashcards" && <Link className="og-game-back" href={`/review${suffix}`}>🔄 Smart Review</Link>}
+      {mode === "flashcards" && <Link className="og-game-back" href={`/review${suffix}`}>🔄 {de ? "Wiederholung" : "Smart Review"}</Link>}
       <button className="og-primary" onClick={() => { ids.current.clear(); setReceipts({}); setSummary([]); setDone(false); setDeck(null); setSpeedSession(null); }}>{de ? "Noch einmal" : "Play Again"}</button><Link href={`/modi${suffix}`}>{de ? "Modus wählen" : "Choose Mode"}</Link>
     </section> : <>
       {mode === "flashcards" && <Flashcards {...props} />}

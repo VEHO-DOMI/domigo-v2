@@ -1,0 +1,37 @@
+/* Shared trainer controls: named scale on the existing notebook grid. */
+.og-root[data-grade] {
+  --trainer-unit:calc(var(--le-line-spacing) / 9);
+  --trainer-target:calc(var(--trainer-unit) * 11);
+  --trainer-hairline:1px;
+  --trainer-label:1rem;
+}
+.og-root .og-language { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:calc(var(--trainer-unit) * 2); margin:calc(var(--trainer-unit) * 3) auto; }
+.og-root .og-language button { min-width:var(--trainer-target); min-height:var(--trainer-target); padding:calc(var(--trainer-unit) * 2) calc(var(--trainer-unit) * 4); border:var(--trainer-hairline) solid var(--text-secondary); border-radius:var(--radius); font:600 var(--trainer-label)/1.4 var(--font-body); background:var(--card-solid); color:var(--ink); cursor:pointer; }
+.og-root .og-language button[aria-pressed="true"] { background:var(--accent-soft); border-width:calc(var(--trainer-hairline) * 2); }
+.og-root .og-preview { align-items:center; color:var(--ink); }
+.og-root .og-preview a,.og-root .og-footer :is(a,button) { display:inline-flex; align-items:center; justify-content:center; min-width:var(--trainer-target); min-height:var(--trainer-target); color:var(--text-secondary); }
+.og-root :is(.og-preview,.og-language,.og-footer) :is(a,button):focus-visible { outline:calc(var(--trainer-unit) * .75) solid var(--text-secondary); outline-offset:var(--trainer-unit); }
+/* W7 measured readability, using the existing year palette rather than a
+   second colour system. The foreground/background pair stays theme-bound. */
+.og-root[data-grade][data-theme][data-screen] {
+  --trainer-secondary:color-mix(in srgb,var(--ink) 85%,var(--bg));
+  --muted:var(--trainer-secondary);
+  --text-secondary:var(--trainer-secondary);
+  overflow-x:clip;
+}
+.og-root[data-grade][data-theme][data-screen] :is(.og-tagline,.og-grade,.og-player-xp,.og-player-vibe,.og-grammar-line,.og-switch,.og-mode small,.og-mode-xp,.og-directions legend,.og-direction small,.og-today-heading h2,.og-roadmap>div,.og-rank,.og-daily-count) { color:var(--ink); opacity:1; }
+.og-root[data-grade][data-theme][data-screen] .og-grade { -webkit-text-fill-color:var(--ink); }
+.og-root[data-grade][data-theme][data-screen] .og-primary { background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 60%,var(--ink)),color-mix(in srgb,var(--accent-deep) 60%,var(--ink))); color:var(--bg); text-shadow:none; }
+.og-root[data-grade][data-theme][data-screen] .og-avatar-close { background:var(--ink); color:var(--bg); }
+.og-root[data-grade][data-theme][data-screen] .og-start-sub { color:inherit; opacity:1; }
+.og-root[data-grade][data-theme][data-screen] .og-rank { background:linear-gradient(color-mix(in srgb,var(--bg) 65%,transparent),color-mix(in srgb,var(--bg) 65%,transparent)),var(--trainer-rank-gradient); border:var(--trainer-hairline) solid var(--text-secondary); }
+.og-root[data-grade][data-theme][data-screen] :is(.og-wordmark,.og-avatar,.og-player-name>a,.og-switch,.og-primary,.og-back,.og-setup-header>a,.og-review-chip,.og-chapters summary,.og-chapters label,.og-direction,.og-avatar-close,.og-logout) { min-width:var(--trainer-target); min-height:var(--trainer-target); display:inline-flex; align-items:center; justify-content:center; }
+.og-root[data-grade][data-theme][data-screen] :is(.og-primary,.og-back,.og-review-chip) { display:flex; }
+.og-root[data-grade][data-theme][data-screen] .og-avatar img { width:var(--trainer-target); height:var(--trainer-target); }
+.og-root[data-grade][data-theme][data-screen] .og-footer { position:static; height:auto; padding:calc(var(--trainer-unit)*3); }
+.og-root[data-grade][data-theme][data-screen] .og-setup-footer { position:static; }
+.og-root[data-grade][data-theme][data-screen] .og-avatar-panel { background:var(--card-solid); color:var(--ink); }
+.og-root[data-grade][data-theme][data-screen] .og-avatar-close { padding:calc(var(--trainer-unit)*2) calc(var(--trainer-unit)*4); border-radius:var(--radius); }
+.og-root[data-grade][data-theme][data-screen] :is(.og-chapters label,.og-direction) { justify-content:flex-start; gap:calc(var(--trainer-unit)*2); }
+.og-root[data-grade][data-theme][data-screen] :is(a,button,input,summary):focus-visible { outline:calc(var(--trainer-unit)*.75) solid var(--text-secondary); outline-offset:var(--trainer-unit); }
+.og-root[data-grade][data-theme][data-screen] :is(.og-grammar-bar>div>span,.og-review-chip,.og-roadmap>div>span,.og-roadmap>div strong) { color:var(--ink); }

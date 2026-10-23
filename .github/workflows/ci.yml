@@ -67,6 +67,8 @@ jobs:
       - run: pnpm check:arena-a11y --out "${{ runner.temp }}/arena-display" # cgo-112: 144 views, 44px targets and text/control/graphic contrast
       - run: pnpm check:activity-display:selftest --out "${{ runner.temp }}/activity-selftest" # cgo-113: deliberately broken controls, text and design values
       - run: pnpm check:activity-display --out "${{ runner.temp }}/activity-display" # cgo-113: actual UI transitions, timer, undo, privacy, 144 displays including preview
+      - run: pnpm check:trainer-display:selftest --out "${{ runner.temp }}/trainer-selftest" # W7: size, contrast, raw tokens and one-pixel baseline mutation
+      - run: pnpm check:trainer-display --out "${{ runner.temp }}/trainer-display" # actual pages, four years, language, both widths/themes
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,6 +78,8 @@ jobs:
             ${{ runner.temp }}/arena-display
             ${{ runner.temp }}/activity-selftest
             ${{ runner.temp }}/activity-display
+            ${{ runner.temp }}/trainer-display
+            ${{ runner.temp }}/trainer-selftest
           retention-days: 7
 
   content-validate:

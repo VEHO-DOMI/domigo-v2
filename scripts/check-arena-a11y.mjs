@@ -59,8 +59,11 @@ function load(file, dependencies) {
 }
 const copy = load('apps/web/lib/arena/copy.ts', {});
 const base = { react: React, 'react/jsx-runtime': jsx, 'next/link': { default: 'a' }, 'next/navigation': { useRouter: () => ({}) }, '@/lib/arena/copy': copy };
+const preferences = load('apps/web/lib/trainer/preferences.tsx', { react: {...React,useSyncExternalStore:(_subscribe,get)=>get()}, 'react/jsx-runtime':jsx, './register':load('apps/web/lib/trainer/register.ts',{}) });
+base['@/lib/trainer/preferences'] = preferences;
 const states = ['hub', 'picker', 'question', 'correct', 'wrong', 'chapters', 'waiting', 'result', 'unavailable'];
 function html(grade, theme, state) {
+  preferences.chooseTrainerTheme(grade,theme);
   // Only local state is supplied; no event handlers or network calls are run.
   let call = 0;
   const duelState = [false, '', ['correct', 'wrong'].includes(state) ? { tier: state, xpAwarded: state === 'correct' ? 10 : 0 } : null, 'chair'];
@@ -74,7 +77,7 @@ function html(grade, theme, state) {
   const a = { enabled: state !== 'unavailable', unavailable: state === 'unavailable', rosterVersion: 'synthetic', peers: [{ number: 1, name: d.opponent, avatar: 2 }], active: [d], history: [{ ...d, id: '00000000-0000-4000-8000-000000000113', status: 'complete', result: 'win', myScore: 12, theirScore: 8, xp: 120 }], waiting: 1, stats: { played: 1, won: 1, winRate: 100, xp: 140 } };
   const hub = ['hub', 'picker', 'unavailable'].includes(state);
   const child = React.createElement(hub ? arena.default : duel.default, hub ? { arena: a, grade, preview: false } : { data: { duel: d, chapters: [{ key: 'synthetic-1', chapter: 1 }, { key: 'synthetic-2', chapter: 2 }] }, grade, preview: false, ownerId: 'synthetic' });
-  const Shell = load('apps/web/app/home/TrainerShell.tsx', { ...base, react: { ...React, useSyncExternalStore: () => theme } }).default;
+  const Shell = load('apps/web/app/home/TrainerShell.tsx', base).default;
   const body = renderToStaticMarkup(React.createElement(Shell, { grade, preview: false, screen: 'arena' }, child));
   return `<!doctype html><html lang="${grade === 1 ? 'de' : 'en'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${fonts}${css}</style></head><body>${body}</body></html>`;
 }

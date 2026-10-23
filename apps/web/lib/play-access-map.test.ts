@@ -1,3 +1,4 @@
+import { trainerPreferences } from "./trainer/test-loader.ts";
 // cgo-047 · THE PREVIEW WRITES NOTHING — the source contract of every student
 // surface a teacher can open (lib/student-view.ts, lib/preview-attempt.ts).
 //
@@ -564,7 +565,7 @@ describe("OG W1 surfaces", () => {
   });
   it("dictionary names only the available library until W2", () => {
     const home = code(read("home/page.tsx"));
-    assert.match(home, /<strong>Dictionary<\/strong><small>Browse your full vocabulary library<\/small>/);
+    assert.match(home, /text\("Wörterbuch", "Dictionary"\).*text\("Alle Wörter nachschlagen", "Browse your full vocabulary library"\)/);
     assert.doesNotMatch(home, /Flashcards/i);
   });
   it("daily reserve stays after selection and is visible without replacing words", () => {
@@ -573,7 +574,8 @@ describe("OG W1 surfaces", () => {
     assert.ok(loader.indexOf("selectDailyChallenge(") < loader.indexOf("listReservedForClass("));
     const runner = code(read("practice/page.tsx"));
     assert.match(runner, /vocab: challenge.availableWords/);
-    for (const page of [runner, code(read("home/page.tsx"))]) assert.match(page, /Heute gesperrt: \{challenge.blockedCount\}\/10/);
+    assert.match(runner, /Heute gesperrt: \{challenge.blockedCount\}\/10/);
+    assert.match(code(read("home/page.tsx")), /text\("Heute gesperrt", "Blocked today"\).*\{challenge.blockedCount\}\/10/);
     assert.match(code(read("home/page.tsx")), /challenge.availableWords.length > 0/);
   });
   it("home and modes honor the merged runtime story opening", () => {
@@ -671,6 +673,7 @@ async function renderTrainer(file: string, props: Record<string, unknown>): Prom
     "@/lib/levels": levels, "@/lib/avatar": avatar,
     "@/lib/modi/catalog": modeCatalog,
   };
+  modules["@/lib/trainer/preferences"] = trainerPreferences(modules);
   const preference = await import("./modi/preference.ts");
   modules["@/lib/modi/preference"] = preference;
   const switchCode = ts.transpileModule(read("home/ModeSwitch.tsx"), { compilerOptions: {
@@ -723,7 +726,7 @@ it("Nachzug 1 player grammar line is only level/title and right-aligned XP", asy
 it("Nachzug 1 grades 3/4 start dark and theme selection never persists", async () => {
   for (const grade of [1, 2, 3, 4]) {
     const html = await renderTrainer("home/TrainerShell.tsx", { grade, preview: true, children: "Test" });
-    assert.ok(html.includes(`data-theme="${grade >= 3 ? "dark" : "system"}"`));
+    assert.ok(html.includes(`data-theme="${grade >= 3 ? "dark" : "light"}"`));
   }
   assert.doesNotMatch(code(read("home/TrainerShell.tsx")), /localStorage|sessionStorage|indexedDB|fetch\(/);
 });
@@ -798,6 +801,6 @@ it("G15 grammar entry routes are live and player titles still use both official 
     const { levelFor, grammarTitle, registerFor } = await import("./levels.ts");
     const level = levelFor(80);
     assert.ok(html.includes(grammarTitle(level.level, level.prestige, registerFor(grade)).name));
-    assert.ok(html.includes("Switch to Vocab or Story Mode"));
+    assert.ok(html.includes(grade === 1 ? "Zu Vokabeln oder Story Mode" : "Switch to Vocab or Story Mode"));
   }
 });

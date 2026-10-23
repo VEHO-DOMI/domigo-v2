@@ -1,5 +1,6 @@
-export function arenaCopy(grade: number) {
-  return grade === 1 ? {
+import type { TrainerLanguage } from "../trainer/register";
+export function arenaCopy(grade: number, language: TrainerLanguage = grade === 1 ? "de" : "en") {
+  return language === "de" ? {
     back: "Zurück", title: "Battle Arena", duel: "Word Duel", newDuel: "Neues Duell", choosePeer: "Wähle einen Mitschüler", peerHint: "Ihr spielt, wenn ihr Zeit habt.",
     close: "Schließen", played: "Gespielt", won: "Gewonnen", rate: "Siegquote", xp: "Battle XP", active: "Offene Duelle", history: "Verlauf",
     waitingCount: "Duelle, die auf deinen Zug warten", yourTurn: "Du bist dran", waiting: "Warten", noDuels: "Noch kein Duell offen.", noHistory: "Noch keine abgeschlossenen Duelle.",
@@ -21,8 +22,8 @@ export function arenaCopy(grade: number) {
     reserve: "This question is currently held back. Come back to the duel later.", subtitle: "Word Duel & battle history", me: "You", points: "correct", score: "Score",
   };
 }
-export function arenaMessage(code: string, grade: number): string {
-  const c = arenaCopy(grade);
+export function arenaMessage(code: string, grade: number, language: TrainerLanguage = grade === 1 ? "de" : "en"): string {
+  const c = arenaCopy(grade, language);
   return code === "duel_already_active" ? c.duplicate : code === "duel_expired" ? c.expiredHint
     : code === "duel_question_reserved" ? c.reserve : ["duel_question_closed", "duel_round_closed", "roster_changed", "duel_chapter_empty", "wrong_owner"].includes(code) ? c.conflict
     : code === "arena_disabled" ? c.off : c.unavailable;

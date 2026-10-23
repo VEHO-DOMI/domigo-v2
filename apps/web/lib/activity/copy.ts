@@ -1,5 +1,6 @@
-export function activityCopy(grade: number) {
-  const de = grade === 1;
+import type { TrainerLanguage } from "../trainer/register";
+export function activityCopy(grade: number, language: TrainerLanguage = grade === 1 ? "de" : "en") {
+  const de = language === "de";
   return {
     back: de ? "Zurück" : "Back", title: "Activity Game", subtitle: de ? "Zeichnen · Zeigen · Erklären" : "Draw · Show · Explain",
     groups: de ? "Gruppen" : "Groups", group: de ? "Gruppe" : "Group", add: de ? "Gruppe hinzufügen" : "Add group", remove: de ? "Gruppe entfernen" : "Remove group",

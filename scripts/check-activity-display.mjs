@@ -71,7 +71,7 @@ async function measure(page) {
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     for (let node; (node = walker.nextNode());) {
       const e = node.parentElement, cs = getComputedStyle(e), label = node.textContent.trim();
-      if ((modal && !modal.contains(e)) || !label || !e.getClientRects().length || cs.visibility === 'hidden' || parseFloat(cs.fontSize) === 0 || e.closest('[aria-hidden="true"],.activity-sr')) continue;
+      if ((modal && !modal.contains(e)) || !label || !e.getClientRects().length || !e.checkVisibility({visibilityProperty:true}) || cs.visibility === 'hidden' || parseFloat(cs.fontSize) === 0 || e.closest('[aria-hidden="true"],.activity-sr')) continue;
       if (e.closest('.og-wordmark,button:disabled') || !/[\p{L}\p{N}✓×]/u.test(label)) { excluded.push(label); continue; }
       ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = cs.color; ctx.fillRect(0, 0, 1, 1);
       const colour = Array.from(ctx.getImageData(0, 0, 1, 1).data);
@@ -82,8 +82,8 @@ async function measure(page) {
       const size = parseFloat(cs.fontSize), weight = parseInt(cs.fontWeight) || 400;
       text.push({ label, selector: e.className, colour: colour.slice(0, 3), opacity, rects, minimum: size >= 24 || size >= 18.667 && weight >= 700 ? 3 : 4.5 });
     }
-    const controls = [...document.querySelectorAll('.activity-button:not(:disabled),.activity-group input')].filter(e => !modal || modal.contains(e)).map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { kind: e.matches('.arena-block') ? 'graphic' : 'control', label: e.textContent.trim() || e.getAttribute('aria-label'), x: r.x + r.width / 2, y: r.y, stroke }; });
-    return { controls, overflow: document.documentElement.scrollWidth > innerWidth, targets: [...document.querySelectorAll('button,a,input')].filter(e => e.getClientRects().length && (!modal || modal.contains(e))).map(e => { const r = e.getBoundingClientRect(); return { label: e.textContent.trim(), width: r.width, height: r.height }; }), text, excluded };
+    const controls = [...document.querySelectorAll('.activity-button:not(:disabled),.activity-group input')].filter(e => e.getClientRects().length && e.checkVisibility({visibilityProperty:true}) && (!modal || modal.contains(e))).map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { kind: e.matches('.arena-block') ? 'graphic' : 'control', label: e.textContent.trim() || e.getAttribute('aria-label'), x: r.x + r.width / 2 + scrollX, y: r.y + scrollY, stroke }; });
+    return { controls, overflow: document.documentElement.scrollWidth > innerWidth, targets: [...document.querySelectorAll('button,a,input')].filter(e => e.getClientRects().length && e.checkVisibility({visibilityProperty:true}) && (!modal || modal.contains(e))).map(e => { const r = e.getBoundingClientRect(); return { label: e.textContent.trim(), width: r.width, height: r.height }; }), text, excluded };
   });
   const hide = await page.addStyleTag({ content: '* { color:transparent!important; -webkit-text-fill-color:transparent!important; text-shadow:none!important; } .og-wordmark { visibility:hidden!important; }' });
   const png = PNG.sync.read(await page.screenshot({ fullPage: true, animations: 'disabled' }));
@@ -155,6 +155,13 @@ try {
       await click(t.start);if (!selftest) await capture(grade,'ready');
       await click(t.round);await capture(grade,'play');
       if (selftest) {
+        // A closed dialog has no painted control. Once opened, its deliberately
+        // invisible border must be detected: visibility filtering cannot hide it.
+        await page.evaluate(()=>{const d=document.createElement('dialog');d.id='hidden-control-probe';d.className='activity-dialog';d.innerHTML='<button class="activity-button" style="color:#000;background:#fff;border-color:#fff">hidden-control-probe</button>';document.querySelector('.activity-screen').append(d);});
+        assert(!(await measure(page)).controls.some(c=>c.label==='hidden-control-probe'));
+        await page.locator('#hidden-control-probe').evaluate(e=>e.showModal());
+        const visibleFailure=violations(await measure(page));assert(visibleFailure.some(f=>f.startsWith('control hidden-control-probe:')),'visible dialog control must be measured');
+        mutants.push({name:'closed-then-visible-dialog',failures:visibleFailure});await page.locator('#hidden-control-probe').evaluate(e=>{e.close();e.remove();});
         for(const [name,css,expected] of [
           ['small-target','.activity-play-actions button {min-height:0;height:20px;padding:0}', 'target'],
           ['pale-text','.activity-word h2 {color:#aaa;background:#fff}', 'contrast'],
