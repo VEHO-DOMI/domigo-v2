@@ -17,7 +17,7 @@ describe("cgo-109 mode contracts", () => {
     const ordered = ["full", "sprint", "speed", "mc", "flashcards", "memory", "spelling", "wordhunt", "grammar"];
     let last = -1;
     for (const mode of ordered) { const index = picker.indexOf(`"${mode}"`, picker.indexOf("const modes:")); assert.ok(index > last, mode); last = index; }
-    assert.match(picker, /Dictionary &amp; Flashcards/);
+    assert.match(picker, /Wörterbuch & Karteikarten.*Dictionary & Flashcards/);
   });
   it("C02 reserve and Chapter selection are shared with practice", () => {
     assert.match(read("ModePage.tsx"), /await loadPracticeWords\(view, grade, chapters\)/);

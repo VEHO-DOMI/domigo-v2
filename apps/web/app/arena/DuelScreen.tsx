@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -7,7 +8,8 @@ import { arenaCopy, arenaMessage } from "@/lib/arena/copy";
 import { DuelResult, RoundBlocks } from "./ArenaScreen";
 
 export default function DuelScreen({ data, grade, preview, ownerId }: { data: DuelScreenData; grade: number; preview: boolean; ownerId: string | null }) {
-  const c = arenaCopy(grade), router = useRouter(), { duel, chapters } = data, next = duel.next;
+  const language = useTrainerLanguage(grade);
+  const c = arenaCopy(grade, language), router = useRouter(), { duel, chapters } = data, next = duel.next;
   const [busy, setBusy] = useState(false), [error, setError] = useState(""), [receipt, setReceipt] = useState<{ tier: string; xpAwarded: number } | null>(null), [selected, setSelected] = useState<string | null>(null);
   const inFlight = useRef(false);
   async function post(path: string, body: unknown) {
@@ -16,7 +18,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
     try {
       const response = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const reply = await response.json();
-      if (!response.ok || !reply.ok) { setError(arenaMessage(reply.error, grade)); return; }
+      if (!response.ok || !reply.ok) { setError(arenaMessage(reply.error, grade, language)); return; }
       if (path === "/api/attempts") setReceipt({ tier: reply.tier, xpAwarded: reply.xpAwarded });
       else router.refresh();
     } catch { setError(c.unavailable); }
@@ -28,7 +30,7 @@ export default function DuelScreen({ data, grade, preview, ownerId }: { data: Du
     void post("/api/attempts", { ownerId, clientAttemptId: crypto.randomUUID(), mode: `duel:${duel.id}`,
       input: { kind: "choice", value }, context: { duelId: duel.id, round: next.round, question: next.question } });
   }
-  return <main className="og-screen arena-screen" lang={grade === 1 ? "de" : "en"}>
+  return <main className="og-screen arena-screen" lang={language}>
     <div className="arena-heading"><Link className="og-back" href={`/arena${preview ? `?jahrgang=${grade}` : ""}`}>← {c.back}</Link><h1>{c.duel}</h1></div>
     {error && <p className="arena-notice" role="alert">{error} <button className="arena-text-button" type="button" onClick={() => router.refresh()}>{c.refresh}</button></p>}
     {preview && <p className="arena-notice">{c.preview}</p>}

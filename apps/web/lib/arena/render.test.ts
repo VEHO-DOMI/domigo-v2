@@ -1,3 +1,4 @@
+import { trainerPreferences } from "../trainer/test-loader.ts";
 import assert from "node:assert/strict";
 import { it } from "node:test";
 import { readdirSync } from "node:fs";
@@ -16,6 +17,7 @@ const readArena = server.readArena as (view: unknown) => Promise<Record<string, 
 const readDuel = server.readDuel as (view: unknown, id: string) => Promise<Record<string, unknown>>;
 const showArenaCard = server.showArenaCard as (view: unknown) => Promise<boolean>;
 const deps: Record<string, unknown> = { react: React, "react/jsx-runtime": jsx, "next/link": { default: "a" }, "next/navigation": { useRouter: () => ({}) }, "@/lib/arena/copy": copy };
+deps["@/lib/trainer/preferences"] = trainerPreferences(deps);
 const screen = loadTestModule("apps/web/app/arena/ArenaScreen.tsx", deps);
 const duelScreen = loadTestModule("apps/web/app/arena/DuelScreen.tsx", { ...deps, "./ArenaScreen": screen });
 function render(module: typeof screen, props: Record<string, unknown>) { return renderToStaticMarkup(React.createElement(module.default as React.ComponentType<Record<string, unknown>>, props)); }
@@ -114,11 +116,11 @@ it("W22 completed duel displays only recorded XP for victory, draw and defeat", 
 it("W23 actual Home page and access helper hide Arena when A is off; preview reads no children", async () => {
   let enabled = false, calls = 0, view: Record<string, unknown> = { kind: "student", player: { userId: "synthetic", classScope: ["synthetic"], classId: "synthetic" } };
   const access = loadTestModule("apps/web/lib/arena/server.ts", { "server-only": {}, "@domigo/content-loader": {}, "@domigo/db": { getDb: () => { calls++; return {}; } }, "@/auth": {}, "@/lib/content-service": {}, "@/lib/student-view": {}, "../../../../packages/db/src/duel-service.ts": { arenaEnabled: async () => enabled } });
-  const home = loadTestModule("apps/web/app/home/page.tsx", {
+  const home = loadTestModule("apps/web/app/home/page.tsx", { "@/lib/trainer/preferences": trainerPreferences(deps),
     "react/jsx-runtime": jsx, "next/link": { default: "a" }, "next/navigation": { redirect: () => { throw Error("unexpected redirect"); } },
     "@/lib/story-world": { listOpenStories: async () => [] }, "@domigo/db": {},
     "@/lib/student-view": { resolveStudentView: async () => view, trainerGrade: () => 1 },
-    "@/lib/wort-des-tages": { wortDesTages: async () => null, viennaDateKey: () => "synthetic-day" }, "@/lib/stories": { STORY_UI: {}, DEFAULT_STORY_UI: {} },
+    "@/lib/wort-des-tages": { wortDesTages: async () => null, viennaDateKey: () => "2026-10-23" }, "@/lib/stories": { STORY_UI: {}, DEFAULT_STORY_UI: {} },
     "../practice/load-practice": { loadDailyChallenge: async () => null }, "./TrainerShell": { default: ({ children }: { children: React.ReactNode }) => children }, "./PlayerCard": { default: () => null },
     "./trainer-data": { readTrainerProfile: async () => ({}) }, "./ModeSwitch": { ModeStart: () => null }, "@/lib/arena/server": access, "./home.css": {},
   });

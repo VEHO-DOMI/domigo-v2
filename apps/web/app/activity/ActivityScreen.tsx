@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { trainerHref } from "../home/TrainerShell";
@@ -12,7 +13,8 @@ function Scoreboard({ groups, current, title }: { groups: Group[]; current?: num
   }
 
 export default function ActivityScreen({ grade, preview, words, unavailable }: { grade: number; preview: boolean; words: ActivityWord[]; unavailable: boolean }) {
-  const t = activityCopy(grade);
+  const language = useTrainerLanguage(grade);
+  const t = activityCopy(grade, language);
   const [settings, setSettings] = useState(() => defaults(words));
   const [names, setNames] = useState(["", ""]);
   const [game, setGame] = useState<Game | null>(null);
@@ -60,7 +62,7 @@ export default function ActivityScreen({ grade, preview, words, unavailable }: {
     setIntent(null);
   }
   const current = game?.current;
-  return <main className="activity-screen" lang={grade === 1 ? "de" : "en"} data-phase={phase}>
+  return <main className="activity-screen" lang={language} data-phase={phase}>
     <header className="activity-heading">
       <Link className="activity-button" href={trainerHref("/home", grade, preview)}>← {t.back}</Link>
       <button className="activity-button" type="button" aria-pressed={sound} onClick={() => { if (!sound) { setSound(true); } else setSound(false); }}>{t.sound}: {sound ? t.on : t.off}</button>

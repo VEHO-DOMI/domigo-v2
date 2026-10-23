@@ -39,6 +39,8 @@
     "test:no-local-login:selftest": "node scripts/check-no-local-login.mjs --selftest",
     "check:arena-a11y": "node scripts/check-arena-a11y.mjs",
     "check:arena-a11y:selftest": "node scripts/check-arena-a11y.mjs --selftest",
+    "check:trainer-display": "node scripts/check-trainer-display.mjs",
+    "check:trainer-display:selftest": "node scripts/check-trainer-display.mjs --selftest",
     "check:activity-display": "node scripts/check-activity-display.mjs",
     "check:activity-display:selftest": "node scripts/check-activity-display.mjs --selftest"
   },
