@@ -16,7 +16,7 @@ import { measure, violations } from './lib/trainer-display-measure.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'), args=process.argv.slice(2);
 const option=n=>args.includes(n)?args[args.indexOf(n)+1]:null;
 const out=path.resolve(option('--out')??fs.mkdtempSync(path.join(os.tmpdir(),'trainer-display-'))), baseline=option('--baseline'), selftest=args.includes('--selftest'), smoke=args.includes('--smoke');
-assert(!out.startsWith(root+path.sep));fs.mkdirSync(out,{recursive:true});
+assert(out!==root&&!out.startsWith(root+path.sep),'Evidence must stay outside the repository');fs.mkdirSync(out,{recursive:true});
 const req=createRequire(path.join(root,'apps/web/package.json')), postcss=createRequire(req.resolve('@tailwindcss/postcss'))('postcss');
 const global=path.join(root,'apps/web/app/globals.css');
 const css=(await postcss([req('@tailwindcss/postcss')({base:path.join(root,'apps/web')})]).process(fs.readFileSync(global,'utf8'),{from:global})).css+['home/home.css','bestenliste/leaderboard.css','modi/modes.css'].map(f=>fs.readFileSync(path.join(root,'apps/web/app',f),'utf8')).join('\n');
