@@ -1,7 +1,9 @@
-/** Source observations only. This module never issues meaning, teacher or runtime approval. */
+/** Source observations and separately supplied, reviewed teacher decisions.
+ * No approval is inferred from source matches, audit prose or override inputs. */
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import ts from "typescript";
+import { ActivityTeacherDecisions } from "@domigo/content-schema";
 
 export class ActivityEvidenceError extends Error {}
 
@@ -15,8 +17,8 @@ const Source=z.object({grade,data:Blob,audit:Blob.nullable(),overrides:Blob.null
 const Task=z.object({id:nonblank,grade,unit:z.number().int().positive(),w:nonblank,g:nonblank,taskFingerprint:sha}).strict();
 const Classification=z.object({id:nonblank,word:nonblank,mode}).strict();
 const ExpectedSource=z.object({grade,sha256:sha,originalEntries:z.number().int().nonnegative(),matched:z.number().int().nonnegative(),canonicalEntries:z.number().int().nonnegative()}).strict();
-const Pin=z.object({path:z.string().regex(/^(?:content\/corpus\/units\/g[1-4]-u\d{2}\/vocab\.json|content\/overlays\/item-fixes\.json|apps\/web\/lib\/activity\/categories\.json)$/u),sha256:sha}).strict();
-const Input=z.object({sources:z.array(Source).length(4),tasks:z.array(Task),classifications:z.array(Classification),expectedSources:z.array(ExpectedSource).length(4),corpusPins:z.array(Pin)}).strict();
+const Pin=z.object({path:z.string().regex(/^(?:content\/corpus\/units\/g[1-4]-u\d{2}\/vocab\.json|content\/overlays\/item-fixes\.json|apps\/web\/lib\/activity\/(?:categories|teacher-decisions)\.json)$/u),sha256:sha}).strict();
+const Input=z.object({sources:z.array(Source).length(4),tasks:z.array(Task),classifications:z.array(Classification),teacherDecisions:ActivityTeacherDecisions.default([]),expectedSources:z.array(ExpectedSource).length(4),corpusPins:z.array(Pin)}).strict();
 export type ActivityEvidenceInput=z.infer<typeof Input>;
 type BlobInput=z.infer<typeof Blob>;
 export const activityHash=(bytes:Uint8Array)=>createHash("sha256").update(bytes).digest("hex");
@@ -119,6 +121,7 @@ export function buildActivityEvidence(input:unknown) {
   for(const task of parsed.tasks)if(!task.id.startsWith(`g${task.grade}u${String(task.unit).padStart(2,"0")}.w.`))throw new ActivityEvidenceError("activity task placement disagrees with identity");
   const taskIds=new Set(parsed.tasks.map(t=>t.id));
   if(parsed.classifications.some(c=>!taskIds.has(c.id)))throw new ActivityEvidenceError("unaccounted activity classification outside current tasks");
+  if(parsed.teacherDecisions.some(c=>!taskIds.has(c.taskId)))throw new ActivityEvidenceError("unaccounted teacher decision outside current tasks");
   const sources=[...parsed.sources].sort((a,b)=>a.grade-b.grade).map(source=>{
     const pin=metadata(source.data);
     const rows=parseActivityRows(decode(source.data.bytes)).map(row=>({id:`activity:g${source.grade}:${pin.sha256}:${row.record}`, ...row}));
@@ -148,16 +151,20 @@ export function buildActivityEvidence(input:unknown) {
       notes:source.notes.map(note=>({...metadata(note),interpretation:"metadata-only-not-a-decision" as const})).sort((a,b)=>order(a.alias,b.alias))};
   });
   const classifications=new Map(parsed.classifications.map(c=>[c.id,c]));
+  const decisions=new Map(parsed.teacherDecisions.map(c=>[c.taskId,c]));
   const tasks=[...parsed.tasks].sort((a,b)=>order(a.id,b.id)).map(task=>{
     const saved=classifications.get(task.id)??null;
+    const teacherDecision=decisions.get(task.id)??null;
+    const teacherDecisionStatus=teacherDecision===null?"absent" as const:teacherDecision.word===task.w&&teacherDecision.german===task.g?"current" as const:"task-word-or-gloss-differs" as const;
     const classificationStatus=saved===null?"missing" as const:saved.word===task.w?"present" as const:"saved-word-differs" as const;
     const candidates=sources.find(s=>s.grade===task.grade)!.data.rows.filter(r=>r.w===task.w).map(row=>({sourceRowId:row.id,sameUnit:row.unit===task.unit,exactGloss:row.g===task.g,modeAgrees:classificationStatus!=="present"?null:saved!.mode===row.cat}));
-    return {...task,classification:saved,classificationStatus,candidates,meaningId:null,verifiedMeaning:false as const,firstTaught:null};
+    return {...task,classification:saved,classificationStatus,teacherDecision,teacherDecisionStatus,candidates,meaningId:null,verifiedMeaning:false as const,firstTaught:null};
   });
   const counts={sourceRows:sources.reduce((n,s)=>n+s.data.rows.length,0),auditRows:sources.reduce((n,s)=>n+(s.audit?.rows.length??0),0),overrideRows:sources.reduce((n,s)=>n+(s.overrides?.rows.length??0),0),
     sourceHashMismatches:sources.filter(s=>!s.provenance.hashMatches).length,tasks:tasks.length,classifications:parsed.classifications.length,missingClassifications:tasks.filter(t=>t.classificationStatus==="missing").length,
-    savedWordDifferences:tasks.filter(t=>t.classificationStatus==="saved-word-differs").length,tasksWithoutExactWordCandidate:tasks.filter(t=>!t.candidates.length).length,approvedMappings:0,approvedTeacherDecisions:0};
-  const report={schema:"activity-source-evidence@1",status:"CODEX DRAFT — NOT CANON",policy:"Exact source words suggest candidates within the same year, including other units. No normalization, meaning identity, first teaching, teacher approval, illustration eligibility or runtime category is inferred. Original rows, audit rationale and override inputs remain separate. Notes are fingerprinted only, not interpreted as decisions.",
+    savedWordDifferences:tasks.filter(t=>t.classificationStatus==="saved-word-differs").length,tasksWithoutExactWordCandidate:tasks.filter(t=>!t.candidates.length).length,approvedMappings:0,
+    teacherDecisionRecords:parsed.teacherDecisions.length,approvedTeacherDecisions:tasks.filter(t=>t.teacherDecisionStatus==="current").length,staleTeacherDecisions:tasks.filter(t=>t.teacherDecisionStatus==="task-word-or-gloss-differs").length};
+  const report={schema:"activity-source-evidence@1",status:"CODEX DRAFT — NOT CANON",policy:"Exact source words suggest candidates within the same year, including other units. No normalization, meaning identity, first teaching, teacher approval, illustration eligibility or runtime category is inferred. Original rows, audit rationale, override inputs and explicit reviewed teacher decisions remain separate. Teacher decisions bind to exact task ID, word and German gloss; stale decisions are retained without active approval. Notes are fingerprinted only, not interpreted as decisions.",
     corpusPins:[...parsed.corpusPins].sort((a,b)=>order(a.path,b.path)),sources,tasks,counts};
   return {...report,fingerprint:fingerprint(report)};
 }

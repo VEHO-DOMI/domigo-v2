@@ -22,7 +22,7 @@ test("real command imports and verifies sources, retains current tasks, and reje
     const first=run();assert.equal(first.status,0,first.stderr);
     const text=fs.readFileSync(output,"utf8"),report=JSON.parse(text);
     assert.equal(report.schema,"activity-source-evidence@1");assert.equal(report.counts.tasks,2446);assert.equal(report.counts.classifications,2435);assert.equal(report.counts.missingClassifications,11);
-    assert.equal(report.counts.sourceRows,4);assert.equal(report.corpusPins.length,59);assert.equal(report.counts.approvedMappings,0);
+    assert.equal(report.counts.sourceRows,4);assert.equal(report.corpusPins.length,60);assert.equal(report.counts.approvedMappings,0);assert.equal(report.counts.approvedTeacherDecisions,15);assert.equal(report.counts.staleTeacherDecisions,0);
     assert.equal(report.sources[0].overrides.state,"present-empty");assert.equal(report.sources[1].overrides,null);
     for(const sentinel of [dir,"PRIVATE_SOURCE_1.js","PRIVATE_AUDIT.csv","PRIVATE_OVERRIDE.csv","PRIVATE_NOTE.md","PRIVATE_MANIFEST.json","Proposed show mode"])assert.ok(!text.includes(sentinel),sentinel);
     assert.equal(run(["--verify"]).status,0);assert.match(run().stderr,/already exists/);
@@ -32,6 +32,7 @@ test("real command imports and verifies sources, retains current tasks, and reje
       (r:typeof report)=>{r.tasks[0].verifiedMeaning=true;},
       (r:typeof report)=>{r.sources[0].provenance.hashMatches=true;},
       (r:typeof report)=>{r.tasks.pop();},
+      (r:typeof report)=>{r.tasks.find((t:{teacherDecision:unknown})=>t.teacherDecision).teacherDecision.mode="invented";},
     ]) {const mutated=structuredClone(report);change(mutated);fs.writeFileSync(output,JSON.stringify(mutated,null,2)+"\n");assert.match(run(["--verify"]).stderr,/verification failed/);}
     fs.writeFileSync(output,text);
     const original=fs.readFileSync(path.join(dir,entries[0]!.data.path));fs.appendFileSync(path.join(dir,entries[0]!.data.path),"// a changed source version\n");
@@ -39,10 +40,15 @@ test("real command imports and verifies sources, retains current tasks, and reje
     for(const flags of [["--verify","--verify"],["--unknown"],["--out",output]])assert.notEqual(run(flags).status,0);
 
     // Simulate a source/manifest/corpus revision changing after capture; never edit real corpus bytes.
-    for(const [index,target] of [manifest,path.join(dir,entries[0]!.data.path),path.join(REPO_ROOT,"apps/web/lib/activity/categories.json"),path.join(REPO_ROOT,"content/overlays/item-fixes.json"),path.join(REPO_ROOT,"content/corpus/units/g1-u01/vocab.json")].entries()) {
+    for(const [index,target] of [manifest,path.join(dir,entries[0]!.data.path),path.join(REPO_ROOT,"apps/web/lib/activity/categories.json"),path.join(REPO_ROOT,"apps/web/lib/activity/teacher-decisions.json"),path.join(REPO_ROOT,"content/overlays/item-fixes.json"),path.join(REPO_ROOT,"content/corpus/units/g1-u01/vocab.json")].entries()) {
       const hook=path.join(dir,`race-${index}.mjs`);fs.writeFileSync(hook,`import fs from "node:fs";const original=fs.readFileSync;let reads=0;fs.readFileSync=function(file,...rest){const value=original.call(this,file,...rest);if(String(file)!==${JSON.stringify(fs.realpathSync(target))}||++reads===1)return value;return typeof value==="string"?value+"\\n":Buffer.concat([value,Buffer.from("\\n")]);};`);
       const result=run(["--verify"],["--import",hook]);assert.notEqual(result.status,0,`race target ${index} must change captured bytes`);assert.match(result.stderr,/changed while reading/);
     }
+
+    // A real CLI read with a missing author must reject, without changing repository bytes.
+    const invalidTeacher=path.join(dir,"invalid-teacher.mjs"), teacherFile=path.join(REPO_ROOT,"apps/web/lib/activity/teacher-decisions.json");
+    fs.writeFileSync(invalidTeacher,`import fs from "node:fs";const read=fs.readFileSync;fs.readFileSync=function(file,...rest){const value=read.call(this,file,...rest);if(String(file)!==${JSON.stringify(teacherFile)})return value;const rows=JSON.parse(value.toString());delete rows[0].decidedBy;const text=JSON.stringify(rows);return typeof value==="string"?text:Buffer.from(text);};`);
+    const missingAuthor=run(["--verify"],["--import",invalidTeacher]);assert.notEqual(missingAuthor.status,0);assert.match(missingAuthor.stderr,/invalid activity evidence input/);
 
     // A shortcut must still name the captured target, even if replacement bytes are identical.
     for(const [index,target] of [manifest,path.join(dir,entries[0]!.data.path),path.join(dir,"PRIVATE_AUDIT.csv")].entries()) {

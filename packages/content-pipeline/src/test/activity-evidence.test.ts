@@ -96,3 +96,32 @@ test("a stale saved word does not lend its mode to a current task candidate",()=
   const input=fixture();input.classifications[0]!.word="different";const result=buildActivityEvidence(input);
   const task=result.tasks.find(t=>t.id==="g1u01.w.bank")!;assert.equal(task.classificationStatus,"saved-word-differs");assert.ok(task.candidates.every(c=>c.modeAgrees===null));
 });
+
+
+test("teacher decisions stay separate from source/audit and bind only their exact task and gloss",()=>{
+  const input=fixture(),before=buildActivityEvidence(input);
+  const teacherDecisions=[{taskId:"g1u01.w.bank",word:"bank",german:"Bank",mode:"show",decidedBy:"Koki",decidedAt:"2026-10-24",source:"cgo-172",note:"Explicit synthetic fixture."}];
+  const after=buildActivityEvidence({...input,teacherDecisions});
+  assert.deepEqual(after.sources,before.sources);
+  assert.deepEqual(after.tasks.map(t=>[t.classification,t.candidates]),before.tasks.map(t=>[t.classification,t.candidates]));
+  assert.equal(after.counts.approvedMappings,0);assert.equal(after.counts.approvedTeacherDecisions,1);assert.equal(after.counts.staleTeacherDecisions,0);
+  assert.deepEqual(after.tasks[0]!.teacherDecision,teacherDecisions[0]);
+  assert.equal(after.tasks.find(t=>t.id==="g1u01.w.bank-2")!.teacherDecision,null);
+  assert.notEqual(after.fingerprint,before.fingerprint);
+  for(const field of ["word","german"] as const) {
+    const stale=structuredClone(teacherDecisions);stale[0]![field]+=" altered";
+    const report=buildActivityEvidence({...input,teacherDecisions:stale});
+    assert.equal(report.counts.approvedTeacherDecisions,0);assert.equal(report.counts.staleTeacherDecisions,1);
+    assert.deepEqual(report.tasks[0]!.teacherDecision,stale[0]);
+  }
+  for(const field of ["decidedBy","decidedAt","source","note"] as const) {
+    const damaged:Record<string,unknown>={...teacherDecisions[0]};delete damaged[field];
+    assert.throws(()=>buildActivityEvidence({...input,teacherDecisions:[damaged]}));
+  }
+  assert.throws(()=>buildActivityEvidence({...input,teacherDecisions:[...teacherDecisions,...teacherDecisions]}));
+  assert.throws(()=>buildActivityEvidence({...input,teacherDecisions:[{...teacherDecisions[0],taskId:"g1u01.w.absent"}]}),/outside current tasks/);
+  const two=[...teacherDecisions,{...teacherDecisions[0],taskId:"g1u01.w.bank-2",german:"Flussufer"}];
+  assert.deepEqual(buildActivityEvidence({...input,teacherDecisions:two}),buildActivityEvidence({...input,teacherDecisions:[...two].reverse()}));
+  const tampered=structuredClone(after);tampered.tasks[0]!.teacherDecision!.mode="draw";
+  assert.throws(()=>assertActivityEvidence({...input,teacherDecisions},tampered),/differs/);
+});

@@ -55,6 +55,8 @@ export function loadActivityEvidence(manifestPath:string) {
     if(Object.keys(r).some(k=>!["word","mode"].includes(k)))fail("unexpected saved activity classification field");
     return {id,word:r.word,mode:r.mode};
   });
+  // Authority comes only from this reviewed repository file, never the private manifest.
+  const teacherDecisions=readCorpus(path.join(REPO_ROOT,"apps/web/lib/activity/teacher-decisions.json"));
   const fixes=readCorpus(ITEM_FIXES_PATH) as ItemFixes;
   if(!fixes||typeof fixes!=="object"||Array.isArray(fixes))fail("invalid vocabulary item overlay");
   const tasks=[];
@@ -68,7 +70,7 @@ export function loadActivityEvidence(manifestPath:string) {
       tasks.push({id:item.id,grade,unit,w:item.w,g:item.g,taskFingerprint:activityHash(Buffer.from(JSON.stringify(item)))});
     }
   }
-  const report=buildActivityEvidence({sources,expectedSources,classifications,tasks,corpusPins});
+  const report=buildActivityEvidence({sources,expectedSources,classifications,teacherDecisions,tasks,corpusPins});
   for(const pin of privatePins) {
     const current=fs.realpathSync(pin.requested);
     if(current!==pin.physical||activityHash(fs.readFileSync(current))!==pin.sha256)fail("activity source changed while reading");

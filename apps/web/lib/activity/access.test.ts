@@ -7,17 +7,53 @@ import { listApprovedUnits, loadUnit } from "@domigo/content-loader";
 import { activityDeck } from "./catalog.ts";
 import { loadTestModule, source } from "../arena/test-loader.ts";
 const trainerGrade = (view: { kind: string; grades: number[] }) => view.kind === "student" && view.grades.length !== 1 ? null : view.grades[0] ?? null;
-it("A11 classifications join all four current years without crossing a year or duplicating a headword", () => {
+it("A11 classifications join all four current years without crossing a year or suppressing distinct task IDs", () => {
   const items = listApprovedUnits().flatMap(slug => loadUnit(slug).vocab);
   const counts = [];
   for (const grade of [1, 2, 3, 4]) {
     const deck = activityDeck(items, grade);counts.push(deck.length);assert.ok(deck.length > 400);
-    assert.ok(deck.every(w => w.id.startsWith(`g${grade}u`)));assert.equal(new Set(deck.map(w => `${w.chapter}:${w.word.toLowerCase()}`)).size, deck.length);
+    assert.ok(deck.every(w => w.id.startsWith(`g${grade}u`)));assert.equal(new Set(deck.map(w => w.id)).size, deck.length);
     const first = items.find(x => x.id === deck[0]!.id)!;
     assert.equal(activityDeck([{ ...first, w: "new unclassified wording" }], grade).length, 0);
     assert.equal(activityDeck(items.filter(x => x.id !== first.id), grade).some(x => x.id === first.id), false);
   }
-  assert.deepEqual(counts, [777, 603, 599, 442]);
+  assert.deepEqual(counts, [786, 611, 599, 450]);
+});
+it("teacher decisions bind exact tasks and meanings; precedence never leaks decision metadata", () => {
+  const items = listApprovedUnits().flatMap(slug => loadUnit(slug).vocab);
+  const byId = new Map(items.map(item => [item.id, item]));
+  const selected = (id: string) => byId.get(id)!;
+  const picnic = selected("g2u03.w.picnic");
+  assert.equal(activityDeck([picnic], 2, { [picnic.id]: { word: picnic.w, mode: "explain" } })[0]!.mode, "draw");
+  assert.deepEqual(activityDeck([{ ...picnic, g: "another meaning" }], 2), []);
+  assert.deepEqual(activityDeck([{ ...picnic, w: "Picnic" }], 2), []);
+  const originals = [selected("g4u11.w.reference-2"), selected("g1u11.w.to-answer-the-door")];
+  for (const item of originals) {
+    const grade = Number(item.id[1]);
+    assert.equal(activityDeck([item], grade, { [item.id]: { word: item.w, mode: "draw" } })[0]!.mode, "draw");
+    assert.ok(activityDeck([item], grade, {})[0]);
+    assert.deepEqual(activityDeck([item, item], grade), activityDeck([item], grade));
+  }
+  assert.deepEqual(activityDeck([selected("g4u11.w.reference"), selected("g4u11.w.reference-2")], 4).map(w => [w.word, w.german]), [["Reference", "Nachschlagewerk"], ["reference", "Hinweis"]]);
+  const ruled = JSON.parse(readFileSync(new URL("./teacher-decisions.json", import.meta.url), "utf8")) as Array<{ taskId: string; word: string; german: string; mode: string; decidedBy: string; decidedAt: string; source: string; note: string }>;
+  assert.equal(ruled.length, 15);
+  const expected = {
+    "g2u03.w.picnic": "draw", "g2u03.w.to-be-proud": "show", "g2u03.w.trick-or-treat-2": "explain",
+    "g2u09.w.fridge": "draw", "g2u12.w.pain-in-ankle": "show", "g2u14.w.ice-skating": "draw",
+    "g2u15.w.antarctic-ocean": "explain", "g4u11.w.classics": "explain", "g4u11.w.fiction": "explain",
+    "g4u11.w.non-fiction": "explain", "g4u12.w.neither-nor": "explain", "g4u11.w.reference": "explain",
+    "g1u01.w.midnight": "draw", "g1u11.w.midnight": "draw", "g4u11.w.poetry": "explain",
+  };
+  assert.deepEqual(Object.fromEntries(ruled.map(row => [row.taskId, row.mode])), expected);
+  for (const row of ruled) {
+    assert.ok(source("docs/review/activity-decisions-2026-10.md").includes(row.note), `verbatim source sentence: ${row.taskId}`);
+    assert.equal(row.source, "cgo-172");assert.equal(row.decidedBy, "Koki");assert.equal(row.decidedAt, "2026-10-24");
+    const word = activityDeck([selected(row.taskId)], Number(row.taskId[1]))[0]!;
+    assert.equal(word.mode, row.mode);assert.equal(word.word, row.word);assert.equal(word.german, row.german);
+    assert.deepEqual(Object.keys(word).sort(), ["chapter", "german", "id", "mode", "word"]);
+  }
+  assert.equal(activityDeck([selected("g2u03.w.trick-or-treat")], 2)[0]!.mode, "show");
+  assert.equal(activityDeck([selected("g1u11.w.to-answer-the-door")], 1)[0]!.mode, "show");
 });
 it("A12 preview uses only the approved local corpus; reserve/content failure closes student activity", async () => {
   let reads = 0;

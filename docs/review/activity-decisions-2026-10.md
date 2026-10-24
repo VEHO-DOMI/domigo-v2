@@ -1,6 +1,8 @@
-# Vierzehn Activity- und Quellenentscheidungen
+# Activity- und Quellenentscheidungen: Vorlagen und Beschlussstand
 
-**CODEX DRAFT — NOT CANON · 14 Entscheidungsvorlagen · 0 Unterrichtsentscheidungen getroffen.**
+**CODEX DRAFT — NOT CANON · historische 14 Vorlagen; Kokis Beschluss umfasst 15 Fälle einschließlich Poetry.**
+
+Die folgenden Vorlagen bewahren den damaligen Quellen- und Entscheidungsstand. Ihr „offen“ ist historisch; maßgeblich ist der [Beschlussstand vom 24.10.2026](#beschlussstand-2026-10-24).
 
 Für jede Vorlage steht eine konkrete Frage mit zwei oder drei Optionen und genau einer Empfehlung. Der GG legt daraus die Ruling-Karte für Koki an. A bedeutet immer einen Vorschlag zur ausdrücklichen Entscheidung, keine hier bereits angewendete Kategorie. Aktueller Stand und Original bleiben unverändert. Zeichnen (draw), wortlos zeigen (show) und erklären (explain) können später überlappen; die bisherige Datei speichert nur eine Kategorie.
 
@@ -578,3 +580,34 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 **Empfehlung: A.** Das geprüfte Original zeigt U11/9 auf gedruckter S.131, PDF129. Eine Korrektur darf die unveränderte abgeleitete Zeile nicht überschreiben und beweist keinen Erstunterricht.
 
 **Entscheidung:** offen. Keine Änderung am Klassifikations-Map, an Aufgaben oder Quellen vorgenommen.
+
+
+## Beschlussstand 2026-10-24
+
+**Koki, cgo-172, Nachtrag 1:** „for all these go with your recomendation just make sure to document everything for later“. Beschlossen: A, alle fünfzehn Empfehlungen. Umsetzung als Entwurf in cgo-174; die Original-Map, Aufgaben und Quellabschriften werden nicht umgeschrieben. Der Lehrerentscheid ist eine eigene Herkunftsebene, kein nachträglich behaupteter Originalbeleg.
+
+| Fall | Aufgabe(n) | Beschluss |
+|---|---|---|
+| 1 picnic | `g2u03.w.picnic` | draw |
+| 2 to be proud (of) | `g2u03.w.to-be-proud` | show |
+| 3 Trick or treat! (Ruf) | `g2u03.w.trick-or-treat-2` | explain; die Aktivität `g2u03.w.trick-or-treat` bleibt show |
+| 4 fridge | `g2u09.w.fridge` | draw |
+| 5 pain in ankle | `g2u12.w.pain-in-ankle` | show |
+| 6 ice skating | `g2u14.w.ice-skating` | draw |
+| 7 Antarctic Ocean | `g2u15.w.antarctic-ocean` | explain; Southern Ocean bleibt Kandidat |
+| 8 Classics | `g4u11.w.classics` | explain |
+| 9 Fiction | `g4u11.w.fiction` | explain |
+| 10 Non-fiction | `g4u11.w.non-fiction` | explain |
+| 11 neither ... nor | `g4u12.w.neither-nor` | explain; typografische Variante als dasselbe Wort vorgeschlagen, keine automatische Zusammenführung |
+| 12 Reference / reference | `g4u11.w.reference` / `g4u11.w.reference-2` | Nachschlagewerk: eigener explain-Entscheid; Hinweis: bisheriger Originalbeleg bleibt |
+| 13 midnight | `g1u01.w.midnight`, `g1u11.w.midnight` | zwei eigene draw-Entscheide |
+| 14 answer the door | `g1u11.w.to-answer-the-door` | Fundstellen-Korrektur U1/19 → U11/9 protokolliert; Abschrift und show unverändert |
+| 15 Poetry | `g4u11.w.poetry` | eigener explain-Entscheid; kein fehlender Activity-Quellbeleg erfunden |
+
+Das sind **15 Kategorieeinträge für 14 Fälle plus eine protokollierte Quellenkorrektur**: Fall 13 hat zwei Aufgaben, Fall 14 keine neue Kategorie. Jeder Kategorieeintrag trägt Koki, Datum 2026-10-24, Quelle cgo-172, eine Begründung und exakte Wort-/Bedeutungsschnappschüsse. Die Datei `apps/web/lib/activity/teacher-decisions.json` ist von Original und Audit getrennt. Änderungen an Wort oder Bedeutung setzen die alte Entscheidung außer Kraft, bis sie geprüft wird.
+
+Die Quellen-Ergänzungen (Fiction-Originalzeile, Geschwister-Belege, Poetry-Dossier) und die umfassende Quellenprüfung bleiben Auftrag cgo-164; der Beschluss ersetzt keinen fehlenden Quellennachweis, keine Bedeutungs-ID und keine Bilderkennung.
+
+Die Notizen übernehmen je einen Satz wörtlich aus den obigen Vorlagen. Für Poetry ist die Satzquelle die Ergänzung in cgo-172 (Payload, vor Kokis bestätigendem Nachtrag 1):
+
+> Dazu ein 15. Fall ohne Quellzeile: poetry (g4u11) → explain (wie Reference).
