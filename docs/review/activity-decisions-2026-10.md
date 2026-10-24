@@ -125,7 +125,7 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 - B: Eine eigene show-Konvention für den Ruf testen, ohne die vorhandene Aktivitätskategorie zu kopieren.
 - C: Den Ruf bis zur Kalibrierung aus Activity ausschließen.
 
-**Empfehlung: A.** Die Quelle enthält die Aktivität trick or treat; der Ruf hat eine andere Funktion. Wortlos lässt sich diese Trennung nur schwer erkennen.
+**Empfehlung: A.** Definition und Kontext des vorhandenen BANK-Eintrags trick or treat sowie das Gedicht auf SB29 belegen einen Aktivitätsgebrauch. Die alte Activity-Zeile allein enthält nur Wortlaut, deutsche Übersetzung und show; ihre Bedeutung bleibt unentschieden. Den Ruf getrennt mit explain prüfen, ohne die alte Kategorie zu übertragen.
 
 **Entscheidung:** offen. Keine Änderung am Klassifikations-Map, an Aufgaben oder Quellen vorgenommen.
 
@@ -184,6 +184,12 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 
 ```json
 {"id": "g2u12.w.pain-in-ankle", "en": "pain in ankle", "deRaw": "Schmerzen im Knöchel"}
+```
+
+- Original-Master Jahr 2 · SHA-256 `c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a` · logischer Block 59, Tabellenzeile 6 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["pain in ankle", "Schmerzen im Knöchel"]
 ```
 
 **Frühere Prüfbegründung / Confidence:**
@@ -246,12 +252,19 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 
 **Wörtliche Quellbelege:**
 
-- Keine passende Activity-Datenzeile in der vollständig eingelesenen Jahrgangsquelle belegt. Es wird keine Zeile rekonstruiert.
+- `activity-year-2` · Datensatz 600 · physische Zeile 610 · U15:
+
+```js
+  { unit: 15, w: "Southern Ocean", g: "Antarktischer Ozean", cat: "draw" },
+```
+
 - Appendix-Abschrift Jahr 2 · SHA-256 `4fada3314b3447452989012c9bedca5cc52329536593bf45747d30bee907adf7` · Block 4, Tabellenzeile 76. Ungeprüfter Bedeutungsbezug; Originalfelder:
 
 ```json
 ["Antarctic Ocean", "U15/10", "[ænˈtɑːktɪk ˈəʊʃən]", "Antarktischer Ozean"]
 ```
+
+- Die oben zitierte Zeile Southern Ocean ist ein **unentschiedener Alternativnamen-Kandidat**, kein exakter Wortlauttreffer und keine Freigabe zur Zusammenlegung oder Kategorieübernahme.
 
 **Frühere Prüfbegründung / Confidence:**
 
@@ -263,7 +276,7 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 - B: draw auf einer vereinbarten Weltkarten-Skizze testen; Orientierung und genaue Bezeichnung bleiben schwierig.
 - C: Aus Activity vorerst ausnehmen.
 
-**Empfehlung: A.** Keine alte Activity-Zeile ist belegt. Der Appendix nennt Antarctic Ocean U15/10; eine eigene Erklärung ist sinnvoller als eine erfundene Altklassifikation.
+**Empfehlung: A.** Die exakte Schreibweise Antarctic Ocean fehlt in der Activity-Quelle; Southern Ocean mit derselben deutschen Übersetzung ist als unentschiedener Alternativnamen-Kandidat belegt. Eine Erklärung könnte die südliche Lage besser unterscheiden als eine freie Zeichnung. Weder Bedeutungsidentität noch die dortige draw-Kategorie wird übertragen.
 
 **Entscheidung:** offen. Keine Änderung am Klassifikations-Map, an Aufgaben oder Quellen vorgenommen.
 
@@ -282,6 +295,12 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 
 ```json
 {"id": "g4u11.w.classics", "en": "Classics", "deRaw": "Klassiker"}
+```
+
+- Original-Master Jahr 4 · SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc` · logischer Block 46, Tabellenzeile 6 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["Classics", "Klassiker"]
 ```
 
 **Frühere Prüfbegründung / Confidence:**
@@ -342,6 +361,12 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 
 ```json
 {"id": "g4u11.w.non-fiction", "en": "Non-fiction", "deRaw": "Sachbücher"}
+```
+
+- Original-Master Jahr 4 · SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc` · logischer Block 46, Tabellenzeile 5 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["Non-fiction", "Sachbücher"]
 ```
 
 **Frühere Prüfbegründung / Confidence:**
@@ -422,6 +447,18 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 
 ```json
 {"id": "g4u11.w.reference-2", "en": "reference", "deRaw": "Bezug, Hinweis"}
+```
+
+- Original-Master Jahr 4 · SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc` · logischer Block 46, Tabellenzeile 3 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["Reference", "Nachschlagewerk"]
+```
+
+- Original-Master Jahr 4 · SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc` · logischer Block 48, Tabellenzeile 11 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["reference", "There are a lot of references to famous songs in the book.", "Bezug, Hinweis"]
 ```
 
 **Frühere Prüfbegründung / Confidence:**
@@ -541,4 +578,3 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 **Empfehlung: A.** Das geprüfte Original zeigt U11/9 auf gedruckter S.131, PDF129. Eine Korrektur darf die unveränderte abgeleitete Zeile nicht überschreiben und beweist keinen Erstunterricht.
 
 **Entscheidung:** offen. Keine Änderung am Klassifikations-Map, an Aufgaben oder Quellen vorgenommen.
-
