@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { inScope, practiceItemDenial } from "@domigo/db";
 import { beforeEach, it } from "node:test";
 import { z } from "zod";
 import * as refs from "@domigo/content-schema";
@@ -40,7 +41,7 @@ const server = loadTestModule("apps/web/lib/arena/live-server.ts", {
 const api = loadTestModule('apps/web/lib/arena/live-api.ts', { 'server-only': {}, zod: { z }, './live-server': server });
 const route = loadTestModule('apps/web/app/api/attempts/route.ts', {
     'next/server': { NextResponse: Response }, zod: { z }, '@domigo/content-schema': refs, '@domigo/content-loader': loader, '@domigo/engine': engine,
-    '@/lib/content-service': content, '@domigo/db': { getDb: () => { throw Error('live bypass'); }, recordAttempt: () => { throw Error('live bypass'); } }, '@/lib/identity': identity,
+    '@/lib/content-service': content, '@domigo/db': { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordAttempt: () => { throw Error('live bypass'); } }, '@/lib/identity': identity,
     '@/lib/itemRef': itemRef, '@/lib/listeningRef': listeningRef, '@/lib/testRef': testRef, '@/lib/comprehensionRef': comprehensionRef,
     '@/lib/modi/speed-session': { speedSessionValid: () => true }, '@/lib/modi/attempt-policy': policy, '@/lib/arena/server': {}, '@/lib/arena/live-server': server,
 });
@@ -160,4 +161,9 @@ it('A11 both SQL checks receive a fresh server clock while scoring retains ingre
   assert(checkedNow.getTime()>arrival.getTime());
   assert(writtenNow.getTime()>checkedNow.getTime());
   assert.equal(bookedAt,arrival);
+});
+
+it("reserve detected by the live resolver has the shared anonymous 403 contract", async()=>{
+  failure=new rules.LiveError(409,"live_question_reserved");
+  const response=await post(req(body()));assert.equal(response.status,403);assert.deepEqual(await response.json(),{ok:false,error:"item_reserved"});assert.equal(writes,0);
 });

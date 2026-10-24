@@ -15,7 +15,7 @@ import { loadListening, loadStoryComprehension, loadTest, storyIdForGrade } from
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { getDb, recordAttempt } from "@domigo/db";
+import { getDb, recordAttempt, getPracticeReceipt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
@@ -61,6 +61,15 @@ const Body = z.object({
   context: z.unknown().optional(),
 });
 
+/** Arena services recheck their reserve under a write lock. Keep those later
+ * refusals on the same public 403 contract as the shared pre-grading check. */
+function reservationRefusal(error: unknown): Response | null {
+  if (!(error instanceof Error) || !("code" in error)
+    || !["duel_question_reserved", "live_question_reserved"].includes(String(error.code))) return null;
+  console.warn("[attempts] denied: item_reserved");
+  return NextResponse.json({ ok: false, error: "item_reserved" }, { status: 403 });
+}
+
 export async function POST(req: Request): Promise<Response> {
   const receivedAt = new Date(); // Trusted arrival time, before identity/content/database latency.
   // 1. Identity.
@@ -84,6 +93,11 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json({ ok: false, error: "wrong_owner" }, { status: 409 });
   }
 
+  if (!inScope(acting.classScope, acting.classId)) {
+    console.warn("[attempts] denied: class_scope");
+    return NextResponse.json({ ok: false, error: "class_forbidden" }, { status: 403 });
+  }
+
   if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
   if (mode === "speed" && !speedSessionValid(context, acting.userId)) return NextResponse.json({ ok: false, error: "speed_expired" }, { status: 410 }); // cgo-109 SPEED-DEADLINE
 
@@ -95,7 +109,7 @@ export async function POST(req: Request): Promise<Response> {
       const resolved = await checkDuelAttempt(req, acting, mode, context, input.kind === "choice" ? input.value : "");
       duelCoordinates = resolved.coordinates; itemId = resolved.itemId;
     }
-    catch (error) { return arenaError(error); }
+    catch (error) { return reservationRefusal(error) ?? arenaError(error); }
   }
   // Load live-only dependencies lazily: other practice modes keep their route.
   let live: typeof import("@/lib/arena/live-server") | null = null;
@@ -105,7 +119,7 @@ export async function POST(req: Request): Promise<Response> {
     try {
       liveResolved = await live.checkLiveAttempt(req, acting, mode, context, typeof input.value === "string" ? input.value : "", receivedAt);
       itemId = liveResolved.itemId;
-    } catch (error) { return live.liveError(error); }
+    } catch (error) { return reservationRefusal(error) ?? live.liveError(error); }
   }
   if (itemId === undefined) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
@@ -116,6 +130,23 @@ export async function POST(req: Request): Promise<Response> {
   const tref = ref || lref ? null : parseTestRef(itemId);
   const cref = ref || lref || tref ? null : parseComprehensionRef(itemId);
   if (!ref && !lref && !tref && !cref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+
+  // The mode and client metadata never grant a grade or reserve exception.
+  // Read only the authenticated class, and refuse uncertainty before grading.
+  try {
+    const db = getDb();
+    const classGrade = await getClassGrade(db, acting.classId);
+    const reserved = await listReservedForClass(db, acting.classScope, acting.classId);
+    const denial = practiceItemDenial(itemId, classGrade, reserved);
+    if (denial) {
+      // Fixed vocabulary only: no user/class IDs, names, answer or client context.
+      console.warn(`[attempts] denied: ${denial}`);
+      return NextResponse.json({ ok: false, error: denial }, { status: 403 });
+    }
+  } catch {
+    console.warn("[attempts] eligibility_unavailable");
+    return NextResponse.json({ ok: false, error: "eligibility_unavailable" }, { status: 503, headers: { "Retry-After": "30" } });
+  }
 
   // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
@@ -199,8 +230,8 @@ export async function POST(req: Request): Promise<Response> {
       classifiable = item as unknown as ClassifiableItem;
     }
   } catch (error) {
-    if (liveResolved && live) return live.liveError(error);
-    if (duelCoordinates) return arenaError(error);
+    if (liveResolved && live) return reservationRefusal(error) ?? live.liveError(error);
+    if (duelCoordinates) return reservationRefusal(error) ?? arenaError(error);
     return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 
@@ -235,6 +266,14 @@ export async function POST(req: Request): Promise<Response> {
       ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
       : liveResolved && live ? await live.writeLiveAnswer(acting, attempt, liveResolved.coordinates, typeof input.value === "string" ? input.value : "", receivedAt)
       : await recordAttempt(getDb(), acting.classScope, attempt);
+    // A round displays the original booking even when its first response was lost.
+    // Keep the existing incremental reward fields for all other consumers.
+    let receipt: { tier: string; xpAwarded: number } | undefined;
+    if (mode === "practice" || mode === "daily") {
+      const booked = duplicate ? await getPracticeReceipt(getDb(), acting.classScope, attempt) : { tier, xpAwarded };
+      if (!booked) throw new Error("practice_receipt_unavailable");
+      receipt = booked;
+    }
     return NextResponse.json({
       ok: true,
       tier,
@@ -242,12 +281,13 @@ export async function POST(req: Request): Promise<Response> {
       box,
       dueAt: dueAt.toISOString(),
       duplicate,
+      ...(receipt ? { receipt } : {}),
       streak,
       ...(trap ? { trap } : {}),
     });
   } catch (error) {
-    if (liveResolved && live) return live.liveError(error);
-    if (duelCoordinates) return arenaError(error);
+    if (liveResolved && live) return reservationRefusal(error) ?? live.liveError(error);
+    if (duelCoordinates) return reservationRefusal(error) ?? arenaError(error);
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded, ...(trap ? { trap } : {}) });
   }
 }

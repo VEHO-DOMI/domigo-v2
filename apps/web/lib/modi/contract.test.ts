@@ -24,7 +24,7 @@ describe("cgo-109 mode contracts", () => {
     assert.match(read("ModePage.tsx"), /selectedChapters\(chaptersRaw, listApprovedUnits\(\)\.filter/);
     const practice = readFileSync(new URL("../../app/practice/load-practice.ts", import.meta.url), "utf8");
     assert.match(practice, /await listReservedForClass\(getDb\(\), acting\.classScope, acting\.classId\)/);
-    assert.match(practice, /assignPool\(item\.id, reserved\) !== "mock"/);
+    assert.match(practice, /practiceItemDenial\(item\.id, grade, reserved\) === null/);
     assert.doesNotMatch(practice, /listReservedForClass[^;]*\.catch/);
   });
   it("C03 only server receipts supply points, never client reward formulas", () => {

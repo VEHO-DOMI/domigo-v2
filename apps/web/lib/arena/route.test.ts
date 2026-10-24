@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { inScope, practiceItemDenial } from "@domigo/db";
 import { beforeEach, it } from "node:test";
 import { z } from "zod";
 import * as refs from "@domigo/content-schema";
@@ -19,7 +20,7 @@ let booked = false, gradingFailure = false;
 let lastAttempt: Record<string, unknown> | null = null;
 const player = () => ({ userId: user, classId, classScope: [classId] });
 const boundaries: Record<string, unknown> = {
-  "server-only": {}, "@domigo/content-loader": loader, "@domigo/db": { getDb: () => ({}), recordAttempt: () => { throw Error("duel bypassed transaction"); } },
+  "server-only": {}, "@domigo/content-loader": loader, "@domigo/db": { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordAttempt: () => { throw Error("duel bypassed transaction"); } },
   "@/auth": { auth: async () => ({ user: { id: user, classId, role } }) },
   "@/lib/content-service": { loadUnitWithOverrides: async (slug: string) => { if (gradingFailure) throw Error("synthetic private corpus detail"); return loader.loadUnit(slug); } }, "@/lib/student-view": { trainerGrade: () => 1 },
   "../../../../packages/db/src/duel-service.ts": { ...duel,
@@ -123,4 +124,9 @@ it("W19 arena errors log a fixed anonymous code without payload, SQL or identity
     assert.equal((await post(req(body()))).status, 503);
     assert.deepEqual(calls, Array.from({ length: 4 }, () => ["[arena] write_failed"]));
   } finally { console.warn = original; }
+});
+
+it("reserve detected by the duel resolver has the shared anonymous 403 contract", async()=>{
+  failure=new duel.DuelError(409,"duel_question_reserved");
+  const response=await post(req(body()));assert.equal(response.status,403);assert.deepEqual(await response.json(),{ok:false,error:"item_reserved"});assert.equal(writes,0);
 });

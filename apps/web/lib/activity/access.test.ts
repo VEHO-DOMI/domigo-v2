@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { practiceItemDenial } from "@domigo/db";
 import { it } from "node:test";
 import * as jsx from "react/jsx-runtime";
 import { readFileSync } from "node:fs";
@@ -27,7 +28,7 @@ it("A12 preview uses only the approved local corpus; reserve/content failure clo
 });
 it("A13 actual practice loader passes exact class scope to reserve lookup and excludes its reserved item", async () => {
   const item = loadUnit("g1-u01").vocab[0]!;let scope: unknown[] = [];
-  const loader = loadTestModule("apps/web/app/practice/load-practice.ts", { "server-only": {}, "@domigo/content-loader": { listApprovedUnits: () => ["g1-u01", "g2-u01"], assignPool: (id: string, reserved: Set<string>) => reserved.has(id) ? "mock" : "practice" }, "@domigo/db": { getDb: () => "synthetic-db", listReservedForClass: async (...args: unknown[]) => { scope = args;return new Set([item.id]); } }, "@/lib/content-service": { loadUnitWithOverrides: async (slug: string) => loadUnit(slug) }, "@/lib/daily-challenge": {}, "@/lib/wort-des-tages": {} });
+  const loader = loadTestModule("apps/web/app/practice/load-practice.ts", { "server-only": {}, "@domigo/content-loader": { listApprovedUnits: () => ["g1-u01", "g2-u01"], assignPool: (id: string, reserved: Set<string>) => reserved.has(id) ? "mock" : "practice" }, "@domigo/db": { practiceItemDenial, getDb: () => "synthetic-db", listReservedForClass: async (...args: unknown[]) => { scope = args;return new Set([item.id]); } }, "@/lib/content-service": { loadUnitWithOverrides: async (slug: string) => loadUnit(slug) }, "@/lib/daily-challenge": {}, "@/lib/wort-des-tages": {} });
   const practice = loader.loadPracticeWords as (v: unknown, g: number) => Promise<{ vocab: typeof item[] }>;
   const result = await practice({ kind: "student", player: { classScope: "scope-example", classId: "class-example" } }, 1);
   assert.deepEqual(scope, ["synthetic-db", "scope-example", "class-example"]);assert.equal(result.vocab.some(x => x.id === item.id), false);assert.ok(result.vocab.every(x => x.id.startsWith("g1u")));
