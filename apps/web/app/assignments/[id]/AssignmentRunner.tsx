@@ -8,6 +8,7 @@
  * returns the exact Note.
  */
 import Link from "next/link";
+import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
@@ -37,6 +38,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
   preview: boolean; previewScoring?: PreviewScoring;
   assignmentId: string; sessionId: string; title: string; mode: "practice" | "mock_test"; expiresAt: string | null; sections: RunnerSection[];
 }) {
+  const t = useLearningText();
   const [idx, setIdx] = useState(0);
   const [result, setResult] = useState<SubmitResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -96,23 +98,23 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
     const good = result.note <= 2;
     return (
       <main style={{ maxWidth: 560, margin: "0 auto", padding: "40px 20px", fontFamily: "var(--font-body)", color: "var(--text)", textAlign: "center" }}>
-        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? "Vorschau — nichts gespeichert" : "Abgegeben ✓"}</h1>
+        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? t("Vorschau — nichts gespeichert", "Preview — nothing saved") : t("Abgegeben ✓", "Submitted ✓")}</h1>
         <p style={{ fontSize: 18 }}><strong>{title}</strong></p>
         {isMock ? (
           <div style={{ marginTop: 16 }}>
-            <div style={{ fontSize: 46, fontWeight: 800, color: good ? "var(--correct)" : result.note <= 4 ? "var(--partial)" : "var(--incorrect)" }}>Note {result.note}</div>
-            <div style={{ fontSize: 15, color: "var(--text-secondary)" }}>{NOTE_LABEL[result.note]} · {Math.round(result.displayPct)}%</div>
+            <div style={{ fontSize: 46, fontWeight: 800, color: good ? "var(--correct)" : result.note <= 4 ? "var(--partial)" : "var(--incorrect)" }}><span lang="de">Note {result.note}</span></div>
+            <div style={{ fontSize: 15, color: "var(--text-secondary)" }}><span lang="de">{NOTE_LABEL[result.note]}</span> · {Math.round(result.displayPct)}%</div>
           </div>
         ) : (
-          <div style={{ marginTop: 16, fontSize: 20, fontWeight: 700 }}>{Math.round(result.displayPct)}% richtig</div>
+          <div style={{ marginTop: 16, fontSize: 20, fontWeight: 700 }}>{Math.round(result.displayPct)}% {t("richtig", "correct")}</div>
         )}
-        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
+        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>{t("Zur Übersicht", "Back to overview")}</Link>
       </main>
     );
   }
 
   if (!section) {
-    return <main style={{ maxWidth: 560, margin: "0 auto", padding: 40 }}><Link href={`/assignments/${assignmentId}`}>← Zurück</Link></main>;
+    return <main style={{ maxWidth: 560, margin: "0 auto", padding: 40 }}><Link href={`/assignments/${assignmentId}`}>{t("← Zurück", "← Back")}</Link></main>;
   }
 
   const timeLow = remaining !== null && remaining <= 60;
@@ -122,7 +124,7 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
         <div>
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, color: "var(--ink)" }}>{title}</div>
           <div style={{ fontSize: 12, color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-            Teil {idx + 1} / {sections.length} · {section.titleDe}
+            {t("Teil", "Section")} {idx + 1} / {sections.length} · <span lang="de">{section.titleDe}</span>
           </div>
         </div>
         {remaining !== null && (
@@ -133,17 +135,17 @@ export default function AssignmentRunner({ assignmentId, sessionId, title, mode,
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         {section.items.map((it) =>
           section.kind === "vocab"
-            ? <VocabItemView key={it.id} item={it as VocabItem} onResult={onResult} hideXp hideHint={isMock} singleAttempt={isMock} />
-            : <GrammarItemView key={it.id} item={it as GrammarItem} onResult={onResult} hideXp hideHint={isMock} singleAttempt={isMock} />,
+            ? <VocabItemView key={it.id} item={it as VocabItem} onResult={onResult} hideXp hideMeta hideHint={isMock} singleAttempt={isMock} />
+            : <GrammarItemView key={it.id} item={it as GrammarItem} onResult={onResult} hideXp hideMeta hideHint={isMock} singleAttempt={isMock} />,
         )}
-        {section.items.length === 0 && <p style={{ color: "var(--muted)" }}>Dieser Teil hat keine Aufgaben.</p>}
+        {section.items.length === 0 && <p style={{ color: "var(--muted)" }}>{t("Dieser Teil hat keine Aufgaben.", "There are no items in this section.")}</p>}
       </div>
 
       <div style={{ marginTop: 22, display: "flex", justifyContent: "flex-end" }}>
         {last ? (
-          <button className="dg-btn" disabled={submitting} onClick={submit}>{submitting ? "Wird abgegeben…" : "Abgeben"}</button>
+          <button className="dg-btn" disabled={submitting} onClick={submit}>{submitting ? t("Wird abgegeben…", "Submitting…") : t("Abgeben", "Submit")}</button>
         ) : (
-          <button className="dg-btn" onClick={() => setIdx((i) => i + 1)}>Nächster Teil →</button>
+          <button className="dg-btn" onClick={() => setIdx((i) => i + 1)}>{t("Nächster Teil →", "Next section →")}</button>
         )}
       </div>
     </main>

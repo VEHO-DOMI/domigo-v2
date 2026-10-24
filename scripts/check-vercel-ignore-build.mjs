@@ -2,13 +2,15 @@
 // Vercel configuration and script from the project's Root Directory (apps/web).
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const cwd = fileURLToPath(new URL('../apps/web/', import.meta.url));
-const config = JSON.parse(readFileSync(new URL('../apps/web/vercel.json', import.meta.url)));
+const configPath = new URL('../apps/web/vercel.json', import.meta.url);
+assert.ok(existsSync(configPath), 'Vercel configuration apps/web/vercel.json must exist');
+const config = JSON.parse(readFileSync(configPath));
 assert.equal(config.ignoreCommand, 'sh scripts/vercel-ignore-build.sh');
-assert.ok(statSync(new URL('../apps/web/scripts/vercel-ignore-build.sh', import.meta.url)).isFile(),
+assert.ok(existsSync(new URL('../apps/web/scripts/vercel-ignore-build.sh', import.meta.url)) && statSync(new URL('../apps/web/scripts/vercel-ignore-build.sh', import.meta.url)).isFile(),
   'Vercel ignore-build script must exist');
 const selftest = process.argv.includes('--selftest');
 const cases = selftest ? [

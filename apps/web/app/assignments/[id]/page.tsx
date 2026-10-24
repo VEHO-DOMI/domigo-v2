@@ -6,6 +6,7 @@
  * itemIds are never trusted for grading, they're re-resolved here.
  */
 import Link from "next/link";
+import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 import { redirect } from "next/navigation";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { loadUnitWithOverrides, type UnitContent } from "@/lib/content-service";
@@ -130,7 +131,7 @@ export default async function AssignmentPage({ params, searchParams }: { params:
         };
       });
       return (
-        <>
+        <LearningShell preview={preview} grade={studentView.grades.length === 1 ? studentView.grades[0] : null}>
         {preview && <PreviewBanner grade={studentView.grades.length === 1 ? studentView.grades[0] : undefined} />}
         <CheckupRunner
           key={acting?.userId ?? "preview"}
@@ -143,7 +144,7 @@ export default async function AssignmentPage({ params, searchParams }: { params:
           sections={checkupSections}
           feedback={display.feedback}
         />
-        </>
+        </LearningShell>
       );
     }
 
@@ -156,7 +157,7 @@ export default async function AssignmentPage({ params, searchParams }: { params:
       items: resolveItems((s.itemIds as string[] | null) ?? [], cache),
     }));
     return (
-      <>
+      <LearningShell preview={preview} grade={studentView.grades.length === 1 ? studentView.grades[0] : null}>
       {preview && <PreviewBanner grade={studentView.grades.length === 1 ? studentView.grades[0] : undefined} />}
       <AssignmentRunner
         key={acting?.userId ?? "preview"}
@@ -169,26 +170,27 @@ export default async function AssignmentPage({ params, searchParams }: { params:
         expiresAt={expiresAt}
         sections={runnerSections}
       />
-      </>
+      </LearningShell>
     );
   }
 
   // ── overview ──
   return (
+    <LearningShell preview={preview} grade={studentView.grades.length === 1 ? studentView.grades[0] : null}>
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 25, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{assignment.title}</h1>
-        <Link href="/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Aufgaben</Link>
+        <Link href="/assignments" style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Aufgaben" en="← Assignments" /></Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {assignment.mode === "mock_test" ? "📝 Schularbeit-Übung" : assignment.mode === "checkup" ? "✅ Check-up · 20 Punkte" : "✏️ Übung"}
-        {assignment.sessionDurationMinutes ? ` · ${assignment.sessionDurationMinutes} Minuten` : " · ohne Zeitlimit"}
-        {` · ${sections.length} Teile`}
+        <LearningText de={assignment.mode === "mock_test" ? "📝 Schularbeit-Übung" : assignment.mode === "checkup" ? "✅ Check-up · 20 Punkte" : "✏️ Übung"} en={assignment.mode === "mock_test" ? "📝 Practice test" : assignment.mode === "checkup" ? "✅ Check-up · 20 points" : "✏️ Practice"} />
+        <LearningText de={assignment.sessionDurationMinutes ? ` · ${assignment.sessionDurationMinutes} Minuten` : " · ohne Zeitlimit"} en={assignment.sessionDurationMinutes ? ` · ${assignment.sessionDurationMinutes} minutes` : " · no time limit"} />
+        <LearningText de={` · ${sections.length} Teile`} en={` · ${sections.length} sections`} />
       </p>
 
       {submitted.length > 0 && (
         <div className="dg-card" style={{ marginTop: 16 }}>
-          <h2 style={{ fontSize: 16, margin: "0 0 8px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Deine Versuche</h2>
+          <h2 style={{ fontSize: 16, margin: "0 0 8px", fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Deine Versuche" en="Your attempts" /></h2>
           {submitted.map((s) => {
             // C-1: a checkup is points-only (note stays null, doc 21 §8-③) —
             // show X / 20 Punkte, reconstructed from the stored exact percent.
@@ -196,18 +198,18 @@ export default async function AssignmentPage({ params, searchParams }: { params:
               const pts = s.scorePct != null ? Math.round((Number(s.scorePct) / 100) * 20 * 10) / 10 : null;
               return (
                 <div key={s.id} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderTop: "1px solid var(--card-border)" }}>
-                  <span>Versuch {s.attemptNumber}</span>
+                  <span><LearningText de="Versuch" en="Attempt" /> {s.attemptNumber}</span>
                   <span style={{ fontWeight: 700, color: pts !== null && pts >= 10 ? "var(--correct)" : "var(--partial)" }}>
-                    {pts !== null ? `${formatCheckupPoints(pts)} / 20 Punkte` : "—"}
+                    {pts !== null ? <LearningText de={`${formatCheckupPoints(pts)} / 20 Punkte`} en={`${formatCheckupPoints(pts)} / 20 points`} /> : "—"}
                   </span>
                 </div>
               );
             }
             return (
               <div key={s.id} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderTop: "1px solid var(--card-border)" }}>
-                <span>Versuch {s.attemptNumber}</span>
+                <span><LearningText de="Versuch" en="Attempt" /> {s.attemptNumber}</span>
                 <span style={{ fontWeight: 700, color: (s.note ?? 5) <= 2 ? "var(--correct)" : (s.note ?? 5) <= 4 ? "var(--partial)" : "var(--incorrect)" }}>
-                  {s.scorePct != null ? `${Math.round(Number(s.scorePct))}%` : "—"}{s.note ? ` · Note ${s.note} (${NOTE_LABEL[s.note]})` : ""}
+                  {s.scorePct != null ? `${Math.round(Number(s.scorePct))}%` : "—"}{s.note ? <span lang="de">{` · Note ${s.note} (${NOTE_LABEL[s.note]})`}</span> : ""}
                 </span>
               </div>
             );
@@ -218,12 +220,13 @@ export default async function AssignmentPage({ params, searchParams }: { params:
       <div style={{ marginTop: 20 }}>
         {attemptsLeft > 0 ? (
           <form action={begin}>
-            <button type="submit" className="dg-btn">{attemptsUsed === 0 ? "Aufgabe starten" : `Nächster Versuch (${attemptsLeft} übrig)`}</button>
+            <button type="submit" className="dg-btn"><LearningText de={attemptsUsed === 0 ? "Aufgabe starten" : `Nächster Versuch (${attemptsLeft} übrig)`} en={attemptsUsed === 0 ? "Begin" : `Next attempt (${attemptsLeft} left)`} /></button>
           </form>
         ) : (
-          <p style={{ color: "var(--muted)" }}>Keine Versuche mehr übrig ({assignment.attemptsPerTest} von {assignment.attemptsPerTest} verwendet).</p>
+          <p style={{ color: "var(--muted)" }}><LearningText de={`Keine Versuche mehr übrig (${assignment.attemptsPerTest} von ${assignment.attemptsPerTest} verwendet).`} en={`No attempts left (${assignment.attemptsPerTest} of ${assignment.attemptsPerTest} used).`} /></p>
         )}
       </div>
     </main>
+    </LearningShell>
   );
 }

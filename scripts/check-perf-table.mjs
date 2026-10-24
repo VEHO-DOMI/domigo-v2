@@ -70,7 +70,7 @@ const looksLikeTheTable = (body) => {
 // `perf-visible` druckt — »Bau: …« UND »· Quelle: …«. Ein blosses »Bau:«
 // am Zeilenanfang kaeme in einem deutschen PR-Text auch sonst vor, und
 // dieses Tor darf keinen fremden PR an einem zufaelligen Wort rot faerben.
-const BUILD_LINE = /^\s*Bau:\s*([^\n·]+?)\s*·\s*Quelle:/gim;
+const BUILD_LINE = /^\s*(?:Gemessener\s+)?Bau:\s*([^\n·]+?)\s*·\s*Quelle:/gim;
 
 /** Die Bau-Angaben aus einem PR-Text, in der Reihenfolge ihres Auftretens. */
 export const buildStamps = (body) => {
@@ -136,6 +136,8 @@ if (selftest) {
   }
   // ── R5-W7 · W6 · R183 · die Provenienz, beide Richtungen ─────────────────
   const P = [
+    ["perf-visible: verschiedene gemessene Bauten", "Gemessener Bau: abc · Quelle: q\nGemessener Bau: def · Quelle: q", true],
+    ["gemischte Schreibweisen verbergen keinen gleichen Bau", "Bau: ABC · Quelle: q\nGemessener Bau: abc · Quelle: q", false],
     ["zwei GLEICHE Bau-Commits (der B5/D4-Fall)",
       "Bau: 0d50d10a1 · Quelle: --worktree x\n…\nBau: 0d50d10a1 · Quelle: --worktree x", false],
     ["zwei VERSCHIEDENE Bau-Commits",
@@ -170,6 +172,9 @@ if (selftest) {
   // Wort festhalten. Geprüft wird deshalb `buildStamps` selbst — beide
   // Richtungen, damit der Anker weder zu weit noch zu eng ist.
   const A = [
+    ["die Ausgabe von perf-visible zählt", "Gemessener Bau: abc123 · Quelle: /api/version", 1],
+    ["gemessener Bau ohne Quelle zählt nicht", "Gemessener Bau: abc123", 0],
+    ["kein beliebiger Vorsatz", "Ungeprüfter Bau: abc123 · Quelle: q", 0],
     ["»Bau:« ohne »Quelle:« zählt nicht", "Bau: dauerte diesmal laenger.", 0],
     ["die echte Zeile zählt", "Bau: abc123 · Quelle: /api/version", 1],
     ["…auch eingerückt", "   Bau: abc123 · Quelle: --worktree x", 1],

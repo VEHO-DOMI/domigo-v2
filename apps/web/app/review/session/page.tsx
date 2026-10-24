@@ -1,9 +1,10 @@
+import LearningShell from "@/lib/trainer/LearningShell";
 import { redirect } from "next/navigation";
 import { listApprovedUnits } from "@domigo/content-loader";
 import { resolveStudentView } from "@/lib/student-view";
 import { isSlugAllowed } from "@/lib/grade-scope";
 import PreviewBanner from "@/app/PreviewBanner";
-import { getDb, getDueRefs } from "@domigo/db";
+import { getDb, getDueRefs, viennaDayString } from "@domigo/db";
 import { loadUnitWithOverrides, type UnitContent } from "@/lib/content-service";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import ReviewSession from "./ReviewSession";
@@ -58,9 +59,9 @@ export default async function ReviewSessionPage({ searchParams }: {
   if (items.length === 0) redirect(preview && view.grades.length === 1 ? `/review?jahrgang=${view.grades[0]}` : "/review");
 
   return (
-    <>
+    <LearningShell preview={preview} grade={view.grades.length === 1 ? view.grades[0] : null}>
       {preview && <PreviewBanner grade={Number(previewSlug?.match(/^g(\d)/)?.[1]) || undefined} note={`Beispielaufgaben aus Chapter ${Number(previewSlug?.match(/-u(\d+)/)?.[1])}`} />}
-      <ReviewSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} preview={preview} items={items} />
-    </>
+      <ReviewSession today={viennaDayString()} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} preview={preview} items={items} />
+    </LearningShell>
   );
 }

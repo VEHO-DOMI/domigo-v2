@@ -83,3 +83,24 @@ describe("rotateVocabPool — deterministic, valid, distributed", () => {
     expect(seen.size).toBeGreaterThan(1);
   });
 });
+
+
+describe("year language changes directions, never authored material or answer pools", () => {
+  for (const pool of VOCAB_POOLS) it(`${pool}: both languages retain the exact prompt, context, scaffolds and solvability`, () => {
+    const before = JSON.stringify(item);
+    const english = vocabPrompt(item, pool, "en");
+    const german = vocabPrompt(item, pool, "de");
+    expect(german.text).toBe(english.text);
+    expect(german.context).toBe(english.context);
+    expect(german.scaffold).toBe(english.scaffold);
+    expect(vocabPrompt(item, pool)).toEqual(english);
+    if (pool !== "carrier") {
+      expect(german.instruction).not.toBe(english.instruction);
+      expect(german.scaffold).toBe(false);
+    }
+    for (const answer of vocabAnswers(item, pool).filter(a => a.tier === "full")) {
+      expect(gradeVocab(item, answer.text, pool).tier).toBe("correct");
+    }
+    expect(JSON.stringify(item)).toBe(before);
+  });
+});

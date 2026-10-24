@@ -12,6 +12,7 @@ export default function PreviewBanner({ grade, note }: { grade?: number; note?: 
   return (
     <div
       role="status"
+      lang="de"
       data-preview-banner=""
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "baseline", gap: "4px 14px", padding: "8px 16px", background: "var(--card)", borderBottom: "1.5px dashed var(--accent)", fontFamily: "var(--font-body)", fontSize: 14, color: "var(--text-secondary)" }}
     >
