@@ -1,3 +1,5 @@
+// Existing reference --selftest jobs also exercise the fixture calendar.
+import './fixture-clock.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
