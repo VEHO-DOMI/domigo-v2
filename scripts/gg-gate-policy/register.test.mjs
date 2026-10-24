@@ -30,3 +30,22 @@ test('calendar text and escaped pipes cannot create or close authorization', () 
   assert.equal(findingError('D-1', scope, openFindingMap(historicalDate)), null);
   assert.match(findingError('D-1', scope, openFindingMap(row('D-1', 'geschlossen').replace('Grund', 'offen'))), /Befund/);
 });
+
+// cgo-157: the twelve reported formatting cases and four combined placeholders.
+test('formatted placeholders cannot manufacture register evidence (12 + 4 cases)', () => {
+  for (const field of ['Grund', 'Bedingung', 'GG-DomiGo', 'Quellenprüfung']) {
+    for (const value of ['<b>TODO</b>', '<em>TODO</em>', '[TODO](#pending)', 'TODO / TBD']) {
+      assert.match(findingError('D-1', scope, openFindingMap(row().replace(field, value))), /Befund/, `${field}: ${value}`);
+    }
+  }
+});
+test('only visible cell text supplies minimum substance', () => {
+  for (const field of ['Grund', 'Bedingung', 'GG-DomiGo', 'Quellenprüfung']) {
+    for (const value of ['<b>x</b>', '[x](https://example.invalid/a-long-destination)', '<b>...</b>', '<i>???</i>', '[n/a](#pending)', '[TBD][long-reference]', '<!-- lengthy invisible text -->TODO', '[TODO](https://example.invalid/a(b(c)))', '**TODO / TBD**', '&#84;&#79;&#68;&#79;']) {
+      assert.match(findingError('D-1', scope, openFindingMap(row().replace(field, value))), /Befund/, `${field}: ${value}`);
+    }
+    for (const value of ['<b>Belegt</b>', '[Belegt](https://example.invalid/a(b(c)))', '[Belegt][quelle]', '**Belegt**']) {
+      assert.equal(findingError('D-1', scope, openFindingMap(row().replace(field, value))), null, `${field}: ${value}`);
+    }
+  }
+});

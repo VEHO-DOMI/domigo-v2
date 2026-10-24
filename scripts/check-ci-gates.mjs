@@ -378,17 +378,20 @@ const prOnly = value => value === "github.event_name == 'pull_request'";
 const supportedShell = value => value === undefined || value === "bash" || value === "sh";
 const ciCommands = ciText => {
   const doc = yaml.load(ciText), commands = [];
-  const reachable = (name, trail = new Set()) => {
+  const reachable = (name, event, trail = new Set()) => {
     const job = doc.jobs[name];
     if (!job || trail.has(name) || !hardFailure(job["continue-on-error"])) return false;
-    if (!unconditional(job.if) && !(name === "perf-contract" && prOnly(job.if))) return false;
+    if (!unconditional(job.if) && !(name === "perf-contract" && prOnly(job.if) && event === "pull_request")) return false;
     const needs = job.needs === undefined ? [] : typeof job.needs === "string" ? [job.needs] : job.needs;
     if (!Array.isArray(needs) || needs.some(dep => typeof dep !== "string")) return false;
-    return needs.every(dep => reachable(dep, new Set([...trail, name])));
+    return needs.every(dep => reachable(dep, event, new Set([...trail, name])));
   };
   for (const [jobName, job] of Object.entries(doc.jobs)) {
-    if (!reachable(jobName) || !supportedShell(job.defaults?.run?.shell ?? doc.defaults?.run?.shell)) continue;
-    const jobPrOnly = jobName === "perf-contract" && prOnly(job.if);
+    // cgo-157: a skipped prerequisite also skips its entire needs chain.
+    // Keep PR-only comparison coverage separate from general push coverage.
+    const onPush = reachable(jobName, "push");
+    const jobPrOnly = !onPush && reachable(jobName, "pull_request");
+    if ((!onPush && !jobPrOnly) || !supportedShell(job.defaults?.run?.shell ?? doc.defaults?.run?.shell)) continue;
     if (!unconditional(job.if) && !jobPrOnly) continue;
     for (const step of job.steps) {
       if (typeof step.run !== "string" || !hardFailure(step["continue-on-error"]) || !supportedShell(step.shell)) continue;
@@ -712,6 +715,9 @@ if (selftest) {
     ["dynamic mode variable", step => { step.run += ' "$MODE"'; step.env = { MODE: "--selftest" }; }],
     ["dynamic expression mode", step => { step.run += ' "${{ env.MODE }}"'; step.env = { MODE: "--selftest" }; }],
     ["node help is not execution", step => { step.run += " --help"; }],
+    ["PR-only prerequisite", (step, job) => { job.needs = "perf-contract"; }],
+    ["transitive PR-only prerequisite", (step, job, doc) => { job.needs = "lint"; doc.jobs.lint.needs = "perf-contract"; }],
+    ["mixed PR-only prerequisites", (step, job) => { job.needs = ["lint", "perf-contract"]; }],
     ["skipped prerequisite", (step, job, doc) => { doc.jobs.never = { "runs-on": "ubuntu-latest", if: false, steps: [{ run: "true" }] }; job.needs = "never"; }],
     ["missing prerequisite", (step, job) => { job.needs = "missing-job"; }],
     ["cyclic prerequisite", (step, job, doc, jobName) => { job.needs = jobName; }],
