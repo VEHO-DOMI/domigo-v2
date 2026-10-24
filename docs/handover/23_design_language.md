@@ -334,3 +334,13 @@ Karte133 verlangt daher einen verbindlichen Kriterien-/Datenerfassungsentscheid;
 bleibt ebenfalls bis133 aus. Die verbindliche Referenzablage, Kokis Bildurteil und
 der produktive Vergleich fehlen weiterhin (133/128). Die Sperren der vorgelagerten
 PRs515/516 bleiben bestehen. W7 insgesamt ist nicht abgeschlossen.
+
+
+Nachzug zur unabhängigen Prüfung von cgo-129: Die Aufgabenübersicht verwendet
+interne Next-Links, damit Sprache und Darstellung beim Seitenwechsel erhalten
+bleiben. Auf den neu aufgenommenen Lernseiten erhalten die vorhandenen Kopfknöpfe
+44-Pixel-Ziele; Markeninhalt und -palette bleiben gleich. Verfügbare Lernpfadzeilen
+bleiben vollständig breit und nutzen lesbare Aktionsschrift. Echte Routenprüfungen
+und gezielte Gegenproben sichern diese zuvor übersehenen Zustände ab. Der frühere
+isolierte Trainervergleich besteht mit festgelegter Browserzeichnung 160/160;
+seine bestehende 3/255-Toleranz wurde nicht erhöht. W7-/Referenzfreigaben bleiben offen.

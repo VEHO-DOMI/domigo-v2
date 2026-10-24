@@ -15,11 +15,10 @@ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 function files(dir){return fs.readdirSync(dir,{recursive:true,withFileTypes:true}).filter(e=>e.isFile()&&e.name.endsWith('.png')).map(e=>path.relative(dir,path.join(e.parentPath,e.name))).sort();}
 // Evidence binds to source bytes, including uncommitted authoring work. It is
 // deliberately separate from reference approval and does not rewrite a baseline.
-const sourceFiles=['apps/web/app','apps/web/lib','apps/web/e2e','packages/task-ui/src','scripts/lib/visual'].flatMap(dir=>fs.readdirSync(path.join(root,dir),{recursive:true,withFileTypes:true}).filter(e=>e.isFile()&&/\.(?:[cm]?[jt]sx?|css)$/.test(e.name)).map(e=>path.relative(root,path.join(e.parentPath,e.name)))).concat(['apps/web/playwright.config.ts','scripts/verify-design.mjs','pnpm-lock.yaml']).sort();
-const sourceSnapshot=freezeSources(root,sourceFiles);
-fs.writeFileSync(path.join(out,'source-manifest.json'),JSON.stringify({status:'CODEX DRAFT — NOT CANON',files:sourceSnapshot},null,2));
+const sourceSnapshot=freezeSources(root);
+fs.writeFileSync(path.join(out,'source-manifest.json'),JSON.stringify({status:'CODEX DRAFT — NOT CANON',...sourceSnapshot},null,2));
 const req=createRequire(path.join(root,'package.json')), {chromium}=req('playwright');
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined});const environment={platform:process.platform,arch:process.arch,browser:browser.version(),contract:hash(Buffer.concat(['apps/web/e2e/visual-contract.ts','apps/web/playwright.config.ts'].map(f=>fs.readFileSync(path.join(root,f)))))};await browser.close();
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined});const environment={platform:process.platform,arch:process.arch,browser:browser.version(),contract:hash(Buffer.concat(['apps/web/e2e/visual-contract.ts','apps/web/e2e/visual.spec.ts','apps/web/playwright.config.ts'].map(f=>fs.readFileSync(path.join(root,f)))))};await browser.close();
 if(!capture){const manifest=JSON.parse(fs.readFileSync(path.join(baseline,'manifest.json'),'utf8'));assert.deepEqual(manifest.environment,environment,'Different capture environment');assert.equal(manifest.files.length,92,'Incomplete V-1 reference matrix');for(const f of manifest.files){assert(!path.isAbsolute(f.path)&&!f.path.split(/[\\/]/).includes('..'),'Invalid reference path');assert.equal(hash(fs.readFileSync(path.join(baseline,f.path))),f.sha256,'Reference changed: '+f.path);}}
 let server;
 try{

@@ -31,3 +31,18 @@
   --card-border:inherit; --logo-gradient:inherit;
 }
 .og-learning .dg-input { border-color:var(--text-secondary); }
+
+/* Restore the existing roof's hit areas only on the newly wrapped learning
+   routes. No wordmark, palette, account or navigation behavior changes. */
+body:has(.og-learning) > .le-kopf {
+  --learning-header-target:calc(var(--le-line-spacing) / 9 * 11);
+  min-height:var(--learning-header-target); height:auto;
+}
+body:has(.og-learning) > .le-kopf :is(.le-zone,button,a) {
+  min-height:var(--learning-header-target);
+}
+body:has(.og-learning) > .le-kopf :is(button,a) {
+  min-width:var(--learning-header-target);
+}
+.og-learning .learning-path-link { display:block; width:100%; }
+.og-learning .learning-path-link > div { width:100%; }

@@ -122,15 +122,15 @@ function JourneyNodeRow({ slug, node, view, grade }: { slug: string; node: Journ
   const inner = (
     <div
       className={locked ? "dg-tile--locked" : "dg-tile"}
-      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
+      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "calc(var(--learning-unit) * 3)", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
     >
       <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}>
         {NODE_ICON[node.kind]} <span lang="de">{node.titleDe}</span>
       </span>
-      <span style={{ fontSize: 13, fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap", color: locked ? "var(--muted)" : view.status === "available" ? "var(--accent)" : "var(--accent-deep)" }}>{meta}</span>
+      <span className={locked ? undefined : "learning-path-action"} style={{ fontSize: 13, fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap", color: locked ? "var(--muted)" : "var(--ink)" }}>{meta}</span>
     </div>
   );
-  return <li>{locked ? inner : <Link href={href} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
+  return <li>{locked ? inner : <Link className="learning-path-link" href={href} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
 }
 
 function NodeRow({ slug, node }: { slug: string; node: NodeView }) {
@@ -146,11 +146,11 @@ function NodeRow({ slug, node }: { slug: string; node: NodeView }) {
   const inner = (
     <div
       className={locked ? "dg-tile--locked" : "dg-tile"}
-      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
+      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "calc(var(--learning-unit) * 3)", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
     >
       <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}><LearningText de={node.kind === "checkpoint" ? "Zeig, was du kannst" : `${node.kind.startsWith("vocab") ? "Wörter" : "Grammatik"}${node.difficulty ? ` üben · ${{ 1: "Leicht", 2: "Mittel", 3: "Schwer" }[node.difficulty]}` : ""}`} en={node.title} /></span>
-      <span style={{ fontSize: 13, fontWeight: 600, color: locked ? "var(--muted)" : node.status === "available" ? "var(--accent)" : "var(--accent-deep)" }}>{meta}</span>
+      <span className={locked ? undefined : "learning-path-action"} style={{ fontSize: 13, fontWeight: 600, color: locked ? "var(--muted)" : "var(--ink)" }}>{meta}</span>
     </div>
   );
-  return <li>{locked ? inner : <Link href={`/learn/${slug}/${node.id}`} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
+  return <li>{locked ? inner : <Link className="learning-path-link" href={`/learn/${slug}/${node.id}`} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
 }

@@ -16,12 +16,12 @@ Nur externe Ein-/Ausgabe wird ersetzt. Jahrgänge 1–4, 375/1400 Pixel, hell/du
 in Jahrgang 1 zusätzlich beide Sprachen: 160 Anfangsansichten plus 80 Rückmeldungen
 (correct/partial/close/wrong) ergeben 240 Ansichten. Geprüft werden Überlauf,
 44-Pixel-Bedienziele, sichtbare Textkontraste und Ränder von Eingabe/Sprachwahl.
-40 Zusatzproben prüfen erhaltene Eingaben/Bewertung beim Sprachwechsel,
+Alle 240 Zustände erhalten ein PNG; der fertige innere Inhalt wird vor der Aufnahme abgewartet. 40 Zusatzproben prüfen erhaltene Eingaben/Bewertung beim Sprachwechsel,
 0 Vorschau-Antwortsendungen/0 Vorschau-XP im Practice-Pfad sowie 50 auswählbare Figuren.
-Die Fehlerproben verändern Sprache, Zustandsidentität, Aufgabenrichtung,
+Ein unmutierter Kontrolllauf muss zuerst bestehen. Jede Fehlerprobe muss ihren tatsächlich ausgeführten Mutationsanker und ihren zugeordneten Behauptungsfehler melden; Startabstürze zählen nicht als gefundener Fehler. Eine Gegenprobe mit fehlendem esbuild wird verweigert. Die Fehlerproben verändern Sprache, Zustandsidentität, Aufgabenrichtung,
 Avatarbeschriftung, Vorschau-Senden und Vorschau-Klang. Jede muss scheitern.
 Das ist kein Beweis für sämtliche Antworten, alle Dialogzustände oder die
-Punktebuchung der anderen Lernwege. Die alten Review-/Path-XP-Pfade sind auf132 erfasst.
+Punktebuchung der anderen Lernwege. Die alten Review-/Path-XP-Pfade sind auf 132 erfasst.
 
 `--before-ref` zeichnet den früheren Stand mit dessen ursprünglichem Komponentenrahmen.
 Die 128 Bilder dienen dem Vergleich; bekannte frühere Kontrastfehler machen diesen
@@ -57,12 +57,11 @@ Originalfonts und Originalbilder werden vollständig geladen, bevor ein Bild zä
 Es gibt keine tolerierten Bildunterschiede (`threshold:0`, `maxDiffPixels:0`),
 keine Testwiederholung und keine automatische Referenzerneuerung beim Vergleich.
 Nur die zeitabhängigen Home-Wörter und die Datumsspalte werden maskiert, keine
-Navigation, Aufgaben oder ganzen Karten. Die vier Akzentvariablen jeder
-Jahrgangspalette werden gegen eine feste Tabelle geprüft.
+Navigation, Aufgaben oder ganzen Karten. Die vier Akzentvariablen jeder Jahrgangspalette werden gegen eine feste Tabelle geprüft. Auf den tatsächlichen Lernrouten werden außerdem die 44-Pixel-Kopfziele geprüft; im Lernpfad vollständige Zeilenbreite und Aktionskontrast. Vier Aufgabenübersicht-Proben prüfen Sprache/Darstellung über Home und zurück sowie den Erhalt des Dokuments beim Öffnen eines Eintrags. Die echte Detailroute erhält dafür ausschließlich eine synthetische Aufgabe ohne laufenden Versuch; neue Versuche und alle Schreibzugriffe sind gesperrt. Eine vollständige fachliche Aufgabenabnahme ist das nicht.
 
 Referenzen tragen SHA-256-Dateifingerabdrücke und Browser-/Betriebssystem-/Architektur-
 und Prüfkonfigurationsangaben. Abweichende Umgebungen werden verweigert.
-`source-manifest.json` hält die untersuchten Quellbytes fest; Änderungen während
+`source-manifest.json` hält App, gemeinsame Pakete, Inhaltskorpus, Bilder, Schriften, Prüfhilfen und Konfiguration fest. Abhängigkeitspakete und erzeugte Bau-/Cacheverzeichnisse sind ausgeschlossen; der Lockfile und die Browserumgebung sind erfasst. Änderungen und neue/gelöschte Quelldateien während
 des Laufs machen dessen Ergebnis ungültig. Deshalb keine Produktedits während
 laufender Vergleiche. Die temporäre App bindet Workspace-Pakete gemeinsam ein.
 
@@ -70,9 +69,9 @@ Der Browser verwendet feste sRGB-/Rasteroptionen. Grundlage:
 [Chrome-Team: Browserflags für Prüfwerkzeuge](https://github.com/GoogleChrome/chrome-launcher/blob/main/docs/chrome-flags-for-tools.md).
 Die Optionen ersetzen keinen gelungenen Wiederholungsvergleich.
 
-Sechs V-1-Fehlerproben: falscher Akzent, Verschiebung um 1 Pixel, abgefangener
+Zehn V-1-Fehlerproben: falscher Akzent, Verschiebung um 1 Pixel, abgefangener
 Datenbankaufruf, abgefangener fremder Netzwerkzugriff, manipuliertes Referenzbild,
-fehlendes Referenzbild. Die Quellstand-Gegenprobe verändert zusätzlich eine Datei.
+fehlendes Referenzbild, verkleinerte Kopfknöpfe, verkürzte Lernpfadzeile, blasser Startverweis und ein vollständiges Neuladen bei interner Navigation. Die acht Quellstand-Gegenproben verändern App-/Spiel-/Engine-/Inhalts-/Bild-/Fontdateien sowie die Dateimenge.
 `--grep`/`--project` wählen Teilmengen und melden ausdrücklich nur Teilprüfung.
 
 Für einen freigegebenen externen Teststand gibt es `--url` plus `--accounts`:
@@ -84,12 +83,11 @@ Anmelde-/Berechtigungsprüfung. Er bleibt Teil der GG-Abnahme128.
 
 ## Automatische Prüfung und offene Freigaben
 
-`visual-design.yml` prüft Kandidaten-Reproduzierbarkeit: Aufnahme, frischer Vergleich,
+Der Job `visual-reproducibility` in `ci.yml` prüft Kandidaten-Reproduzierbarkeit: Aufnahme, frischer Vergleich,
 Fehlerproben und Lernflächen; Belege bleiben 30 Tage als GitHub-Artefakt erhalten.
 Ein neu aufgenommener Kandidat ist **kein** freigegebener Vergleich mit einem älteren
 Commit. Eine dauerhaft verpflichtende, von Koki angenommene Referenz braucht die
 Ablageentscheidung133 (Blueprint verlangt committete Baselines, AGENTS verbietet
 Bildbelege im Repo) und die Abnahme128. Bis dahin darf diese CI nicht als vollständiges
 V-1-Abnahmetor bezeichnet werden. Sie sagt auch nichts über Produktion oder reale
-Punktebuchung aus. Der ältere isolierte Trainervergleich aus114 bleibt ein eigener
-Nachweis mit seiner damals dokumentierten offenen 7/160-Abweichung.
+Punktebuchung aus. Der ältere isolierte Trainervergleich aus114 bleibt ein eigener Nachweis: Mit den festen Browser-Rasteroptionen besteht nun auch dessen 160/160-Wiederholung bei unveränderter 3/255-Farbkanaltoleranz. Die damalige 7/160-Abweichung bleibt als Entwicklungsergebnis dokumentiert.

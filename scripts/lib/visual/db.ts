@@ -5,6 +5,9 @@ export { bestTierPerItem, deriveJourneyProgress } from '@visual-db/journey-progr
 export { practiceItemDenial } from '@visual-db/practice-access';
 export { trapLabel } from '@visual-db/class-progress';
 export { isStreakActive } from '@visual-db/streak';
+export { AHS_DEFAULT_NOTENSCHLUESSEL, TIER_POINTS } from '@visual-db/assignments';
+export { CHECKUP_DEFAULT_DISPLAY, CHECKUP_TOTAL, checkupSectionKind, checkupVocabPool, formatCheckupPoints, parseCheckupSectionConfig, parseDisplayConfig } from '@visual-db/checkup';
+export { isSessionLive, sessionExpiry } from '@visual-db/assignment-session';
 const forbidden = () => { console.error('VISUAL_FORBIDDEN_DB_CALL'); throw Error('VISUAL_FORBIDDEN_DB_CALL'); };
 const db = new Proxy({}, { get: forbidden });
 export const getDb = () => db;
@@ -37,3 +40,9 @@ export const listAssignmentsForStudent = async (_db: unknown, scope: string[], c
 export const getAssignmentWithSections = async () => null;
 export const getGameSave = async () => null;
 export const getDueRefs = async () => [];
+
+export const getStudentAssignmentView = async (_db: unknown, scope: string[], id: string) => {
+  const assignment = assignments.find(a => a.id === id && scope.includes(a.classId));
+  return assignment ? {assignment: {...assignment, attemptsPerTest: 3}, sections: [], sessions: []} : null;
+};
+export const startOrResumeSession = forbidden;

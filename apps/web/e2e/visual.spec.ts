@@ -1,4 +1,7 @@
 import fs from 'node:fs';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+const {measure}=createRequire(path.join(process.cwd(),'package.json'))('./scripts/lib/trainer-display-measure.mjs');
 import { test, expect } from 'playwright/test';
 import { ACCENTS } from './visual-contract';
 const local = process.env.VISUAL_FIXTURE === '1';
@@ -47,11 +50,44 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       expect(actual).toEqual(ACCENTS[`${row.grade}-${scheme}` as keyof typeof ACCENTS]);
     }
     await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(image=>image.decode()));});
+    if(await page.locator('.og-learning').count()) {
+      if(process.env.VISUAL_MUTANT==='tap')await page.addStyleTag({content:'body:has(.og-learning)>.le-kopf button{min-height:0!important;height:17px!important;padding:0!important}'});
+      const targets=await page.locator('.le-kopf button,.le-kopf a').evaluateAll(elements=>elements.filter(e=>e.getClientRects().length&&e.checkVisibility({visibilityProperty:true})).map(e=>{const r=e.getBoundingClientRect();return {label:e.textContent,width:r.width,height:r.height,y:r.y+scrollY};}));
+      expect(targets.length).toBeGreaterThan(0);
+      expect(targets.filter(t=>t.width<43.99||t.height<43.99||t.y<0),'V1_HEADER_TARGET').toEqual([]);
+    }
+    if(row.name.startsWith('learn-')) {
+      if(process.env.VISUAL_MUTANT==='path-width')await page.addStyleTag({content:'.og-learning .learning-path-link{width:100px!important}'});
+      if(process.env.VISUAL_MUTANT==='path-contrast')await page.addStyleTag({content:'.learning-path-action{color:#16a34a!important}'});
+      const rows=await page.locator('.learning-path-link').evaluateAll(elements=>elements.map(e=>({width:e.getBoundingClientRect().width,parent:e.parentElement!.getBoundingClientRect().width,height:e.getBoundingClientRect().height})));
+      expect(rows.length).toBeGreaterThan(0);expect(rows.filter(r=>Math.abs(r.width-r.parent)>1||r.height<44),'V1_PATH_WIDTH').toEqual([]);
+      const measured=await measure(page), actions=measured.contrast.filter((r:{selector:string})=>r.selector==='learning-path-action');
+      fs.writeFileSync(path.join(process.env.VISUAL_OUT!,`${info.project.name}-${row.name}-accessibility.json`),JSON.stringify({rows,actions},null,2));
+      expect(actions.length).toBeGreaterThan(0);expect(actions.filter((r:{pass:boolean})=>!r.pass),'V1_PATH_CONTRAST').toEqual([]);
+    }
     await page.addStyleTag({content:'*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}'});
     if (process.env.VISUAL_MUTANT === 'pixel') await page.addStyleTag({content:'main{transform:translateX(1px)!important}'});
     // Only server-date-dependent text. No task, navigation or whole card is hidden.
     const masks=row.name.startsWith('home')?['.og-word','.og-definition','.og-today-heading > span']:[];
     await expect(page).toHaveScreenshot(`${row.name}.png`,{fullPage:true,mask:masks.map(s=>page.locator(s))});
+    if(row.name==='assignments-g1') {
+      await page.getByRole('button',{name:'English',exact:true}).click();
+      if(await shell.getAttribute('data-theme')!=='dark')await shell.locator('.og-footer button').click();
+      await page.evaluate(()=>Reflect.set(window,'__visualNavigationMark','kept'));
+      await page.getByRole('link',{name:'← Home',exact:true}).click();await expect(page).toHaveURL(/\/home$/);
+      await expect(page.locator('.og-player')).toBeVisible();
+      expect(await page.evaluate(()=>Reflect.get(window,'__visualNavigationMark')),'V1_NAV_STATE').toBe('kept');
+      await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+      await page.goBack();await expect(page).toHaveURL(/\/assignments$/);
+      await expect(page.locator('.og-root')).toHaveAttribute('lang','en');
+      // Open the real detail route with a synthetic assignment and no sitting.
+      // Navigation must keep the same document and in-memory preferences.
+      await page.locator('main a[href^="/assignments/"]').first().click();await expect(page).toHaveURL(/\/assignments\/synthetic-assignment-1$/);
+      await expect(page.getByRole('button',{name:'Begin',exact:true})).toBeVisible();
+      await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+      expect(await page.evaluate(()=>Reflect.get(window,'__visualNavigationMark')),'V1_NAV_STATE').toBe('kept');
+      await page.goBack();await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+    }
     expect(failures).toEqual([]);
   } finally { await context.close(); }
 });

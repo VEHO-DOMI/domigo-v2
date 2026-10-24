@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 /**
  * /assignments — "Deine Aufgaben": the student's assigned practice sets + mock
@@ -28,7 +29,7 @@ export default async function AssignmentsPage({ searchParams }: { searchParams: 
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Deine Aufgaben" en="Your assignments" /></h1>
-        <a href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Startseite" en="← Home" /></a>
+        <Link prefetch={false} href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Startseite" en="← Home" /></Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}><LearningText de="Aufgaben und Schularbeit-Übungen von deiner Lehrkraft." en="Assignments and practice tests from your teacher." /></p>
 
@@ -37,7 +38,7 @@ export default async function AssignmentsPage({ searchParams }: { searchParams: 
       ) : (
         <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10 }}>
           {rows.map((a) => (
-            <a key={a.id} href={`/assignments/${a.id}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
+            <Link prefetch={false} key={a.id} href={`/assignments/${a.id}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>{a.title}</div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
@@ -48,7 +49,7 @@ export default async function AssignmentsPage({ searchParams }: { searchParams: 
                 </div>
               </div>
               <span style={{ fontSize: 13, color: "var(--ink)", fontWeight: 700 }}><LearningText de="Öffnen →" en="Open →" /></span>
-            </a>
+            </Link>
           ))}
         </div>
       )}
