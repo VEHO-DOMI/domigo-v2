@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import * as jsxRuntime from "react/jsx-runtime";
 import ts from "typescript";
 import * as engine from "@domigo/engine";
+import * as vocabularyHistoryClient from "../vocabulary-history-client.ts";
 import * as grammar from "./grammar.ts";
 import * as decks from "./decks.ts";
 export type Props = Record<string, unknown> & { children?: ReactNode; className?: string };
@@ -26,6 +27,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
   let active: Instance;
   const stored = new Map<string, string>(), writes: [string, string][] = [];
   const dependencies: Record<string, unknown> = {
+    "@/lib/vocabulary-history-client": vocabularyHistoryClient,
     "react/jsx-runtime": jsxRuntime,
     "react": {
       useState(initial: unknown) {
@@ -37,6 +39,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
       useCallback: (callback: unknown) => callback, useEffect() {},
       useSyncExternalStore: (_subscribe: unknown, getSnapshot: () => unknown) => getSnapshot(),
     },
+    "@/lib/trainer/LearningShell": { useLearningText: () => (_de: string, en: string) => en },
     "next/link": { __esModule: true, default: "a" }, "@domigo/engine": engine,
     "@/lib/modi/grammar": grammar, "@/lib/modi/decks": { ...decks, shuffle: <T,>(items: readonly T[]) => [...items] },
     "@/lib/useOutboxFlush": { useOutboxFlush() {} }, "@/lib/attempt-outbox": { subscribeOutboxReplies() {} }, ...modules,
@@ -49,7 +52,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
       compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 },
     }).outputText);
     const exports: Record<string, unknown> = {}; loaded.set(path, exports);
-    const relatives: Record<string, string> = { "./GrammarMemory": "app/modi/grammar/GrammarMemory.tsx", "./GrammarExercise": "app/modi/grammar/GrammarExercise.tsx", "@/lib/modi/preference": "lib/modi/preference.ts" };
+    const relatives: Record<string, string> = { "./GrammarMemory": "app/modi/grammar/GrammarMemory.tsx", "./GrammarExercise": "app/modi/grammar/GrammarExercise.tsx", "@/lib/modi/preference": "lib/modi/preference.ts", "@/lib/trainer/preferences": "lib/trainer/preferences.tsx", "./register": "lib/trainer/register.ts" };
     runInNewContext(compiled.get(path)!, { exports, crypto, Event,
       localStorage: { getItem: (key: string) => stored.get(key) ?? null, setItem: (key: string, value: string) => { writes.push([key, value]); stored.set(key, value); } },
       window: { dispatchEvent() {}, addEventListener() {}, removeEventListener() {} },

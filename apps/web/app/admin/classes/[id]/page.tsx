@@ -59,6 +59,7 @@ import { isGrandmaster } from "@/lib/grandmaster";
 import { isSlugAllowed, visibleGradesFor } from "@/lib/grade-scope";
 import LeaderboardSettings from "./LeaderboardSettings";
 import { getClassLeaderboardSettings } from "@/lib/leaderboard";
+import { liveEnabled } from "@/lib/arena/live-server";
 import ProgressAdjustCell from "./ProgressAdjustCell";
 
 // Liest den Korpus zur Laufzeit über fs — nie statisch vorgerendert.
@@ -209,6 +210,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
 
   const purposes = await getClassPurposes(getDb(), teacher.classScope, [cls.id]);
   const classPurpose = purposes.get(cls.id) ?? "regular";
+  const quizAvailable = liveEnabled() && !fremd && classPurpose === "regular" && boardSettings.leaderboard && !cls.archivedAt;
   const aktive = attempts.length;
   const versucheGesamt = attempts.reduce((n, a) => n + a.attempts, 0);
 
@@ -238,7 +240,9 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
       </p>
 
       {/* ── 1 · Die Kinder ─────────────────────────────────────────────── */}
+      {quizAvailable && <Link href={`/admin/classes/${id}/quiz`} className="dg-btn-secondary">Klassenquiz öffnen →</Link>}
       <LeaderboardSettings key={`${id}-${classPurpose}`} classId={id} initial={boardSettings} testClass={classPurpose === "test"} readOnly={fremd} />
+      <p className="dg-meta">Battle Arena: {boardSettings.leaderboard && classPurpose === "regular" && !cls.archivedAt ? "an" : "aus"} (folgt der Bestenliste)</p>
       <section className="dg-card" style={{ marginTop: 20 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Die Kinder</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>

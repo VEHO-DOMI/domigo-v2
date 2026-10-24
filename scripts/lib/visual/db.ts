@@ -1,0 +1,48 @@
+/** Closed data adapter: no database URL, driver, live identity or write API. */
+export { classScope, EMPTY_SCOPE, inScope } from '@visual-db/scope';
+export { buildUnitNodes, withProgress } from '@visual-db/studypath';
+export { bestTierPerItem, deriveJourneyProgress } from '@visual-db/journey-progress';
+export { practiceItemDenial } from '@visual-db/practice-access';
+export { trapLabel } from '@visual-db/class-progress';
+export { isStreakActive } from '@visual-db/streak';
+export { AHS_DEFAULT_NOTENSCHLUESSEL, TIER_POINTS } from '@visual-db/assignments';
+export { CHECKUP_DEFAULT_DISPLAY, CHECKUP_TOTAL, checkupSectionKind, checkupVocabPool, formatCheckupPoints, parseCheckupSectionConfig, parseDisplayConfig } from '@visual-db/checkup';
+export { isSessionLive, sessionExpiry } from '@visual-db/assignment-session';
+const forbidden = () => { console.error('VISUAL_FORBIDDEN_DB_CALL'); throw Error('VISUAL_FORBIDDEN_DB_CALL'); };
+const db = new Proxy({}, { get: forbidden });
+export const getDb = () => db;
+export const listAllClassIds = async () => [1,2,3,4].map(g=>`synthetic-class-${g}`);
+export const getClassGrade = async (_db: unknown, id: string) => Number(id.match(/^synthetic-class-([1-4])$/)?.[1]) || null;
+export const loadPublishedOverrides = async () => [];
+export const loadPublishedDrafts = async () => [];
+export const listReservedForClass = async () => new Set();
+export const listStoryWorldSettings = async () => [{grade:3,isOpen:true}];
+export const getDailyChallengeCount = async () => 0;
+export const getDueCounts = async () => ({total:3,vocab:2,grammar:1,byGrade:{}});
+export const getDueStoryCount = async () => 0;
+export const getDueStoryRefs = async () => [];
+export const listStudentTraps = async () => [];
+export const getPathSummary = async () => new Map();
+export const getUnitPathProgress = async () => new Map();
+export const getJourneyAttempts = async () => [];
+export const getStudentAvatar = async () => 1;
+export const getUserProgress = async () => ({xp:0,grammarXp:0,streak:0,lastSessionDate:null});
+export const getSolvedGameItemIds = async () => [];
+const classes=[1,2,3,4].map(grade=>({id:`synthetic-class-${grade}`,name:`Visual fixture ${grade}`,inviteCode:'FIXTURE',grade,studentCount:3,createdAt:new Date('2026-10-01T10:00:00Z')}));
+const assignments=classes.map(c=>({id:`synthetic-assignment-${c.grade}`,classId:c.id,title:'Chapter 1 · Visual fixture',mode:'practice',sessionDurationMinutes:15,dueAt:null,createdAt:new Date('2026-10-01T10:00:00Z'),archivedAt:null}));
+export const listClassesForTeacher = async () => classes;
+export const listClasses = async () => classes;
+export const listClassesInScope = async () => classes;
+export const listClassRegistrationCountsForTeacher = async () => classes.map(c=>({classId:c.id,claimedCount:2}));
+export const listAssignmentsByCreator = async () => assignments;
+export const getClassPurposes = async () => new Map(classes.map(c=>[c.id,"test"]));
+export const listAssignmentsForStudent = async (_db: unknown, scope: string[], classId: string) => scope.includes(classId) ? assignments.filter(a=>a.classId===classId) : [];
+export const getAssignmentWithSections = async () => null;
+export const getGameSave = async () => null;
+export const getDueRefs = async () => [];
+
+export const getStudentAssignmentView = async (_db: unknown, scope: string[], id: string) => {
+  const assignment = assignments.find(a => a.id === id && scope.includes(a.classId));
+  return assignment ? {assignment: {...assignment, attemptsPerTest: 3}, sections: [], sessions: []} : null;
+};
+export const startOrResumeSession = forbidden;

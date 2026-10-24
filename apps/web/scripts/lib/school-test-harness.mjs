@@ -10,12 +10,13 @@ const root = fileURLToPath(new URL("../../../../", import.meta.url));
 /** @type {{session: {user: {id: string, classId: string|null, role: string, scope: string[], name?: string}}|null,
  * grade: number|null, gradeError: Error|null, released: boolean, writeError: Error|null, forcePreviewSave: boolean, storageCalls: number,
  * solved: Set<string>, writes: Array<{scope: readonly string[], data: Record<string, any>}>, reads: string[],
- * classRows: Array<{id: string, name: string, grade: number}>, recordReturn: any}} */
+ * classRows: Array<{id: string, name: string, grade: number}>, recordReturn: any, db: any, reserved: Set<string>, reserveError: Error|null}} */
 export const fixture = {
   session: null, grade: 2, gradeError: null, released: true, writeError: null, forcePreviewSave: false, storageCalls: 0,
-  solved: new Set(), writes: [], reads: [], classRows: [], recordReturn: undefined,
+  db: null, reserved: new Set(), reserveError: null, solved: new Set(), writes: [], reads: [], classRows: [], recordReturn: undefined,
 };
 export function resetSchoolFixture() {
+  fixture.db = null; fixture.reserved.clear(); fixture.reserveError = null;
   fixture.session = null;
   fixture.grade = 2;
   fixture.gradeError = null;
@@ -59,8 +60,10 @@ const modules = new Map([
   `],
   ["@domigo/db", `${state}
     export * from ${JSON.stringify(dbURL)};
-    export const getDb = () => ({});
-    export const getClassGrade = async () => {
+    import * as real from ${JSON.stringify(dbURL)};
+    export const getDb = () => f.db ?? ({});
+    export const getClassGrade = async (...args) => {
+      if (f.db) return real.getClassGrade(...args);
       if (f.gradeError) throw f.gradeError;
       return f.grade;
     };
@@ -76,6 +79,7 @@ const modules = new Map([
     };
     export const recordAttempt = async (_db, scope, data) => {
       f.storageCalls++;
+      if (f.db) return real.recordAttempt(_db, scope, data);
       if (!scope.includes(data.classId)) throw new Error("class scope denied");
       if (f.writeError) throw f.writeError;
       f.writes.push({ scope, data });
@@ -87,7 +91,11 @@ const modules = new Map([
     // class wall (lib/class-wall.ts) has to close.
     export const listClasses = async () => f.classRows.map((r) => ({ ...r }));
     export const listClassesInScope = async () => f.classRows.map((r) => ({ ...r }));
-    export const listReservedForClass = async () => new Set();
+    export const listReservedForClass = async (...args) => {
+      if (f.db) return real.listReservedForClass(...args);
+      if (f.reserveError) throw f.reserveError;
+      return new Set(f.reserved);
+    };
     export const createAssignment = async (_db, scope, draft) => {
       f.storageCalls++;
       if (!scope.includes(draft.classId)) throw new Error("class scope denied");
