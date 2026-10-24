@@ -326,30 +326,51 @@ const literalArgs = tail => {
   const args = [], token = /\s+(?:"[^"]*"|'[^']*'|[^\s"'\\]+)(?=\s|$)/gy;
   let consumed = 0, match;
   while ((match = token.exec(tail)) !== null) {
-    const raw = match[0].trim();
-    args.push(/^["']/.test(raw) ? raw.slice(1, -1) : raw);
+    const raw = match[0].trim(), value = /^["']/.test(raw) ? raw.slice(1, -1) : raw;
+    // The existing generated output paths are the only dynamic arguments we
+    // credit. A shell/environment expression must never change the run mode.
+    const outputPath = /^"\$\{\{ runner\.temp \}\}\/[A-Za-z0-9_./-]+"$/.test(raw)
+      && ["--out", "--baseline"].includes(args.at(-1));
+    if (!outputPath && !/^[A-Za-z0-9_.:/=@,+-]+$/.test(value)) return null;
+    args.push(value);
     consumed = token.lastIndex;
   }
   return tail.slice(consumed).trim() ? null : args;
 };
-const commandsFromRun = run => {
-  const text = run.replace(/\\\r?\n/g, " ")
-    .split("\n").map(line => line.replace(/(?:^|\s+)#.*$/, "").trim()).join("\n");
-  if (/(?:^|\n)\s*(?:exit\b|return\b|if\b|for\b|while\b|until\b|case\b|function\b|eval\b|exec\b|set\s+\+(?:e|o\s+errexit)\b)/.test(text) || text.includes("<<")) return [];
-  return text.split("\n").flatMap(line => {
+// These two existing, complete recipes establish the comparison base. Accept
+// the WHOLE recipe, never isolated lines inside an unknown shell context.
+const comparisonRecipes = new Map([
+  [[
+    'git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"',
+    'node scripts/check-png-identity.mjs --ref FETCH_HEAD',
+  ].join("\n"), 'node scripts/check-png-identity.mjs'],
+  [[
+    'git fetch --no-tags origin "${{ github.base_ref }}" > /dev/null 2>&1 || true',
+    'CHANGED_FILES="$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)"',
+    'export CHANGED_FILES',
+    'node scripts/check-perf-table.mjs',
+  ].join("\n"), 'node scripts/check-perf-table.mjs'],
+]);
+const commandsFromRun = (run, packageScript = false) => {
+  const lines = run.replace(/\\\r?\n/g, " ").split("\n")
+    .map(line => line.replace(/(?:^|\s+)#.*$/, "").trim()).filter(Boolean);
+  const recipe = comparisonRecipes.get(lines.join("\n"));
+  if (recipe && !packageScript) return [recipe];
+  // Package scripts do not inherit the Actions shell's error-abort option.
+  if (packageScript && lines.length !== 1) return [];
+  const commands = [];
+  for (const line of lines) {
     if (/[;&|<>`]/.test(line) || /\$\(/.test(line)) return [];
     const node = /^node(?:\s+--(?:experimental-strip-types|test))*\s+((?:scripts|docs\/art)\/[A-Za-z0-9_./-]+\.(?:mjs|ts))(?=\s|$)/.exec(line);
-    if (node) {
-      const args = literalArgs(line.slice(node[0].length));
-      if (!args) return []; // unsupported quote/escape form
-      return [`node ${node[1]}${args.includes("--selftest") ? " --selftest" : ""}`];
-    }
     const pnpm = /^pnpm\s+(?:run\s+)?([A-Za-z0-9:_-]+)(?=\s|$)/.exec(line);
-    if (!pnpm) return [];
-    const args = literalArgs(line.slice(pnpm[0].length));
-    if (!args || args.includes("--help") || args.includes("--version")) return [];
-    return [`pnpm ${pnpm[1]}${args.includes("--selftest") ? " --selftest" : ""}`];
-  });
+    const match = node ?? pnpm;
+    if (!match) return []; // One unknown line invalidates the entire block.
+    const args = literalArgs(line.slice(match[0].length));
+    if (!args || args.some(arg => ["--help", "--version", "-h", "-v"].includes(arg))) return [];
+    if (node && /^scripts\/gg-gate-policy\/(?:register|adapters)\.test\.mjs$/.test(node[1]) && args.length) return [];
+    commands.push(`${node ? "node" : "pnpm"} ${match[1]}${args.includes("--selftest") ? " --selftest" : ""}`);
+  }
+  return commands;
 };
 const hardFailure = value => value === undefined || value === false;
 const unconditional = value => value === undefined || value === true || value === "true" || value === "${{ true }}";
@@ -357,8 +378,16 @@ const prOnly = value => value === "github.event_name == 'pull_request'";
 const supportedShell = value => value === undefined || value === "bash" || value === "sh";
 const ciCommands = ciText => {
   const doc = yaml.load(ciText), commands = [];
+  const reachable = (name, trail = new Set()) => {
+    const job = doc.jobs[name];
+    if (!job || trail.has(name) || !hardFailure(job["continue-on-error"])) return false;
+    if (!unconditional(job.if) && !(name === "perf-contract" && prOnly(job.if))) return false;
+    const needs = job.needs === undefined ? [] : typeof job.needs === "string" ? [job.needs] : job.needs;
+    if (!Array.isArray(needs) || needs.some(dep => typeof dep !== "string")) return false;
+    return needs.every(dep => reachable(dep, new Set([...trail, name])));
+  };
   for (const [jobName, job] of Object.entries(doc.jobs)) {
-    if (!hardFailure(job["continue-on-error"]) || !supportedShell(job.defaults?.run?.shell ?? doc.defaults?.run?.shell)) continue;
+    if (!reachable(jobName) || !supportedShell(job.defaults?.run?.shell ?? doc.defaults?.run?.shell)) continue;
     const jobPrOnly = jobName === "perf-contract" && prOnly(job.if);
     if (!unconditional(job.if) && !jobPrOnly) continue;
     for (const step of job.steps) {
@@ -369,11 +398,26 @@ const ciCommands = ciText => {
         const comparison = /^node scripts\/check-(?:png-identity|perf-table)\.mjs(?: |$)/.test(command);
         if (jobPrOnly && !comparison) continue;
         if (!unconditional(step.if) && !(prOnly(step.if) && comparison)) continue;
+        if (command === "node scripts/gg-gate-policy/adapters.test.mjs" && !isolatedAdapterJob(job)) continue;
         commands.push(command);
       }
     }
   }
   return commands.join("\n");
+};
+
+
+// The adapters temporarily change real files. Their job must own a fresh
+// checkout and run no other product test in that working tree.
+const isolatedAdapterJob = job => {
+  const steps = job.steps, adapter = steps.findIndex(step => typeof step.run === "string"
+    && commandsFromRun(step.run).join("\n") === "node scripts/gg-gate-policy/adapters.test.mjs");
+  if (adapter < 0) return false;
+  const checkout = steps.findIndex(step => /^actions\/checkout@/.test(step.uses ?? "")
+    && unconditional(step.if) && hardFailure(step["continue-on-error"])
+    && Object.keys(step.with ?? {}).every(key => key === "fetch-depth"));
+  return checkout >= 0 && checkout < adapter && steps.every((step, i) =>
+    typeof step.run !== "string" || i === adapter || step.run.trim() === "pnpm install --frozen-lockfile");
 };
 
 const scanUsage = (ciText, invoked, packageScripts) => {
@@ -393,7 +437,7 @@ const scanUsage = (ciText, invoked, packageScripts) => {
     if (!hit) continue;
     const name = hit[1], cmd = packageScripts[name];
     if (typeof cmd !== "string") continue;
-    for (const line of commandsFromRun(cmd + (hit[2] ?? ""))) for (const m of line.matchAll(SCRIPT_REF)) note(m[1], line.includes("--selftest"), `pnpm ${name}`);
+    for (const line of commandsFromRun(cmd + (hit[2] ?? ""), true)) for (const m of line.matchAll(SCRIPT_REF)) note(m[1], line.includes("--selftest"), `pnpm ${name}`);
   }
   return usage;
 };
@@ -661,9 +705,28 @@ if (selftest) {
     ["echo instead of invocation", step => { step.run = "echo " + step.run; }],
     ["early successful exit", step => { step.run = "exit 0\n" + step.run; }],
     ["disable errexit", step => { step.run = "set +e\n" + step.run + "\ntrue"; }],
+    ["multiline echo", step => { step.run = "echo '\n" + step.run + "\n'"; }],
+    ["unused shell function", step => { step.run = "unused() {\n" + step.run + "\n}"; }],
+    ["masked surrounding block", step => { step.run = "{\n" + step.run + "\n} || true"; }],
+    ["combined disable errexit", step => { step.run = "set +xe\n" + step.run + "\ntrue"; }],
+    ["dynamic mode variable", step => { step.run += ' "$MODE"'; step.env = { MODE: "--selftest" }; }],
+    ["dynamic expression mode", step => { step.run += ' "${{ env.MODE }}"'; step.env = { MODE: "--selftest" }; }],
+    ["node help is not execution", step => { step.run += " --help"; }],
+    ["skipped prerequisite", (step, job, doc) => { doc.jobs.never = { "runs-on": "ubuntu-latest", if: false, steps: [{ run: "true" }] }; job.needs = "never"; }],
+    ["missing prerequisite", (step, job) => { job.needs = "missing-job"; }],
+    ["cyclic prerequisite", (step, job, doc, jobName) => { job.needs = jobName; }],
     ["shell without failure propagation", step => { step.shell = "bash {0}"; }],
   ].map(([name, change]) => [`cgo-080: ${name}`, () => analyse({ ...WELT, ciText: changeCostStep(change) }), true]);
+  const changeAdapterJob = change => {
+    const doc = yaml.load(ciOnDisk); change(doc.jobs["gate-adapters"], doc); return yaml.dump(doc);
+  };
   const aftercareCases = [
+    ["cgo-080: adapter without checkout", () => analyse({ ...WELT, ciText: changeAdapterJob(job => { job.steps = job.steps.filter(step => !step.uses?.startsWith("actions/checkout@")); }) }), true],
+    ["cgo-080: adapter shared with unit", () => analyse({ ...WELT, ciText: changeAdapterJob((job, doc) => { doc.jobs.unit.steps.push(job.steps.find(step => step.run?.includes("adapters.test.mjs"))); delete doc.jobs["gate-adapters"]; }) }), true],
+    ["cgo-080: adapter focused instead of full", () => analyse({ ...WELT, ciText: changeAdapterJob(job => { job.steps.find(step => step.run?.includes("adapters.test.mjs")).run += " --focused"; }) }), true],
+    ["cgo-080: valid prerequisite", () => analyse({ ...WELT, ciText: changeCostStep((step, job) => { job.needs = "lint"; }) }), false],
+    ["cgo-080: alias multiline context", () => analyse({ ...WELT, ciText: changeCostStep(step => { step.run = "pnpm cost:fixture"; }), packageScripts: { ...pkgScripts, "cost:fixture": "echo '\nnode scripts/check-vercel-ignore-build.mjs\n'" } }), true],
+    ["cgo-080: alias has no inherited errexit", () => analyse({ ...WELT, ciText: changeCostStep(step => { step.run = "pnpm cost:fixture"; }), packageScripts: { ...pkgScripts, "cost:fixture": "node scripts/check-vercel-ignore-build.mjs\nnode scripts/check-vercel-ignore-build.mjs --selftest" } }), true],
     ...suppressionMutants, ...executionMutants,
     ["cgo-080: alias points to missing file", () => analyse({ ...WELT, packageScripts: { ...pkgScripts, "test:vercel-ignore-build": "node scripts/missing.mjs" } }), true],
     ["cgo-080: adapter call removed", () => analyse({ ...WELT, ciText: ohneZeile("run: node scripts/gg-gate-policy/adapters.test.mjs") }), true],

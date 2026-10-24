@@ -18,7 +18,7 @@ test('exact open binding, missing, closed, foreign, duplicate and incomplete fin
 });
 test('every evidence cell rejects single letters and placeholders without rejecting real prose', () => {
   for (const field of ['Grund', 'Bedingung', 'GG-DomiGo', 'Quellenprüfung']) {
-    for (const value of ['x', 'xxx', 'TODO', 'TBD', 'Test', '---', '']) {
+    for (const value of ['x', 'xxx', 'TODO', '**TODO**', 'TODO.', '(TODO)', '`TBD`', '__Test__', 'N/A.', 'ＴＯＤＯ', 'TBD', 'Test', '---', '']) {
       assert.match(findingError('D-1', scope, openFindingMap(row().replace(field, value))), /Befund/, `${field}: ${value}`);
     }
   }

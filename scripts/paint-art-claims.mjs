@@ -54,8 +54,9 @@ export const findingRows = text => text.split('\n').flatMap((line, index) => {
 export const findingCellsValid = row => ['reason', 'resolution', 'owner', 'proof'].every(key => {
   const value = row[key]?.trim() ?? '';
   const letters = value.match(/[\p{L}\p{N}]/gu) ?? [];
+  const placeholder = value.normalize('NFKC').replace(/[^\p{L}\p{N}]/gu, '');
   return letters.length >= (key === 'owner' ? 2 : 4)
-    && !/^(?:x+|todo|tbd|n\/?a|test|placeholder)$/i.test(value);
+    && !/^(?:x+|todo|tbd|na|test|placeholder)$/i.test(placeholder);
 });
 export const openFindingMap = text => {
   const ids = text.split('\n').flatMap(line => [...line.matchAll(/^\| (?:~~)?(D-\d+)(?:~~)? \|/g)].map(m => m[1]));

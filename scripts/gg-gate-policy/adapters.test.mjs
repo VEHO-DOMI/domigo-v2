@@ -54,13 +54,13 @@ try {
   }
   // cgo-080: the real callers must reject each placeholder evidence cell.
   const witnessLine = registerText.split('\n')[vocabulary.line - 1];
-  for (const [name, index] of [['reason', 4], ['resolution', 5], ['owner', 6], ['proof', 7]]) {
+  for (const [variant, placeholder] of [['plain', 'x'], ['bold', '**TODO**'], ['punctuated', 'TODO.']]) for (const [name, index] of [['reason', 4], ['resolution', 5], ['owner', 6], ['proof', 7]]) {
     const cells = witnessLine.split(/(?<!\\)\|/);
     assert.equal(cells.length, 9, 'seven-column register witness required');
-    cells[index] = ' x ';
+    cells[index] = ` ${placeholder} `;
     fs.writeFileSync(register, registerText.replace(witnessLine, cells.join('|')));
-    red(`register-placeholder-${name}`, 'scripts/check-registers.mjs', /Befund/);
-    red(`ledger-placeholder-${name}`, 'scripts/check-game-tasks.mjs', /17e.*finding/);
+    red(`register-placeholder-${name}-${variant}`, 'scripts/check-registers.mjs', /Befund/);
+    red(`ledger-placeholder-${name}-${variant}`, 'scripts/check-game-tasks.mjs', /17e.*finding/);
     restore();
   }
   changePolicy(p => { p.vocabLedger[pointer].offen = 'D-0'; });
