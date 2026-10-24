@@ -1,3 +1,4 @@
+import { trainerPreferences } from "./trainer/test-loader.ts";
 /** cgo-111 contracts + deliberate red mutations. No real identities or DB. */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -47,7 +48,7 @@ const guards: [string, string, string][] = [
   ["L27 title and stars", UI, '{prestigeStars(level.prestige)}{title.name}'],
   ["L28 class chip", UI, 'all && <span className="lb-class-chip">{row.className}</span>'],
   ["L29 honest disabled message", UI, 'Deine Lehrkraft hat die Bestenliste für deine Klasse nicht eingeschaltet.'],
-  ["L30 language year one", UI, 'const de = grade === 1'],
+  ["L30 language year one", UI, 'const de = useTrainerLanguage(grade) === "de"'],
   ["L31 real home link", "apps/web/app/home/page.tsx", 'href={`/bestenliste${suffix}`}'],
   ["L32 overall existing ladder", "apps/web/app/fortschritt/page.tsx", 'overallLevelFor(combinedXp ?? 0)'],
   ["L33 class goal only A", "apps/web/app/fortschritt/page.tsx", 'board.enabled && <WeeklyGoal'],
@@ -103,6 +104,7 @@ describe("W4 source contracts, each with md5-pinned red tamper", () => {
 
 function load(file: string, deps: Record<string, unknown>) {
   const compiled = ts.transpileModule(read(file), { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText;
+  if (deps.react) deps["@/lib/trainer/preferences"] = trainerPreferences(deps);
   const m = { exports: {} as Record<string, (...a: never[]) => unknown> };
   new Function("require", "module", "exports", compiled)((id: string) => { assert.ok(id in deps, id); return deps[id]; }, m, m.exports);
   return m.exports;
