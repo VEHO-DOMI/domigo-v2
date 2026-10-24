@@ -20,12 +20,12 @@ const items = loadUnit("g1-u01").vocab;
 const selection = { kind: "quiz" as const, mode: "translation" as const, units: ["g1-u01"], count: 5 as const };
 async function battle() { const lobby = await tx(d => liveLobby(d, scope, actor(), date())); const id = await tx(d => createLiveRoom(d, scope, actor(), { ...selection, kind: "battle", peer: 1, rosterVersion: lobby.rosterVersion }, items, date())); await tx(d => actOnLiveRoom(d, scope, actor(PEER), id, "accept", date())); return id; }
 async function quiz() { const id = await tx(d => createLiveRoom(d, scope, actor(TEACHER), selection, items, date())); const [r] = await db.select().from(schema.liveRooms).where(eq(schema.liveRooms.id, id)); await tx(d => joinLiveQuiz(d, scope, actor(), r!.code, date())); await tx(d => joinLiveQuiz(d, scope, actor(PEER), r!.code, date())); await tx(d => actOnLiveRoom(d, scope, actor(TEACHER), id, "start", date())); return id; }
-async function answer(id: string, user = ME, offset = 5000, right = true, clientAttemptId = crypto.randomUUID()) {
+async function answer(id: string, user = ME, offset = 5000, right = true, clientAttemptId = crypto.randomUUID(), processingOffset = offset) {
     const [room] = await db.select().from(schema.liveRooms).where(eq(schema.liveRooms.id, id)), q = room!.questions[room!.round]!, item = items.find(i => i.id === q.itemId)!;
     const value = right ? vocabAnswers(item, q.pool).find(a => a.tier === "full")!.text : q.options.find(a => gradeVocab(item, a, q.pool).tier === "wrong")!;
     const tier = gradeVocab(item, value, q.pool).tier, mode = `${room!.kind === "quiz" ? "quiz" : "live"}:${id}`, context = { roomId: id, round: room!.round };
     const attempt = { userId: user, classId: A, grade: 1, kind: "vocab" as const, itemId: item.id, unitSlug: "g1-u01", mode, tier, xpAwarded: xpForTier(item.difficulty * 10, tier), clientAttemptId, latencyMs: 0 };
-    await tx(d => recordLiveAnswer(d, scope, actor(user), attempt, context, value, date(offset)));
+    await tx(d => recordLiveAnswer(d, scope, actor(user), attempt, context, value, date(offset), () => date(processingOffset)));
     return { attempt, context, value };
 }
 beforeAll(async () => {
@@ -290,4 +290,50 @@ describe('live room PostgreSQL contracts', () => {
                 expect(indexes.rows.some(i => i.indexname === name)).toBe(true);
         }
     });
+});
+
+// A request has eight seconds of server processing; its score still uses its
+// original, strictly-before-deadline ingress. Polls must not consume that budget.
+describe('live answer settlement under reordered requests', () => {
+    it.each([false, true])('R17 deadline poll before booking preserves eligible ingress (prechecked=%s)', async (prechecked) => {
+        const id = await battle();
+        if (prechecked) await tx(d => checkLiveAnswer(d, scope, actor(), `live:${id}`, {roomId:id,round:0}, 'synthetic', date(18999), () => date(18999)));
+        const waiting = await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(19000)));
+        expect(waiting.phase).toBe('active');
+        await answer(id, ME, 18999, true, crypto.randomUUID(), 20000);
+        const [receipt] = await db.select().from(schema.practiceAttempts);
+        expect(receipt!.latencyMs).toBe(14999);
+        const result = await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(27000)));
+        expect(result.phase).toBe('result');
+        expect(result.players.map(p => p.score)).toEqual([1, 0]);
+    });
+    it('R18 settlement never admits a late ingress or a stalled server request', async () => {
+        const id = await battle();
+        await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(19000)));
+        await expect(answer(id, ME, 19000, true, crypto.randomUUID(), 20000)).rejects.toMatchObject({status:410});
+        await expect(answer(id, ME, 18999, true, crypto.randomUUID(), 26999)).rejects.toMatchObject({status:503,code:'live_processing_timeout'});
+        expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
+        await answer(id, ME, 18999, true, crypto.randomUUID(), 26998);
+        expect(await db.select().from(schema.practiceAttempts)).toHaveLength(1);
+    });
+    it('R19 a later round implies that the old request exceeded processing budget, without retroactive scores', async () => {
+        const id = await battle();
+        await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(27000)));
+        const next = await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(30000)));
+        expect(next.round).toBe(1);
+        await expect(tx(d => checkLiveAnswer(d, scope, actor(), `live:${id}`, {roomId:id,round:0}, 'synthetic', date(18999), () => date(30000)))).rejects.toMatchObject({status:503,code:'live_processing_timeout'});
+        expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
+    });
+});
+
+it('R20 room expiry and lobby cleanup preserve the same bounded ingress contract', async () => {
+    const id = await battle();
+    await db.update(schema.liveRooms).set({expiresAt:date(18000)}).where(eq(schema.liveRooms.id,id));
+    expect((await tx(d=>getLiveRoom(d,scope,actor(PEER),id,date(18000)))).phase).toBe('active');
+    // Creating another room invokes bulk expiry cleanup, which must honor the same grace.
+    await tx(d=>createLiveRoom(d,scope,actor(TEACHER),selection,items,date(18000)));
+    await expect(answer(id,ME,18000,true,crypto.randomUUID(),19000)).rejects.toMatchObject({status:410});
+    await answer(id,ME,17999,true,crypto.randomUUID(),19000);
+    expect((await db.select().from(schema.practiceAttempts))[0]!.latencyMs).toBe(13999);
+    expect((await tx(d=>getLiveRoom(d,scope,actor(PEER),id,date(26000)))).phase).toBe('cancelled');
 });

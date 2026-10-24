@@ -13,6 +13,7 @@ interface Data {
     chapters?: {
         key: string;
         chapter: number;
+        available: Record<"translation" | "definition" | "context", number>;
     }[];
 }
 export interface LiveScreenProps {
@@ -73,7 +74,7 @@ export default function LiveScreen({ grade, preview, ownerId, id, classId, enabl
     }, [phase, preview]); // local display only; the server decides the deadline
     void tick;
     const serverNow = room ? room.serverNow + (receivedAt.current ? Date.now() - receivedAt.current : 0) : 0;
-    const serverRemaining = room ? Math.max(0, Math.ceil(((room.phase === "pending" ? room.phaseAt + 30000 : room.phase === "active" ? room.phaseAt + 15000 : room.phaseAt) - serverNow) / 1000)) : 0;
+    const serverRemaining = room ? Math.max(0, Math.ceil(((room.phase === "pending" ? room.phaseAt + 30000 : room.phase === "active" ? Math.min(room.phaseAt + 15000, room.expiresAt) : room.phaseAt) - serverNow) / 1000)) : 0;
     const remaining = room?.invited && inviteSeenAt.current ? Math.min(serverRemaining, Math.max(0, Math.ceil((inviteSeenAt.current + 25000 - Date.now()) / 1000))) : serverRemaining;
     const me = room?.players.find(p => p.me), other = room?.players.find(p => !p.me);
     const outcome = room?.kind === "battle" && room.phase === "complete" && me && other
@@ -122,12 +123,19 @@ export default function LiveScreen({ grade, preview, ownerId, id, classId, enabl
             }
         }
     }
+    const available = data.chapters?.filter(chapter => units.includes(chapter.key)).reduce((sum, chapter) => sum + (chapter.available?.[mode] ?? 0), 0) ?? 0;
+    const enough = available >= (teacher ? count : 5);
+    function chooseMode(next: typeof mode) {
+        setMode(next);
+        setUnits(current => current.filter(key => (data.chapters?.find(chapter => chapter.key === key)?.available?.[next] ?? 0) > 0));
+    }
     function action(action: string) { void post("/api/arena/live", { action, id: room?.id, ...(classId ? { classId } : {}) }); }
     function create(peer?: number) {
         if (!units.length) {
             setError("selection");
             return;
         }
+        if (!enough) { setError("live_not_enough_questions"); return; }
         void post("/api/arena/live", { action: "create", ...(classId ? { classId } : {}), selection: { kind: teacher ? "quiz" : "battle", mode, units, count: teacher ? count : 5, ...(peer ? { peer, rosterVersion: data.lobby?.rosterVersion } : {}) } });
     }
     function answer(value: string) {
@@ -144,10 +152,11 @@ export default function LiveScreen({ grade, preview, ownerId, id, classId, enabl
       {!data.lobby && !room && !error && <p role="status">{c.loading}</p>}
       {data.lobby && !id && <>
         <section className="arena-picker"><h2>{teacher ? c.quiz : c.title}</h2><p>{teacher ? c.quizRules : c.rules}</p>
-          <label className="live-field">{c.mode}<select value={mode} onChange={e => setMode(e.target.value as typeof mode)}>{(["translation", "definition", "context"] as const).map(key => <option value={key} key={key}>{c[key]}</option>)}</select></label>
-          {teacher && <label className="live-field">{c.count}<select value={count} onChange={e => setCount(Number(e.target.value) as 5 | 10 | 15)}>{[5, 10, 15].map(n => <option key={n}>{n}</option>)}</select></label>}
-          <fieldset className="live-chapters"><legend>{c.choose}</legend><div className="arena-chapter-grid">{data.chapters?.map(chapter => <button className="arena-chapter" type="button" aria-pressed={units.includes(chapter.key)} key={chapter.key} onClick={() => setUnits(current => current.includes(chapter.key) ? current.filter(key => key !== chapter.key) : [...current, chapter.key])}>Chapter {chapter.chapter}</button>)}</div></fieldset>
-          {teacher ? <button className="og-primary" type="button" disabled={busy || !units.length} onClick={() => create()}>{c.create}</button> : <><h2>{c.peer}</h2><p>{c.peerHint}</p>{!data.lobby.peers.length && <p>{c.noPeers}</p>}{data.lobby.peers.map(peer => <button className="arena-peer" type="button" key={peer.number} disabled={busy || !units.length} onClick={() => create(peer.number)}><span>{peer.name}</span><span>{c.invite}</span></button>)}</>}
+          <label className="live-field">{c.mode}<select value={mode} onChange={e => chooseMode(e.target.value as typeof mode)}>{(["translation", "definition", "context"] as const).map(key => <option value={key} key={key}>{c[key]}</option>)}</select></label>
+          {teacher && <label className="live-field">{c.count}<select value={count} onChange={e => setCount(Number(e.target.value) as 5 | 10 | 15)}>{[5, 10, 15].map(n => <option key={n} disabled={units.length > 0 && n > available}>{n}</option>)}</select></label>}
+          <fieldset className="live-chapters"><legend>{c.choose}</legend><div className="arena-chapter-grid">{data.chapters?.map(chapter => <button className="arena-chapter" type="button" disabled={(chapter.available?.[mode] ?? 0) === 0} aria-pressed={units.includes(chapter.key)} key={chapter.key} onClick={() => setUnits(current => current.includes(chapter.key) ? current.filter(key => key !== chapter.key) : [...current, chapter.key])}>Chapter {chapter.chapter}</button>)}</div></fieldset>
+          {units.length > 0 && !enough && <p role="status">{c.noQuestions}</p>}
+          {teacher ? <button className="og-primary" type="button" disabled={busy || !units.length || !enough} onClick={() => create()}>{c.create}</button> : <><h2>{c.peer}</h2><p>{c.peerHint}</p>{!data.lobby.peers.length && <p>{c.noPeers}</p>}{data.lobby.peers.map(peer => <button className="arena-peer" type="button" key={peer.number} disabled={busy || !units.length || !enough} onClick={() => create(peer.number)}><span>{peer.name}</span><span>{c.invite}</span></button>)}</>}
         </section>
         {!teacher && <form className="arena-picker" onSubmit={event => { event.preventDefault(); void post("/api/arena/live", { action: "join", code: code.trim().toUpperCase() }); }}><label className="live-field">{c.code}<input value={code} onChange={e => setCode(e.target.value.toUpperCase())} maxLength={6} autoComplete="off" autoCapitalize="characters" required pattern="[A-Z2-9]{6}"/></label><button type="submit" className="og-primary" disabled={busy || code.length !== 6}>{c.join}</button></form>}
         <section className="arena-list"><h2>{c.rooms}</h2>{!data.lobby.rooms.length && <p>{c.empty}</p>}{data.lobby.rooms.map(open => <Link className="arena-duel-card" key={open.id} href={roomUrl(open.id)}><strong>{open.kind === "quiz" ? c.quiz : `${c.title}${open.opponent ? ` · ${open.opponent}` : ""}`}</strong><p>{open.invited ? c.accept : c.waiting}</p></Link>)}</section>
@@ -157,6 +166,7 @@ export default function LiveScreen({ grade, preview, ownerId, id, classId, enabl
         {room.phase === "pending" && <section className="arena-picker"><p>{room.invited ? c.invitation : c.pending} {remaining} {c.seconds}</p>{room.invited && <div className="live-actions"><button type="button" className="og-primary" disabled={busy || preview || remaining <= 0} onClick={() => action("accept")}>{c.accept}</button><button type="button" className="arena-chapter" disabled={busy || preview} onClick={() => action("decline")}>{c.decline}</button></div>}</section>}
         {room.phase === "lobby" && <section className="arena-picker">{room.code && <p className="live-code">{c.code}: <strong>{room.code}</strong></p>}<p>{c.waiting}</p>{room.canStart && <button className="og-primary" type="button" disabled={busy || preview} onClick={() => action("start")}>{c.start}</button>}</section>}
         {["countdown", "active"].includes(room.phase) && <section className="arena-question"><h2>{room.kind === "quiz" ? c.question : c.round} {room.round + 1}/{room.total}{room.question && ` · Chapter ${room.question.chapter}`}</h2><p className="live-clock">{room.phase === "countdown" ? c.ready : c.seconds}: {remaining}</p>
+          {room.phase === "active" && remaining <= 0 && !answered && <p role="status">{c.settling}</p>}
           {answered ? <p role="status">{c.saved}</p> : closedRound === room.round ? <p role="status">{c.closedQuestion}</p> : room.question && <><p className="arena-muted">{c[room.mode]}</p><p className="arena-prompt">{room.question.prompt}</p>{teacher && room.kind === "quiz" && <div className="arena-options" role="list">{room.question.options.map(option => <div className="arena-option" role="listitem" key={option}>{option}</div>)}</div>}{!teacher && (room.kind === "quiz" ? <div className="arena-options">{room.question.options.map(option => <button className="arena-option" type="button" key={option} disabled={busy || preview || room.phase !== "active" || remaining <= 0} onClick={() => answer(option)}>{option}</button>)}</div> : <form className="live-answer" onSubmit={event => { event.preventDefault(); answer(text); }}><label className="live-field">{c.answer}<input key={room.round} value={text} onChange={e => setDraft({ round: room.round, value: e.target.value })} maxLength={300} autoComplete="off" spellCheck={false} disabled={busy || preview || room.phase !== "active" || remaining <= 0}/></label><button className="og-primary" type="submit" disabled={busy || preview || !text.trim() || room.phase !== "active" || remaining <= 0}>{c.send}</button></form>)}</>}
           <p className="arena-muted">{room.answerCount}/{room.players.length}</p>
         </section>}

@@ -69,6 +69,9 @@ jobs:
       - run: pnpm check:activity-display --out "${{ runner.temp }}/activity-display" # cgo-113: actual UI transitions, timer, undo, privacy, 144 displays including preview
       - run: pnpm check:trainer-display:selftest --out "${{ runner.temp }}/trainer-selftest" # W7: size, contrast, raw tokens and one-pixel baseline mutation
       - run: pnpm check:trainer-display --out "${{ runner.temp }}/trainer-display" # actual pages, four years, language, both widths/themes
+      - run: node scripts/check-live-display.mjs --selftest --out "${{ runner.temp }}/live-selftest"
+      - run: node scripts/check-live-display.mjs --out "${{ runner.temp }}/live-display"
+      - run: node scripts/check-live-flow.mjs --out "${{ runner.temp }}/live-flow"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -80,6 +83,9 @@ jobs:
             ${{ runner.temp }}/activity-display
             ${{ runner.temp }}/trainer-display
             ${{ runner.temp }}/trainer-selftest
+            ${{ runner.temp }}/live-selftest
+            ${{ runner.temp }}/live-display
+            ${{ runner.temp }}/live-flow
           retention-days: 7
 
   content-validate:
@@ -93,6 +99,9 @@ jobs:
         with: { node-version: 24, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm content validate
+      - run: node scripts/check-live-content.mjs
+      - run: node scripts/check-live-content.mjs --selftest
+      - run: node scripts/check-live-cost.mjs --selftest
       - run: pnpm content validate-story
       # PLATT-K4a · W-0-Welle: die beiden Autoren-Tore der Hoer-/Schularbeits-Inhalte
       #   liefen bisher nur von Hand — Merge war Release, und nichts ausser

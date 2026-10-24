@@ -10,3 +10,5 @@
 .live-ranking { list-style:none; margin:0; padding:0; }.live-ranking li { display:flex; align-items:center; gap:calc(var(--arena-unit) * 3); border-bottom:var(--arena-hairline) solid var(--card-border); padding:calc(var(--arena-unit) * 3) 0; }
 .live-ranking li > span:first-child { flex:1; min-width:0; overflow-wrap:anywhere; }.live-ranking strong { font-variant-numeric:tabular-nums; }
 .live-answer { max-width:calc(var(--arena-unit) * 85); margin:0 auto; }
+
+.og-root[data-screen="arena"] .live-chapters [aria-pressed="true"] { border-color:var(--text-secondary); }

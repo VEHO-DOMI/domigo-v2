@@ -18,16 +18,16 @@ const sourceCss=fs.readFileSync(path.join(root,'apps/web/app/arena/live.css'),'u
 function tokenViolations(css){const bad=[];postcss.parse(css).walkDecls(d=>{if(d.prop.startsWith('--')||/(?:\d|\.)(?:\d*\.)?\d*(?:px|rem)\b|#[\da-f]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(d.value))bad.push(d.toString());});return bad;}
 assert.deepEqual(tokenViolations(sourceCss),[]);
 const fixture=await liveFixture(root),ID='00000000-0000-4000-8000-000000000123',CLASS='00000000-0000-4000-8000-000000000101';
-const states=['hub','teacher-hub','pending','invite','lobby','countdown','battle','quiz','teacher-question','answered','result','complete','cancelled','unavailable'];
+const states=['hub','teacher-hub','limited-hub','pending','invite','lobby','countdown','battle','quiz','teacher-question','settling','answered','result','complete','cancelled','unavailable'];
 function data(grade,state){
  const now=Date.now(),teacher=['teacher-hub','lobby','teacher-question'].includes(state);
  const kind=['lobby','teacher-question','quiz'].includes(state)?'quiz':'battle';
- const phase=state==='invite'?'pending':state==='battle'||state==='quiz'||state==='teacher-question'||state==='answered'?'active':['pending','lobby','countdown','result','complete','cancelled'].includes(state)?state:'active';
+ const phase=state==='invite'?'pending':state==='battle'||state==='quiz'||state==='teacher-question'||state==='settling'||state==='answered'?'active':['pending','lobby','countdown','result','complete','cancelled'].includes(state)?state:'active';
  const label=grade===1?'Beispiel':'Example';
- const room={id:ID,kind,mode:'translation',phase,grade,round:phase==='complete'?4:0,total:5,serverNow:now,phaseAt:phase==='countdown'?now+4000:now,expiresAt:now+3600000,code:state==='lobby'?'ABC234':null,teacher,invited:state==='invite',canStart:state==='lobby',canNext:false,canClose:teacher,answered:state==='answered',answerCount:state==='answered'?1:0,xp:phase==='complete'?50:0,
+ const room={id:ID,kind,mode:'translation',phase,grade,round:phase==='complete'?4:0,total:5,serverNow:now,phaseAt:state==='settling'?now-16000:phase==='countdown'?now+4000:now,expiresAt:now+3600000,code:state==='lobby'?'ABC234':null,teacher,invited:state==='invite',canStart:state==='lobby',canNext:false,canClose:teacher,answered:state==='answered',answerCount:state==='answered'?1:0,xp:phase==='complete'?50:0,
  question:['countdown','active'].includes(phase)&&state!=='answered'?{prompt:'der Stuhl',options:kind==='quiz'?['chair','table','book','bag']:[],chapter:1}:null,
  players:phase==='cancelled'?[]:[{seat:0,name:`${label} 1`,avatar:1,me:!teacher,score:phase==='complete'?3:0,correct:null},{seat:1,name:`${label} 2`,avatar:2,me:false,score:phase==='complete'?2:0,correct:null}]};
- return {teacher,room,lobby:{grade,peers:[{number:1,name:`${label} 2`,avatar:2}],rosterVersion:'a'.repeat(64),rooms:[]},chapters:[{key:`g${grade}-u01`,chapter:1},{key:`g${grade}-u02`,chapter:2}]};
+ return {teacher,room,lobby:{grade,peers:[{number:1,name:`${label} 2`,avatar:2}],rosterVersion:'a'.repeat(64),rooms:[]},chapters:[{key:`g${grade}-u01`,chapter:1,available:state==='limited-hub'?{translation:3,definition:0,context:0}:{translation:15,definition:15,context:15}},{key:`g${grade}-u02`,chapter:2,available:state==='limited-hub'?{translation:3,definition:6,context:0}:{translation:15,definition:15,context:15}}]};
 }
 const localChrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||(fs.existsSync(localChrome)?localChrome:undefined),args:['--disable-background-networking']});
@@ -41,18 +41,19 @@ try{
    if(/^\/font\/(inter|fredoka|quicksand)$/.test(url.pathname))return route.fulfill({body:fs.readFileSync(path.join(root,'apps/web/app/fonts',url.pathname.split('/').pop()+'-var-latin.woff2')),contentType:'font/woff2'});
    if(url.pathname==='/api/arena/live'){
     if(selected.state==='unavailable')return route.fulfill({status:503,json:{ok:false,error:'live_unavailable'}});
-    const d=data(selected.grade,selected.state);return route.fulfill({json:{ok:true,...(['hub','teacher-hub'].includes(selected.state)?{lobby:d.lobby,chapters:d.chapters}:{room:d.room})}});
+    const d=data(selected.grade,selected.state);return route.fulfill({json:{ok:true,...(['hub','teacher-hub','limited-hub'].includes(selected.state)?{lobby:d.lobby,chapters:d.chapters}:{room:d.room})}});
    }
    if(url.pathname==='/api/attempts'){lastBody=route.request().postDataJSON();return route.fulfill({json:{ok:true,tier:'correct',xpAwarded:10}});}
    selected={grade:Number(url.searchParams.get('grade')||1),state:url.searchParams.get('state')||'battle'};const d=data(selected.grade,selected.state);
-   return route.fulfill({body:fixture.html({grade:selected.grade,preview:false,ownerId:'synthetic-own',enabled:true,...(d.teacher?{classId:CLASS}:{}),...(['hub','teacher-hub'].includes(selected.state)?{}:{id:ID})},theme),contentType:'text/html'});
+   return route.fulfill({body:fixture.html({grade:selected.grade,preview:false,ownerId:'synthetic-own',enabled:true,...(d.teacher?{classId:CLASS}:{}),...(['hub','teacher-hub','limited-hub'].includes(selected.state)?{}:{id:ID})},theme),contentType:'text/html'});
   });
   const page=await context.newPage();page.on("pageerror",error=>browserErrors.push(String(error)));
-  const ready=async(grade,state)=>{await page.goto(`https://live-fixture.test/?grade=${grade}&state=${state}`);await page.locator(state==='unavailable'?'[role=alert]':state==='hub'||state==='teacher-hub'?'.live-chapters':'.arena-scoreboard,.arena-notice').first().waitFor();await page.evaluate(()=>document.fonts.ready);};
+  const ready=async(grade,state)=>{await page.goto(`https://live-fixture.test/?grade=${grade}&state=${state}`);await page.locator(state==='unavailable'?'[role=alert]':state==='hub'||state==='teacher-hub'||state==='limited-hub'?'.live-chapters':'.arena-scoreboard,.arena-notice').first().waitFor();await page.evaluate(()=>document.fonts.ready);};
   for(const grade of selftest||smoke?[1]:[1,2,3,4])for(const state of selftest?['battle','quiz','hub']:states){
    await ready(grade,state);
+   if(state==='limited-hub')await page.getByRole('button',{name:'Chapter 1',exact:true}).click();
    const file=`g${grade}-${state}-${width}-${theme}.png`;
-   if(['hub','battle','quiz','lobby','complete','unavailable'].includes(state))await page.screenshot({path:path.join(out,file),fullPage:true,animations:'disabled'});
+   if(['hub','limited-hub','battle','quiz','lobby','complete','unavailable','settling'].includes(state))await page.screenshot({path:path.join(out,file),fullPage:true,animations:'disabled'});
    const record={grade,state,width,theme,file,...await measure(page,'.arena-option:not(:disabled),.arena-chapter:not(:disabled),.live-field input:not(:disabled),.live-field select,.og-back')};record.violations=violations(record);records.push(record);
   }
   if(selftest){
@@ -65,6 +66,9 @@ try{
    await ready(1,'quiz');await page.getByRole('button',{name:'chair',exact:true}).click();await page.getByText('Antwort gespeichert.',{exact:false}).waitFor();assert.equal(lastBody.input.kind,'choice');assert.equal(lastBody.mode,`quiz:${ID}`);interactions.push('quiz option submits once');
    selected.state='unavailable';await page.getByRole('alert').waitFor();assert.equal(await page.locator('.arena-scoreboard').count(),0);interactions.push('terminal failure clears previous player data');
    await page.clock.install();await ready(1,'invite');assert(!await page.getByRole('button',{name:'Annehmen',exact:true}).isDisabled());await page.clock.fastForward(25100);await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent==='Annehmen'&&b.disabled));interactions.push('invitee popup closes after 25 seconds');
+   await ready(1,'settling');assert(await page.getByRole('textbox').isDisabled());await page.getByText('Die Antwortzeit ist vorbei. Das Ergebnis kommt gleich.',{exact:true}).waitFor();interactions.push('deadline stops answers while server settles earlier ingress');
+   await ready(1,'limited-hub');await page.getByRole('button',{name:'Chapter 1',exact:true}).click();assert(await page.locator('.arena-peer').isDisabled());await page.getByText('Wähle weitere oder andere Chapters.',{exact:false}).waitFor();await page.getByRole('button',{name:'Chapter 2',exact:true}).click();assert(!await page.locator('.arena-peer').isDisabled());
+   await page.locator('.live-field select').selectOption('definition');assert(await page.getByRole('button',{name:'Chapter 1',exact:true}).isDisabled());assert.equal(await page.getByRole('button',{name:'Chapter 1',exact:true}).getAttribute('aria-pressed'),'false');assert(!await page.locator('.arena-peer').isDisabled());await page.locator('.live-field select').selectOption('context');assert(await page.locator('.arena-peer').isDisabled());assert.equal(await page.locator('.arena-chapter[aria-pressed=true]').count(),0);interactions.push('insufficient bank blocks start; combining Chapters enables it; mode changes discard unavailable Chapters');
    await ready(1,'hub');await page.getByRole('button',{name:'English',exact:true}).click();await page.getByRole('heading',{name:'Live Battle',exact:true}).first().waitFor();interactions.push('year-one language switch');
   }
   await context.close();

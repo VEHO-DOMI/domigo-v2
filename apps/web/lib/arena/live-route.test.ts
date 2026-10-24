@@ -14,7 +14,8 @@ import * as service from "../../../../packages/db/src/live-service.ts";
 import { loadTestModule } from "./test-loader.ts";
 const ID = "00000000-0000-4000-8000-000000000201", CLASS = "00000000-0000-4000-8000-000000000101";
 let role = "student", user = "synthetic-own", writes = 0, transactions = 0, checked = 0, failure: Error | null = null, writeFailure = false, gradeFailure = false, changedContent = false;
-let arrival: Date | undefined, bookedAt: Date | undefined;
+let arrival: Date | undefined, bookedAt: Date | undefined, checkedNow: Date | undefined, writtenNow: Date | undefined;
+let simulateQueue = false;
 let pool: "deToEn" | "definition" | "carrier" = "deToEn", item = loader.loadUnit("g1-u01").vocab[0]!, last: Record<string, unknown> | null = null;
 const player = () => ({ userId: user, classId: CLASS, classScope: [CLASS] });
 const identity = { getActingUser: async () => player(), getTeacherForPage: async () => ({ userId: user, classScope: [CLASS] }) };
@@ -26,9 +27,9 @@ const server = loadTestModule("apps/web/lib/arena/live-server.ts", {
     "../../../../packages/db/src/live-rules.ts": rules,
     "../../../../packages/db/src/duel-service.ts": { runDuelTransaction: async (f: (db: unknown) => unknown) => { transactions++; return f({}); } },
     "../../../../packages/db/src/live-service.ts": { ...service,
-        checkLiveAnswer: async (_d: unknown, _s: unknown, _a: unknown, _m: string, _c: unknown, _v: string, at: Date) => { arrival = at; checked++; if (failure)
+        checkLiveAnswer: async (_d: unknown, _s: unknown, _a: unknown, _m: string, _c: unknown, _v: string, at: Date, processingNow: () => Date) => { if(simulateQueue) await new Promise(resolve=>setTimeout(resolve,5)); checkedNow = processingNow(); arrival = at; checked++; if (failure)
             throw failure; return { itemId: item.id, pool, fingerprint: changedContent ? "obsolete" : rules.liveContentFingerprint(item, pool) }; },
-        recordLiveAnswer: async (_d: unknown, _s: unknown, _a: unknown, attempt: Record<string, unknown>, _c: unknown, _v: string, at: Date) => { bookedAt = at; if (writeFailure)
+        recordLiveAnswer: async (_d: unknown, _s: unknown, _a: unknown, attempt: Record<string, unknown>, _c: unknown, _v: string, at: Date, processingNow: () => Date) => { if(simulateQueue) await new Promise(resolve=>setTimeout(resolve,5)); writtenNow = processingNow(); bookedAt = at; if (writeFailure)
             throw Error('private sql'); writes++; last = attempt; return { duplicate: false, box: 2, dueAt: new Date(), streak: 1 }; },
         liveLobby: async () => { if (failure)
             throw failure; return { grade: 1, peers: [], rooms: [], rosterVersion: 'a'.repeat(64) }; }, getLiveRoom: async () => { if (failure)
@@ -46,7 +47,7 @@ const route = loadTestModule('apps/web/app/api/attempts/route.ts', {
 const post = route.POST as (req: Request) => Promise<Response>, get = api.liveGet as (req: Request) => Promise<Response>, action = api.livePost as (req: Request) => Promise<Response>;
 const req = (body: unknown, origin = 'https://synthetic.invalid') => new Request('https://synthetic.invalid/api/attempts', { method: 'POST', headers: { origin, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
 const body = (kind = 'live') => ({ ownerId: user, clientAttemptId: crypto.randomUUID(), mode: `${kind}:${ID}`, input: { kind: kind === 'live' ? 'vocab' : 'choice', value: engine.vocabAnswers(item, pool).find(a => a.tier === 'full')!.text }, context: { roomId: ID, round: 0 } });
-beforeEach(() => { role = 'student'; user = 'synthetic-own'; process.env.DOMIGO_LIVE_ARENA = 'approved-under-20-usd'; writes = transactions = checked = 0; failure = null; writeFailure = gradeFailure = false; changedContent = false; pool = 'deToEn'; item = loader.loadUnit('g1-u01').vocab[0]!; last = null; arrival = bookedAt = undefined; });
+beforeEach(() => { role = 'student'; user = 'synthetic-own'; process.env.DOMIGO_LIVE_ARENA = 'approved-under-20-usd'; writes = transactions = checked = 0; failure = null; writeFailure = gradeFailure = false; changedContent = false; pool = 'deToEn'; item = loader.loadUnit('g1-u01').vocab[0]!; last = null; arrival = bookedAt = checkedNow = writtenNow = undefined; simulateQueue = false; });
 process.on('exit', () => { if (oldEnv === undefined)
     delete process.env.DOMIGO_LIVE_ARENA;
 else
@@ -149,4 +150,14 @@ it('A10 a single trusted arrival timestamp survives identity, grading and transa
   const response = await post(req({...body(),latencyMs:0,context:{...body().context,receivedAt:'2000-01-01',latencyMs:0}}));
   assert.equal(response.status,200);assert(arrival instanceof Date);assert.equal(bookedAt,arrival);
   assert(arrival.getTime()>=before && arrival.getTime()<=Date.now());
+});
+
+it('A11 both SQL checks receive a fresh server clock while scoring retains ingress', async () => {
+  simulateQueue = true;
+  const response = await post(req(body()));
+  assert.equal(response.status,200);
+  assert(arrival && checkedNow && writtenNow);
+  assert(checkedNow.getTime()>arrival.getTime());
+  assert(writtenNow.getTime()>checkedNow.getTime());
+  assert.equal(bookedAt,arrival);
 });

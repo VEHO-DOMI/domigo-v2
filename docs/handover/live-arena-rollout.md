@@ -8,7 +8,24 @@ Live-Duell: fünf getippte Fragen aus freigegebenen Chapters, Übersetzung/Defin
 
 Klassenquiz: zuständige Lehrkraft öffnet einen Raum mit sechs Zeichen, wählt Chapters, Aufgabentyp und 5/10/15 Fragen. Maximal 40 Kinder derselben Klasse treten bei. Die Lehrkraft startet und schaltet zwischen Fragen weiter. Richtige Antworten bringen `max(500, floor(1000 - verstricheneMillisekunden / 15000 * 500))` Spielpunkte, falsche Antworten null. Verspätete Antworten werden nicht angenommen. Spielpunkte und normale Antwort-XP werden getrennt angezeigt.
 
+Die 15 Sekunden begrenzen den **Eingang** einer Antwort. Für die danach nötige Serververarbeitung gilt ein getrenntes Budget von unter acht Sekunden. Solange noch eine Antwort fehlt, wartet die Ergebnisbildung nach der Antwortfrist höchstens diese acht Sekunden; das gilt auch am Ende des einstündigen Raums. Bereits vollständig gebuchte Runden dürfen sofort ihr Ergebnis zeigen. Der Server liest seine Verarbeitungsuhr nach dem Erhalt der Raumsperre frisch. So kann ein späterer Poll innerhalb dieses Budgets keine rechtzeitig eingegangene Antwort verdrängen. Eine länger hängende Anfrage scheitert ausdrücklich mit 503 `live_processing_timeout`, ohne Antwort-XP oder Erfolgsmeldung; sie ändert kein bereits abgeschlossenes Ergebnis nachträglich. Der Browser zeigt während des Nachlaufs „Die Antwortzeit ist vorbei. Das Ergebnis kommt gleich.“ Später eingegangene Antworten werden auch während dieser Wartezeit abgewiesen.
+
 Alle Bewertungen erfolgen über `/api/attempts`. Aufgabe, Antwortpool, Jahrgang und Antwortdauer stammen vom Server. Raumbeleg und vorhandene XP-Buchung werden gemeinsam gespeichert oder gemeinsam verworfen. Keine zusätzlichen Live-Ergebnisboni, keine Umrechnung von Quiz-Spielpunkten in XP. Ein Inhaltsfingerabdruck verhindert, dass eine nach Raumerstellung überarbeitete Aufgabe mit einem alten Fragetext bewertet wird.
+
+## Geprüfter und begrenzter Aufgabenvorrat
+
+Der neue Live-Auswahlweg darf ausschließlich die 493 positiv geprüften Frage-/Antwortpool-Kombinationen aus `live-reviewed-bank.ts` verwenden. Drei voneinander getrennte Inhaltsleser haben insgesamt 2.550 Kandidaten zunächst ohne Schlüssel einzeln gelesen und danach mit sämtlichen vollständigen und teilrichtigen Antworten verglichen. Je Kandidat gibt es genau ein individuelles Urteil; eine dreifache Prüfung derselben Aufgabe wird nicht behauptet. 2.057 Kandidaten blieben konservativ ausgeschlossen. Dies sind sowohl eindeutige Fehler als auch Mehrdeutigkeiten, fehlender Buchkontext und offene Varianten; es ist keine Behauptung von 2.057 gleich schweren Kanonfehlern.
+
+| Jahrgang | Übersetzung | Definition | Lückensatz |
+|---|---:|---:|---:|
+| 1 | 94 | 61 | 24 |
+| 2 | 88 | 20 | 10 |
+| 3 | 55 | 31 | 10 |
+| 4 | 50 | 29 | 21 |
+
+Die 57 Chapters ergeben 171 Chapter-/Modus-Kombinationen. Davon enthalten 37 mindestens fünf freigegebene Aufgaben, 31 gar keine. Mehrere Chapters können kombiniert werden; Reservierungen und doppelte Fragen können die tatsächlich nutzbare Anzahl weiter reduzieren. Insbesondere sind 15 Lückensatzfragen in Jahrgang 2 und 3 mit diesem Vorrat nicht verfügbar. Die Oberfläche sperrt leere Chapters und zu große Mengen und erklärt bei einer zu kleinen Auswahl, weitere oder andere Chapters zu wählen. Die serverseitige Prüfung bleibt verbindlich. Das ist ausdrücklich keine vollständige fachliche Freigabe des alten Inhaltsbestands.
+
+Die Freigabe bindet Aufgabe, Modus, sichtbare Frage, alle Auswahlmöglichkeiten, vollständige/teilrichtige Antwortpools und Schwierigkeit an einen SHA256-Fingerabdruck. Unbekannte oder später veränderte Inhalte erhalten keine automatische Zulassung. Ein neuer Zufallswert kann daher nur andere bereits geprüfte Aufgaben wählen. Die drei Prüfjournale, alle Einzelurteile und Quellenkopien liegen im externen cgo-123-Nachweisordner; deren Prüfsummen stehen im Manifest. `check-live-content.mjs` prüft die Bindung, bewertet alle 730 hinterlegten Antwortvarianten durch die wirkliche Engine und testet sechs absichtliche Struktur-/Bewertungsfehler. Es ersetzt kein Sprachurteil. Die fachliche Aufarbeitung des ausgeschlossenen Bestands gehört auf eine eigene GG-Folgekarte; diese Karte schreibt den Kanon nicht um.
 
 ## Bewusste Grenzen gegenüber der alten Oberfläche
 
@@ -74,11 +91,15 @@ node scripts/check-live-cost.mjs --selftest
 
 Exit 0 = unter der Grenze anhand der eingetragenen Belege; Exit 1 = Word-Duel-Rückfall; Exit 2 = UNVERIFIZIERT. Das Werkzeug ändert keine Einstellung. Der Messbericht muss die Herkunft der Zahlen und den Umfang des Zyklus prüfen; ein rechnerisch grüner Bericht verifiziert keine erfundenen Eingaben.
 
+Die automatische Prüfung in GitHub führt die Inhalts- und Darstellungsprüfungen jeweils normal und mit absichtlichen Fehlern sowie den Drei-Browser-Ablauf aus. Das Kostenwerkzeug läuft dort nur mit seinen Rechen- und Sperrproben: Eine echte Abrechnung mit Tarif, Region und definiertem Zyklus ist eine externe Voraussetzung der GG-Freischaltung. Eine erfundene Messdatei in GitHub wäre kein Kostenbeleg.
+
 ## Gezielte lokale Prüfungen
 
 ```sh
 pnpm --filter @domigo/db exec vitest run src/live-rules.test.ts src/live-service.pglite.test.ts
 pnpm --filter web exec node --import ./scripts/lib/alias-register.mjs --test lib/arena/live-poll.test.ts lib/arena/live-route.test.ts
+node scripts/check-live-content.mjs
+node scripts/check-live-content.mjs --selftest
 node scripts/check-live-display.mjs --out /absoluter/pfad/bilder
 node scripts/check-live-display.mjs --selftest --out /absoluter/pfad/gegenproben
 node scripts/check-live-flow.mjs --out /absoluter/pfad/mehrfenster

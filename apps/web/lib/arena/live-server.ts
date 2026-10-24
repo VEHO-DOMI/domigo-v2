@@ -6,7 +6,7 @@ import { getActingUser, getTeacherForPage, type ActingUser } from "@/lib/identit
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { runDuelTransaction } from "../../../../packages/db/src/duel-service.ts";
 import { actOnLiveRoom, checkLiveAnswer, createLiveRoom, getLiveRoom, joinLiveQuiz, liveContext, liveLobby, recordLiveAnswer, type LiveActor, type LiveContext, type LiveSelection } from "../../../../packages/db/src/live-service.ts";
-import { LiveError, liveContentFingerprint } from "../../../../packages/db/src/live-rules.ts";
+import { LiveError, liveContentFingerprint, liveChapterAvailability } from "../../../../packages/db/src/live-rules.ts";
 export type { LiveView, LiveSelection } from "../../../../packages/db/src/live-service.ts";
 export type LiveLobby = Awaited<ReturnType<typeof liveLobby>>;
 /** GG enables this only after migration + measured cycle cost below USD 20.
@@ -43,7 +43,7 @@ export async function readLive(req: Request, classId?: string, id?: string) {
     if (id)
         return { room: await runDuelTransaction(tx => getLiveRoom(tx, scope, actor, id)) };
     const lobby = await runDuelTransaction(tx => liveLobby(tx, scope, actor));
-    return { lobby, chapters: listApprovedUnits().filter(key => key.startsWith(`g${lobby.grade}-`)).map(key => ({ key, chapter: Number(key.slice(-2)) })) };
+    return { lobby, chapters: listApprovedUnits().filter(key => key.startsWith(`g${lobby.grade}-`)).map(key => ({ key, chapter: Number(key.slice(-2)), available: liveChapterAvailability(key) })) };
 }
 export async function createLive(req: Request, selection: LiveSelection, classId?: string) {
     const { actor, scope } = await liveIdentity(req, classId);
@@ -68,7 +68,7 @@ export async function checkLiveAttempt(req: Request, player: ActingUser, mode: s
     if (actor.teacher || actor.userId !== player.userId || actor.classId !== player.classId)
         throw new LiveError(403, "live_forbidden");
     const coordinates = liveContext(mode, context);
-    const resolved = await runDuelTransaction(tx => checkLiveAnswer(tx, scope, actor, mode, coordinates, value, receivedAt));
+    const resolved = await runDuelTransaction(tx => checkLiveAnswer(tx, scope, actor, mode, coordinates, value, receivedAt, () => new Date()));
     const ref = resolved.itemId.match(/^g([1-4])u(\d{2})\.w\./);
     if (!ref)
         throw new LiveError(409, "live_question_closed");
@@ -81,5 +81,5 @@ export async function checkLiveAttempt(req: Request, player: ActingUser, mode: s
 }
 export async function writeLiveAnswer(player: ActingUser, attempt: RecordAttemptInput, coordinates: LiveContext, value: string, receivedAt = new Date()) {
     requireLive();
-    return runDuelTransaction(tx => recordLiveAnswer(tx, player.classScope, { userId: player.userId, classId: player.classId, teacher: false }, attempt, coordinates, value, receivedAt));
+    return runDuelTransaction(tx => recordLiveAnswer(tx, player.classScope, { userId: player.userId, classId: player.classId, teacher: false }, attempt, coordinates, value, receivedAt, () => new Date()));
 }

@@ -9,7 +9,7 @@ import { assertWritableScope, type ClassScope } from "./scope.ts";
 import { leaderboardName } from "./leaderboard-service.ts";
 import { listReservedForClass } from "./assignment-service.ts";
 import { recordAttempt, type RecordAttemptInput } from "./persist.ts";
-import { advanceLive, answerElapsed, liveScores, nextQuiz, selectLiveQuestions, startLive, LiveError, LIVE_INVITE_MS, LIVE_MAX_PLAYERS, LIVE_ROOM_MS, type LiveClock, type LiveKind, type LiveMode, type LivePool, type LivePhase } from "./live-rules.ts";
+import { advanceLive, answerElapsed, liveScores, nextQuiz, selectLiveQuestions, startLive, LiveError, LIVE_INVITE_MS, LIVE_MAX_PLAYERS, LIVE_ROOM_MS, LIVE_PROCESSING_MS, type LiveClock, type LiveKind, type LiveMode, type LivePool, type LivePhase } from "./live-rules.ts";
 export interface LiveActor {
     userId: string;
     classId: string;
@@ -63,7 +63,7 @@ async function saveClock(db: Db, classScope: ClassScope, room: Room, next: LiveC
 }
 async function expireRooms(db: Db, classScope: ClassScope, classId: string, at: Date) {
     assertWritableScope(classScope, "expireRooms");
-    await db.update(liveRooms).set({ phase: "cancelled" }).where(and(inArray(liveRooms.classId, [...classScope]), eq(liveRooms.classId, classId), sql `${liveRooms.phase} not in ('complete','cancelled')`, or(sql `${liveRooms.expiresAt} <= ${at.toISOString()}::timestamptz`, and(eq(liveRooms.phase, "pending"), sql `${liveRooms.phaseAt} <= ${new Date(at.getTime() - LIVE_INVITE_MS).toISOString()}::timestamptz`))));
+    await db.update(liveRooms).set({ phase: "cancelled" }).where(and(inArray(liveRooms.classId, [...classScope]), eq(liveRooms.classId, classId), sql `${liveRooms.phase} not in ('complete','cancelled')`, or(sql `(${liveRooms.expiresAt} + case when ${liveRooms.phase} in ('active','countdown') then ${LIVE_PROCESSING_MS} * interval '1 millisecond' else interval '0 milliseconds' end) <= ${at.toISOString()}::timestamptz`, and(eq(liveRooms.phase, "pending"), sql `${liveRooms.phaseAt} <= ${new Date(at.getTime() - LIVE_INVITE_MS).toISOString()}::timestamptz`))));
 }
 async function roomMembers(db: Db, classScope: ClassScope, room: Room) {
     return db.select().from(liveMembers).where(and(inArray(liveMembers.classId, [...classScope]), eq(liveMembers.classId, room.classId), eq(liveMembers.roomId, room.id))).orderBy(asc(liveMembers.seat));
@@ -239,10 +239,16 @@ export async function getLiveRoom(db: Db, classScope: ClassScope, actor: LiveAct
                 score: scores[i] ?? 0, correct: finished ? (m.answers[room.round]?.correct ?? false) : m.userId === actor.userId ? (m.answers[room.round]?.correct ?? null) : null };
         }) };
 }
-async function answerable(db: Db, classScope: ClassScope, actor: LiveActor, context: LiveContext, choice: string, at: Date) {
+async function answerable(db: Db, classScope: ClassScope, actor: LiveActor, context: LiveContext, choice: string, at: Date, processingNow: () => Date) {
     if (actor.teacher || !Number.isInteger(context.round))
         throw new LiveError(403, "live_forbidden");
     const state = await lockedRoom(db, classScope, actor, context.roomId, at), { room, members } = state;
+    // Evaluate the processing clock AFTER the row lock, so queuing is included.
+    // A late processing failure is a retryable server failure, never an invented
+    // late student answer. No round can advance while an eligible request is pending.
+    const processingMs = processingNow().getTime() - at.getTime();
+    if (!Number.isFinite(processingMs) || processingMs < 0 || processingMs >= LIVE_PROCESSING_MS)
+        throw new LiveError(503, "live_processing_timeout");
     const member = members.find(m => m.userId === actor.userId), question = room.questions[room.round];
     if (!member || state.invalid || !question || room.round !== context.round || member.answers[room.round])
         throw new LiveError(409, "live_question_closed");
@@ -256,21 +262,21 @@ async function answerable(db: Db, classScope: ClassScope, actor: LiveActor, cont
     return { ...state, member, question, elapsed };
 }
 /** Internal reference only: never serialize this result to a browser. */
-export async function checkLiveAnswer(db: Db, classScope: ClassScope, actor: LiveActor, mode: string, context: LiveContext, choice: string, at = new Date()): Promise<{
+export async function checkLiveAnswer(db: Db, classScope: ClassScope, actor: LiveActor, mode: string, context: LiveContext, choice: string, at = new Date(), processingNow: () => Date = () => at): Promise<{
     itemId: string;
     pool: LivePool;
     fingerprint: string;
 }> {
-    const { room, question } = await answerable(db, classScope, actor, context, choice, at);
+    const { room, question } = await answerable(db, classScope, actor, context, choice, at, processingNow);
     if (mode !== `${room.kind === "battle" ? "live" : "quiz"}:${room.id}`)
         throw new LiveError(403, "live_forbidden");
     return { itemId: question.itemId, pool: question.pool, fingerprint: question.fingerprint };
 }
 /** Ordinary recordAttempt remains the only XP writer. Both its insert and the
  * server-time room receipt commit together; a duplicate receipt rolls back. */
-export async function recordLiveAnswer(db: Db, classScope: ClassScope, actor: LiveActor, attempt: RecordAttemptInput, context: LiveContext, choice: string, at = new Date()) {
+export async function recordLiveAnswer(db: Db, classScope: ClassScope, actor: LiveActor, attempt: RecordAttemptInput, context: LiveContext, choice: string, at = new Date(), processingNow: () => Date = () => at) {
     assertWritableScope(classScope, "recordLiveAnswer");
-    const state = await answerable(db, classScope, actor, context, choice, at), { room, member, question, elapsed } = state;
+    const state = await answerable(db, classScope, actor, context, choice, at, processingNow), { room, member, question, elapsed } = state;
     if (attempt.userId !== actor.userId || attempt.classId !== room.classId || attempt.grade !== room.grade || attempt.kind !== "vocab" || attempt.itemId !== question.itemId
         || attempt.unitSlug !== question.unitKey || attempt.mode !== `${room.kind === "battle" ? "live" : "quiz"}:${room.id}`)
         throw new LiveError(403, "live_forbidden");
