@@ -48,8 +48,9 @@ function TestRound({ preview = false, ownerId, slug, testId, sections }: TestSes
       latencyMs: null,
       hintUsed: false,
     };
-    const send = attemptSender(preview, ownerId);
-    void (mode === "test:vocab" ? sendCompletedAttempt(send, body, detail) : send(body)).then((r) => {
+    void (mode === "test:vocab"
+      ? sendCompletedAttempt(attemptSender(preview, ownerId), body, detail)
+      : attemptSender(preview, ownerId)(body)).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     }).catch(() => { /* the existing owned outbox retains pending attempts */ });
   };

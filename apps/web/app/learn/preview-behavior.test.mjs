@@ -94,11 +94,15 @@ const useState = initial => {
   if (!(n in slots)) slots[n] = initial;
   return [slots[n], next => { slots[n] = typeof next === 'function' ? next(slots[n]) : next; }];
 };
+const useRef = initial => {
+  const n = cursor++;
+  return slots[n] ?? (slots[n] = {current: initial});
+};
 const sender = load('apps/web/lib/preview-attempt.ts', {'./attempt-outbox.ts': {sendAttempt: async (body, ownerId) => {sends.push({body, ownerId}); return {ok:true, queued:false};}}});
 const clients = {
   "@/lib/vocabulary-history-client": load("apps/web/lib/vocabulary-history-client.ts", {}),
   '@/lib/trainer/LearningShell': {useLearningText: () => (de) => de},
-  'react/jsx-runtime': jsx, 'react': {...React, useState}, 'next/link': {default: component('Link')},
+  'react/jsx-runtime': jsx, 'react': {...React, useState, useRef}, 'next/link': {default: component('Link')},
   '@/lib/preview-attempt': sender, '@/lib/useOutboxFlush': {useOutboxFlush: (enabled, ownerId) => flushes.push({enabled, ownerId})},
   '@domigo/engine': {...pureEngine, xpForTier: base => base, XP_WEIGHT: {correct:1, partial:0.5, close:0.25, wrong:0}},
   '@domigo/task-ui': Object.fromEntries(['ListeningTaskView','GrammarIntroView','VocabIntroView','GrammarItemView','VocabItemView','AudioClip'].map(name => [name, component(name)])),
@@ -138,7 +142,8 @@ for (const [path, props] of [
 const Test = load('apps/web/app/tests/[slug]/TestSession.tsx', clients).default;
 for (const preview of [true, false]) {
   slots = []; cursor = 0; sends = []; flushes = []; writes = [];
-  const tree = Test({preview, ownerId:preview?null:'fixture-child', slug:'g2-u03',testId:'test', sections:[{kind:'writing',titleDe:'Write',promptId:'p',taskEn:'Write',promptDe:'Schreibe',minWords:1,maxWords:10}]});
+  let tree = Test({preview, ownerId:preview?null:'fixture-child', slug:'g2-u03',testId:'test', sections:[{kind:'writing',titleDe:'Write',promptId:'p',taskEn:'Write',promptDe:'Schreibe',minWords:1,maxWords:10}]});
+  while (typeof tree?.type === 'function' && /Round$/.test(tree.type.name)) tree = tree.type(tree.props);
   const area = allElements(tree).find(n => n.type?.name === 'WritingArea');
   slots = []; cursor = 0;
   let rendered = area.type(area.props);
