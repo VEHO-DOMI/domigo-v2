@@ -417,8 +417,8 @@ auch bereits teilweise ableitbare Kriterien sind keine zusätzliche Freigabe.
 | `g-perfect-10` | Perfect 10 | Vollständige Rundenzugehörigkeit und Abschluss fehlen; Einzelantworten verschiedener Durchgänge dürfen keine perfekte Runde bilden. |
 | `g-streak-3` | 3-Day Grammar Streak | Die gespeicherte allgemeine Lernserie ist keine eigene Serie abgeschlossener Grammatikrunden. |
 | `g-streak-7` | Grammar Week | Die gespeicherte allgemeine Lernserie ist keine eigene Serie abgeschlossener Grammatikrunden. |
-| `g-mastered-5` | Rule Learner | Original zählt gespeicherte Grammatikrunden; deren Umfang und Abschluss sind nicht aus beliebigen Einzelantworten rekonstruierbar. |
-| `g-mastered-15` | Grammar Scholar | Original zählt gespeicherte Grammatikrunden; deren Umfang und Abschluss sind nicht aus beliebigen Einzelantworten rekonstruierbar. |
+| `g-mastered-5` | Rule Learner | Original zählt 5 beherrschte Grammatikstrukturen (je mindestens 90 % Richtigkeit und 15 Antworten). Die Übernahme dieses Kriteriums bleibt auf GG-Entscheid geparkt; keine zusätzliche Abzeichenfreigabe. |
+| `g-mastered-15` | Grammar Scholar | Original zählt 15 beherrschte Grammatikstrukturen (je mindestens 90 % Richtigkeit und 15 Antworten). Die Übernahme dieses Kriteriums bleibt auf GG-Entscheid geparkt; keine zusätzliche Abzeichenfreigabe. |
 | `g-mastered-all` | Grammar Crown | Originalfehler: Grammar Crown 34 gegenüber 35 Strukturen in Jahrgang 1; 22 gegenüber 28 heutigen Strukturen in Jahrgang 2; kein stiller neuer Nenner. |
 | `g-accuracy-80` | Sharpshooter | Einzelantworten existieren, aber ursprünglicher Rundenausschnitt und Abschluss sind nicht freigegeben; keine Umdeutung aller Grammatikversuche. |
 | `g-accuracy-95` | Precision Master | Einzelantworten existieren, aber ursprünglicher Rundenausschnitt und Abschluss sind nicht freigegeben; keine Umdeutung aller Grammatikversuche. |
