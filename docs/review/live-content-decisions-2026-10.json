@@ -4,7 +4,6 @@
   "schemaVersion": 1,
   "card": "cgo-158",
   "baseCommit": "ae9454b1398d7cb1c16c057d707440d4793107d9",
-  "sourceRoot": "/Users/veho/Code/_gg/REPORTS-codex/cgo-123-20261024-astra/content-bank",
   "sourcePins": {
     "all-private.json": {
       "bytes": 1440437,
@@ -108,9 +107,9 @@
     "rejected": 2057,
     "positiveContext": 65,
     "byClass": {
+      "c": 1272,
       "a": 189,
-      "b": 569,
-      "c": 1271,
+      "b": 568,
       "d": 20,
       "e": 8
     },
@@ -218,8 +217,8 @@
         "grade": 4,
         "mode": "context",
         "a": 17,
-        "b": 48,
-        "c": 107,
+        "b": 47,
+        "c": 108,
         "d": 1,
         "e": 1
       }
@@ -50613,8 +50612,8 @@
       "grade": 4,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "b",
-      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
+      "primaryClass": "c",
+      "classificationBasis": "GG disposition cgo-171 A4: original verdict explicitly names missing full variants in total / in all; no pool extension in this card.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„In total“ oder „In all“ passen vollständig und fehlen; close ist für äußere Planeten unpräzise.",
@@ -51749,7 +51748,11 @@
       "proposal": "Definition mit Erlös minus Kosten erklären; für Jahrgang 1 deutsche Hilfe und ein kleines Zahlenbeispiel vorsehen. Keinen Antwortpool durch pauschale Gleichsetzung von money/revenue/profit erweitern.",
       "sourceResolution": "Begriffsabgrenzung im Plattformtext unvollständig; kein neues Rechenergebnis des Buchvideos behauptet.",
       "ruling": "pending",
-      "productChange": false
+      "productChange": false,
+      "cgo171Supplement": [
+        "Zusatzbefund: hintDe in g1-u05/vocab.json:1755 nennt ebenfalls nur Geld nach dem Verkauf; der Ablenker money berührt dieselbe Begriffsgrenze.",
+        "Die Kontextfrage 219 ist derselbe Eintrag g1u05.w.profit#carrier. Beide Oberflächen gemeinsam in cgo-173 prüfen; hier keine fachliche Änderung."
+      ]
     },
     {
       "id": "case-467",
@@ -51780,7 +51783,11 @@
       "proposal": "Bei freier Eingabe beide Zeitfragen berücksichtigen; in einer Frage mit genau einer richtigen Auswahl eine der beiden richtigen Optionen durch einen echten Ablenker ersetzen.",
       "sourceResolution": "Fehlende zulässige Variante bestätigt; kein bloßes Schreibformproblem.",
       "ruling": "pending",
-      "productChange": false
+      "productChange": false,
+      "cgo171Supplement": [
+        "Zwillinge: 480 = g1u11.w.what-time-is-it#definition, 495 = g1u11.w.what-time-is-it#carrier. Beide beziehen sich auf denselben zweiten Zeitfrage-Eintrag.",
+        "Definitionen, volle Antwortlisten und Auswahloptionen gemeinsam in cgo-173 prüfen; hier kein Pool ergänzt."
+      ]
     },
     {
       "id": "case-1293",
@@ -51841,7 +51848,10 @@
       "proposal": "Rahmen in please ___ your sister alone ändern und leave prüfen, oder eine Lücke wählen, die leave your sister alone vollständig aufnimmt. Vor Umsetzung die Wortidentität to leave sb. alone beibehalten und neu bewerten.",
       "sourceResolution": "Rahmen-/Schlüsseldefekt bestätigt; kein blindes Entfernen nur einer Variante.",
       "ruling": "pending",
-      "productChange": false
+      "productChange": false,
+      "cgo171Supplement": [
+        "Zusatzbefund: Der bisherige Teilpool enthält left alone. Auch diese Form muss zusammen mit dem Rahmen und den Vollantworten geprüft werden; keine isolierte Teilpoolkorrektur in cgo-171."
+      ]
     },
     {
       "id": "case-1510",
@@ -51902,7 +51912,11 @@
       "proposal": "To research aus dem vollen Kontextpool entfernen; research bleibt. Study/investigate als sprachliche Kandidaten separat entscheiden. Provenienz in einer späteren Baukarte auf den konkreten WB-Beleg berichtigen.",
       "sourceResolution": "Einsetzfehler und konkrete Provenienzabweichung bestätigt.",
       "ruling": "pending",
-      "productChange": false
+      "productChange": false,
+      "cgo171Supplement": [
+        "Die Auswahl-Ablenker lauten im Ausgangskorpus to invest / to impress / to decorate; auch sie verdoppeln den bereits gedruckten Infinitivmarker.",
+        "cgo-171 entfernt den Marker aus diesen drei Optionen und aus dem zugehörigen Spiel-Ablenkerfeld (einschließlich to develop); Herkunft: WB S.72–73, Wortlistenzeile to research, Transkript Zeile277. Overlay vorhanden, Materialisierung noch offen."
+      ]
     },
     {
       "id": "case-2549",
@@ -54304,5 +54318,2944 @@
       "bankFingerprint": "85e785068b6d1ac1c50005f62ade2b273a22aae90aab4c13cff567d945d62a94"
     }
   ],
-  "productChanges": false
+  "productChanges": false,
+  "mechanicalRepair": {
+    "label": "CODEX DRAFT — NOT CANON",
+    "card": "cgo-171",
+    "baseCommit": "b43fda1bb30dce82df3a87cfd9daf1eaae9ec7a6",
+    "state": "overlay draft; materialization and residual grading require GG disposition",
+    "scope": "Full corpus insertion check required by A2; no synonym expansion or semantic carrier rewrite. Earlier verdicts and context recommendations remain source snapshots, not renewed approval.",
+    "ruling": "cgo-170 Nachtrag 1: R2=B; broader R1/R3 implementation belongs to cgo-173.",
+    "contextsChecked": 2446,
+    "poolEntriesBefore": 3731,
+    "poolEntriesAfter": 3643,
+    "itemsChanged": 84,
+    "removedEntries": 88,
+    "unitsChanged": 22,
+    "remainingAuthoredInsertionProblems": 0,
+    "enginePoolChecks": 653,
+    "enginePoolFailures": 0,
+    "removedStillPartial": 40,
+    "removedPunctuationEquivalentStillCorrect": 1,
+    "invalidatedLivePins": [
+      {
+        "id": "g3u14.w.to-dig",
+        "pool": "carrier",
+        "surface": "quiz"
+      },
+      {
+        "id": "g4u01.w.be-aware-of-sth",
+        "pool": "carrier",
+        "surface": "quiz"
+      },
+      {
+        "id": "g4u02.w.to-steal",
+        "pool": "carrier",
+        "surface": "quiz"
+      },
+      {
+        "id": "g4u07.w.outback",
+        "pool": "carrier",
+        "surface": "quiz"
+      }
+    ],
+    "livePinsRenewed": 0,
+    "repairs": [
+      {
+        "blindId": "C001",
+        "unit": "g1-u01",
+        "id": "g1u01.w.address",
+        "before": [
+          {
+            "text": "address",
+            "tier": "full"
+          },
+          {
+            "text": "email address",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "address",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "email address"
+        ],
+        "sentence": "What is your email ___? Can you spell it, please?"
+      },
+      {
+        "blindId": "C002",
+        "unit": "g1-u01",
+        "id": "g1u01.w.to-meet",
+        "before": [
+          {
+            "text": "meet",
+            "tier": "full"
+          },
+          {
+            "text": "to meet",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "meet",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to meet"
+        ],
+        "sentence": "Nice to ___ you! My name is Sue."
+      },
+      {
+        "blindId": "C003",
+        "unit": "g1-u01",
+        "id": "g1u01.w.to-read",
+        "before": [
+          {
+            "text": "read",
+            "tier": "full"
+          },
+          {
+            "text": "to read",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "read",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to read"
+        ],
+        "sentence": "I like to ___ a story book before I go to bed."
+      },
+      {
+        "blindId": "C004",
+        "unit": "g1-u03",
+        "id": "g1u03.w.to-be-scared",
+        "before": [
+          {
+            "text": "scared",
+            "tier": "full"
+          },
+          {
+            "text": "scared of",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "scared",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "scared of"
+        ],
+        "sentence": "Greybeard is big and strong. Tamara is ___ of him."
+      },
+      {
+        "blindId": "C005",
+        "unit": "g1-u06",
+        "id": "g1u06.w.to-climb-up-a-tree",
+        "before": [
+          {
+            "text": "climb up a tree",
+            "tier": "full"
+          },
+          {
+            "text": "to climb up a tree",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "climb up a tree",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to climb up a tree"
+        ],
+        "sentence": "My dog wants to ___ and look at the birds."
+      },
+      {
+        "blindId": "C006",
+        "unit": "g1-u06",
+        "id": "g1u06.w.to-look-in-the-mirror",
+        "before": [
+          {
+            "text": "look in the mirror",
+            "tier": "full"
+          },
+          {
+            "text": "to look in the mirror",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "look in the mirror",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to look in the mirror"
+        ],
+        "sentence": "She wants to ___ in the morning."
+      },
+      {
+        "blindId": "C007",
+        "unit": "g1-u06",
+        "id": "g1u06.w.to-sit-in-a-tree",
+        "before": [
+          {
+            "text": "sit in a tree",
+            "tier": "full"
+          },
+          {
+            "text": "to sit in a tree",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "sit in a tree",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to sit in a tree"
+        ],
+        "sentence": "The small bird wants to ___ and sing."
+      },
+      {
+        "blindId": "C008",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-cook",
+        "before": [
+          {
+            "text": "cook",
+            "tier": "full"
+          },
+          {
+            "text": "to cook",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "cook",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to cook"
+        ],
+        "sentence": "My dad likes to ___ pizza for dinner."
+      },
+      {
+        "blindId": "C009",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-cook-2",
+        "before": [
+          {
+            "text": "cook",
+            "tier": "full"
+          },
+          {
+            "text": "to cook",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "cook",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to cook"
+        ],
+        "sentence": "My mum likes to ___ a big dinner for the family."
+      },
+      {
+        "blindId": "C010",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-go-to-school",
+        "before": [
+          {
+            "text": "go to school",
+            "tier": "full"
+          },
+          {
+            "text": "to go to school",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "go to school",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to go to school"
+        ],
+        "sentence": "Mary likes to ___ at a quarter to eight every day."
+      },
+      {
+        "blindId": "C011",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-play-computer-games",
+        "before": [
+          {
+            "text": "play computer games",
+            "tier": "full"
+          },
+          {
+            "text": "to play computer games",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "play computer games",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to play computer games"
+        ],
+        "sentence": "My friend likes to ___ on his computer in the evening."
+      },
+      {
+        "blindId": "C012",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-play-football",
+        "before": [
+          {
+            "text": "play football",
+            "tier": "full"
+          },
+          {
+            "text": "to play football",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "play football",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to play football"
+        ],
+        "sentence": "The boys like to ___ in the park after school."
+      },
+      {
+        "blindId": "C013",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-ride-a-bike",
+        "before": [
+          {
+            "text": "ride a bike",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a bike",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "ride a bike",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to ride a bike"
+        ],
+        "sentence": "In my free time I like to ___ in the park."
+      },
+      {
+        "blindId": "C014",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-ride-a-horse",
+        "before": [
+          {
+            "text": "ride a horse",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a horse",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "ride a horse",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to ride a horse"
+        ],
+        "sentence": "My sister goes to the farm to ___ every Sunday."
+      },
+      {
+        "blindId": "C015",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-ride-a-scooter",
+        "before": [
+          {
+            "text": "ride a scooter",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a scooter",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "ride a scooter",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to ride a scooter"
+        ],
+        "sentence": "She likes to ___ to the park on two small wheels."
+      },
+      {
+        "blindId": "C016",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-skate",
+        "before": [
+          {
+            "text": "skate",
+            "tier": "full"
+          },
+          {
+            "text": "to skate",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "skate",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to skate"
+        ],
+        "sentence": "When it is cold we go on the ice to ___ with our friends."
+      },
+      {
+        "blindId": "C017",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-skateboard",
+        "before": [
+          {
+            "text": "skateboard",
+            "tier": "full"
+          },
+          {
+            "text": "to skateboard",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "skateboard",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to skateboard"
+        ],
+        "sentence": "Tim likes to ___ in the park with his friends."
+      },
+      {
+        "blindId": "C018",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-ski",
+        "before": [
+          {
+            "text": "ski",
+            "tier": "full"
+          },
+          {
+            "text": "to ski",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "ski",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to ski"
+        ],
+        "sentence": "When it snows, Mum and Dad like to ___ down the snow."
+      },
+      {
+        "blindId": "C019",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-snowboard",
+        "before": [
+          {
+            "text": "snowboard",
+            "tier": "full"
+          },
+          {
+            "text": "to snowboard",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "snowboard",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to snowboard"
+        ],
+        "sentence": "Jack likes to ___ down the snow on one big board."
+      },
+      {
+        "blindId": "C020",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-study",
+        "before": [
+          {
+            "text": "study",
+            "tier": "full"
+          },
+          {
+            "text": "to study",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "study",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to study"
+        ],
+        "sentence": "I need to ___ for my big English test tomorrow."
+      },
+      {
+        "blindId": "C021",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-wake-somebody-up",
+        "before": [
+          {
+            "text": "wake somebody up",
+            "tier": "full"
+          },
+          {
+            "text": "to wake somebody up",
+            "tier": "partial"
+          },
+          {
+            "text": "wake me up",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "wake somebody up",
+            "tier": "full"
+          },
+          {
+            "text": "wake me up",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to wake somebody up"
+        ],
+        "sentence": "Mum has to ___ in the morning because I sleep a lot."
+      },
+      {
+        "blindId": "C022",
+        "unit": "g1-u11",
+        "id": "g1u11.w.to-watch-tv",
+        "before": [
+          {
+            "text": "watch TV",
+            "tier": "full"
+          },
+          {
+            "text": "to watch TV",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "watch TV",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to watch TV"
+        ],
+        "sentence": "After dinner we like to ___ in the living room."
+      },
+      {
+        "blindId": "C023",
+        "unit": "g1-u13",
+        "id": "g1u13.w.to-land",
+        "before": [
+          {
+            "text": "land",
+            "tier": "full"
+          },
+          {
+            "text": "to land",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "land",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to land"
+        ],
+        "sentence": "It is too windy, so it is hard for the helicopter to ___ on the mountain."
+      },
+      {
+        "blindId": "C024",
+        "unit": "g1-u13",
+        "id": "g1u13.w.to-press",
+        "before": [
+          {
+            "text": "press",
+            "tier": "full"
+          },
+          {
+            "text": "to press",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "press",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to press"
+        ],
+        "sentence": "Diana has to ___ the button to make the robot arm go."
+      },
+      {
+        "blindId": "C025",
+        "unit": "g1-u13",
+        "id": "g1u13.w.to-radio",
+        "before": [
+          {
+            "text": "radio",
+            "tier": "full"
+          },
+          {
+            "text": "to radio",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "radio",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to radio"
+        ],
+        "sentence": "The man can find the girl, and then he has to ___ his team for help."
+      },
+      {
+        "blindId": "C026",
+        "unit": "g1-u13",
+        "id": "g1u13.w.to-shout-for-help",
+        "before": [
+          {
+            "text": "shout for help",
+            "tier": "full"
+          },
+          {
+            "text": "to shout for help",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "shout for help",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to shout for help"
+        ],
+        "sentence": "She is alone on the mountain and very scared, so she has to ___."
+      },
+      {
+        "blindId": "C027",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-disappear",
+        "before": [
+          {
+            "text": "disappear",
+            "tier": "full"
+          },
+          {
+            "text": "to disappear",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "disappear",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to disappear"
+        ],
+        "sentence": "Andrew turned the magic ring three times and started to ___."
+      },
+      {
+        "blindId": "C028",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-fight",
+        "before": [
+          {
+            "text": "fight",
+            "tier": "full"
+          },
+          {
+            "text": "to fight",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "fight",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to fight"
+        ],
+        "sentence": "The two boys want to ___ over the last cake on the plate."
+      },
+      {
+        "blindId": "C029",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-hug",
+        "before": [
+          {
+            "text": "hug",
+            "tier": "full"
+          },
+          {
+            "text": "to hug",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "hug",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to hug"
+        ],
+        "sentence": "The weak leopard asked the giraffe to ___ him."
+      },
+      {
+        "blindId": "C030",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-lie",
+        "before": [
+          {
+            "text": "lie",
+            "tier": "full"
+          },
+          {
+            "text": "to lie",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "lie",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to lie"
+        ],
+        "sentence": "After the long day, I want to ___ on the sofa and read a book."
+      },
+      {
+        "blindId": "C031",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-pay",
+        "before": [
+          {
+            "text": "pay",
+            "tier": "full"
+          },
+          {
+            "text": "to pay",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "pay",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to pay"
+        ],
+        "sentence": "I want to ___ three pounds for this book at the shop."
+      },
+      {
+        "blindId": "C032",
+        "unit": "g1-u14",
+        "id": "g1u14.w.to-sell",
+        "before": [
+          {
+            "text": "sell",
+            "tier": "full"
+          },
+          {
+            "text": "to sell",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "sell",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to sell"
+        ],
+        "sentence": "He wants to ___ his car for a lot of money."
+      },
+      {
+        "blindId": "C033",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-drive",
+        "before": [
+          {
+            "text": "drive",
+            "tier": "full"
+          },
+          {
+            "text": "to drive",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "drive",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to drive"
+        ],
+        "sentence": "My dad is going to ___ us to the lake in our car."
+      },
+      {
+        "blindId": "C034",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-fly-to",
+        "before": [
+          {
+            "text": "fly to",
+            "tier": "full"
+          },
+          {
+            "text": "to fly to",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "fly to",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to fly to"
+        ],
+        "sentence": "This summer we are going to ___ Croatia and stay there for two weeks."
+      },
+      {
+        "blindId": "C035",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-go-fishing",
+        "before": [
+          {
+            "text": "go fishing",
+            "tier": "full"
+          },
+          {
+            "text": "to go fishing",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "go fishing",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to go fishing"
+        ],
+        "sentence": "On Saturday I'm going to ___ at the lake with my uncle."
+      },
+      {
+        "blindId": "C036",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-invite",
+        "before": [
+          {
+            "text": "invite",
+            "tier": "full"
+          },
+          {
+            "text": "to invite",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "invite",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to invite"
+        ],
+        "sentence": "Who are you going to ___ to your birthday party?"
+      },
+      {
+        "blindId": "C037",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-lie-in-the-sun",
+        "before": [
+          {
+            "text": "lie in the sun",
+            "tier": "full"
+          },
+          {
+            "text": "to lie in the sun",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "lie in the sun",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to lie in the sun"
+        ],
+        "sentence": "What are you going to do? I'm going to ___ in the garden."
+      },
+      {
+        "blindId": "C038",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-play-badminton",
+        "before": [
+          {
+            "text": "play badminton",
+            "tier": "full"
+          },
+          {
+            "text": "to play badminton",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "play badminton",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to play badminton"
+        ],
+        "sentence": "In Croatia my friends and I are going to ___ in the garden."
+      },
+      {
+        "blindId": "C039",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-play-board-games",
+        "before": [
+          {
+            "text": "play board games",
+            "tier": "full"
+          },
+          {
+            "text": "to play board games",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "play board games",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to play board games"
+        ],
+        "sentence": "In the evening, we are going to ___ like Monopoly."
+      },
+      {
+        "blindId": "C040",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-stay-at-a-campsite",
+        "before": [
+          {
+            "text": "stay at a campsite",
+            "tier": "full"
+          },
+          {
+            "text": "to stay at a campsite",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "stay at a campsite",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to stay at a campsite"
+        ],
+        "sentence": "We are going to ___ near the lake and sleep in our tent."
+      },
+      {
+        "blindId": "C041",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-swim-in-the-sea",
+        "before": [
+          {
+            "text": "swim in the sea",
+            "tier": "full"
+          },
+          {
+            "text": "to swim in the sea",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "swim in the sea",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to swim in the sea"
+        ],
+        "sentence": "When we are hot, we are going to ___ at the beach."
+      },
+      {
+        "blindId": "C042",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-visit-a-castle",
+        "before": [
+          {
+            "text": "visit a castle",
+            "tier": "full"
+          },
+          {
+            "text": "to visit a castle",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "visit a castle",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to visit a castle"
+        ],
+        "sentence": "On holiday we are going to ___ in the mountains."
+      },
+      {
+        "blindId": "C043",
+        "unit": "g1-u15",
+        "id": "g1u15.w.to-write-a-postcard",
+        "before": [
+          {
+            "text": "write a postcard",
+            "tier": "full"
+          },
+          {
+            "text": "to write a postcard",
+            "tier": "partial"
+          },
+          {
+            "text": "write postcards",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "write a postcard",
+            "tier": "full"
+          },
+          {
+            "text": "write postcards",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to write a postcard"
+        ],
+        "sentence": "On holiday I'm going to ___ to all my friends."
+      },
+      {
+        "blindId": "C044",
+        "unit": "g2-u06",
+        "id": "g2u06.w.to-be-afraid",
+        "before": [
+          {
+            "text": "afraid",
+            "tier": "full"
+          },
+          {
+            "text": "afraid of",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "afraid",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "afraid of"
+        ],
+        "sentence": "The shepherd boy was not ___ of the dark forest."
+      },
+      {
+        "blindId": "C045",
+        "unit": "g2-u06",
+        "id": "g2u06.w.to-trust",
+        "before": [
+          {
+            "text": "trust",
+            "tier": "full"
+          },
+          {
+            "text": "to trust",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "trust",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to trust"
+        ],
+        "sentence": "You have to ___ me. I am your friend."
+      },
+      {
+        "blindId": "C046",
+        "unit": "g2-u06",
+        "id": "g2u06.w.to-wash-up",
+        "before": [
+          {
+            "text": "wash up",
+            "tier": "full"
+          },
+          {
+            "text": "to wash up",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "wash up",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to wash up"
+        ],
+        "sentence": "We don't have to ___ the dirty plates after dinner."
+      },
+      {
+        "blindId": "C047",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-come-over",
+        "before": [
+          {
+            "text": "come over",
+            "tier": "full"
+          },
+          {
+            "text": "to come over",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "come over",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to come over"
+        ],
+        "sentence": "She isn't going to ___ today because she is ill."
+      },
+      {
+        "blindId": "C048",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-do-nothing",
+        "before": [
+          {
+            "text": "do nothing",
+            "tier": "full"
+          },
+          {
+            "text": "to do nothing",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "do nothing",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to do nothing"
+        ],
+        "sentence": "I don't want to work. I'm going to ___ this afternoon."
+      },
+      {
+        "blindId": "C049",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-do-the-shopping",
+        "before": [
+          {
+            "text": "do the shopping",
+            "tier": "full"
+          },
+          {
+            "text": "to do the shopping",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "do the shopping",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to do the shopping"
+        ],
+        "sentence": "My mum is going to ___ at the supermarket."
+      },
+      {
+        "blindId": "C050",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-do-your-homework",
+        "before": [
+          {
+            "text": "do your homework",
+            "tier": "full"
+          },
+          {
+            "text": "do my homework",
+            "tier": "full"
+          },
+          {
+            "text": "to do your homework",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "do your homework",
+            "tier": "full"
+          },
+          {
+            "text": "do my homework",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to do your homework"
+        ],
+        "sentence": "First you have to ___, then you can watch TV."
+      },
+      {
+        "blindId": "C051",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-have-a-party",
+        "before": [
+          {
+            "text": "have a party",
+            "tier": "full"
+          },
+          {
+            "text": "to have a party",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "have a party",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to have a party"
+        ],
+        "sentence": "It's my birthday on Saturday, so I'm going to ___."
+      },
+      {
+        "blindId": "C052",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-play-basketball",
+        "before": [
+          {
+            "text": "play basketball",
+            "tier": "full"
+          },
+          {
+            "text": "to play basketball",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "play basketball",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to play basketball"
+        ],
+        "sentence": "I'm going to ___ with my friends after school."
+      },
+      {
+        "blindId": "C053",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-take-it-easy",
+        "before": [
+          {
+            "text": "take it easy",
+            "tier": "full"
+          },
+          {
+            "text": "to take it easy",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "take it easy",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to take it easy"
+        ],
+        "sentence": "I'm very tired. I'm going to ___ this afternoon."
+      },
+      {
+        "blindId": "C054",
+        "unit": "g2-u07",
+        "id": "g2u07.w.to-watch-a-film",
+        "before": [
+          {
+            "text": "watch a film",
+            "tier": "full"
+          },
+          {
+            "text": "to watch a film",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "watch a film",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to watch a film"
+        ],
+        "sentence": "We are going to ___ on the big screen at the cinema."
+      },
+      {
+        "blindId": "C055",
+        "unit": "g2-u14",
+        "id": "g2u14.w.on-one-s-own",
+        "before": [
+          {
+            "text": "own",
+            "tier": "full"
+          },
+          {
+            "text": "on my own",
+            "tier": "partial"
+          },
+          {
+            "text": "on his own",
+            "tier": "partial"
+          },
+          {
+            "text": "on her own",
+            "tier": "partial"
+          },
+          {
+            "text": "on your own",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "own",
+            "tier": "full"
+          },
+          {
+            "text": "on his own",
+            "tier": "partial"
+          },
+          {
+            "text": "on her own",
+            "tier": "partial"
+          },
+          {
+            "text": "on your own",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "on my own"
+        ],
+        "sentence": "So there I was, all on my ___, with no friends at all."
+      },
+      {
+        "blindId": "C056",
+        "unit": "g2-u14",
+        "id": "g2u14.w.to-take-part",
+        "before": [
+          {
+            "text": "take",
+            "tier": "full"
+          },
+          {
+            "text": "take part",
+            "tier": "full"
+          },
+          {
+            "text": "take part in",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "take",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "take part",
+          "take part in"
+        ],
+        "sentence": "Do you want to ___ part in the running competition?"
+      },
+      {
+        "blindId": "C057",
+        "unit": "g2-u15",
+        "id": "g2u15.w.neither-do-i",
+        "before": [
+          {
+            "text": "Neither do I.",
+            "tier": "full"
+          },
+          {
+            "text": "Neither do I",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "Neither do I.",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "Neither do I"
+        ],
+        "sentence": "I do not like getting up early at all. — ___ I also hate it."
+      },
+      {
+        "blindId": "C058",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-cross",
+        "before": [
+          {
+            "text": "cross",
+            "tier": "full"
+          },
+          {
+            "text": "cross a river",
+            "tier": "full"
+          },
+          {
+            "text": "crossed",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "cross",
+            "tier": "full"
+          },
+          {
+            "text": "crossed",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "cross a river"
+        ],
+        "sentence": "Celia carried her backpack to ___ a river on her way across the country."
+      },
+      {
+        "blindId": "C059",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-drive",
+        "before": [
+          {
+            "text": "drives",
+            "tier": "full"
+          },
+          {
+            "text": "drives home",
+            "tier": "full"
+          },
+          {
+            "text": "drive",
+            "tier": "partial"
+          },
+          {
+            "text": "drove",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "drives",
+            "tier": "full"
+          },
+          {
+            "text": "drive",
+            "tier": "partial"
+          },
+          {
+            "text": "drove",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "drives home"
+        ],
+        "sentence": "After the flight back, she ___ home from the airport in her car."
+      },
+      {
+        "blindId": "C060",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-fly",
+        "before": [
+          {
+            "text": "fly",
+            "tier": "full"
+          },
+          {
+            "text": "fly back",
+            "tier": "full"
+          },
+          {
+            "text": "flew",
+            "tier": "partial"
+          },
+          {
+            "text": "flew back",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "fly",
+            "tier": "full"
+          },
+          {
+            "text": "flew",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "flew back",
+          "fly back"
+        ],
+        "sentence": "After a short break in Munich, she will ___ back to London in the afternoon."
+      },
+      {
+        "blindId": "C061",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-get-to",
+        "before": [
+          {
+            "text": "get to",
+            "tier": "full"
+          },
+          {
+            "text": "get to the airport",
+            "tier": "full"
+          },
+          {
+            "text": "got to",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "get to",
+            "tier": "full"
+          },
+          {
+            "text": "got to",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "get to the airport"
+        ],
+        "sentence": "She drives fast in the morning so she can ___ the airport in time."
+      },
+      {
+        "blindId": "C062",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-meet-up-with",
+        "before": [
+          {
+            "text": "meet up",
+            "tier": "full"
+          },
+          {
+            "text": "meet up with",
+            "tier": "full"
+          },
+          {
+            "text": "met up with",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "meet up",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "meet up with",
+          "met up with"
+        ],
+        "sentence": "Near the end of the journey, Celia is going to ___ with her boyfriend."
+      },
+      {
+        "blindId": "C063",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-rent",
+        "before": [
+          {
+            "text": "rent",
+            "tier": "full"
+          },
+          {
+            "text": "rent a car",
+            "tier": "full"
+          },
+          {
+            "text": "rented",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "rent",
+            "tier": "full"
+          },
+          {
+            "text": "rented",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "rent a car"
+        ],
+        "sentence": "Some people ___ a car to visit more of the country."
+      },
+      {
+        "blindId": "C064",
+        "unit": "g3-u03",
+        "id": "g3u03.w.to-set-off",
+        "before": [
+          {
+            "text": "sets off",
+            "tier": "full"
+          },
+          {
+            "text": "set off",
+            "tier": "partial"
+          },
+          {
+            "text": "set off for work",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "sets off",
+            "tier": "full"
+          },
+          {
+            "text": "set off",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "set off for work"
+        ],
+        "sentence": "Celia ___ for work at about 5.30 a.m. while it is still dark outside."
+      },
+      {
+        "blindId": "C065",
+        "unit": "g3-u04",
+        "id": "g3u04.w.to-bite",
+        "before": [
+          {
+            "text": "bite",
+            "tier": "full"
+          },
+          {
+            "text": "bite off",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "bite",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "bite off"
+        ],
+        "sentence": "Dave has a new lizard, and it can ___ your finger off!"
+      },
+      {
+        "blindId": "C066",
+        "unit": "g3-u07",
+        "id": "g3u07.w.to-break-up-with-sb",
+        "before": [
+          {
+            "text": "break up with",
+            "tier": "full"
+          },
+          {
+            "text": "break up with him",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "break up with",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "break up with him"
+        ],
+        "sentence": "She had a big fight with her boyfriend, so she will ___ him."
+      },
+      {
+        "blindId": "C067",
+        "unit": "g3-u07",
+        "id": "g3u07.w.to-fall-out-with-sb",
+        "before": [
+          {
+            "text": "fell out",
+            "tier": "full"
+          },
+          {
+            "text": "fall out",
+            "tier": "partial"
+          },
+          {
+            "text": "fell out with",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "fell out",
+            "tier": "full"
+          },
+          {
+            "text": "fall out",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "fell out with"
+        ],
+        "sentence": "I ___ with my best friend last week, and now we do not talk."
+      },
+      {
+        "blindId": "C068",
+        "unit": "g3-u07",
+        "id": "g3u07.w.to-keep-secret",
+        "before": [
+          {
+            "text": "keep",
+            "tier": "full"
+          },
+          {
+            "text": "keep a secret",
+            "tier": "full"
+          },
+          {
+            "text": "kept a secret",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "keep",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "keep a secret",
+          "kept a secret"
+        ],
+        "sentence": "Can you ___ a secret? I want to tell you a thing, but please tell nobody."
+      },
+      {
+        "blindId": "C069",
+        "unit": "g3-u08",
+        "id": "g3u08.w.to-adapt",
+        "before": [
+          {
+            "text": "adapt",
+            "tier": "full"
+          },
+          {
+            "text": "to adapt",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "adapt",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to adapt"
+        ],
+        "sentence": "She is able to ___ easily to different situations."
+      },
+      {
+        "blindId": "C070",
+        "unit": "g3-u08",
+        "id": "g3u08.w.to-research",
+        "before": [
+          {
+            "text": "research",
+            "tier": "full"
+          },
+          {
+            "text": "to research",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "research",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to research"
+        ],
+        "sentence": "He decided to ___ underwater sounds and how they travel."
+      },
+      {
+        "blindId": "C071",
+        "unit": "g3-u10",
+        "id": "g3u10.w.to-be-equal",
+        "before": [
+          {
+            "text": "equal",
+            "tier": "full"
+          },
+          {
+            "text": "be equal",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "equal",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "be equal"
+        ],
+        "sentence": "In the past men had more rights, but now women and men must be ___."
+      },
+      {
+        "blindId": "C072",
+        "unit": "g3-u11",
+        "id": "g3u11.w.to-catch",
+        "before": [
+          {
+            "text": "catch",
+            "tier": "full"
+          },
+          {
+            "text": "catch the train",
+            "tier": "full"
+          },
+          {
+            "text": "caught",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "catch",
+            "tier": "full"
+          },
+          {
+            "text": "caught",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "catch the train"
+        ],
+        "sentence": "We had to run to the platform to ___ the train before it left without us."
+      },
+      {
+        "blindId": "C073",
+        "unit": "g3-u12",
+        "id": "g3u12.w.to-deliver",
+        "before": [
+          {
+            "text": "deliver",
+            "tier": "full"
+          },
+          {
+            "text": "to deliver",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "deliver",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to deliver"
+        ],
+        "sentence": "He still hoped to ___ the parcels unopened one day."
+      },
+      {
+        "blindId": "C074",
+        "unit": "g3-u12",
+        "id": "g3u12.w.to-evacuate",
+        "before": [
+          {
+            "text": "evacuate",
+            "tier": "full"
+          },
+          {
+            "text": "to evacuate",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "evacuate",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to evacuate"
+        ],
+        "sentence": "The police had to ___ all the people from the burning building very fast."
+      },
+      {
+        "blindId": "C075",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-book-a-holiday",
+        "before": [
+          {
+            "text": "book a holiday",
+            "tier": "full"
+          },
+          {
+            "text": "booked a holiday",
+            "tier": "partial"
+          },
+          {
+            "text": "to book a holiday",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "book a holiday",
+            "tier": "full"
+          },
+          {
+            "text": "booked a holiday",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to book a holiday"
+        ],
+        "sentence": "My parents are going to ___ to Italy, and we will stay in a nice hotel for a week."
+      },
+      {
+        "blindId": "C076",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-buy-a-dictionary",
+        "before": [
+          {
+            "text": "buy a dictionary",
+            "tier": "full"
+          },
+          {
+            "text": "bought a dictionary",
+            "tier": "partial"
+          },
+          {
+            "text": "to buy a dictionary",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "buy a dictionary",
+            "tier": "full"
+          },
+          {
+            "text": "bought a dictionary",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to buy a dictionary"
+        ],
+        "sentence": "She wants to ___ so she can understand more French on holiday."
+      },
+      {
+        "blindId": "C077",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-dig",
+        "before": [
+          {
+            "text": "dig",
+            "tier": "full"
+          },
+          {
+            "text": "to dig",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "dig",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to dig"
+        ],
+        "sentence": "My dog loves to ___ big holes in the garden ground with his paws."
+      },
+      {
+        "blindId": "C078",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-find-information-about-the-best-beaches",
+        "before": [
+          {
+            "text": "find information about the best beaches",
+            "tier": "full"
+          },
+          {
+            "text": "to find information about the best beaches",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "find information about the best beaches",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to find information about the best beaches"
+        ],
+        "sentence": "We are going to ___ for our summer holiday near the sea."
+      },
+      {
+        "blindId": "C079",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-hire-a-car",
+        "before": [
+          {
+            "text": "hire a car",
+            "tier": "full"
+          },
+          {
+            "text": "hired a car",
+            "tier": "partial"
+          },
+          {
+            "text": "to hire a car",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "hire a car",
+            "tier": "full"
+          },
+          {
+            "text": "hired a car",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to hire a car"
+        ],
+        "sentence": "At the airport we are going to ___ so we can drive to the beach on our own."
+      },
+      {
+        "blindId": "C080",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-make-a-hotel-reservation",
+        "before": [
+          {
+            "text": "make a hotel reservation",
+            "tier": "full"
+          },
+          {
+            "text": "made a hotel reservation",
+            "tier": "partial"
+          },
+          {
+            "text": "to make a hotel reservation",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "make a hotel reservation",
+            "tier": "full"
+          },
+          {
+            "text": "made a hotel reservation",
+            "tier": "partial"
+          }
+        ],
+        "removed": [
+          "to make a hotel reservation"
+        ],
+        "sentence": "We need to ___ so we have a room when we travel to the hotel at night."
+      },
+      {
+        "blindId": "C081",
+        "unit": "g3-u14",
+        "id": "g3u14.w.to-plan-a-trip",
+        "before": [
+          {
+            "text": "plan a trip",
+            "tier": "full"
+          },
+          {
+            "text": "to plan a trip",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "plan a trip",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to plan a trip"
+        ],
+        "sentence": "Before our holiday, we want to ___ so we know where to travel and what to do."
+      },
+      {
+        "blindId": "C082",
+        "unit": "g4-u01",
+        "id": "g4u01.w.be-aware-of-sth",
+        "before": [
+          {
+            "text": "aware",
+            "tier": "full"
+          },
+          {
+            "text": "aware of",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "aware",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "aware of"
+        ],
+        "sentence": "I wasn't ___ of that."
+      },
+      {
+        "blindId": "C083",
+        "unit": "g4-u02",
+        "id": "g4u02.w.to-steal",
+        "before": [
+          {
+            "text": "steal",
+            "tier": "full"
+          },
+          {
+            "text": "to steal",
+            "tier": "partial"
+          }
+        ],
+        "after": [
+          {
+            "text": "steal",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "to steal"
+        ],
+        "sentence": "A thief came in the night to ___ money from the shop."
+      },
+      {
+        "blindId": "C084",
+        "unit": "g4-u07",
+        "id": "g4u07.w.outback",
+        "before": [
+          {
+            "text": "outback",
+            "tier": "full"
+          },
+          {
+            "text": "the outback",
+            "tier": "full"
+          }
+        ],
+        "after": [
+          {
+            "text": "outback",
+            "tier": "full"
+          }
+        ],
+        "removed": [
+          "the outback"
+        ],
+        "sentence": "It is very hot and dry in the Australian ___."
+      }
+    ],
+    "open": [
+      "Materialize via sanctioned pipeline; items.lock.json/state.json changes require GG scope disposition.",
+      "Research distractor/provenance changes are rejected by answer-only trusted patch; GG must specify approval path.",
+      "General grader still awards partial credit to 40 removed duplicated-marker strings; engine change outside this card.",
+      "All old semantic recommendations are historical; no B-pool expansion approved here."
+    ],
+    "blindVerification": {
+      "promptSha256": "eeabc55def482001304c5c741a7386119e227f809b4cdafb5d820956ebfb8dea",
+      "coverage": "Two independent solvers, each 84/84 prompts, no answer keys or repository access before delivery. No corrected prompts after delivery.",
+      "readers": {
+        "a": {
+          "solved": 84,
+          "concerns": 31,
+          "preferredCorrect": 59,
+          "preferredPartial": 11,
+          "preferredClose": 1,
+          "preferredWrong": 13
+        },
+        "b": {
+          "solved": 84,
+          "concerns": 26,
+          "preferredCorrect": 63,
+          "preferredPartial": 9,
+          "preferredClose": 1,
+          "preferredWrong": 11
+        }
+      },
+      "divergences": {
+        "a": [
+          {
+            "blindId": "C004",
+            "itemId": "g1u03.w.to-be-scared",
+            "preferred": "afraid",
+            "tier": "wrong",
+            "concern": "Die deutsche Hilfe beschreibt Angst nur ungenau; mehrere Adjektive passen gleich gut."
+          },
+          {
+            "blindId": "C005",
+            "itemId": "g1u06.w.to-climb-up-a-tree",
+            "preferred": "climb a tree",
+            "tier": "partial",
+            "concern": "Ein Hund, der auf einen Baum klettern will, ist als Alltagsszene ungewöhnlich; die Hilfe spricht zudem von Händen und Füßen."
+          },
+          {
+            "blindId": "C006",
+            "itemId": "g1u06.w.to-look-in-the-mirror",
+            "preferred": "look at herself in the mirror",
+            "tier": "partial",
+            "concern": "Die Lücke lässt mehrere unterschiedlich lange, natürliche Formulierungen für dieselbe Handlung zu."
+          },
+          {
+            "blindId": "C007",
+            "itemId": "g1u06.w.to-sit-in-a-tree",
+            "preferred": "sit in a tree",
+            "tier": "correct",
+            "concern": "Mehrere Formulierungen passen; 'perch' wäre als erwartetes Wort für A1 anspruchsvoll."
+          },
+          {
+            "blindId": "C008",
+            "itemId": "g1u11.w.to-cook",
+            "preferred": "cook",
+            "tier": "correct",
+            "concern": "Pizza wird typischerweise im Ofen gebacken; die Hilfe legt dagegen ausdrücklich Essen auf dem Herd nahe."
+          },
+          {
+            "blindId": "C011",
+            "itemId": "g1u11.w.to-play-computer-games",
+            "preferred": "play games",
+            "tier": "partial",
+            "concern": "'On his computer' steht bereits im Satz; sowohl 'play' allein als auch 'play games' passen."
+          },
+          {
+            "blindId": "C012",
+            "itemId": "g1u11.w.to-play-football",
+            "preferred": "play football",
+            "tier": "correct",
+            "concern": "Die Hilfe beschreibt Balltreten; sie legt kein vollständiges Fußballspiel eindeutig fest."
+          },
+          {
+            "blindId": "C013",
+            "itemId": "g1u11.w.to-ride-a-bike",
+            "preferred": "ride my bike",
+            "tier": "close",
+            "concern": null
+          },
+          {
+            "blindId": "C015",
+            "itemId": "g1u11.w.to-ride-a-scooter",
+            "preferred": "ride her scooter",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C016",
+            "itemId": "g1u11.w.to-skate",
+            "preferred": "ice-skate",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C018",
+            "itemId": "g1u11.w.to-ski",
+            "preferred": "ski",
+            "tier": "correct",
+            "concern": "'Down the snow' ist keine natürliche Ortsangabe; üblich wären 'down the slope' oder 'downhill'."
+          },
+          {
+            "blindId": "C019",
+            "itemId": "g1u11.w.to-snowboard",
+            "preferred": "snowboard",
+            "tier": "correct",
+            "concern": "'Down the snow' ist unnatürlich; üblich wären 'down the slope' oder 'downhill'."
+          },
+          {
+            "blindId": "C021",
+            "itemId": "g1u11.w.to-wake-somebody-up",
+            "preferred": "wake me up",
+            "tier": "partial",
+            "concern": "Die Einsetzung muss die geweckte Person enthalten; 'wake up' allein würde hier bedeuten, dass die Mutter selbst aufwacht."
+          },
+          {
+            "blindId": "C025",
+            "itemId": "g1u13.w.to-radio",
+            "preferred": "radio",
+            "tier": "correct",
+            "concern": "Die Hilfe präzisiert das Funkgerät; 'call' und 'contact' passen im Satz ebenfalls, benennen das Gerät aber nicht."
+          },
+          {
+            "blindId": "C027",
+            "itemId": "g1u14.w.to-disappear",
+            "preferred": "disappear",
+            "tier": "correct",
+            "concern": "Der Zauberring legt magisches Verschwinden nahe. Die Hilfe beschreibt dagegen gewöhnliches Weggehen und Nichtgefundenwerden."
+          },
+          {
+            "blindId": "C030",
+            "itemId": "g1u14.w.to-lie",
+            "preferred": "lie down",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C034",
+            "itemId": "g1u15.w.to-fly-to",
+            "preferred": "fly to",
+            "tier": "correct",
+            "concern": "Das Wort 'to' vor Croatia muss Teil der Einsetzung sein."
+          },
+          {
+            "blindId": "C037",
+            "itemId": "g1u15.w.to-lie-in-the-sun",
+            "preferred": "sunbathe",
+            "tier": "wrong",
+            "concern": "Die Hilfe sagt nicht ausdrücklich, dass man sich sonnt; bloßes Ausruhen draußen passt ebenfalls."
+          },
+          {
+            "blindId": "C038",
+            "itemId": "g1u15.w.to-play-badminton",
+            "preferred": "play badminton",
+            "tier": "correct",
+            "concern": "Unsicher: Ein kleines, leichtes Flugobjekt und ein hohes Netz legen Badminton nahe, dabei benutzt man jedoch einen Federball. 'Kleiner, leichter Ball' ist als Beschreibung mehrdeutig und sachlich unpräzise."
+          },
+          {
+            "blindId": "C040",
+            "itemId": "g1u15.w.to-stay-at-a-campsite",
+            "preferred": "camp",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C043",
+            "itemId": "g1u15.w.to-write-a-postcard",
+            "preferred": "write postcards",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C046",
+            "itemId": "g2u06.w.to-wash-up",
+            "preferred": "wash",
+            "tier": "wrong",
+            "concern": "'The dirty plates' steht bereits hinter der Lücke; eine vollständige Wendung wie 'do the washing-up' würde deshalb nicht passen."
+          },
+          {
+            "blindId": "C047",
+            "itemId": "g2u07.w.to-come-over",
+            "preferred": "visit someone at home",
+            "tier": "wrong",
+            "concern": "Die besuchte Person oder der Besuchsort fehlen im englischen Rahmen. Unterschiedliche Besuchswendungen mit unterschiedlicher Länge passen."
+          },
+          {
+            "blindId": "C051",
+            "itemId": "g2u07.w.to-have-a-party",
+            "preferred": "have a party",
+            "tier": "correct",
+            "concern": "Die Hilfe beschreibt das Einladen; der Geburtstagssatz erlaubt sowohl eine Party zu veranstalten als auch Freunde einzuladen."
+          },
+          {
+            "blindId": "C052",
+            "itemId": "g2u07.w.to-play-basketball",
+            "preferred": "play volleyball",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C053",
+            "itemId": "g2u07.w.to-take-it-easy",
+            "preferred": "relax",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C057",
+            "itemId": "g2u15.w.neither-do-i",
+            "preferred": "Neither do I.",
+            "tier": "correct",
+            "concern": "Nach der Zustimmung fehlt im gedruckten Rahmen ein Satzzeichen. Die Einsetzungen enthalten deshalb einen Punkt; ohne ihn wären die zwei Sätze nicht sauber getrennt."
+          },
+          {
+            "blindId": "C059",
+            "itemId": "g3u03.w.to-drive",
+            "preferred": "drove",
+            "tier": "partial",
+            "concern": "Vergangenheit ist eine plausible Lesart, aber nicht eindeutig markiert. Ohne weiteren Kontext sind auch Gegenwart oder Zukunft grammatisch möglich."
+          },
+          {
+            "blindId": "C061",
+            "itemId": "g3u03.w.to-get-to",
+            "preferred": "reach",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C062",
+            "itemId": "g3u03.w.to-meet-up-with",
+            "preferred": "meet up",
+            "tier": "correct",
+            "concern": "'With her boyfriend' steht bereits im Satz. 'Meet up', 'meet' und 'get together' passen jeweils davor."
+          },
+          {
+            "blindId": "C063",
+            "itemId": "g3u03.w.to-rent",
+            "preferred": "hire",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C064",
+            "itemId": "g3u03.w.to-set-off",
+            "preferred": "sets off",
+            "tier": "correct",
+            "concern": "In der naheliegenden Gegenwartslesart braucht das Verb die Form für 'Celia'. Die deutsche Hilfe ist mit 'Du verlässt zu Hause' ungrammatisch formuliert."
+          },
+          {
+            "blindId": "C067",
+            "itemId": "g3u07.w.to-fall-out-with-sb",
+            "preferred": "fell out",
+            "tier": "correct",
+            "concern": "'Last week' verlangt eine Vergangenheitsform. Mehrere Streitverben passen; 'fell out' beschreibt die danach beschädigte Freundschaft besonders genau."
+          },
+          {
+            "blindId": "C068",
+            "itemId": "g3u07.w.to-keep-secret",
+            "preferred": "keep",
+            "tier": "correct",
+            "concern": "'I want to tell you a thing' klingt in diesem Zusammenhang unnatürlich; üblich wäre 'I want to tell you something'."
+          },
+          {
+            "blindId": "C070",
+            "itemId": "g3u08.w.to-research",
+            "preferred": "study",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C071",
+            "itemId": "g3u10.w.to-be-equal",
+            "preferred": "equal",
+            "tier": "correct",
+            "concern": "Nach 'must be' passen sowohl ein Adjektiv als auch Formulierungen über gleiche Behandlung oder Rechte."
+          },
+          {
+            "blindId": "C075",
+            "itemId": "g3u14.w.to-book-a-holiday",
+            "preferred": "book a trip",
+            "tier": "partial",
+            "concern": "Die Hilfe setzt Buchen mit vollständigem Vorauszahlen gleich; eine Buchung muss jedoch nicht vollständig bezahlt sein. 'Dann gehört er dir' beschreibt einen Urlaub ungenau."
+          },
+          {
+            "blindId": "C076",
+            "itemId": "g3u14.w.to-buy-a-dictionary",
+            "preferred": "buy a phrasebook",
+            "tier": "partial",
+            "concern": "Die Hilfe unterscheidet nicht zwischen Sprachführer, Wörterbuch und Lehrbuch; alle könnten beim Verstehen der neuen Sprache helfen."
+          },
+          {
+            "blindId": "C077",
+            "itemId": "g3u14.w.to-dig",
+            "preferred": "dig",
+            "tier": "correct",
+            "concern": "'In the garden ground' klingt unnatürlich. 'In the garden' oder 'in the ground in the garden' wäre üblich."
+          },
+          {
+            "blindId": "C078",
+            "itemId": "g3u14.w.to-find-information-about-the-best-beaches",
+            "preferred": "research the best beaches",
+            "tier": "partial",
+            "concern": "Die Hilfe lässt mehrere natürliche Verben und Wortgruppen für die Suche nach geeigneten Stränden zu."
+          },
+          {
+            "blindId": "C080",
+            "itemId": "g3u14.w.to-make-a-hotel-reservation",
+            "preferred": "book a room",
+            "tier": "wrong",
+            "concern": "Der Zweck bezieht sich auf die Ankunft. 'When we travel to the hotel at night' ist dafür weniger natürlich und präzise als 'when we arrive at the hotel at night'."
+          },
+          {
+            "blindId": "C081",
+            "itemId": "g3u14.w.to-plan-a-trip",
+            "preferred": "plan our trip",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C084",
+            "itemId": "g4u07.w.outback",
+            "preferred": "outback",
+            "tier": "correct",
+            "concern": "'Outback' ist die spezifischste Lösung. 'Interior' ist allgemeiner; 'bush' und 'desert' passen zum Satz, decken das beschriebene Landesinnere aber nicht genau gleich ab."
+          }
+        ],
+        "b": [
+          {
+            "blindId": "C002",
+            "itemId": "g1u01.w.to-meet",
+            "preferred": "meet",
+            "tier": "correct",
+            "concern": "Die Hilfe legt das erste Kennenlernen nahe; der englische Satz allein lässt auch 'see' zu."
+          },
+          {
+            "blindId": "C004",
+            "itemId": "g1u03.w.to-be-scared",
+            "preferred": "afraid",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C005",
+            "itemId": "g1u06.w.to-climb-up-a-tree",
+            "preferred": "climb a tree",
+            "tier": "partial",
+            "concern": "Der Hund als handelndes Tier passt schlecht zur Hilfe mit Händen und Füßen. In einer Tiergeschichte wäre das denkbar, aber dieser Kontext fehlt."
+          },
+          {
+            "blindId": "C008",
+            "itemId": "g1u11.w.to-cook",
+            "preferred": "cook",
+            "tier": "correct",
+            "concern": "Die Hilfe nennt den Herd, während Pizza normalerweise im Ofen gebacken wird. 'Bake' ist im englischen Satz besonders natürlich; 'cook' folgt der allgemeineren Bedeutung der Hilfe."
+          },
+          {
+            "blindId": "C011",
+            "itemId": "g1u11.w.to-play-computer-games",
+            "preferred": "play games",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C013",
+            "itemId": "g1u11.w.to-ride-a-bike",
+            "preferred": "ride my bike",
+            "tier": "close",
+            "concern": null
+          },
+          {
+            "blindId": "C018",
+            "itemId": "g1u11.w.to-ski",
+            "preferred": "ski",
+            "tier": "correct",
+            "concern": "'Down the snow' ist keine natürliche Ortsangabe. Gemeint ist vermutlich 'down a snowy slope' oder 'down the mountain'. Die Einsetzung allein kann den Rahmen nicht reparieren."
+          },
+          {
+            "blindId": "C019",
+            "itemId": "g1u11.w.to-snowboard",
+            "preferred": "snowboard",
+            "tier": "correct",
+            "concern": "'Down the snow' ist unnatürlich; man fährt etwa 'down a snowy slope'. Das Problem bleibt auch mit der passenden Einsetzung bestehen."
+          },
+          {
+            "blindId": "C021",
+            "itemId": "g1u11.w.to-wake-somebody-up",
+            "preferred": "wake me up",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C025",
+            "itemId": "g1u13.w.to-radio",
+            "preferred": "radio",
+            "tier": "correct",
+            "concern": "Nur 'radio' nennt das Funkgerät ausdrücklich. 'Call' und 'contact' passen ebenfalls natürlich in den Satz und können hier die Kontaktaufnahme per Funk bezeichnen."
+          },
+          {
+            "blindId": "C027",
+            "itemId": "g1u14.w.to-disappear",
+            "preferred": "disappear",
+            "tier": "correct",
+            "concern": "Die Hilfe beschreibt Weggehen und Nichtgefundenwerden; der Ring legt hingegen magisches Verschwinden nahe. Die bevorzugte Antwort folgt diesem englischen Kontext."
+          },
+          {
+            "blindId": "C030",
+            "itemId": "g1u14.w.to-lie",
+            "preferred": "lie down",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C034",
+            "itemId": "g1u15.w.to-fly-to",
+            "preferred": "fly to",
+            "tier": "correct",
+            "concern": "Das Ziel steht direkt nach der Lücke; 'to' muss deshalb Teil der Antwort sein."
+          },
+          {
+            "blindId": "C037",
+            "itemId": "g1u15.w.to-lie-in-the-sun",
+            "preferred": "sunbathe",
+            "tier": "wrong",
+            "concern": "Die Hilfe sagt nur draußen liegen und sich ausruhen bei Sonnenschein. Absichtliches Sonnenbaden ist naheliegend, aber nicht zwingend."
+          },
+          {
+            "blindId": "C038",
+            "itemId": "g1u15.w.to-play-badminton",
+            "preferred": "play badminton",
+            "tier": "correct",
+            "concern": "Unsicher: Ein kleiner leichter Ball und ein hohes Netz legen Federball/Badminton nahe; dabei spielt man mit einem Federball. Ein hoher Netzaufbau passt auch zu Volleyball, dessen Ball jedoch nicht klein ist. Die Hilfe benennt die Sportart nicht eindeutig."
+          },
+          {
+            "blindId": "C040",
+            "itemId": "g1u15.w.to-stay-at-a-campsite",
+            "preferred": "camp",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C043",
+            "itemId": "g1u15.w.to-write-a-postcard",
+            "preferred": "write postcards",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C045",
+            "itemId": "g2u06.w.to-trust",
+            "preferred": "trust",
+            "tier": "correct",
+            "concern": "Die Hilfe zielt am ehesten auf Vertrauen. Der Satz erlaubt auch jemandem glauben oder an jemanden glauben, ohne den Unterschied näher festzulegen."
+          },
+          {
+            "blindId": "C046",
+            "itemId": "g2u06.w.to-wash-up",
+            "preferred": "wash",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C047",
+            "itemId": "g2u07.w.to-come-over",
+            "preferred": "come round",
+            "tier": "wrong",
+            "concern": "Die Perspektive und die besuchte Person bleiben offen. Mehrere Besuchsformulierungen passen; ein bestimmter Mehrwortausdruck ist nicht eindeutig ableitbar."
+          },
+          {
+            "blindId": "C051",
+            "itemId": "g2u07.w.to-have-a-party",
+            "preferred": "have a party",
+            "tier": "correct",
+            "concern": "Die deutsche Hilfe nennt das Einladen, während eine Party veranstalten ebenfalls gut zum Satz passt. Beide Handlungen sind natürliche Lösungen."
+          },
+          {
+            "blindId": "C052",
+            "itemId": "g2u07.w.to-play-basketball",
+            "preferred": "play volleyball",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C053",
+            "itemId": "g2u07.w.to-take-it-easy",
+            "preferred": "relax",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C057",
+            "itemId": "g2u15.w.neither-do-i",
+            "preferred": "Neither do I.",
+            "tier": "correct",
+            "concern": "Zwischen der Lücke und 'I also hate it' fehlt ein gedrucktes Satzzeichen. Die Antwort muss hier die Satzgrenze mitliefern. Mehrere gebräuchliche Zustimmungsformeln passen."
+          },
+          {
+            "blindId": "C059",
+            "itemId": "g3u03.w.to-drive",
+            "preferred": "drove",
+            "tier": "partial",
+            "concern": "Der Zeitpunkt der Rückreise ist nicht festgelegt. 'Drove' ist meine bevorzugte Lesart; Gegenwart und Zukunft sind ohne weiteren Kontext ebenfalls möglich. Die deutsche Hilfe legt keine Zeitform fest."
+          },
+          {
+            "blindId": "C061",
+            "itemId": "g3u03.w.to-get-to",
+            "preferred": "reach",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C064",
+            "itemId": "g3u03.w.to-set-off",
+            "preferred": "sets off",
+            "tier": "correct",
+            "concern": "Die deutsche Hilfe 'Du verlässt zu Hause' ist sprachlich fehlerhaft; gemeint ist 'Du verlässt dein Zuhause'. Die englische Lücke erlaubt mehrere natürliche Verben."
+          },
+          {
+            "blindId": "C066",
+            "itemId": "g3u07.w.to-break-up-with-sb",
+            "preferred": "break up with",
+            "tier": "correct",
+            "concern": "'Dump' ist umgangssprachlich und abwertender; die anderen Lösungen sind neutraler. Alle passen vor das bereits gedruckte 'him'."
+          },
+          {
+            "blindId": "C068",
+            "itemId": "g3u07.w.to-keep-secret",
+            "preferred": "keep",
+            "tier": "correct",
+            "concern": "'I want to tell you a thing' klingt in diesem Kontext unnatürlich; üblich wäre 'I want to tell you something'. Die Lücke selbst ist klar."
+          },
+          {
+            "blindId": "C070",
+            "itemId": "g3u08.w.to-research",
+            "preferred": "study",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C073",
+            "itemId": "g3u12.w.to-deliver",
+            "preferred": "deliver",
+            "tier": "correct",
+            "concern": "'Deliver' passt besonders gut zu Paketen. Die Hilfe legt Zustellen, Bringen und Verschicken nicht sauber auseinander; ein Empfänger oder Zielort fehlt im Satz."
+          },
+          {
+            "blindId": "C074",
+            "itemId": "g3u12.w.to-evacuate",
+            "preferred": "evacuate",
+            "tier": "correct",
+            "concern": "'Evacuate' trifft das Wegbringen aus dem Gebäude genau; 'rescue' ist hier ebenfalls natürlich. 'Evacuate' ist ohne vorherige Wortschatzarbeit für A2+ möglicherweise anspruchsvoll, der restliche Satz ist verständlich."
+          },
+          {
+            "blindId": "C075",
+            "itemId": "g3u14.w.to-book-a-holiday",
+            "preferred": "book a holiday",
+            "tier": "correct",
+            "concern": "Die Hilfe setzt Buchen mit vollständigem Vorausbezahlen gleich. Eine Buchung muss aber nicht sofort vollständig bezahlt sein; 'dann gehört er dir' erklärt die Handlung ungenau."
+          },
+          {
+            "blindId": "C076",
+            "itemId": "g3u14.w.to-buy-a-dictionary",
+            "preferred": "buy a phrasebook",
+            "tier": "partial",
+            "concern": "Die Hilfe unterscheidet Sprachführer, Wörterbuch und Lehrbuch nicht. Der Urlaubskontext macht 'phrasebook' plausibel, aber nicht zwingend."
+          },
+          {
+            "blindId": "C077",
+            "itemId": "g3u14.w.to-dig",
+            "preferred": "dig",
+            "tier": "correct",
+            "concern": "'In the garden ground' klingt unnatürlich. Üblicher wäre 'in the garden' oder 'in the ground in the garden'."
+          },
+          {
+            "blindId": "C078",
+            "itemId": "g3u14.w.to-find-information-about-the-best-beaches",
+            "preferred": "find out about the best beaches",
+            "tier": "partial",
+            "concern": "Unsicher hinsichtlich des erwarteten Ausdrucks: Die Hilfe beschreibt eine offene Recherchehandlung. Mehrere ganze Wortgruppen passen, ohne dass der Satz eine bestimmte davon nahelegt."
+          },
+          {
+            "blindId": "C079",
+            "itemId": "g3u14.w.to-hire-a-car",
+            "preferred": "rent a car",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C080",
+            "itemId": "g3u14.w.to-make-a-hotel-reservation",
+            "preferred": "book a room",
+            "tier": "wrong",
+            "concern": null
+          },
+          {
+            "blindId": "C081",
+            "itemId": "g3u14.w.to-plan-a-trip",
+            "preferred": "plan our trip",
+            "tier": "partial",
+            "concern": null
+          },
+          {
+            "blindId": "C083",
+            "itemId": "g4u02.w.to-steal",
+            "preferred": "steal",
+            "tier": "correct",
+            "concern": "'Take' ist allgemeiner; durch den ausdrücklich genannten Dieb kann es in diesem Satz dieselbe Handlung ausdrücken."
+          },
+          {
+            "blindId": "C084",
+            "itemId": "g4u07.w.outback",
+            "preferred": "outback",
+            "tier": "correct",
+            "concern": "'Outback' ist die präziseste Bezeichnung. 'Interior' und 'bush' sind allgemeinere, im gegebenen Satz aber natürliche Beschreibungen."
+          }
+        ]
+      },
+      "disposition": "Independent solutions expose unresolved semantics/phrasing and missing variants, not blanket pool authorization. Preserve reports and grade all alternatives separately in external evidence; scope semantic redesign to cgo-173 or GG follow-up. Mechanical repair is not a content release."
+    }
+  }
 }

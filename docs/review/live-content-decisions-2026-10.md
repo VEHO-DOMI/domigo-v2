@@ -12,6 +12,23 @@ Die Live-Bank enthält 2.550 früher einzeln beurteilte Frage-/Pool-Kombinatione
 
 Die Verbindung zu jeder Quelle besteht aus einer stabilen Wortkennung plus Antwortpool, nicht allein aus einer laufenden Nummer. Alle 2.550 Frage-/Vollantwort-/Teilantwort-Sätze wurden mit dem aktuellen Korpus abgeglichen: **0 Abweichungen**. Die neun eigentlichen Eingabedateien (drei Lernersichten, drei Schlüssel, drei Einzelurteile) und ergänzende Journale tragen in der JSON-Datei SHA-256-Prüfsummen — Fingerabdrücke der gelesenen Dateibytes. Diese neue Bindungsprüfung bestätigt Datenidentität, keine fachliche Vollfreigabe.
 
+## Mechanische Reparatur cgo-171 · Entwurf, nicht freigegeben
+
+Die früheren Urteile, Quellenanker und 65 Empfehlungen dieses Blattes bleiben historische Schnappschüsse. Kokis Ruling auf cgo-170 ist inzwischen entschieden (R1=A, R2=B, R3=A); die fachliche Neufassung gehört zu cgo-173. Hier wird keine frühere Freigabe erneuert und kein vorgeschlagener B-Pool übernommen.
+
+Die vollständige Einsetzprüfung erfasst **2.446 Kontextfragen / 3.731 Voll- und Teilantworten**. Sie findet **88 strukturell fehlerhafte Einsetzungen in 84 Einträgen / 22 Units**, einschließlich der beauftragten Stichproben. Die Korrekturdatei entfernt diese 88 Einträge und bewahrt alle übrigen Felder. Danach: **3.643 Kontextantworten, 0 Befunde**; die echte Bewertung besteht **653/653** Einträge aus allen vier Antwortlisten der 84 geänderten Wörter. Die vollständige Zuordnung mit vorher/nachher steht unter `mechanicalRepair.repairs` in der JSON-Begleitdatei.
+
+**Grenzen:** Die Einsetzprüfung ist kein Bedeutungsurteil. Sie prüft benachbarte Wort-/Phrasendoppelungen, die getrennte `off`-Partikel sowie den ausdrücklich belegten Artikelrahmen `in the Australian …`; Wiederholungen außerhalb der Einsetzung und über Satzzeichen werden nicht pauschal verboten. Eine entfernte Schreibform (`Neither do I` ohne Punkt) bleibt nach der bestehenden Normalisierung korrekt; der Satzgrenzenbefund ist damit nicht pädagogisch gelöst. Für **40 andere entfernte Doppelformen** vergibt die allgemeine Ähnlichkeitsregel weiterhin Teilpunkte. **R2=B ist im Laufzeitverhalten deshalb noch nicht erfüllt.**
+
+**Materialisierung offen:** Die Korrekturdatei wird zur Laufzeit bereits berücksichtigt, aber die gesperrten Korpusdateien samt Prüfsummen und Zustandsprotokollen sind noch nicht nachgezogen. Die nötigen Lock-/State-Dateien liegen außerhalb der Kartenliste; beim Research-Eintrag lehnt das mechanische Verfahren zudem die beauftragte Ablenker-/Herkunftsänderung als Prosa ab. Die konkrete Umfangsfrage und die Bewertungs-Lücke liegen bei GG. Kein grüner vollständiger Inhaltslauf und keine Freigabe werden behauptet.
+
+Vier bisherige Quiz-Freigaben verlieren absichtlich ihren Fingerabdruck: `g3u14.w.to-dig:carrier`, `g4u01.w.be-aware-of-sth:carrier`, `g4u02.w.to-steal:carrier`, `g4u07.w.outback:carrier`. **0 Freigaben erneuert.** Die Live-Positivliste ist unverändert.
+
+**Schlüsselfreie Gegenprobe:** Zwei unabhängige Leser lösten jeweils **84/84** unveränderte Schülersichten vor Einsicht in den Schlüssel (gemeinsamer Dateifingerabdruck `eeabc55def482001304c5c741a7386119e227f809b4cdafb5d820956ebfb8dea`). Leser A: 59 bevorzugte Lösungen voll richtig, 11 teilweise, 1 als nahe Schreibform, 13 falsch gewertet; Leser B: 63/9/1/11. Beide nennen offene Formulierungen und uneindeutige Bedeutungen; beide markieren insbesondere die Sportart (C038), die Satzgrenze (C057) und die Zeitform (C059). Diese Abweichungen stehen mit Wortkennung unter `mechanicalRepair.blindVerification`; sie bleiben fachlich offen. Keine pauschale Synonymerweiterung und keine neue Inhaltsfreigabe.
+
+Fall **2505** ist gemäß GG nach **c** umgeordnet: b=568, c=1272; Jahrgang4/Lückensatz b=47, c=108. Das ursprüngliche Leserurteil ist unverändert, es wird hier kein neuer Antwortpool eingespielt. Der private `sourceRoot`-Pfad wurde aus der Begleitdatei entfernt.
+
+
 ## A1 · Die 2.057 Ablehnungen ordnen
 
 Die Zahlen zählen Hinweise aus den vorhandenen Einzelurteilen, keine 2.057 neu bestätigten Produktfehler. Jeder JSON-Datensatz bewahrt die ursprüngliche Begründung unverändert und nennt deren Datei/Position sowie die aktuelle Korpuszeile. Die Zuordnung wurde zunächst regelgestützt vorgeordnet. Nach dem Leserbefund wurden alle 1.387 zunächst unter c stehenden Originalbegründungen auf die Klassenpriorität durchgesehen: „fehlt“ allein unterscheidet keine fehlende Antwort von fehlendem Aufgabeninhalt. Gemischte Fälle und der Grenzfall 16 wurden nach der folgenden Vorrangregel einzeln berichtigt. Eine regelgestützte Zuordnung ist keine neue sprachliche Vollprüfung aller Fragen.
@@ -23,8 +40,8 @@ Drei Biosphere-Fälle sind nach dem konkreten Buchabgleich unter b eingeordnet, 
 | Klasse | Bedeutung | Fälle |
 |---|---|---:|
 | a | Hinweis auf fachlichen Aufgaben-/Schlüsseldefekt | 189 |
-| b | Isolierte Aufgabe ohne hinreichenden Bedeutungs-/Buchkontext | 569 |
-| c | Benannte zulässige Variante fehlt oder erhält nur Teilwertung | 1271 |
+| b | Isolierte Aufgabe ohne hinreichenden Bedeutungs-/Buchkontext | 568 |
+| c | Benannte zulässige Variante fehlt oder erhält nur Teilwertung | 1272 |
 | d | Ausschließlich Schreibform | 20 |
 | e | Sachunsicherheit / unbelegte Sachannahme im Leserurteil | 8 |
 | **Gesamt** | | **2057** |
@@ -44,7 +61,7 @@ Zählung nach Jahrgang und Aufgabenformat; jede Zeile zählt nur abgelehnte Frag
 | 3 | Lückensatz | 17 | 80 | 99 | 1 | 3 | 200 |
 | 4 | Übersetzung | 5 | 16 | 122 | 2 | 0 | 145 |
 | 4 | Definition | 34 | 28 | 103 | 1 | 0 | 166 |
-| 4 | Lückensatz | 17 | 48 | 107 | 1 | 1 | 174 |
+| 4 | Lückensatz | 17 | 47 | 108 | 1 | 1 | 174 |
 
 Die vollständigen 2.057 Gründe stehen unter `rejections` in der [JSON-Begleitdatei](live-content-decisions-2026-10.json); `stableId` ist die dauerhafte Zuordnung, `number` nur die Nummer des alten Prüfsatzes. `classificationBasis` dokumentiert die Zuordnungsregel oder Einzelentscheidung. Gemischte Gründe bleiben vollständig lesbar, auch wenn die Zählung nur die Hauptklasse verwendet.
 
@@ -76,6 +93,8 @@ Die folgenden zehn Dossiers decken zwölf Banknummern ab: acht beauftragte Kernf
 - Vorschlag für die spätere Baukarte: Definition mit Erlös minus Kosten erklären; für Jahrgang 1 deutsche Hilfe und ein kleines Zahlenbeispiel vorsehen. Keinen Antwortpool durch pauschale Gleichsetzung von money/revenue/profit erweitern.
 - Stand: Begriffsabgrenzung im Plattformtext unvollständig; kein neues Rechenergebnis des Buchvideos behauptet. Koki-/GG-Entscheid ausstehend.
 
+**Ergänzung cgo-171:** Zusatzbefund: hintDe in g1-u05/vocab.json:1755 nennt ebenfalls nur Geld nach dem Verkauf; der Ablenker money berührt dieselbe Begriffsgrenze. Die Kontextfrage 219 ist derselbe Eintrag g1u05.w.profit#carrier. Beide Oberflächen gemeinsam in cgo-173 prüfen; hier keine fachliche Änderung.
+
 ### case-467 · Zwei richtige Zeitfragen (Nr. 467)
 
 - Aktuelle Aufgabe 467: [content/corpus/units/g1-u11/vocab.json:4517](../../content/corpus/units/g1-u11/vocab.json#L4517); `g1u11.w.what-s-the-time#definition`. Sichtbar: „You ask this to find out how late it is.“; volle Antworten: `What's the time?`, `What's the time`.
@@ -83,6 +102,8 @@ Die folgenden zehn Dossiers decken zwölf Banknummern ab: acht beauftragte Kernf
 - Quellenbefund: Der Buchkasten nennt beide Zeitfragen ausdrücklich. Die Plattform bietet beide an, wertet aber nur eine voll.
 - Vorschlag für die spätere Baukarte: Bei freier Eingabe beide Zeitfragen berücksichtigen; in einer Frage mit genau einer richtigen Auswahl eine der beiden richtigen Optionen durch einen echten Ablenker ersetzen.
 - Stand: Fehlende zulässige Variante bestätigt; kein bloßes Schreibformproblem. Koki-/GG-Entscheid ausstehend.
+
+**Ergänzung cgo-171:** Zwillinge: 480 = g1u11.w.what-time-is-it#definition, 495 = g1u11.w.what-time-is-it#carrier. Beide beziehen sich auf denselben zweiten Zeitfrage-Eintrag. Definitionen, volle Antwortlisten und Auswahloptionen gemeinsam in cgo-173 prüfen; hier kein Pool ergänzt.
 
 ### case-1293 · Doppeltes part (Nr. 1293)
 
@@ -100,6 +121,8 @@ Die folgenden zehn Dossiers decken zwölf Banknummern ab: acht beauftragte Kernf
 - Vorschlag für die spätere Baukarte: Rahmen in please ___ your sister alone ändern und leave prüfen, oder eine Lücke wählen, die leave your sister alone vollständig aufnimmt. Vor Umsetzung die Wortidentität to leave sb. alone beibehalten und neu bewerten.
 - Stand: Rahmen-/Schlüsseldefekt bestätigt; kein blindes Entfernen nur einer Variante. Koki-/GG-Entscheid ausstehend.
 
+**Ergänzung cgo-171:** Zusatzbefund: Der bisherige Teilpool enthält left alone. Auch diese Form muss zusammen mit dem Rahmen und den Vollantworten geprüft werden; keine isolierte Teilpoolkorrektur in cgo-171.
+
 ### case-1510 · Doppeltes off (Nr. 1510)
 
 - Aktuelle Aufgabe 1510: [content/corpus/units/g3-u04/vocab.json:2326](../../content/corpus/units/g3-u04/vocab.json#L2326); `g3u04.w.to-bite#carrier`. Sichtbar: „Dave has a new lizard, and it can ___ your finger off!“; volle Antworten: `bite`, `bite off`.
@@ -115,6 +138,8 @@ Die folgenden zehn Dossiers decken zwölf Banknummern ab: acht beauftragte Kernf
 - Quellenbefund: Die Wortliste enthält decided to research. Im Plattformrahmen steht decided to bereits; to research verdoppelt den Infinitivmarker. Die vorhandene Provenienz nennt dagegen pauschal SB Unit 8 word file, obwohl der genaue Beleg im WB liegt.
 - Vorschlag für die spätere Baukarte: To research aus dem vollen Kontextpool entfernen; research bleibt. Study/investigate als sprachliche Kandidaten separat entscheiden. Provenienz in einer späteren Baukarte auf den konkreten WB-Beleg berichtigen.
 - Stand: Einsetzfehler und konkrete Provenienzabweichung bestätigt. Koki-/GG-Entscheid ausstehend.
+
+**Ergänzung cgo-171:** Die Auswahl-Ablenker lauten im Ausgangskorpus to invest / to impress / to decorate; auch sie verdoppeln den bereits gedruckten Infinitivmarker. cgo-171 entfernt den Marker aus diesen drei Optionen und aus dem zugehörigen Spiel-Ablenkerfeld (einschließlich to develop); Herkunft: WB S.72–73, Wortlistenzeile to research, Transkript Zeile277. Overlay vorhanden, Materialisierung noch offen.
 
 ### case-2549 · Artist und autograph verwechselt (Nr. 2549)
 
