@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 import { notFound, redirect } from "next/navigation";
 import { itemsInPool, listApprovedUnits, loadJourney } from "@domigo/content-loader";
 import type { Journey, JourneyNode } from "@domigo/content-schema";
@@ -42,12 +43,12 @@ export default async function UnitPathPage({ params, searchParams }: { params: P
   const grade = slug.match(/^g(\d)/)?.[1];
 
   return (
-    <>
+    <LearningShell preview={preview} grade={Number(slug[1])}>
       {preview && <PreviewBanner grade={Number(slug.charAt(1))} />}
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
         <h1 style={{ fontSize: 24, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.slice(-2))}</h1>
-        <Link href="/learn" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Study Path</Link>
+        <Link href="/learn" style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Lernpfad" en="← Study Path" /></Link>
       </div>
       <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
         {views.map((n) => (
@@ -55,10 +56,10 @@ export default async function UnitPathPage({ params, searchParams }: { params: P
         ))}
       </ol>
       <p style={{ marginTop: 18 }}>
-        <Link href="/review" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Review due items →</Link>
+        <Link href="/review" style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="Fällige Wörter und Sätze wiederholen →" en="Review due items →" /></Link>
       </p>
     </main>
-    </>
+    </LearningShell>
   );
 }
 
@@ -67,25 +68,27 @@ export default async function UnitPathPage({ params, searchParams }: { params: P
 async function JourneySpine({ slug, journey, acting, preview }: { slug: string; journey: Journey; acting: ActingUser | null; preview: boolean }) {
   const unit = await loadUnitWithOverrides(slug);
   const itemIds = [...unit.vocab.map((v) => v.id), ...unit.grammar.map((g) => g.id)];
-  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => new Set<string>()) : new Set<string>();
+  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => null) : new Set<string>();
 
   // each gating node's items = its pool's slice of this unit (deterministic)
   const nodeItems = new Map<string, readonly string[]>();
   for (const n of journey.nodes) {
     if ((n.kind === "practice" || n.kind === "side-quest") && n.itemPool) {
-      nodeItems.set(n.id, itemsInPool(itemIds, n.itemPool, reserved, journey.poolOverrides));
+      nodeItems.set(n.id, reserved === null ? [] : itemsInPool(itemIds, n.itemPool, reserved, journey.poolOverrides));
     }
   }
-  const attempts = acting ? await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []) : [];
-  const views = deriveJourneyProgress(journey.nodes, nodeItems, bestTierPerItem(attempts)).map((node) => preview ? { ...node, status: "available" as const } : node);
+  const attempts = reserved === null ? [] : acting ? await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []) : [];
+  const views = deriveJourneyProgress(journey.nodes, nodeItems, bestTierPerItem(attempts)).map((node) => reserved === null
+    ? { ...node, status: "locked" as const, stars: 0 as const }
+    : preview ? { ...node, status: "available" as const } : node);
 
   return (
-    <>
+    <LearningShell preview={preview} grade={Number(slug[1])}>
       {preview && <PreviewBanner grade={Number(slug.charAt(1))} />}
     <main data-grade={journey.grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
         <h1 style={{ fontSize: 24, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Chapter {Number(slug.slice(-2))}</h1>
-        <Link href="/learn" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Lernpfad</Link>
+        <Link href="/learn" style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Lernpfad" en="← Study Path" /></Link>
       </div>
       <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
         {journey.nodes.map((n, i) => (
@@ -93,7 +96,7 @@ async function JourneySpine({ slug, journey, acting, preview }: { slug: string; 
         ))}
       </ol>
     </main>
-    </>
+    </LearningShell>
   );
 }
 
@@ -116,20 +119,20 @@ function JourneyNodeRow({ slug, node, view, grade }: { slug: string; node: Journ
       : locked
         ? "🔒"
         : isGame
-          ? "Spielen →"
-          : "Los →";
+          ? <LearningText de="Spielen →" en="Play →" />
+          : <LearningText de="Los →" en="Start →" />;
   const inner = (
     <div
       className={locked ? "dg-tile--locked" : "dg-tile"}
-      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
+      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "calc(var(--learning-unit) * 3)", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
     >
       <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}>
-        {NODE_ICON[node.kind]} {node.titleDe}
+        {NODE_ICON[node.kind]} <span lang="de">{node.titleDe}</span>
       </span>
-      <span style={{ fontSize: 13, fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap", color: locked ? "var(--muted)" : view.status === "available" ? "var(--accent)" : "var(--accent-deep)" }}>{meta}</span>
+      <span className={locked ? undefined : "learning-path-action"} style={{ fontSize: 13, fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap", color: locked ? "var(--muted)" : "var(--ink)" }}>{meta}</span>
     </div>
   );
-  return <li>{locked ? inner : <Link href={href} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
+  return <li>{locked ? inner : <Link className="learning-path-link" href={href} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
 }
 
 function NodeRow({ slug, node }: { slug: string; node: NodeView }) {
@@ -138,18 +141,18 @@ function NodeRow({ slug, node }: { slug: string; node: NodeView }) {
     node.status === "completed"
       ? node.graded
         ? "★".repeat(node.stars) + "☆".repeat(3 - node.stars)
-        : "✓ done"
+        : <LearningText de="✓ geschafft" en="✓ done" />
       : node.status === "available"
         ? "Start →"
-        : "🔒 Locked";
+        : <LearningText de="🔒 Gesperrt" en="🔒 Locked" />;
   const inner = (
     <div
       className={locked ? "dg-tile--locked" : "dg-tile"}
-      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
+      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "calc(var(--learning-unit) * 3)", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
     >
-      <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}>{node.title}</span>
-      <span style={{ fontSize: 13, fontWeight: 600, color: locked ? "var(--muted)" : node.status === "available" ? "var(--accent)" : "var(--accent-deep)" }}>{meta}</span>
+      <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}><LearningText de={node.kind === "checkpoint" ? "Zeig, was du kannst" : `${node.kind.startsWith("vocab") ? "Wörter" : "Grammatik"}${node.difficulty ? ` üben · ${{ 1: "Leicht", 2: "Mittel", 3: "Schwer" }[node.difficulty]}` : ""}`} en={node.title} /></span>
+      <span className={locked ? undefined : "learning-path-action"} style={{ fontSize: 13, fontWeight: 600, color: locked ? "var(--muted)" : "var(--ink)" }}>{meta}</span>
     </div>
   );
-  return <li>{locked ? inner : <Link href={`/learn/${slug}/${node.id}`} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
+  return <li>{locked ? inner : <Link className="learning-path-link" href={`/learn/${slug}/${node.id}`} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;
 }
