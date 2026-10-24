@@ -108,9 +108,9 @@
     "rejected": 2057,
     "positiveContext": 65,
     "byClass": {
-      "a": 151,
-      "b": 491,
-      "c": 1387,
+      "a": 189,
+      "b": 569,
+      "c": 1271,
       "d": 20,
       "e": 8
     },
@@ -118,27 +118,27 @@
       {
         "grade": 1,
         "mode": "translation",
-        "a": 2,
+        "a": 4,
         "b": 10,
-        "c": 116,
+        "c": 114,
         "d": 3,
         "e": 0
       },
       {
         "grade": 1,
         "mode": "definition",
-        "a": 12,
-        "b": 31,
-        "c": 120,
+        "a": 20,
+        "b": 48,
+        "c": 95,
         "d": 1,
         "e": 0
       },
       {
         "grade": 1,
         "mode": "context",
-        "a": 2,
-        "b": 108,
-        "c": 91,
+        "a": 4,
+        "b": 125,
+        "c": 72,
         "d": 0,
         "e": 0
       },
@@ -154,9 +154,9 @@
       {
         "grade": 2,
         "mode": "definition",
-        "a": 30,
-        "b": 47,
-        "c": 121,
+        "a": 36,
+        "b": 58,
+        "c": 104,
         "d": 2,
         "e": 0
       },
@@ -164,8 +164,8 @@
         "grade": 2,
         "mode": "context",
         "a": 6,
-        "b": 88,
-        "c": 111,
+        "b": 98,
+        "c": 101,
         "d": 1,
         "e": 4
       },
@@ -173,53 +173,53 @@
         "grade": 3,
         "mode": "translation",
         "a": 6,
-        "b": 14,
-        "c": 133,
+        "b": 15,
+        "c": 132,
         "d": 2,
         "e": 0
       },
       {
         "grade": 3,
         "mode": "definition",
-        "a": 24,
-        "b": 20,
-        "c": 134,
+        "a": 32,
+        "b": 25,
+        "c": 121,
         "d": 1,
         "e": 0
       },
       {
         "grade": 3,
         "mode": "context",
-        "a": 16,
-        "b": 76,
-        "c": 104,
+        "a": 17,
+        "b": 80,
+        "c": 99,
         "d": 1,
         "e": 3
       },
       {
         "grade": 4,
         "mode": "translation",
-        "a": 4,
-        "b": 14,
-        "c": 125,
+        "a": 5,
+        "b": 16,
+        "c": 122,
         "d": 2,
         "e": 0
       },
       {
         "grade": 4,
         "mode": "definition",
-        "a": 26,
-        "b": 21,
-        "c": 118,
+        "a": 34,
+        "b": 28,
+        "c": 103,
         "d": 1,
         "e": 0
       },
       {
         "grade": 4,
         "mode": "context",
-        "a": 15,
-        "b": 44,
-        "c": 113,
+        "a": 17,
+        "b": 48,
+        "c": 107,
         "d": 1,
         "e": 1
       }
@@ -413,8 +413,8 @@
       "grade": 1,
       "chapter": 1,
       "mode": "definition",
-      "primaryClass": "a",
-      "classificationBasis": "manual-explicit-verdict",
+      "primaryClass": "c",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt walk als ausdrücklich in der Definition enthaltene, zusätzlich zulässige volle Antwort; es behauptet keinen eigenen falschen Aufgabenbestandteil.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die Definition nennt ausdrücklich walk; akzeptiert wird nur (to) go.",
@@ -1213,8 +1213,8 @@
       "grade": 1,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„You speak this for“ ist unidiomatisch; How odd ist außerdem richtig und fehlt.",
@@ -1263,8 +1263,8 @@
       "grade": 1,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„You speak this“ ist unidiomatisch; Let me have a look fehlt als volle Antwort.",
@@ -1388,8 +1388,8 @@
       "grade": 1,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die Bewegungsrichtung entscheidet zwischen take und bring; sie fehlt hier.",
@@ -1488,8 +1488,8 @@
       "grade": 1,
       "chapter": 2,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur giraffe freigegeben",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Alle vier angebotenen Tiere können big sein; nur giraffe freigegeben.",
@@ -1613,8 +1613,8 @@
       "grade": 1,
       "chapter": 2,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "behind und in front of sind ohne Bild beide möglich; Ortslage fehlt.",
@@ -1838,8 +1838,8 @@
       "grade": 1,
       "chapter": 3,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "have fehlt; stattdessen wird die konjugierte Form has got als volle Infinitivübersetzung akzeptiert.",
@@ -2063,8 +2063,8 @@
       "grade": 1,
       "chapter": 3,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„you speak this“ ist unidiomatisch; have/own fehlen, has got ist keine allgemeine Antwortform.",
@@ -2313,8 +2313,8 @@
       "grade": 1,
       "chapter": 3,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "shoulder/leg/left arm sind ebenfalls mögliche Papageienpositionen; Geschichte fehlt.",
@@ -2738,8 +2738,8 @@
       "grade": 1,
       "chapter": 4,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "What's happening ist ebenfalls angebotene passende Nachfrage; Are you all right fehlt.",
@@ -2838,8 +2838,8 @@
       "grade": 1,
       "chapter": 4,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Geschlossene Augen im Bett beweisen Schlaf nicht; sleep fehlt als naheliegende Tätigkeitsantwort.",
@@ -3038,8 +3038,8 @@
       "grade": 1,
       "chapter": 4,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "What's happening passt genauso als sichtbare Nachfrage; Are you all right fehlt.",
@@ -3188,8 +3188,8 @@
       "grade": 1,
       "chapter": 4,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "warm fehlt; bored/sad sind mit not cold ebenfalls vereinbare sichtbare Optionen.",
@@ -3313,8 +3313,8 @@
       "grade": 1,
       "chapter": 4,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "mad ist nicht der semantische Gegensatz zu nice; mean/nasty fehlen.",
@@ -3588,8 +3588,8 @@
       "grade": 1,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Ein langes goldenes Instrument kann Trompete/Posaune sein; saxophonist fehlt zusätzlich.",
@@ -3638,8 +3638,8 @@
       "grade": 1,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die angebotene bottle passt genauso; cup fehlt ebenfalls, can ist nicht eindeutig.",
@@ -3738,8 +3738,8 @@
       "grade": 1,
       "chapter": 5,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„world of money“ definiert eher finance als präzise economy; frei passende finance fehlt.",
@@ -3863,8 +3863,8 @@
       "grade": 1,
       "chapter": 5,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "money passt als angebotene Antwort ebenso wie profit; Kosten/Ertrag fehlen.",
@@ -4913,8 +4913,8 @@
       "grade": 1,
       "chapter": 6,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "big ist als angebotene Ergänzung ebenso richtig; lovely/pretty zählen ungerecht nur partial.",
@@ -4938,8 +4938,8 @@
       "grade": 1,
       "chapter": 6,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Come on ist ebenfalls passende angebotene Reaktion; ungekürztes But it is true fehlt.",
@@ -5288,8 +5288,8 @@
       "grade": 1,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Ungesüßter tea aus der Flasche erfüllt die Definition; water fehlt ebenfalls.",
@@ -5588,8 +5588,8 @@
       "grade": 1,
       "chapter": 7,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "waiter kann ebenfalls Frühstück machen; mom/mother fehlen als volle Familienvarianten.",
@@ -5988,8 +5988,8 @@
       "grade": 1,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Singular it stimmt grammatisch nicht mit tights überein; pantyhose fehlt außerdem.",
@@ -6038,8 +6038,8 @@
       "grade": 1,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Man zieht die Kapuze über den Kopf, nicht den ganzen Hoodie; hooded sweatshirt fehlt.",
@@ -6063,8 +6063,8 @@
       "grade": 1,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Pullover kann man über die Haare ziehen; die Definition verwechselt Kapuze und Kleidungsstück, jumper fehlt.",
@@ -6088,8 +6088,8 @@
       "grade": 1,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "hat erfüllt die Kopfbedeckungsdefinition genauso und fehlt; on your hair ist unidiomatisch.",
@@ -6938,8 +6938,8 @@
       "grade": 1,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "letter kann Nachrichten enthalten und ist eine angebotene plausible Lesesache; paper fehlt.",
@@ -6988,8 +6988,8 @@
       "grade": 1,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "mouse und budgie können klein sein und Karotten im Käfig fressen; lange Ohren fehlen auch ihnen.",
@@ -7338,8 +7338,8 @@
       "grade": 1,
       "chapter": 9,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: voll richtig, wird aber nur",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "everyone ist im Satz voll richtig, wird aber nur partial gewertet; Archie-Kontext fehlt.",
@@ -7738,8 +7738,8 @@
       "grade": 1,
       "chapter": 10,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„do not understand it before“ verwechselt Verstehen mit Erwarten; unexpectedly fehlt außerdem.",
@@ -8788,8 +8788,8 @@
       "grade": 1,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: full akzeptiert nur",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Beide angebotenen Zeitfragen sind richtig; full akzeptiert nur What's the time.",
@@ -8838,8 +8838,8 @@
       "grade": 1,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "spare time/leisure time fehlen; angebotene break kann ebenfalls frei verfügbare Zeit sein.",
@@ -8913,8 +8913,8 @@
       "grade": 1,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "go skateboarding fehlt; angebotene to skate kann ebenfalls Skateboardfahren bezeichnen.",
@@ -9088,8 +9088,8 @@
       "grade": 1,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: full erlaubt nur",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Beide angebotenen Zeitfragen sind richtig; full erlaubt nur What time is it.",
@@ -9188,8 +9188,8 @@
       "grade": 1,
       "chapter": 11,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "break ist ebenfalls angebotene sinnvolle Ergänzung; spare time fehlt.",
@@ -9688,8 +9688,8 @@
       "grade": 1,
       "chapter": 12,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "excellent ist ebenfalls angebotene passende Essensbewertung; tasty/yummy nur partial.",
@@ -9813,8 +9813,8 @@
       "grade": 1,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "What is your age ist eine passende volle Frage und fehlt; Sprecherwechsel nicht ausdrücklich markiert.",
@@ -9838,8 +9838,8 @@
       "grade": 1,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Land und Ferienkalender fehlen; August/September sind beide mögliche Schulbeginnmonate.",
@@ -9863,8 +9863,8 @@
       "grade": 1,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "excellent ist ebenso angebotene passende Kuchenbewertung; tasty fehlt.",
@@ -10313,8 +10313,8 @@
       "grade": 1,
       "chapter": 13,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "mountain rescue team/service sind voll richtige Antworten und fehlen; Hügel allein legt Dienst nicht sicher fest.",
@@ -10438,8 +10438,8 @@
       "grade": 1,
       "chapter": 13,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "call for help/cry for help fehlen; „people come to you in danger“ ist sprachlich missverständlich.",
@@ -10613,8 +10613,8 @@
       "grade": 1,
       "chapter": 13,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "fire department/firefighters fehlen als volle Antworten; auch police/ambulance können bei Feuer sinnvoll sein.",
@@ -10713,8 +10713,8 @@
       "grade": 1,
       "chapter": 13,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "opening ist ein passender erster Textteil und fehlt; radio story als Lesestoff bleibt unklar.",
@@ -11063,8 +11063,8 @@
       "grade": 1,
       "chapter": 14,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "a kind of/a type of/a sort of fehlen; full lässt selbst den deutschen Artikel eine weg.",
@@ -11338,8 +11338,8 @@
       "grade": 1,
       "chapter": 14,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "a kind of/a sort of erfüllen die ausdrücklich artikelhaltige Definition und fehlen.",
@@ -12138,8 +12138,8 @@
       "grade": 1,
       "chapter": 15,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Sich draußen untätig aufhalten heißt nicht zwingend liegen; relax/sunbathe passen und fehlen.",
@@ -12163,8 +12163,8 @@
       "grade": 1,
       "chapter": 15,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "beach/national park sind ebenfalls angebotene mögliche Zeltorte; campground fehlt als Synonym.",
@@ -12563,8 +12563,8 @@
       "grade": 1,
       "chapter": 15,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "beach/national park können ebenso Aufenthaltsorte mit Zelt sein; campground fehlt.",
@@ -13088,8 +13088,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Vorsicht mit Geräten bedeutet auch Geräteschutz; online wird nicht definiert, internet safety fehlt.",
@@ -13138,8 +13138,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: voll richtig, nur",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "bike lane ist voll richtig, nur partial; cycle lane fehlt, Straßenspurmerkmal zu unspezifisch.",
@@ -13188,8 +13188,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "web page ist nur partial; ebook/digital magazine erfüllen die Tablet-Lesebeschreibung ohne Internet ebenso.",
@@ -13413,8 +13413,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "noisy/scary/popular sind ebenfalls mögliche Papageieneigenschaften; colorful nur partial.",
@@ -13438,8 +13438,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Unterrichtsthema fehlt; history/homework passen genauso als frei getippte Antworten.",
@@ -13513,8 +13513,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "timetable/calendar/bicycle lane können neu in der Stadt sein; bike lane ungerecht nur partial.",
@@ -13563,8 +13563,8 @@
       "grade": 2,
       "chapter": 1,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "timetable/calendar können auf dem Tablet geöffnet werden; web page nur partial.",
@@ -13988,8 +13988,8 @@
       "grade": 2,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die angebotene museum ist ein solcher Ort; exhibition bezeichnet eher Veranstaltung, gallery fehlt.",
@@ -14038,8 +14038,8 @@
       "grade": 2,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "hint ist eine richtige volle Hilfestellung und fehlt; Definition good thing zu breit.",
@@ -14063,8 +14063,8 @@
       "grade": 2,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "post ist die gewöhnliche volle Antwort und fehlt; Foto oder Geschichte online nicht automatisch posting.",
@@ -14438,8 +14438,8 @@
       "grade": 2,
       "chapter": 2,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "password/secret/tip können ebenfalls online sichtbar sein; post fehlt als normales Synonym.",
@@ -14513,8 +14513,8 @@
       "grade": 2,
       "chapter": 2,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "dull ist eine passende volle Showbewertung und fehlt; Aufhören beweist nicht allein Langeweile.",
@@ -15063,8 +15063,8 @@
       "grade": 2,
       "chapter": 3,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "frighten ist voll gleichwertig, nur partial; when-Satz definiert Reaktion statt Verbhandlung unklar.",
@@ -15338,8 +15338,8 @@
       "grade": 2,
       "chapter": 3,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "knife/stairs sind ebenfalls angebotene beklebbare Flächen; window wird nur partial gewertet.",
@@ -15463,8 +15463,8 @@
       "grade": 2,
       "chapter": 3,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Türöffnen allein bestimmt keinen Halloweenruf; der Anlass fehlt, eine normale Frage wie Are you OK wäre ebenfalls möglich.",
@@ -15963,8 +15963,8 @@
       "grade": 2,
       "chapter": 4,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„smaller number“ verlangt bei zählbaren Mengen fewer, das fehlt; Definition vermischt Zahl und Menge.",
@@ -16963,8 +16963,8 @@
       "grade": 2,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "manual-explicit-verdict",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Postbox/mailbox ist ebenfalls ein Ort, zu dem man zum Briefversenden geht; die Definition verlangt keinen Schalter, aber der Pool nur post office. Schlüsselvergleich: full=[\"post office\", \"post offices\"]; partial=[].",
@@ -17813,8 +17813,8 @@
       "grade": 2,
       "chapter": 6,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Going up very high places kann Bergsteigen sein, Fels fehlt. Schlüsselvergleich: full=[\"rock climbing\"]; partial=[].",
@@ -18563,8 +18563,8 @@
       "grade": 2,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Instead of ist eine naheliegende richtige Wendung für in place of und fehlt; Definition trennt instead und instead of nicht sauber. Schlüsselvergleich: full=[\"instead\"]; partial=[].",
@@ -18738,8 +18738,8 @@
       "grade": 2,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Unwahres sagen kann Irrtum sein; Täuschungsabsicht fehlt. Schlüsselvergleich: full=[\"tell a lie\", \"to tell a lie\", \"tell lies\"]; partial=[].",
@@ -20688,8 +20688,8 @@
       "grade": 2,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Refrigerator fehlt als Standardform; freezer erfüllt die zu allgemeine Definition ebenfalls. Schlüsselvergleich: full=[\"fridge\"]; partial=[\"fridges\"].",
@@ -21413,8 +21413,8 @@
       "grade": 2,
       "chapter": 10,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Auch Schwester/Tante kann ein Mann lieben; romantische Beziehung fehlt. Schlüsselvergleich: full=[\"girlfriend\"]; partial=[\"girlfriends\"].",
@@ -23238,8 +23238,8 @@
       "grade": 2,
       "chapter": 12,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Gullet bezeichnet ebenfalls die Nahrungspassage nach dem Mund und fehlt; die Definition präzisiert den Abschnitt nicht. Schlüsselvergleich: full=[\"throat\"]; partial=[].",
@@ -23338,8 +23338,8 @@
       "grade": 2,
       "chapter": 12,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur teilweise anerkannt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Ankle pain ist die idiomatische volle Antwort, wird aber nur teilweise anerkannt; sichtbares pain in ankle ist sprachlich mangelhaft. Schlüsselvergleich: full=[\"pain in ankle\", \"pain in the ankle\"]; partial=[\"ankle pain\"].",
@@ -23688,8 +23688,8 @@
       "grade": 2,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Ankle pain und pain in her ankle fehlen; pain in the ankle wird nur teilweise anerkannt; backache kann Stehen ebenfalls verhindern. Schlüsselvergleich: full=[\"pain in ankle\", \"a pain in the ankle\", \"a pain in her ankle\"]; partial=[\"pain in the ankle\"].",
@@ -25788,8 +25788,8 @@
       "grade": 2,
       "chapter": 15,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Litter box fehlt als gleichwertige volle Antwort; Sandbehälterdefinition zudem zu eng. Schlüsselvergleich: full=[\"litter tray\", \"a litter tray\"]; partial=[].",
@@ -26138,8 +26138,8 @@
       "grade": 2,
       "chapter": 15,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Room ist gleichwertig zu space und fehlt; zudem schließt sichtbarer Satz cage nicht eindeutig aus. Schlüsselvergleich: full=[\"space\"]; partial=[].",
@@ -29813,8 +29813,8 @@
       "grade": 3,
       "chapter": 4,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "manual-explicit-verdict",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Auch injury passt als MC-Option zu einer lebensgefährlichen Verletzung durch das Tier; Pool enthält ausschließlich bite. Schlüsselvergleich: full=[\"bite\"]; partial=[\"bites\"].",
@@ -30338,8 +30338,8 @@
       "grade": 3,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Graues Waldtier mit Ruf im Frühling beschreibt viele Vögel, charakteristischer Kuckucksruf fehlt. Schlüsselvergleich: full=[\"cuckoo\", \"a cuckoo\"]; partial=[].",
@@ -30413,8 +30413,8 @@
       "grade": 3,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Have good luck/have bad luck ohne to sowie be lucky/be unlucky fehlen; allgemeines have luck bezeichnet üblicherweise gutes Glück, Definition umfasst auch Pech. Schlüsselvergleich: full=[\"to have luck\", \"have luck\", \"to have good luck\", \"to have bad luck\"]; partial=[].",
@@ -30488,8 +30488,8 @@
       "grade": 3,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Bring good luck/bring bad luck ohne to fehlen; unmarkiertes bring luck bezeichnet gewöhnlich gutes Glück, Definition nennt auch Pech. Schlüsselvergleich: full=[\"to bring luck\", \"bring luck\", \"to bring good luck\", \"to bring bad luck\"]; partial=[].",
@@ -31463,8 +31463,8 @@
       "grade": 3,
       "chapter": 6,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Exciting ist eine richtige Antwort und fehlt; thrilling verlangt nicht zusätzlich scary. Schlüsselvergleich: full=[\"thrilling\"]; partial=[].",
@@ -31788,8 +31788,8 @@
       "grade": 3,
       "chapter": 6,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Theater fehlt als korrekte US-Schreibung; auch stadium kann eine Aufführungsstätte sein. Schlüsselvergleich: full=[\"theatre\"]; partial=[].",
@@ -32613,8 +32613,8 @@
       "grade": 3,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Vor Bühne kann beliebiger Text gelesen werden; Dialoge/Bühnenanweisungen fehlen. Schlüsselvergleich: full=[\"script\", \"scripts\"]; partial=[].",
@@ -32638,8 +32638,8 @@
       "grade": 3,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Storm out ist die natürliche vollständige Verbphrase ohne folgendes Ortsobjekt, fehlt aber; Pool verlangt of. Schlüsselvergleich: full=[\"storm out of\", \"to storm out of\", \"stormed out of\"]; partial=[].",
@@ -33288,8 +33288,8 @@
       "grade": 3,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Mitten ist ebenso wärmende Handbekleidung, fehlt aber; Fingerform zur Abgrenzung fehlt in Definition. Schlüsselvergleich: full=[\"glove\", \"gloves\"]; partial=[].",
@@ -33888,8 +33888,8 @@
       "grade": 3,
       "chapter": 8,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil rügt einen bloßen Grammatikhinweis durch die angebotenen Alternativen; es nennt keine zusätzliche zulässige volle Schreibantwort. Das fehlende Wort ist ein Artikel im Ablenker, keine Antwortvariante.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Nur Ziel grammatisch zur Lücke passend; look for wheelchair bräuchte Artikel, der fehlt. Schlüsselvergleich: full=[\"ramps\"]; partial=[\"ramp\"].",
@@ -34388,8 +34388,8 @@
       "grade": 3,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Mehr Zucker und Schokolade ist nicht notwendig „too many sweets“; „eat too much sugar“ fehlt.",
@@ -34438,8 +34438,8 @@
       "grade": 3,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Give a child a bad time“ definiert Bestrafung unsauber; auch „tell off“ passt und fehlt.",
@@ -35138,8 +35138,8 @@
       "grade": 3,
       "chapter": 10,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur right/rights werden akzeptiert",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die angebotene Option „law“ übersetzt „Recht“ ebenfalls; nur right/rights werden akzeptiert.",
@@ -36413,8 +36413,8 @@
       "grade": 3,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Has done a crime“ ist unidiomatisch; außerdem fehlt das passende Synonym offender.",
@@ -37113,8 +37113,8 @@
       "grade": 3,
       "chapter": 12,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Below the outside of the sea“ ist unidiomatisch; zudem fehlt das richtige Synonym underwater.",
@@ -38963,8 +38963,8 @@
       "grade": 3,
       "chapter": 14,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Forester“ kann ebenfalls Bäume und Wildtiere betreuen; Parkbezug fehlt in der Definition.",
@@ -39063,8 +39063,8 @@
       "grade": 3,
       "chapter": 14,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Drive off verlangt keine hohe Geschwindigkeit; außerdem fehlt das voll richtige drive away.",
@@ -39363,8 +39363,8 @@
       "grade": 3,
       "chapter": 14,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„At once“ ist ebenfalls angebotene passende Ergänzung; das gleichwertige around a bend steht nur in partial.",
@@ -39413,8 +39413,8 @@
       "grade": 3,
       "chapter": 14,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Or“ beziehungsweise „or else“ passen vollständig und fehlen; Hauptsätze sind zudem nur durch Komma verbunden.",
@@ -40038,8 +40038,8 @@
       "grade": 4,
       "chapter": 1,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Improve bedeutet besser machen und verlangt nicht zuvor schlechte Leistung; „make better“ fehlt zusätzlich.",
@@ -40088,8 +40088,8 @@
       "grade": 4,
       "chapter": 1,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Walking“ passt vollständig und fehlt; Nationalparks sind zudem nicht immer für Wanderungen geeignet.",
@@ -40888,8 +40888,8 @@
       "grade": 4,
       "chapter": 2,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Bad thing in the law“ ist unidiomatisch; „scene of the crime“ fehlt als richtige Variante.",
@@ -41713,8 +41713,8 @@
       "grade": 4,
       "chapter": 3,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Auch „beg“ bedeutet Menschen um Geld zu bitten; Preis/Leistung zur Abgrenzung von charge fehlt.",
@@ -42013,8 +42013,8 @@
       "grade": 4,
       "chapter": 3,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Airport announcement“ passt vollständig und fehlt; „every plane“ ist zudem eine unnötige Totalbehauptung.",
@@ -42313,8 +42313,8 @@
       "grade": 4,
       "chapter": 4,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur deserve akzeptiert",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die angebotenen Optionen „earn“ und „deserve“ übersetzen beide verdienen; nur deserve akzeptiert.",
@@ -43188,8 +43188,8 @@
       "grade": 4,
       "chapter": 5,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Feel ashamed“ übersetzt sich schämen vollständig und fehlt; die bloße Adjektivform ashamed ist keine Verbübersetzung.",
@@ -43513,8 +43513,8 @@
       "grade": 4,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Regret“ oder „feel ashamed“ erfüllen die Verbdefinition und fehlen; ashamed allein passt grammatisch nicht.",
@@ -43663,8 +43663,8 @@
       "grade": 4,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Repeatedly“ erfüllt again and again und fehlt; genaue Regelmäßigkeit ist nicht präzise beschrieben.",
@@ -43763,8 +43763,8 @@
       "grade": 4,
       "chapter": 5,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Überraschung allein definiert keine eindeutige Konjunktion; „although“ wäre ebenso richtig und fehlt.",
@@ -43788,8 +43788,8 @@
       "grade": 4,
       "chapter": 5,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur filling wird akzeptiert",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Tasty, filling und fattening sind angebotene passende Eigenschaften von Junkfood; nur filling wird akzeptiert.",
@@ -45738,8 +45738,8 @@
       "grade": 4,
       "chapter": 7,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Bushwalk“ oder „trek“ erfüllen die Wanderbeschreibung; kultureller Bezug für walkabout fehlt.",
@@ -46413,8 +46413,8 @@
       "grade": 4,
       "chapter": 8,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Kitschy bedeutet weder zwingend besonders hell noch absolut unschön; außerdem fehlt tacky.",
@@ -47213,8 +47213,8 @@
       "grade": 4,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„It“ hat in der isolierten Definition keinen Bezug; außerdem wäre nod ohne the head vollständig und fehlt.",
@@ -47263,8 +47263,8 @@
       "grade": 4,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Quite nice“ kann Verhalten statt Aussehen meinen; „nice-looking“ wäre ebenfalls richtig und fehlt.",
@@ -47413,8 +47413,8 @@
       "grade": 4,
       "chapter": 9,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Kichern verlangt keine Nervosität; außerdem fehlt das gleichwertige titter.",
@@ -47613,8 +47613,8 @@
       "grade": 4,
       "chapter": 9,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Nice-looking“ passt vollständig und fehlt; auch religious/rebellious boy ist mit dem ersten Satzteil vereinbar.",
@@ -47938,8 +47938,8 @@
       "grade": 4,
       "chapter": 10,
       "mode": "translation",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: nur defeat akzeptiert",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Die angebotene Option „overcome“ übersetzt besiegen ebenfalls; nur defeat akzeptiert.",
@@ -48438,8 +48438,8 @@
       "grade": 4,
       "chapter": 10,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Eine agreement setzt Zustimmung, nicht Glück aller Beteiligten voraus; „deal“ fehlt als passende Variante.",
@@ -49288,8 +49288,8 @@
       "grade": 4,
       "chapter": 11,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Rub“ oder „stroke“ erfüllen die Fingerbewegung über Haut ebenfalls; Fingernägel zum Kratzen fehlen in der Definition.",
@@ -50313,8 +50313,8 @@
       "grade": 4,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: partial",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil lässt mehrere bereits angebotene Auswahlantworten zu; die uneindeutige Auswahl hat Vorrang vor einer zusätzlich fehlenden oder teilgewerteten Schreibantwort.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Commercial, tiring und multibillion sind mögliche Projekteigenschaften; das korrekte multibillion-dollar steht zudem nur in partial.",
@@ -50613,8 +50613,8 @@
       "grade": 4,
       "chapter": 12,
       "mode": "context",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlen",
+      "primaryClass": "b",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt ein fehlendes Unterscheidungsmerkmal, fehlenden Satz-/Buchbezug; dieser Aufgabenbefund hat Vorrang vor zusätzlichen Antwortvarianten.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„In total“ oder „In all“ passen vollständig und fehlen; close ist für äußere Planeten unpräzise.",
@@ -51063,8 +51063,8 @@
       "grade": 4,
       "chapter": 13,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "„Apply for a job“ erfüllt die Definition vollständig und fehlt; bloßes apply for verlangt noch ein Objekt.",
@@ -51288,8 +51288,8 @@
       "grade": 4,
       "chapter": 13,
       "mode": "definition",
-      "primaryClass": "c",
-      "classificationBasis": "explicit-missing-or-undervalued-answer: fehlt",
+      "primaryClass": "a",
+      "classificationBasis": "reviewed-priority: Das Originalurteil benennt zusätzlich zur fehlenden Variante einen falschen, grammatisch unvollständigen oder unidiomatischen Aufgaben-/Schlüsselbestandteil; dieser Hinweis hat Vorrang.",
       "originalVerdict": {
         "status": "reject",
         "reason": "Eine edition ist eine bestimmte Ausgabe, nicht genau ein einzelnes Exemplar; außerdem fehlt issue.",
@@ -51679,9 +51679,10 @@
       "book": {
         "file": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
         "pageExercise": "MORE! 1 SB S.16, Übung 1; Übung 2.1",
-        "pageAnchorLine": 7,
+        "pageAnchorLine": 1,
         "evidenceLine": 10,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 7
       },
       "finding": "Die Quelle enthält eine Giraffe im Dialog und Bild. Der isolierte Ausschnitt entfernt diese Zuordnung; Größe allein entscheidet kein Tier.",
       "proposal": "Buchkontext oder ein geprüftes eindeutiges Tiermerkmal ergänzen; keine vier Tiernamen als dauerhaften Ersatz für fehlenden Kontext freigeben.",
@@ -51709,9 +51710,10 @@
       "book": {
         "file": "content/build/transcripts/g1/sb/SB Unit 3- Pirates.txt",
         "pageExercise": "MORE! 1 SB S.22, Übung 1, Absatz 1",
-        "pageAnchorLine": 6,
+        "pageAnchorLine": 1,
         "evidenceLine": 8,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 6
       },
       "finding": "Der Buchbeleg trägt scared of; im aktuellen Lückenrahmen steht of him bereits hinter der Lücke. Scared of einzusetzen verdoppelt of. Der aktuelle Satz ist eine Umarbeitung, kein identisches Buchzitat.",
       "proposal": "Im vorhandenen Rahmen scared of aus voller Wertung entfernen; scared, afraid und frightened nur nach fachlichem Ruling als passende Kandidaten prüfen.",
@@ -51769,9 +51771,10 @@
       "book": {
         "file": "content/build/transcripts/g1/sb/SB Unit 11- What's the time?.txt",
         "pageExercise": "MORE! 1 SB S.83, Kasten Asking for the time (bei Übung 4)",
-        "pageAnchorLine": 25,
+        "pageAnchorLine": 13,
         "evidenceLine": 27,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 25
       },
       "finding": "Der Buchkasten nennt beide Zeitfragen ausdrücklich. Die Plattform bietet beide an, wertet aber nur eine voll.",
       "proposal": "Bei freier Eingabe beide Zeitfragen berücksichtigen; in einer Frage mit genau einer richtigen Auswahl eine der beiden richtigen Optionen durch einen echten Ablenker ersetzen.",
@@ -51829,9 +51832,10 @@
       "book": {
         "file": "content/build/transcripts/g3/sb/More 3 SB Unit 2.txt",
         "pageExercise": "MORE! 3 SB S.18–19, Übung 9, The lost phone",
-        "pageAnchorLine": 86,
+        "pageAnchorLine": 76,
         "evidenceLine": 94,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 86
       },
       "finding": "Das Buch setzt das Objekt zwischen leaving und alone. Die Plattform setzt die gesamte Wendung vor your sister; beide vollen Poolformen passen so nicht idiomatisch.",
       "proposal": "Rahmen in please ___ your sister alone ändern und leave prüfen, oder eine Lücke wählen, die leave your sister alone vollständig aufnimmt. Vor Umsetzung die Wortidentität to leave sb. alone beibehalten und neu bewerten.",
@@ -51859,9 +51863,10 @@
       "book": {
         "file": "content/build/transcripts/g3/sb/More 3 SB Unit 4.txt",
         "pageExercise": "MORE! 3 SB S.34–35, Übung 5, Dialog 1",
-        "pageAnchorLine": 56,
+        "pageAnchorLine": 2,
         "evidenceLine": 63,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 56
       },
       "finding": "Das Buch trennt bite und off durch my finger. Die Plattform enthält off bereits nach your finger; bite off im Pool verdoppelt die Partikel.",
       "proposal": "Im unveränderten Rahmen bite als volle Einsetzung verwenden; bite off entfernen. Satz und Wortfamilie weiterhin an to bite (off) binden.",
@@ -51919,9 +51924,10 @@
       "book": {
         "file": "content/build/transcripts/g4/sb/More 4 SB Unit 13.txt",
         "pageExercise": "MORE! 4 SB S.107–108, Übung 2; S.109–110, Übung 3.3",
-        "pageAnchorLine": 31,
+        "pageAnchorLine": 2,
         "evidenceLine": 35,
-        "medium": "versioned textbook transcription; original scan not inspected"
+        "medium": "versioned textbook transcription; original scan not inspected",
+        "sectionAnchorLine": 31
       },
       "finding": "Das Buch unterscheidet Künstler und Autogramme. Der Plattform-Satz ist laut sSource invented eigens erzeugt. Er fragt nach autograph, ist aber an artist gebunden; die Antwortliste enthält beides, die Auswahl nicht autograph.",
       "proposal": "Die artist-Kennung nicht in autograph umdeuten: neuen passenden artist-Kontext entwerfen. Einen Autogrammsatz gegebenenfalls dem vorhandenen eigenen autograph-Eintrag zuordnen und getrennt prüfen.",
@@ -51977,7 +51983,16 @@
       "proposal": "Koki entscheidet den Ziel-Sinn: Buchszenario ausdrücklich anzeigen oder allgemeine Biosphäre erklären. Habitat nicht pauschal als Ersatz einspielen. Die drei Ablehnungsgründe bleiben wortgetreu erhalten; die abschließende Routingklasse ist b wegen des fehlenden Sinnkontexts.",
       "sourceResolution": "Quellenkonflikt aufgelöst als kontextabhängiger Bedeutungsentscheid; keine pauschale Schlüsselkorrektur freigegeben.",
       "ruling": "pending",
-      "productChange": false
+      "productChange": false,
+      "additionalBookSources": [
+        {
+          "file": "content/build/transcripts/g4/wb/More 4 WB Unit 12.txt",
+          "pageExercise": "MORE! 4 WB Unit 12, MORE Words & Phrases, Wortlistenzeile biosphere; letzter Seitenanker S.98–99, feinere Blattseite ohne Scan nicht bestätigt",
+          "pageAnchorLine": 132,
+          "evidenceLine": 190,
+          "medium": "versioned textbook transcription; original scan not inspected"
+        }
+      ]
     }
   ],
   "contextDecisions": [
@@ -52339,10 +52354,9 @@
       "stableId": "g1u08.w.mask#carrier",
       "recommended": "C",
       "proposedFull": [
-        "mask",
-        "blindfold"
+        "mask"
       ],
-      "reason": "Eine Augenbinde kann Augen und Nasenbereich bedecken; das Kleidungsstück bleibt ohne Bild/weiteren Satz offen.",
+      "reason": "Die bisherige Auswahl stützt mask. Eine darüber hinausgehende Kostümvariante wurde hier nicht durch eine Quelle gesichert; Bild-/Satzbezug vor einer freien Bewertung klären.",
       "rewriteDirection": "Ein quellengebundenes Kostümmerkmal ergänzen; Bild erst in gesondert freigegebener Arbeit.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
@@ -52408,11 +52422,9 @@
       "stableId": "g1u09.w.rat#carrier",
       "recommended": "C",
       "proposedFull": [
-        "rat",
-        "gerbil",
-        "chinchilla"
+        "rat"
       ],
-      "reason": "Farbe und Mausähnlichkeit identifizieren das Tier nicht sicher.",
+      "reason": "Die ursprüngliche Auswahl stützt rat. Die Merkmale grau und große Maus sind für einen offenen Artvergleich zu prüfen; keine zusätzlichen Tierarten ohne neuen Quellenbeleg als voll richtig ausweisen.",
       "rewriteDirection": "Artkennzeichen aus geprüfter Quelle ergänzen; nicht die Farbe allein verwenden.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
@@ -52793,13 +52805,10 @@
       "stableId": "g1u14.w.screen-time#carrier",
       "recommended": "C",
       "proposedFull": [
-        "screen time",
-        "gaming",
-        "reading",
-        "work"
+        "screen time"
       ],
-      "reason": "Auf Tablet oder Telefon verbrachte Zeit kann verschiedene Tätigkeiten sein.",
-      "rewriteDirection": "Die gesamte Dauer am Bildschirm ausdrücklich benennen statt eine bestimmte Tätigkeit anzudeuten.",
+      "reason": "Die Empfehlung C bleibt: Bedeutung und Idiomatik des gesamten Rahmens spend three hours of ... müssen zusammen geprüft werden. Tätigkeitswörter wie gaming, reading oder work werden hier nicht als bereits geprüfte Einsetzungen ausgegeben.",
+      "rewriteDirection": "Die gesamte Bildschirmdauer ausdrücken und den vollständigen Satzrahmen idiomatisch überarbeiten; anschließend jeden vorgeschlagenen Einsatz neu lesen.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
         "B": "Genannten Pool als begrenzten fachlichen Vorschlag prüfen; erst nach Ruling und neuen Gegenproben zulassen.",
@@ -52864,11 +52873,9 @@
       "stableId": "g2u04.w.parrot#carrier",
       "recommended": "C",
       "proposedFull": [
-        "parrot",
-        "mynah",
-        "raven"
+        "parrot"
       ],
-      "reason": "Sprechimitation ist nicht auf Papageien begrenzt; just like us übertreibt die Fähigkeit.",
+      "reason": "Die ursprüngliche Auswahl stützt parrot. Vor einer freien Bewertung Tierart und Aussage just like us sachlich präzisieren; weitere Arten wurden in dieser Dokumentprüfung nicht neu belegt.",
       "rewriteDirection": "Tierart durch zusätzliche Merkmale oder sichtbare Wortauswahl eingrenzen; Nachahmen statt menschliches Gespräch formulieren.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
@@ -52900,11 +52907,10 @@
       "stableId": "g2u04.w.reason#carrier",
       "recommended": "B",
       "proposedFull": [
-        "reason",
-        "explanation"
+        "reason"
       ],
-      "reason": "Beide Substantive ergeben eine natürliche Frage nach einer Begründung.",
-      "rewriteDirection": "Wenn reason das alleinige Lernziel ist, sichtbar auf das Zielwortinventar begrenzen.",
+      "reason": "Reason passt in den unveränderten Rahmen a ... why. Explanation benötigt hier an und ist deshalb kein gültiger Einsatz im vorgeschlagenen Pool.",
+      "rewriteDirection": "Wenn explanation zugelassen werden soll, Artikel und sichtbaren Satzrahmen zuerst gesondert überarbeiten und vollständig neu prüfen.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
         "B": "Genannten Pool als begrenzten fachlichen Vorschlag prüfen; erst nach Ruling und neuen Gegenproben zulassen.",
@@ -52937,7 +52943,7 @@
       "proposedFull": [
         "mosquito"
       ],
-      "reason": "Der genannte Übertragungsweg grenzt das Insekt im üblichen Schulkontext ein; es wird keine neue medizinische Tatsachenprüfung behauptet.",
+      "reason": "Mosquito bleibt der bisherige Zielbegriff. Ob der allgemeinere Begriff insect ebenfalls voll gelten soll, hängt vom Bewertungsziel ab und bleibt ausdrücklich offen; diese Dokumentprüfung enthält keine neue medizinische Tatsachenprüfung.",
       "rewriteDirection": "Vor neuer Veröffentlichung die Sachquelle des bestehenden Satzes mitführen.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
@@ -53081,9 +53087,10 @@
       "stableId": "g2u12.w.knee#carrier",
       "recommended": "B",
       "proposedFull": [
-        "knee"
+        "knee",
+        "kneecap"
       ],
-      "reason": "Middle of his leg und die Verletzung führen zur einzelnen Gelenkstelle; knees bleibt mit his ... in the middle unpassend.",
+      "reason": "Knee und kneecap ergeben im vorhandenen Satz natürliche Verletzungsangaben. Ein ausschließliches Lernziel knee müsste sichtbar eingegrenzt werden; knees passt nicht zur einzelnen Stelle in einem Bein.",
       "rewriteDirection": "Gelenkfunktion ergänzen, falls anatomische Mitte zu ungenau ist.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
@@ -54266,10 +54273,11 @@
       "stableId": "g4u13.w.apply#carrier",
       "recommended": "B",
       "proposedFull": [
-        "apply"
+        "apply",
+        "ask"
       ],
-      "reason": "Apply for a job ist die natürliche feste Verbindung; right away engt das Verb nicht zusätzlich ein.",
-      "rewriteDirection": "Bewerbung und gewünschte Stelle als Kontext erhalten.",
+      "reason": "Apply for it und ask for it sind im sichtbaren Satz natürliche Ergänzungen. Für das engere Lernziel Bewerbung braucht es eine sichtbare Bedeutungsbegrenzung; right away leistet diese nicht.",
+      "rewriteDirection": "Ein formelles Bewerbungsverfahren sichtbar machen, falls ausschließlich apply geprüft werden soll.",
       "options": {
         "A": "Bisherige Auswahlfrage beibehalten; keine Freitextzulassung.",
         "B": "Genannten Pool als begrenzten fachlichen Vorschlag prüfen; erst nach Ruling und neuen Gegenproben zulassen.",

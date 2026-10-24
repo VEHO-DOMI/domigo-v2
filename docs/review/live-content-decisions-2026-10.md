@@ -14,17 +14,17 @@ Die Verbindung zu jeder Quelle besteht aus einer stabilen Wortkennung plus Antwo
 
 ## A1 · Die 2.057 Ablehnungen ordnen
 
-Die Zahlen zählen Hinweise aus den vorhandenen Einzelurteilen, keine 2.057 neu bestätigten Produktfehler. Jeder JSON-Datensatz bewahrt die ursprüngliche Begründung unverändert und nennt deren Datei/Position sowie die aktuelle Korpuszeile. Die Zuordnung wurde aus expliziten Aussagen wie „fehlt“ oder „nur teilweise“ vorgeordnet; unzugeordnete und mehrdeutige Fälle wurden einzeln eingeordnet. Eine regelgestützte Zuordnung ist keine neue sprachliche Vollprüfung aller Fragen.
+Die Zahlen zählen Hinweise aus den vorhandenen Einzelurteilen, keine 2.057 neu bestätigten Produktfehler. Jeder JSON-Datensatz bewahrt die ursprüngliche Begründung unverändert und nennt deren Datei/Position sowie die aktuelle Korpuszeile. Die Zuordnung wurde zunächst regelgestützt vorgeordnet. Nach dem Leserbefund wurden alle 1.387 zunächst unter c stehenden Originalbegründungen auf die Klassenpriorität durchgesehen: „fehlt“ allein unterscheidet keine fehlende Antwort von fehlendem Aufgabeninhalt. Gemischte Fälle und der Grenzfall 16 wurden nach der folgenden Vorrangregel einzeln berichtigt. Eine regelgestützte Zuordnung ist keine neue sprachliche Vollprüfung aller Fragen.
 
-Es gibt genau eine Hauptklasse je Fall. Bei Überschneidungen hat ein ausdrücklicher Aufgaben-/Schlüsseldefekt Vorrang; reine Schreibformen werden nur dann d, wenn kein zusätzlicher Bedeutungsfehler genannt wird. Explizit unbelegte Sachannahmen stehen unter e. Eine konkret benannte fehlende volle Antwort steht gewöhnlich unter c; fehlende Unterscheidungsmerkmale, mehrere mögliche Auswahlantworten und nur über die Grammatikform verratene Zielwörter unter b. Diese Klassen dienen verschiedenen Folgearbeiten und sind keine Schweregrade. Kategorie c ist insbesondere keine Anweisung, jedes genannte Synonym einzuspielen. Kategorie d behauptet keinen tatsächlich gemessenen Bewertungsfehler: Normalisierung durch den echten Bewerter wurde hier nicht geprüft.
+Es gibt genau eine Hauptklasse je Fall. Bei Überschneidungen hat ein ausdrücklich falscher oder grammatisch unvollständiger akzeptierter Schlüssel beziehungsweise ein eigenständiger Fehler in der Aufgabenbeschreibung Vorrang; reine Schreibformen werden nur dann d, wenn kein zusätzlicher Bedeutungsfehler genannt wird. Explizit unbelegte Sachannahmen stehen unter e. Mehrere bereits angebotene richtige Auswahlantworten sowie ausdrücklich fehlende Unterscheidungsmerkmale oder Satz-/Buchbezüge stehen unter b. Diese Aufgabenbefunde gehen einer zusätzlich genannten fehlenden oder teilgewerteten Schreibantwort vor. Ein reiner Formhinweis ohne konkret benannte fehlende volle Antwort steht ebenfalls unter b. Schwache falsche Auswahlalternativen allein sind dagegen kein falscher akzeptierter Schlüssel: Nennt das Urteil zusätzlich eine passende fehlende volle Schreibantwort, bleibt diese unter c, sofern keiner der zuvor genannten vorrangigen Befunde vorliegt. Eine zusätzliche stilistische Schwäche allein wird nicht zum bestätigten Schlüsseldefekt erklärt. Diese Klassen dienen verschiedenen Folgearbeiten und sind keine Schweregrade. Kategorie c ist insbesondere keine Anweisung, jedes genannte Synonym einzuspielen. Kategorie d behauptet keinen tatsächlich gemessenen Bewertungsfehler: Normalisierung durch den echten Bewerter wurde hier nicht geprüft.
 
 Drei Biosphere-Fälle sind nach dem konkreten Buchabgleich unter b eingeordnet, obwohl die ursprünglichen Urteile einen Begriffsdefekt behaupteten. Das Originalurteil bleibt erhalten; die abweichende Quellenauflösung steht im Dossier. Es wurde keine Begründung stillschweigend ersetzt.
 
 | Klasse | Bedeutung | Fälle |
 |---|---|---:|
-| a | Hinweis auf fachlichen Aufgaben-/Schlüsseldefekt | 151 |
-| b | Isolierte Aufgabe ohne hinreichenden Bedeutungs-/Buchkontext | 491 |
-| c | Benannte zulässige Variante fehlt oder erhält nur Teilwertung | 1387 |
+| a | Hinweis auf fachlichen Aufgaben-/Schlüsseldefekt | 189 |
+| b | Isolierte Aufgabe ohne hinreichenden Bedeutungs-/Buchkontext | 569 |
+| c | Benannte zulässige Variante fehlt oder erhält nur Teilwertung | 1271 |
 | d | Ausschließlich Schreibform | 20 |
 | e | Sachunsicherheit / unbelegte Sachannahme im Leserurteil | 8 |
 | **Gesamt** | | **2057** |
@@ -33,18 +33,18 @@ Zählung nach Jahrgang und Aufgabenformat; jede Zeile zählt nur abgelehnte Frag
 
 | Jahrgang | Format | a | b | c | d | e | Summe |
 |---:|---|---:|---:|---:|---:|---:|---:|
-| 1 | Übersetzung | 2 | 10 | 116 | 3 | 0 | 131 |
-| 1 | Definition | 12 | 31 | 120 | 1 | 0 | 164 |
-| 1 | Lückensatz | 2 | 108 | 91 | 0 | 0 | 201 |
+| 1 | Übersetzung | 4 | 10 | 114 | 3 | 0 | 131 |
+| 1 | Definition | 20 | 48 | 95 | 1 | 0 | 164 |
+| 1 | Lückensatz | 4 | 125 | 72 | 0 | 0 | 201 |
 | 2 | Übersetzung | 8 | 18 | 101 | 5 | 0 | 132 |
-| 2 | Definition | 30 | 47 | 121 | 2 | 0 | 200 |
-| 2 | Lückensatz | 6 | 88 | 111 | 1 | 4 | 210 |
-| 3 | Übersetzung | 6 | 14 | 133 | 2 | 0 | 155 |
-| 3 | Definition | 24 | 20 | 134 | 1 | 0 | 179 |
-| 3 | Lückensatz | 16 | 76 | 104 | 1 | 3 | 200 |
-| 4 | Übersetzung | 4 | 14 | 125 | 2 | 0 | 145 |
-| 4 | Definition | 26 | 21 | 118 | 1 | 0 | 166 |
-| 4 | Lückensatz | 15 | 44 | 113 | 1 | 1 | 174 |
+| 2 | Definition | 36 | 58 | 104 | 2 | 0 | 200 |
+| 2 | Lückensatz | 6 | 98 | 101 | 1 | 4 | 210 |
+| 3 | Übersetzung | 6 | 15 | 132 | 2 | 0 | 155 |
+| 3 | Definition | 32 | 25 | 121 | 1 | 0 | 179 |
+| 3 | Lückensatz | 17 | 80 | 99 | 1 | 3 | 200 |
+| 4 | Übersetzung | 5 | 16 | 122 | 2 | 0 | 145 |
+| 4 | Definition | 34 | 28 | 103 | 1 | 0 | 166 |
+| 4 | Lückensatz | 17 | 48 | 107 | 1 | 1 | 174 |
 
 Die vollständigen 2.057 Gründe stehen unter `rejections` in der [JSON-Begleitdatei](live-content-decisions-2026-10.json); `stableId` ist die dauerhafte Zuordnung, `number` nur die Nummer des alten Prüfsatzes. `classificationBasis` dokumentiert die Zuordnungsregel oder Einzelentscheidung. Gemischte Gründe bleiben vollständig lesbar, auch wenn die Zählung nur die Hauptklasse verwendet.
 
@@ -133,6 +133,8 @@ Die folgenden zehn Dossiers decken zwölf Banknummern ab: acht beauftragte Kernf
 - Quellenbefund: Der Buchtext nennt abgeschlossene Wohnstädte ausdrücklich biospheres; die Wortliste beschreibt dagegen den Lebensbereich eines Planeten und führt Lebensraum/Biosphäre. Das ursprüngliche Leserurteil gegen jede geschlossene Bedeutung ist durch diesen Buchkontext nicht tragfähig. Die isolierte Übersetzung Lebensraum bleibt mehrdeutig.
 - Vorschlag für die spätere Baukarte: Koki entscheidet den Ziel-Sinn: Buchszenario ausdrücklich anzeigen oder allgemeine Biosphäre erklären. Habitat nicht pauschal als Ersatz einspielen. Die drei Ablehnungsgründe bleiben wortgetreu erhalten; die abschließende Routingklasse ist b wegen des fehlenden Sinnkontexts.
 - Stand: Quellenkonflikt aufgelöst als kontextabhängiger Bedeutungsentscheid; keine pauschale Schlüsselkorrektur freigegeben. Koki-/GG-Entscheid ausstehend.
+
+Ergänzender Buchbeleg zu Biosphere zwischen Allgemeinbegriff und Buchkontext: **MORE! 4 WB Unit 12, MORE Words & Phrases, Wortlistenzeile biosphere; letzter Seitenanker S.98–99, feinere Blattseite ohne Scan nicht bestätigt**; [content/build/transcripts/g4/wb/More 4 WB Unit 12.txt:190](../../content/build/transcripts/g4/wb/More%204%20WB%20Unit%2012.txt#L190). Der Seitenmarker steht in Zeile 132; keine genauere Scanprüfung behauptet.
 
 ## A3 · Freitext-Entscheid je positiver Lückenfrage
 
@@ -269,10 +271,10 @@ Quelle: [content/corpus/units/g1-u07/vocab.json:2248](../../content/corpus/units
 Quelle: [content/corpus/units/g1-u08/vocab.json:980](../../content/corpus/units/g1-u08/vocab.json#L980); `g1u08.w.mask#carrier`. Bisher volle Wertung: `mask`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `mask`, `blindfold`. Kein Eintrag wird automatisch übernommen.
+- **B — Poolvorschlag prüfen:** `mask`. Kein Eintrag wird automatisch übernommen.
 - **C — Kontext überarbeiten:** Ein quellengebundenes Kostümmerkmal ergänzen; Bild erst in gesondert freigegebener Arbeit.
 
-**Empfehlung C:** Eine Augenbinde kann Augen und Nasenbereich bedecken; das Kleidungsstück bleibt ohne Bild/weiteren Satz offen. Entscheid: **offen**.
+**Empfehlung C:** Die bisherige Auswahl stützt mask. Eine darüber hinausgehende Kostümvariante wurde hier nicht durch eine Quelle gesichert; Bild-/Satzbezug vor einer freien Bewertung klären. Entscheid: **offen**.
 
 ### Freitext 391 · Jahrgang 1, Chapter 9
 
@@ -293,10 +295,10 @@ Quelle: [content/corpus/units/g1-u09/vocab.json:3735](../../content/corpus/units
 Quelle: [content/corpus/units/g1-u09/vocab.json:3337](../../content/corpus/units/g1-u09/vocab.json#L3337); `g1u09.w.rat#carrier`. Bisher volle Wertung: `rat`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `rat`, `gerbil`, `chinchilla`. Kein Eintrag wird automatisch übernommen.
+- **B — Poolvorschlag prüfen:** `rat`. Kein Eintrag wird automatisch übernommen.
 - **C — Kontext überarbeiten:** Artkennzeichen aus geprüfter Quelle ergänzen; nicht die Farbe allein verwenden.
 
-**Empfehlung C:** Farbe und Mausähnlichkeit identifizieren das Tier nicht sicher. Entscheid: **offen**.
+**Empfehlung C:** Die ursprüngliche Auswahl stützt rat. Die Merkmale grau und große Maus sind für einen offenen Artvergleich zu prüfen; keine zusätzlichen Tierarten ohne neuen Quellenbeleg als voll richtig ausweisen. Entscheid: **offen**.
 
 ### Freitext 526 · Jahrgang 1, Chapter 12
 
@@ -425,10 +427,10 @@ Quelle: [content/corpus/units/g1-u14/vocab.json:4812](../../content/corpus/units
 Quelle: [content/corpus/units/g1-u14/vocab.json:2852](../../content/corpus/units/g1-u14/vocab.json#L2852); `g1u14.w.screen-time#carrier`. Bisher volle Wertung: `screen time`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `screen time`, `gaming`, `reading`, `work`. Kein Eintrag wird automatisch übernommen.
-- **C — Kontext überarbeiten:** Die gesamte Dauer am Bildschirm ausdrücklich benennen statt eine bestimmte Tätigkeit anzudeuten.
+- **B — Poolvorschlag prüfen:** `screen time`. Kein Eintrag wird automatisch übernommen.
+- **C — Kontext überarbeiten:** Die gesamte Bildschirmdauer ausdrücken und den vollständigen Satzrahmen idiomatisch überarbeiten; anschließend jeden vorgeschlagenen Einsatz neu lesen.
 
-**Empfehlung C:** Auf Tablet oder Telefon verbrachte Zeit kann verschiedene Tätigkeiten sein. Entscheid: **offen**.
+**Empfehlung C:** Die Empfehlung C bleibt: Bedeutung und Idiomatik des gesamten Rahmens spend three hours of ... müssen zusammen geprüft werden. Tätigkeitswörter wie gaming, reading oder work werden hier nicht als bereits geprüfte Einsetzungen ausgegeben. Entscheid: **offen**.
 
 ### Freitext 804 · Jahrgang 2, Chapter 3
 
@@ -449,10 +451,10 @@ Quelle: [content/corpus/units/g2-u03/vocab.json:86](../../content/corpus/units/g
 Quelle: [content/corpus/units/g2-u04/vocab.json:2587](../../content/corpus/units/g2-u04/vocab.json#L2587); `g2u04.w.parrot#carrier`. Bisher volle Wertung: `parrot`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `parrot`, `mynah`, `raven`. Kein Eintrag wird automatisch übernommen.
+- **B — Poolvorschlag prüfen:** `parrot`. Kein Eintrag wird automatisch übernommen.
 - **C — Kontext überarbeiten:** Tierart durch zusätzliche Merkmale oder sichtbare Wortauswahl eingrenzen; Nachahmen statt menschliches Gespräch formulieren.
 
-**Empfehlung C:** Sprechimitation ist nicht auf Papageien begrenzt; just like us übertreibt die Fähigkeit. Entscheid: **offen**.
+**Empfehlung C:** Die ursprüngliche Auswahl stützt parrot. Vor einer freien Bewertung Tierart und Aussage just like us sachlich präzisieren; weitere Arten wurden in dieser Dokumentprüfung nicht neu belegt. Entscheid: **offen**.
 
 ### Freitext 851 · Jahrgang 2, Chapter 4
 
@@ -461,10 +463,10 @@ Quelle: [content/corpus/units/g2-u04/vocab.json:2587](../../content/corpus/units
 Quelle: [content/corpus/units/g2-u04/vocab.json:2835](../../content/corpus/units/g2-u04/vocab.json#L2835); `g2u04.w.reason#carrier`. Bisher volle Wertung: `reason`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `reason`, `explanation`. Kein Eintrag wird automatisch übernommen.
-- **C — Kontext überarbeiten:** Wenn reason das alleinige Lernziel ist, sichtbar auf das Zielwortinventar begrenzen.
+- **B — Poolvorschlag prüfen:** `reason`. Kein Eintrag wird automatisch übernommen.
+- **C — Kontext überarbeiten:** Wenn explanation zugelassen werden soll, Artikel und sichtbaren Satzrahmen zuerst gesondert überarbeiten und vollständig neu prüfen.
 
-**Empfehlung B:** Beide Substantive ergeben eine natürliche Frage nach einer Begründung. Entscheid: **offen**.
+**Empfehlung B:** Reason passt in den unveränderten Rahmen a ... why. Explanation benötigt hier an und ist deshalb kein gültiger Einsatz im vorgeschlagenen Pool. Entscheid: **offen**.
 
 ### Freitext 852 · Jahrgang 2, Chapter 4
 
@@ -476,7 +478,7 @@ Quelle: [content/corpus/units/g2-u04/vocab.json:2301](../../content/corpus/units
 - **B — Poolvorschlag prüfen:** `mosquito`. Kein Eintrag wird automatisch übernommen.
 - **C — Kontext überarbeiten:** Vor neuer Veröffentlichung die Sachquelle des bestehenden Satzes mitführen.
 
-**Empfehlung B:** Der genannte Übertragungsweg grenzt das Insekt im üblichen Schulkontext ein; es wird keine neue medizinische Tatsachenprüfung behauptet. Entscheid: **offen**.
+**Empfehlung B:** Mosquito bleibt der bisherige Zielbegriff. Ob der allgemeinere Begriff insect ebenfalls voll gelten soll, hängt vom Bewertungsziel ab und bleibt ausdrücklich offen; diese Dokumentprüfung enthält keine neue medizinische Tatsachenprüfung. Entscheid: **offen**.
 
 ### Freitext 892 · Jahrgang 2, Chapter 5
 
@@ -521,10 +523,10 @@ Quelle: [content/corpus/units/g2-u06/vocab.json:363](../../content/corpus/units/
 Quelle: [content/corpus/units/g2-u12/vocab.json:1036](../../content/corpus/units/g2-u12/vocab.json#L1036); `g2u12.w.knee#carrier`. Bisher volle Wertung: `knee`; Teilwertung: `knees`.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `knee`. Kein Eintrag wird automatisch übernommen.
+- **B — Poolvorschlag prüfen:** `knee`, `kneecap`. Kein Eintrag wird automatisch übernommen.
 - **C — Kontext überarbeiten:** Gelenkfunktion ergänzen, falls anatomische Mitte zu ungenau ist.
 
-**Empfehlung B:** Middle of his leg und die Verletzung führen zur einzelnen Gelenkstelle; knees bleibt mit his ... in the middle unpassend. Entscheid: **offen**.
+**Empfehlung B:** Knee und kneecap ergeben im vorhandenen Satz natürliche Verletzungsangaben. Ein ausschließliches Lernziel knee müsste sichtbar eingegrenzt werden; knees passt nicht zur einzelnen Stelle in einem Bein. Entscheid: **offen**.
 
 ### Freitext 1248 · Jahrgang 2, Chapter 13
 
@@ -917,10 +919,10 @@ Quelle: [content/corpus/units/g4-u12/vocab.json:366](../../content/corpus/units/
 Quelle: [content/corpus/units/g4-u13/vocab.json:8](../../content/corpus/units/g4-u13/vocab.json#L8); `g4u13.w.apply#carrier`. Bisher volle Wertung: `apply`; Teilwertung: keine.
 
 - **A — Auswahlfrage behalten:** keine Zulassung zur freien Eingabe.
-- **B — Poolvorschlag prüfen:** `apply`. Kein Eintrag wird automatisch übernommen.
-- **C — Kontext überarbeiten:** Bewerbung und gewünschte Stelle als Kontext erhalten.
+- **B — Poolvorschlag prüfen:** `apply`, `ask`. Kein Eintrag wird automatisch übernommen.
+- **C — Kontext überarbeiten:** Ein formelles Bewerbungsverfahren sichtbar machen, falls ausschließlich apply geprüft werden soll.
 
-**Empfehlung B:** Apply for a job ist die natürliche feste Verbindung; right away engt das Verb nicht zusätzlich ein. Entscheid: **offen**.
+**Empfehlung B:** Apply for it und ask for it sind im sichtbaren Satz natürliche Ergänzungen. Für das engere Lernziel Bewerbung braucht es eine sichtbare Bedeutungsbegrenzung; right away leistet diese nicht. Entscheid: **offen**.
 
 ## A4 · Messziel und Übergabe
 
