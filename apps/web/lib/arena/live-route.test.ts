@@ -43,7 +43,7 @@ const server = loadTestModule("apps/web/lib/arena/live-server.ts", {
 const api = loadTestModule('apps/web/lib/arena/live-api.ts', { 'server-only': {}, zod: { z }, './live-server': server });
 const route = loadTestModule('apps/web/app/api/attempts/route.ts', {
     "@/lib/vocabulary-check": vocabularyCheck, "@/lib/vocabulary-history": vocabularyHistory, 'next/server': { NextResponse: Response }, zod: { z }, '@domigo/content-schema': refs, '@domigo/content-loader': loader, '@domigo/engine': engine,
-    '@/lib/content-service': content, '@domigo/db': { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordAttempt: () => { throw Error('live bypass'); } }, '@/lib/identity': identity,
+    '@/lib/content-service': content, '@domigo/db': { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordHttpAttempt: () => { throw Error('live bypass'); } }, '@/lib/identity': identity,
     '@/lib/itemRef': itemRef, '@/lib/listeningRef': listeningRef, '@/lib/testRef': testRef, '@/lib/comprehensionRef': comprehensionRef,
     '@/lib/modi/speed-session': { speedSessionValid: () => true }, '@/lib/modi/attempt-policy': policy, '@/lib/arena/server': {}, '@/lib/arena/live-server': server,
 });

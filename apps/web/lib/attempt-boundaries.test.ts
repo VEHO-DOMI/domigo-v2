@@ -29,6 +29,7 @@ before(async () => {
     for(const idx of Object.values(table.indexes)) await pg.exec(`CREATE ${idx.isUnique?"UNIQUE ":""}INDEX "${idx.name}" ON domigo_v2."${table.name}" (${idx.columns.map(c=>c.isExpression?c.expression:`"${c.expression}"`).join(",")})${idx.where?` WHERE ${idx.where}`:""}`);
   }
   await pg.exec(readFileSync(new URL("../../../packages/db/drizzle/0026_vocabulary_checks.sql",import.meta.url),"utf8"));
+  await pg.exec(readFileSync(new URL("../../../packages/db/drizzle/0027_atomic_attempt_booking.sql",import.meta.url),"utf8"));
   for(const id of [ownClass,otherClass]) await pg.query("INSERT INTO domigo_v2.classes(id,name,grade,teacher_id,invite_code) VALUES($1,'Synthetic',2,$2,$3)",[id,uuid(9),id.slice(-6)]);
 });
 beforeEach(async()=>{
@@ -104,4 +105,41 @@ it("v2 lookup failure journal never includes class parameters, even when falling
     console.error = original;
     await pg.exec("ALTER TABLE domigo_v2.classes_temporarily_unavailable RENAME TO classes");
   }
+});
+
+// cgo-154: failure after each SQL write must never produce a partial receipt.
+for (const seeded of [false, true]) for (const [step, table, event, condition] of [
+  ["attempt", "practice_attempts", "INSERT", ""],
+  ["queue", "review_queue", "INSERT OR UPDATE OF box, reps", ""],
+  ["due", "review_queue", "UPDATE OF due_at", ""],
+  ["progress", "user_progress", "INSERT OR UPDATE", ""],
+  ["mark", "practice_attempts", "UPDATE", "WHEN (NEW.booked_at IS NOT NULL)"],
+]) it(`real route: failure after ${step} (existing=${seeded}) rolls back; replay books exactly once`, async () => {
+  const id = crypto.randomUUID();
+  if (seeded) assert.equal((await (await POST(request())).json()).ok, true);
+  const old = seeded ? 1 : 0;
+  await pg.exec(`CREATE OR REPLACE FUNCTION domigo_v2.synthetic_fail_booking() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic_fault'; END $$;
+    CREATE TRIGGER synthetic_booking_fault AFTER ${event} ON domigo_v2.${table} FOR EACH ROW ${condition} EXECUTE FUNCTION domigo_v2.synthetic_fail_booking();`);
+  try {
+    const failed = await (await POST(request(vocab.id, "practice", undefined, id))).json();
+    assert.equal(failed.ok, false); assert.equal(failed.error, "persist_failed"); assert.equal(failed.receipt, undefined);
+    assert.deepEqual(await ledger(), { attempts: old, reviews: old, progress: old });
+    assert.equal((await pg.query("SELECT COALESCE(sum(xp),0)::int xp FROM domigo_v2.user_progress")).rows[0].xp, old * vocab.difficulty * 10);
+  } finally { await pg.exec(`DROP TRIGGER synthetic_booking_fault ON domigo_v2.${table}`); }
+  const retried = await (await POST(request(vocab.id, "practice", undefined, id))).json();
+  assert.equal(retried.ok, true); assert.equal(retried.duplicate, false);
+  const replay = await (await POST(request(vocab.id, "practice", { kind: "vocab", value: "synthetic-wrong" }, id))).json();
+  assert.equal(replay.ok, true); assert.equal(replay.duplicate, true);
+  assert.deepEqual(replay.receipt, retried.receipt);
+  assert.equal(replay.receipt.xpAwarded * (old + 1), (await pg.query("SELECT xp FROM domigo_v2.user_progress")).rows[0].xp);
+  assert.deepEqual(await ledger(), { attempts: old + 1, reviews: 1, progress: 1 });
+  assert.equal((await pg.query("SELECT reps FROM domigo_v2.review_queue")).rows[0].reps, old + 1);
+});
+for (const mode of ["review", "study:vocab-practice-1", "journey:g2-u01:first"]) it(`${mode} receives the original booked award on replay`, async () => {
+  const id = crypto.randomUUID();
+  const first = await (await POST(request(vocab.id, mode, undefined, id))).json();
+  const replay = await (await POST(request(vocab.id, mode, { kind:"vocab", value:"synthetic-wrong" }, id))).json();
+  assert.equal(first.ok, true); assert.equal(replay.ok, true); assert.equal(replay.duplicate, true);
+  assert.deepEqual(replay.receipt, first.receipt);
+  assert.equal(replay.receipt.xpAwarded, (await pg.query("SELECT xp FROM domigo_v2.user_progress")).rows[0].xp);
 });

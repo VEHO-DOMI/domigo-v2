@@ -22,7 +22,7 @@ let booked = false, gradingFailure = false;
 let lastAttempt: Record<string, unknown> | null = null;
 const player = () => ({ userId: user, classId, classScope: [classId] });
 const boundaries: Record<string, unknown> = {
-  "server-only": {}, "@domigo/content-loader": loader, "@domigo/db": { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordAttempt: () => { throw Error("duel bypassed transaction"); } },
+  "server-only": {}, "@domigo/content-loader": loader, "@domigo/db": { getDb: () => ({}), inScope, practiceItemDenial, getClassGrade: async () => 1, listReservedForClass: async () => new Set(), recordHttpAttempt: () => { throw Error("duel bypassed transaction"); } },
   "@/auth": { auth: async () => ({ user: { id: user, classId, role } }) },
   "@/lib/content-service": { loadUnitWithOverrides: async (slug: string) => { if (gradingFailure) throw Error("synthetic private corpus detail"); return loader.loadUnit(slug); } }, "@/lib/student-view": { trainerGrade: () => 1 },
   "../../../../packages/db/src/duel-service.ts": { ...duel,

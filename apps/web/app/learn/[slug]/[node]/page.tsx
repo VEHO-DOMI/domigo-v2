@@ -6,7 +6,7 @@ import { resolveStudentView } from "@/lib/student-view";
 import { isSlugAllowed } from "@/lib/grade-scope";
 import PreviewBanner from "@/app/PreviewBanner";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
-import { bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getDueRefs, getJourneyAttempts, getUnitPathProgress, journeyModeFor, listReservedForClass, nodeItemIds, withProgress } from "@domigo/db";
+import { bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getDueRefs, getJourneyAttempts, getUnitPathProgress, journeyModeFor, listReservedForClass, viennaDayString, nodeItemIds, withProgress } from "@domigo/db";
 import TeachingNode from "./TeachingNode";
 import PathPracticeNode from "./PathPracticeNode";
 
@@ -36,7 +36,8 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
 
     const junit = await loadUnitWithOverrides(slug);
     const itemIds = [...junit.vocab.map((v) => v.id), ...junit.grammar.map((g) => g.id)];
-    const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => new Set<string>()) : new Set<string>();
+    const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => null) : new Set<string>();
+    if (reserved === null) redirect(`/learn/${slug}`);
     const nodeItems = new Map<string, readonly string[]>();
     for (const n of journey.nodes) {
       if ((n.kind === "practice" || n.kind === "side-quest") && n.itemPool) {
@@ -67,7 +68,7 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
     if (jitems.length === 0) redirect(`/learn/${slug}`);
 
     // attempts write mode='journey:<unit>:<node>' → the derivation reads them back.
-    return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} /></LearningShell>;
+    return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode today={viennaDayString()} preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} /></LearningShell>;
   }
 
   const unit = await loadUnitWithOverrides(slug);
@@ -101,5 +102,5 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
     .filter((x): x is Resolved => x !== undefined);
   if (items.length === 0) redirect(`/learn/${slug}`);
 
-  return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} /></LearningShell>;
+  return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode today={viennaDayString()} preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} /></LearningShell>;
 }

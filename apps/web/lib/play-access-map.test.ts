@@ -16,6 +16,14 @@ import { createSourceFile, forEachChild, isJsxSelfClosingElement, ScriptKind, Sc
 const read = (rel: string) => fs.readFileSync(new URL(`../app/${rel}`, import.meta.url), "utf8");
 /** The source without comments — a header may NAME what the code must not call. */
 const code = (src: string) => src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+/** Some clients share the receipt hook; follow that wiring and still check the real guard. */
+const assertPreviewFlush = (src: string) => {
+  if (/useBookedRound\(preview, ownerId\)/.test(src)) {
+    assert.match(src, /import \{ useBookedRound \} from "@\/lib\/use-booked-round"/);
+    const hook = code(fs.readFileSync(new URL("./use-booked-round.ts", import.meta.url), "utf8"));
+    assert.match(hook, /useOutboxFlush\(!preview, ownerId, receive\)/);
+  } else assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId(?:, receive)?\)/);
+};
 const PLAY = "(game)/play/[grade]";
 
 const STORY_CLIENTS = [
@@ -55,7 +63,7 @@ describe("client guards — nothing leaves a preview", () => {
     it(`${file}: attempts and the outbox`, () => {
       const src = read(file);
       assert.doesNotMatch(src, /\bsendAttempt\b/, "attempts go through attemptSender(preview), never sendAttempt directly");
-      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId(?:, receive)?\)/, "the outbox is not flushed in a preview");
+      assertPreviewFlush(src);
       for (const m of src.matchAll(/[^\n]*\bflushOutbox\([^)]*\)[^\n]*/g)) {
         assert.match(m[0], /if \(!preview\) void flushOutbox\(props\.ownerId\)/, `unguarded flush: ${m[0].trim()}`);
       }
@@ -262,7 +270,7 @@ describe("answer owners travel from the trusted page into every client", () => {
   for (const file of ["learn/[slug]/[node]/PathPracticeNode.tsx", "review/session/ReviewSession.tsx", "tests/[slug]/TestSession.tsx", "listening/[slug]/ListeningSession.tsx"]) {
     it(`${file}: both immediate sends and background retries carry the same owner`, () => {
       const src = code(read(file));
-      assert.match(src, /useOutboxFlush\(!preview, ownerId\)/);
+      assertPreviewFlush(src);
       assert.match(src, /(?:attemptSender\(preview, ownerId\)\(|sendCompletedAttempt\(attemptSender\(preview, ownerId\),)/);
     });
   }

@@ -63,7 +63,7 @@ beforeAll(async () => {
         for (const i of Object.values(table.indexes))
             await pg.exec(`CREATE ${i.isUnique ? 'UNIQUE ' : ''}INDEX "${i.name}" ON domigo_v2."${table.name}" (${i.columns.map(c => `${c.isExpression ? c.expression : `"${c.expression}"`}${c.asc ? '' : ' DESC'}`).join(',')})${i.where ? ` WHERE ${i.where}` : ''}`);
     }
-    for (const migration of ['0024_word_duels.sql', '0025_live_arena.sql', '0025_live_arena.sql'])
+    for (const migration of ['0024_word_duels.sql', '0025_live_arena.sql', '0025_live_arena.sql', '0027_atomic_attempt_booking.sql'])
         await pg.exec(readFileSync(new URL('../drizzle/' + migration, import.meta.url), 'utf8'));
     for (const id of [A, B]) {
         await db.insert(schema.v2Classes).values({ id, name: 'Synthetic class', grade: 1, teacherId: TEACHER, inviteCode: id });

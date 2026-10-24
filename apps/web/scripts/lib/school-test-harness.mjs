@@ -86,6 +86,13 @@ const modules = new Map([
       if (data.tier === "correct") f.solved.add(data.itemId);
       return f.recordReturn;
     };
+    export const recordHttpAttempt = async (_db, scope, data) => {
+      if (f.db) { f.storageCalls++; return real.recordHttpAttempt(_db, scope, data); }
+      const result = await recordAttempt(_db, scope, data);
+      if (!result) return result;
+      const first = f.writes.find(w => w.data.userId === data.userId && w.data.clientAttemptId === data.clientAttemptId)?.data ?? data;
+      return { ...result, receipt: result.receipt ?? { tier: first.tier, xpAwarded: first.xpAwarded } };
+    };
     // cgo-047 Welle 2: the class picker and the assignment doors. Both lists
     // return EVERY row they are given, scope or not — exactly the v1 leak the
     // class wall (lib/class-wall.ts) has to close.

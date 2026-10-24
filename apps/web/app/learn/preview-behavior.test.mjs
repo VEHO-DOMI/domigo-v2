@@ -102,11 +102,12 @@ const sender = load('apps/web/lib/preview-attempt.ts', {'./attempt-outbox.ts': {
 const clients = {
   "@/lib/vocabulary-history-client": load("apps/web/lib/vocabulary-history-client.ts", {}),
   '@/lib/trainer/LearningShell': {useLearningText: () => (de) => de},
-  'react/jsx-runtime': jsx, 'react': {...React, useState, useRef}, 'next/link': {default: component('Link')},
+  'react/jsx-runtime': jsx, 'react': {...React, useState, useRef, useCallback: fn => fn, useEffect: () => {}}, 'next/link': {default: component('Link')},
   '@/lib/preview-attempt': sender, '@/lib/useOutboxFlush': {useOutboxFlush: (enabled, ownerId) => flushes.push({enabled, ownerId})},
   '@domigo/engine': {...pureEngine, xpForTier: base => base, XP_WEIGHT: {correct:1, partial:0.5, close:0.25, wrong:0}},
   '@domigo/task-ui': Object.fromEntries(['ListeningTaskView','GrammarIntroView','VocabIntroView','GrammarItemView','VocabItemView','AudioClip'].map(name => [name, component(name)])),
 };
+clients['@/lib/use-booked-round'] = load('apps/web/lib/use-booked-round.ts', clients);
 globalThis.fetch = async (...args) => {writes.push(args); return {ok:true, json: async () => ({ok:true, stars:3})};};
 for (const [path, props] of [
   ['learn/[slug]/[node]/PathPracticeNode.tsx', {unitSlug:'g2-u03',nodeId:'vocab-practice-1',isCheckpoint:false,items:[{kind:'vocab',item:vocab[0]}]}],
@@ -117,7 +118,7 @@ for (const [path, props] of [
   const Client = load(`apps/web/app/${path}`, clients).default;
   for (const preview of [true, false]) {
     slots = []; cursor = 0; sends = []; flushes = []; writes = [];
-    const p = {...props, preview, ownerId: preview ? null : 'fixture-child'};
+    const p = {...props, today:'2026-10-24', preview, ownerId: preview ? null : 'fixture-child'};
     const render = () => {
       cursor = 0;
       let tree = Client(p);

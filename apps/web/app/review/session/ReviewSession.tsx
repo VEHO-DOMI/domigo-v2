@@ -4,17 +4,17 @@ import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { vocabularyContentSnapshot, xpForTier } from "@domigo/engine";
+import { vocabularyContentSnapshot } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
-import { useOutboxFlush } from "@/lib/useOutboxFlush";
+import { useBookedRound } from "@/lib/use-booked-round";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
-type Props = { preview?: boolean; ownerId: string | null; items: QueueItem[] };
+type Props = { preview?: boolean; ownerId: string | null; today: string; items: QueueItem[] };
 export default function ReviewSession(props: Props) {
-  const round = [props.ownerId, props.preview, props.items.map(({ kind, item }) =>
+  const round = [props.ownerId, props.preview, props.today, props.items.map(({ kind, item }) =>
     kind === "vocab" ? vocabularyContentSnapshot(item as VocabItem) : item.id)];
   return <ReviewRound key={JSON.stringify(round)} {...props} />;
 }
@@ -23,9 +23,7 @@ function ReviewRound({ preview = false, ownerId, items }: Props) {
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
-  const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
-  const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(!preview, ownerId);
+  const { results, streak, begin, receive, nextQuestion } = useBookedRound(preview, ownerId);
 
   const current = items[i];
 
@@ -34,25 +32,25 @@ function ReviewRound({ preview = false, ownerId, items }: Props) {
   };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!current) return;
+    const id = begin(tier);
+    if (!id) return;
     setAnswered(true);
-    setResults((prev) => [...prev, { tier, xp: xpForTier(current.item.difficulty * 10, tier) }]); // instant optimistic UI
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the POST re-grades + reschedules the item (mode:"review") and returns the daily streak.
     void sendCompletedAttempt(attemptSender(preview, ownerId), {
-      clientAttemptId: crypto.randomUUID(),
+      clientAttemptId: id,
       itemId: detail.itemId,
       mode: "review",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, detail).then((r) => {
-      if (typeof r.streak === "number") setStreak(r.streak);
-    });
+    }, detail).then(reply => receive(id, reply)).catch(() => { /* no booking, no points */ });
   };
 
   const isLast = i >= items.length - 1;
   const next = () => {
+    nextQuestion();
     if (isLast) { setDone(true); return; }
     setAnswered(false);
     setI((x) => x + 1);
@@ -90,9 +88,9 @@ function ReviewRound({ preview = false, ownerId, items }: Props) {
       </div>
 
       {current.kind === "grammar" ? (
-        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile hideMeta />
+        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile hideXp hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideMeta />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideXp hideMeta />
       )}
 
       {answered && (

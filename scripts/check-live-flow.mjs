@@ -38,7 +38,7 @@ const scope=classScope([A]);
   await pg.exec(`CREATE TABLE domigo_v2."${table.name}" (${[...columns,...checks].join(',')})`);
   for(const i of Object.values(table.indexes))await pg.exec(`CREATE ${i.isUnique?'UNIQUE ':''}INDEX "${i.name}" ON domigo_v2."${table.name}" (${i.columns.map(c=>`${c.isExpression?c.expression:`"${c.expression}"`}${c.asc?'':' DESC'}`).join(',')})${i.where?` WHERE ${i.where}`:''}`);
  }
- for(const migration of ['0024_word_duels.sql','0025_live_arena.sql','0025_live_arena.sql'])await pg.exec(readFileSync(new URL('../packages/db/drizzle/'+migration,import.meta.url),'utf8'));
+ for(const migration of ['0024_word_duels.sql','0025_live_arena.sql','0025_live_arena.sql','0027_atomic_attempt_booking.sql'])await pg.exec(readFileSync(new URL('../packages/db/drizzle/'+migration,import.meta.url),'utf8'));
  for(const id of [A,B]){await db.insert(schema.v2Classes).values({id,name:'Synthetic class',grade:1,teacherId:TEACHER,inviteCode:id});await db.insert(schema.classSettings).values({classId:id,purpose:'regular',leaderboard:true});}
  for(const id of [ME,PEER,OTHER,OUTSIDE,TEACHER])await db.insert(schema.v2IdentityUsers).values({id,role:id===TEACHER?'teacher':'student',classId:id===TEACHER?null:id===OUTSIDE?B:A,displayName:`Synthetic ${id.slice(-2)}`,givenName:'Invented Example',pinHash:'synthetic-unused',claimedAt:date(),createdAt:date()});
 

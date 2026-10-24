@@ -4,11 +4,11 @@ import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { vocabularyContentSnapshot, XP_WEIGHT, xpForTier } from "@domigo/engine";
+import { vocabularyContentSnapshot, XP_WEIGHT } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
-import { useOutboxFlush } from "@/lib/useOutboxFlush";
+import { useBookedRound } from "@/lib/use-booked-round";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
@@ -19,7 +19,7 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-type Props = { preview?: boolean; ownerId: string | null;
+type Props = { preview?: boolean; ownerId: string | null; today: string;
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
@@ -30,7 +30,7 @@ type Props = { preview?: boolean; ownerId: string | null;
   attemptMode?: string;
 };
 export default function PathPracticeNode(props: Props) {
-  const round = [props.ownerId, props.preview, props.unitSlug, props.nodeId, props.isCheckpoint, props.attemptMode,
+  const round = [props.ownerId, props.preview, props.today, props.unitSlug, props.nodeId, props.isCheckpoint, props.attemptMode,
     props.items.map(({ kind, item }) => kind === "vocab" ? vocabularyContentSnapshot(item as VocabItem) : item.id)];
   return <PathPracticeRound key={JSON.stringify(round)} {...props} />;
 }
@@ -41,10 +41,8 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
-  const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
-  const [streak, setStreak] = useState<number | null>(null);
+  const { results, streak, begin, receive, nextQuestion } = useBookedRound(preview, ownerId);
   const [stars, setStars] = useState(0);
-  useOutboxFlush(!preview, ownerId);
 
   const current = items[i];
   const title = isCheckpoint ? t("Zeig, was du kannst", "Checkpoint") : t("Üben", "Practice");
@@ -54,20 +52,19 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
   };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!current) return;
+    const id = begin(tier);
+    if (!id) return;
     setAnswered(true);
-    setResults((prev) => [...prev, { tier, xp: xpForTier(current.item.difficulty * 10, tier) }]);
 
     // Per-item attempt → the existing graded/idempotent path (feeds review_queue + streak + XP).
     void sendCompletedAttempt(attemptSender(preview, ownerId), {
-      clientAttemptId: crypto.randomUUID(),
+      clientAttemptId: id,
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }, detail).then((r) => {
-      if (typeof r.streak === "number") setStreak(r.streak);
-    });
+    }, detail).then(reply => receive(id, reply)).catch(() => { /* no booking, no points */ });
   };
 
   const finish = (all: Array<{ tier: Tier; xp: number }>) => {
@@ -94,6 +91,7 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
 
   const isLast = i >= items.length - 1;
   const next = () => {
+    nextQuestion();
     if (isLast) {
       finish(results);
       return;
@@ -134,9 +132,9 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
       </div>
 
       {current.kind === "grammar" ? (
-        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} hideHint={isCheckpoint} hideMeta />
+        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} hideHint={isCheckpoint} hideXp hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideHint={isCheckpoint} hideMeta />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideHint={isCheckpoint} hideXp hideMeta />
       )}
 
       {answered && (

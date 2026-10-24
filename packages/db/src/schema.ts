@@ -103,6 +103,9 @@ export const practiceAttempts = v2.table(
     context: jsonb("context"),
 
     clientAttemptId: uuid("client_attempt_id"), // idempotency key
+    // cgo-154: only the atomic HTTP booking writes this after every side effect.
+    // Existing/other-writer rows remain unconfirmed; never backfill from totals.
+    bookedAt: timestamp("booked_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => ({

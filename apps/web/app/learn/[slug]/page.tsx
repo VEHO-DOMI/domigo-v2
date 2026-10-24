@@ -68,17 +68,19 @@ export default async function UnitPathPage({ params, searchParams }: { params: P
 async function JourneySpine({ slug, journey, acting, preview }: { slug: string; journey: Journey; acting: ActingUser | null; preview: boolean }) {
   const unit = await loadUnitWithOverrides(slug);
   const itemIds = [...unit.vocab.map((v) => v.id), ...unit.grammar.map((g) => g.id)];
-  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => new Set<string>()) : new Set<string>();
+  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => null) : new Set<string>();
 
   // each gating node's items = its pool's slice of this unit (deterministic)
   const nodeItems = new Map<string, readonly string[]>();
   for (const n of journey.nodes) {
     if ((n.kind === "practice" || n.kind === "side-quest") && n.itemPool) {
-      nodeItems.set(n.id, itemsInPool(itemIds, n.itemPool, reserved, journey.poolOverrides));
+      nodeItems.set(n.id, reserved === null ? [] : itemsInPool(itemIds, n.itemPool, reserved, journey.poolOverrides));
     }
   }
-  const attempts = acting ? await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []) : [];
-  const views = deriveJourneyProgress(journey.nodes, nodeItems, bestTierPerItem(attempts)).map((node) => preview ? { ...node, status: "available" as const } : node);
+  const attempts = reserved === null ? [] : acting ? await getJourneyAttempts(getDb(), acting.userId, slug).catch(() => []) : [];
+  const views = deriveJourneyProgress(journey.nodes, nodeItems, bestTierPerItem(attempts)).map((node) => reserved === null
+    ? { ...node, status: "locked" as const, stars: 0 as const }
+    : preview ? { ...node, status: "available" as const } : node);
 
   return (
     <LearningShell preview={preview} grade={Number(slug[1])}>

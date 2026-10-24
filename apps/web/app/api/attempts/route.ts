@@ -7,7 +7,7 @@
  * For completed exercises, the client sends the RAW user answer; the server re-grades through the one
  * grading brain (@domigo/engine), records the attempt, updates the Leitner review
  * queue (vocab/grammar only — listening + reading skip it), and bumps the v2 XP
- * pool (all via @domigo/db `recordAttempt`). Best-effort persistence: grading
+ * pool (ordinary exercises via @domigo/db `recordHttpAttempt`). Best-effort persistence: grading
  * always returns even if the DB write fails. Failure never subtracts XP (Law 3).
  */
 import { NextResponse } from "next/server";
@@ -18,7 +18,7 @@ import { loadListening, loadStoryComprehension, loadTest, storyIdForGrade } from
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { getDb, recordAttempt, getPracticeReceipt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
+import { getDb, recordHttpAttempt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
@@ -273,7 +273,7 @@ export async function POST(req: Request): Promise<Response> {
     ? { ...(typeof baseContext === "object" && baseContext !== null && !Array.isArray(baseContext) ? baseContext : {}), trap }
     : baseContext;
 
-  // 7. Best-effort persist (idempotent; side-effects gated on first insert).
+  // 7. Ordinary exercises commit all effects plus their receipt atomically.
   try {
     const attempt = {
       userId: acting.userId,
@@ -292,18 +292,14 @@ export async function POST(req: Request): Promise<Response> {
       context: contextWithTrap,
       clientAttemptId,
     };
-    const { duplicate, box, dueAt, streak } = duelCoordinates
+    const booking = duelCoordinates
       ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
       : liveResolved && live ? await live.writeLiveAnswer(acting, attempt, liveResolved.coordinates, typeof input.value === "string" ? input.value : "", receivedAt)
-      : await recordAttempt(getDb(), acting.classScope, attempt);
-    // A round displays the original booking even when its first response was lost.
-    // Keep the existing incremental reward fields for all other consumers.
-    let receipt: { tier: string; xpAwarded: number } | undefined;
-    if (mode === "practice" || mode === "daily") {
-      const booked = duplicate ? await getPracticeReceipt(getDb(), acting.classScope, attempt) : { tier, xpAwarded };
-      if (!booked) throw new Error("practice_receipt_unavailable");
-      receipt = booked;
-    }
+      : await recordHttpAttempt(getDb(), acting.classScope, attempt);
+    const { duplicate, box, dueAt, streak } = booking;
+    // Ordinary modes all receive the stored award, including review and path.
+    // Arena services retain their own transactional settlement and response.
+    const receipt = "receipt" in booking ? booking.receipt : undefined;
     return NextResponse.json({
       ok: true,
       tier,

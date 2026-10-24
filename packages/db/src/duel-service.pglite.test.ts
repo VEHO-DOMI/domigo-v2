@@ -68,6 +68,7 @@ beforeAll(async () => {
   }
   // Execute the actual additive migration only in PGlite memory, never Neon.
   await pg.exec(readFileSync(new URL("../drizzle/0024_word_duels.sql", import.meta.url), "utf8"));
+  await pg.exec(readFileSync(new URL("../drizzle/0027_atomic_attempt_booking.sql", import.meta.url), "utf8"));
   for (const id of [A, B]) {
     await db.insert(schema.v2Classes).values({ id, name: "Synthetic class", grade: 1, teacherId: TEACHER, inviteCode: id.slice(-6) });
     await db.insert(schema.classSettings).values({ classId: id, purpose: "regular", leaderboard: true, gradeBoardOptIn: true });

@@ -204,6 +204,7 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     context: person(W.fehlerart, "server-built: mistake/test session or vocabulary history; browser-reported checks/help are explicitly labelled as claims"),
     client_attempt_id: sachlich("an idempotency key so one answer counts once"),
     created_at: person(W.zeitpunkt),
+    booked_at: person(W.zeitpunkt, "Serverzeit der vollständig verbuchten Antwort; alte unbestätigte Zeilen bleiben leer"),
   },
 
   vocabulary_checks: {

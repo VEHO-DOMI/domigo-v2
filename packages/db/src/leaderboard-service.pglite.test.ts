@@ -22,9 +22,9 @@ const ownRow = async () => (await board()).rows.find((row) => row.me)!;
 const foreignRows = async () => (await board()).rows.filter((row) => !row.ownClass);
 
 beforeAll(async () => {
-  // Build the six queried tables from the committed 0023 snapshot, including
+  // Build the six queried tables from the committed 0027 snapshot, including
   // defaults and checks. No hand-maintained alternative schema, network or Neon.
-  const snapshot = JSON.parse(readFileSync(new URL("../drizzle/meta/0023_snapshot.json", import.meta.url), "utf8"));
+  const snapshot = JSON.parse(readFileSync(new URL("../drizzle/meta/0027_snapshot.json", import.meta.url), "utf8"));
   await pg.exec("CREATE SCHEMA domigo_v2");
   type Column = { name: string; type: string; primaryKey: boolean; notNull: boolean; default?: unknown };
   for (const name of ["classes", "class_settings", "users", "user_progress", "student_profile", "practice_attempts"]) {
