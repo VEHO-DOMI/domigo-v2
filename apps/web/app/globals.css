@@ -5,6 +5,7 @@
    Stufenfarben, :root und die drei [data-grade]-Blöcke darunter bleiben byte-gleich (dasselbe Tor). */
 @import "./le-tokens.css";
 @import "./le-kopf.css";
+@import "./home/trainer.css";
 
 /*
  * DomiGo design tokens — the brand design system, ported from the legacy trainers
@@ -1041,11 +1042,11 @@ body:has(.og-root) > .le-kopf button { padding:2px 6px; font-size:11px; min-heig
 .og-player-xp { color:var(--accent); font-size:.92rem; font-weight:700; margin-top:3px; }
 .og-vibe { font-size:.72rem; color:var(--muted); font-style:italic; margin:1px 0 0; }
 .og-rank { font-size:.82rem; padding:6px 16px; border-radius:12px; font-weight:800; letter-spacing:.3px; box-shadow:0 2px 8px rgba(0,0,0,.2); white-space:nowrap; }
-.og-rank.zone-bronze { background:linear-gradient(135deg,#d4874a,#92572a); color:white; }
-.og-rank.zone-silver { background:linear-gradient(135deg,#b8b8b8,#6b6b6b); color:white; }
-.og-rank.zone-gold { background:linear-gradient(135deg,#f0c040,#a67c2e); color:#412402; }
-.og-rank.zone-diamond { background:linear-gradient(135deg,#b8a9f0,#6e5cbf); color:white; }
-.og-rank.zone-prestige { background:linear-gradient(135deg,#a855f7,#6366f1); color:white; }
+.og-rank.zone-bronze { --trainer-rank-gradient:linear-gradient(135deg,#d4874a,#92572a); background:var(--trainer-rank-gradient); color:white; }
+.og-rank.zone-silver { --trainer-rank-gradient:linear-gradient(135deg,#b8b8b8,#6b6b6b); background:var(--trainer-rank-gradient); color:white; }
+.og-rank.zone-gold { --trainer-rank-gradient:linear-gradient(135deg,#f0c040,#a67c2e); background:var(--trainer-rank-gradient); color:#412402; }
+.og-rank.zone-diamond { --trainer-rank-gradient:linear-gradient(135deg,#b8a9f0,#6e5cbf); background:var(--trainer-rank-gradient); color:white; }
+.og-rank.zone-prestige { --trainer-rank-gradient:linear-gradient(135deg,#a855f7,#6366f1); background:var(--trainer-rank-gradient); color:white; }
 .og-xp-bar { margin-top:.7rem; margin-bottom:.4rem; }
 .og-track { height:10px; border-radius:5px; background:var(--card-border); overflow:hidden; }
 .og-fill { display:block; height:100%; border-radius:5px; background:linear-gradient(90deg,#0d9488,#14b8a6); box-shadow:0 0 8px var(--accent-glow); }

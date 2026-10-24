@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useState } from "react";
 import Link from "next/link";
 import type { Leaderboard, LeaderboardRow } from "@/lib/leaderboard";
@@ -6,6 +7,7 @@ import { formatXp, levelFor, prestigeStars, registerFor, vocabTitle } from "@/li
 import WeeklyGoal from "./WeeklyGoal";
 
 function RankRow({ row, rank, grade, all, order }: { row: LeaderboardRow; rank: number; grade: number; all: boolean; order: "week" | "total" }) {
+  const de = useTrainerLanguage(grade) === "de";
   const level = levelFor(row.vocabXp);
   const title = vocabTitle(level.level, level.prestige, registerFor(grade));
   return <li className={`lb-row${row.me ? " me" : ""}`}>
@@ -14,8 +16,8 @@ function RankRow({ row, rank, grade, all, order }: { row: LeaderboardRow; rank: 
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img className="lb-avatar" src={`/avatars/${String(row.avatar).padStart(2, "0")}.png`} width={34} height={34} alt="" />
     <span className="lb-person"><span className="lb-name">{row.name}</span><span className={`lb-pill zone-${level.zone}`} title={`Level ${level.level}`}>{prestigeStars(level.prestige)}{title.name}</span>
-      {all && <span className="lb-class-chip">{row.className}</span>}{row.me && <span className="lb-you">← {grade === 1 ? "du" : "you"}</span>}
-      {row.streak > 0 && <span className="lb-streak" aria-label={`${grade === 1 ? "Serie" : "Streak"}: ${row.streak}`}>🔥 {row.streak}</span>}
+      {all && <span className="lb-class-chip">{row.className}</span>}{row.me && <span className="lb-you">← {de ? "du" : "you"}</span>}
+      {row.streak > 0 && <span className="lb-streak" aria-label={`${de ? "Serie" : "Streak"}: ${row.streak}`}>🔥 {row.streak}</span>}
     </span><strong className="lb-xp">{formatXp(order === "week" ? row.weeklyXp : row.totalXp)} XP</strong>
   </li>;
 }
@@ -23,7 +25,7 @@ function RankRow({ row, rank, grade, all, order }: { row: LeaderboardRow; rank: 
 export default function LeaderboardScreen({ board, grade, preview }: { board: Leaderboard; grade: number; preview: boolean }) {
   const [tab, setTab] = useState<"class" | "all" | "goal">("class");
   const [order, setOrder] = useState<"week" | "total">("week");
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   const hasOtherClass = board.gradeOptIn && board.rows.some((row) => !row.ownClass);
   const all = tab === "all" && hasOtherClass;
   const key = order === "week" ? "weeklyXp" : "totalXp";
