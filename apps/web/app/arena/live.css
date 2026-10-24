@@ -1,0 +1,14 @@
+.live-field { display:flex; flex-direction:column; gap:calc(var(--arena-unit) * 2); margin-bottom:calc(var(--arena-unit) * 4); font-size:var(--arena-type-body); font-weight:600; text-align:left; }
+.live-field :is(input,select) { width:100%; min-width:0; box-sizing:border-box; min-height:var(--arena-control-size); padding:calc(var(--arena-unit) * 3); border:var(--arena-hairline) solid var(--arena-control-border); border-radius:calc(var(--arena-unit) * 3); color:var(--ink); background:var(--card-solid); font:inherit; }
+.live-field :is(input,select):focus-visible { outline:calc(var(--arena-unit) * .75) solid var(--text-secondary); outline-offset:calc(var(--arena-unit) * .75); }
+.live-chapters { border:0; padding:0; margin:calc(var(--arena-unit) * 4) 0; }
+.live-chapters legend { margin-bottom:calc(var(--arena-unit) * 3); font-weight:600; }
+.live-chapters [aria-pressed="true"] { outline:calc(var(--arena-unit) * .5) solid var(--text-secondary); background:var(--accent-soft); }
+.live-actions { display:flex; gap:calc(var(--arena-unit) * 3); flex-wrap:wrap; }
+.live-code { font-size:var(--arena-type-score); overflow-wrap:anywhere; }.live-code strong { display:block; letter-spacing:.1em; font-size:var(--arena-type-score-large); }
+.live-clock { font-size:var(--arena-type-score); font-weight:700; font-variant-numeric:tabular-nums; }
+.live-ranking { list-style:none; margin:0; padding:0; }.live-ranking li { display:flex; align-items:center; gap:calc(var(--arena-unit) * 3); border-bottom:var(--arena-hairline) solid var(--card-border); padding:calc(var(--arena-unit) * 3) 0; }
+.live-ranking li > span:first-child { flex:1; min-width:0; overflow-wrap:anywhere; }.live-ranking strong { font-variant-numeric:tabular-nums; }
+.live-answer { max-width:calc(var(--arena-unit) * 85); margin:0 auto; }
+
+.og-root[data-screen="arena"] .live-chapters [aria-pressed="true"] { border-color:var(--text-secondary); }

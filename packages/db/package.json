@@ -20,7 +20,8 @@
     "@domigo/content-schema": "workspace:*",
     "@domigo/engine": "workspace:*",
     "@neondatabase/serverless": "^1.1.0",
-    "drizzle-orm": "^0.45.2"
+    "drizzle-orm": "^0.45.2",
+    "@domigo/content-loader": "workspace:*"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

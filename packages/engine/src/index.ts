@@ -39,3 +39,5 @@ export * from "./grade.ts";
 export * from "./classify.ts";
 
 export * from "./spelling.ts";
+
+export * from "./vocabulary-history.ts";

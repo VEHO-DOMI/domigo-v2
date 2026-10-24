@@ -47,14 +47,14 @@ export interface VocabPrompt {
  *   deToEn     → the German word `g`          (answer = English; grades translation.deToEn)
  *   enToDe     → the English word `w`         (answer = German;  grades translation.enToDe)
  */
-export function vocabPrompt(item: VocabItem, pool: VocabPool): VocabPrompt {
+export function vocabPrompt(item: VocabItem, pool: VocabPool, language: "de" | "en" = "en"): VocabPrompt {
   switch (pool) {
     case "definition":
-      return { instruction: "Which word fits this definition?", text: item.d, context: null, scaffold: false };
+      return { instruction: language === "de" ? "Welches Wort passt zur Erklärung?" : "Which word fits this definition?", text: item.d, context: null, scaffold: false };
     case "deToEn":
-      return { instruction: "Translate into English:", text: item.g, context: null, scaffold: false };
+      return { instruction: language === "de" ? "Übersetze ins Englische:" : "Translate into English:", text: item.g, context: null, scaffold: false };
     case "enToDe":
-      return { instruction: "Translate into German:", text: item.w, context: null, scaffold: false };
+      return { instruction: language === "de" ? "Übersetze ins Deutsche:" : "Translate into German:", text: item.w, context: null, scaffold: false };
     default:
       return { instruction: "", text: item.s, context: item.d, scaffold: true };
   }
@@ -74,4 +74,8 @@ export function rotateVocabPool(itemId: string, day: string): VocabPool {
     h = Math.imul(h, 0x01000193);
   }
   return VOCAB_POOLS[(h >>> 0) % VOCAB_POOLS.length]!;
+}
+
+export function vocabPoolLabel(pool: VocabPool, language: "de" | "en"): string {
+  return language === "de" ? { carrier: "Lückentext", definition: "Erklärung", deToEn: "Deutsch → Englisch", enToDe: "Englisch → Deutsch" }[pool] : VOCAB_POOL_LABEL[pool];
 }

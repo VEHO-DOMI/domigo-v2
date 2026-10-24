@@ -100,6 +100,7 @@ export default function DatenschutzPage() {
         <li><strong>Konto:</strong> dein Spitzname und deine Klasse. Angemeldet wirst du bei {kontoHost}; DomiGo speichert kein Passwort und prüft auch keines. Aus der früheren DomiGo-Anmeldung liegen alte Konten weiter in derselben Datenbank — mit dem damaligen Spitznamen und der PIN von damals (eine 6-stellige PIN, nur verschlüsselt gespeichert, bcrypt). Mit dieser PIN kommt niemand mehr hinein; sie wird nicht mehr geprüft.</li>
         <li><strong>Echter Name:</strong> bei Konten aus der früheren DomiGo-Anmeldung steht er noch hier; bei allen anderen steht er bei {kontoHost} und nicht in DomiGo. Sehen kann ihn nur deine Lehrkraft.</li>
         <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch und wie nah du dran warst, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
+        <li><strong>Vokabelübungen:</strong> Beim Üben, Wiederholen und im Lernpfad speichern wir zusätzlich jeden einzelnen geprüften Vokabelversuch, auch wenn du danach aufhörst: seine Reihenfolge, welche Hilfe angezeigt war und die Bewertung durch dein Gerät und den Server. Dazu kommen die vom Gerät gemeldete Zeit, die Zeit des Empfangs und der Speicherung sowie Prüfwerte der Aufgabe und der Übermittlung. Ein Prüfwert ist eine Zeichenfolge, mit der wir Änderungen und doppelte Übermittlungen erkennen. In diesem zusätzlichen Verlauf steht deine eingegebene Antwort nicht im Klartext.</li>
         <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Hinweis-Funken (die Funken, die du in einer Runde gesammelt hast; dein Stand wird auf der Weltkarte angezeigt und sonst nicht verwendet), Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
         <li><strong>Schreiben:</strong> Texte, die du schreibst und abgibst, mit Wortzahl sowie Punkten und Rückmeldung deiner Lehrkraft.</li>
         <li><strong>Tests und Aufgaben:</strong> wann du begonnen und abgegeben hast, die Zeit je Abschnitt, dein Ergebnis in Prozent und eine Note von 1 bis 5.</li>
@@ -160,7 +161,10 @@ export default function DatenschutzPage() {
       <p>
         Nach dem Anmelden setzt DomiGo ein Anmelde-Cookie, das 30 Tage gilt. Spielstände, Einstellungen
         und dein Regelbuch werden zusätzlich im Speicher deines Browsers abgelegt. Das Cookie wird nur an
-        DomiGo geschickt.
+        DomiGo geschickt. Antworten, deren Speicherung noch nicht bestätigt ist, werden mit ihrer
+        Kontokennung und den Angaben zum Versuch im Browser zwischengespeichert — auch wenn du
+        offline bist. Sie werden nur für dasselbe angemeldete Konto erneut gesendet und nach
+        bestätigter Speicherung aus dieser Warteschlange entfernt.
       </p>
 
       <h2 style={h2}>Wer was sieht</h2>

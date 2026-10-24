@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { fullAnswer, chapterOf } from "@/lib/modi/decks";
 import type { GameProps, ModeReply } from "@/lib/modi/types";
@@ -23,7 +24,7 @@ export default function Speed({ words, grade, submit, finish, duration, directio
     return () => clearInterval(timer);
   }, [duration]);
   const word = words[index];
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   const pool = speedPool(direction, index);
   const ask = word ? vocabPrompt(word, pool) : null;
   const instruction = { carrier: de ? "ERGÄNZE DEN SATZ" : "FILL IN THE BLANK", definition: de ? "WELCHES WORT PASST?" : "FIND THE WORD", deToEn: de ? "ÜBERSETZE INS ENGLISCHE" : "TRANSLATE TO ENGLISH", enToDe: de ? "ÜBERSETZE INS DEUTSCHE" : "TRANSLATE TO GERMAN" }[pool];

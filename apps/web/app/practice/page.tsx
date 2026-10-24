@@ -1,3 +1,4 @@
+import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 import { redirect } from "next/navigation";
 import { listApprovedUnits } from "@domigo/content-loader";
 import { resolveStudentView, trainerGrade } from "@/lib/student-view";
@@ -25,9 +26,9 @@ export default async function PracticeIndex({ searchParams }: { searchParams: Pr
     ? { vocab: challenge.availableWords, grammar: [] }
     : await loadPracticeWords(view, grade, chapters);
   const vocab = mode === "sprint" ? sprintWords(loaded.vocab) : loaded.vocab;
-  return <>
+  return <LearningShell preview={preview} grade={grade}>
     {preview && <PreviewBanner grade={grade} />}
-    {challenge && challenge.blockedCount > 0 && <p lang="de">Heute gesperrt: {challenge.blockedCount}/10 · Diese Wörter werden übersprungen.</p>}
+    {challenge && challenge.blockedCount > 0 && <p><LearningText de={`Heute gesperrt: ${challenge.blockedCount}/10 · Diese Wörter werden übersprungen.`} en={`Unavailable today: ${challenge.blockedCount}/10 · These words are skipped.`} /></p>}
     <PracticeSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} slug={`g${grade}-u01`} vocab={vocab} grammar={loaded.grammar} today={today} runMode={mode} direction={practiceDirection(query.direction)} preview={preview} />
-  </>;
+  </LearningShell>;
 }

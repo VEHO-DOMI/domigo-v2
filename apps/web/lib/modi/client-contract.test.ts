@@ -1,3 +1,4 @@
+import { trainerPreferences } from "../trainer/test-loader.ts";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { it } from "node:test";
@@ -30,6 +31,7 @@ function mount(file: string, props: Props, modules: Record<string, unknown> = {}
         return [states[index], (value: unknown) => { states[index] = typeof value === "function" ? value(states[index]) : value; }];
       },
       useRef(initial: unknown) { return refs[refCursor++] ?? (refs[refCursor - 1] = { current: initial }); },
+      useSyncExternalStore: (_subscribe: unknown, snapshot: () => unknown) => snapshot(),
       useEffect() {}, useCallback: (callback: unknown) => callback,
     },
     "next/link": { __esModule: true, default: "a" },
@@ -42,6 +44,7 @@ function mount(file: string, props: Props, modules: Record<string, unknown> = {}
     ...modules,
   };
   const url = new URL(`../../app/modi/${file}`, import.meta.url);
+  dependencies["@/lib/trainer/preferences"] = trainerPreferences(dependencies);
   const compiled = ts.transpileModule(readFileSync(url, "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX } }).outputText;
   const exports: { default?: Component } = {};
   runInNewContext(compiled, {

@@ -8,6 +8,9 @@
  * harmless — it comes back as a duplicate. Dependency-free (raw IndexedDB).
  */
 
+import type { VocabularyCheckInput } from "./vocabulary-check.ts";
+import type { VocabularyHistoryInput } from "./vocabulary-history.ts";
+
 export interface AttemptBody {
   clientAttemptId: string;
   itemId: string;
@@ -15,12 +18,20 @@ export interface AttemptBody {
   input: unknown;
   latencyMs: number | null;
   hintUsed: boolean;
+  vocabularyHistory?: VocabularyHistoryInput;
+  vocabularyCheck?: VocabularyCheckInput;
 }
+
+/** Optional metadata preparation runs inside the original page lifetime. */
+export type AttemptPreparation = (snapshot: AttemptBody) => Promise<AttemptBody>;
+export type AttemptSender = (body: AttemptBody, prepare?: AttemptPreparation) => Promise<AttemptResult>;
 
 export interface AttemptResult {
   /** Confirmed by the shared server grader, absent while offline. */
   tier?: "correct" | "partial" | "close" | "wrong";
   xpAwarded?: number;
+  /** Original persisted award, including a replay; consumers deduplicate by attempt ID. */
+  receipt?: { tier: "correct" | "partial" | "close" | "wrong"; xpAwarded: number };
   /** Server accepted + persisted (or an idempotent duplicate). */
   ok: boolean;
   /** Stored in the outbox for a later retry. */
@@ -33,6 +44,7 @@ interface AttemptResponse {
   tier?: AttemptResult["tier"];
   xpAwarded?: number;
   duplicate?: boolean;
+  receipt?: AttemptResult["receipt"];
   ok?: boolean;
   error?: string;
   streak?: number;
@@ -53,6 +65,56 @@ const STORE = "attempt-outbox";
 const DB_VERSION = 2;
 const hasIDB = (): boolean => typeof indexedDB !== "undefined";
 const storageKey = (body: OwnedAttempt): string => JSON.stringify([body.ownerId, body.clientAttemptId]);
+
+// History checks must survive a document reload immediately after the click.
+// localStorage is synchronous; IndexedDB alone commits after the handler returns.
+// Stage only the new history-only mode. Both stores retain the same immutable
+// payload until an explicit server acknowledgement removes it. No task text.
+const CHECK_STAGE = "domigo-vocabulary-check-pending:";
+function stagedCheck(key: string): QueuedAttempt | undefined {
+  try {
+    const raw = localStorage.getItem(CHECK_STAGE + key);
+    if (!raw) return;
+    const entry = JSON.parse(raw) as QueuedAttempt;
+    if (entry.clientAttemptId === key && entry.attempt?.mode === "vocabulary-check"
+      && typeof entry.attempt.ownerId === "string" && typeof entry.attempt.clientAttemptId === "string"
+      && key === storageKey(entry.attempt)) return entry;
+  } catch { /* unavailable or malformed storage does not claim a durable save */ }
+}
+function stageCheck(body: OwnedAttempt): { body: OwnedAttempt; queued: boolean } {
+  if (body.mode !== "vocabulary-check") return { body, queued: false };
+  const key = storageKey(body), previous = stagedCheck(key);
+  if (previous) return { body: previous.attempt, queued: true };
+  try {
+    localStorage.setItem(CHECK_STAGE + key, JSON.stringify({ clientAttemptId: key, attempt: body }));
+    return { body, queued: true };
+  } catch { return { body, queued: false }; }
+}
+/** The first durable copy of a check is the only valid payload. When IndexedDB
+ * already holds it, a fallback stage written in a later send (same event, other
+ * bytes, written while localStorage was back but before the IndexedDB conflict
+ * surfaced) is overwritten with that copy, so an IndexedDB outage cannot replay it. */
+function restageCheck(entry: QueuedAttempt, onlyIfStaged = false): void {
+  if (entry.attempt?.mode !== "vocabulary-check") return;
+  try {
+    const key = CHECK_STAGE + entry.clientAttemptId;
+    // Replay-time realignment must not resurrect a stage that a concurrent acknowledgement just removed.
+    if (onlyIfStaged && localStorage.getItem(key) === null) return;
+    localStorage.setItem(key, JSON.stringify(entry));
+  } catch { /* unavailable stage: the IndexedDB copy remains */ }
+}
+function allStagedChecks(): QueuedAttempt[] {
+  const entries: QueuedAttempt[] = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key?.startsWith(CHECK_STAGE)) continue;
+      const entry = stagedCheck(key.slice(CHECK_STAGE.length));
+      if (entry) entries.push(entry);
+    }
+  } catch { /* unavailable storage */ }
+  return entries;
+}
 
 export type OutboxReplyListener = (clientAttemptId: string, result: AttemptResult) => void;
 const replyListeners = new Map<string, Set<OutboxReplyListener>>();
@@ -133,35 +195,53 @@ function runTx<T>(mode: IDBTransactionMode, op: (store: IDBObjectStore) => IDBRe
 }
 
 /** Persist BEFORE sending; add (not put) makes an attempt's first payload immutable. */
-async function remember(body: OwnedAttempt): Promise<{ body: OwnedAttempt; queued: boolean }> {
-  if (!hasIDB()) return { body, queued: false };
+async function remember(input: OwnedAttempt): Promise<{ body: OwnedAttempt; queued: boolean }> {
+  const staged = stageCheck(input), body = staged.body;
+  if (!hasIDB()) return staged;
   const key = storageKey(body);
   try {
     await runTx("readwrite", (s) => s.add({ clientAttemptId: key, attempt: body }));
     return { body, queued: true };
   } catch (error) {
     // Retrying a blocked open would delay the online send for another 3 seconds.
-    if (error instanceof OutboxOpenError) return { body, queued: false };
+    if (error instanceof OutboxOpenError) return staged;
     // A concurrent retry may already have committed this same owner/attempt.
     try {
       const existing = await runTx<QueuedAttempt | undefined>("readonly", (s) => s.get(key));
       if (existing?.attempt?.ownerId === body.ownerId && existing.attempt.clientAttemptId === body.clientAttemptId) {
+        // cgo-145: the older IndexedDB bytes win in BOTH stores, not only in the return value.
+        restageCheck(existing);
         return { body: existing.attempt, queued: true };
       }
     } catch { /* unavailable storage: never claim a durable save */ }
-    return { body, queued: false };
+    return staged;
   }
 }
 
 async function dequeue(body: OwnedAttempt): Promise<void> {
+  if (body.mode === "vocabulary-check") {
+    try { localStorage.removeItem(CHECK_STAGE + storageKey(body)); } catch { /* replay remains idempotent */ }
+  }
   if (!hasIDB()) return;
   try { await runTx("readwrite", (s) => s.delete(storageKey(body))); } catch { /* replay is idempotent */ }
 }
 
-async function allQueued(): Promise<QueuedAttempt[]> {
-  if (!hasIDB()) return [];
-  try { return (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? []; }
-  catch { return []; }
+async function allQueued(ownerId: string): Promise<QueuedAttempt[]> {
+  const staged = allStagedChecks();
+  if (!hasIDB()) return staged;
+  try {
+    const stored = (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? [];
+    // Existing IndexedDB bytes win if an older durable copy already exists —
+    // and a diverged stage is realigned now, before any later IndexedDB outage.
+    const entries = new Map(staged.map(entry => [entry.clientAttemptId, entry]));
+    for (const entry of stored) {
+      const stage = entries.get(entry.clientAttemptId);
+      // Only this owner's rows are realigned; the stage is re-read right before the write.
+      if (stage && entry.attempt?.ownerId === ownerId && JSON.stringify(stage) !== JSON.stringify(entry)) restageCheck(entry, true);
+      entries.set(entry.clientAttemptId, entry);
+    }
+    return [...entries.values()];
+  } catch { return staged; }
 }
 
 async function postAttempt(body: OwnedAttempt): Promise<{ res: Response | null; data: AttemptResponse | null }> {
@@ -184,7 +264,11 @@ function attemptResult(data: AttemptResponse | null): AttemptResult {
   const tier = ["correct", "partial", "close", "wrong"].includes(data?.tier ?? "") ? data?.tier : undefined;
   const xpAwarded = Number.isFinite(data?.xpAwarded) && data!.xpAwarded! >= 0
     ? (data?.duplicate ? 0 : data?.xpAwarded) : undefined;
-  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded };
+  const receipt = data?.receipt;
+  const validReceipt = receipt && ["correct", "partial", "close", "wrong"].includes(receipt.tier)
+    && Number.isFinite(receipt.xpAwarded) && receipt.xpAwarded >= 0;
+  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded,
+    ...(validReceipt ? { receipt: { tier: receipt.tier, xpAwarded: receipt.xpAwarded } } : {}) };
 }
 
 /**
@@ -192,12 +276,18 @@ function attemptResult(data: AttemptResponse | null): AttemptResult {
  * A delayed callback retains that owner and cannot send through a newer page.
  * A durable pending answer is not a confirmed booking (and earns no reward).
  */
-export async function sendAttempt(body: AttemptBody, ownerId: string | null): Promise<AttemptResult> {
+export async function sendAttempt(body: AttemptBody, ownerId: string | null, prepare?: AttemptPreparation): Promise<AttemptResult> {
   if (!ownerId) return { ok: false, queued: false };
   const binding = activeBinding;
   const isCurrent = (): boolean => binding !== undefined && binding === activeBinding && binding.ownerId === ownerId;
   let owned: OwnedAttempt;
-  try { owned = structuredClone({ ...body, ownerId }); }
+  try {
+    const snapshot = structuredClone(body);
+    // Capture the binding above BEFORE any digest/preparation can yield. A new
+    // page for the same owner must not adopt this old callback or its receipt.
+    const prepared = prepare ? await prepare(snapshot) : snapshot;
+    owned = structuredClone({ ...prepared, ownerId });
+  }
   catch { return { ok: false, queued: false }; }
   const saved = await remember(owned);
   if (!isCurrent()) return { ok: false, queued: saved.queued };
@@ -217,7 +307,7 @@ export function flushOutbox(ownerId: string | null): Promise<number> {
   const running = drains.get(binding);
   if (running) return running;
   const run = (async () => {
-    const items = await allQueued();
+    const items = await allQueued(ownerId);
     let flushed = 0;
     for (const entry of items) {
       if (activeBinding !== binding) break;
