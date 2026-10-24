@@ -23,6 +23,7 @@ import { parseTestRef } from "@/lib/testRef";
 import { parseComprehensionRef } from "@/lib/comprehensionRef";
 import { speedSessionValid } from "@/lib/modi/speed-session";
 import { validModeInput } from "@/lib/modi/attempt-policy";
+import { VocabularyHistoryInput, supportsVocabularyHistory, vocabularyHistoryContext } from "@/lib/vocabulary-history";
 import { arenaError, checkDuelAttempt, writeDuelAnswer } from "@/lib/arena/server";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
@@ -58,6 +59,7 @@ const Body = z.object({
   ]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
   hintUsed: z.boolean().optional(),
+  vocabularyHistory: VocabularyHistoryInput.optional(),
   context: z.unknown().optional(),
 });
 
@@ -79,7 +81,7 @@ export async function POST(req: Request): Promise<Response> {
   // 2. Validate body.
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { clientAttemptId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+  const { clientAttemptId, mode, input, latencyMs, hintUsed, context, vocabularyHistory: observation } = parsed.data;
   let itemId = parsed.data.itemId;
 
   // Old pages delete queued answers on permanent 4xx responses. Keep them
@@ -96,6 +98,10 @@ export async function POST(req: Request): Promise<Response> {
   if (!inScope(acting.classScope, acting.classId)) {
     console.warn("[attempts] denied: class_scope");
     return NextResponse.json({ ok: false, error: "class_forbidden" }, { status: 403 });
+  }
+
+  if (observation && (input.kind !== "vocab" || !supportsVocabularyHistory(mode))) {
+    return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 
   if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
@@ -130,6 +136,7 @@ export async function POST(req: Request): Promise<Response> {
   const tref = ref || lref ? null : parseTestRef(itemId);
   const cref = ref || lref || tref ? null : parseComprehensionRef(itemId);
   if (!ref && !lref && !tref && !cref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  if (observation && ref?.kind !== "vocab") return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   // The mode and client metadata never grant a grade or reserve exception.
   // Read only the authenticated class, and refuse uncertainty before grading.
@@ -158,6 +165,7 @@ export async function POST(req: Request): Promise<Response> {
   // typed text (choice/matching/groupSort never classify — their traps are
   // authored via distractorMeta).
   let classifiable: ClassifiableItem | null = null;
+  let vocabularyHistory: ReturnType<typeof vocabularyHistoryContext> | undefined;
   const typedValue =
     (input.kind === "text" || input.kind === "vocab") && typeof input.value === "string" ? input.value : null;
   try {
@@ -177,6 +185,7 @@ export async function POST(req: Request): Promise<Response> {
         const value = "value" in input && typeof input.value === "string" ? input.value : "";
         const pool = liveResolved ? liveResolved.pool : duelCoordinates ? "deToEn" : input.kind === "vocab" ? input.pool : undefined;
         tier = gradeVocab(item, value, pool).tier;
+        if (supportsVocabularyHistory(mode)) vocabularyHistory = vocabularyHistoryContext(item, pool ?? "carrier", tier, observation);
         xpAwarded = xpForTier(item.difficulty * 10, tier);
         classifiable = { answers: vocabAnswers(item, pool ?? "carrier") };
       } else {
@@ -240,9 +249,17 @@ export async function POST(req: Request): Promise<Response> {
   // trap is the common case and writes nothing.
   if (mode === "flashcards") xpAwarded = 0; // cgo-109 FLASHCARDS-ZERO: self-report feeds review, earns no XP.
   const trap = tier === "wrong" && typedValue !== null && classifiable ? classifyWrong(classifiable, typedValue) : null;
-  const contextWithTrap = trap
-    ? { ...(typeof context === "object" && context !== null && !Array.isArray(context) ? context : {}), trap }
+  // This namespace is server-owned in EVERY mode, including modes that have
+  // no vocabulary history adapter. Preserve their own coordinates/context.
+  const clientContext = typeof context === "object" && context !== null && !Array.isArray(context)
+    ? Object.fromEntries(Object.entries(context).filter(([key]) => key !== "vocabularyHistory"))
     : context;
+  const baseContext = vocabularyHistory
+    ? { ...(typeof clientContext === "object" && clientContext !== null && !Array.isArray(clientContext) ? clientContext : {}), vocabularyHistory }
+    : clientContext;
+  const contextWithTrap = trap
+    ? { ...(typeof baseContext === "object" && baseContext !== null && !Array.isArray(baseContext) ? baseContext : {}), trap }
+    : baseContext;
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
@@ -258,7 +275,8 @@ export async function POST(req: Request): Promise<Response> {
       tier,
       xpAwarded,
       latencyMs: latencyMs ?? null,
-      hintUsed: hintUsed ?? false,
+      hintUsed: vocabularyHistory?.helpShown !== null && vocabularyHistory?.helpShown !== undefined
+        ? vocabularyHistory.helpShown.length > 0 : hintUsed ?? false,
       context: contextWithTrap,
       clientAttemptId,
     };

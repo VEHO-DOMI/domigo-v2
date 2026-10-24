@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
-import type { Tier, VocabPool } from "@domigo/engine";
+import { vocabularyContentSnapshot, type Tier, type VocabPool } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, rotateVocabPool, vocabPoolLabel, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
+import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import type { AttemptResult } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -26,7 +27,7 @@ type Props = {
 export default function PracticeSession(props: Props) {
   // A selection/day change starts a new round even when the route slug stays fixed.
   const round = [props.slug, props.ownerId, props.preview, props.runMode, props.direction,
-    props.today, props.vocab.map(item => item.id), props.grammar.map(item => item.id)];
+    props.today, props.vocab.map(vocabularyContentSnapshot), props.grammar.map(item => item.id)];
   return <PracticeRound key={JSON.stringify(round)} {...props} />;
 }
 function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, runMode, direction = "auto" }: Props) {
@@ -68,14 +69,14 @@ function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, 
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the server re-grades authoritatively and returns the updated daily streak.
-    void attemptSender(preview, ownerId)({
+    void sendCompletedAttempt(attemptSender(preview, ownerId), {
       clientAttemptId: id,
       itemId: detail.itemId,
       mode: runMode === "daily" ? "daily" : "practice",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((reply) => receive(id, reply)).catch(() => { /* no receipt, no XP */ });
+    }, detail).then((reply) => receive(id, reply)).catch(() => { /* no receipt, no XP */ });
   };
   const next = () => { submitted.current = false; setAnswered(false); setI((x) => Math.min(x + 1, list.length - 1)); };
 

@@ -35,10 +35,12 @@ it("switching the pool discards late old-round receipts",async()=>{
 });
 it("changing owner creates a fresh round without old points",async()=>{const f=fixture();f.answer();f.props.ownerId="new-owner";f.view.render();f.sent[0]!.resolve({ok:true,queued:false,xpAwarded:20});await settle();assert.equal(xp(f),0);});
 
-for (const change of ["day", "vocab", "grammar", "order"] as const) it(`changing ${change} creates a fresh round and accepts a new answer`, async () => {
+for (const change of ["day", "vocab", "grammar", "order", "revision", "overlay"] as const) it(`changing ${change} creates a fresh round and accepts a new answer`, async () => {
   const f = fixture();
   if (change === "order") f.props.vocab = [item, loadUnit("g2-u02").vocab[0]!];
   f.answer();
+  if (change === "revision") f.props.vocab = f.props.vocab.map(i => ({ ...i, rev: i.rev + 1 }));
+  if (change === "overlay") f.props.vocab = f.props.vocab.map(i => ({ ...i, hintDe: "Changed synthetic hint" }));
   if (change === "day") f.props.today = "2026-10-25";
   if (change === "vocab") f.props.vocab = loadUnit("g2-u02").vocab.slice(0, 1);
   if (change === "grammar") f.props.grammar = loadUnit("g2-u02").grammar.slice(0, 1);

@@ -4,7 +4,9 @@ import { transpileModule } from "typescript";
 import { acknowledgeAttempt, emptyAttemptAck } from "../../../packages/game-paint/src/ack.ts";
 import type { PaintAttemptSender } from "../../../packages/game-paint/src/cards/attempt.ts";
 import { afterEach, beforeEach, test } from "node:test";
-import { bindOutboxOwner, flushOutbox, sendAttempt, subscribeOutboxReplies, type AttemptResult } from "./attempt-outbox.ts";
+import { bindOutboxOwner, flushOutbox, sendAttempt, subscribeOutboxReplies, type AttemptResult, type AttemptBody } from "./attempt-outbox.ts";
+import { sendCompletedAttempt } from "./vocabulary-history-client.ts";
+import type { ResultDetail } from "@domigo/task-ui";
 import { attemptSender } from "./preview-attempt.ts";
 import { startOutboxFlush, type OnlineTarget } from "./useOutboxFlush.ts";
 
@@ -706,3 +708,44 @@ for (const receipt of [{tier:"invented",xpAwarded:20},{tier:"correct",xpAwarded:
     assert.equal((await sendAttempt(body, A)).receipt, undefined);
   });
 }
+
+
+test("completion observations survive offline replay unchanged under the original attempt identity", async () => {
+  const observed = { schema: "vocabulary-completion@1" as const, itemRevision: 2, displayedContentSha256: "a".repeat(64), maxChecks: 3 as const,
+    checks: [{ reportedTier: "wrong" as const, helpShown: [] }, { reportedTier: "correct" as const, helpShown: ["hint" as const] }] };
+  const payload = { ...body, vocabularyHistory: observed, hintUsed: true };
+  globalThis.fetch = async () => { throw Error("offline"); };
+  assert.deepEqual(await sendAttempt(payload, A), { ok: false, queued: true });
+  observed.checks[0]!.helpShown = ["hint"];
+  const received: AttemptBody[] = [];
+  globalThis.fetch = async (_url, init) => { received.push(JSON.parse(String(init!.body))); return receipt(); };
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(received[0]!.clientAttemptId, body.clientAttemptId);
+  assert.deepEqual(received[0]!.vocabularyHistory!.checks, [{ reportedTier: "wrong", helpShown: [] }, { reportedTier: "correct", helpShown: ["hint"] }]);
+});
+
+for (const replacement of ["different owner", "same owner", "away and back"] as const) test(`hash preparation cannot adopt ${replacement} page; original bytes remain replayable`, async () => {
+  const originalCrypto = globalThis.crypto;
+  let finishDigest!: () => void;
+  Object.defineProperty(globalThis, "crypto", { configurable: true, value: { subtle: { digest: () => new Promise<ArrayBuffer>(resolve => {
+    finishDigest = () => resolve(new Uint8Array(32).buffer);
+  }) } } });
+  const detail: ResultDetail = { kind: "vocab", itemId: body.itemId, input: { kind: "vocab", value: "fixture", pool: "carrier" }, history: {
+    schema: "vocabulary-completion@1", itemRevision: 1, contentSnapshot: "synthetic snapshot", maxChecks: 3,
+    checks: [{ reportedTier: "wrong", helpShown: [] }, { reportedTier: "correct", helpShown: ["hint"] }],
+  } };
+  let sends = 0;
+  globalThis.fetch = async () => { sends++; return receipt(); };
+  try {
+    const pending = sendCompletedAttempt(attemptSender(false, A), body, detail);
+    assert.equal(typeof finishDigest, "function");
+    release(); release = bindOutboxOwner(replacement === "same owner" ? A : B);
+    if (replacement === "away and back") { release(); release = bindOutboxOwner(A); }
+    finishDigest();
+    assert.deepEqual(await pending, { ok: false, queued: true });
+    assert.equal(sends, 0, "no direct request through the replacement page");
+    if (replacement === "different owner") { assert.equal(await flushOutbox(B), 0); release(); release = bindOutboxOwner(A); }
+    assert.equal(await flushOutbox(A), 1, "a separate owner-authorized drain can replay the saved body");
+    assert.equal(sends, 1);
+  } finally { Object.defineProperty(globalThis, "crypto", { configurable: true, value: originalCrypto }); }
+});

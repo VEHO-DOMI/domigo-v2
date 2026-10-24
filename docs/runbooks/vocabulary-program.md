@@ -46,6 +46,10 @@ Original Activity HTML/data and richer audit CSVs were located for all relevant 
 
 The existing Activity route already exposes a student-startable, one-device group setup in source code; live availability remains unverified. Its deck deduplicates by chapter plus spelling and retires only correct answers. Those rules allow cross-chapter repetitions and repeated skips. The new programme changes them deliberately rather than claiming no-repeat behaviour already exists.
 
-## Status of this source-resolution slice
+## Implementation status and remaining gates
 
-Formatting-based Year 1 extraction and explicit out-of-course segregation are implemented for review. Semantic joins, edition/chapter binding, the stable meaning contract, learning-history changes, word help, collection, content repairs, artwork and expanded Activity remain subsequent work. The existing independent review of the base importer stays separate. No production database is read or changed; no images are mass-produced before a calibrated example.
+Source extraction, explicit out-of-course segregation and a lossless meaning-case review contract are implemented for review (cgo-140/141). A 25-case original-page calibration is documented on Mission Control (cgo-142); it does not approve the remaining 7,373 cases or certify a complete edition lineage. One source-reference correction is proposed with evidence; uncertain meanings and the disputed “again” citation remain open.
+
+The first learning-history slice preserves completed vocabulary cards' ordered checks, observed help, direction and displayed/graded content identity (cgo-143). Its [contract and explicit remaining gaps](vocabulary-learning-history.md) distinguish this from a complete event history. Abandoned cards, other modes, timing and the existing GG-owned partial-write/receipt finding remain open.
+
+Word help, the personal collection, content repairs, artwork and expanded Activity remain subsequent work. The existing independent review of the base importer stays separate. No production database is read or changed; no images are mass-produced before a calibrated example.

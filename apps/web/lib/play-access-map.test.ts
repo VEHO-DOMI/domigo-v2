@@ -263,7 +263,7 @@ describe("answer owners travel from the trusted page into every client", () => {
     it(`${file}: both immediate sends and background retries carry the same owner`, () => {
       const src = code(read(file));
       assert.match(src, /useOutboxFlush\(!preview, ownerId\)/);
-      assert.match(src, /attemptSender\(preview, ownerId\)\(/);
+      assert.match(src, /(?:attemptSender\(preview, ownerId\)\(|sendCompletedAttempt\(attemptSender\(preview, ownerId\),)/);
     });
   }
 });

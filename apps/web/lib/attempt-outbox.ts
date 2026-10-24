@@ -8,6 +8,8 @@
  * harmless — it comes back as a duplicate. Dependency-free (raw IndexedDB).
  */
 
+import type { VocabularyHistoryInput } from "./vocabulary-history.ts";
+
 export interface AttemptBody {
   clientAttemptId: string;
   itemId: string;
@@ -15,7 +17,12 @@ export interface AttemptBody {
   input: unknown;
   latencyMs: number | null;
   hintUsed: boolean;
+  vocabularyHistory?: VocabularyHistoryInput;
 }
+
+/** Optional metadata preparation runs inside the original page lifetime. */
+export type AttemptPreparation = (snapshot: AttemptBody) => Promise<AttemptBody>;
+export type AttemptSender = (body: AttemptBody, prepare?: AttemptPreparation) => Promise<AttemptResult>;
 
 export interface AttemptResult {
   /** Confirmed by the shared server grader, absent while offline. */
@@ -199,12 +206,18 @@ function attemptResult(data: AttemptResponse | null): AttemptResult {
  * A delayed callback retains that owner and cannot send through a newer page.
  * A durable pending answer is not a confirmed booking (and earns no reward).
  */
-export async function sendAttempt(body: AttemptBody, ownerId: string | null): Promise<AttemptResult> {
+export async function sendAttempt(body: AttemptBody, ownerId: string | null, prepare?: AttemptPreparation): Promise<AttemptResult> {
   if (!ownerId) return { ok: false, queued: false };
   const binding = activeBinding;
   const isCurrent = (): boolean => binding !== undefined && binding === activeBinding && binding.ownerId === ownerId;
   let owned: OwnedAttempt;
-  try { owned = structuredClone({ ...body, ownerId }); }
+  try {
+    const snapshot = structuredClone(body);
+    // Capture the binding above BEFORE any digest/preparation can yield. A new
+    // page for the same owner must not adopt this old callback or its receipt.
+    const prepared = prepare ? await prepare(snapshot) : snapshot;
+    owned = structuredClone({ ...prepared, ownerId });
+  }
   catch { return { ok: false, queued: false }; }
   const saved = await remember(owned);
   if (!isCurrent()) return { ok: false, queued: saved.queued };

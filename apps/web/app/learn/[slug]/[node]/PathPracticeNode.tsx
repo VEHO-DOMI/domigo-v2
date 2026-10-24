@@ -4,8 +4,9 @@ import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { XP_WEIGHT, xpForTier } from "@domigo/engine";
+import { vocabularyContentSnapshot, XP_WEIGHT, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
@@ -18,7 +19,7 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-export default function PathPracticeNode({ preview = false, ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: { preview?: boolean; ownerId: string | null;
+type Props = { preview?: boolean; ownerId: string | null;
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
@@ -27,7 +28,13 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
    *  J-1 journey node, `journey:<unit>:<node>`. A journey node DERIVES its progress
    *  from these attempts, so it does NOT write the study_path_progress table (F3). */
   attemptMode?: string;
-}) {
+};
+export default function PathPracticeNode(props: Props) {
+  const round = [props.ownerId, props.preview, props.unitSlug, props.nodeId, props.isCheckpoint, props.attemptMode,
+    props.items.map(({ kind, item }) => kind === "vocab" ? vocabularyContentSnapshot(item as VocabItem) : item.id)];
+  return <PathPracticeRound key={JSON.stringify(round)} {...props} />;
+}
+function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: Props) {
   const t = useLearningText();
   const mode = attemptMode ?? `study:${nodeId}`;
   const isJourney = mode.startsWith("journey:");
@@ -48,14 +55,14 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
     setResults((prev) => [...prev, { tier, xp: xpForTier(current.item.difficulty * 10, tier) }]);
 
     // Per-item attempt → the existing graded/idempotent path (feeds review_queue + streak + XP).
-    void attemptSender(preview, ownerId)({
+    void sendCompletedAttempt(attemptSender(preview, ownerId), {
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, detail).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };

@@ -13,6 +13,7 @@ import { createContext, useContext, useEffect, useId, useMemo, useRef, useState 
 import type { CSSProperties, ReactNode } from "react";
 import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
 import type { ClassifiableItem, GrammarInput, Tier, VocabPool } from "@domigo/engine";
+import { vocabularyContentSnapshot, vocabularyPresentationKey, type VocabularyCompletionObservation, type VocabularyCheck, type VocabularyHelp } from "@domigo/engine";
 import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import { diffWords, playTier } from "@domigo/game-feel";
 import { agAssemble, agSlots, agTiles, sbChips } from "./tactile.ts";
@@ -191,14 +192,14 @@ function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainD
   );
 }
 
-function GlossRow({ gloss }: { gloss: Gloss[] }) {
+function GlossRow({ gloss, onReveal }: { gloss: Gloss[]; onReveal?: () => void }) {
   const t = useTaskText();
   const [open, setOpen] = useState(false);
   const id = useId();
   if (gloss.length === 0) return null;
   return (
     <div style={{ fontSize: 13 }}>
-      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
+      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => { setOpen(!open); if (!open) onReveal?.(); }}>
         {open ? t("Worthilfe ausblenden", "Hide word help") : t("Worthilfe zeigen", "Show word help")} ({gloss.length})
       </button>
       {open && (
@@ -214,13 +215,14 @@ function GlossRow({ gloss }: { gloss: Gloss[] }) {
   );
 }
 
-function HintRow({ hintDe }: { hintDe: string }) {
+function HintRow({ hintDe, onReveal }: { hintDe: string; onReveal?: () => void }) {
   const t = useTaskText();
   const [open, setOpen] = useState(false);
   const id = useId();
+  if (!hintDe.trim()) return null;
   return (
     <div style={{ fontSize: 13 }}>
-      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
+      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => { setOpen(!open); if (!open) onReveal?.(); }}>
         {open ? t("Tipp ausblenden", "Hide hint") : t("💡 Tipp", "💡 Hint")}
       </button>
       {open && <span id={id} lang="de" style={{ marginLeft: 8, color: "var(--text-secondary)" }}>{hintDe}</span>}
@@ -395,7 +397,7 @@ const TEXT_FORMATS = new Set([
 /** The graded input + item id, surfaced to the parent for attempt recording. */
 export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
-  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string; pool?: VocabPool } };
+  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string; pool?: VocabPool }; history?: VocabularyCompletionObservation };
 
 /** Forgiving-retry ladder (Law 3): a wrong answer re-enables the input — nothing
  *  shown lost — up to MAX_WRONG tries (1st wrong → try again, 2nd → the Tipp is
@@ -417,20 +419,24 @@ function useRetryGrading(
 ) {
   const [tier, setTier] = useState<Tier | null>(null);
   const [wrongCount, setWrongCount] = useState(0);
+  // Synchronous guard: two input events before React renders cannot conclude twice.
+  const progress = useRef({ wrongCount: 0, done: false });
   const solved = tier !== null && tier !== "wrong";
   const exhausted = wrongCount >= maxWrong;
   const done = solved || exhausted; // locked: inputs disabled, feedback shown
   const retrying = tier === "wrong" && !exhausted; // open for another try
   const submit = () => {
-    if (done) return;
+    if (progress.current.done) return;
     const { tier: t, detail } = gradeOnce();
     setTier(t);
     if (t !== "wrong") {
-      onTier?.(t, wrongCount);
+      progress.current.done = true;
+      onTier?.(t, progress.current.wrongCount);
       onResult?.(t, detail); // a pass concludes the task
       return;
     }
-    const n = wrongCount + 1;
+    const n = progress.current.wrongCount + 1;
+    progress.current = { wrongCount: n, done: n >= maxWrong };
     setWrongCount(n);
     onTier?.(t, n);
     if (n >= maxWrong) onResult?.(t, detail); // out of tries → conclude (never blocks)
@@ -445,7 +451,7 @@ function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string
   return (
     <div lang="de" role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       <span style={{ color: "var(--ink-soft)", fontWeight: 700, fontSize: 14 }}>↻ Noch nicht — versuch es gleich nochmal.</span>
-      {wrongCount >= 2 && hintDe && (
+      {wrongCount >= 2 && hintDe.trim() && (
         <div style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 8, padding: "6px 10px" }}>💡 {hintDe}</div>
       )}
     </div>
@@ -746,11 +752,19 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null }) {
+type VocabItemViewProps = { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null };
+export function VocabItemView(props: VocabItemViewProps) {
+  // Includes overlays: same id/rev with new wording starts a fresh observation.
+  const key = vocabularyPresentationKey(props.item, props.pool ?? "carrier", [props.hideHint, props.singleAttempt, props.mask, props.bank]);
+  return <VocabCard key={key} {...props} />;
+}
+function VocabCard({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: VocabItemViewProps) {
   const t = useTaskText();
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
+  const checks = useRef<VocabularyCheck[]>([]);
+  const revealedHelp = useRef(new Set<VocabularyHelp>());
   // A-6/P-10: the exercise grades against the pool it actually asked for. `ask`
   // is the leak-safe prompt for that pool (carrier shows the ___ sentence + a
   // definition context and its scaffolds; the recall pools show the opposite-
@@ -767,9 +781,23 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
   const masked = maskSegments !== null && maskSegments.length > 0;
   const gradeOnce = (): { tier: Tier; detail: ResultDetail } => {
     const r = gradeVocab(item, value, pool);
-    return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool } } };
+    const help = new Set(revealedHelp.current);
+    if (masked) help.add("first-letter-mask");
+    if (!masked && bank && bank.length > 0) help.add("word-bank");
+    checks.current.push({ reportedTier: r.tier, helpShown: [...help].sort() });
+    return { tier: r.tier, detail: {
+      kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool },
+      history: { schema: "vocabulary-completion@1", itemRevision: item.rev,
+        contentSnapshot: vocabularyContentSnapshot(item), maxChecks: singleAttempt ? 1 : MAX_WRONG,
+        checks: checks.current.map(check => ({ ...check, helpShown: [...check.helpShown] })),
+      },
+    } };
   };
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG, onTier);
+  useEffect(() => {
+    // Record the committed hint display, never the second answer that caused it.
+    if (retrying && wrongCount >= 2 && item.hintDe.trim() && ask.scaffold && !hideHint && !masked) revealedHelp.current.add("retry-hint");
+  }, [retrying, wrongCount, item.hintDe, ask.scaffold, hideHint, masked]);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   // G-A1: bank and mask are mutually exclusive — the bank CONTAINS the full
@@ -783,10 +811,10 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
       {masked ? <MaskedPrompt id={promptId} text={ask.text} segments={maskSegments} /> : <Prompt id={promptId} text={ask.text} />}
       {showBank && <BankRow bank={bank!} current={value} disabled={done} onPick={setValue} />}
       <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label={t("Deine Antwort", "Your answer")} placeholder={t("Deine Antwort", "Your answer")} onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
-      {ask.scaffold && !masked && <GlossRow gloss={item.gloss} />}
-      {ask.scaffold && !hideHint && !masked && <HintRow hintDe={item.hintDe} />}
+      {ask.scaffold && !masked && <GlossRow gloss={item.gloss} onReveal={() => revealedHelp.current.add("gloss")} />}
+      {ask.scaffold && !hideHint && !masked && <HintRow hintDe={item.hintDe} onReveal={() => revealedHelp.current.add("hint")} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? t("Nochmal versuchen", "Try again") : t("Prüfen", "Check")}</button>}
-      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold && !masked ? item.hintDe : ""} />}
+      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold && !hideHint && !masked ? item.hintDe : ""} />}
       {done && tier && hideFeedback && <SavedMark />}
       {done && tier && !hideFeedback && (
         <>

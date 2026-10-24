@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import * as jsxRuntime from "react/jsx-runtime";
 import ts from "typescript";
 import * as engine from "@domigo/engine";
+import * as vocabularyHistoryClient from "../vocabulary-history-client.ts";
 import * as grammar from "./grammar.ts";
 import * as decks from "./decks.ts";
 export type Props = Record<string, unknown> & { children?: ReactNode; className?: string };
@@ -26,6 +27,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
   let active: Instance;
   const stored = new Map<string, string>(), writes: [string, string][] = [];
   const dependencies: Record<string, unknown> = {
+    "@/lib/vocabulary-history-client": vocabularyHistoryClient,
     "react/jsx-runtime": jsxRuntime,
     "react": {
       useState(initial: unknown) {

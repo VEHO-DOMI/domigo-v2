@@ -4,14 +4,21 @@ import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { xpForTier } from "@domigo/engine";
+import { vocabularyContentSnapshot, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
-export default function ReviewSession({ preview = false, ownerId, items }: { preview?: boolean; ownerId: string | null; items: QueueItem[] }) {
+type Props = { preview?: boolean; ownerId: string | null; items: QueueItem[] };
+export default function ReviewSession(props: Props) {
+  const round = [props.ownerId, props.preview, props.items.map(({ kind, item }) =>
+    kind === "vocab" ? vocabularyContentSnapshot(item as VocabItem) : item.id)];
+  return <ReviewRound key={JSON.stringify(round)} {...props} />;
+}
+function ReviewRound({ preview = false, ownerId, items }: Props) {
   const t = useLearningText();
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -29,14 +36,14 @@ export default function ReviewSession({ preview = false, ownerId, items }: { pre
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the POST re-grades + reschedules the item (mode:"review") and returns the daily streak.
-    void attemptSender(preview, ownerId)({
+    void sendCompletedAttempt(attemptSender(preview, ownerId), {
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode: "review",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, detail).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
