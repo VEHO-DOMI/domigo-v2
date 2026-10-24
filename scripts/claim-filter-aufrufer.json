@@ -94,7 +94,8 @@
     "auth.ts#getClassGrade": [
       "apps/web/lib/grade-scope.ts · classId",
       "apps/web/lib/school-access.ts · student.classId",
-      "apps/web/lib/student-view.ts · classId"
+      "apps/web/lib/student-view.ts · classId",
+      "apps/web/app/api/attempts/route.ts · acting.classId"
     ],
     "writing-review.ts#gehoertZuLehrkraft": [
       "packages/db/src/writing-review.ts · teacherId",

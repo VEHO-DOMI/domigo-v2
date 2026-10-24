@@ -55,7 +55,7 @@ describe("client guards — nothing leaves a preview", () => {
     it(`${file}: attempts and the outbox`, () => {
       const src = read(file);
       assert.doesNotMatch(src, /\bsendAttempt\b/, "attempts go through attemptSender(preview), never sendAttempt directly");
-      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId\)/, "the outbox is not flushed in a preview");
+      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId(?:, receive)?\)/, "the outbox is not flushed in a preview");
       for (const m of src.matchAll(/[^\n]*\bflushOutbox\([^)]*\)[^\n]*/g)) {
         assert.match(m[0], /if \(!preview\) void flushOutbox\(props\.ownerId\)/, `unguarded flush: ${m[0].trim()}`);
       }
@@ -632,7 +632,7 @@ describe("OG W1 surfaces", () => {
     const loader = code(read("practice/load-practice.ts"));
     assert.match(loader, /acting \? await listReservedForClass\(getDb\(\), acting.classScope, acting.classId\) : new Set/);
     assert.doesNotMatch(loader, /\.catch\(/);
-    assert.match(loader, /assignPool\(item.id, reserved\) !== "mock"/);
+    assert.match(loader, /practiceItemDenial\(item.id, grade, reserved\) === null/);
     const theme = code(read("home/TrainerShell.tsx"));
     assert.doesNotMatch(theme, /localStorage|sessionStorage|fetch\(/);
   });

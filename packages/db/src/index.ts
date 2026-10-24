@@ -75,3 +75,5 @@ export * from "./story-world-service.ts"; // cgo-070: runtime story visibility, 
 export * from "./class-settings-service.ts";
 // cgo-094: the public cohort reader excludes test classes; individual game reads stay unchanged.
 export { getUnitMastery } from "./class-progress.ts";
+
+export * from "./practice-access.ts";
