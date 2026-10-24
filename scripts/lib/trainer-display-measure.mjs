@@ -2,8 +2,8 @@ import { PNG } from 'pngjs';
 function luminance(rgb) {
   return rgb.map(n => { n /= 255; return n <= .04045 ? n / 12.92 : ((n + .055) / 1.055) ** 2.4; }).reduce((sum, n, i) => sum + n * [.2126, .7152, .0722][i], 0);
 }
-async function measure(page) {
-  const geometry = await page.evaluate(() => {
+async function measure(page, extraControls = "") {
+  const geometry = await page.evaluate((extraControls) => {
     const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
     const ctx = canvas.getContext('2d');
     const text = [], excluded = [];
@@ -31,9 +31,9 @@ async function measure(page) {
       const size = parseFloat(cs.fontSize), weight = parseInt(cs.fontWeight) || 400;
       text.push({ label, selector: e.className, colour: colour.slice(0, 3), opacity, rects, minimum: size >= 24 || size >= 18.667 && weight >= 700 ? 3 : 4.5 });
     }
-    const controls = [...document.querySelectorAll('.og-language button')].filter(e => !modal || modal.contains(e)).map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { kind: e.matches('.arena-block') ? 'graphic' : 'control', label: e.textContent.trim() || e.getAttribute('aria-label'), x: r.x + r.width / 2 + scrollX, y: r.y + scrollY, stroke }; });
+    const controls = [...document.querySelectorAll('.og-language button' + (extraControls ? ',' + extraControls : ''))].filter(e => !modal || modal.contains(e)).map(e => { const r = e.getBoundingClientRect(); const style = getComputedStyle(e); ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = style.borderTopColor; ctx.fillRect(0, 0, 1, 1); const stroke = Array.from(ctx.getImageData(0, 0, 1, 1).data); if (!parseFloat(style.borderTopWidth)) stroke[3] = 0; return { kind: e.matches('.arena-block') ? 'graphic' : 'control', label: e.textContent.trim() || e.getAttribute('aria-label'), x: r.x + r.width / 2 + scrollX, y: r.y + scrollY, stroke }; });
     return { controls, overflow: document.documentElement.scrollWidth > innerWidth, targets: [...document.querySelectorAll('button,a,input,select,textarea,summary,[role=button]')].filter(e => e.getClientRects().length && e.checkVisibility({visibilityProperty:true}) && (!modal || modal.contains(e))).map(e => { const target = e.matches('input[type=checkbox],input[type=radio]') ? e.closest('label') ?? e : e; const r = target.getBoundingClientRect(); return { label: target.textContent.trim(), width: r.width, height: r.height }; }), text, excluded };
-  });
+  }, extraControls);
   const hide = await page.addStyleTag({ content: '* { color:transparent!important; -webkit-text-fill-color:transparent!important; text-shadow:none!important; } .og-wordmark { visibility:hidden!important; }' });
   const png = PNG.sync.read(await page.screenshot({ fullPage: true, animations: 'disabled' }));
   await hide.evaluate(e => e.remove());

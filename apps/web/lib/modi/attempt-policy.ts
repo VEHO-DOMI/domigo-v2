@@ -15,12 +15,14 @@ export function knownAttemptMode(mode: string): boolean {
   return (ATTEMPT_MODES as readonly string[]).includes(mode)
     || /^study:(?:(?:vocab|grammar)-practice-[1-3]|checkpoint)$/.test(mode)
     || /^journey:g[1-4]-u\d{2}:[a-z0-9][a-z0-9-]*$/.test(mode)
-    || /^duel:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(mode);
+    || /^(?:duel|live|quiz):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(mode);
 }
 
 /** Established modes keep their input contracts. Trainer modes are vocab-only. */
 export function validModeInput(mode: string, itemId: string | undefined, input: { kind: string; pool?: string }): boolean {
   if (!knownAttemptMode(mode)) return false;
+  if (mode.startsWith("live:")) return itemId === undefined && input.kind === "vocab" && input.pool === undefined;
+  if (mode.startsWith("quiz:")) return itemId === undefined && input.kind === "choice";
   if (mode.startsWith("duel:")) return itemId === undefined && input.kind === "choice";
   if (itemId === undefined) return false;
   if (mode === "grammar") return /^g[1-4]u\d{2}\.gi\./.test(itemId) && ["text", "choice", "matching", "groupSort"].includes(input.kind);

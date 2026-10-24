@@ -6,6 +6,7 @@
  */
 import { sql } from "drizzle-orm";
 import type { DuelBonusReceipt } from "./duel-bonus.ts";
+import type { LiveQuestion, LiveReceipt } from "./live-rules.ts";
 import {
   pgSchema,
   uuid,
@@ -839,3 +840,51 @@ export const classSettings = v2.table("class_settings", {
   gradeBoardOptIn: boolean("grade_board_opt_in").notNull().default(false),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => [check("class_settings_purpose_check", sql`${t.purpose} in ('regular', 'test')`)]);
+
+/** cgo-123: class-scoped game state. No copied names or raw answers. Foreign
+ * keys remove room/member data with the existing identity/class deletion. */
+export const liveRooms = v2.table("live_rooms", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  classId: uuid("class_id").notNull().references(() => v2Classes.id, { onDelete: "cascade" }),
+  grade: smallint("grade").notNull(),
+  kind: text("kind").notNull(),
+  hostId: uuid("host_id").notNull().references(() => v2IdentityUsers.id, { onDelete: "cascade" }),
+  guestId: uuid("guest_id").references(() => v2IdentityUsers.id, { onDelete: "cascade" }),
+  code: text("code").notNull(),
+  mode: text("mode").notNull(),
+  phase: text("phase").notNull(),
+  round: smallint("round").notNull().default(0),
+  questions: jsonb("questions").$type<LiveQuestion[]>().notNull(),
+  phaseAt: timestamp("phase_at", { withTimezone: true }).notNull(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, t => [
+  uniqueIndex("live_rooms_code_unique").on(t.code),
+  index("live_rooms_class_phase_idx").on(t.classId,t.phase),
+  index("live_rooms_host_idx").on(t.hostId), index("live_rooms_guest_idx").on(t.guestId),
+  uniqueIndex("live_rooms_battle_pair_unique").on(sql`least(${t.hostId},${t.guestId})`,sql`greatest(${t.hostId},${t.guestId})`)
+    .where(sql`${t.kind} = 'battle' and ${t.phase} not in ('complete','cancelled')`),
+  uniqueIndex("live_rooms_quiz_class_unique").on(t.classId).where(sql`${t.kind} = 'quiz' and ${t.phase} not in ('complete','cancelled')`),
+  check("live_rooms_kind_check",sql`${t.kind} in ('battle','quiz')`),
+  check("live_rooms_grade_check",sql`${t.grade} between 1 and 4`),
+  check("live_rooms_mode_check",sql`${t.mode} in ('translation','definition','context')`),
+  check("live_rooms_phase_check",sql`${t.phase} in ('pending','lobby','countdown','active','result','complete','cancelled')`),
+  check("live_rooms_round_check",sql`${t.round} >= 0 and ${t.round} < jsonb_array_length(${t.questions})`),
+  check("live_rooms_questions_check",sql`jsonb_typeof(${t.questions}) = 'array' and ((${t.kind} = 'battle' and jsonb_array_length(${t.questions}) = 5) or (${t.kind} = 'quiz' and jsonb_array_length(${t.questions}) in (5,10,15)))`),
+  check("live_rooms_pair_check",sql`(${t.kind} = 'battle' and ${t.guestId} is not null and ${t.hostId} <> ${t.guestId}) or (${t.kind} = 'quiz' and ${t.guestId} is null)`),
+  check("live_rooms_code_check",sql`${t.code} ~ '^[A-Z2-9]{6}$'`),
+]);
+export const liveMembers = v2.table("live_members", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  roomId: uuid("room_id").notNull().references(() => liveRooms.id,{onDelete:"cascade"}),
+  classId: uuid("class_id").notNull().references(() => v2Classes.id,{onDelete:"cascade"}),
+  userId: uuid("user_id").notNull().references(() => v2IdentityUsers.id,{onDelete:"cascade"}),
+  seat: smallint("seat").notNull(),
+  answers: jsonb("answers").$type<(LiveReceipt|null)[]>().notNull().default([]),
+}, t => [
+  uniqueIndex("live_members_room_user_unique").on(t.roomId,t.userId),
+  uniqueIndex("live_members_room_seat_unique").on(t.roomId,t.seat),
+  index("live_members_user_idx").on(t.userId),index("live_members_class_idx").on(t.classId),
+  check("live_members_seat_check",sql`${t.seat} between 0 and 39`),
+  check("live_members_answers_check",sql`jsonb_typeof(${t.answers}) = 'array' and jsonb_array_length(${t.answers}) <= 15`),
+]);
