@@ -25,6 +25,7 @@ export * from "./student-profile-service.ts";
 export * from "./schema.ts";
 export * from "./review.ts";
 export * from "./persist.ts";
+export * from "./practice-receipt.ts";
 export * from "./streak.ts";
 export * from "./studypath.ts";
 export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)
@@ -75,3 +76,5 @@ export * from "./story-world-service.ts"; // cgo-070: runtime story visibility, 
 export * from "./class-settings-service.ts";
 // cgo-094: the public cohort reader excludes test classes; individual game reads stay unchanged.
 export { getUnitMastery } from "./class-progress.ts";
+
+export * from "./practice-access.ts";

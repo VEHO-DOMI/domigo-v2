@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import type { CSSProperties } from "react";
+import { useLearningText } from "@/lib/trainer/LearningShell";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
-import type { Tier, VocabPool } from "@domigo/engine";
-import { xpForTier } from "@domigo/engine";
-import { GrammarItemView, VocabItemView, rotateVocabPool, VOCAB_POOL_LABEL, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
+import { vocabularyContentSnapshot, type Tier, type VocabPool } from "@domigo/engine";
+import { GrammarItemView, VocabItemView, rotateVocabPool, vocabPoolLabel, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
+import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
+import type { AttemptResult } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 import { multipleChoiceBank, type PracticeMode, type Direction } from "../options";
 
@@ -14,21 +15,40 @@ type Mode = "grammar" | "vocab";
 /** "auto" rotates the vocab answer pool per (item, day); a VocabPool forces one. */
 type PoolChoice = "auto" | VocabPool;
 
-export default function PracticeSession({ slug, vocab, grammar, today, ownerId, preview = false, runMode, direction = "auto" }: {
+type Props = {
   slug: string; vocab: VocabItem[]; grammar: GrammarItem[]; today: string;
   /** cgo-047: teacher preview — answers are graded on screen, never sent. */
   preview?: boolean;
   ownerId: string | null;
   runMode?: PracticeMode;
   direction?: Direction;
-}) {
+};
+
+export default function PracticeSession(props: Props) {
+  // A selection/day change starts a new round even when the route slug stays fixed.
+  const round = [props.slug, props.ownerId, props.preview, props.runMode, props.direction,
+    props.today, props.vocab.map(vocabularyContentSnapshot), props.grammar.map(item => item.id)];
+  return <PracticeRound key={JSON.stringify(round)} {...props} />;
+}
+function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, runMode, direction = "auto" }: Props) {
+  const t = useLearningText();
   const [mode, setMode] = useState<Mode>(runMode && runMode !== "grammar" ? "vocab" : "grammar");
   const [vocabPool, setVocabPool] = useState<PoolChoice>(runMode === "mc" ? direction === "deToEn" ? "deToEn" : "definition" : direction);
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
-  const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
+  const [results, setResults] = useState<Array<{ id: string; tier: Tier; xp: number; confirmed: boolean }>>([]);
   const [streak, setStreak] = useState<number | null>(null);
-  useOutboxFlush(!preview, ownerId);
+  const ids = useRef(new Set<string>());
+  const submitted = useRef(false);
+  useEffect(() => { const owned = ids.current; return () => { owned.clear(); }; }, []);
+  const receive = useCallback((id: string, reply: AttemptResult) => {
+    if (preview || !ids.current.has(id) || !reply.ok || reply.queued) return;
+    setResults((old) => old.map((row) => row.id !== id || row.confirmed ? row : {
+      ...row, tier: reply.receipt?.tier ?? reply.tier ?? row.tier, xp: reply.receipt?.xpAwarded ?? reply.xpAwarded ?? 0, confirmed: true,
+    }));
+    if (typeof reply.streak === "number") setStreak(reply.streak);
+  }, [preview]);
+  useOutboxFlush(!preview, ownerId, receive);
 
   const list: Array<GrammarItem | VocabItem> = mode === "grammar" ? grammar : vocab;
   const item = list[i];
@@ -37,70 +57,62 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
   const resolvedPool: VocabPool =
     mode === "vocab" && item ? (vocabPool === "auto" ? rotateVocabPool(item.id, today) : vocabPool) : "carrier";
 
-  const switchMode = (m: Mode) => { setMode(m); setI(0); setAnswered(false); setResults([]); };
-  const switchPool = (p: PoolChoice) => { setVocabPool(p); setI(0); setAnswered(false); setResults([]); };
+  const switchMode = (m: Mode) => { ids.current.clear(); submitted.current = false; setStreak(null); setMode(m); setI(0); setAnswered(false); setResults([]); };
+  const switchPool = (p: PoolChoice) => { ids.current.clear(); submitted.current = false; setStreak(null); setVocabPool(p); setI(0); setAnswered(false); setResults([]); };
   const onResult = (tier: Tier, detail: ResultDetail) => {
-    if (!item) return;
+    if (!item || submitted.current) return;
+    submitted.current = true;
+    const id = crypto.randomUUID(); ids.current.add(id);
     setAnswered(true);
-    setResults((prev) => [...prev, { tier, xp: xpForTier(item.difficulty * 10, tier) }]); // instant optimistic UI
+    // Local feedback is immediate; points require a persisted server receipt.
+    setResults((prev) => [...prev, { id, tier, xp: 0, confirmed: false }]);
 
     // Best-effort persistence via the offline outbox (queues + retries when offline);
     // the server re-grades authoritatively and returns the updated daily streak.
-    void attemptSender(preview, ownerId)({
-      clientAttemptId: crypto.randomUUID(),
+    void sendCompletedAttempt(attemptSender(preview, ownerId), {
+      clientAttemptId: id,
       itemId: detail.itemId,
       mode: runMode === "daily" ? "daily" : "practice",
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
-      if (typeof r.streak === "number") setStreak(r.streak);
-    });
+    }, detail).then((reply) => receive(id, reply)).catch(() => { /* no receipt, no XP */ });
   };
-  const next = () => { setAnswered(false); setI((x) => Math.min(x + 1, list.length - 1)); };
+  const next = () => { submitted.current = false; setAnswered(false); setI((x) => Math.min(x + 1, list.length - 1)); };
 
   const xpTotal = results.reduce((s, r) => s + r.xp, 0);
   const counts = results.reduce<Record<string, number>>((m, r) => ({ ...m, [r.tier]: (m[r.tier] ?? 0) + 1 }), {});
   const grade = slug.match(/^g(\d)/)?.[1];
-  const tabStyle = (active: boolean): CSSProperties => ({
-    border: active ? "none" : "1.5px solid var(--card-border)", borderRadius: 999, padding: "7px 16px", cursor: "pointer",
-    background: active ? "var(--accent)" : "var(--card)", color: active ? "#fff" : "var(--text-secondary)",
-    fontSize: 14, fontWeight: 700, fontFamily: "var(--font-body)",
-  });
-  const chipStyle = (active: boolean): CSSProperties => ({
-    border: active ? "none" : "1.5px solid var(--card-border)", borderRadius: 999, padding: "5px 12px", cursor: "pointer",
-    background: active ? "var(--accent)" : "var(--card)", color: active ? "#fff" : "var(--text-secondary)",
-    fontSize: 12.5, fontWeight: 700, fontFamily: "var(--font-body)",
-  });
+  const tierNames = { correct: t("richtig", "correct"), partial: t("fast", "partial"), close: t("knapp", "close"), wrong: t("noch offen", "to revisit") };
 
   return (
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{runMode === "daily" ? "Daily Challenge" : runMode ? "Practice" : `Chapter ${Number(slug.slice(-2))}`}</h1>
-        <Link href={runMode ? `/modi${preview ? `?jahrgang=${grade}` : ""}` : "/practice"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all Chapters</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{runMode === "daily" ? t("Tagesrunde", "Daily Challenge") : runMode ? t("Üben", "Practice") : `Chapter ${Number(slug.slice(-2))}`}</h1>
+        <Link href={runMode ? `/modi${preview ? `?jahrgang=${grade}` : ""}` : "/practice"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}>{runMode ? t("← Spielarten", "← Modes") : t("← Alle Chapters", "← All Chapters")}</Link>
       </div>
 
       {!runMode && <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
-        <button style={tabStyle(mode === "grammar")} onClick={() => switchMode("grammar")}>Grammar ({grammar.length})</button>
-        <button style={tabStyle(mode === "vocab")} onClick={() => switchMode("vocab")}>Vocab ({vocab.length})</button>
+        <button className="learning-toggle" aria-pressed={mode === "grammar"} onClick={() => switchMode("grammar")}>{t("Grammatik", "Grammar")} ({grammar.length})</button>
+        <button className="learning-toggle" aria-pressed={mode === "vocab"} onClick={() => switchMode("vocab")}>{t("Wörter", "Vocabulary")} ({vocab.length})</button>
       </div>}
 
       {mode === "vocab" && !runMode && (
-        <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }} role="group" aria-label="Vocab exercise mode">
-          <button style={chipStyle(vocabPool === "auto")} onClick={() => switchPool("auto")}>Mix</button>
+        <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }} role="group" aria-label={t("Wörter üben", "Vocabulary mode")}>
+          <button className="learning-toggle" aria-pressed={vocabPool === "auto"} onClick={() => switchPool("auto")}>Mix</button>
           {VOCAB_POOLS.map((p) => (
-            <button key={p} style={chipStyle(vocabPool === p)} onClick={() => switchPool(p)}>{VOCAB_POOL_LABEL[p]}</button>
+            <button key={p} className="learning-toggle" aria-pressed={vocabPool === p} onClick={() => switchPool(p)}>{vocabPoolLabel(p, t("de", "en") as "de" | "en")}</button>
           ))}
         </div>
       )}
 
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
-        <span>Item {Math.min(i + 1, list.length)} / {list.length}</span>
+        <span>{t("Frage", "Item")} {Math.min(i + 1, list.length)} / {list.length}</span>
         <span>
           {xpTotal} XP{" "}
           {(["correct", "partial", "close", "wrong"] as Tier[])
             .filter((t) => counts[t])
-            .map((t) => `· ${counts[t]} ${t}`)
+            .map((tier) => `· ${counts[tier]} ${tierNames[tier]}`)
             .join(" ")}
           {streak ? ` · 🔥 ${streak}` : ""}
         </span>
@@ -108,17 +120,17 @@ export default function PracticeSession({ slug, vocab, grammar, today, ownerId, 
 
       {item ? (
         mode === "grammar" ? (
-          <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile />
+          <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile hideXp hideMeta />
         ) : (
-          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} pool={resolvedPool} bank={runMode === "mc" ? multipleChoiceBank(item as VocabItem) : undefined} />
+          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} hideXp hideMeta pool={resolvedPool} bank={runMode === "mc" ? multipleChoiceBank(item as VocabItem) : undefined} />
         )
       ) : (
-        <p>No items in this mode.</p>
+        <p>{t("Hier gibt es gerade keine Fragen.", "No items in this mode.")}</p>
       )}
 
-      {answered && i >= list.length - 1 && runMode ? <Link className="dg-btn" href={`/home${preview ? `?jahrgang=${grade}` : ""}`}>Done →</Link> : answered && (
+      {answered && i >= list.length - 1 && runMode ? <Link className="dg-btn" href={`/home${preview ? `?jahrgang=${grade}` : ""}`}>{t("Fertig →", "Done →")}</Link> : answered && (
         <button className="dg-btn" onClick={next} disabled={i >= list.length - 1} style={{ marginTop: 14 }}>
-          {i >= list.length - 1 ? "End of set" : "Next →"}
+          {i >= list.length - 1 ? t("Alles geschafft", "End of set") : t("Weiter →", "Next →")}
         </button>
       )}
     </main>

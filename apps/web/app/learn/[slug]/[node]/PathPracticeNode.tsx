@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
+import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { XP_WEIGHT, xpForTier } from "@domigo/engine";
+import { vocabularyContentSnapshot, XP_WEIGHT, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
@@ -17,7 +19,7 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-export default function PathPracticeNode({ preview = false, ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: { preview?: boolean; ownerId: string | null;
+type Props = { preview?: boolean; ownerId: string | null;
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
@@ -26,7 +28,14 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
    *  J-1 journey node, `journey:<unit>:<node>`. A journey node DERIVES its progress
    *  from these attempts, so it does NOT write the study_path_progress table (F3). */
   attemptMode?: string;
-}) {
+};
+export default function PathPracticeNode(props: Props) {
+  const round = [props.ownerId, props.preview, props.unitSlug, props.nodeId, props.isCheckpoint, props.attemptMode,
+    props.items.map(({ kind, item }) => kind === "vocab" ? vocabularyContentSnapshot(item as VocabItem) : item.id)];
+  return <PathPracticeRound key={JSON.stringify(round)} {...props} />;
+}
+function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheckpoint, items, attemptMode }: Props) {
+  const t = useLearningText();
   const mode = attemptMode ?? `study:${nodeId}`;
   const isJourney = mode.startsWith("journey:");
   const [i, setI] = useState(0);
@@ -38,7 +47,7 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
   useOutboxFlush(!preview, ownerId);
 
   const current = items[i];
-  const title = isCheckpoint ? "Checkpoint" : "Practice";
+  const title = isCheckpoint ? t("Zeig, was du kannst", "Checkpoint") : t("Üben", "Practice");
 
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!current) return;
@@ -46,14 +55,14 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
     setResults((prev) => [...prev, { tier, xp: xpForTier(current.item.difficulty * 10, tier) }]);
 
     // Per-item attempt → the existing graded/idempotent path (feeds review_queue + streak + XP).
-    void attemptSender(preview, ownerId)({
+    void sendCompletedAttempt(attemptSender(preview, ownerId), {
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    }, detail).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
     });
   };
@@ -96,16 +105,16 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
   if (done || !current) {
     return (
       <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
-        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title} complete</h1>
+        {preview && <p role="status">{t("Vorschau — nichts gespeichert", "Preview — nothing saved")}</p>}
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title} · {t("geschafft", "complete")}</h1>
         <p style={{ fontSize: 28, margin: "4px 0", color: "#e6a700", letterSpacing: 2 }}>
           {"★".repeat(stars)}
           {"☆".repeat(3 - stars)}
         </p>
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>
-          {xpTotal} XP{streak ? ` · 🔥 ${streak}-day streak` : ""}
+          {xpTotal} XP{streak ? t(` · 🔥 ${streak} Tage in Folge`, ` · 🔥 ${streak}-day streak`) : ""}
         </p>
-        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Back to path</Link>
+        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}>{t("← Zurück zum Lernpfad", "← Back to path")}</Link>
       </main>
     );
   }
@@ -114,22 +123,22 @@ export default function PathPracticeNode({ preview = false, ownerId, unitSlug, n
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
         <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title}</h1>
-        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Path</Link>
+        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}>{t("← Lernpfad", "← Path")}</Link>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
-        <span>Item {Math.min(i + 1, items.length)} / {items.length}</span>
+        <span>{t("Frage", "Item")} {Math.min(i + 1, items.length)} / {items.length}</span>
         <span>{xpTotal} XP{streak ? ` · 🔥 ${streak}` : ""}</span>
       </div>
 
       {current.kind === "grammar" ? (
-        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} hideHint={isCheckpoint} />
+        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} hideHint={isCheckpoint} hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} hideHint={isCheckpoint} />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} hideHint={isCheckpoint} hideMeta />
       )}
 
       {answered && (
         <button className="dg-btn" onClick={next} style={{ marginTop: 14 }}>
-          {isLast ? "Finish →" : "Next →"}
+          {isLast ? t("Fertig →", "Finish →") : t("Weiter →", "Next →")}
         </button>
       )}
     </main>

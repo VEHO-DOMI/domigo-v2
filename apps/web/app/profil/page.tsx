@@ -1,3 +1,4 @@
+import { TrainerText } from "@/lib/trainer/preferences";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { resolveStudentView, trainerGrade } from "@/lib/student-view";
@@ -17,9 +18,9 @@ export default async function ProfilePage({ searchParams }: { searchParams: Prom
   const profile = await readTrainerProfile(view);
   return <TrainerShell grade={grade} preview={preview} screen="profil">
     <main className="og-screen">
-      <Link className="og-back" href={`/home${preview ? `?jahrgang=${grade}` : ""}`}>← Back</Link>
+      <Link className="og-back" href={`/home${preview ? `?jahrgang=${grade}` : ""}`}>← <TrainerText grade={grade} de="Zurück" en="Back" /></Link>
       <PlayerCard profile={profile} grade={grade} preview={preview} />
-      <p className="og-streak">🔥 Streak: {profile.streak ?? "—"}</p>
+      <p className="og-streak">🔥 <TrainerText grade={grade} de="Serie" en="Streak" />: {profile.streak ?? "—"}</p>
       <AvatarPicker key={acting?.userId ?? "preview"} initialAvatar={profile.avatar} ownerId={acting?.userId ?? null} preview={preview} grade={grade} />
     </main>
   </TrainerShell>;
