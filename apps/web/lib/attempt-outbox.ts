@@ -94,9 +94,14 @@ function stageCheck(body: OwnedAttempt): { body: OwnedAttempt; queued: boolean }
  * already holds it, a fallback stage written in a later send (same event, other
  * bytes, written while localStorage was back but before the IndexedDB conflict
  * surfaced) is overwritten with that copy, so an IndexedDB outage cannot replay it. */
-function restageCheck(entry: QueuedAttempt): void {
+function restageCheck(entry: QueuedAttempt, onlyIfStaged = false): void {
   if (entry.attempt?.mode !== "vocabulary-check") return;
-  try { localStorage.setItem(CHECK_STAGE + entry.clientAttemptId, JSON.stringify(entry)); } catch { /* unavailable stage: the IndexedDB copy remains */ }
+  try {
+    const key = CHECK_STAGE + entry.clientAttemptId;
+    // Replay-time realignment must not resurrect a stage that a concurrent acknowledgement just removed.
+    if (onlyIfStaged && localStorage.getItem(key) === null) return;
+    localStorage.setItem(key, JSON.stringify(entry));
+  } catch { /* unavailable stage: the IndexedDB copy remains */ }
 }
 function allStagedChecks(): QueuedAttempt[] {
   const entries: QueuedAttempt[] = [];
@@ -221,7 +226,7 @@ async function dequeue(body: OwnedAttempt): Promise<void> {
   try { await runTx("readwrite", (s) => s.delete(storageKey(body))); } catch { /* replay is idempotent */ }
 }
 
-async function allQueued(): Promise<QueuedAttempt[]> {
+async function allQueued(ownerId: string): Promise<QueuedAttempt[]> {
   const staged = allStagedChecks();
   if (!hasIDB()) return staged;
   try {
@@ -231,7 +236,8 @@ async function allQueued(): Promise<QueuedAttempt[]> {
     const entries = new Map(staged.map(entry => [entry.clientAttemptId, entry]));
     for (const entry of stored) {
       const stage = entries.get(entry.clientAttemptId);
-      if (stage && JSON.stringify(stage) !== JSON.stringify(entry)) restageCheck(entry);
+      // Only this owner's rows are realigned; the stage is re-read right before the write.
+      if (stage && entry.attempt?.ownerId === ownerId && JSON.stringify(stage) !== JSON.stringify(entry)) restageCheck(entry, true);
       entries.set(entry.clientAttemptId, entry);
     }
     return [...entries.values()];
@@ -301,7 +307,7 @@ export function flushOutbox(ownerId: string | null): Promise<number> {
   const running = drains.get(binding);
   if (running) return running;
   const run = (async () => {
-    const items = await allQueued();
+    const items = await allQueued(ownerId);
     let flushed = 0;
     for (const entry of items) {
       if (activeBinding !== binding) break;
