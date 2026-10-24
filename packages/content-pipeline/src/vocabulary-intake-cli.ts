@@ -27,6 +27,19 @@ export function reportOutputPath(requested: string, repository: string): string 
 
 const hash = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 export function runVocabularyIntake(args: string[]): void {
+  try { runVocabularyIntakeInternal(args); }
+  catch (error) {
+    // Filesystem errors can contain the resolved target of an innocently named
+    // output alias. No IO error may escape the public CLI with a private path.
+    const code = (error as NodeJS.ErrnoException)?.code;
+    if (code === "EEXIST") throw Error("intake output already exists; use a new output or --verify");
+    if (typeof code === "string") throw Error("intake could not read or write its files");
+    if (error instanceof SyntaxError) throw Error("intake input contains invalid JSON");
+    throw error;
+  }
+}
+
+function runVocabularyIntakeInternal(args: string[]): void {
   const value = (flag: string) => {
     const i = args.indexOf(flag);
     if (i < 0 || !args[i+1] || args[i+1]!.startsWith("--")) throw Error(`vocabulary-intake requires ${flag}`);

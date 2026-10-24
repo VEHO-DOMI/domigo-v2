@@ -117,6 +117,14 @@ test("real CLI reads synthetic DOCX, includes current corpus, verifies and detec
     assert.notEqual(run().status,0,"must not overwrite an existing artifact");
     data.rows.splice(1,1);fs.writeFileSync(out,JSON.stringify(data,null,2)+"\n");
     const tamper=run(["--verify"]);assert.notEqual(tamper.status,0);assert.match(tamper.stderr,/intake verification failed/);
+    const privateTargetDir=path.join(dir,"PRIVATE_OUTPUT_TARGET");fs.mkdirSync(privateTargetDir);
+    const privateTarget=path.join(privateTargetDir,"original.docx");fs.copyFileSync(path.join(dir,"appendix.docx"),privateTarget);
+    const before=fs.readFileSync(privateTarget);const alias=path.join(dir,"apparently-public-report.json");fs.symlinkSync(privateTarget,alias);
+    const aliasArgs=args.map((arg,i)=>args[i-1] === "--out" ? alias : arg);
+    const refused=spawnSync(process.execPath,aliasArgs,{cwd:REPO_ROOT,encoding:"utf8"});
+    assert.notEqual(refused.status,0);assert.match(refused.stderr,/output already exists/);
+    assert.ok(!refused.stderr.includes(privateTargetDir) && !refused.stdout.includes(privateTargetDir));
+    assert.deepEqual(fs.readFileSync(privateTarget),before,"original source must be preserved");
     const privateDir=path.join(dir,"PRIVATE_SOURCE_SENTINEL");fs.mkdirSync(privateDir);
     const corrupt=path.join(privateDir,"private-name.docx");fs.writeFileSync(corrupt,"not a zip archive");
     fs.writeFileSync(manifest,JSON.stringify([1,2,3,4].map(grade=>({grade,path:corrupt}))));
