@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useRef, useState } from "react";
 import type { GrammarItem } from "@domigo/content-schema";
 import type { GrammarInput } from "@domigo/engine";
@@ -11,7 +12,7 @@ export type GrammarSubmit = (item: GrammarItem, input: GrammarInput, hintUsed: b
 export default function GrammarExercise({ item, grade, memory, submit, next }: {
   item: GrammarItem; grade: number; memory: boolean; submit: GrammarSubmit; next: () => void;
 }) {
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   const [text, setText] = useState<string[]>([]);
   const [choice, setChoice] = useState("");
   const [map, setMap] = useState<Record<string, string>>({});
@@ -49,7 +50,7 @@ export default function GrammarExercise({ item, grade, memory, submit, next }: {
       <fieldset disabled={busy || done}>
         <legend className="og-sr-only">{de ? "Deine Antwort" : "Your answer"}</legend>
         {isChoice && <div className="og-grammar-options">{options.map((option) => <button type="button" key={option} aria-pressed={choice === option} onClick={() => setChoice(option)}>{option}</button>)}</div>}
-        {memory ? <GrammarMemory pairs={item.pairs} value={map} onChange={setMap} disabled={busy || done} /> : (isMatch || isGroup) && rows.map((row) => <label className="og-grammar-match" key={row}><span>{row}</span><select aria-label={row} value={map[row] ?? ""} onChange={(event) => setMap({ ...map, [row]: event.target.value })}><option value="">—</option>{choices.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>)}
+        {memory ? <GrammarMemory de={de} pairs={item.pairs} value={map} onChange={setMap} disabled={busy || done} /> : (isMatch || isGroup) && rows.map((row) => <label className="og-grammar-match" key={row}><span>{row}</span><select aria-label={row} value={map[row] ?? ""} onChange={(event) => setMap({ ...map, [row]: event.target.value })}><option value="">—</option>{choices.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>)}
         {!isChoice && !isMatch && !isGroup && Array.from({ length: blanks }, (_, i) => <label className="og-grammar-input" key={i}>{de ? "Deine Antwort" : "Your answer"}{blanks > 1 ? ` ${i + 1}` : ""}<input autoComplete="off" value={text[i] ?? ""} onChange={(event) => setText((old) => Array.from({ length: blanks }, (_, j) => j === i ? event.target.value : old[j] ?? ""))} /></label>)}
         {gloss.length > 0 && <p className="og-grammar-gloss">{gloss.map((g) => `${g.word}: ${g.de}`).join(" · ")}</p>}
         {!done && <button className="og-grammar-hint" type="button" onClick={() => setHint(true)}>💡 {de ? "Hinweis" : "Hint"}</button>}

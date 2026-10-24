@@ -4,12 +4,23 @@ import { transpileModule } from "typescript";
 import { acknowledgeAttempt, emptyAttemptAck } from "../../../packages/game-paint/src/ack.ts";
 import type { PaintAttemptSender } from "../../../packages/game-paint/src/cards/attempt.ts";
 import { afterEach, beforeEach, test } from "node:test";
-import { bindOutboxOwner, flushOutbox, sendAttempt, subscribeOutboxReplies, type AttemptResult } from "./attempt-outbox.ts";
+import { bindOutboxOwner, flushOutbox, sendAttempt, subscribeOutboxReplies, type AttemptResult, type AttemptBody } from "./attempt-outbox.ts";
+import { sendCompletedAttempt } from "./vocabulary-history-client.ts";
+import type { ResultDetail } from "@domigo/task-ui";
 import { attemptSender } from "./preview-attempt.ts";
 import { startOutboxFlush, type OnlineTarget } from "./useOutboxFlush.ts";
 
 const originalFetch = globalThis.fetch;
 const originalIDB = globalThis.indexedDB;
+const originalLocalDescriptor = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+let localRows = new Map<string, string>();
+function localStore(fail = false): Storage {
+  return {get length() {return localRows.size;}, key: i => [...localRows.keys()][i] ?? null,
+    getItem: key => localRows.get(key) ?? null,
+    setItem: (key,value) => {if(fail) throw Error("synthetic quota"); localRows.set(key,value);},
+    removeItem: key => {localRows.delete(key);}, clear: () => localRows.clear(),
+  };
+}
 const A = "fixture-child-a", B = "fixture-child-b";
 const body = { clientAttemptId: "00000000-0000-4000-8000-000000000062", itemId: "g2-u01.v.001", mode: "practice", input: { kind: "vocab", value: "fixture" }, latencyMs: null, hintUsed: false };
 const tick = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
@@ -81,11 +92,13 @@ let store: ReturnType<typeof memoryIDB>;
 let release = () => {};
 const listeners = new Set<() => void>();
 const target: OnlineTarget = { addEventListener: (_t, f) => { listeners.add(f); }, removeEventListener: (_t, f) => { listeners.delete(f); } };
-beforeEach(() => { store = memoryIDB(); globalThis.indexedDB = store.factory; release = bindOutboxOwner(A); });
+beforeEach(() => { localRows = new Map(); Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore()}); store = memoryIDB(); globalThis.indexedDB = store.factory; release = bindOutboxOwner(A); });
 afterEach(async () => {
   release(); bindOutboxOwner(null)(); listeners.clear();
   await tick(); await tick(); // let any already-started IDB read finish before restoring boundaries
   globalThis.fetch = originalFetch; globalThis.indexedDB = originalIDB;
+  if(originalLocalDescriptor) Object.defineProperty(globalThis,"localStorage",originalLocalDescriptor);
+  else Reflect.deleteProperty(globalThis,"localStorage");
 });
 async function offline(owner = A, attempt = body) {
   globalThis.fetch = async () => { throw new Error("offline"); };
@@ -663,4 +676,168 @@ test("replay notifies only after its successful local dequeue has completed", as
     // Check outside the listener: the outbox intentionally catches listener errors.
     assert.deepEqual(observed, [{ id: body.clientAttemptId, queuedRows: 0 }]);
   } finally { stop(); }
+});
+
+test("lost first acknowledgement replays the original receipt without a second incremental reward", async () => {
+  const store = memoryIDB(); globalThis.indexedDB = store.factory;
+  bindOutboxOwner(A);
+  let booked = false, bookings = 0;
+  const original = { tier: "partial" as const, xpAwarded: 7 };
+  globalThis.fetch = async () => {
+    if (!booked) { booked = true; bookings++; throw new Error("first response lost after booking"); }
+    return Response.json({ ok: true, duplicate: true, tier: "correct", xpAwarded: 20, receipt: original });
+  };
+  assert.deepEqual(await sendAttempt(body, A), { ok: false, queued: true });
+  const replies: AttemptResult[] = [];
+  const stop = subscribeOutboxReplies(A, (_id, reply) => replies.push(reply));
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(bookings, 1); assert.equal(store.rows.size, 0);
+  assert.equal(replies[0]?.xpAwarded, 0); assert.deepEqual(replies[0]?.receipt, original);
+  stop();
+});
+test("duplicate acknowledgement overtakes first response with the same original receipt", async () => {
+  const store = memoryIDB(); globalThis.indexedDB = store.factory;
+  bindOutboxOwner(A);
+  const original = { tier: "correct" as const, xpAwarded: 20 };
+  let release: (() => void) | undefined;
+  globalThis.fetch = async () => {
+    if (release) return Response.json({ ok: true, duplicate: true, ...original, receipt: original });
+    return new Promise<Response>(resolve => { release = () => resolve(Response.json({ ok: true, ...original, receipt: original })); });
+  };
+  const first = sendAttempt(body, A);
+  while (!release) await tick();
+  const replies: AttemptResult[] = [];
+  const stop = subscribeOutboxReplies(A, (_id, reply) => replies.push(reply));
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(replies[0]?.xpAwarded, 0); assert.deepEqual(replies[0]?.receipt, original);
+  release(); assert.deepEqual((await first).receipt, original); stop();
+});
+for (const receipt of [{tier:"invented",xpAwarded:20},{tier:"correct",xpAwarded:-1},{tier:"correct",xpAwarded:"20"},null]) {
+  test(`malformed stored receipt is not forwarded: ${JSON.stringify(receipt)}`, async () => {
+    bindOutboxOwner(A); globalThis.indexedDB = undefined as unknown as IDBFactory;
+    globalThis.fetch = async () => Response.json({ ok: true, duplicate: true, receipt });
+    assert.equal((await sendAttempt(body, A)).receipt, undefined);
+  });
+}
+
+
+test("completion observations survive offline replay unchanged under the original attempt identity", async () => {
+  const observed = { schema: "vocabulary-completion@1" as const, itemRevision: 2, displayedContentSha256: "a".repeat(64), maxChecks: 3 as const,
+    checks: [{ reportedTier: "wrong" as const, helpShown: [] }, { reportedTier: "correct" as const, helpShown: ["hint" as const] }] };
+  const payload = { ...body, vocabularyHistory: observed, hintUsed: true };
+  globalThis.fetch = async () => { throw Error("offline"); };
+  assert.deepEqual(await sendAttempt(payload, A), { ok: false, queued: true });
+  observed.checks[0]!.helpShown = ["hint"];
+  const received: AttemptBody[] = [];
+  globalThis.fetch = async (_url, init) => { received.push(JSON.parse(String(init!.body))); return receipt(); };
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(received[0]!.clientAttemptId, body.clientAttemptId);
+  assert.deepEqual(received[0]!.vocabularyHistory!.checks, [{ reportedTier: "wrong", helpShown: [] }, { reportedTier: "correct", helpShown: ["hint"] }]);
+});
+
+for (const replacement of ["different owner", "same owner", "away and back"] as const) test(`hash preparation cannot adopt ${replacement} page; original bytes remain replayable`, async () => {
+  const originalCrypto = globalThis.crypto;
+  let finishDigest!: () => void;
+  Object.defineProperty(globalThis, "crypto", { configurable: true, value: { subtle: { digest: () => new Promise<ArrayBuffer>(resolve => {
+    finishDigest = () => resolve(new Uint8Array(32).buffer);
+  }) } } });
+  const detail: ResultDetail = { kind: "vocab", itemId: body.itemId, input: { kind: "vocab", value: "fixture", pool: "carrier" }, history: {
+    schema: "vocabulary-completion@1", itemRevision: 1, contentSnapshot: "synthetic snapshot", maxChecks: 3,
+    checks: [{ reportedTier: "wrong", helpShown: [] }, { reportedTier: "correct", helpShown: ["hint"] }],
+  } };
+  let sends = 0;
+  globalThis.fetch = async () => { sends++; return receipt(); };
+  try {
+    const pending = sendCompletedAttempt(attemptSender(false, A), body, detail);
+    assert.equal(typeof finishDigest, "function");
+    release(); release = bindOutboxOwner(replacement === "same owner" ? A : B);
+    if (replacement === "away and back") { release(); release = bindOutboxOwner(A); }
+    finishDigest();
+    assert.deepEqual(await pending, { ok: false, queued: true });
+    assert.equal(sends, 0, "no direct request through the replacement page");
+    if (replacement === "different owner") { assert.equal(await flushOutbox(B), 0); release(); release = bindOutboxOwner(A); }
+    assert.equal(await flushOutbox(A), 1, "a separate owner-authorized drain can replay the saved body");
+    assert.equal(sends, 1);
+  } finally { Object.defineProperty(globalThis, "crypto", { configurable: true, value: originalCrypto }); }
+});
+
+const historyBody = (): AttemptBody => ({ ...structuredClone(body), mode:"vocabulary-check",
+  vocabularyCheck:{schema:"vocabulary-check@1",visitId:"00000000-0000-4000-8000-000000000010",checkNumber:1,maxChecks:3,
+    itemRevision:1,displayedContentSha256:null,sourceMode:"practice",checkedAt:null,reportedTier:"wrong",helpShown:[]},
+});
+test("history stage is durable synchronously before IndexedDB commits", async () => {
+  globalThis.fetch = async () => {throw Error("offline");};
+  const pending = sendAttempt(historyBody(),A);
+  assert.equal(localRows.size,1); assert.equal(store.rows.size,0);
+  const first = JSON.parse([...localRows.values()][0]!); assert.equal(first.attempt.ownerId,A); assert.equal(first.attempt.vocabularyCheck.checkNumber,1);
+  assert.deepEqual(await pending,{ok:false,queued:true}); assert.equal(store.rows.size,1);
+});
+test("history staging alone survives missing IndexedDB and replays only for its owner", async () => {
+  globalThis.indexedDB = undefined as unknown as IDBFactory;
+  globalThis.fetch = async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  let posted=0; globalThis.fetch=async () => {posted++;return Response.json({ok:true,kind:"vocabulary-check"});};
+  bindOutboxOwner(B); assert.equal(await flushOutbox(B),0); assert.equal(posted,0); assert.equal(localRows.size,1);
+  bindOutboxOwner(A); assert.equal(await flushOutbox(A),1); assert.equal(posted,1); assert.equal(localRows.size,0);
+});
+test("both pending copies are removed only after confirmed history acknowledgement", async () => {
+  globalThis.fetch=async () => Response.json({ok:false,error:"persistence_unavailable"},{status:503});
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,1); assert.equal(store.rows.size,1);
+  globalThis.fetch=async () => Response.json({ok:true,kind:"vocabulary-check"});
+  assert.equal(await flushOutbox(A),1); assert.equal(localRows.size,0); assert.equal(store.rows.size,0);
+});
+test("history staged duplicate keeps its first payload before either asynchronous write", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  const first=sendAttempt(historyBody(),A); const altered=historyBody(); altered.input={kind:"vocab",value:"changed",pool:"carrier"};
+  const second=sendAttempt(altered,A); await Promise.all([first,second]);
+  const staged=JSON.parse([...localRows.values()][0]!); assert.deepEqual(staged.attempt.input,body.input);
+  assert.deepEqual((([...store.rows.values()][0]) as {attempt:AttemptBody}).attempt.input,body.input);
+});
+test("unavailable synchronous staging still uses IndexedDB without claiming missing storage", async () => {
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore(true)});
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  globalThis.indexedDB=undefined as unknown as IDBFactory;
+  assert.deepEqual(await sendAttempt({...historyBody(),clientAttemptId:crypto.randomUUID()},A),{ok:false,queued:false});
+});
+test("existing completion payloads never enter the synchronous history stage, even on a conflicting resend", async () => {
+  await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1); // PRUEFER-523 F1: the IndexedDB conflict path must not stage a completion
+});
+// cgo-145: the first durable copy survives alternating store outages (Codex probe parent-cross-store, 24.10.).
+test("first durable IndexedDB check survives a later conflicting fallback stage and an IndexedDB outage", async () => {
+  // (1) localStorage unavailable: the original lands only in IndexedDB.
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore(true)});
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  // (2) localStorage works again: the same event id is re-sent with an altered answer.
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore()});
+  const altered=historyBody(); altered.input={kind:"vocab",value:"changed"};
+  assert.deepEqual(await sendAttempt(altered,A),{ok:false,queued:true}); assert.equal(localRows.size,1); assert.equal(store.rows.size,1);
+  assert.deepEqual(JSON.parse([...localRows.values()][0]!).attempt.input,body.input);
+  assert.deepEqual((([...store.rows.values()][0]) as {attempt:AttemptBody}).attempt.input,body.input);
+  // (3) IndexedDB unavailable: the replay still sends the original, never the altered copy.
+  globalThis.indexedDB=undefined as unknown as IDBFactory;
+  const sent:string[]=[]; globalThis.fetch=async (_url,init) => {sent.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:true,kind:"vocabulary-check"});};
+  assert.equal(await flushOutbox(A),1); assert.deepEqual(sent,[body.input.value]); assert.equal(localRows.size,0);
+});
+test("a diverged fallback stage is realigned to the durable IndexedDB copy during replay", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  // A stage that diverged from the committed copy (written while the IndexedDB open was blocked).
+  const key=[...localRows.keys()][0]!, diverged=JSON.parse(localRows.get(key)!); diverged.attempt.input={kind:"vocab",value:"changed"}; localRows.set(key,JSON.stringify(diverged));
+  let posted:string[]=[]; globalThis.fetch=async (_url,init) => {posted.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:false,error:"persistence_unavailable"},{status:503});};
+  assert.equal(await flushOutbox(A),0); assert.deepEqual(posted,[body.input.value]);
+  assert.deepEqual(JSON.parse(localRows.get(key)!).attempt.input,body.input);
+  globalThis.indexedDB=undefined as unknown as IDBFactory; posted=[];
+  globalThis.fetch=async (_url,init) => {posted.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:true,kind:"vocabulary-check"});};
+  assert.equal(await flushOutbox(A),1); assert.deepEqual(posted,[body.input.value]); assert.equal(localRows.size,0);
+});
+test("replay realignment never resurrects a stage that a concurrent acknowledgement removed", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  const key=[...localRows.keys()][0]!, diverged=JSON.parse(localRows.get(key)!); diverged.attempt.input={kind:"vocab",value:"changed"}; localRows.set(key,JSON.stringify(diverged));
+  // PRUEFER-523 F2: the stale stage snapshot was read, then a concurrent acknowledgement cleared the stage before IndexedDB answered.
+  const pending=flushOutbox(A); localRows.clear();
+  assert.equal(await pending,0); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
 });

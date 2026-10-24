@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { it } from "node:test";
 import fs from "node:fs";
-import { AVATAR_NAMES, avatarPath } from "./avatar.ts";
+import { AVATAR_NAMES, AVATARS, avatarName, avatarPath } from "./avatar.ts";
 it("fifty named real PNG avatars, paths bounded to the fixed catalog", () => {
   assert.equal(AVATAR_NAMES.length, 50);
   for (let n = 1; n <= 50; n++) {
@@ -27,4 +27,21 @@ it("trainer year is bound to the child; an unknown or failed year never chooses 
   assert.equal(trainerGrade((await resolveStudentView("4"))!), null);
   fixture.session = { user: { id: "test-teacher", role: "teacher", classId: null, scope: [] } };
   assert.equal(trainerGrade((await resolveStudentView("4"))!), 4);
+});
+
+it("avatar descriptions follow the pictured figures in both languages, with matching fallback", () => {
+  assert.deepEqual(AVATARS.map(a => a.id), Array.from({ length: 50 }, (_, i) => i + 1));
+  for (const language of ["de", "en"] as const) {
+    assert.equal(new Set(AVATARS.map(a => a[language])).size, 50);
+    for (const invalid of [-1, 0, 51, 1.5, NaN, Infinity]) {
+      assert.equal(avatarName(invalid, language), avatarName(1, language));
+      assert.equal(avatarPath(invalid), avatarPath(1));
+    }
+  }
+  // Visually audited regressions: these files contain an astronaut, red panda,
+  // human/machine face and book, not the previous cat/owl/slime/sword labels.
+  assert.equal(avatarName(2), "Astronaut");
+  assert.equal(avatarName(3, "de"), "Roter Panda");
+  assert.equal(avatarName(37), "Cyborg");
+  assert.equal(avatarName(50, "de"), "Buch");
 });

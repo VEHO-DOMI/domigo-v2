@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useRef, useState } from "react";
 import { spellingAnswer, spellingLayout } from "@domigo/engine";
 import { fullAnswer, shuffle, spellingWords } from "@/lib/modi/decks";
@@ -7,7 +8,8 @@ import type { GameProps, ModeReply } from "@/lib/modi/types";
 export default function Spelling(props: GameProps) {
   const [deck] = useState(() => spellingWords(props.words));
   const [index, setIndex] = useState(0);
-  if (!deck[index]) return <p>{props.grade === 1 ? "Keine passenden Wörter. Wähle andere Chapters." : "No suitable words. Choose different Chapters."}</p>;
+  const de = useTrainerLanguage(props.grade) === "de";
+  if (!deck[index]) return <p>{de ? "Keine passenden Wörter. Wähle andere Chapters." : "No suitable words. Choose different Chapters."}</p>;
   return <SpellingWord key={index} {...props} words={[deck[index]!]} index={index} total={deck.length} next={() => index + 1 === deck.length ? props.finish() : setIndex(index + 1)} />;
 }
 function SpellingWord({ words, grade, submit, index, total, next }: GameProps & { index: number; total: number; next: () => void }) {
@@ -19,7 +21,7 @@ function SpellingWord({ words, grade, submit, index, total, next }: GameProps & 
   const [hint, setHint] = useState(false), [busy, setBusy] = useState(false);
   const [reply, setReply] = useState<ModeReply | null>(null);
   const lock = useRef(false);
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   let letterIndex = 0;
   async function check() {
     if (lock.current || reply) return;

@@ -17,14 +17,14 @@ describe("cgo-109 mode contracts", () => {
     const ordered = ["full", "sprint", "speed", "mc", "flashcards", "memory", "spelling", "wordhunt", "grammar"];
     let last = -1;
     for (const mode of ordered) { const index = picker.indexOf(`"${mode}"`, picker.indexOf("const modes:")); assert.ok(index > last, mode); last = index; }
-    assert.match(picker, /Dictionary &amp; Flashcards/);
+    assert.match(picker, /Wörterbuch & Karteikarten.*Dictionary & Flashcards/);
   });
   it("C02 reserve and Chapter selection are shared with practice", () => {
     assert.match(read("ModePage.tsx"), /await loadPracticeWords\(view, grade, chapters\)/);
     assert.match(read("ModePage.tsx"), /selectedChapters\(chaptersRaw, listApprovedUnits\(\)\.filter/);
     const practice = readFileSync(new URL("../../app/practice/load-practice.ts", import.meta.url), "utf8");
     assert.match(practice, /await listReservedForClass\(getDb\(\), acting\.classScope, acting\.classId\)/);
-    assert.match(practice, /assignPool\(item\.id, reserved\) !== "mock"/);
+    assert.match(practice, /practiceItemDenial\(item\.id, grade, reserved\) === null/);
     assert.doesNotMatch(practice, /listReservedForClass[^;]*\.catch/);
   });
   it("C03 only server receipts supply points, never client reward formulas", () => {
