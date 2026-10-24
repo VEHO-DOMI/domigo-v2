@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
+const {assignmentTarget}=createRequire(path.join(process.cwd(),'package.json'))('./scripts/lib/visual/assignment-target.mjs');
 const {measure}=createRequire(path.join(process.cwd(),'package.json'))('./scripts/lib/trainer-display-measure.mjs');
 import { test, expect } from 'playwright/test';
 import { ACCENTS } from './visual-contract';
@@ -11,7 +12,7 @@ const cases = [1,2,3,4].flatMap(grade => [
   { name:`practice-g${grade}`, route:`/practice/g${grade}-u01`, ready:'[data-task-card]', grade, persona:`student-${grade}` },
   { name:`learn-g${grade}`, route:`/learn/g${grade}-u01`, ready:'main ol', grade, persona:`student-${grade}` },
   { name:`review-g${grade}`, route:'/review', ready:'main', grade, persona:`student-${grade}` },
-  { name:`assignments-g${grade}`, route:'/assignments', ready:'main a[href^="/assignments/"]', grade, persona:`student-${grade}` },
+  { name:`assignments-g${grade}`, route:'/assignments', ready:'main', grade, persona:`student-${grade}` },
 ]).concat([
   {name:'admin',route:'/admin',ready:'main',grade:0,persona:'teacher'},
   {name:'signin',route:'/signin',ready:'form input[name="joinCode"]',grade:0,persona:'guest'},
@@ -65,6 +66,11 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       fs.writeFileSync(path.join(process.env.VISUAL_OUT!,`${info.project.name}-${row.name}-accessibility.json`),JSON.stringify({rows,actions},null,2));
       expect(actions.length).toBeGreaterThan(0);expect(actions.filter((r:{pass:boolean})=>!r.pass),'V1_PATH_CONTRAST').toEqual([]);
     }
+    // Resolve before the screenshot: a missing synthetic task must report its cause,
+    // rather than masquerade as an unrelated pixel difference.
+    const assignment = row.name==='assignments-g1' ? assignmentTarget({baseUrl:base.href,
+      links:await page.locator('main a[href^="/assignments/"]').evaluateAll(nodes=>nodes.map(node=>(node as HTMLAnchorElement).getAttribute('href')!)),
+      local,provided:process.env.VISUAL_ASSIGNMENT_URL || accounts?.assignmentUrls?.['student-1']}) : null;
     await page.addStyleTag({content:'*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}'});
     if (process.env.VISUAL_MUTANT === 'pixel') await page.addStyleTag({content:'main{transform:translateX(1px)!important}'});
     // Only server-date-dependent text. No task, navigation or whole card is hidden.
@@ -74,15 +80,20 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       await page.getByRole('button',{name:'English',exact:true}).click();
       if(await shell.getAttribute('data-theme')!=='dark')await shell.locator('.og-footer button').click();
       await page.evaluate(()=>Reflect.set(window,'__visualNavigationMark','kept'));
+      const historyBefore = await page.evaluate(()=>history.length);
       await page.getByRole('link',{name:'← Home',exact:true}).click();await expect(page).toHaveURL(/\/home$/);
       await expect(page.locator('.og-player')).toBeVisible();
       expect(await page.evaluate(()=>Reflect.get(window,'__visualNavigationMark')),'V1_NAV_STATE').toBe('kept');
       await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+      await expect.poll(()=>page.evaluate(()=>history.length),{message:'V1_NAV_HISTORY: Home must create a return entry'}).toBeGreaterThan(historyBefore);
       await page.goBack();await expect(page).toHaveURL(/\/assignments$/);
       await expect(page.locator('.og-root')).toHaveAttribute('lang','en');
       // Open the real detail route with a synthetic assignment and no sitting.
       // Navigation must keep the same document and in-memory preferences.
-      await page.locator('main a[href^="/assignments/"]').first().click();await expect(page).toHaveURL(/\/assignments\/synthetic-assignment-1$/);
+      const links = await page.locator('main a[href^="/assignments/"]').evaluateAll(nodes => nodes.map(node => (node as HTMLAnchorElement).getAttribute('href')!));
+      const target = assignmentTarget({baseUrl:base.href,links,local,provided:assignment!.href});
+      expect(target.href).toBe(assignment!.href);
+      await page.locator('main a[href^="/assignments/"]').nth(target.index).click();await expect(page).toHaveURL(target.href);
       await expect(page.getByRole('button',{name:'Begin',exact:true})).toBeVisible();
       await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
       expect(await page.evaluate(()=>Reflect.get(window,'__visualNavigationMark')),'V1_NAV_STATE').toBe('kept');

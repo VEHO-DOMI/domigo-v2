@@ -352,6 +352,15 @@ jobs:
       - run: pnpm build
       - run: pnpm check:bundle # Phaser stays in one lazy chunk; no shared-bundle leak (Law 9)
 
+  visual-fixed-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: node scripts/check-visual-reference.mjs --baseline "${{ runner.temp }}/pinned-visual-reference"
+
   visual-reproducibility:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -364,6 +373,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: node scripts/lib/visual/source-snapshot.mjs --selftest
+      - run: node scripts/check-badges.mjs
+      - run: node scripts/check-badges.mjs --selftest
+      - run: node scripts/check-visual-reference.mjs --selftest
       - run: node scripts/check-learning-display.mjs --out "${{ runner.temp }}/learning-display"
       - run: node scripts/check-learning-display.mjs --selftest --out "${{ runner.temp }}/learning-mutants"
       - run: node scripts/verify-design.mjs --capture --out "${{ runner.temp }}/visual-candidate"

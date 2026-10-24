@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** V-1: full Next routes, external immutable references, explicit candidate capture. */
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import assert from 'node:assert/strict';import {createHash}from'node:crypto';import {createRequire}from'node:module';import {fileURLToPath}from'node:url';import {spawn}from'node:child_process';
+import { visualContract, verifyReference } from './lib/visual/reference.mjs';
 import { startVisualServer } from './lib/visual/server.mjs';
 import { freezeSources, verifySources } from './lib/visual/source-snapshot.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),args=process.argv.slice(2),option=n=>args.includes(n)?args[args.indexOf(n)+1]:null;
@@ -18,8 +19,8 @@ function files(dir){return fs.readdirSync(dir,{recursive:true,withFileTypes:true
 const sourceSnapshot=freezeSources(root);
 fs.writeFileSync(path.join(out,'source-manifest.json'),JSON.stringify({status:'CODEX DRAFT — NOT CANON',...sourceSnapshot},null,2));
 const req=createRequire(path.join(root,'package.json')), {chromium}=req('playwright');
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined});const environment={platform:process.platform,arch:process.arch,browser:browser.version(),contract:hash(Buffer.concat(['apps/web/e2e/visual-contract.ts','apps/web/e2e/visual.spec.ts','apps/web/playwright.config.ts'].map(f=>fs.readFileSync(path.join(root,f)))))};await browser.close();
-if(!capture){const manifest=JSON.parse(fs.readFileSync(path.join(baseline,'manifest.json'),'utf8'));assert.deepEqual(manifest.environment,environment,'Different capture environment');assert.equal(manifest.files.length,92,'Incomplete V-1 reference matrix');for(const f of manifest.files){assert(!path.isAbsolute(f.path)&&!f.path.split(/[\\/]/).includes('..'),'Invalid reference path');assert.equal(hash(fs.readFileSync(path.join(baseline,f.path))),f.sha256,'Reference changed: '+f.path);}}
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined});const environment={platform:process.platform,arch:process.arch,browser:browser.version(),contract:visualContract(root)};await browser.close();
+if(!capture){const pinned=option('--reference-index');const manifest=pinned?verifyReference(baseline,path.resolve(pinned),environment.contract):JSON.parse(fs.readFileSync(path.join(baseline,'manifest.json'),'utf8'));const expectedEnvironment=pinned?{...manifest.environment,contract:environment.contract}:manifest.environment;assert.deepEqual(expectedEnvironment,environment,'Different capture environment');assert.equal(manifest.files.length,92,'Incomplete V-1 reference matrix');for(const f of manifest.files){assert(!path.isAbsolute(f.path)&&!f.path.split(/[\\/]/).includes('..'),'Invalid reference path');assert.equal(hash(fs.readFileSync(path.join(baseline,f.path))),f.sha256,'Reference changed: '+f.path);}}
 let server;
 try{
  if(!external)server=await startVisualServer(root,out,0,option('--mutant'));

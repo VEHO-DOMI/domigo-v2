@@ -91,3 +91,44 @@ Ablageentscheidung133 (Blueprint verlangt committete Baselines, AGENTS verbietet
 Bildbelege im Repo) und die Abnahme128. Bis dahin darf diese CI nicht als vollständiges
 V-1-Abnahmetor bezeichnet werden. Sie sagt auch nichts über Produktion oder reale
 Punktebuchung aus. Der ältere isolierte Trainervergleich aus114 bleibt ein eigener Nachweis: Mit den festen Browser-Rasteroptionen besteht nun auch dessen 160/160-Wiederholung bei unveränderter 3/255-Farbkanaltoleranz. Die damalige 7/160-Abweichung bleibt als Entwicklungsergebnis dokumentiert.
+
+## Feste Referenz und externe Aufgaben · cgo-156
+
+CODEX DRAFT — NOT CANON · IN REVIEW. Die SHA-256-Liste
+`apps/web/e2e/visual-baselines.sha256` bindet genau 92 Bilder und deren Manifest
+an eine ausdrücklich benannte externe Paketversion. `check-visual-reference.mjs`
+verweigert fehlende Dateien, geänderte Bytes, geänderte Prüfsummen, fremde Pfade,
+Symlinks und einen anderen Prüfvertrag. Der normale CI-Lauf übernimmt niemals
+seine eigenen neuen Bilder als feste Referenz. Ein Paketwechsel braucht einen
+sichtbaren Review der Liste und des Paketverweises; Kokis Bildurteil bleibt
+separat bei cgo-128. Rohbilder und Prüfprotokolle werden nicht eingecheckt.
+
+`verify-design.mjs --reference-index <sha256-list> --baseline <package/reference>`
+prüft zuerst diese Pins. Browser, Betriebssystem und Architektur müssen weiter
+passen. `capture-contract` bezeichnet den unveränderten Vertrag bei Aufnahme;
+`compare-contract` bindet den ausdrücklich geprüften Vergleichscode. Damit lässt
+sich die hier nötige Korrektur einer nichtvisuellen Navigationserwartung belegen,
+ohne alte Bilder oder ihre Manifest-Prüfsumme umzuschreiben. Ohne expliziten Index
+gilt weiterhin die bisherige strenge Gleichheit des gesamten Vertrags.
+
+Der Testserver darf die Uhr des Next-/Webpack-Prozesses nicht einfrieren.
+Nach einem festgehaltenen Zeitpunkt gespeicherte Quelldateien bleiben sonst für
+den Compiler „aus der Zukunft“ und er beendet die Übersetzung nicht. Browserzeit
+und synthetische Fixture-Daten bleiben festgelegt; ausschließlich die bereits
+benannten datumabhängigen Home-Texte werden im Bildvergleich maskiert.
+
+Für `--url` bleiben ausschließlich genehmigte synthetische Konten zulässig.
+`VISUAL_ASSIGNMENT_URL` oder `assignmentUrls["student-1"]` im Kontenvertrag kann
+das Ziel nennen; ohne Vorgabe wird die erste sichtbare Aufgabe der Testklasse
+verwendet. Das Ziel muss ein auf der Übersichtsseite vorhandener Aufgabenlink
+auf demselben Ursprung sein. Normale UUID-Kennungen sind erlaubt. Fremder
+Ursprung, Zugangsdaten in der URL, Query/Fragment, falsche Route oder fehlende
+Testaufgabe brechen mit `V1_ASSIGNMENT_INVALID` bzw. `V1_ASSIGNMENT_MISSING` ab.
+Der lokale Fixture-Modus behält ausschließlich sein lokales synthetisches Ziel.
+
+Die Abzeichen-Vorher-/Nachher-Bilder liegen separat im Koki-sieht-Paket:
+vier Jahrgänge × 375/1400 px × hell/dunkel = 16 je Stand. Das Profil erweitert
+nicht stillschweigend die bestehende 92er-Routenmatrix. Die Klassen-/Eigentümer-
+und Abzeichengrenzen werden zusätzlich mit PGlite und den echten Renderfunktionen
+geprüft; browserseitige Berechnung und dauerhafte Theme-Speicherung müssen bei
+absichtlichen Gegenproben rot werden.

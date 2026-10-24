@@ -11,4 +11,6 @@ net.Socket.prototype.connect = function (...args) {
 
 const originalFetch=globalThis.fetch;
 globalThis.fetch=async (input, init)=>{const url=new URL(typeof input==='string'||input instanceof URL?input:input.url);if(url.href==='https://registry.npmjs.org/-/package/next/dist-tags'){console.log('VISUAL_SKIPPED_VERSION_PROBE');return new Response(null,{status:503});}if(!allowed(url.hostname)){console.error('VISUAL_FORBIDDEN_NETWORK');throw Error('VISUAL_FORBIDDEN_NETWORK');}return originalFetch(input,init);};
-const RealDate=Date;globalThis.Date=class extends RealDate{constructor(...a){super(...(a.length?a:['2026-10-24T10:00:00.000Z']));}static now(){return 1792836000000;}static parse(s){return RealDate.parse(s);}static UTC(...a){return RealDate.UTC(...a);}};
+// Do not freeze the compiler process clock: webpack watches source mtimes.
+// A frozen past time causes perpetual compilation when files are newer.
+// Browser time and fixture dates are fixed; date-dependent home text is masked.

@@ -26,6 +26,7 @@ export const getPathSummary = async () => new Map();
 export const getUnitPathProgress = async () => new Map();
 export const getJourneyAttempts = async () => [];
 export const getStudentAvatar = async () => 1;
+export const getStudentBadges = async () => [];
 export const getUserProgress = async () => ({xp:0,grammarXp:0,streak:0,lastSessionDate:null});
 export const getSolvedGameItemIds = async () => [];
 const classes=[1,2,3,4].map(grade=>({id:`synthetic-class-${grade}`,name:`Visual fixture ${grade}`,inviteCode:'FIXTURE',grade,studentCount:3,createdAt:new Date('2026-10-01T10:00:00Z')}));
