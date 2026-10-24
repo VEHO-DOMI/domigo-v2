@@ -1,0 +1,152 @@
+[
+  {
+    "taskId": "g2u03.w.picnic",
+    "word": "picnic",
+    "german": "Picknick",
+    "mode": "draw",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "WB28 führt picnic unter T1; eine aktuelle Chapter-3-Entscheidung kann begründet werden, ohne die alte Unit-6-Kategorie zu übertragen."
+  },
+  {
+    "taskId": "g2u03.w.to-be-proud",
+    "word": "to be proud (of)",
+    "german": "stolz sein (auf)",
+    "mode": "show",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die Wortseite WB28 und SB25 belegen den Chapter-3-Gebrauch."
+  },
+  {
+    "taskId": "g2u03.w.trick-or-treat-2",
+    "word": "Trick or treat!",
+    "german": "Süßes oder Saures (Frage beim Halloween-Umzug)",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Den Ruf getrennt mit explain prüfen, ohne die alte Kategorie zu übertragen."
+  },
+  {
+    "taskId": "g2u09.w.fridge",
+    "word": "fridge",
+    "german": "Kühlschrank",
+    "mode": "draw",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Der aktuelle Aufgabenplatz und der Appendixverweis bleiben erhalten; ein anschauliches eigenes Bild rechtfertigt eine neue Entscheidung, nicht die Übernahme aus Unit 11."
+  },
+  {
+    "taskId": "g2u12.w.pain-in-ankle",
+    "word": "pain in ankle",
+    "german": "Schmerzen im Knöchel",
+    "mode": "show",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die Lokalisation ist pantomimisch zeigbar."
+  },
+  {
+    "taskId": "g2u14.w.ice-skating",
+    "word": "ice skating",
+    "german": "Eislaufen",
+    "mode": "draw",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die Kufen geben ein sichtbares Unterscheidungsmerkmal."
+  },
+  {
+    "taskId": "g2u15.w.antarctic-ocean",
+    "word": "Antarctic Ocean",
+    "german": "Antarktischer Ozean",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Eine Erklärung könnte die südliche Lage besser unterscheiden als eine freie Zeichnung."
+  },
+  {
+    "taskId": "g4u11.w.classics",
+    "word": "Classics",
+    "german": "Klassiker",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Ein gezeichnetes Buch sagt noch nicht classics."
+  },
+  {
+    "taskId": "g4u11.w.fiction",
+    "word": "Fiction",
+    "german": "Belletristik",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Das gedruckte Wort oder ein einzelner Roman auf einem Bild genügt nicht als wortlose Erkennung der Kategorie."
+  },
+  {
+    "taskId": "g4u11.w.non-fiction",
+    "word": "Non-fiction",
+    "german": "Sachbücher",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Gegenstandszeichnungen verraten die Textsorte nicht."
+  },
+  {
+    "taskId": "g4u12.w.neither-nor",
+    "word": "neither ... nor",
+    "german": "weder ... noch",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die Ellipsenform unterscheidet sich typografisch, der Beleg nennt dieselbe zweiteilige Verbindung."
+  },
+  {
+    "taskId": "g4u11.w.reference",
+    "word": "Reference",
+    "german": "Nachschlagewerk",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die vorhandene explain-Kategorie für Reference beweist keine passende Herkunft."
+  },
+  {
+    "taskId": "g1u01.w.midnight",
+    "word": "midnight",
+    "german": "Mitternacht",
+    "mode": "draw",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die freigegebene 786-Zeilen-Quelle enthält in U1 und U11 draw."
+  },
+  {
+    "taskId": "g1u11.w.midnight",
+    "word": "midnight",
+    "german": "Mitternacht",
+    "mode": "draw",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Die freigegebene 786-Zeilen-Quelle enthält in U1 und U11 draw."
+  },
+  {
+    "taskId": "g4u11.w.poetry",
+    "word": "Poetry",
+    "german": "Lyrik",
+    "mode": "explain",
+    "decidedBy": "Koki",
+    "decidedAt": "2026-10-24",
+    "source": "cgo-172",
+    "note": "Dazu ein 15. Fall ohne Quellzeile: poetry (g4u11) → explain (wie Reference)."
+  }
+]

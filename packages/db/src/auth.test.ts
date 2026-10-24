@@ -66,7 +66,7 @@ describe("dual-read degrades to v1 when v2 tables are unreachable", () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     const db = seqDb([missing(), [{ grade: 1 }]]);
     await getClassGrade(db, "c1");
-    expect(spy).toHaveBeenCalledWith(expect.stringContaining("falling back to the v1 mirror"), expect.stringContaining("domigo_v2"));
+    expect(spy).toHaveBeenCalledWith("[auth] v2 identity query failed — falling back to the v1 mirror");
     spy.mockRestore();
   });
 });

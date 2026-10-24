@@ -2003,3 +2003,5 @@ export * from "./paint-art.ts";
 export { SceneSnapshot, sceneSnapshotText, type SceneSnapshotData } from "./paint-scene.ts";
 
 export * from "./paint-proof.ts";
+
+export * from "./activity-decisions.ts";
