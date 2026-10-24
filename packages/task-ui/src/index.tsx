@@ -17,10 +17,12 @@ import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpF
 import { diffWords, playTier } from "@domigo/game-feel";
 import { agAssemble, agSlots, agTiles, sbChips } from "./tactile.ts";
 import { firstLetterMask, type MaskSegment } from "./mask.ts";
-import { vocabPrompt, VOCAB_POOL_LABEL } from "./vocab-pool.ts";
+import { TaskText, useTaskText, useTaskLanguage, useTaskSoundEnabled } from "./language.tsx";
+import { vocabPrompt, vocabPoolLabel } from "./vocab-pool.ts";
 
 export { agAssemble, agSlots, agTiles, sbChips, sbAnswerOrder, seededShuffle } from "./tactile.ts";
 export * from "./mask.ts";
+export * from "./language.tsx";
 export * from "./vocab-pool.ts";
 export type { AgSlot, AgTile, SbChip } from "./tactile.ts";
 
@@ -28,9 +30,9 @@ export type { AgSlot, AgTile, SbChip } from "./tactile.ts";
  *  fixed words, never randomized; wrong = a calm dark pill, never red — failure
  *  changes pace, not tone (Law 3). */
 const TIER_STYLE: Record<Tier, { bg: string; label: string }> = {
-  correct: { bg: "var(--correct)", label: "Stark!" },
-  partial: { bg: "var(--partial)", label: "Fast!" },
-  close: { bg: "var(--accent)", label: "Knapp!" },
+  correct: { bg: "var(--task-correct-bg, var(--correct))", label: "Stark!" },
+  partial: { bg: "var(--task-partial-bg, var(--partial))", label: "Fast!" },
+  close: { bg: "var(--task-close-bg, var(--accent))", label: "Knapp!" },
   wrong: { bg: "var(--ink)", label: "Schau her:" },
 };
 
@@ -100,14 +102,15 @@ const metaLabel: CSSProperties = {
 };
 
 function FeedbackBar({ tier, xp, hideXp }: { tier: Tier; xp: number; hideXp?: boolean }) {
+  const t = useTaskText();
   const s = TIER_STYLE[tier];
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <span style={{ background: s.bg, color: "#fff", borderRadius: 999, padding: "3px 13px", fontWeight: 700, fontSize: 14, fontFamily: "var(--font-label)" }}>
+      <span lang="de" style={{ background: s.bg, color: "var(--task-verdict-text, #fff)", borderRadius: 999, padding: "3px 13px", fontWeight: 700, fontSize: 14, fontFamily: "var(--font-label)" }}>
         {s.label}
       </span>
       {!hideXp && <span style={{ color: "var(--text-secondary)", fontSize: 14, fontWeight: 600 }}>+{xp} XP</span>}
-      {!hideXp && breaksCombo(tier) && <span style={{ color: "var(--muted)", fontSize: 13 }}>· combo reset</span>}
+      {!hideXp && breaksCombo(tier) && <span style={{ color: "var(--muted)", fontSize: 13 }}>· {t("Serie neu gestartet", "combo reset")}</span>}
     </div>
   );
 }
@@ -116,10 +119,11 @@ function FeedbackBar({ tier, xp, hideXp }: { tier: Tier; xp: number; hideXp?: bo
  *  input (D-1 "Check" moment): their words struck through softly, the correct
  *  words bold — the explicit contrast, computed, never authored. */
 function AnswerDiff({ input, answer }: { input: string; answer: string }) {
+  const t = useTaskText();
   const toks = diffWords(input, answer);
   // A diff that keeps nothing in common teaches nothing — show the answer plain.
   if (!toks.some((t) => t.type === "same")) {
-    return <div style={{ fontSize: 15, color: "var(--text)" }}>Answer: <strong>{answer}</strong></div>;
+    return <div style={{ fontSize: 15, color: "var(--text)" }}>{t("Antwort:", "Answer:")} <strong>{answer}</strong></div>;
   }
   return (
     <div style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.6 }}>
@@ -158,8 +162,10 @@ function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainD
   explainDe?: string | null;
   retryMessage?: string;
 }) {
+  const t = useTaskText();
   const traps = useContext(TrapContext);
-  useEffect(() => { playTier(tier); }, [tier]);
+  const soundEnabled = useTaskSoundEnabled();
+  useEffect(() => { if (soundEnabled) playTier(tier); }, [tier, soundEnabled]);
   const trapId = tier === "wrong" && input !== null && input.trim() !== "" ? classifyWrong(item, input) : null;
   const trap = trapId !== null ? traps[trapId] : undefined;
   const showDiff = tier !== "correct" && correct !== "" && input !== null && input.trim() !== "";
@@ -168,31 +174,32 @@ function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainD
       <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
       {showDiff && <AnswerDiff input={input} answer={correct} />}
       {tier !== "correct" && !showDiff && correct !== "" && (
-        <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>Answer: <strong>{correct}</strong></div>
+        <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{t("Antwort:", "Answer:")} <strong>{correct}</strong></div>
       )}
       {tier !== "correct" && others !== undefined && others.length > 0 && (
-        <div style={{ fontSize: 13, color: "var(--muted)" }}>auch richtig: {others.join("  /  ")}</div>
+        <div style={{ fontSize: 13, color: "var(--muted)" }} lang="de">auch richtig: {others.join("  /  ")}</div>
       )}
       {trap && (
-        <div style={{ fontSize: 14, color: "var(--text)", background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 10, padding: "7px 11px" }}>
+        <div lang="de" style={{ fontSize: 14, color: "var(--text)", background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 10, padding: "7px 11px" }}>
           <span aria-hidden="true" style={{ marginRight: 6 }}>{trap.icon}</span>
           <strong>{trap.nameDe}</strong> — {trap.oneLinerDe}
         </div>
       )}
-      {tier === "wrong" && <div style={{ fontSize: 13, color: "var(--accent-deep)", fontWeight: 600 }}>{retryMessage ?? "Das kommt gleich nochmal!"}</div>}
-      {explainDe && <div style={{ fontSize: 13, color: "var(--muted)" }}>{explainDe}</div>}
+      {tier === "wrong" && <div lang="de" style={{ fontSize: 13, color: "var(--task-retry-text, var(--accent-deep))", fontWeight: 600 }}>{retryMessage ?? "Das kommt gleich nochmal!"}</div>}
+      {explainDe && <div lang="de" style={{ fontSize: 13, color: "var(--muted)" }}>{explainDe}</div>}
     </div>
   );
 }
 
 function GlossRow({ gloss }: { gloss: Gloss[] }) {
+  const t = useTaskText();
   const [open, setOpen] = useState(false);
   const id = useId();
   if (gloss.length === 0) return null;
   return (
     <div style={{ fontSize: 13 }}>
       <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
-        {open ? "Hide" : "Show"} word help ({gloss.length})
+        {open ? t("Worthilfe ausblenden", "Hide word help") : t("Worthilfe zeigen", "Show word help")} ({gloss.length})
       </button>
       {open && (
         <ul id={id} style={{ margin: "6px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>
@@ -208,14 +215,15 @@ function GlossRow({ gloss }: { gloss: Gloss[] }) {
 }
 
 function HintRow({ hintDe }: { hintDe: string }) {
+  const t = useTaskText();
   const [open, setOpen] = useState(false);
   const id = useId();
   return (
     <div style={{ fontSize: 13 }}>
       <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
-        {open ? "Hide Tipp" : "💡 Tipp"}
+        {open ? t("Tipp ausblenden", "Hide hint") : t("💡 Tipp", "💡 Hint")}
       </button>
-      {open && <span id={id} style={{ marginLeft: 8, color: "#92400e" }}>{hintDe}</span>}
+      {open && <span id={id} lang="de" style={{ marginLeft: 8, color: "var(--text-secondary)" }}>{hintDe}</span>}
     </div>
   );
 }
@@ -272,7 +280,7 @@ function MaskedPrompt({ text, id, segments }: { text: string; id?: string; segme
 function SavedMark() {
   return (
     <div role="status" aria-live="polite" style={{ fontSize: 14, fontWeight: 700, color: "var(--muted)" }}>
-      Gespeichert ✓
+      <TaskText de="Gespeichert ✓" en="Saved ✓" />
     </div>
   );
 }
@@ -282,6 +290,7 @@ function SavedMark() {
 function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst }: {
   count: number; values: string[]; onChange: (v: string[]) => void; disabled: boolean; onEnter?: () => void; autoFocusFirst?: boolean;
 }) {
+  const t = useTaskText();
   const firstRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (autoFocusFirst && !disabled) firstRef.current?.focus(); }, [autoFocusFirst, disabled]);
   return (
@@ -294,8 +303,8 @@ function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst
           style={{ minWidth: 120, flex: count > 1 ? "1 1 120px" : undefined }}
           value={values[i] ?? ""}
           disabled={disabled}
-          aria-label={count > 1 ? `Blank ${i + 1}` : "Your answer"}
-          placeholder={count > 1 ? `Blank ${i + 1}` : "Your answer"}
+          aria-label={count > 1 ? t(`Lücke ${i + 1}`, `Blank ${i + 1}`) : t("Deine Antwort", "Your answer")}
+          placeholder={count > 1 ? t(`Lücke ${i + 1}`, `Blank ${i + 1}`) : t("Deine Antwort", "Your answer")}
           onKeyDown={(e) => { if (e.key === "Enter" && !disabled) { e.preventDefault(); onEnter?.(); } }}
           onChange={(e) => {
             const next = [...values];
@@ -314,8 +323,9 @@ function Choices({ options, selected, onSelect, disabled, corrects, reveal = tru
    *  tint — a checkup paper reveals nothing until submit/release). */
   reveal?: boolean;
 }) {
+  const t = useTaskText();
   return (
-    <div role="radiogroup" aria-label="Answer options" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+    <div role="radiogroup" aria-label={t("Antworten zur Auswahl", "Answer options")} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {options.map((opt) => {
         const isSel = selected === opt;
         // After grading, reveal: the right answer goes green; a wrong pick goes red.
@@ -347,6 +357,7 @@ function Choices({ options, selected, onSelect, disabled, corrects, reveal = tru
 function Dropdowns({ rows, options, value, onChange, disabled }: {
   rows: string[]; options: string[]; value: Record<string, string>; onChange: (v: Record<string, string>) => void; disabled: boolean;
 }) {
+  const t = useTaskText();
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {rows.map((row) => (
@@ -359,7 +370,7 @@ function Dropdowns({ rows, options, value, onChange, disabled }: {
             className="dg-input"
             style={{ minWidth: 140 }}
             disabled={disabled}
-            aria-label={`${row}: choose`}
+            aria-label={t(`${row}: auswählen`, `${row}: choose`)}
             value={value[row] ?? ""}
             onChange={(e) => onChange({ ...value, [row]: e.target.value })}
           >
@@ -432,7 +443,7 @@ function useRetryGrading(
  *  German Tipp surfaced from the 2nd try. */
 function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string }) {
   return (
-    <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <div lang="de" role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       <span style={{ color: "var(--ink-soft)", fontWeight: 700, fontSize: 14 }}>↻ Noch nicht — versuch es gleich nochmal.</span>
       {wrongCount >= 2 && hintDe && (
         <div style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 8, padding: "6px 10px" }}>💡 {hintDe}</div>
@@ -467,6 +478,7 @@ const srOnly: CSSProperties = {
 function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
   answer: string; seed: string; disabled: boolean; onChange: (assembled: string) => void; onEnter: () => void;
 }) {
+  const t = useTaskText();
   const slots = useMemo(() => agSlots(answer), [answer]);
   const tiles = useMemo(() => agTiles(answer, seed), [answer, seed]);
   const letterSlots = useMemo(() => slots.filter((s) => s.fixed === null).length, [slots]);
@@ -499,7 +511,7 @@ function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
         if (e.key === "Enter") { e.preventDefault(); onEnter(); }
       }}
     >
-      <div aria-label="Your letters so far" style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 8 }}>
+      <div aria-label={t("Deine bisherigen Buchstaben", "Your letters so far")} style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 8 }}>
         {slots.map((s, i) => {
           if (s.fixed !== null) {
             return <span key={i} aria-hidden="true" style={{ ...slotBox, color: "var(--muted)" }}>{s.fixed}</span>;
@@ -508,7 +520,7 @@ function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
           const k = letterIdx;
           const ti = placed[k];
           return ti !== undefined ? (
-            <button key={i} type="button" aria-label={`Remove letter ${tiles[ti]!.ch}`} disabled={disabled} onClick={() => popTo(k)}
+            <button key={i} type="button" aria-label={t(`Buchstaben ${tiles[ti]!.ch} entfernen`, `Remove letter ${tiles[ti]!.ch}`)} disabled={disabled} onClick={() => popTo(k)}
               style={{ ...slotBox, border: "1px solid var(--accent)", background: "var(--accent-soft)", color: "var(--ink)", cursor: "pointer" }}>
               {tiles[ti]!.ch}
             </button>
@@ -517,15 +529,15 @@ function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
           );
         })}
       </div>
-      <div role="group" aria-label="Letter tiles" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+      <div role="group" aria-label={t("Buchstaben", "Letter tiles")} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
         {tiles.map((t, ti) => (
-          <button key={t.key} type="button" aria-label={`Letter ${t.ch}`} disabled={disabled || placed.includes(ti)} onClick={() => place(ti)}
+          <button key={t.key} type="button" aria-label={`${t.ch}`} disabled={disabled || placed.includes(ti)} onClick={() => place(ti)}
             style={{ ...tileBtn, opacity: placed.includes(ti) ? 0.25 : 1 }}>
             {t.ch}
           </button>
         ))}
       </div>
-      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : `So far: ${assembled}`}</span>
+      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : t(`Bisher: ${assembled}`, `So far: ${assembled}`)}</span>
     </div>
   );
 }
@@ -536,6 +548,7 @@ function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
 function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
   promptText: string; disabled: boolean; onChange: (assembled: string) => void; onEnter: () => void;
 }) {
+  const t = useTaskText();
   const chips = useMemo(() => sbChips(promptText), [promptText]);
   const [chosen, setChosen] = useState<number[]>([]);
 
@@ -562,9 +575,9 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
         if (e.key === "Enter") { e.preventDefault(); onEnter(); }
       }}
     >
-      <div aria-label="Your sentence so far" style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", minHeight: 48, padding: "6px 10px", borderRadius: 12, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", marginBottom: 8 }}>
+      <div aria-label={t("Dein bisheriger Satz", "Your sentence so far")} style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", minHeight: 48, padding: "6px 10px", borderRadius: 12, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", marginBottom: 8 }}>
         {chosen.map((i, k) => (
-          <button key={`${chips[i]!.key}@${k}`} type="button" aria-label={`Remove word ${chips[i]!.text}`} disabled={disabled} onClick={() => removeAt(k)}
+          <button key={`${chips[i]!.key}@${k}`} type="button" aria-label={t(`Wort ${chips[i]!.text} entfernen`, `Remove word ${chips[i]!.text}`)} disabled={disabled} onClick={() => removeAt(k)}
             style={{ ...tileBtn, height: 36, fontSize: 15, border: "1px solid var(--accent)", background: "var(--accent-soft)", color: "var(--ink)" }}>
             {chips[i]!.text}
           </button>
@@ -573,15 +586,15 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
           <span aria-hidden="true" style={{ color: "var(--muted)", fontSize: 18, animation: undefined }}>▏</span>
         )}
       </div>
-      <div role="group" aria-label="Word chips" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+      <div role="group" aria-label={t("Wörter", "Word chips")} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
         {chips.map((chip, i) => (
-          <button key={chip.key} type="button" aria-label={`Add word ${chip.text}`} disabled={disabled || chosen.includes(i)} onClick={() => add(i)}
+          <button key={chip.key} type="button" aria-label={t(`Wort ${chip.text} hinzufügen`, `Add word ${chip.text}`)} disabled={disabled || chosen.includes(i)} onClick={() => add(i)}
             style={{ ...tileBtn, height: 40, fontSize: 15, opacity: chosen.includes(i) ? 0.25 : 1 }}>
             {chip.text}
           </button>
         ))}
       </div>
-      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : `So far: ${assembled}`}</span>
+      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : t(`Bisher: ${assembled}`, `So far: ${assembled}`)}</span>
     </div>
   );
 }
@@ -593,13 +606,14 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
 function BankRow({ bank, current, disabled, onPick }: {
   bank: string[]; current: string; disabled: boolean; onPick: (w: string) => void;
 }) {
+  const t = useTaskText();
   return (
-    <div role="group" aria-label="Word bank" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+    <div role="group" aria-label={t("Wörter zur Auswahl", "Word bank")} style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
       {bank.map((w) => (
         <button
           key={w}
           type="button"
-          aria-label={`Use word ${w}`}
+          aria-label={t(`Wort ${w} verwenden`, `Use word ${w}`)}
           aria-pressed={current === w}
           disabled={disabled}
           onClick={() => onPick(w)}
@@ -620,6 +634,7 @@ function BankRow({ bank, current, disabled, onPick }: {
 function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, reveal = true }: {
   options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean; corrects: string[]; reveal?: boolean;
 }) {
+  const t = useTaskText();
   const tint: CSSProperties | undefined = disabled && reveal
     ? corrects.includes(selected ?? "")
       ? { borderColor: "var(--correct)", background: "var(--correct-glow)", color: "var(--correct)", fontWeight: 800 }
@@ -630,7 +645,7 @@ function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, revea
       className="dg-input"
       style={{ minWidth: 160, maxWidth: "100%", ...tint }}
       disabled={disabled}
-      aria-label="Choose your answer"
+      aria-label={t("Wähle deine Antwort", "Choose your answer")}
       value={selected ?? ""}
       onChange={(e) => onSelect(e.target.value)}
     >
@@ -643,6 +658,7 @@ function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, revea
 }
 
 export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, hideExplanation, retryMessage, submitLabel, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; hideExplanation?: boolean; retryMessage?: string; submitLabel?: string; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
+  const t = useTaskText();
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -688,7 +704,7 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
   const showBank = isText && tactileMode === null && blankCount === 1 && bank != null && bank.length > 0;
 
   return (
-    <div style={card} role="group" aria-labelledby={promptId}>
+    <div data-task-card="" style={card} role="group" aria-labelledby={promptId}>
       {!hideMeta && <div style={metaLabel}>{item.format} · level {item.difficulty}</div>}
       <Prompt id={promptId} text={item.prompt.text} />
       {isChoice && choiceRender !== "dropdown" && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
@@ -704,11 +720,11 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
         <ChipBuilder promptText={item.prompt.text} disabled={done} onChange={(a) => setText([a])} onEnter={submit} />
       )}
       {tactileMode !== null && !done && (
-        <button className="dg-chip" style={{ alignSelf: "flex-start" }} onClick={() => setTypeInstead(true)}>⌨️ Type instead</button>
+        <button className="dg-chip" style={{ alignSelf: "flex-start" }} onClick={() => setTypeInstead(true)}>⌨️ {t("Lieber tippen", "Type instead")}</button>
       )}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
-      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : submitLabel ?? "Check"}</button>}
+      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? t("Nochmal versuchen", "Try again") : submitLabel ?? t("Prüfen", "Check")}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && hideFeedback && <SavedMark />}
       {done && tier && !hideFeedback && (
@@ -731,6 +747,7 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
 // ---- vocab item ----------------------------------------------------------
 
 export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null }) {
+  const t = useTaskText();
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -739,7 +756,8 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
   // definition context and its scaffolds; the recall pools show the opposite-
   // language prompt only). `pool` flows into detail.input so the SERVER regrades
   // in the same pool — otherwise a definition answer would persist as carrier-wrong.
-  const ask = vocabPrompt(item, pool);
+  const language = useTaskLanguage();
+  const ask = vocabPrompt(item, pool, language);
   const answers = vocabAnswers(item, pool);
   const fullAnswers = answers.filter((a) => a.tier === "full").map((a) => a.text);
   // C-1 first-letter mask (doc 21 §6): derived from the asked pool's PRIMARY
@@ -758,16 +776,16 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
   // answer the mask exists to hide, so a masked prompt always wins.
   const showBank = !masked && bank != null && bank.length > 0;
   return (
-    <div style={card} role="group" aria-labelledby={promptId}>
-      {!hideMeta && <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>}
+    <div data-task-card="" style={card} role="group" aria-labelledby={promptId}>
+      {!hideMeta && <div style={metaLabel}>vocab · {vocabPoolLabel(pool, language)} · level {item.difficulty}</div>}
       {ask.context !== null && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{ask.context}</div>}
       {ask.instruction !== "" && <div style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 600 }}>{ask.instruction}</div>}
       {masked ? <MaskedPrompt id={promptId} text={ask.text} segments={maskSegments} /> : <Prompt id={promptId} text={ask.text} />}
       {showBank && <BankRow bank={bank!} current={value} disabled={done} onPick={setValue} />}
-      <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
+      <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label={t("Deine Antwort", "Your answer")} placeholder={t("Deine Antwort", "Your answer")} onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
       {ask.scaffold && !masked && <GlossRow gloss={item.gloss} />}
       {ask.scaffold && !hideHint && !masked && <HintRow hintDe={item.hintDe} />}
-      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
+      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? t("Nochmal versuchen", "Try again") : t("Prüfen", "Check")}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold && !masked ? item.hintDe : ""} />}
       {done && tier && hideFeedback && <SavedMark />}
       {done && tier && !hideFeedback && (
@@ -794,6 +812,7 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
 
 /** Vocabulary intro — the unit word bank as a study list, grouped by theme. */
 export function VocabIntroView({ wordbank }: { wordbank: WordBank }) {
+  const t = useTaskText();
   const groups = new Map<string, WordBank["entries"]>();
   for (const e of wordbank.entries) {
     const key = e.theme ?? "Words";
@@ -803,7 +822,7 @@ export function VocabIntroView({ wordbank }: { wordbank: WordBank }) {
   }
   return (
     <div style={{ ...card, gap: 14 }}>
-      <div style={metaLabel}>Word bank · {wordbank.entries.length} words</div>
+      <div style={metaLabel}>{t("Wörterliste", "Word bank")} · {wordbank.entries.length} {t("Wörter", "words")}</div>
       {[...groups.entries()].map(([theme, entries]) => (
         <div key={theme}>
           {theme !== "Words" && (
@@ -869,6 +888,7 @@ export type ClientListeningTask = Omit<ListeningTask, "transcript" | "audio"> & 
 
 /** Plays a clip: prefers a pre-generated file, else speaks the script via Web Speech (A1–A2 pace). */
 export function AudioClip({ audio }: { audio: ClientAudioRef }) {
+  const t = useTaskText();
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   useEffect(() => setReady(true), []);
@@ -907,12 +927,12 @@ export function AudioClip({ audio }: { audio: ClientAudioRef }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <button className="dg-btn" onClick={play} disabled={!supported || playing}>
-        ▶ {playing ? "Playing…" : "Play audio"}
+        ▶ {playing ? t("Läuft…", "Playing…") : t("Anhören", "Play audio")}
       </button>
       {playing && (
-        <button className="dg-btn-secondary" onClick={stop}>Stop</button>
+        <button className="dg-btn-secondary" onClick={stop}>{t("Stopp", "Stop")}</button>
       )}
-      {ready && !supported && <span style={{ fontSize: 13, color: "var(--muted)" }}>Audio unavailable on this device.</span>}
+      {ready && !supported && <span style={{ fontSize: 13, color: "var(--muted)" }}>{t("Auf diesem Gerät ist kein Ton verfügbar.", "Audio unavailable on this device.")}</span>}
     </div>
   );
 }

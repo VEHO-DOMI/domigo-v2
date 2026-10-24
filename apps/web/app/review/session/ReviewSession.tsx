@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
@@ -11,6 +12,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 type QueueItem = { kind: "vocab" | "grammar"; item: VocabItem | GrammarItem };
 
 export default function ReviewSession({ preview = false, ownerId, items }: { preview?: boolean; ownerId: string | null; items: QueueItem[] }) {
+  const t = useLearningText();
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
@@ -50,17 +52,17 @@ export default function ReviewSession({ preview = false, ownerId, items }: { pre
   const counts = results.reduce<Record<string, number>>((m, r) => ({ ...m, [r.tier]: (m[r.tier] ?? 0) + 1 }), {});
   const tierSummary = (["correct", "partial", "close", "wrong"] as Tier[])
     .filter((t) => counts[t])
-    .map((t) => `· ${counts[t]} ${t}`)
+    .map((tier) => `· ${counts[tier]} ${{ correct: t("richtig", "correct"), partial: t("fast", "partial"), close: t("knapp", "close"), wrong: t("noch offen", "to revisit") }[tier]}`)
     .join(" ");
 
   if (done || !current) {
     return (
       <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
-        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Reviewed {results.length} — see you tomorrow 👋</h1>
-        {preview && <p role="status">Vorschau — nichts gespeichert</p>}
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{t(`${results.length} wiederholt — bis morgen 👋`, `Reviewed ${results.length} — see you tomorrow 👋`)}</h1>
+        {preview && <p role="status">{t("Vorschau — nichts gespeichert", "Preview — nothing saved")}</p>}
         <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{xpTotal} XP {tierSummary}</p>
-        {streak ? <p style={{ fontSize: 15, color: "#ea580c", fontWeight: 700 }}>🔥 {streak}-day streak</p> : null}
-        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Review" : "← Home"}</Link>
+        {streak ? <p style={{ fontSize: 15, color: "#ea580c", fontWeight: 700 }}>🔥 {t(`${streak} Tage in Folge`, `${streak}-day streak`)}</p> : null}
+        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}>{preview ? t("← Wiederholen", "← Review") : t("← Startseite", "← Home")}</Link>
       </main>
     );
   }
@@ -68,24 +70,24 @@ export default function ReviewSession({ preview = false, ownerId, items }: { pre
   return (
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8, marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Review</h1>
-        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Review" : "← Home"}</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{t("Wiederholen", "Review")}</h1>
+        <Link href={preview ? "/review" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}>{preview ? t("← Wiederholen", "← Review") : t("← Startseite", "← Home")}</Link>
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
-        <span>Item {Math.min(i + 1, items.length)} / {items.length}</span>
+        <span>{t("Frage", "Item")} {Math.min(i + 1, items.length)} / {items.length}</span>
         <span>{xpTotal} XP {tierSummary}</span>
       </div>
 
       {current.kind === "grammar" ? (
-        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile />
+        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} hideMeta />
       )}
 
       {answered && (
         <button className="dg-btn" onClick={next} style={{ marginTop: 14 }}>
-          {isLast ? "Finish →" : "Next →"}
+          {isLast ? t("Fertig →", "Finish →") : t("Weiter →", "Next →")}
         </button>
       )}
     </main>

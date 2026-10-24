@@ -37,6 +37,7 @@ export function mount(file: string, props: Props, modules: Record<string, unknow
       useCallback: (callback: unknown) => callback, useEffect() {},
       useSyncExternalStore: (_subscribe: unknown, getSnapshot: () => unknown) => getSnapshot(),
     },
+    "@/lib/trainer/LearningShell": { useLearningText: () => (_de: string, en: string) => en },
     "next/link": { __esModule: true, default: "a" }, "@domigo/engine": engine,
     "@/lib/modi/grammar": grammar, "@/lib/modi/decks": { ...decks, shuffle: <T,>(items: readonly T[]) => [...items] },
     "@/lib/useOutboxFlush": { useOutboxFlush() {} }, "@/lib/attempt-outbox": { subscribeOutboxReplies() {} }, ...modules,

@@ -1,0 +1,33 @@
+/* Same notebook scale and original year palette as the calibrated trainer. */
+.og-learning {
+  --learning-unit:calc(var(--le-line-spacing) / 9);
+  --learning-target:calc(var(--learning-unit) * 11);
+  --learning-border:1px;
+  --learning-positive:color-mix(in srgb,var(--correct) 55%,var(--ink));
+  --learning-caution:color-mix(in srgb,var(--partial) 45%,var(--ink));
+  --task-verdict-text:var(--bg);
+  --task-retry-text:var(--ink);
+  --task-correct-bg:var(--learning-positive);
+  --task-partial-bg:var(--learning-caution);
+  --task-close-bg:color-mix(in srgb,var(--accent) 45%,var(--ink));
+  overflow-wrap:anywhere;
+}
+.og-learning :is(button,a,input,select,summary) { min-height:var(--learning-target); min-width:var(--learning-target); }
+.og-learning :is(button,a) { align-items:center; }
+.og-learning a { display:inline-flex; }
+.og-learning :is(button,input,select) { max-width:100%; }
+.og-learning .dg-btn { background:var(--ink); color:var(--bg); text-shadow:none; }
+.og-learning .dg-chip { background:var(--card); color:var(--text); border-color:var(--text-secondary); }
+.og-learning .learning-toggle { border:var(--learning-border) solid var(--text-secondary); border-radius:var(--radius); padding:calc(var(--learning-unit)*2) calc(var(--learning-unit)*3); background:var(--card); color:var(--ink); font:700 1rem/1.4 var(--font-body); }
+.og-learning .learning-toggle[aria-pressed="true"] { background:var(--accent-soft); border-width:calc(var(--learning-border)*2); }
+.og-learning :is(a,button,input,select):focus-visible { outline:var(--learning-unit) solid var(--text-secondary); outline-offset:var(--learning-unit); }
+
+/* Legacy inner data-grade markers describe content. The outer shell already
+   owns the exact year/theme palette; inner markers must not restore light BG. */
+.og-root .og-learning [data-grade] {
+  --bg:inherit; --bg-sunken:inherit; --card-hover:inherit;
+  --accent:inherit; --accent-deep:inherit; --accent-light:inherit;
+  --accent-soft:inherit; --accent-glow:inherit; --rule:inherit;
+  --card-border:inherit; --logo-gradient:inherit;
+}
+.og-learning .dg-input { border-color:var(--text-secondary); }

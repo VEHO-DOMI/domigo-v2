@@ -1,0 +1,36 @@
+name: visual reproducibility
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  visual-reproducibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Candidate reproducibility only. Approved cross-commit references await cgo-133/128.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: node scripts/lib/visual/source-snapshot.mjs --selftest
+      - run: node scripts/check-learning-display.mjs --out "${{ runner.temp }}/learning-display"
+      - run: node scripts/check-learning-display.mjs --selftest --out "${{ runner.temp }}/learning-mutants"
+      - run: node scripts/verify-design.mjs --capture --out "${{ runner.temp }}/visual-candidate"
+      - run: node scripts/verify-design.mjs --baseline "${{ runner.temp }}/visual-candidate/reference" --out "${{ runner.temp }}/visual-repeat"
+      - run: node scripts/check-design-selftest.mjs --baseline "${{ runner.temp }}/visual-candidate/reference" --out "${{ runner.temp }}/visual-mutants"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-candidate-not-approved
+          path: |
+            ${{ runner.temp }}/learning-display
+            ${{ runner.temp }}/learning-mutants
+            ${{ runner.temp }}/visual-candidate
+            ${{ runner.temp }}/visual-repeat
+            ${{ runner.temp }}/visual-mutants
+          retention-days: 30

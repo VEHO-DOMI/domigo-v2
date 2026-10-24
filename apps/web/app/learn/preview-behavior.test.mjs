@@ -19,6 +19,7 @@ const pageModules = {
   '@/lib/student-view': {resolveStudentView: async raw => { seenYear = raw; return view; }},
   '@/lib/grade-scope': {isSlugAllowed: (slug, grades) => grades.includes(Number(slug[1]))},
   '@/app/PreviewBanner': {default: component('PreviewBanner')},
+  '@/lib/trainer/LearningShell': {default: component('LearningShell'), LearningText: component('LearningText')},
   '@/lib/hoeren': {ohneSprechtextFuersKind: a => a},
   '@/lib/content-service': {loadUnitWithOverrides: async slug => ({slug, vocab, grammar})},
   '@domigo/content-loader': {
@@ -94,6 +95,7 @@ const useState = initial => {
 };
 const sender = load('apps/web/lib/preview-attempt.ts', {'./attempt-outbox.ts': {sendAttempt: async (body, ownerId) => {sends.push({body, ownerId}); return {ok:true, queued:false};}}});
 const clients = {
+  '@/lib/trainer/LearningShell': {useLearningText: () => (de) => de},
   'react/jsx-runtime': jsx, 'react': {...React, useState}, 'next/link': {default: component('Link')},
   '@/lib/preview-attempt': sender, '@/lib/useOutboxFlush': {useOutboxFlush: (enabled, ownerId) => flushes.push({enabled, ownerId})},
   '@domigo/engine': {xpForTier: base => base, XP_WEIGHT: {correct:1, partial:0.5, close:0.25, wrong:0}},

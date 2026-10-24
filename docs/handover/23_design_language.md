@@ -302,3 +302,35 @@ Quellenabgleich für §8 der ursprünglichen Studie:
 | Schwierigkeitssprache | Vorhandene Jahrgang-3-Phrasen-/Jahrgang-4-B1-Texte; Aufgaben und Niveau nicht geändert. |
 
 **Noch kein Abschluss von W7/V-1/GO-1.** Die vier isolierten Seiten sind eine reproduzierbare Vergleichsbasis, kein Vergleich mit Produktion und keine vollständige V-1-Routenmatrix. Der Blueprint nennt zusätzlich Practice, Learn, Review, Assignments, Admin, Sign-in und eine Spielhülle sowie eine echte Testkonten-/Anmeldematrix. Dafür müssen GG und Koki freigegebene synthetische Testkonten, den konkreten ausgelieferten Stand und die Baseline-Abnahme bereitstellen; Codex greift nicht auf reale Kinderlisten zu. Die Vier-Personas-Abnahme bleibt eine konkrete Folgearbeit mit Koki. Die ältere Sprachführung, noch offene visuelle §8-Abweichungen und Badges werden separat auf dem Board weitergeführt, nicht als durch diese Prüfung erledigt gezählt.
+
+
+### W7-Fortsetzung · cgo-129 (Teilstand in Prüfung)
+
+Die ältere Sprachlücke oben wird für Practice, Dictionary, Review, Assignments und
+Learn durch eine gemeinsame Lernhülle geschlossen. Sie übernimmt die vorhandene
+Jahrgangssprache und die bestehende flüchtige Hell-/Dunkelwahl. Bedienführung wird
+übersetzt; Aufgaben, Antwortschlüssel, feste deutsche Bewertungswörter und
+inhaltliche Hilfen bleiben Original. Ein Sprachwechsel setzt weder Eingabe noch
+abgeschlossene Bewertung zurück. Die Vorschau unterbindet zusätzlich Antwortklänge,
+damit deren Sound-Einstellung keinen Gerätespeicher liest.
+
+Die Namen aller 50 nummerierten Avatarbilder wurden gegen die wirklichen Bilder
+abgeglichen: 46 Beschriftungen korrigiert, vier bereits passend. Bildnummern bleiben
+stabil; Auswahlknopf und Alternativtext verwenden denselben zweisprachigen Katalog.
+
+Die Lernprüfung zählt 240 Ansichten mit allen vier Antwortstufen und 40 zusätzliche
+Verhaltensproben. Das neue V-1-Werkzeug erreicht die acht echten Next-Routenfamilien
+mit 92 Routenkombinationen. Befehle, Grenzen, Fehlerproben und die Unterscheidung
+zwischen Referenzkandidat und freigegebener Referenz stehen in
+[visual-checks.md](../testing/visual-checks.md). Laufbelege und unabhängige Prüfung
+gehören zum PR-Bericht, nicht als Bilder ins Repo.
+
+**Weiter offen:** Der Quellenabgleich findet 48 verschiedene Originalabzeichen und
+172 explizite Jahrgangseinträge (112 Vokabel-/60 Grammatik), widersprüchliche Kriterien,
+niemals erhöhte Zähler und eine fehlende Grammatikdefinition für Jahrgang4.
+Bewertete Einzelantworten belegen noch keine vollständigen Übungsrunden.
+Karte133 verlangt daher einen verbindlichen Kriterien-/Datenerfassungsentscheid;
+129 führt weder Ersatzkriterien noch neue Punktequellen ein. Geräteweites Speichern
+bleibt ebenfalls bis133 aus. Die verbindliche Referenzablage, Kokis Bildurteil und
+der produktive Vergleich fehlen weiterhin (133/128). Die Sperren der vorgelagerten
+PRs515/516 bleiben bestehen. W7 insgesamt ist nicht abgeschlossen.

@@ -13,7 +13,7 @@ function fixture(preview=false){
     "../options":{multipleChoiceBank:()=>[]},
     "@/lib/useOutboxFlush":{useOutboxFlush(_enabled:boolean,_owner:string,onReply:typeof receive){receive=onReply;}},
     "@/lib/preview-attempt":{attemptSender:()=> (body:{clientAttemptId:string})=>new Promise<AttemptResult>(resolve=>sent.push({id:body.clientAttemptId,resolve}))},
-    "@domigo/task-ui":{rotateVocabPool:()=>"carrier",VOCAB_POOLS:["carrier","definition"],VOCAB_POOL_LABEL:{carrier:"Context",definition:"Meaning"},
+    "@domigo/task-ui":{rotateVocabPool:()=>"carrier",VOCAB_POOLS:["carrier","definition"],vocabPoolLabel:(pool:string)=>pool === "carrier" ? "Context" : "Meaning",
       VocabItemView:({onResult,hideXp}:{onResult:(tier:string,detail:unknown)=>void;hideXp?:boolean})=>{assert.equal(hideXp,true,"the task must not display local XP");return createElement("button",{onClick:()=>onResult("correct",{itemId:item.id,input:{kind:"vocab",value:"x"}} )},"answer");},GrammarItemView:({hideXp}:{hideXp?:boolean})=>{assert.equal(hideXp,true);return null;}},
   });
   return {view,props,sent,reply:(id:string,r:AttemptResult)=>receive(id,r),answer:()=>click(nodes(view.render()).find(n=>n.type==="button"&&text(n.props.children)==="answer")!)};
@@ -64,5 +64,5 @@ for (const lost of [true, false]) it(`original persisted receipt survives ${lost
 });
 it("a stored wrong answer remains zero even if replay was newly graded correct", () => {
   const f = fixture(); f.answer(); f.reply(f.sent[0]!.id, { ok: true, queued: false, tier: "correct", xpAwarded: 20, receipt: { tier: "wrong", xpAwarded: 0 } });
-  assert.equal(xp(f), 0); assert.match(text(f.view.render()), /1 wrong/);
+  assert.equal(xp(f), 0); assert.match(text(f.view.render()), /1 to revisit/);
 });

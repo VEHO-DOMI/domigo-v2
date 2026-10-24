@@ -14,6 +14,7 @@
  * the one pure formatter is inlined.
  */
 import Link from "next/link";
+import { useLearningText } from "@/lib/trainer/LearningShell";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier, VocabPool } from "@domigo/engine";
@@ -66,6 +67,7 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
   sections: CheckupRunnerSection[];
   feedback: CheckupFeedbackMode;
 }) {
+  const t = useLearningText();
   const [result, setResult] = useState<CheckupResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(() => (expiresAt ? Math.max(0, Math.round((new Date(expiresAt).getTime() - Date.now()) / 1000)) : null));
@@ -130,10 +132,10 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
   if (submitted && feedback === "on-release") {
     return (
       <main style={{ maxWidth: 560, margin: "0 auto", padding: "40px 20px", fontFamily: "var(--font-body)", color: "var(--text)", textAlign: "center" }}>
-        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? "Vorschau — nichts gespeichert" : "Abgegeben ✓"}</h1>
+        <h1 style={{ fontSize: 26, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{preview ? t("Vorschau — nichts gespeichert", "Preview — nothing saved") : t("Abgegeben ✓", "Submitted ✓")}</h1>
         <p style={{ fontSize: 18 }}><strong>{title}</strong></p>
-        <p style={{ color: "var(--text-secondary)" }}>Dein Ergebnis bekommst du, sobald es freigegeben ist.</p>
-        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>Zur Übersicht</Link>
+        <p style={{ color: "var(--text-secondary)" }}>{t("Dein Ergebnis bekommst du, sobald es freigegeben ist.", "Your result will be available once it is released.")}</p>
+        <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn" style={{ display: "inline-block", marginTop: 24 }}>{t("Zur Übersicht", "Back to overview")}</Link>
       </main>
     );
   }
@@ -151,10 +153,10 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
         )}
       </div>
       <div style={{ fontSize: 15, fontWeight: 800, color: "var(--ink)", marginBottom: 14 }} aria-live="polite">
-        {showScore && result ? <>{fmtPoints(result.points)} / {result.outOf} Punkte</> : <>___ / {outOf} Punkte</>}
+        {showScore && result ? <>{fmtPoints(result.points)} / {result.outOf} {t("Punkte", "points")}</> : <>___ / {outOf} {t("Punkte", "points")}</>}
       </div>
 
-      {submitted && preview && <p role="status">Vorschau — nichts gespeichert</p>}
+      {submitted && preview && <p role="status">{t("Vorschau — nichts gespeichert", "Preview — nothing saved")}</p>}
 
       {/* the paper: every section on ONE page, in order. fieldset locks the
           whole sheet after submit (the server wall enforces it regardless). */}
@@ -164,8 +166,8 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
           return (
             <section key={sec.position} style={{ marginBottom: 22 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-                <div style={{ fontSize: 13, fontWeight: 700, fontFamily: "var(--font-label)", letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--accent)" }}>
-                  Teil {SECTION_LETTERS[si] ?? si + 1} · {sec.titleDe}
+                <div style={{ fontSize: 13, fontWeight: 700, fontFamily: "var(--font-label)", letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--ink)" }}>
+                  {t("Teil", "Section")} {SECTION_LETTERS[si] ?? si + 1} · <span lang="de">{sec.titleDe}</span>
                 </div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "var(--muted)", fontVariantNumeric: "tabular-nums" }}>
                   {showScore && scored ? `${fmtPoints(scored.points)} / ${scored.outOf}` : `___ / ${sec.points}`}
@@ -180,7 +182,7 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
                       pool={sec.pools[i] ?? "carrier"}
                       mask={sec.mask ? "first-letter" : undefined}
                       onResult={onResult}
-                      hideXp
+                      hideXp hideMeta
                       hideHint
                       singleAttempt
                       hideFeedback={!revealVerdicts}
@@ -190,14 +192,14 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
                       key={it.id}
                       item={it as GrammarItem}
                       onResult={onResult}
-                      hideXp
+                      hideXp hideMeta
                       hideHint
                       singleAttempt
                       hideFeedback={!revealVerdicts}
                     />
                   ),
                 )}
-                {sec.items.length === 0 && <p style={{ color: "var(--muted)" }}>Dieser Teil hat keine Aufgaben.</p>}
+                {sec.items.length === 0 && <p style={{ color: "var(--muted)" }}>{t("Dieser Teil hat keine Aufgaben.", "There are no items in this section.")}</p>}
               </div>
             </section>
           );
@@ -206,9 +208,9 @@ export default function CheckupRunner({ assignmentId, sessionId, title, expiresA
 
       <div style={{ marginTop: 10, display: "flex", justifyContent: submitted ? "center" : "flex-end" }}>
         {submitted ? (
-          <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn">Zur Übersicht</Link>
+          <Link href={preview ? "/assignments" : `/assignments/${assignmentId}`} className="dg-btn">{t("Zur Übersicht", "Back to overview")}</Link>
         ) : (
-          <button className="dg-btn" disabled={submitting} onClick={() => void submit()}>{submitting ? "Wird abgegeben…" : "Abgeben"}</button>
+          <button className="dg-btn" disabled={submitting} onClick={() => void submit()}>{submitting ? t("Wird abgegeben…", "Submitting…") : t("Abgeben", "Submit")}</button>
         )}
       </div>
     </main>
