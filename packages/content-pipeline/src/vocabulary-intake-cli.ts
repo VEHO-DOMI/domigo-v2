@@ -8,6 +8,23 @@ import { readUnitItems, applyItemFixes } from "./gen-items.ts";
 import { UNITS_DIR, REPO_ROOT } from "./paths.ts";
 import { buildVocabularyIntake, type AppendixSource, type BankOccurrence, type IntakeGrade, type TaskOccurrence } from "./vocabulary-intake.ts";
 
+/** Resolve existing directory shortcuts before enforcing the report boundary. */
+export function reportOutputPath(requested: string, repository: string): string {
+  let ancestor = path.resolve(requested);
+  const missing: string[] = [];
+  while (!fs.existsSync(ancestor)) {
+    missing.unshift(path.basename(ancestor));
+    const parent = path.dirname(ancestor);
+    if (parent === ancestor) throw Error("cannot resolve output ancestor");
+    ancestor = parent;
+  }
+  const physical = path.join(fs.realpathSync(ancestor), ...missing);
+  const root = fs.realpathSync(repository);
+  const relative = path.relative(root, physical);
+  if (relative === "" || (!relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative))) throw Error("intake output must be outside the repository");
+  return physical;
+}
+
 const hash = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 export function runVocabularyIntake(args: string[]): void {
   const value = (flag: string) => {
@@ -16,15 +33,13 @@ export function runVocabularyIntake(args: string[]): void {
     return args[i+1]!;
   };
   const manifestPath = path.resolve(value("--manifest"));
-  const outputPath = path.resolve(value("--out"));
+  const outputPath = reportOutputPath(value("--out"), REPO_ROOT);
   if (args.filter(a=>a === "--manifest").length !== 1 || args.filter(a=>a === "--out").length !== 1 || args.filter(a=>a === "--verify").length > 1) throw Error("duplicate intake argument");
   for (let i=0;i<args.length;i++) {
     if (["--manifest","--out"].includes(args[i]!)) { i++; continue; }
     if (args[i] !== "--verify") throw Error("unknown vocabulary-intake argument");
   }
   // Reports can be large and contain source text. Keep them outside the repo.
-  const relative = path.relative(REPO_ROOT, outputPath);
-  if (relative === "" || (!relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative))) throw Error("intake output must be outside the repository");
   const manifest: unknown = JSON.parse(fs.readFileSync(manifestPath,"utf8"));
   if (!Array.isArray(manifest) || manifest.length !== 4) throw Error("manifest must list four explicit local appendix paths");
   const sources: AppendixSource[] = manifest.map((m: unknown) => {
@@ -37,7 +52,7 @@ export function runVocabularyIntake(args: string[]): void {
     try {
       const bytes = fs.readFileSync(input);
       const sha256 = hash(bytes);
-      const blocks = parseDocxBlocks(input);
+      const blocks = parseDocxBlocks(input, true);
       if (hash(fs.readFileSync(input)) !== sha256) throw Error("source changed while reading");
       return { grade: row.grade as IntakeGrade, sha256, blocks };
     } catch { throw Error(`cannot read appendix for grade ${row.grade}`); }

@@ -12,11 +12,14 @@ export type DocxBlock =
   | { kind: "paragraph"; text: string }
   | { kind: "table"; rows: string[][] };
 
-export function readDocumentXml(docxPath: string): string {
+export function readDocumentXml(docxPath: string, quietErrors = false): string {
   // execFileSync passes the path as a single argv entry — trailing spaces and
   // ampersands in iCloud folder names survive intact.
   const out = execFileSync("unzip", ["-p", docxPath, "word/document.xml"], {
     maxBuffer: 256 * 1024 * 1024,
+    // Explicit pipe suppresses execFileSync's automatic stderr forwarding on
+    // failure. Intake catches the error and emits only a grade, never a path.
+    ...(quietErrors ? { stdio: "pipe" as const } : {}),
   });
   return out.toString("utf8");
 }
@@ -118,8 +121,8 @@ function parseTable(tblXml: string): string[][] {
 }
 
 /** Walk the document body in order, yielding paragraphs and tables. */
-export function parseDocxBlocks(docxPath: string): DocxBlock[] {
-  const xml = readDocumentXml(docxPath);
+export function parseDocxBlocks(docxPath: string, quietErrors = false): DocxBlock[] {
+  const xml = readDocumentXml(docxPath, quietErrors);
   const bodyStart = xml.indexOf("<w:body");
   const body = bodyStart === -1 ? xml : xml.slice(bodyStart);
   const blocks: DocxBlock[] = [];

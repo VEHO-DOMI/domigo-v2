@@ -6,6 +6,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { assertSourceAccounting, buildVocabularyIntake, exactTextKey, parseAppendixReference, sourceRows, type AppendixSource, type BankOccurrence, type IntakeGrade } from "../vocabulary-intake.ts";
 import { REPO_ROOT } from "../paths.ts";
+import { reportOutputPath } from "../vocabulary-intake-cli.ts";
 
 const source = (grade: IntakeGrade, rows: string[][]): AppendixSource => ({grade,sha256:String(grade).repeat(64),blocks:[{kind:"table",rows:[["Headword","Reference","German"],...rows]}]});
 const sources = (rows: string[][] = []): AppendixSource[] => [source(1,rows),source(2,[]),source(3,[]),source(4,[])];
@@ -84,6 +85,17 @@ test("same pinned inputs yield identical output regardless of source/bank/task e
   assert.deepEqual(buildVocabularyIntake(input,banks,tasks,[]),buildVocabularyIntake([...input].reverse(),[...banks].reverse(),[...tasks].reverse(),[]));
 });
 
+test("physical repository boundary rejects directory and file aliases, including new descendants",()=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),"domigo-intake-boundary-"));
+  try {
+    const repo=path.join(dir,"repo");fs.mkdirSync(repo);fs.symlinkSync(repo,path.join(dir,"alias"),"dir");
+    fs.writeFileSync(path.join(repo,"existing.json"),"preserve");fs.symlinkSync(path.join(repo,"existing.json"),path.join(dir,"file-alias"));
+    for (const out of [path.join(repo,"new.json"),path.join(dir,"alias/new/sub/report.json"),path.join(dir,"file-alias")]) assert.throws(()=>reportOutputPath(out,repo),/outside the repository/);
+    assert.equal(reportOutputPath(path.join(dir,"outside/new.json"),repo),path.join(fs.realpathSync(dir),"outside/new.json"));
+    assert.equal(fs.readFileSync(path.join(repo,"existing.json"),"utf8"),"preserve");
+  } finally {fs.rmSync(dir,{recursive:true,force:true});}
+});
+
 test("real CLI reads synthetic DOCX, includes current corpus, verifies and detects a dropped artifact row",()=>{
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),"domigo-vocabulary-intake-"));
   try {
@@ -105,5 +117,10 @@ test("real CLI reads synthetic DOCX, includes current corpus, verifies and detec
     assert.notEqual(run().status,0,"must not overwrite an existing artifact");
     data.rows.splice(1,1);fs.writeFileSync(out,JSON.stringify(data,null,2)+"\n");
     const tamper=run(["--verify"]);assert.notEqual(tamper.status,0);assert.match(tamper.stderr,/intake verification failed/);
+    const privateDir=path.join(dir,"PRIVATE_SOURCE_SENTINEL");fs.mkdirSync(privateDir);
+    const corrupt=path.join(privateDir,"private-name.docx");fs.writeFileSync(corrupt,"not a zip archive");
+    fs.writeFileSync(manifest,JSON.stringify([1,2,3,4].map(grade=>({grade,path:corrupt}))));
+    const broken=run();assert.notEqual(broken.status,0);assert.match(broken.stderr,/cannot read appendix for grade 1/);
+    assert.ok(!broken.stderr.includes(privateDir) && !broken.stdout.includes(privateDir),"unzip must not forward private source paths");
   } finally {fs.rmSync(dir,{recursive:true,force:true});}
 });
