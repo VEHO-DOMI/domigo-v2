@@ -7,6 +7,7 @@ const ts = require('typescript');
 const jsx = require('react/jsx-runtime');
 const React = require('react');
 const pureDb = await import("@domigo/db");
+const pureEngine = await import("@domigo/engine");
 let view, reads, seenYear;
 const chapters = ['g1-u01', 'g2-u03', 'g2-u04', 'g3-u01', 'g4-u01'];
 const vocab = Array.from({length: 22}, (_, i) => ({id: `v${i}`, difficulty: 1}));
@@ -19,6 +20,7 @@ const pageModules = {
   '@/lib/student-view': {resolveStudentView: async raw => { seenYear = raw; return view; }},
   '@/lib/grade-scope': {isSlugAllowed: (slug, grades) => grades.includes(Number(slug[1]))},
   '@/app/PreviewBanner': {default: component('PreviewBanner')},
+  '@/lib/trainer/LearningShell': {default: component('LearningShell'), LearningText: component('LearningText')},
   '@/lib/hoeren': {ohneSprechtextFuersKind: a => a},
   '@/lib/content-service': {loadUnitWithOverrides: async slug => ({slug, vocab, grammar})},
   '@domigo/content-loader': {
@@ -94,9 +96,11 @@ const useState = initial => {
 };
 const sender = load('apps/web/lib/preview-attempt.ts', {'./attempt-outbox.ts': {sendAttempt: async (body, ownerId) => {sends.push({body, ownerId}); return {ok:true, queued:false};}}});
 const clients = {
+  "@/lib/vocabulary-history-client": load("apps/web/lib/vocabulary-history-client.ts", {}),
+  '@/lib/trainer/LearningShell': {useLearningText: () => (de) => de},
   'react/jsx-runtime': jsx, 'react': {...React, useState}, 'next/link': {default: component('Link')},
   '@/lib/preview-attempt': sender, '@/lib/useOutboxFlush': {useOutboxFlush: (enabled, ownerId) => flushes.push({enabled, ownerId})},
-  '@domigo/engine': {xpForTier: base => base, XP_WEIGHT: {correct:1, partial:0.5, close:0.25, wrong:0}},
+  '@domigo/engine': {...pureEngine, xpForTier: base => base, XP_WEIGHT: {correct:1, partial:0.5, close:0.25, wrong:0}},
   '@domigo/task-ui': Object.fromEntries(['ListeningTaskView','GrammarIntroView','VocabIntroView','GrammarItemView','VocabItemView','AudioClip'].map(name => [name, component(name)])),
 };
 globalThis.fetch = async (...args) => {writes.push(args); return {ok:true, json: async () => ({ok:true, stars:3})};};
@@ -110,7 +114,12 @@ for (const [path, props] of [
   for (const preview of [true, false]) {
     slots = []; cursor = 0; sends = []; flushes = []; writes = [];
     const p = {...props, preview, ownerId: preview ? null : 'fixture-child'};
-    const render = () => {cursor = 0; return Client(p);};
+    const render = () => {
+      cursor = 0;
+      let tree = Client(p);
+      while (typeof tree?.type === 'function' && /Round$/.test(tree.type.name)) tree = tree.type(tree.props);
+      return tree;
+    };
     let tree = render();
     const item = allElements(tree).find(n => /ItemView|ListeningTaskView/.test(n.type?.displayName));
     item.props.onResult('correct', {itemId:'v0', input:'fixture-answer'});

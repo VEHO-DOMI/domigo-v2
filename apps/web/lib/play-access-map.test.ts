@@ -1,3 +1,4 @@
+import { trainerPreferences } from "./trainer/test-loader.ts";
 // cgo-047 · THE PREVIEW WRITES NOTHING — the source contract of every student
 // surface a teacher can open (lib/student-view.ts, lib/preview-attempt.ts).
 //
@@ -54,7 +55,7 @@ describe("client guards — nothing leaves a preview", () => {
     it(`${file}: attempts and the outbox`, () => {
       const src = read(file);
       assert.doesNotMatch(src, /\bsendAttempt\b/, "attempts go through attemptSender(preview), never sendAttempt directly");
-      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId\)/, "the outbox is not flushed in a preview");
+      assert.match(src, /useOutboxFlush\(!preview, (?:props\.)?ownerId(?:, receive)?\)/, "the outbox is not flushed in a preview");
       for (const m of src.matchAll(/[^\n]*\bflushOutbox\([^)]*\)[^\n]*/g)) {
         assert.match(m[0], /if \(!preview\) void flushOutbox\(props\.ownerId\)/, `unguarded flush: ${m[0].trim()}`);
       }
@@ -262,7 +263,7 @@ describe("answer owners travel from the trusted page into every client", () => {
     it(`${file}: both immediate sends and background retries carry the same owner`, () => {
       const src = code(read(file));
       assert.match(src, /useOutboxFlush\(!preview, ownerId\)/);
-      assert.match(src, /attemptSender\(preview, ownerId\)\(/);
+      assert.match(src, /(?:attemptSender\(preview, ownerId\)\(|sendCompletedAttempt\(attemptSender\(preview, ownerId\),)/);
     });
   }
 });
@@ -407,6 +408,7 @@ it("story review door renders counts/deep links for a child and never reads a pr
       "@/lib/student-view": { resolveStudentView: async () => preview ? { kind: "preview", grades: [3] } : { kind: "student", grades: [3], player: { userId: "fixture-child", classId: "fixture-class" } } },
       "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
       "@/app/PreviewBanner": { default: "PreviewBanner" },
+      "@/lib/trainer/LearningShell": { default: "LearningShell", LearningText: "LearningText" },
       "./FallenKarte": { default: "FallenKarte" },
       "@domigo/db": {
         getDb: () => { calls.push("db"); return {}; },
@@ -432,7 +434,7 @@ it("story review door renders counts/deep links for a child and never reads a pr
     } else {
       assert.equal(scopeIds.length, 15);
       assert.ok(scopeIds.includes(dueId));
-      assert.match(serialized, /3 Aufgaben fällig/);
+      assert.match(serialized, /3 Fragen fällig/);
       assert.match(serialized, /\/play\/3\/ch13/);
       assert.doesNotMatch(serialized, /caught up|Start review/);
       assert.ok(calls.includes("refs") && calls.includes("count"));
@@ -455,6 +457,7 @@ async function trapReviewHarness() {
     "@domigo/content-loader": content,
     "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
     "@/app/PreviewBanner": { default: () => createElement("p", {}, "Vorschau") },
+    "@/lib/trainer/LearningShell": { default: ({ children }: { children: never }) => children, LearningText: ({ de }: { de: string }) => de, useLearningText: () => (de: string) => de },
     "@domigo/db": { trapLabel },
   };
   const compile = (file: string) => {
@@ -543,7 +546,7 @@ it("student traps: actual child scope only; preview makes zero personal reads", 
     if (kind === "preview") assert.deepEqual(calls, []);
     else assert.equal(calls.filter((call) => call === "traps").length, 1);
     if (kind === "child") {
-      assert.ok(html.indexOf("Deine häufigsten Fallen") < html.indexOf("Start review"));
+      assert.ok(html.indexOf("Deine häufigsten Fallen") < html.indexOf("Wiederholung starten"));
       assert.match(html, /4-mal in den letzten 30 Tagen/);
     } else assert.doesNotMatch(html, /Deine häufigsten Fallen|student-traps-title/);
   }
@@ -564,7 +567,7 @@ describe("OG W1 surfaces", () => {
   });
   it("dictionary names only the available library until W2", () => {
     const home = code(read("home/page.tsx"));
-    assert.match(home, /<strong>Dictionary<\/strong><small>Browse your full vocabulary library<\/small>/);
+    assert.match(home, /text\("Wörterbuch", "Dictionary"\).*text\("Alle Wörter nachschlagen", "Browse your full vocabulary library"\)/);
     assert.doesNotMatch(home, /Flashcards/i);
   });
   it("daily reserve stays after selection and is visible without replacing words", () => {
@@ -573,7 +576,9 @@ describe("OG W1 surfaces", () => {
     assert.ok(loader.indexOf("selectDailyChallenge(") < loader.indexOf("listReservedForClass("));
     const runner = code(read("practice/page.tsx"));
     assert.match(runner, /vocab: challenge.availableWords/);
-    for (const page of [runner, code(read("home/page.tsx"))]) assert.match(page, /Heute gesperrt: \{challenge.blockedCount\}\/10/);
+    assert.match(runner, /de=\{`Heute gesperrt: \$\{challenge.blockedCount\}\/10 · Diese Wörter werden übersprungen\.`\}/);
+    assert.match(runner, /en=\{`Unavailable today: \$\{challenge.blockedCount\}\/10 · These words are skipped\.`\}/);
+    assert.match(code(read("home/page.tsx")), /text\("Heute gesperrt", "Blocked today"\).*\{challenge.blockedCount\}\/10/);
     assert.match(code(read("home/page.tsx")), /challenge.availableWords.length > 0/);
   });
   it("home and modes honor the merged runtime story opening", () => {
@@ -612,10 +617,11 @@ describe("OG W1 surfaces", () => {
     const known = new Set<string>();
     for (const f of tiles) {
       const src = code(read(f));
-      assert.doesNotMatch(src, /Activity Game|Battle Arena|Speed Round|Memory Match|Spelling Bee|Word Hunt/);
+      // cgo-113: Activity is now a real route, checked with every tile below.
+      assert.doesNotMatch(src, /Speed Round|Memory Match|Spelling Bee|Word Hunt/);
       for (const match of src.matchAll(/(?:href=\{?[`"]|path:\s*")(\/[a-z][a-z/-]*)/g)) known.add(match[1]!);
     }
-    for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review"]) known.add(path);
+    for (const path of ["/home", "/modi", "/profil", "/fortschritt", "/practice", "/woerterbuch", "/review", "/activity"]) known.add(path);
     assert.ok(known.size >= 7);
     for (const path of known) {
       const route = path === "/play/" ? "(game)/play/[grade]" : path.slice(1).replace(/\/$/, "");
@@ -629,7 +635,7 @@ describe("OG W1 surfaces", () => {
     const loader = code(read("practice/load-practice.ts"));
     assert.match(loader, /acting \? await listReservedForClass\(getDb\(\), acting.classScope, acting.classId\) : new Set/);
     assert.doesNotMatch(loader, /\.catch\(/);
-    assert.match(loader, /assignPool\(item.id, reserved\) !== "mock"/);
+    assert.match(loader, /practiceItemDenial\(item.id, grade, reserved\) === null/);
     const theme = code(read("home/TrainerShell.tsx"));
     assert.doesNotMatch(theme, /localStorage|sessionStorage|fetch\(/);
   });
@@ -670,6 +676,7 @@ async function renderTrainer(file: string, props: Record<string, unknown>): Prom
     "@/lib/levels": levels, "@/lib/avatar": avatar,
     "@/lib/modi/catalog": modeCatalog,
   };
+  modules["@/lib/trainer/preferences"] = trainerPreferences(modules);
   const preference = await import("./modi/preference.ts");
   modules["@/lib/modi/preference"] = preference;
   const switchCode = ts.transpileModule(read("home/ModeSwitch.tsx"), { compilerOptions: {
@@ -722,7 +729,7 @@ it("Nachzug 1 player grammar line is only level/title and right-aligned XP", asy
 it("Nachzug 1 grades 3/4 start dark and theme selection never persists", async () => {
   for (const grade of [1, 2, 3, 4]) {
     const html = await renderTrainer("home/TrainerShell.tsx", { grade, preview: true, children: "Test" });
-    assert.ok(html.includes(`data-theme="${grade >= 3 ? "dark" : "system"}"`));
+    assert.ok(html.includes(`data-theme="${grade >= 3 ? "dark" : "light"}"`));
   }
   assert.doesNotMatch(code(read("home/TrainerShell.tsx")), /localStorage|sessionStorage|indexedDB|fetch\(/);
 });
@@ -797,6 +804,6 @@ it("G15 grammar entry routes are live and player titles still use both official 
     const { levelFor, grammarTitle, registerFor } = await import("./levels.ts");
     const level = levelFor(80);
     assert.ok(html.includes(grammarTitle(level.level, level.prestige, registerFor(grade)).name));
-    assert.ok(html.includes("Switch to Vocab or Story Mode"));
+    assert.ok(html.includes(grade === 1 ? "Zu Vokabeln oder Story Mode" : "Switch to Vocab or Story Mode"));
   }
 });

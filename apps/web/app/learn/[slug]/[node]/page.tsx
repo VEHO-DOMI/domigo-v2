@@ -1,3 +1,4 @@
+import LearningShell from "@/lib/trainer/LearningShell";
 import { notFound, redirect } from "next/navigation";
 import { itemsInPool, listApprovedUnits, loadJourney, loadUnitStructures, loadWordbank } from "@domigo/content-loader";
 import { loadUnitWithOverrides } from "@/lib/content-service";
@@ -48,7 +49,7 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
 
     // lesson → the unit's new words (teaching card).
     if (jnode.kind === "lesson") {
-      return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind="vocab-intro" wordbank={loadWordbank(slug)} /></>;
+      return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind="vocab-intro" wordbank={loadWordbank(slug)} /></LearningShell>;
     }
 
     // practice / side-quest → the node's pool slice; review → the live due set (mock excluded).
@@ -66,7 +67,7 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
     if (jitems.length === 0) redirect(`/learn/${slug}`);
 
     // attempts write mode='journey:<unit>:<node>' → the derivation reads them back.
-    return <>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} /></>;
+    return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={false} items={jitems} attemptMode={journeyModeFor(slug, nodeId)} /></LearningShell>;
   }
 
   const unit = await loadUnitWithOverrides(slug);
@@ -85,10 +86,10 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
   if (!preview && nodeView?.status === "locked") redirect(`/learn/${slug}`);
 
   if (def.kind === "vocab-intro") {
-    return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} wordbank={loadWordbank(slug)} /></>;
+    return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} wordbank={loadWordbank(slug)} /></LearningShell>;
   }
   if (def.kind === "grammar-intro") {
-    return <>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} structures={loadUnitStructures(slug)} /></>;
+    return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<TeachingNode preview={preview} unitSlug={slug} nodeId={nodeId} kind={def.kind} structures={loadUnitStructures(slug)} /></LearningShell>;
   }
 
   // practice / checkpoint — resolve the node's items server-side, in node order.
@@ -100,5 +101,5 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
     .filter((x): x is Resolved => x !== undefined);
   if (items.length === 0) redirect(`/learn/${slug}`);
 
-  return <>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} /></>;
+  return <LearningShell preview={preview} grade={Number(slug[1])}>{banner}<PathPracticeNode preview={preview} key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} unitSlug={slug} nodeId={nodeId} isCheckpoint={def.kind === "checkpoint"} items={items} /></LearningShell>;
 }

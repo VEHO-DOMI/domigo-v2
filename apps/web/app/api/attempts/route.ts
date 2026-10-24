@@ -1,7 +1,10 @@
 /**
  * POST /api/attempts — idempotent, server-graded attempt recording.
  *
- * The client sends the RAW user answer; the server re-grades through the one
+ * The vocabulary-check mode writes an independent history record only; it never
+ * enters the completion/reward path described below.
+ *
+ * For completed exercises, the client sends the RAW user answer; the server re-grades through the one
  * grading brain (@domigo/engine), records the attempt, updates the Leitner review
  * queue (vocab/grammar only — listening + reading skip it), and bumps the v2 XP
  * pool (all via @domigo/db `recordAttempt`). Best-effort persistence: grading
@@ -15,7 +18,7 @@ import { loadListening, loadStoryComprehension, loadTest, storyIdForGrade } from
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { getDb, recordAttempt } from "@domigo/db";
+import { getDb, recordAttempt, getPracticeReceipt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
@@ -23,6 +26,9 @@ import { parseTestRef } from "@/lib/testRef";
 import { parseComprehensionRef } from "@/lib/comprehensionRef";
 import { speedSessionValid } from "@/lib/modi/speed-session";
 import { validModeInput } from "@/lib/modi/attempt-policy";
+import { VocabularyCheckInput } from "@/lib/vocabulary-check";
+import { VocabularyHistoryInput, supportsVocabularyHistory, vocabularyHistoryContext } from "@/lib/vocabulary-history";
+import { arenaError, checkDuelAttempt, writeDuelAnswer } from "@/lib/arena/server";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -42,8 +48,8 @@ const GrammarInputSchema = z.union([
 const Body = z.object({
   ownerId: z.string().min(1).max(256).optional(),
   clientAttemptId: z.string().regex(UUID),
-  itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
-  mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
+  itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]).optional(),
+  mode: z.string().min(1).max(41).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([
     GrammarInputSchema,
     z.object({
@@ -57,10 +63,22 @@ const Body = z.object({
   ]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
   hintUsed: z.boolean().optional(),
+  vocabularyHistory: VocabularyHistoryInput.optional(),
+  vocabularyCheck: VocabularyCheckInput.optional(),
   context: z.unknown().optional(),
 });
 
+/** Arena services recheck their reserve under a write lock. Keep those later
+ * refusals on the same public 403 contract as the shared pre-grading check. */
+function reservationRefusal(error: unknown): Response | null {
+  if (!(error instanceof Error) || !("code" in error)
+    || !["duel_question_reserved", "live_question_reserved"].includes(String(error.code))) return null;
+  console.warn("[attempts] denied: item_reserved");
+  return NextResponse.json({ ok: false, error: "item_reserved" }, { status: 403 });
+}
+
 export async function POST(req: Request): Promise<Response> {
+  const receivedAt = new Date(); // Trusted arrival time, before identity/content/database latency.
   // 1. Identity.
   const acting = await getActingUser(req);
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
@@ -68,7 +86,8 @@ export async function POST(req: Request): Promise<Response> {
   // 2. Validate body.
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+  const { clientAttemptId, mode, input, latencyMs, hintUsed, context, vocabularyHistory: observation } = parsed.data;
+  let itemId = parsed.data.itemId;
 
   // Old pages delete queued answers on permanent 4xx responses. Keep them
   // retryable until a reload upgrades the outbox and isolates ownerless rows.
@@ -81,8 +100,46 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json({ ok: false, error: "wrong_owner" }, { status: 409 });
   }
 
+  if (!inScope(acting.classScope, acting.classId)) {
+    console.warn("[attempts] denied: class_scope");
+    return NextResponse.json({ ok: false, error: "class_forbidden" }, { status: 403 });
+  }
+
+  if (observation && (input.kind !== "vocab" || !supportsVocabularyHistory(mode))) {
+    return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  }
+
   if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
+  const check = parsed.data.vocabularyCheck;
+  if ((mode === "vocabulary-check") !== Boolean(check)) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  if (check) {
+    if (!itemId || input.kind !== "vocab" || !input.pool) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+    const { saveVocabularyCheck } = await import("@/lib/vocabulary-check-server");
+    return saveVocabularyCheck(acting, clientAttemptId, itemId, input.value, input.pool, check, receivedAt);
+  }
   if (mode === "speed" && !speedSessionValid(context, acting.userId)) return NextResponse.json({ ok: false, error: "speed_expired" }, { status: 410 }); // cgo-109 SPEED-DEADLINE
+
+  // A duel question is authorized before grading, then rechecked under its row
+  // lock when recording. Neither replays nor forged participants can earn XP.
+  let duelCoordinates: Awaited<ReturnType<typeof checkDuelAttempt>>["coordinates"] | null = null;
+  if (mode.startsWith("duel:")) {
+    try {
+      const resolved = await checkDuelAttempt(req, acting, mode, context, input.kind === "choice" ? input.value : "");
+      duelCoordinates = resolved.coordinates; itemId = resolved.itemId;
+    }
+    catch (error) { return reservationRefusal(error) ?? arenaError(error); }
+  }
+  // Load live-only dependencies lazily: other practice modes keep their route.
+  let live: typeof import("@/lib/arena/live-server") | null = null;
+  let liveResolved: Awaited<ReturnType<typeof import("@/lib/arena/live-server")["checkLiveAttempt"]>> | null = null;
+  if (mode.startsWith("live:") || mode.startsWith("quiz:")) {
+    live = await import("@/lib/arena/live-server");
+    try {
+      liveResolved = await live.checkLiveAttempt(req, acting, mode, context, typeof input.value === "string" ? input.value : "", receivedAt);
+      itemId = liveResolved.itemId;
+    } catch (error) { return reservationRefusal(error) ?? live.liveError(error); }
+  }
+  if (itemId === undefined) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
@@ -91,6 +148,24 @@ export async function POST(req: Request): Promise<Response> {
   const tref = ref || lref ? null : parseTestRef(itemId);
   const cref = ref || lref || tref ? null : parseComprehensionRef(itemId);
   if (!ref && !lref && !tref && !cref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  if (observation && ref?.kind !== "vocab") return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+
+  // The mode and client metadata never grant a grade or reserve exception.
+  // Read only the authenticated class, and refuse uncertainty before grading.
+  try {
+    const db = getDb();
+    const classGrade = await getClassGrade(db, acting.classId);
+    const reserved = await listReservedForClass(db, acting.classScope, acting.classId);
+    const denial = practiceItemDenial(itemId, classGrade, reserved);
+    if (denial) {
+      // Fixed vocabulary only: no user/class IDs, names, answer or client context.
+      console.warn(`[attempts] denied: ${denial}`);
+      return NextResponse.json({ ok: false, error: denial }, { status: 403 });
+    }
+  } catch {
+    console.warn("[attempts] eligibility_unavailable");
+    return NextResponse.json({ ok: false, error: "eligibility_unavailable" }, { status: 503, headers: { "Retry-After": "30" } });
+  }
 
   // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
@@ -102,6 +177,7 @@ export async function POST(req: Request): Promise<Response> {
   // typed text (choice/matching/groupSort never classify — their traps are
   // authored via distractorMeta).
   let classifiable: ClassifiableItem | null = null;
+  let vocabularyHistory: ReturnType<typeof vocabularyHistoryContext> | undefined;
   const typedValue =
     (input.kind === "text" || input.kind === "vocab") && typeof input.value === "string" ? input.value : null;
   try {
@@ -116,11 +192,12 @@ export async function POST(req: Request): Promise<Response> {
       // degrades to canon on any DB error.
       const unit = await loadUnitWithOverrides(ref.unitSlug);
       if (ref.kind === "vocab") {
-        const item = unit.vocab.find((v) => v.id === itemId);
+        const item = liveResolved?.item ?? unit.vocab.find((v) => v.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
         const value = "value" in input && typeof input.value === "string" ? input.value : "";
-        const pool = input.kind === "vocab" ? input.pool : undefined;
+        const pool = liveResolved ? liveResolved.pool : duelCoordinates ? "deToEn" : input.kind === "vocab" ? input.pool : undefined;
         tier = gradeVocab(item, value, pool).tier;
+        if (supportsVocabularyHistory(mode)) vocabularyHistory = vocabularyHistoryContext(item, pool ?? "carrier", tier, observation);
         xpAwarded = xpForTier(item.difficulty * 10, tier);
         classifiable = { answers: vocabAnswers(item, pool ?? "carrier") };
       } else {
@@ -173,7 +250,9 @@ export async function POST(req: Request): Promise<Response> {
       xpAwarded = xpForTier(item.difficulty * 10, tier);
       classifiable = item as unknown as ClassifiableItem;
     }
-  } catch {
+  } catch (error) {
+    if (liveResolved && live) return reservationRefusal(error) ?? live.liveError(error);
+    if (duelCoordinates) return reservationRefusal(error) ?? arenaError(error);
     return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
 
@@ -182,13 +261,21 @@ export async function POST(req: Request): Promise<Response> {
   // trap is the common case and writes nothing.
   if (mode === "flashcards") xpAwarded = 0; // cgo-109 FLASHCARDS-ZERO: self-report feeds review, earns no XP.
   const trap = tier === "wrong" && typedValue !== null && classifiable ? classifyWrong(classifiable, typedValue) : null;
-  const contextWithTrap = trap
-    ? { ...(typeof context === "object" && context !== null && !Array.isArray(context) ? context : {}), trap }
+  // This namespace is server-owned in EVERY mode, including modes that have
+  // no vocabulary history adapter. Preserve their own coordinates/context.
+  const clientContext = typeof context === "object" && context !== null && !Array.isArray(context)
+    ? Object.fromEntries(Object.entries(context).filter(([key]) => key !== "vocabularyHistory"))
     : context;
+  const baseContext = vocabularyHistory
+    ? { ...(typeof clientContext === "object" && clientContext !== null && !Array.isArray(clientContext) ? clientContext : {}), vocabularyHistory }
+    : clientContext;
+  const contextWithTrap = trap
+    ? { ...(typeof baseContext === "object" && baseContext !== null && !Array.isArray(baseContext) ? baseContext : {}), trap }
+    : baseContext;
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
-    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), acting.classScope, {
+    const attempt = {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
@@ -200,10 +287,23 @@ export async function POST(req: Request): Promise<Response> {
       tier,
       xpAwarded,
       latencyMs: latencyMs ?? null,
-      hintUsed: hintUsed ?? false,
+      hintUsed: vocabularyHistory?.helpShown !== null && vocabularyHistory?.helpShown !== undefined
+        ? vocabularyHistory.helpShown.length > 0 : hintUsed ?? false,
       context: contextWithTrap,
       clientAttemptId,
-    });
+    };
+    const { duplicate, box, dueAt, streak } = duelCoordinates
+      ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
+      : liveResolved && live ? await live.writeLiveAnswer(acting, attempt, liveResolved.coordinates, typeof input.value === "string" ? input.value : "", receivedAt)
+      : await recordAttempt(getDb(), acting.classScope, attempt);
+    // A round displays the original booking even when its first response was lost.
+    // Keep the existing incremental reward fields for all other consumers.
+    let receipt: { tier: string; xpAwarded: number } | undefined;
+    if (mode === "practice" || mode === "daily") {
+      const booked = duplicate ? await getPracticeReceipt(getDb(), acting.classScope, attempt) : { tier, xpAwarded };
+      if (!booked) throw new Error("practice_receipt_unavailable");
+      receipt = booked;
+    }
     return NextResponse.json({
       ok: true,
       tier,
@@ -211,10 +311,13 @@ export async function POST(req: Request): Promise<Response> {
       box,
       dueAt: dueAt.toISOString(),
       duplicate,
+      ...(receipt ? { receipt } : {}),
       streak,
       ...(trap ? { trap } : {}),
     });
-  } catch {
+  } catch (error) {
+    if (liveResolved && live) return reservationRefusal(error) ?? live.liveError(error);
+    if (duelCoordinates) return reservationRefusal(error) ?? arenaError(error);
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded, ...(trap ? { trap } : {}) });
   }
 }

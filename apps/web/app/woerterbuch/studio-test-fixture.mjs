@@ -26,6 +26,7 @@ const state = "const f = globalThis.__dictionaryStudioFixture;";
 const modules = new Map([
   ["server-only", "export {};"],
   ["@domigo/db", `${state}
+    export { practiceItemDenial } from ${JSON.stringify(new URL("../../../../packages/db/src/practice-access.ts", import.meta.url).href)};
     export const getDb = () => ({});
     export const loadPublishedOverrides = async (_db, slug) => {
       f.reads.push('prose:' + slug);
