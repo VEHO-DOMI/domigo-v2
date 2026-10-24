@@ -1,0 +1,51 @@
+# Vocabulary programme — October continuation
+
+**CODEX DRAFT — NOT CANON · IN REVIEW.** This is a traceable implementation/handoff record of the user's direct 24 October request, supplementing the July vocabulary programme and the October master plan. Mission Control owns execution state. Existing independent GG review and merge responsibilities remain in place.
+
+## Ordered build and completion evidence
+
+| Stage | Required result | Evidence before completion |
+|---|---|---|
+| 1. Source resolution | Recover every appendix occurrence, distinguish meanings, bind the right book edition and chapter references, preserve uncertain cases. | Source fingerprints and locators; exact accounting; independent source derivation; explicit decisions for semantic/reference cases. No invented first-teaching date. |
+| 2. Learning history | Record the answer journey truthfully: attempts/retries, help, direction, content revision and confirmed persistence. | Deliberate retry, help, offline/replay, duplicate and partial-write failures; one authoritative award; no success claimed before confirmed storage. Resolve the existing persistence finding alongside the contract. |
+| 3. Word help | From a task, explain the intended word meaning with level-safe definition/context, German support where needed, source/chapter and suitable media. | One complete calibrated learner journey per year; unknown/ambiguous entries and missing media handled honestly; meaningful keyboard/mobile use. |
+| 4. Personal vocabulary collection | Learners deliberately save and revisit words/meanings through word help and relevant tasks. | Save/remove/revisit and ownership checks; truthful persistence; stable meaning identity; explicit relationship to spaced review. This is not a renamed review queue. |
+| 5. Teaching-content audit and repair | All existing generated vocabulary tasks meet the contextual, definition, prerequisite and scaffolding criteria below. | Complete inventory; bounded repair waves after an exemplar; separate cold solving and assisted solving; accepted-form and grammar checks; source/pedagogy review. |
+| 6. Illustration library and picture practice | Every entry has a considered illustration disposition; suitable meanings have reviewed images used by tasks/help/collections. | Meaning-fidelity and distinguishability checks, per-year calibration, coverage counts, asset provenance and accessibility. |
+| 7. Student Activity expansion | Learners start a selected chapter/category game; every meaning has assessed modes; displayed meanings do not recur during the game. | Meaning-aware duplicate prevention across chapters/categories, skip/time-out/undo tests, explicit exhaustion and deliberate new-game reset. |
+
+Stages 5–7 are requirements now, not optional ideas. Their data needs must inform the earlier word record, while implementation remains one bounded card at a time. Human visual/pedagogical calibration precedes mass replication; unrelated mechanical work can continue while a concrete exemplar awaits review.
+
+## Requirements from the new request
+
+**R1 — Context conveys meaning.** A context may contain one or several connected sentences. Length is useful only when it supplies a concrete situation, consequence or distinguishing clue. A learner who has met the word must be able to recover it without memorising the book sentence. Do not force all tasks into one sentence or let a first-letter hint conceal an otherwise ambiguous task. Both definition and contextual directions must be independently sound.
+
+**R2 — Actual prerequisites govern language.** Check every English word, expression and grammatical construction in contexts, definitions, explanations and hints against what that year has encountered by that chapter. Separate the current learning target from support language. A broad A1/B1 label or a vocabulary membership check is insufficient. Do not excuse an unnecessarily advanced support word merely by attaching a gloss. Purposeful newly taught language requires an explicit teaching/scaffold decision, not a hidden exception.
+
+**R3 — Year 1 German support.** Early learners need sufficient German orientation, instructions and targeted explanation to understand what to do independently. Support the obstacle without accidentally giving away a graded answer. Other years require their own evidence-based balance; do not apply one language formula to all years.
+
+**R4 — Full coverage, separate quality checks.** Inventory all generated tasks, including revised/published content where accessible. Validate inserted answer forms, natural variants, confusable meanings and the full resulting sentence. A machine check proves structural conditions; independent learner-view solving and source/pedagogy review prove different things. Changes invalidate the relevant old review, not unrelated evidence.
+
+**R5 — A meaning-linked image library for Years 1–4.** Evaluate every word and phrase. For each drawable meaning, associate a clean schoolbook/comic illustration that is readable, not overly childish, and distinct from confusable alternatives. Images support naming-picture exercises, graduated hints, word help and saved words. Some words cannot be represented reliably: retain the entry with a reasoned non-visual disposition. The user's 80–90% estimate is a coverage ambition to measure, not an acceptance statistic already achieved.
+
+**R6 — Phrases and concepts can use visual sequences.** Permit clear scenes, motion arrows and adjacent panels when a single object cannot convey the meaning. Examples: a stylised car-crash scene; landing versus taking off distinguished by trajectory; getting into a car shown as a short sequence. Blind recognition must test the intended action/meaning, not merely recognise the objects. Text alternatives and revealing hints must be appropriate to the exercise mode.
+
+**R7 — Preserve original Activity reasoning.** Assess explaining, acting without words and drawing as potentially overlapping modes for each meaning. Historical single-category preselection is evidence, not a permanent restriction. A sophisticated authored teaching illustration may work for a meaning that is difficult for a pupil to draw quickly; illustration eligibility and Activity Draw eligibility therefore remain separate decisions. Preserve classification justification, confidence and teacher overrides.
+
+**R8 — Student-started games, no accidental repeats.** Learners choose permitted chapters and modes and start a game themselves. Prevent repeat displays across chapter duplicates, category choices and subsequent rounds. Skipped and timed-out exposures count as seen under the default new policy; undo must preserve coherent state. Similar spellings with genuinely different meanings are not automatically the same entry, while repeated instances of the same meaning should not evade the rule via different task IDs. A finite exhausted pool ends with a clear message; another run requires an explicit restart. Cooperative one-device play need not collect new personal identifiers.
+
+**R9 — The word record connects the platform.** Link source occurrences, exact meanings, first/later chapter evidence, task IDs/directions, accepted forms, definitions/contexts, prerequisite evidence, German support, media and their review/provenance, Activity suitability, learning events and deliberate saved-word choices. Keep source text immutable and corrections separately evidenced. Do not collapse spelling, meaning, exercise instance and learner state into one identifier.
+
+## Located references and known differences
+
+The exported `srdp-vocab-generation` skill is the DomiLingo authoring reference identified by the user. Its useful principles are source fidelity, headword-free plain definitions, independently inferable contexts, grammatical placed forms, correct answer variants, distinct practice/assessment scenes and cold solving. Its historical audience is B1/Years 5–6. The September 26 vocabulary programme later permits richer two-sentence definitions, up to 45 words, superseding the older 25-word rule in that workflow. Neither those paper limits nor that B1 language policy transfer automatically to DomiGo beginners. Exact local source paths and fingerprints are in the external cgo-140 evidence manifest, not learner-visible code.
+
+DomiGo's September 30 teaching charter already requires actual chapter prerequisites, original book/image inspection, German support in early Year 1 and separate year architectures. Current `prompts/gen-vocab.md` still allows an above-level-word gloss escape; the audit must replace that shortcut with the user's stricter prerequisite policy and re-evaluate existing tasks. This source-import PR does not claim to have repaired student content.
+
+Original Activity HTML/data and richer audit CSVs were located for all relevant years. The CSVs preserve category, confidence, justification and teacher overrides. The current map has 11 raw-corpus entries without an exact classification match. The located Year 1 original has a different fingerprint from the map's declared original; Years 2–4 match. Reconcile that provenance before reusing/replacing Year 1 classifications.
+
+The existing Activity route already exposes a student-startable, one-device group setup in source code; live availability remains unverified. Its deck deduplicates by chapter plus spelling and retires only correct answers. Those rules allow cross-chapter repetitions and repeated skips. The new programme changes them deliberately rather than claiming no-repeat behaviour already exists.
+
+## Status of this source-resolution slice
+
+Formatting-based Year 1 extraction and explicit out-of-course segregation are implemented for review. Semantic joins, edition/chapter binding, the stable meaning contract, learning-history changes, word help, collection, content repairs, artwork and expanded Activity remain subsequent work. The existing independent review of the base importer stays separate. No production database is read or changed; no images are mass-produced before a calibrated example.

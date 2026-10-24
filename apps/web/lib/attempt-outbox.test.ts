@@ -664,3 +664,45 @@ test("replay notifies only after its successful local dequeue has completed", as
     assert.deepEqual(observed, [{ id: body.clientAttemptId, queuedRows: 0 }]);
   } finally { stop(); }
 });
+
+test("lost first acknowledgement replays the original receipt without a second incremental reward", async () => {
+  const store = memoryIDB(); globalThis.indexedDB = store.factory;
+  bindOutboxOwner(A);
+  let booked = false, bookings = 0;
+  const original = { tier: "partial" as const, xpAwarded: 7 };
+  globalThis.fetch = async () => {
+    if (!booked) { booked = true; bookings++; throw new Error("first response lost after booking"); }
+    return Response.json({ ok: true, duplicate: true, tier: "correct", xpAwarded: 20, receipt: original });
+  };
+  assert.deepEqual(await sendAttempt(body, A), { ok: false, queued: true });
+  const replies: AttemptResult[] = [];
+  const stop = subscribeOutboxReplies(A, (_id, reply) => replies.push(reply));
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(bookings, 1); assert.equal(store.rows.size, 0);
+  assert.equal(replies[0]?.xpAwarded, 0); assert.deepEqual(replies[0]?.receipt, original);
+  stop();
+});
+test("duplicate acknowledgement overtakes first response with the same original receipt", async () => {
+  const store = memoryIDB(); globalThis.indexedDB = store.factory;
+  bindOutboxOwner(A);
+  const original = { tier: "correct" as const, xpAwarded: 20 };
+  let release: (() => void) | undefined;
+  globalThis.fetch = async () => {
+    if (release) return Response.json({ ok: true, duplicate: true, ...original, receipt: original });
+    return new Promise<Response>(resolve => { release = () => resolve(Response.json({ ok: true, ...original, receipt: original })); });
+  };
+  const first = sendAttempt(body, A);
+  while (!release) await tick();
+  const replies: AttemptResult[] = [];
+  const stop = subscribeOutboxReplies(A, (_id, reply) => replies.push(reply));
+  assert.equal(await flushOutbox(A), 1);
+  assert.equal(replies[0]?.xpAwarded, 0); assert.deepEqual(replies[0]?.receipt, original);
+  release(); assert.deepEqual((await first).receipt, original); stop();
+});
+for (const receipt of [{tier:"invented",xpAwarded:20},{tier:"correct",xpAwarded:-1},{tier:"correct",xpAwarded:"20"},null]) {
+  test(`malformed stored receipt is not forwarded: ${JSON.stringify(receipt)}`, async () => {
+    bindOutboxOwner(A); globalThis.indexedDB = undefined as unknown as IDBFactory;
+    globalThis.fetch = async () => Response.json({ ok: true, duplicate: true, receipt });
+    assert.equal((await sendAttempt(body, A)).receipt, undefined);
+  });
+}
