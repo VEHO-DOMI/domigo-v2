@@ -22,6 +22,8 @@ test("direct bold styles supply boundaries; adjacent split runs and source text 
 test("unsupported or incomplete boundaries quarantine the whole source paragraph", () => {
   const cases = [
     [run("door U1/4 [dɔː] Tür",false)],
+    [run("door",true),run(" U1/4 [dɔː] Tür window U1/16 [wɪndəʊ] Fenster",false)],
+    [run("door",true),run(" U1/4 [dɔː] Tür window [wɪndəʊ] U1/16 Fenster",false)],
     [run("prefix ",false),run("door",true),run(" U1/4 [dɔː] Tür",false)],
     [run("door",true),run(" U1/4 [dɔː] Tür ",false),run("orphan",true)],
     [run("door",true),run(" nonsense [dɔː] Tür",false)],
@@ -49,13 +51,16 @@ test("DOCX run reader honors explicit false and refuses inherited or hidden stru
   for (const tag of ['<w:b/>','<w:b w:val="1"/>','<w:b w:val="true"/>','<w:b w:val="on"/>']) {
     assert.deepEqual(paragraphTextRuns(`<w:p><w:r><w:rPr>${tag}</w:rPr><w:t>door</w:t></w:r></w:p>`),[run("door",true)]);
   }
-  for (const tag of ['<w:bCs/>','<w:b w:val="0"/>','<w:b w:val="false"/>','<w:b w:val="off"/>']) {
+  for (const tag of ['<w:bCs/>','<w:b w:val="0"/>','<w:b w:val="false"/>','<w:b w:val="off"/>','<w:b w:val = "false"/>','<w:b w:val= "0"/>']) {
     assert.deepEqual(paragraphTextRuns(`<w:p><w:r><w:rPr>${tag}</w:rPr><w:t>door</w:t></w:r></w:p>`),[run("door",false)]);
   }
   for (const xml of [
     '<w:p><w:r><w:rPr><w:rStyle w:val="Headword"/></w:rPr><w:t>door</w:t></w:r></w:p>',
     '<w:p><w:pPr><w:pStyle w:val="Bold"/></w:pPr><w:r><w:t>door</w:t></w:r></w:p>',
     '<w:p><w:ins><w:r><w:t>door</w:t></w:r></w:ins></w:p>',
+    '<w:p><w:moveFrom><w:r><w:rPr><w:b/></w:rPr><w:t>door</w:t></w:r></w:moveFrom></w:p>',
+    '<w:p><w:moveTo><w:r><w:rPr><w:b/></w:rPr><w:t>door</w:t></w:r></w:moveTo></w:p>',
+    '<w:p><w:r><w:rPr><w:rPrChange><w:rPr><w:b/></w:rPr></w:rPrChange></w:rPr><w:t>door</w:t></w:r></w:p>',
     '<w:p><w:r><w:rPr><w:b w:val="maybe"/></w:rPr><w:t>door</w:t></w:r></w:p>',
     '<w:p><w:r><w:t>door</w:t></w:r><w:t>unaccounted</w:t></w:p>',
   ]) assert.equal(paragraphTextRuns(xml),undefined);

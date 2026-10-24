@@ -124,13 +124,13 @@ function parseTable(tblXml: string): string[][] {
 
 /** Direct formatting only. Unsupported wrappers/styles never become boundary evidence. */
 export function paragraphTextRuns(xml: string): DocxTextRun[] | undefined {
-  if (/<w:(?:hyperlink|ins|del|sdt|fldSimple|rStyle|pStyle|fldChar|instrText)\b/u.test(xml)) return undefined;
+  if (/<w:(?:hyperlink|ins|del|moveFrom|moveTo|rPrChange|pPrChange|sdt|fldSimple|rStyle|pStyle|fldChar|instrText)\b/u.test(xml)) return undefined;
   const runs: DocxTextRun[] = [];
   for (const match of xml.matchAll(/<w:r(?:\s[^>]*)?>[\s\S]*?<\/w:r>/gu)) {
     const body = match[0];
     const properties = /<w:rPr(?:\s[^>]*)?>([\s\S]*?)<\/w:rPr>/u.exec(body)?.[1] ?? "";
     const boldTag = /<w:b(?=[\s/>])([^>]*)>/u.exec(properties);
-    const value = boldTag && /\bw:val=["']([^"']+)["']/u.exec(boldTag[1]!)?.[1];
+    const value = boldTag && /\bw:val\s*=\s*["']([^"']+)["']/u.exec(boldTag[1]!)?.[1];
     if (value && !["0", "1", "true", "false", "on", "off"].includes(value)) return undefined;
     runs.push({ text: fragmentText(body), bold: !!boldTag && !["0", "false", "off"].includes(value || "") });
   }

@@ -89,6 +89,14 @@ function paragraphSegments(block: Extract<DocxBlock, { kind: "paragraph" }>, gra
     const reference = parseAppendixReference(normal?.[1] ?? reversed?.[2] ?? "", grade);
     const phonetics = normal?.[2] ?? reversed?.[1]; const de = normal?.[3] ?? reversed?.[3];
     if (!reference || !phonetics || !de) return null;
+    // A second reference/pronunciation pair means a headword lost its formatting.
+    // Do not absorb an unsegmented following entry into the German field.
+    for (const m of de.matchAll(/(?:^|\s)(\S+)\s+\[[^\]\r\n]+\]/gu)) {
+      if (parseAppendixReference(m[1]!, grade)) return null;
+    }
+    for (const m of de.matchAll(/\[[^\]\r\n]+\]\s+(\S+)/gu)) {
+      if (parseAppendixReference(m[1]!, grade)) return null;
+    }
     const excluded = reference.kind === "out-of-course-unit";
     result.push({ id: `${parentRowId}.s${i / 2 + 1}`, parentRowId,
       span: { start: head.start, end: detail.end, detailStart: detail.start, runStart: head.runStart, runEnd: detail.runEnd },
