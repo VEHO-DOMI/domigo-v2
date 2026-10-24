@@ -65,7 +65,7 @@ function runVocabularyIntakeInternal(args: string[]): void {
     try {
       const bytes = fs.readFileSync(input);
       const sha256 = hash(bytes);
-      const blocks = parseDocxBlocks(input, true);
+      const blocks = parseDocxBlocks(input, true, true);
       if (hash(fs.readFileSync(input)) !== sha256) throw Error("source changed while reading");
       return { grade: row.grade as IntakeGrade, sha256, blocks };
     } catch { throw Error(`cannot read appendix for grade ${row.grade}`); }
