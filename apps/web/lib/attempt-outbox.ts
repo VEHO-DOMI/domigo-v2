@@ -90,6 +90,14 @@ function stageCheck(body: OwnedAttempt): { body: OwnedAttempt; queued: boolean }
     return { body, queued: true };
   } catch { return { body, queued: false }; }
 }
+/** The first durable copy of a check is the only valid payload. When IndexedDB
+ * already holds it, a fallback stage written in a later send (same event, other
+ * bytes, written while localStorage was back but before the IndexedDB conflict
+ * surfaced) is overwritten with that copy, so an IndexedDB outage cannot replay it. */
+function restageCheck(entry: QueuedAttempt): void {
+  if (entry.attempt?.mode !== "vocabulary-check") return;
+  try { localStorage.setItem(CHECK_STAGE + entry.clientAttemptId, JSON.stringify(entry)); } catch { /* unavailable stage: the IndexedDB copy remains */ }
+}
 function allStagedChecks(): QueuedAttempt[] {
   const entries: QueuedAttempt[] = [];
   try {
@@ -196,6 +204,8 @@ async function remember(input: OwnedAttempt): Promise<{ body: OwnedAttempt; queu
     try {
       const existing = await runTx<QueuedAttempt | undefined>("readonly", (s) => s.get(key));
       if (existing?.attempt?.ownerId === body.ownerId && existing.attempt.clientAttemptId === body.clientAttemptId) {
+        // cgo-145: the older IndexedDB bytes win in BOTH stores, not only in the return value.
+        restageCheck(existing);
         return { body: existing.attempt, queued: true };
       }
     } catch { /* unavailable storage: never claim a durable save */ }
@@ -216,9 +226,14 @@ async function allQueued(): Promise<QueuedAttempt[]> {
   if (!hasIDB()) return staged;
   try {
     const stored = (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? [];
-    // Existing IndexedDB bytes win if an older durable copy already exists.
+    // Existing IndexedDB bytes win if an older durable copy already exists —
+    // and a diverged stage is realigned now, before any later IndexedDB outage.
     const entries = new Map(staged.map(entry => [entry.clientAttemptId, entry]));
-    for (const entry of stored) entries.set(entry.clientAttemptId, entry);
+    for (const entry of stored) {
+      const stage = entries.get(entry.clientAttemptId);
+      if (stage && JSON.stringify(stage) !== JSON.stringify(entry)) restageCheck(entry);
+      entries.set(entry.clientAttemptId, entry);
+    }
     return [...entries.values()];
   } catch { return staged; }
 }
