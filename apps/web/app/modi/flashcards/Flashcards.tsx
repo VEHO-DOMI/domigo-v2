@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useRef, useState } from "react";
 import { fullAnswer, chapterOf } from "@/lib/modi/decks";
 import type { GameProps } from "@/lib/modi/types";
@@ -10,7 +11,7 @@ export default function Flashcards({ words, grade, submit, finish }: GameProps) 
   const [busy, setBusy] = useState(false);
   const lock = useRef(false), pointer = useRef<number | null>(null), swiped = useRef(false);
   const word = words[index];
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   if (!word) return <button className="og-primary" onClick={() => finish()}>{de ? "Ergebnis" : "Results"}</button>;
   if (!direction) return <section className="og-flash-directions"><h2>{de ? "Welche Richtung?" : "Flashcard Direction"}</h2>
     <button className="og-mode" onClick={() => setDirection("enToDe")}><span className="og-mode-icon">🇬🇧→🇩🇪</span><span>English → Deutsch</span></button>

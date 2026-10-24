@@ -4,9 +4,10 @@
  */
 import { and, eq, inArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
-import { practiceAttempts, reviewQueue, userProgress, writingSubmissions } from "./schema.ts";
+import { duels, practiceAttempts, reviewQueue, userProgress, writingSubmissions } from "./schema.ts";
 import { isStoryReviewItemId, updateReviewQueue, type ReviewRef } from "./review.ts";
 import { computeNextStreak, viennaDayBefore, viennaDayString } from "./streak.ts";
+import { bonusReceipt } from "./duel-bonus.ts";
 import type { Db } from "./index.ts";
 import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 
@@ -40,10 +41,22 @@ export interface RecordAttemptResult {
  * Idempotent on `(userId, clientAttemptId)`. Side effects (queue upsert, XP bump)
  * are gated on the FIRST insert, so a replay can't double-count.
  */
-export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAttemptInput): Promise<RecordAttemptResult> {
+export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAttemptInput, completedDuelId?: string): Promise<RecordAttemptResult> {
   assertWritableScope(classScope, "recordAttempt");
   if (!inScope(classScope, a.classId)) {
     throw new Error("[@domigo/db] recordAttempt: refused — class outside this session's scope (dach-018)");
+  }
+
+  // Only recordAnswer supplies this internal argument. Read the already locked,
+  // completed duel in the SAME transaction; the final answer belongs to p2.
+  // Its existing attempt key gates BOTH users' bonuses, even on a direct retry.
+  let bonus: {own:number;other:number;peer:string} | null = null;
+  if (completedDuelId) {
+    const [duel] = await db.select().from(duels).where(and(inArray(duels.classId,[...classScope]),eq(duels.classId,a.classId),eq(duels.id,completedDuelId))).limit(1);
+    const receipt = duel ? bonusReceipt(duel.rounds) : null;
+    if (!duel || duel.status !== "complete" || duel.p2 !== a.userId || duel.grade !== a.grade || a.kind !== "vocab" || duel.mode !== "vocab"
+      || a.mode !== `duel:${duel.id}` || !receipt || receipt.attemptId !== a.clientAttemptId) throw Error("invalid_duel_bonus_settlement");
+    bonus = {own:receipt.p2,other:receipt.p1,peer:duel.p1};
   }
 
   const inserted = await db
@@ -96,7 +109,7 @@ export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAtt
     });
     streak = next.newStreak;
     const isVocab = a.kind === "vocab";
-    const vocabXp = isVocab ? a.xpAwarded : 0;
+    const vocabXp = (isVocab ? a.xpAwarded : 0) + (bonus?.own ?? 0);
     const grammarXp = isVocab ? 0 : a.xpAwarded;
     await db
       .insert(userProgress)
@@ -118,6 +131,12 @@ export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAtt
           updatedAt: now,
         },
       });
+    if (bonus && bonus.other > 0) {
+      // The peer answered earlier. A later result must not manufacture a new
+      // streak day or change their review queue; only their vocabulary XP grows.
+      await db.insert(userProgress).values({userId:bonus.peer,xp:bonus.other,updatedAt:now})
+        .onConflictDoUpdate({target:userProgress.userId,set:{xp:sql`${userProgress.xp} + ${bonus.other}`,updatedAt:now}});
+    }
   } else {
     const prog = await db
       .select({ streak: userProgress.streak })
