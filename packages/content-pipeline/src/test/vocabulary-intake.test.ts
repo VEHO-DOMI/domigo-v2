@@ -19,8 +19,9 @@ const tasks = banks.map(b=>({id:b.id,slug:b.slug,w:b.en}));
 test("references preserve exact exercise code; a prior book does not invent a unit",()=>{
   assert.deepEqual(parseAppendixReference("U6/OYW2",2),{kind:"unit",grade:2,unit:6,code:"U6/OYW2"});
   assert.deepEqual(parseAppendixReference("OYW3",2),{kind:"section",grade:2,unit:null,code:"OYW3"});
+  assert.deepEqual(parseAppendixReference("U14/3",4),{kind:"out-of-course-unit",grade:4,unit:14,code:"U14/3"});
   assert.deepEqual(parseAppendixReference("MORE 1",4),{kind:"prior-grade",grade:1,unit:null,code:"MORE 1"});
-  for(const ref of ["MORE 2","MORE 4","U0/1","U16/1","U1/1 and U2/1","mystery"]) assert.equal(parseAppendixReference(ref,2),null);
+  for(const ref of ["MORE 2","MORE 4","U0/1","U1/1 and U2/1","mystery"]) assert.equal(parseAppendixReference(ref,2),null);
 });
 
 test("table source text and optional pronunciation survive, paragraphs remain quarantined",()=>{
@@ -102,7 +103,7 @@ test("real CLI reads synthetic DOCX, includes current corpus, verifies and detec
     const word=path.join(dir,"word");fs.mkdirSync(word);
     const cell=(s:string)=>`<w:tc><w:p><w:r><w:t>${s}</w:t></w:r></w:p></w:tc>`;
     const row=(ss:string[])=>`<w:tr>${ss.map(cell).join("")}</w:tr>`;
-    fs.writeFileSync(path.join(word,"document.xml"),`<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:tbl>${row(["Headword","Reference","German"])}${row(["window","U1/16","Fenster"])}</w:tbl></w:body></w:document>`);
+    fs.writeFileSync(path.join(word,"document.xml"),`<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:tbl>${row(["Headword","Reference","German"])}${row(["window","U1/16","Fenster"])}</w:tbl><w:p><w:r><w:rPr><w:b/></w:rPr><w:t>door</w:t></w:r><w:r><w:t> U1/4 [dɔː] Tür</w:t></w:r></w:p></w:body></w:document>`);
     execFileSync("zip",["-q",path.join(dir,"appendix.docx"),"word/document.xml"],{cwd:dir});
     const manifest=path.join(dir,"inputs.json");const out=path.join(dir,"result.json");
     fs.writeFileSync(manifest,JSON.stringify([1,2,3,4].map(grade=>({grade,path:"appendix.docx"}))));
@@ -111,7 +112,7 @@ test("real CLI reads synthetic DOCX, includes current corpus, verifies and detec
     const first=run();assert.equal(first.status,0,first.stderr);
     const data=JSON.parse(fs.readFileSync(out,"utf8"));
     assert.ok(data.counts.bankOccurrences > 0);assert.equal(new Set(data.bankCoverage.map((b:{slug:string})=>b.slug)).size,57);
-    assert.equal(data.counts.accountedRows,8);assert.equal(data.studioLayers,"not-read; live coverage unverified");
+    assert.equal(data.schema,"vocabulary-intake-review@2");assert.equal(data.counts.accountedRows,12);assert.equal(data.counts.segmentedParagraphs,4);assert.equal(data.counts.parsedEntries,8);assert.equal(data.studioLayers,"not-read; live coverage unverified");
     assert.ok(!fs.readFileSync(out,"utf8").includes(dir));
     assert.equal(run(["--verify"]).status,0);
     assert.notEqual(run().status,0,"must not overwrite an existing artifact");
