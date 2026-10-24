@@ -59,11 +59,20 @@ const visibleFindingCell = value => {
     })
     .replace(/&[a-z][a-z0-9]*;/gi, ' ')
     .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<\/?[a-z](?:[^>"']|"[^"]*"|'[^']*')*>/gi, '')
-    .replace(/\[([^\]\n]*)\]\[[^\]\n]*\]/g, '$1');
+    .replace(/<\/?[a-z](?:[^>"']|"[^"]*"|'[^']*')*>/gi, '');
   let visible = '';
   for (let i = 0; i < text.length; i++) {
-    if (text[i] === ']' && text[i + 1] === '(') {
+    if (text[i] === ']' && text[i + 1] === '[') {
+      // Reference metadata ends at the first non-escaped closing bracket.
+      // Nested brackets in the preceding visible label must remain visible.
+      let end = i + 2;
+      for (; end < text.length; end++) {
+        if (text[end] === '\\') { end++; continue; }
+        if (text[end] === ']') break;
+      }
+      if (end >= text.length) return '';
+      visible += ']'; i = end;
+    } else if (text[i] === ']' && text[i + 1] === '(') {
       let depth = 1, end = i + 2, quote = '';
       for (; end < text.length && depth; end++) {
         const char = text[end];

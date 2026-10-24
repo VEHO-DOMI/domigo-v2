@@ -54,11 +54,13 @@ try {
   }
   // cgo-080: the real callers must reject each placeholder evidence cell.
   const witnessLine = registerText.split('\n')[vocabulary.line - 1];
-  for (const [variant, placeholder] of [['plain', 'x'], ['bold', '**TODO**'], ['punctuated', 'TODO.'], ['html-bold', '<b>TODO</b>'], ['html-em', '<em>TODO</em>'], ['link', '[TODO](#pending)'], ['combined', 'TODO / TBD']]) for (const [name, index] of [['reason', 4], ['resolution', 5], ['owner', 6], ['proof', 7]]) {
+  for (const [variant, placeholder] of [['plain', 'x'], ['bold', '**TODO**'], ['punctuated', 'TODO.'], ['html-bold', '<b>TODO</b>'], ['html-em', '<em>TODO</em>'], ['link', '[TODO](#pending)'], ['combined', 'TODO / TBD'], ['nested-reference', '[TODO [TBD]][pending]'], ['escaped-reference', String.raw`[TODO][pending\]tail]`]]) for (const [name, index] of [['reason', 4], ['resolution', 5], ['owner', 6], ['proof', 7]]) {
     const cells = witnessLine.split(/(?<!\\)\|/);
     assert.equal(cells.length, 9, 'seven-column register witness required');
     cells[index] = ` ${placeholder} `;
-    fs.writeFileSync(register, registerText.replace(witnessLine, cells.join('|')));
+    const referenceDefinition = variant === 'nested-reference' ? '\n\n[pending]: #pending\n'
+      : variant === 'escaped-reference' ? '\n\n' + String.raw`[pending\]tail]: #pending` + '\n' : '';
+    fs.writeFileSync(register, registerText.replace(witnessLine, cells.join('|')) + referenceDefinition);
     red(`register-placeholder-${name}-${variant}`, 'scripts/check-registers.mjs', /Befund/);
     red(`ledger-placeholder-${name}-${variant}`, 'scripts/check-game-tasks.mjs', /17e.*finding/);
     restore();

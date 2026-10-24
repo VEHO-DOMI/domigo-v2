@@ -49,3 +49,15 @@ test('only visible cell text supplies minimum substance', () => {
     }
   }
 });
+
+test('reference metadata cannot supply substance after nested or escaped brackets', () => {
+  const definitions = '\n\n[pending]: #pending\n' + String.raw`[pending\]tail]: #pending`;
+  for (const field of ['Grund', 'Bedingung', 'GG-DomiGo', 'Quellenprüfung']) {
+    for (const value of ['[TODO [TBD]][pending]', String.raw`[TODO][pending\]tail]`]) {
+      assert.match(findingError('D-1', scope, openFindingMap(row().replace(field, value) + definitions)), /Befund/, `${field}: ${value}`);
+    }
+    for (const value of ['[Belegt [Text]][pending]', String.raw`[Belegt][pending\]tail]`]) {
+      assert.equal(findingError('D-1', scope, openFindingMap(row().replace(field, value) + definitions)), null, `${field}: ${value}`);
+    }
+  }
+});
