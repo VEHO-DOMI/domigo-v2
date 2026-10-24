@@ -372,7 +372,10 @@ Es gibt keine neue Abzeichentabelle, keine Rückbefüllung und keine dauerhaft
 verliehenen Auszeichnungen: Die Anzeige spiegelt jeweils die vorhandenen
 Serverwerte. Sinkende/zurückgesetzte Werte können ein Abzeichen wieder sperren.
 Alte unbestätigte Versuche erzeugen kein Daily-Abzeichen; die vorgelagerte
-Buchungs-/Merge-Sperre cgo-154 bleibt bestehen.
+Buchungs-/Merge-Sperre cgo-154 bleibt bestehen. Die Abfrage setzt die bereits
+im vorgelagerten Entwurf enthaltene Migration 0027 (`booked_at`) voraus;
+diese Karte führt sie nicht aus. Fehlt die Spalte, erscheint der ehrliche
+Ladefehlerzustand statt einer erfundenen Auszeichnung.
 
 Hell-/Dunkelwahl bleibt ausschließlich im Arbeitsspeicher bis zum Neuladen.
 Kein localStorage, Cookie oder Servereintrag. Dauerhaftes Speichern bleibt bei

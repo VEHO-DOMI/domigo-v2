@@ -3,11 +3,19 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+export function referenceMetadata(text) {
+  const metadata={};
+  for(const match of text.matchAll(/^# ([a-z0-9-]+): (.+)$/gm)) {
+    assert(!Object.hasOwn(metadata,match[1]),'REFERENCE_METADATA_DUPLICATE');
+    metadata[match[1]]=match[2];
+  }
+  return metadata;
+}
 export function visualContract(root) {
   return sha256(Buffer.concat(['apps/web/e2e/visual-contract.ts','apps/web/e2e/visual.spec.ts','apps/web/playwright.config.ts','scripts/lib/visual/assignment-target.mjs'].map(f=>fs.readFileSync(path.join(root,f)))));
 }
 export function verifyReference(baseline,indexFile,contract) {
-  const text=fs.readFileSync(indexFile,'utf8'), metadata=Object.fromEntries([...text.matchAll(/^# ([a-z-]+): (.+)$/gm)].map(m=>[m[1],m[2]]));
+  const text=fs.readFileSync(indexFile,'utf8'), metadata=referenceMetadata(text);
   assert(metadata.version && /^[a-f0-9]{64}$/.test(metadata['capture-contract']??''),'REFERENCE_METADATA');
   assert.equal(metadata['compare-contract'],contract,'REFERENCE_COMPARE_CONTRACT');
   const entries=text.split('\n').filter(l=>l&&!l.startsWith('#')).map(l=>{const m=l.match(/^([a-f0-9]{64})  (.+)$/);assert(m,'REFERENCE_INDEX_FORMAT');return {hash:m[1],file:m[2]};});

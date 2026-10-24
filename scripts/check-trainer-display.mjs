@@ -33,14 +33,15 @@ const modules={
  '@/lib/wort-des-tages':`export const viennaDateKey=()=>"2026-10-23";export const wortDesTages=async()=>({word:'window',german:'Fenster',example:'Open the window.',chapter:1});`,
  '../practice/load-practice':'export const loadDailyChallenge=async()=>({words:Array(10).fill({id:"fixture"}),availableWords:Array(10).fill({id:"fixture"}),blockedCount:0});',
  '@/lib/leaderboard':'export const readLeaderboard=async()=>({enabled:false});',
- '@domigo/db':'export function getDb(){if(!window.fixtureStudent)throw Error("preview fixture must not read database");return {}};export const getDailyChallengeCount=async()=>3,getDueCounts=async()=>({total:2}),getStudentChapterProgress=async()=>({chapters:[],days:[]});',
+ '@domigo/db':'export function getDb(){if(!window.fixtureStudent)throw Error("preview fixture must not read database");return {}};export const getDailyChallengeCount=async()=>3,getDueCounts=async()=>({total:2}),getStudentChapterProgress=async()=>({chapters:[],days:[]}),getStudentBadges=async()=>[];',
  '@domigo/content-loader':'export const listApprovedUnits=()=>[1,2,3,4].map(g=>`g${g}-u01`);export const loadUnit=()=>({vocab:Array(12).fill({}),grammar:Array(8).fill({})});',
 };
 const entry=`import React from 'react';import{createRoot}from'react-dom/client';import Home from './app/home/page';import Progress from './app/fortschritt/page';import Profile from './app/profil/page';import ModesPage from './app/modi/page';import Shell from './app/home/TrainerShell';
 const q=new URLSearchParams(location.search);window.fixtureGrade=Number(q.get('grade'));window.fixtureStudent=q.has('student');const root=createRoot(document.getElementById('root'));
 window.mountScreen=async(name)=>{const grade=window.fixtureGrade;const page={home:Home,modi:ModesPage,fortschritt:Progress,profil:Profile}[name];const tree=await page({searchParams:Promise.resolve({jahrgang:String(grade)})});root.render(tree);};window.mountScreen(q.get('screen')||'home');`;
-const bundled=await build({stdin:{contents:entry,resolveDir:path.join(root,'apps/web'),loader:'tsx'},bundle:true,write:false,platform:'browser',format:'iife',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'boundaries',setup(b){
+const bundled=await build({stdin:{contents:entry,resolveDir:path.join(root,'apps/web'),loader:'tsx'},bundle:true,write:false,outfile:path.join(out,'trainer.js'),loader:{'.css':'local-css'},platform:'browser',format:'iife',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'boundaries',setup(b){
  b.onResolve({filter:/.*/},a=>{
+  if(a.path.endsWith('.module.css'))return; // retain the component's real scoped styles
   if(a.path.endsWith('.css'))return {path:a.path,namespace:'empty'};
   if(a.path.endsWith('/trainer-data')||a.path==='./trainer-data')return {path:'profile',namespace:'fixture'};
   if(Object.hasOwn(modules,a.path))return {path:a.path,namespace:'fixture'};
@@ -49,7 +50,8 @@ const bundled=await build({stdin:{contents:entry,resolveDir:path.join(root,'apps
  b.onLoad({filter:/.*/,namespace:'empty'},()=>({contents:'export {};'}));
  b.onLoad({filter:/.*/,namespace:'fixture'},a=>({contents:a.path==='profile'?'export const readTrainerProfile=async()=>({name:"Example",avatar:1,xp:window.fixtureStudent?120:0,grammarXp:window.fixtureStudent?80:0,streak:window.fixtureStudent?2:0});':modules[a.path],loader:'tsx',resolveDir:path.join(root,'apps/web')}));
 }}]});
-const bundle=bundled.outputFiles[0].text;
+const bundle=bundled.outputFiles.find(file=>file.path.endsWith('.js')).text;
+const componentCss=bundled.outputFiles.filter(file=>file.path.endsWith('.css')).map(file=>file.text).join('\n');
 const trainerCss=fs.readFileSync(path.join(root,'apps/web/app/home/trainer.css'),'utf8');
 async function tokenFailures(source,page){
  const problems=[],words=[];postcss.parse(source).walkDecls(d=>{
@@ -88,7 +90,7 @@ for(const persona of args.includes('--preview-only')?['preview']:args.includes('
  if(/^\/font\/(inter|fredoka|quicksand)$/.test(u.pathname))return route.fulfill({body:fs.readFileSync(path.join(root,'apps/web/app/fonts',u.pathname.split('/').pop()+'-var-latin.woff2')),contentType:'font/woff2'});
  if(u.pathname.startsWith('/avatars/')){const file=path.join(root,'apps/web/public',u.pathname);assert(file.startsWith(path.join(root,'apps/web/public/avatars/')));return route.fulfill({body:fs.readFileSync(file),contentType:'image/png'});}
  if(u.pathname==='/app.js')return route.fulfill({body:bundle,contentType:'application/javascript'});
- return route.fulfill({body:`<!doctype html><html><head><meta charset="utf-8"><style>${fonts}${css}</style></head><body><div id="root"></div><script src="/app.js"></script></body></html>`,contentType:'text/html'});
+ return route.fulfill({body:`<!doctype html><html><head><meta charset="utf-8"><style>${fonts}${css}${componentCss}</style></head><body><div id="root"></div><script src="/app.js"></script></body></html>`,contentType:'text/html'});
  });
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.clock.install({time:new Date('2026-10-23T12:00:00Z')});
  await page.goto(`http://trainer-fixture.test/?grade=${grade}${persona==='student'?'&student':''}`);await page.locator('.og-root').waitFor();await page.evaluate(()=>document.fonts.ready);

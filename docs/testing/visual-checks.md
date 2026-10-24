@@ -132,3 +132,20 @@ nicht stillschweigend die bestehende 92er-Routenmatrix. Die Klassen-/Eigentümer
 und Abzeichengrenzen werden zusätzlich mit PGlite und den echten Renderfunktionen
 geprüft; browserseitige Berechnung und dauerhafte Theme-Speicherung müssen bei
 absichtlichen Gegenproben rot werden.
+
+### Festgelegtes Linux-Paket (explizite Aufnahme, kein automatisches Nachziehen)
+
+Version `cgo156-0df56205-linux-x64-chromium155`, GitHub-Actions-Artefakt `12565730940`
+aus Lauf `40107298946` am Quellkopf `0df5620576deffd9c2b4b7f19598fe242cfd4037`.
+ZIP-SHA-256: `1971dfcf4015ad30eb4546ae84a5934c43c7f2a239ac9c2b307aef82759ff6a8`. Der Abruf prüft zusätzlich
+Quellkopf, Lauf, Ablaufstatus, API-Digest und alle 93 Einzeldateien.
+Der getrennte CI-Job `visual-fixed-reference` vergleicht die aktuellen 92 Routen
+mit genau diesem Paket. Die weiterhin vorhandene Kandidaten-Wiederholungsprüfung
+ist ein eigener Test und kann diese Referenz nicht ersetzen.
+
+**Aufbewahrungsgrenze: 2026-11-23T15:38:19Z.** GG muss dieses konkrete Paket vor
+dem Ablauf dauerhaft archivieren und einen ausdrücklich geprüften Abrufort
+festlegen. Fehlendes/abgelaufenes Paket führt zu Rot; es wird weder übersprungen
+noch durch eine neuere Aufnahme ersetzt. Der PR benennt die dauerhaft lokal
+gesicherte Kopie für diese Übergabe. Eine spätere Spiegelung muss die bestehenden
+Bild-/Manifest-Prüfsummen erhalten. Kokis Bildfreigabe bleibt offen.
