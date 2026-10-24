@@ -8,15 +8,20 @@
  */
 import { execFileSync } from "node:child_process";
 
+export interface DocxTextRun { text: string; bold: boolean }
+
 export type DocxBlock =
-  | { kind: "paragraph"; text: string }
+  | { kind: "paragraph"; text: string; runs?: DocxTextRun[] }
   | { kind: "table"; rows: string[][] };
 
-export function readDocumentXml(docxPath: string): string {
+export function readDocumentXml(docxPath: string, quietErrors = false): string {
   // execFileSync passes the path as a single argv entry — trailing spaces and
   // ampersands in iCloud folder names survive intact.
   const out = execFileSync("unzip", ["-p", docxPath, "word/document.xml"], {
     maxBuffer: 256 * 1024 * 1024,
+    // Explicit pipe suppresses execFileSync's automatic stderr forwarding on
+    // failure. Intake catches the error and emits only a grade, never a path.
+    ...(quietErrors ? { stdio: "pipe" as const } : {}),
   });
   return out.toString("utf8");
 }
@@ -117,9 +122,26 @@ function parseTable(tblXml: string): string[][] {
   return rows;
 }
 
+/** Direct formatting only. Unsupported wrappers/styles never become boundary evidence. */
+export function paragraphTextRuns(xml: string): DocxTextRun[] | undefined {
+  if (/<w:(?:hyperlink|ins|del|moveFrom|moveTo|rPrChange|pPrChange|sdt|fldSimple|rStyle|pStyle|fldChar|instrText)\b/u.test(xml)) return undefined;
+  const runs: DocxTextRun[] = [];
+  for (const match of xml.matchAll(/<w:r(?:\s[^>]*)?>[\s\S]*?<\/w:r>/gu)) {
+    const body = match[0];
+    const properties = /<w:rPr(?:\s[^>]*)?>([\s\S]*?)<\/w:rPr>/u.exec(body)?.[1] ?? "";
+    const boldTag = /<w:b(?=[\s/>])([^>]*)>/u.exec(properties);
+    const value = boldTag && /\bw:val\s*=\s*["']([^"']+)["']/u.exec(boldTag[1]!)?.[1];
+    if (value && !["0", "1", "true", "false", "on", "off"].includes(value)) return undefined;
+    runs.push({ text: fragmentText(body), bold: !!boldTag && !["0", "false", "off"].includes(value || "") });
+  }
+  // Text not represented by the direct runs would otherwise silently disappear.
+  if (runs.map(r => r.text).join("") !== fragmentText(xml)) return undefined;
+  return runs;
+}
+
 /** Walk the document body in order, yielding paragraphs and tables. */
-export function parseDocxBlocks(docxPath: string): DocxBlock[] {
-  const xml = readDocumentXml(docxPath);
+export function parseDocxBlocks(docxPath: string, quietErrors = false, preserveRuns = false): DocxBlock[] {
+  const xml = readDocumentXml(docxPath, quietErrors);
   const bodyStart = xml.indexOf("<w:body");
   const body = bodyStart === -1 ? xml : xml.slice(bodyStart);
   const blocks: DocxBlock[] = [];
@@ -135,7 +157,10 @@ export function parseDocxBlocks(docxPath: string): DocxBlock[] {
       const end = body.indexOf("</w:p>", m.index);
       if (end === -1) break;
       const text = fragmentText(body.slice(m.index, end)).trim();
-      if (text.length > 0) blocks.push({ kind: "paragraph", text });
+      if (text.length > 0) {
+        const runs = preserveRuns ? paragraphTextRuns(body.slice(m.index, end)) : undefined;
+        blocks.push({ kind: "paragraph", text, ...(runs ? { runs } : {}) });
+      }
       next.lastIndex = end;
     }
   }

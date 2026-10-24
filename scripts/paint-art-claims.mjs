@@ -49,12 +49,60 @@ export const findingRows = text => text.split('\n').flatMap((line, index) => {
   if (!/^(?:content\/.*\.policy\.json#\/vocabLedger\/|docs\/.*\/claims\.json#\/claims\/|scripts\/paint-art-allowlist\.json#\/|scripts\/check-ground-plane\.mjs#\/GROUND_PLANE_PENDING\/)/.test(scope)) return [];
   return [{ id, status, scope, reason, resolution, owner, proof, line: index + 1 }];
 });
+// cgo-157: formatting and link destinations are not evidence. This narrow
+// text projection supplies the mechanical minimum, not a Markdown renderer.
+const visibleFindingCell = value => {
+  const text = value.normalize('NFKC')
+    .replace(/&#(x[0-9a-f]+|[0-9]+);/gi, (_, code) => {
+      const point = code[0].toLowerCase() === 'x' ? parseInt(code.slice(1), 16) : Number(code);
+      return point <= 0x10ffff && !(point >= 0xd800 && point <= 0xdfff) ? String.fromCodePoint(point) : '';
+    })
+    .replace(/&[a-z][a-z0-9]*;/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<\/?[a-z](?:[^>"']|"[^"]*"|'[^']*')*>/gi, '');
+  let visible = '';
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === ']' && text[i + 1] === '[') {
+      // Reference metadata ends at the first non-escaped closing bracket.
+      // Nested brackets in the preceding visible label must remain visible.
+      let end = i + 2;
+      for (; end < text.length; end++) {
+        if (text[end] === '\\') { end++; continue; }
+        if (text[end] === ']') break;
+      }
+      if (end >= text.length) return '';
+      visible += ']'; i = end;
+    } else if (text[i] === ']' && text[i + 1] === '(') {
+      let depth = 1, end = i + 2, quote = '';
+      for (; end < text.length && depth; end++) {
+        const char = text[end];
+        if (char === '\\') { end++; continue; }
+        if (quote) { if (char === quote) quote = ''; continue; }
+        if ((char === '"' || char === "'") && /\s/.test(text[end - 1])) { quote = char; continue; }
+        if (char === '(') depth++;
+        if (char === ')') depth--;
+      }
+      if (depth) return ''; // Unclosed destination must not supply fake prose.
+      visible += ']'; i = end - 1;
+    } else visible += text[i];
+  }
+  return visible.replace(/[\\`*_~[\]#!]/g, '');
+};
+// cgo-080: reject empty/single-character/placeholder cells. This is a minimum
+// bookkeeping check, NOT a semantic judgement of a reason or its evidence.
+export const findingCellsValid = row => ['reason', 'resolution', 'owner', 'proof'].every(key => {
+  const value = visibleFindingCell(row[key]?.trim() ?? '');
+  const letters = value.match(/[\p{L}\p{N}]/gu) ?? [];
+  const placeholder = value.normalize('NFKC').replace(/[^\p{L}\p{N}]/gu, '');
+  return letters.length >= (key === 'owner' ? 2 : 4)
+    && !/^(?:x+|todo|tbd|na|test|placeholder)+$/i.test(placeholder);
+});
 export const openFindingMap = text => {
   const ids = text.split('\n').flatMap(line => [...line.matchAll(/^\| (?:~~)?(D-\d+)(?:~~)? \|/g)].map(m => m[1]));
   const counts = new Map();
   for (const id of ids) counts.set(id, (counts.get(id) ?? 0) + 1);
   return new Map(findingRows(text)
-    .filter(r => counts.get(r.id) === 1 && r.status === 'offen' && r.reason && r.resolution && r.owner && r.proof)
+    .filter(r => counts.get(r.id) === 1 && r.status === 'offen' && findingCellsValid(r))
     .map(r => [r.id, r.scope]));
 };
 export const findingError = (id, scope, findings) =>

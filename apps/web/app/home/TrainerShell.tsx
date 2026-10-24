@@ -1,13 +1,7 @@
 "use client";
-import { useSyncExternalStore, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
-
-type Theme = "system" | "light" | "dark";
-let currentTheme: Theme | null = null;
-const themeListeners = new Set<() => void>();
-const subscribe = (listener: () => void) => { themeListeners.add(listener); return () => { themeListeners.delete(listener); }; };
-const getTheme = () => currentTheme;
-const serverTheme = (): Theme | null => null;
+import { chooseTrainerLanguage, chooseTrainerTheme, useTrainerLanguage, useTrainerTheme } from "@/lib/trainer/preferences";
 
 export function trainerHref(path: string, grade: number, preview: boolean): string {
   return preview ? `${path}${path.includes("?") ? "&" : "?"}jahrgang=${grade}` : path;
@@ -16,14 +10,10 @@ export function trainerHref(path: string, grade: number, preview: boolean): stri
 export default function TrainerShell({ grade, preview, children, screen = "home", wordmark = true }: {
   grade: number; preview: boolean; children: ReactNode; screen?: string; wordmark?: boolean;
 }) {
-  const theme = useSyncExternalStore(subscribe, getTheme, serverTheme) ?? (grade >= 3 ? "dark" : "system");
+  const theme = useTrainerTheme(grade), language = useTrainerLanguage(grade);
   const label = ["", "1st", "2nd", "3rd", "4th"][grade];
-  function toggleTheme() {
-    const dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    currentTheme = dark ? "light" : "dark";
-    themeListeners.forEach((listener) => listener());
-  }
-  return <div className="og-root" data-grade={grade} data-theme={theme} data-screen={screen}>
+  function toggleTheme() { chooseTrainerTheme(grade, theme === "dark" ? "light" : "dark"); }
+  return <div className="og-root" data-grade={grade} data-theme={theme} data-screen={screen} lang={language}>
     {preview && <aside className="og-preview" lang="de">
       <span>Vorschau — nichts gespeichert</span>
       <nav aria-label="Jahrgang">{[1, 2, 3, 4].map((g) => <Link key={g} aria-current={g === grade ? "page" : undefined} href={`/${screen === "areas" ? "modi" : screen}?jahrgang=${g}`}>{g}</Link>)}</nav>
@@ -34,9 +24,13 @@ export default function TrainerShell({ grade, preview, children, screen = "home"
       <p className="og-tagline">English · Vocabulary &amp; Grammar</p>
       <p className="og-grade">{label} Grade</p>
     </header>}
+    {grade === 1 && <nav className="og-language" aria-label="Sprache / Language">
+      <button type="button" lang="de" aria-pressed={language === "de"} onClick={() => chooseTrainerLanguage("de")}>Deutsch</button>
+      <button type="button" lang="en" aria-pressed={language === "en"} onClick={() => chooseTrainerLanguage("en")}>English</button>
+    </nav>}
     {children}
     <footer className="og-footer">
-      <button type="button" onClick={toggleTheme} aria-label="Hell oder dunkel umschalten">◐ {theme === "dark" ? "Dark" : theme === "light" ? "Light" : "Light / Dark"}</button>
+      <button type="button" onClick={toggleTheme} aria-label={language === "de" ? "Hell oder dunkel umschalten" : "Switch light or dark appearance"}>◐ {theme === "dark" ? language === "de" ? "Dunkel" : "Dark" : language === "de" ? "Hell" : "Light"}</button>
       <Link href="/datenschutz">Datenschutz</Link>
     </footer>
   </div>;

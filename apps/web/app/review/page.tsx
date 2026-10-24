@@ -1,3 +1,4 @@
+import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listApprovedUnits, loadUnit, loadStory, loadReleasedChapters, loadStoryComprehension, loadStoryEconomy } from "@domigo/content-loader";
@@ -38,33 +39,31 @@ export default async function ReviewPage({ searchParams }: {
   const storyHref = doorChapter ? `/play/3/${doorChapter.split(".").at(-1)}` : null;
 
   return (
-    <>
+    <LearningShell preview={preview} grade={view.grades.length === 1 ? view.grades[0] : null}>
       {preview && <PreviewBanner grade={view.grades.length === 1 ? view.grades[0] : undefined} note="Beispielaufgaben ohne persönlichen Wiederholungsstand" />}
     <main style={{ maxWidth: 520, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8 }}>
-        <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Review</h1>
-        <Link href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{preview ? "← Zur Schüleransicht" : "← Home"}</Link>
+        <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Wiederholen" en="Review" /></h1>
+        <Link href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de={preview ? "← Zur Schüleransicht" : "← Startseite"} en={preview ? "← Student preview" : "← Home"} /></Link>
       </div>
 
       <FallenKarte traps={traps} />
 
       {storyHref && <section aria-labelledby="story-review-title" style={{ marginTop: 24, marginBottom: 24 }}>
-        <h2 id="story-review-title" style={{ fontSize: 20 }}>Wiederholung in der Geschichte</h2>
-        <p>{preview ? "FOURTEEN · Vorschau ohne persönlichen Wiederholungsstand." : storyDue === null
-          ? "Der Wiederholungsstand konnte gerade nicht geladen werden."
-          : `FOURTEEN · ${storyDue} ${storyDue === 1 ? "Aufgabe fällig" : "Aufgaben fällig"}.`}</p>
-        <Link className="dg-tile" href={storyHref} style={{ display: "block", padding: "16px 18px" }}>Zur Folge in FOURTEEN →</Link>
+        <h2 id="story-review-title" style={{ fontSize: 20 }}><LearningText de="Wiederholung in der Geschichte" en="Story review" /></h2>
+        <p><LearningText de={preview ? "FOURTEEN · Vorschau ohne persönlichen Wiederholungsstand." : storyDue === null ? "Der Wiederholungsstand konnte gerade nicht geladen werden." : `FOURTEEN · ${storyDue} Fragen fällig.`} en={preview ? "FOURTEEN · Preview without personal review progress." : storyDue === null ? "Your review progress could not be loaded." : `FOURTEEN · ${storyDue} items due.`} /></p>
+        <Link className="dg-tile" href={storyHref} style={{ display: "block", padding: "16px 18px" }}><LearningText de="Zur Folge in FOURTEEN →" en="Open the FOURTEEN episode →" /></Link>
       </section>}
 
       {preview ? (
         <div style={{ marginTop: 16 }}>
-          <p style={{ color: "var(--text-secondary)" }}>Wähle ein Chapter für eine Wiederholung mit bis zu 20 Beispielaufgaben.</p>
+          <p style={{ color: "var(--text-secondary)" }}><LearningText de="Wähle ein Chapter für eine Wiederholung mit bis zu 20 Beispielaufgaben." en="Choose a Chapter to preview up to 20 review items." /></p>
           {view.grades.map((grade) => {
             const inGrade = chapters.filter((slug) => slug.startsWith(`g${grade}-`));
             if (inGrade.length === 0) return null;
             return (
               <section key={grade} data-grade={grade} style={{ marginTop: 24 }}>
-                <h2 style={{ fontSize: 16, fontFamily: "var(--font-label)", color: "var(--accent)" }}>Grade {grade}</h2>
+                <h2 style={{ fontSize: 16, fontFamily: "var(--font-label)", color: "var(--ink)" }}><LearningText de="Jahrgang" en="Grade" /> {grade}</h2>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {inGrade.map((slug) => (
                     <Link key={slug} href={`/review/session?jahrgang=${grade}&chapter=${slug}`} className="dg-chip" style={{ padding: "8px 14px" }}>Chapter {Number(slug.match(/-u(\d+)/)?.[1])}</Link>
@@ -73,40 +72,40 @@ export default async function ReviewPage({ searchParams }: {
               </section>
             );
           })}
-          {chapters.length === 0 && <p>No review tasks for this school year yet.</p>}
+          {chapters.length === 0 && <p><LearningText de="Für diesen Jahrgang gibt es noch keine Wiederholung." en="No review tasks for this school year yet." /></p>}
         </div>
       ) : counts && counts.total === 0 && (!storyHref || storyDue === 0) ? (
         <div style={{ marginTop: 16 }}>
-          <p style={{ fontSize: 18, color: "var(--ink)", marginBottom: 4 }}>You&apos;re all caught up! 🎉</p>
-          <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Practice more to add items to your review.</p>
+          <p style={{ fontSize: 18, color: "var(--ink)", marginBottom: 4 }}><LearningText de="Alles wiederholt! 🎉" en="You're all caught up! 🎉" /></p>
+          <p style={{ color: "var(--text-secondary)", marginTop: 0 }}><LearningText de="Beim Üben sammelst du Wörter und Sätze für deine Wiederholung." en="Practice more to add items to your review." /></p>
           <Link href="/practice" className="dg-tile" style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 18px", marginTop: 12 }}>
             <span aria-hidden="true" style={{ fontSize: 26, lineHeight: 1 }}>📚</span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: "block", fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Practice</span>
-              <span style={{ display: "block", fontSize: 14, color: "var(--text-secondary)" }}>Vocabulary &amp; grammar by Chapter</span>
+              <span style={{ display: "block", fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Üben" en="Practice" /></span>
+              <span style={{ display: "block", fontSize: 14, color: "var(--text-secondary)" }}><LearningText de="Wörter und Grammatik nach Chapter" en="Vocabulary & grammar by Chapter" /></span>
             </span>
-            <span aria-hidden="true" style={{ color: "var(--accent)", fontSize: 18, fontWeight: 700 }}>→</span>
+            <span aria-hidden="true" style={{ color: "var(--ink)", fontSize: 18, fontWeight: 700 }}>→</span>
           </Link>
         </div>
       ) : counts && counts.total > 0 ? (
         <div style={{ marginTop: 16 }}>
           <p style={{ fontSize: 18, color: "var(--ink)", marginBottom: 2 }}>
-            {counts.total} item{counts.total === 1 ? "" : "s"} due
+            <LearningText de={`${counts.total} Fragen fällig`} en={`${counts.total} item${counts.total === 1 ? "" : "s"} due`} />
           </p>
           <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-            {counts.vocab} vocab · {counts.grammar} grammar
+            <LearningText de={`${counts.vocab} Wörter · ${counts.grammar} Grammatik`} en={`${counts.vocab} vocabulary · ${counts.grammar} grammar`} />
           </p>
           <Link href="/review/session" className="dg-tile" style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 18px", marginTop: 12 }}>
             <span aria-hidden="true" style={{ fontSize: 26, lineHeight: 1 }}>🔁</span>
             <span style={{ flex: 1 }}>
-              <span style={{ display: "block", fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Start review</span>
-              <span style={{ display: "block", fontSize: 14, color: "var(--text-secondary)" }}>Answer your due items</span>
+              <span style={{ display: "block", fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Wiederholung starten" en="Start review" /></span>
+              <span style={{ display: "block", fontSize: 14, color: "var(--text-secondary)" }}><LearningText de="Deine fälligen Wörter und Sätze" en="Answer your due items" /></span>
             </span>
-            <span aria-hidden="true" style={{ color: "var(--accent)", fontSize: 18, fontWeight: 700 }}>→</span>
+            <span aria-hidden="true" style={{ color: "var(--ink)", fontSize: 18, fontWeight: 700 }}>→</span>
           </Link>
         </div>
       ) : null}
     </main>
-    </>
+    </LearningShell>
   );
 }
