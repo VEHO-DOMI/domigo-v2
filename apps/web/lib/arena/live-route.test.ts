@@ -169,3 +169,17 @@ it("reserve detected by the live resolver has the shared anonymous 403 contract"
   failure=new rules.LiveError(409,"live_question_reserved");
   const response=await post(req(body()));assert.equal(response.status,403);assert.deepEqual(await response.json(),{ok:false,error:"item_reserved"});assert.equal(writes,0);
 });
+
+it('F05 lobby availability follows the authenticated creation kind', async () => {
+    for (const actorRole of ['student', 'teacher']) {
+        role = actorRole;
+        const response = await get(new Request('https://synthetic.invalid/api/arena/live' + (role === 'teacher' ? `?classId=${CLASS}` : '')));
+        assert.equal(response.status, 200);
+        const data = await response.json();
+        const kind = role === 'teacher' ? 'quiz' : 'battle';
+        assert(data.chapters.length > 0);
+        for (const chapter of data.chapters) assert.deepEqual(chapter.available, rules.liveChapterAvailability(chapter.key, kind));
+        assert.equal(data.chapters.reduce((sum: number, chapter: {available: {context: number}}) => sum + chapter.available.context, 0), kind === 'quiz' ? 24 : 0);
+    }
+    assert.equal(writes, 0);
+});

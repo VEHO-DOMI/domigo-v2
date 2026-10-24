@@ -43,7 +43,7 @@ export async function readLive(req: Request, classId?: string, id?: string) {
     if (id)
         return { room: await runDuelTransaction(tx => getLiveRoom(tx, scope, actor, id)) };
     const lobby = await runDuelTransaction(tx => liveLobby(tx, scope, actor));
-    return { lobby, chapters: listApprovedUnits().filter(key => key.startsWith(`g${lobby.grade}-`)).map(key => ({ key, chapter: Number(key.slice(-2)), available: liveChapterAvailability(key) })) };
+    return { lobby, chapters: listApprovedUnits().filter(key => key.startsWith(`g${lobby.grade}-`)).map(key => ({ key, chapter: Number(key.slice(-2)), available: liveChapterAvailability(key, actor.teacher ? "quiz" : "battle") })) };
 }
 export async function createLive(req: Request, selection: LiveSelection, classId?: string) {
     const { actor, scope } = await liveIdentity(req, classId);

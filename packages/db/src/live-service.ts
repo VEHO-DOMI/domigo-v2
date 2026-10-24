@@ -117,7 +117,7 @@ export async function createLiveRoom(db: Db, classScope: ClassScope, actor: Live
         guestId = peers[selection.peer! - 1]!.id;
     }
     const reserved = await listReservedForClass(db, classScope, gate.classId), id = crypto.randomUUID();
-    const questions = selectLiveQuestions(items, gate.grade, selection.units, selection.mode, selection.kind === "battle" ? 5 : selection.count, id, reserved);
+    const questions = selectLiveQuestions(items, gate.grade, selection.units, selection.mode, selection.kind === "battle" ? 5 : selection.count, id, reserved, selection.kind);
     await expireRooms(db, classScope, gate.classId, at);
     const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     const code = Array.from(crypto.getRandomValues(new Uint8Array(6)), n => alphabet[n % alphabet.length]).join("");
@@ -244,8 +244,9 @@ async function answerable(db: Db, classScope: ClassScope, actor: LiveActor, cont
         throw new LiveError(403, "live_forbidden");
     const state = await lockedRoom(db, classScope, actor, context.roomId, at), { room, members } = state;
     // Evaluate the processing clock AFTER the row lock, so queuing is included.
-    // A late processing failure is a retryable server failure, never an invented
-    // late student answer. No round can advance while an eligible request is pending.
+    // An age of 8000 ms fails here; this is NOT an overall completion timeout.
+    // Later SQL can exceed that age. A rejection is a server failure, not a late
+    // student answer. Receipt time alone determines the 15-second answer limit.
     const processingMs = processingNow().getTime() - at.getTime();
     if (!Number.isFinite(processingMs) || processingMs < 0 || processingMs >= LIVE_PROCESSING_MS)
         throw new LiveError(503, "live_processing_timeout");

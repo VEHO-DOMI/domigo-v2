@@ -8,7 +8,7 @@ import type { Db } from "./index.ts";
 import * as schema from "./schema.ts";
 import { classScope } from "./scope.ts";
 import { gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
-import { loadUnit } from "../../content-loader/src/index.ts";
+import { listApprovedUnits, loadUnit } from "../../content-loader/src/index.ts";
 import { actOnLiveRoom, checkLiveAnswer, createLiveRoom, getLiveRoom, joinLiveQuiz, liveLobby, recordLiveAnswer, type LiveActor, type LiveContext } from "./live-service.ts";
 const uuid = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
 const A = uuid(101), B = uuid(102), ME = uuid(1), PEER = uuid(2), OTHER = uuid(3), OUTSIDE = uuid(4), TEACHER = uuid(99);
@@ -292,8 +292,8 @@ describe('live room PostgreSQL contracts', () => {
     });
 });
 
-// A request has eight seconds of server processing; its score still uses its
-// original, strictly-before-deadline ingress. Polls must not consume that budget.
+// After each room lock, request age must be <8000 ms; later SQL has no total
+// completion timeout. Scoring still uses the strictly-before-deadline ingress.
 describe('live answer settlement under reordered requests', () => {
     it.each([false, true])('R17 deadline poll before booking preserves eligible ingress (prechecked=%s)', async (prechecked) => {
         const id = await battle();
@@ -307,12 +307,13 @@ describe('live answer settlement under reordered requests', () => {
         expect(result.phase).toBe('result');
         expect(result.players.map(p => p.score)).toEqual([1, 0]);
     });
-    it('R18 settlement never admits a late ingress or a stalled server request', async () => {
+    it('R18 rejects age 8000 at the lock guard, admits age 7999; no completion deadline', async () => {
         const id = await battle();
         await tx(d => getLiveRoom(d, scope, actor(PEER), id, date(19000)));
         await expect(answer(id, ME, 19000, true, crypto.randomUUID(), 20000)).rejects.toMatchObject({status:410});
         await expect(answer(id, ME, 18999, true, crypto.randomUUID(), 26999)).rejects.toMatchObject({status:503,code:'live_processing_timeout'});
         expect(await db.select().from(schema.practiceAttempts)).toHaveLength(0);
+        expect(await db.select().from(schema.userProgress)).toHaveLength(0);
         await answer(id, ME, 18999, true, crypto.randomUUID(), 26998);
         expect(await db.select().from(schema.practiceAttempts)).toHaveLength(1);
     });
@@ -336,4 +337,18 @@ it('R20 room expiry and lobby cleanup preserve the same bounded ingress contract
     await answer(id,ME,17999,true,crypto.randomUUID(),19000);
     expect((await db.select().from(schema.practiceAttempts))[0]!.latencyMs).toBe(13999);
     expect((await tx(d=>getLiveRoom(d,scope,actor(PEER),id,date(26000)))).phase).toBe('cancelled');
+});
+
+
+it('F06 real room creation binds approvals to the requested kind', async () => {
+    const units = listApprovedUnits().filter(u => u.startsWith('g1-'));
+    const source = units.flatMap(u => loadUnit(u).vocab);
+    const lobby = await tx(d => liveLobby(d, scope, actor(), date()));
+    await expect(tx(d => createLiveRoom(d, scope, actor(), { ...selection, units, mode: 'context', kind: 'battle', peer: 1, rosterVersion: lobby.rosterVersion }, source, date()))).rejects.toMatchObject({ code: 'live_not_enough_questions' });
+    expect(await db.select().from(schema.liveRooms)).toHaveLength(0);
+    await tx(d => createLiveRoom(d, scope, actor(TEACHER), { ...selection, units, mode: 'context' }, source, date()));
+    const rooms = await db.select().from(schema.liveRooms);
+    expect(rooms).toHaveLength(1);
+    expect(rooms[0]!.kind).toBe('quiz');
+    expect(rooms[0]!.questions.every(q => q.pool === 'carrier')).toBe(true);
 });

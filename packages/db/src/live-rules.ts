@@ -8,9 +8,9 @@ export const LIVE_INVITE_MS = 30000;
 export const LIVE_COUNTDOWN_MS = 4000;
 export const LIVE_RESULT_MS = 3000;
 export const LIVE_QUESTION_MS = 15000;
-/** Bound server processing separately from student answer time. A timeout poll
- * waits this long for requests already received before the 15-second deadline.
- * The API supplies a fresh server clock after acquiring the room lock. */
+/** Processing age must be <8000 ms when checked AFTER the room lock (queueing
+ * included), independently of the 15-second receipt deadline. Polls reserve this
+ * grace window. This is NOT a completion timeout: later SQL may take longer. */
 export const LIVE_PROCESSING_MS = 8000;
 export const LIVE_ROOM_MS = 60 * 60 * 1000;
 export const LIVE_MAX_PLAYERS = 40;
@@ -60,15 +60,18 @@ export function liveContentFingerprint(item: VocabItem, pool: LivePool): string 
     return createHash("sha256").update(JSON.stringify([item.id, pool, prompt, options, answers, item.difficulty])).digest("hex");
 }
 /** No approval by seed or Chapter alone: the complete visible/keyed tuple is pinned. */
-export function liveReviewed(item: VocabItem, pool: LivePool): boolean {
-    return LIVE_REVIEWED_BANK[`${item.id}:${pool}`] === liveContentFingerprint(item, pool);
+export function liveReviewed(item: VocabItem, pool: LivePool, kind: LiveKind): boolean {
+    if (kind !== "battle" && kind !== "quiz") return false;
+    const pin = LIVE_REVIEWED_BANK[`${item.id}:${pool}`]?.[kind === "battle" ? "duel" : "quiz"];
+    return typeof pin === "string" && pin === liveContentFingerprint(item, pool);
 }
 /** UI upper bounds only. Reservations, overrides and cross-Chapter duplicates
  * are checked again at creation; future question texts/ids never leave here. */
-export function liveChapterAvailability(unit: string): Record<LiveMode, number> {
+export function liveChapterAvailability(unit: string, kind: LiveKind): Record<LiveMode, number> {
     const prefix = `${unit.replace("-", "")}.w.`;
     const counts = { translation: 0, definition: 0, context: 0 };
-    for (const key of Object.keys(LIVE_REVIEWED_BANK)) if (key.startsWith(prefix)) {
+    if (kind !== "battle" && kind !== "quiz") return counts;
+    for (const [key, approval] of Object.entries(LIVE_REVIEWED_BANK)) if (key.startsWith(prefix) && approval[kind === "battle" ? "duel" : "quiz"]) {
         const pool = key.slice(key.lastIndexOf(":") + 1);
         if (pool === "deToEn") counts.translation++;
         if (pool === "definition") counts.definition++;
@@ -158,8 +161,8 @@ function hash(value: string): number {
 /** Select only the independently reviewed closed bank. Structural engine checks
  * are additional guards, never a substitute for semantic review. Future questions
  * and internal item references stay on the server. */
-export function selectLiveQuestions(items: readonly VocabItem[], grade: number, units: readonly string[], mode: LiveMode, count: number, seed: string, reserved: ReadonlySet<string>): LiveQuestion[] {
-    if (![1, 2, 3, 4].includes(grade) || !LIVE_MODES.includes(mode) || ![5, 10, 15].includes(count)
+export function selectLiveQuestions(items: readonly VocabItem[], grade: number, units: readonly string[], mode: LiveMode, count: number, seed: string, reserved: ReadonlySet<string>, kind: LiveKind): LiveQuestion[] {
+    if (!["battle", "quiz"].includes(kind) || ![1, 2, 3, 4].includes(grade) || !LIVE_MODES.includes(mode) || ![5, 10, 15].includes(count)
         || !units.length || units.length > 15 || new Set(units).size !== units.length
         || units.some(u => !new RegExp(`^g${grade}-u\\d{2}$`).test(u)))
         throw new LiveError(400, "live_bad_selection");
@@ -168,7 +171,7 @@ export function selectLiveQuestions(items: readonly VocabItem[], grade: number, 
         .sort((a, b) => hash(`${seed}:${a.id}`) - hash(`${seed}:${b.id}`) || a.id.localeCompare(b.id));
     const result: LiveQuestion[] = [], prompts = new Set<string>();
     for (const item of candidates) {
-        if (!liveReviewed(item, pool))
+        if (!liveReviewed(item, pool, kind))
             continue;
         const prompt = livePrompt(item, mode), key = canonical(prompt);
         if (!key || prompts.has(key))

@@ -68,16 +68,16 @@ describe("live server rules", () => {
         let checked = 0;
         for (const slug of listApprovedUnits()) for (const mode of LIVE_MODES) {
             const items = loadUnit(slug).vocab, grade = Number(slug[1]);
-            if (liveChapterAvailability(slug)[mode] < 5) {
-                expect(() => selectLiveQuestions(items,grade,[slug],mode,5,"synthetic",new Set())).toThrow();
+            if (liveChapterAvailability(slug, "quiz")[mode] < 5) {
+                expect(() => selectLiveQuestions(items,grade,[slug],mode,5,"synthetic",new Set(), "quiz")).toThrow();
                 continue;
             }
-            const qs = selectLiveQuestions(items, grade, [slug], mode, 5, "synthetic", new Set());
+            const qs = selectLiveQuestions(items, grade, [slug], mode, 5, "synthetic", new Set(), "quiz");
             expect(qs).toHaveLength(5);
             expect(new Set(qs.map(q => q.prompt)).size).toBe(5);
             for (const q of qs) {
                 const item = items.find(i => i.id === q.itemId)!;
-                expect(liveReviewed(item,q.pool)).toBe(true);
+                expect(liveReviewed(item,q.pool,"quiz")).toBe(true);
                 expect(q.unitKey).toBe(slug);
                 expect(q.options).toHaveLength(4);
                 expect(q.options.filter(o => gradeVocab(item, o, q.pool).tier === "correct")).toHaveLength(1);
@@ -89,29 +89,29 @@ describe("live server rules", () => {
             const units=listApprovedUnits().filter(u=>u.startsWith(`g${grade}-`));
             const items=units.flatMap(u=>loadUnit(u).vocab);
             for(const seed of ["one","two","three"]) {
-                const qs=selectLiveQuestions(items,grade,units,mode,5,seed,new Set());
-                expect(qs.every(q=>liveReviewed(items.find(i=>i.id===q.itemId)!,q.pool))).toBe(true);
+                const qs=selectLiveQuestions(items,grade,units,mode,5,seed,new Set(), "quiz");
+                expect(qs.every(q=>liveReviewed(items.find(i=>i.id===q.itemId)!,q.pool,"quiz"))).toBe(true);
             }
         }
     });
     it("L10 unknown or edited content cannot inherit a former semantic approval", () => {
         const items=loadUnit("g1-u01").vocab;
         const edited=items.map(i=>({...i,g:i.g+" [changed]"}));
-        expect(()=>selectLiveQuestions(edited,1,["g1-u01"],"translation",5,"x",new Set())).toThrow();
-        for(const item of items.filter(i=>liveReviewed(i,"deToEn"))) {
-            expect(liveReviewed({...item,mc:[...item.mc.slice(0,2),"new choice"]},"deToEn")).toBe(false);
-            expect(liveReviewed({...item,difficulty:item.difficulty===1?2:1},"deToEn")).toBe(false);
+        expect(()=>selectLiveQuestions(edited,1,["g1-u01"],"translation",5,"x",new Set(), "quiz")).toThrow();
+        for(const item of items.filter(i=>liveReviewed(i,"deToEn","quiz"))) {
+            expect(liveReviewed({...item,mc:[...item.mc.slice(0,2),"new choice"]},"deToEn","quiz")).toBe(false);
+            expect(liveReviewed({...item,difficulty:item.difficulty===1?2:1},"deToEn","quiz")).toBe(false);
         }
         for(const [unit,id,pool] of [["g4-u13","g4u13.w.artist","carrier"],["g2-u15","g2u15.w.to-keep-sb-company","carrier"],["g1-u11","g1u11.w.what-s-the-time","definition"]] as const) {
-            expect(liveReviewed(loadUnit(unit).vocab.find(i=>i.id===id)!,pool)).toBe(false);
+            expect(liveReviewed(loadUnit(unit).vocab.find(i=>i.id===id)!,pool,"quiz")).toBe(false);
         }
     });
     it("L09 reservation and year are enforced during selection", () => {
         const items = loadUnit("g1-u01").vocab;
-        expect(() => selectLiveQuestions(items, 2, ["g1-u01"], "translation", 5, "x", new Set())).toThrow();
-        expect(() => selectLiveQuestions(items, 1, ["g1-u01"], "translation", 5, "x", new Set(items.map(i => i.id)))).toThrow();
-        const eligible = items.filter(i=>liveReviewed(i,"deToEn"));
+        expect(() => selectLiveQuestions(items, 2, ["g1-u01"], "translation", 5, "x", new Set(), "quiz")).toThrow();
+        expect(() => selectLiveQuestions(items, 1, ["g1-u01"], "translation", 5, "x", new Set(items.map(i => i.id)), "quiz")).toThrow();
+        const eligible = items.filter(i=>liveReviewed(i,"deToEn","quiz"));
         const reserved = new Set(eligible.slice(0,Math.max(0,eligible.length-5)).map(i=>i.id));
-        expect(selectLiveQuestions(items, 1, ["g1-u01"], "translation", 5, "x", reserved).every(q => !reserved.has(q.itemId))).toBe(true);
+        expect(selectLiveQuestions(items, 1, ["g1-u01"], "translation", 5, "x", reserved, "quiz").every(q => !reserved.has(q.itemId))).toBe(true);
     });
 });
