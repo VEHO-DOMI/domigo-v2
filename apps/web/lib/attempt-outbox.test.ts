@@ -803,3 +803,32 @@ test("unavailable synchronous staging still uses IndexedDB without claiming miss
 test("existing completion payloads never enter the synchronous history stage", async () => {
   await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
 });
+// cgo-145: the first durable copy survives alternating store outages (Codex probe parent-cross-store, 24.10.).
+test("first durable IndexedDB check survives a later conflicting fallback stage and an IndexedDB outage", async () => {
+  // (1) localStorage unavailable: the original lands only in IndexedDB.
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore(true)});
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  // (2) localStorage works again: the same event id is re-sent with an altered answer.
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore()});
+  const altered=historyBody(); altered.input={kind:"vocab",value:"changed"};
+  assert.deepEqual(await sendAttempt(altered,A),{ok:false,queued:true}); assert.equal(localRows.size,1); assert.equal(store.rows.size,1);
+  assert.deepEqual(JSON.parse([...localRows.values()][0]!).attempt.input,body.input);
+  assert.deepEqual((([...store.rows.values()][0]) as {attempt:AttemptBody}).attempt.input,body.input);
+  // (3) IndexedDB unavailable: the replay still sends the original, never the altered copy.
+  globalThis.indexedDB=undefined as unknown as IDBFactory;
+  const sent:string[]=[]; globalThis.fetch=async (_url,init) => {sent.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:true,kind:"vocabulary-check"});};
+  assert.equal(await flushOutbox(A),1); assert.deepEqual(sent,[body.input.value]); assert.equal(localRows.size,0);
+});
+test("a diverged fallback stage is realigned to the durable IndexedDB copy during replay", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  // A stage that diverged from the committed copy (written while the IndexedDB open was blocked).
+  const key=[...localRows.keys()][0]!, diverged=JSON.parse(localRows.get(key)!); diverged.attempt.input={kind:"vocab",value:"changed"}; localRows.set(key,JSON.stringify(diverged));
+  let posted:string[]=[]; globalThis.fetch=async (_url,init) => {posted.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:false,error:"persistence_unavailable"},{status:503});};
+  assert.equal(await flushOutbox(A),0); assert.deepEqual(posted,[body.input.value]);
+  assert.deepEqual(JSON.parse(localRows.get(key)!).attempt.input,body.input);
+  globalThis.indexedDB=undefined as unknown as IDBFactory; posted=[];
+  globalThis.fetch=async (_url,init) => {posted.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:true,kind:"vocabulary-check"});};
+  assert.equal(await flushOutbox(A),1); assert.deepEqual(posted,[body.input.value]); assert.equal(localRows.size,0);
+});

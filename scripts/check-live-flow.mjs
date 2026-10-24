@@ -17,6 +17,8 @@ import {classScope} from '../packages/db/src/scope.ts';
 import * as loader from '../packages/content-loader/src/index.ts';
 import * as engine from '../packages/engine/src/index.ts';
 import * as policy from '../apps/web/lib/modi/attempt-policy.ts';
+import * as vocabularyCheck from '../apps/web/lib/vocabulary-check.ts';
+import * as vocabularyHistory from '../apps/web/lib/vocabulary-history.ts';
 import * as itemRef from '../apps/web/lib/itemRef.ts';
 import * as listeningRef from '../apps/web/lib/listeningRef.ts';
 import * as testRef from '../apps/web/lib/testRef.ts';
@@ -46,7 +48,7 @@ const timed={...service};for(const key of ['actOnLiveRoom','checkLiveAnswer','cr
 const content={loadUnitWithOverrides:async slug=>loader.loadUnit(slug)};
 const server=loadTestModule('apps/web/lib/arena/live-server.ts',{'server-only':{},'@domigo/content-loader':loader,'@/auth':{auth:async()=>({user:{id:context(),role:context()===TEACHER?'teacher':'student'}})},'@/lib/identity':identity,'@/lib/content-service':content,'../../../../packages/db/src/duel-service.ts':{runDuelTransaction:work=>db.transaction(work)},'../../../../packages/db/src/live-service.ts':timed,'../../../../packages/db/src/live-rules.ts':rules});
 const api=loadTestModule('apps/web/lib/arena/live-api.ts',{'server-only':{},zod:{z},'./live-server':server});
-const attempts=loadTestModule('apps/web/app/api/attempts/route.ts',{'next/server':{NextResponse:Response},zod:{z},'@domigo/content-schema':refs,'@domigo/content-loader':loader,'@domigo/engine':engine,'@/lib/content-service':content,'@domigo/db':{getDb:()=>db,getClassGrade,listReservedForClass,inScope,practiceItemDenial,recordAttempt:()=>{throw Error('bypass');}},'@/lib/identity':identity,'@/lib/itemRef':itemRef,'@/lib/listeningRef':listeningRef,'@/lib/testRef':testRef,'@/lib/comprehensionRef':comprehensionRef,'@/lib/modi/speed-session':{},'@/lib/modi/attempt-policy':policy,'@/lib/arena/server':{},'@/lib/arena/live-server':server});
+const attempts=loadTestModule('apps/web/app/api/attempts/route.ts',{'next/server':{NextResponse:Response},zod:{z},'@domigo/content-schema':refs,'@domigo/content-loader':loader,'@domigo/engine':engine,'@/lib/content-service':content,'@domigo/db':{getDb:()=>db,getClassGrade,listReservedForClass,inScope,practiceItemDenial,recordAttempt:()=>{throw Error('bypass');}},'@/lib/identity':identity,'@/lib/itemRef':itemRef,'@/lib/listeningRef':listeningRef,'@/lib/testRef':testRef,'@/lib/comprehensionRef':comprehensionRef,'@/lib/modi/speed-session':{},'@/lib/modi/attempt-policy':policy,'@/lib/vocabulary-check':vocabularyCheck,'@/lib/vocabulary-history':vocabularyHistory,'@/lib/arena/server':{},'@/lib/arena/live-server':server});
 const fixture=await liveFixture(root),oldFlag=process.env.DOMIGO_LIVE_ARENA;process.env.DOMIGO_LIVE_ARENA='approved-under-20-usd';
 const args=process.argv.slice(2),i=args.indexOf('--out'),out=i>=0?path.resolve(args[i+1]):'/private/tmp/live-flow';assert(!out.startsWith(root+path.sep));fs.mkdirSync(out,{recursive:true});
 const localChrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
