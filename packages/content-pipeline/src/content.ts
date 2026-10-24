@@ -1,6 +1,7 @@
 /**
  * DomiGo v2 content pipeline CLI.
  *
+ *   pnpm content vocabulary-cases --manifest FILE --out FILE [--decisions FILE] [--verify]  source/meaning review
  *   pnpm content vocabulary-intake --manifest FILE --out FILE [--verify]  P0 appendix reconciliation
  *   pnpm content extract       [--grade N]      stage 1: docx → committed text + sources.lock
  *   pnpm content wordbank      [--grade N]      stage 2: master lists → per-unit wordbank.json
@@ -27,6 +28,7 @@
 import type { Grade } from "@domigo/content-schema";
 import { runIngestAllowlist, runReviewDocAllowlist } from "./allowlist.ts";
 import { runExtract } from "./extract.ts";
+import { runVocabularyCases } from "./vocabulary-cases-cli.ts";
 import { runVocabularyIntake } from "./vocabulary-intake-cli.ts";
 import { runGenItemsIngest, runGenItemsPrepare } from "./gen-items.ts";
 import { runGenStructuresIngest, runGenStructuresPrepare } from "./gen-structures.ts";
@@ -84,6 +86,9 @@ function parseStoryId(argv: string[]): string | undefined {
 const [command, ...rest] = process.argv.slice(2);
 
 switch (command) {
+  case "vocabulary-cases":
+    runVocabularyCases(rest);
+    break;
   case "vocabulary-intake":
     runVocabularyIntake(rest);
     break;
@@ -192,7 +197,7 @@ switch (command) {
     break;
   default:
     console.error(
-      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|vocabulary-intake|wordbank|v1-snapshot|gen|review-doc|ingest-review|story|validate|audit-variants|validate-listening|validate-story|validate-test|validate-journeys|gen-journeys|status> [flags]`,
+      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|vocabulary-intake|vocabulary-cases|wordbank|v1-snapshot|gen|review-doc|ingest-review|story|validate|audit-variants|validate-listening|validate-story|validate-test|validate-journeys|gen-journeys|status> [flags]`,
     );
     process.exitCode = 2;
 }

@@ -2,9 +2,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { WordBank, VocabFile, VocabItem, GRADES, UNITS_PER_GRADE, unitSlug } from "@domigo/content-schema";
+import { WordBank, VocabFile, VocabItem, GRADES, UNITS_PER_GRADE, unitSlug, type VocabItem as VocabItemT } from "@domigo/content-schema";
 import { parseDocxBlocks } from "./docx.ts";
-import { readUnitItems, applyItemFixes } from "./gen-items.ts";
+import { applyItemFixes, ITEM_FIXES_PATH, type ItemFixes } from "./gen-items.ts";
 import { UNITS_DIR, REPO_ROOT } from "./paths.ts";
 import { buildVocabularyIntake, type AppendixSource, type BankOccurrence, type IntakeGrade, type TaskOccurrence } from "./vocabulary-intake.ts";
 
@@ -52,9 +52,29 @@ function runVocabularyIntakeInternal(args: string[]): void {
     if (["--manifest","--out"].includes(args[i]!)) { i++; continue; }
     if (args[i] !== "--verify") throw Error("unknown vocabulary-intake argument");
   }
+  const report = loadVocabularyIntake(manifestPath);
+  const text = JSON.stringify(report,null,2)+"\n";
+  if (args.includes("--verify")) {
+    if (fs.readFileSync(outputPath,"utf8") !== text) throw Error("intake verification failed: artifact differs from pinned inputs/reconciliation");
+  } else {
+    fs.mkdirSync(path.dirname(outputPath),{recursive:true});
+    // Never overwrite an unrelated report/source by accident.
+    fs.writeFileSync(outputPath,text,{flag:"wx"});
+  }
+  console.log(JSON.stringify({mode:args.includes("--verify")?"verified":"review-only",...report.counts}));
+}
+
+/** Rebuild from original explicit sources and the current committed corpus, without writing. */
+export function loadVocabularyIntake(manifestPath: string) {
+  return loadVocabularySnapshot(manifestPath).intake;
+}
+
+/** One captured corpus revision supplies both the intake and effective task evidence. */
+export function loadVocabularySnapshot(manifestPath: string) {
   // Reports can be large and contain source text. Keep them outside the repo.
   const manifest: unknown = JSON.parse(fs.readFileSync(manifestPath,"utf8"));
   if (!Array.isArray(manifest) || manifest.length !== 4) throw Error("manifest must list four explicit local appendix paths");
+  const sourcePins: Array<{path:string;sha256:string;grade:number}> = [];
   const sources: AppendixSource[] = manifest.map((m: unknown) => {
     if (m === null || typeof m !== "object" || Array.isArray(m)) throw Error("invalid appendix manifest entry");
     const row = m as Record<string,unknown>;
@@ -67,36 +87,42 @@ function runVocabularyIntakeInternal(args: string[]): void {
       const sha256 = hash(bytes);
       const blocks = parseDocxBlocks(input, true, true);
       if (hash(fs.readFileSync(input)) !== sha256) throw Error("source changed while reading");
+      sourcePins.push({path:input,sha256,grade:row.grade as number});
       return { grade: row.grade as IntakeGrade, sha256, blocks };
     } catch { throw Error(`cannot read appendix for grade ${row.grade}`); }
   });
   const banks: BankOccurrence[] = []; const tasks: TaskOccurrence[] = []; const pins: Array<{path:string;sha256:string}> = [];
-  const pin = (file: string) => pins.push({path:path.relative(REPO_ROOT,file).split(path.sep).join("/"),sha256:hash(fs.readFileSync(file))});
+  const evidence: Array<{id:string;sourceSha256:string;task:VocabItemT|null}> = [];
+  const readPinned = (file: string): unknown => {
+    const bytes=fs.readFileSync(file);
+    pins.push({path:path.relative(REPO_ROOT,file).split(path.sep).join("/"),sha256:hash(bytes)});
+    return JSON.parse(bytes.toString("utf8"));
+  };
+  // Capture once: no per-unit rereads of an overlay that can change mid-import.
+  const fixes=readPinned(ITEM_FIXES_PATH) as ItemFixes;
+  if (!fixes || typeof fixes!=="object" || Array.isArray(fixes)) throw Error("invalid vocabulary item overlay");
   const slugs = GRADES.flatMap(grade => Array.from({length:UNITS_PER_GRADE[grade]},(_,i)=>unitSlug(grade,i+1)));
   for (const slug of slugs) {
-    const bankFile = path.join(UNITS_DIR,slug,"wordbank.json");
-    const bank = WordBank.parse(JSON.parse(fs.readFileSync(bankFile,"utf8")));
+    const bank = WordBank.parse(readPinned(path.join(UNITS_DIR,slug,"wordbank.json")));
     if (bank.slug !== slug) throw Error("bank folder and unit disagree");
-    const vocabFile = path.join(UNITS_DIR,slug,"vocab.json");
-    const base = VocabFile.parse(JSON.parse(fs.readFileSync(vocabFile,"utf8")));
+    const base = VocabFile.parse(readPinned(path.join(UNITS_DIR,slug,"vocab.json")));
     if (base.slug !== slug || base.grade !== bank.grade || base.unit !== bank.unit) throw Error("task source and bank unit disagree");
-    pin(bankFile); pin(vocabFile);
-    for (const e of bank.entries) banks.push({id:e.id,slug,grade:bank.grade,unit:bank.unit,en:e.en,deRaw:e.deRaw});
-    const effective = applyItemFixes(slug,readUnitItems(slug));
+    const effective = applyItemFixes(slug,{vocab:base.items,grammar:[]},fixes);
+    const effectiveTasks=new Map<string,VocabItemT>();
     for (const candidate of effective.vocab) {
       const item = VocabItem.parse(candidate);
       tasks.push({id:item.id,slug,w:item.w});
+      effectiveTasks.set(item.id,item);
+    }
+    for (const e of bank.entries) {
+      banks.push({id:e.id,slug,grade:bank.grade,unit:bank.unit,en:e.en,deRaw:e.deRaw});
+      evidence.push({id:e.id,sourceSha256:bank.source.sha256,task:effectiveTasks.get(e.id)??null});
     }
   }
-  pin(path.join(REPO_ROOT,"content/overlays/item-fixes.json"));
-  const report = buildVocabularyIntake(sources,banks,tasks,pins);
-  const text = JSON.stringify(report,null,2)+"\n";
-  if (args.includes("--verify")) {
-    if (fs.readFileSync(outputPath,"utf8") !== text) throw Error("intake verification failed: artifact differs from pinned inputs/reconciliation");
-  } else {
-    fs.mkdirSync(path.dirname(outputPath),{recursive:true});
-    // Never overwrite an unrelated report/source by accident.
-    fs.writeFileSync(outputPath,text,{flag:"wx"});
+  for (const pin of pins) if (hash(fs.readFileSync(path.join(REPO_ROOT,pin.path)))!==pin.sha256) throw Error("vocabulary corpus changed while reading");
+  for (const pin of sourcePins) {
+    try { if(hash(fs.readFileSync(pin.path))!==pin.sha256) throw Error("changed"); }
+    catch { throw Error(`cannot read appendix for grade ${pin.grade}`); }
   }
-  console.log(JSON.stringify({mode:args.includes("--verify")?"verified":"review-only",...report.counts}));
+  return {intake:buildVocabularyIntake(sources,banks,tasks,pins),evidence};
 }

@@ -26,3 +26,7 @@ Verification is included in the content-pipeline test suite. Tests cover prior-g
 The October source-resolution run accounts for 6,080 logical rows: 199 metadata rows, 5,803 in-course table entries, 60 Year 1 paragraphs containing 1,577 entries, and 18 excluded Year 4 Unit 14 entries. Thus there are 7,380 in-course source occurrences and 18 excluded occurrences, not 7,398 unique meanings. An independent extraction from the original XML agrees on all 1,577 Year 1 fields and spans. Three Year 1 entries use standalone episode codes and still have no mapped unit. The excluded Year 4 rows genuinely say Unit 14; no inspected evidence supports renumbering them into thirteen units.
 
 A source occurrence, a textual join, a verified meaning, and first teaching are different facts. Zero malformed/unsplit source rows does not resolve semantic disagreements, episode mappings or source-edition identity. None of these reports is a frozen runtime word index. Current book-edition binding and published Studio changes still need independent evidence. See [the vocabulary programme](vocabulary-program.md) for the ordered continuation and the user's expanded teaching, illustration and Activity requirements.
+
+## Source-meaning review
+
+After extraction, use [vocabulary-cases](./vocabulary-cases.md) to prepare citation candidates and pinned source/bank/task proposals. The casebook does not approve meanings or infer first teaching.
