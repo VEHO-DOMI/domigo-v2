@@ -106,6 +106,7 @@ test("review documents retain exact decisions, all chapters and a resolvable sha
   assert.deepEqual(all,wave.draftIndex.records);
   for(const record of wave.draftIndex.records)for(const word of record.prerequisites!.lexicalInventory)assert.equal(index.prerequisiteLexicon[word.lexiconKey]?.length??0,word.candidateCounts.total);
   assert.ok(files["source-decisions-wave-2.md"]!.includes(`${wave.decisions.length} Blätter`));
+  assert.ok(!files["source-decisions-wave-2.md"]!.endsWith("\n\n"));
   assert.deepEqual(sourceWaveReviewFiles(wave),files);
 });
 

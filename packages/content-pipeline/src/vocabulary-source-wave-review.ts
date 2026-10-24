@@ -28,6 +28,6 @@ export function sourceWaveReviewFiles(wave:Wave):Record<string,string> {
     markdown+=d.candidates.length?d.candidates.map(c=>quote(c)).join("\n"):"Keine Zitierform-Kandidaten.\n";
     markdown+="\n"+d.options.map(o=>`- ${o.id}: ${o.text}`).join("\n")+`\n\nEmpfehlung ${d.recommendation.option}: ${d.recommendation.reason}\n\nEntscheid: offen. Bedeutung und erster Unterricht: nicht bestätigt.\n\n`;
   }
-  files["source-decisions-wave-2.md"]=markdown;
+  files["source-decisions-wave-2.md"]=markdown.trimEnd()+"\n";
   return files;
 }
