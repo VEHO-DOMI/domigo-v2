@@ -15,7 +15,7 @@ import { loadListening, loadStoryComprehension, loadTest, storyIdForGrade } from
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { getDb, recordAttempt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
+import { getDb, recordAttempt, getPracticeReceipt, getClassGrade, inScope, listReservedForClass, practiceItemDenial } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
@@ -266,6 +266,14 @@ export async function POST(req: Request): Promise<Response> {
       ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
       : liveResolved && live ? await live.writeLiveAnswer(acting, attempt, liveResolved.coordinates, typeof input.value === "string" ? input.value : "", receivedAt)
       : await recordAttempt(getDb(), acting.classScope, attempt);
+    // A round displays the original booking even when its first response was lost.
+    // Keep the existing incremental reward fields for all other consumers.
+    let receipt: { tier: string; xpAwarded: number } | undefined;
+    if (mode === "practice" || mode === "daily") {
+      const booked = duplicate ? await getPracticeReceipt(getDb(), acting.classScope, attempt) : { tier, xpAwarded };
+      if (!booked) throw new Error("practice_receipt_unavailable");
+      receipt = booked;
+    }
     return NextResponse.json({
       ok: true,
       tier,
@@ -273,6 +281,7 @@ export async function POST(req: Request): Promise<Response> {
       box,
       dueAt: dueAt.toISOString(),
       duplicate,
+      ...(receipt ? { receipt } : {}),
       streak,
       ...(trap ? { trap } : {}),
     });

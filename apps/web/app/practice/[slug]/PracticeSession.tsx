@@ -24,8 +24,10 @@ type Props = {
 };
 
 export default function PracticeSession(props: Props) {
-  // Changing pupil, preview or practice route creates a fresh receipt lifetime.
-  return <PracticeRound key={JSON.stringify([props.slug, props.ownerId, props.preview, props.runMode, props.direction])} {...props} />;
+  // A selection/day change starts a new round even when the route slug stays fixed.
+  const round = [props.slug, props.ownerId, props.preview, props.runMode, props.direction,
+    props.today, props.vocab.map(item => item.id), props.grammar.map(item => item.id)];
+  return <PracticeRound key={JSON.stringify(round)} {...props} />;
 }
 function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, runMode, direction = "auto" }: Props) {
   const [mode, setMode] = useState<Mode>(runMode && runMode !== "grammar" ? "vocab" : "grammar");
@@ -40,7 +42,7 @@ function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, 
   const receive = useCallback((id: string, reply: AttemptResult) => {
     if (preview || !ids.current.has(id) || !reply.ok || reply.queued) return;
     setResults((old) => old.map((row) => row.id !== id || row.confirmed ? row : {
-      ...row, tier: reply.tier ?? row.tier, xp: reply.xpAwarded ?? 0, confirmed: true,
+      ...row, tier: reply.receipt?.tier ?? reply.tier ?? row.tier, xp: reply.receipt?.xpAwarded ?? reply.xpAwarded ?? 0, confirmed: true,
     }));
     if (typeof reply.streak === "number") setStreak(reply.streak);
   }, [preview]);

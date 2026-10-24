@@ -25,6 +25,7 @@ export * from "./student-profile-service.ts";
 export * from "./schema.ts";
 export * from "./review.ts";
 export * from "./persist.ts";
+export * from "./practice-receipt.ts";
 export * from "./streak.ts";
 export * from "./studypath.ts";
 export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)

@@ -21,6 +21,8 @@ export interface AttemptResult {
   /** Confirmed by the shared server grader, absent while offline. */
   tier?: "correct" | "partial" | "close" | "wrong";
   xpAwarded?: number;
+  /** Original persisted award, including a replay; consumers deduplicate by attempt ID. */
+  receipt?: { tier: "correct" | "partial" | "close" | "wrong"; xpAwarded: number };
   /** Server accepted + persisted (or an idempotent duplicate). */
   ok: boolean;
   /** Stored in the outbox for a later retry. */
@@ -33,6 +35,7 @@ interface AttemptResponse {
   tier?: AttemptResult["tier"];
   xpAwarded?: number;
   duplicate?: boolean;
+  receipt?: AttemptResult["receipt"];
   ok?: boolean;
   error?: string;
   streak?: number;
@@ -184,7 +187,11 @@ function attemptResult(data: AttemptResponse | null): AttemptResult {
   const tier = ["correct", "partial", "close", "wrong"].includes(data?.tier ?? "") ? data?.tier : undefined;
   const xpAwarded = Number.isFinite(data?.xpAwarded) && data!.xpAwarded! >= 0
     ? (data?.duplicate ? 0 : data?.xpAwarded) : undefined;
-  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded };
+  const receipt = data?.receipt;
+  const validReceipt = receipt && ["correct", "partial", "close", "wrong"].includes(receipt.tier)
+    && Number.isFinite(receipt.xpAwarded) && receipt.xpAwarded >= 0;
+  return { ok: true, queued: false, streak: data?.streak, tier, xpAwarded,
+    ...(validReceipt ? { receipt: { tier: receipt.tier, xpAwarded: receipt.xpAwarded } } : {}) };
 }
 
 /**

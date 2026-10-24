@@ -34,3 +34,35 @@ it("switching the pool discards late old-round receipts",async()=>{
   click(nodes(f.view.render()).find(n=>n.type==="button"&&text(n.props.children)==="Meaning")!);f.sent[0]!.resolve({ok:true,queued:false,xpAwarded:20});await settle();assert.equal(xp(f),0);
 });
 it("changing owner creates a fresh round without old points",async()=>{const f=fixture();f.answer();f.props.ownerId="new-owner";f.view.render();f.sent[0]!.resolve({ok:true,queued:false,xpAwarded:20});await settle();assert.equal(xp(f),0);});
+
+for (const change of ["day", "vocab", "grammar", "order"] as const) it(`changing ${change} creates a fresh round and accepts a new answer`, async () => {
+  const f = fixture();
+  if (change === "order") f.props.vocab = [item, loadUnit("g2-u02").vocab[0]!];
+  f.answer();
+  if (change === "day") f.props.today = "2026-10-25";
+  if (change === "vocab") f.props.vocab = loadUnit("g2-u02").vocab.slice(0, 1);
+  if (change === "grammar") f.props.grammar = loadUnit("g2-u02").grammar.slice(0, 1);
+  if (change === "order") f.props.vocab = [...f.props.vocab].reverse();
+  f.view.render();
+  f.sent[0]!.resolve({ ok: true, queued: false, xpAwarded: 19 });
+  await settle(); assert.equal(xp(f), 0);
+  assert.doesNotMatch(text(f.view.render()), /Done →/);
+  f.answer(); assert.equal(f.sent.length, 2);
+});
+it("identical freshly allocated task arrays preserve the current round", async () => {
+  const f = fixture(); f.answer(); f.props.vocab = [...f.props.vocab]; f.props.grammar = [...f.props.grammar]; f.view.render();
+  f.sent[0]!.resolve({ ok: true, queued: false, xpAwarded: 7 }); await settle(); assert.equal(xp(f), 7);
+});
+for (const lost of [true, false]) it(`original persisted receipt survives ${lost ? "lost" : "overtaken"} first response exactly once`, async () => {
+  const f = fixture(); f.answer(); const first = f.sent[0]!;
+  if (lost) { first.resolve({ ok: false, queued: true }); await settle(); }
+  f.reply(first.id, { ok: true, queued: false, xpAwarded: 0, receipt: { tier: "partial", xpAwarded: 7 } });
+  assert.equal(xp(f), 7); assert.match(text(f.view.render()), /1 partial/);
+  if (!lost) { first.resolve({ ok: true, queued: false, xpAwarded: 7, receipt: { tier: "partial", xpAwarded: 7 } }); await settle(); }
+  f.reply(first.id, { ok: true, queued: false, xpAwarded: 0, receipt: { tier: "correct", xpAwarded: 99 } });
+  assert.equal(xp(f), 7);
+});
+it("a stored wrong answer remains zero even if replay was newly graded correct", () => {
+  const f = fixture(); f.answer(); f.reply(f.sent[0]!.id, { ok: true, queued: false, tier: "correct", xpAwarded: 20, receipt: { tier: "wrong", xpAwarded: 0 } });
+  assert.equal(xp(f), 0); assert.match(text(f.view.render()), /1 wrong/);
+});

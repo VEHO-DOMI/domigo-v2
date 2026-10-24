@@ -79,3 +79,28 @@ it("speed: an authentic timer still cannot bypass the reserve", async()=>{
     await denied(new Request(req.url,{method:"POST",headers:req.headers,body:JSON.stringify(body)}),"item_reserved");
   } finally { if(prior===undefined)delete process.env.AUTH_SECRET;else process.env.AUTH_SECRET=prior; }
 });
+
+for (const mode of ["practice", "daily"]) it(`${mode} replay exposes the original stored award, not regrading of a changed answer`, async () => {
+  const id = crypto.randomUUID();
+  const first = await (await POST(request(vocab.id, mode, { kind: "vocab", value: "not-the-answer-zzzz" }, id))).json();
+  assert.equal(first.duplicate, false); assert.deepEqual(first.receipt, { tier: "wrong", xpAwarded: 0 });
+  const replay = await (await POST(request(vocab.id, mode, undefined, id))).json();
+  assert.equal(replay.duplicate, true); assert.equal(replay.tier, "correct");
+  assert.deepEqual(replay.receipt, { tier: "wrong", xpAwarded: 0 });
+  assert.deepEqual(await ledger(), { attempts: 1, reviews: 1, progress: 1 });
+  const stored = await pg.query("SELECT xp_awarded FROM domigo_v2.practice_attempts");
+  assert.equal(stored.rows[0]?.xp_awarded, 0);
+});
+it("v2 lookup failure journal never includes class parameters, even when falling back", async () => {
+  const captured: string[] = [], original = console.error;
+  console.error = (...args: unknown[]) => { captured.push(args.join(" ")); };
+  await pg.exec("ALTER TABLE domigo_v2.classes RENAME TO classes_temporarily_unavailable");
+  try {
+    await denied(request(), "grade_unavailable");
+    assert.equal(captured.length, 1);
+    assert.doesNotMatch(captured.join("\n"), /00000000-|params:|Synthetic|MUST_NOT_APPEAR/);
+  } finally {
+    console.error = original;
+    await pg.exec("ALTER TABLE domigo_v2.classes_temporarily_unavailable RENAME TO classes");
+  }
+});
