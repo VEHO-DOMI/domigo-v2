@@ -5,7 +5,7 @@ import { loadTestModule } from "./arena/test-loader.ts";
 import { isSlugAllowed } from "./grade-scope.ts";
 function page(view: unknown, fail=false){
   const calls: unknown[][]=[];
-  const modules={"react/jsx-runtime":jsx,"next/navigation":{redirect:()=>{throw Error("redirect");},notFound:()=>{throw Error("not found");}},"@domigo/content-loader":{listApprovedUnits:()=>["g1-u01","g2-u01"]},"../load-practice":{loadPracticeWords:async(...args:unknown[])=>{calls.push(args);if(fail)throw Error("reserve unavailable");return{vocab:[],grammar:[]};}},"@/lib/grade-scope":{isSlugAllowed},"@/lib/student-view":{resolveStudentView:async()=>view},"@/app/PreviewBanner":{default:()=>null},"./PracticeSession":{default:()=>null}};
+  const modules={"react/jsx-runtime":jsx,"next/navigation":{redirect:()=>{throw Error("redirect");},notFound:()=>{throw Error("not found");}},"@domigo/content-loader":{listApprovedUnits:()=>["g1-u01","g2-u01"]},"../load-practice":{loadPracticeWords:async(...args:unknown[])=>{calls.push(args);if(fail)throw Error("reserve unavailable");return{vocab:[],grammar:[]};}},"@/lib/grade-scope":{isSlugAllowed},"@/lib/student-view":{resolveStudentView:async()=>view},"@/app/PreviewBanner":{default:()=>null},"@/lib/trainer/LearningShell":{default:()=>null,LearningText:()=>null},"./PracticeSession":{default:()=>null}};
   return{calls,run:loadTestModule("apps/web/app/practice/[slug]/page.tsx",modules).default as (p:{params:Promise<{slug:string}>})=>Promise<unknown>};
 }
 const child={kind:"student",grades:[2],player:{userId:"synthetic",classId:"synthetic-class",classScope:["synthetic-class"]}};

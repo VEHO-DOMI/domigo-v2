@@ -408,6 +408,7 @@ it("story review door renders counts/deep links for a child and never reads a pr
       "@/lib/student-view": { resolveStudentView: async () => preview ? { kind: "preview", grades: [3] } : { kind: "student", grades: [3], player: { userId: "fixture-child", classId: "fixture-class" } } },
       "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
       "@/app/PreviewBanner": { default: "PreviewBanner" },
+      "@/lib/trainer/LearningShell": { default: "LearningShell", LearningText: "LearningText" },
       "./FallenKarte": { default: "FallenKarte" },
       "@domigo/db": {
         getDb: () => { calls.push("db"); return {}; },
@@ -433,7 +434,7 @@ it("story review door renders counts/deep links for a child and never reads a pr
     } else {
       assert.equal(scopeIds.length, 15);
       assert.ok(scopeIds.includes(dueId));
-      assert.match(serialized, /3 Aufgaben fällig/);
+      assert.match(serialized, /3 Fragen fällig/);
       assert.match(serialized, /\/play\/3\/ch13/);
       assert.doesNotMatch(serialized, /caught up|Start review/);
       assert.ok(calls.includes("refs") && calls.includes("count"));
@@ -456,6 +457,7 @@ async function trapReviewHarness() {
     "@domigo/content-loader": content,
     "@/lib/grade-scope": { isSlugAllowed: (slug: string, grades: number[]) => grades.includes(Number(slug[1])) },
     "@/app/PreviewBanner": { default: () => createElement("p", {}, "Vorschau") },
+    "@/lib/trainer/LearningShell": { default: ({ children }: { children: never }) => children, LearningText: ({ de }: { de: string }) => de, useLearningText: () => (de: string) => de },
     "@domigo/db": { trapLabel },
   };
   const compile = (file: string) => {
@@ -544,7 +546,7 @@ it("student traps: actual child scope only; preview makes zero personal reads", 
     if (kind === "preview") assert.deepEqual(calls, []);
     else assert.equal(calls.filter((call) => call === "traps").length, 1);
     if (kind === "child") {
-      assert.ok(html.indexOf("Deine häufigsten Fallen") < html.indexOf("Start review"));
+      assert.ok(html.indexOf("Deine häufigsten Fallen") < html.indexOf("Wiederholung starten"));
       assert.match(html, /4-mal in den letzten 30 Tagen/);
     } else assert.doesNotMatch(html, /Deine häufigsten Fallen|student-traps-title/);
   }
@@ -574,7 +576,8 @@ describe("OG W1 surfaces", () => {
     assert.ok(loader.indexOf("selectDailyChallenge(") < loader.indexOf("listReservedForClass("));
     const runner = code(read("practice/page.tsx"));
     assert.match(runner, /vocab: challenge.availableWords/);
-    assert.match(runner, /Heute gesperrt: \{challenge.blockedCount\}\/10/);
+    assert.match(runner, /de=\{`Heute gesperrt: \$\{challenge.blockedCount\}\/10 · Diese Wörter werden übersprungen\.`\}/);
+    assert.match(runner, /en=\{`Unavailable today: \$\{challenge.blockedCount\}\/10 · These words are skipped\.`\}/);
     assert.match(code(read("home/page.tsx")), /text\("Heute gesperrt", "Blocked today"\).*\{challenge.blockedCount\}\/10/);
     assert.match(code(read("home/page.tsx")), /challenge.availableWords.length > 0/);
   });

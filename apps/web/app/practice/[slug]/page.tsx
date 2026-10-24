@@ -1,3 +1,4 @@
+import LearningShell from "@/lib/trainer/LearningShell";
 import { notFound, redirect } from "next/navigation";
 import { listApprovedUnits } from "@domigo/content-loader";
 import { loadPracticeWords } from "../load-practice";
@@ -27,9 +28,9 @@ export default async function UnitPracticePage({ params }: { params: Promise<{ s
   // rotation is identical across SSR + hydration (no client Date, no mismatch).
   const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Vienna" }).format(new Date());
   return (
-    <>
+    <LearningShell preview={preview} grade={Number(slug[1])}>
       {preview && <PreviewBanner grade={Number(slug.match(/^g(\d)/)?.[1]) || undefined} note="auch für Prüfungen zurückgehaltene Aufgaben sind sichtbar" />}
       <PracticeSession key={acting?.userId ?? "preview"} ownerId={acting?.userId ?? null} slug={slug} vocab={vocab} grammar={grammar} today={today} preview={preview} />
-    </>
+    </LearningShell>
   );
 }

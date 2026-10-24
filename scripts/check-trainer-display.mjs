@@ -60,7 +60,7 @@ async function tokenFailures(source,page){
  const colours=await page.evaluate(words=>words.filter(({word})=>!/^(transparent|currentcolor|inherit|initial|unset|revert|layer)$/i.test(word)&&CSS.supports('color',word)),words);
  return [...problems,...colours.map(({prop,word})=>prop+': '+word)];
 }
-const chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||(fs.existsSync(chrome)?chrome:undefined),args:['--disable-background-networking','--disable-gpu','--force-color-profile=srgb']});
+const chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||(fs.existsSync(chrome)?chrome:undefined),args:['--disable-background-networking','--disable-gpu','--force-color-profile=srgb','--disable-skia-runtime-opts','--disable-partial-raster']});
 const records=[], errors=[], network=[], mutants=[], rankProbes=[];
 const rankZones=['bronze','silver','gold','diamond','prestige'];
 async function featureFailures(page){
