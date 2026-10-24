@@ -39,13 +39,29 @@ save(policyFile); save(claimFile);
 const policy = () => JSON.parse(originals.get(policyFile));
 const changePolicy = fn => { const p = policy(); fn(p); fs.writeFileSync(policyFile, JSON.stringify(p, null, 2)+'\n'); };
 try {
-  for (const script of ['check-game-tasks', 'check-level-design', 'check-paint-art', 'check-ground-plane', 'check-registers']) {
+  if (process.argv.includes('--focused')) {
+    for (const script of ['check-registers', 'check-game-tasks']) {
+      assert.equal(run(`${script}-focused-control`, `scripts/${script}.mjs`).status, 0, `${script} focused control red`);
+    }
+  }
+  for (const script of (process.argv.includes('--focused') ? [] : ['check-game-tasks', 'check-level-design', 'check-paint-art', 'check-ground-plane', 'check-registers'])) {
     const now = run(`${script}-today`, `scripts/${script}.mjs`);
     const future = run(`${script}-2099`, `scripts/${script}.mjs`, '2099-01-01');
     assert.equal(now.status, 0, `${script} current baseline red`);
     assert.equal(future.status, now.status, `${script} calendar changed exit`);
     assert.equal(future.stdout, now.stdout, `${script} calendar changed stdout`);
     assert.equal(future.stderr, now.stderr, `${script} calendar changed stderr`);
+  }
+  // cgo-080: the real callers must reject each placeholder evidence cell.
+  const witnessLine = registerText.split('\n')[vocabulary.line - 1];
+  for (const [variant, placeholder] of [['plain', 'x'], ['bold', '**TODO**'], ['punctuated', 'TODO.']]) for (const [name, index] of [['reason', 4], ['resolution', 5], ['owner', 6], ['proof', 7]]) {
+    const cells = witnessLine.split(/(?<!\\)\|/);
+    assert.equal(cells.length, 9, 'seven-column register witness required');
+    cells[index] = ` ${placeholder} `;
+    fs.writeFileSync(register, registerText.replace(witnessLine, cells.join('|')));
+    red(`register-placeholder-${name}-${variant}`, 'scripts/check-registers.mjs', /Befund/);
+    red(`ledger-placeholder-${name}-${variant}`, 'scripts/check-game-tasks.mjs', /17e.*finding/);
+    restore();
   }
   changePolicy(p => { p.vocabLedger[pointer].offen = 'D-0'; });
   red('ledger-unknown', 'scripts/check-game-tasks.mjs', /17e.*finding/);
@@ -68,7 +84,7 @@ try {
   assert(answered, 'actual answered word required');
   const freeId = `D-${1 + Math.max(...[...registerText.matchAll(/^\| (?:~~)?D-(\d+)/gm)].map(m => Number(m[1])))}`;
   changePolicy(p => { p.vocabLedger[answered] = { cards: 'exempt', reason: 'test only: already answered', offen: freeId }; });
-  fs.writeFileSync(register, registerText + `\n| ${freeId} | offen | ${vocabFindingScope(chapter, answered)} | Test | Remove | Test | Test |\n`);
+  fs.writeFileSync(register, registerText + `\n| ${freeId} | offen | ${vocabFindingScope(chapter, answered)} | Synthetischer bereits beantworteter Fall | Ausnahme nach Antwort entfernen | Testteam | Direkter Torlauf prüft den Fall |\n`);
   assert.equal(openFindingMap(fs.readFileSync(register,'utf8')).get(freeId), vocabFindingScope(chapter, answered));
   red('ledger-unnecessary', 'scripts/check-game-tasks.mjs', /17c.*still declares/); restore();
   changePolicy(p => { delete p.vocabLedger[pointer]; });

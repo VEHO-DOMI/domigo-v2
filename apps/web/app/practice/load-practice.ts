@@ -1,6 +1,6 @@
 import "server-only";
-import { assignPool, listApprovedUnits } from "@domigo/content-loader";
-import { getDb, listReservedForClass } from "@domigo/db";
+import { listApprovedUnits } from "@domigo/content-loader";
+import { getDb, listReservedForClass, practiceItemDenial } from "@domigo/db";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import type { StudentView } from "@/lib/student-view";
 import { selectDailyChallenge } from "@/lib/daily-challenge";
@@ -14,8 +14,8 @@ export async function loadPracticeWords(view: StudentView, grade: number, chapte
   const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId) : new Set<string>();
   const units = await Promise.all(selected.map((slug) => loadUnitWithOverrides(slug)));
   return {
-    vocab: units.flatMap((unit) => unit.vocab).filter((item) => assignPool(item.id, reserved) !== "mock"),
-    grammar: units.flatMap((unit) => unit.grammar).filter((item) => assignPool(item.id, reserved) !== "mock"),
+    vocab: units.flatMap((unit) => unit.vocab).filter((item) => practiceItemDenial(item.id, grade, reserved) === null),
+    grammar: units.flatMap((unit) => unit.grammar).filter((item) => practiceItemDenial(item.id, grade, reserved) === null),
   };
 }
 
@@ -27,6 +27,6 @@ export async function loadDailyChallenge(view: StudentView, grade: number, day =
   const acting = view.kind === "student" ? view.player : null;
   const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId) : new Set<string>();
   // Skip held-out words after selection; never replace them with other words.
-  const availableWords = words.filter((item) => assignPool(item.id, reserved) !== "mock");
+  const availableWords = words.filter((item) => practiceItemDenial(item.id, grade, reserved) === null);
   return { day, words, availableWords, blockedCount: words.length - availableWords.length };
 }

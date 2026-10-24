@@ -1,4 +1,5 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useEffect, useRef, useState } from "react";
 import { distinctWords, fullAnswer, shuffle } from "@/lib/modi/decks";
 import { memoryPairCount } from "@/lib/modi/catalog";
@@ -10,7 +11,7 @@ export default function Memory({ words, grade, submit, finish }: GameProps) {
   const [open, setOpen] = useState<number[]>([]), [matched, setMatched] = useState<number[]>([]);
   const [moves, setMoves] = useState(0), [seconds, setSeconds] = useState(0);
   const lock = useRef(false), timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   useEffect(() => { const start = performance.now(); const interval = setInterval(() => setSeconds(Math.floor((performance.now() - start) / 1000)), 1000); return () => { clearInterval(interval); if (timer.current) clearTimeout(timer.current); }; }, []);
   async function flip(index: number) {
     if (lock.current || open.includes(index) || matched.includes(cards[index]!.pair)) return;

@@ -1,18 +1,20 @@
 "use client";
+import { useTrainerLanguage } from "@/lib/trainer/preferences";
 import { useRef, useState } from "react";
 import type { HuntRound } from "@/lib/modi/decks";
 import type { GameProps, ModeReply } from "@/lib/modi/types";
 
 export default function WordHunt(props: GameProps & { rounds: HuntRound[] }) {
   const [index, setIndex] = useState(0);
-  return <HuntRoundView key={index} {...props} index={index} round={props.rounds[index]!} next={() => index + 1 === props.rounds.length ? props.finish([{ label: props.grade === 1 ? "Runden" : "Rounds", value: String(props.rounds.length) }]) : setIndex(index + 1)} />;
+  const de = useTrainerLanguage(props.grade) === "de";
+  return <HuntRoundView key={index} {...props} index={index} round={props.rounds[index]!} next={() => index + 1 === props.rounds.length ? props.finish([{ label: de ? "Runden" : "Rounds", value: String(props.rounds.length) }]) : setIndex(index + 1)} />;
 }
 function HuntRoundView({ grade, submit, index, round, next }: GameProps & { index: number; round: HuntRound; next: () => void }) {
   const [picked, setPicked] = useState<Record<number, ModeReply>>({});
   const [selected, setSelected] = useState<number[]>([]);
   const [busy, setBusy] = useState(false), [checked, setChecked] = useState(false);
   const lock = useRef(false);
-  const de = grade === 1;
+  const de = useTrainerLanguage(grade) === "de";
   async function check() {
     if (lock.current) return;
     lock.current = true; setBusy(true);
