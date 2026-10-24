@@ -49,27 +49,29 @@ All task meaning IDs and first-teaching fields remain null; verified meaning is 
 
 The original JavaScript is parsed as syntax, never executed. Accepted files contain one literal `window.ACTIVITY_WORDS` array and optionally one literal `window.ACTIVITY_UNIT_TITLES` object. Executable row values, duplicate/unknown fields, later array mutations, unsupported assignments and malformed syntax are rejected. This parser does not attempt to evaluate an arbitrary HTML game or JavaScript application. The CSV parser rejects malformed quoting, unknown headers and inconsistent column counts instead of dropping records.
 
-## Historical first mechanical import (cgo-151)
+## Current mechanical import (confirmed 786-row Year-1 source)
 
-The cgo-149 source packet supplies thirteen unchanged files: four data companions, three audit tables, three empty override inputs and three notes. The cgo-151 import preserves:
+The thirteen-file source packet has four data companions, three audit tables, three empty override inputs and three notes. The confirmed Year-1 source is commit `73a45b8c`, `activity/data/activity-words.js` in `VEHO-DOMI/1st-grade-vocab-trainer`, SHA-256 `1acc8dab7d81b319967fffa897e429dd2eaeade85ccfbc966f014fb9760241a2` (48,947 bytes). It replaces only the import's data input; the older 759-row file and its audit survive as historical evidence.
 
-| Year | Original data rows | Audit rows | Effective tasks | Saved classifications | Missing classifications |
+| Year | Original data rows | Audit rows | Effective tasks | Original classifications | Missing original classifications |
 |---|---:|---:|---:|---:|---:|
-| 1 | 759 | 759 | 786 | 786 | 0 |
+| 1 | 786 | 759, different pool | 786 | 786 | 0 |
 | 2 | 605 | absent | 611 | 604 | 7 |
 | 3 | 599 | 599 | 599 | 599 | 0 |
 | 4 | 443 | 443 | 450 | 446 | 4 |
-| Total | 2,406 | 1,801 | 2,446 | 2,435 | 11 |
+| Total | 2,433 | 1,801 | 2,446 | 2,435 | 11 |
 
-The three aligned audit tables retain 99/15/10 German differences. In that first import, Year 1's declared source hash and 786-row count disagreed with the located 759-row file. The later cgo-153 source resolution uses the pinned 786-row file; this table preserves the historical measurement. Years 2–4 match their declared source hashes. The report does not rewrite the map to hide the mismatch. Eighty-four current tasks lack an exact spelling candidate in their year's located source; this is a different measurement from the eleven missing classifications. Neither count is a count of unique meanings or deployed game availability.
+All four declared source hashes now match. Year 1's audit remains `different-pool`, with null row bindings; Years 3/4 retain ordered bindings and 15/10 German differences. The old Year-1 99-gloss comparison is not a comparison against the new source. Ten current tasks lack an exact word candidate anywhere in their year; thirteen lack one in the same chapter. No count certifies a unique meaning, first teaching or deployed availability.
 
-That first import pinned 59 committed files: 57 vocabulary files, the shared item overlay and the saved Activity map. The cgo-174 command also pins `apps/web/lib/activity/teacher-decisions.json` (60 files). It reads no live Studio changes, reserve settings, accounts or production database. No per-meaning decisions, illustrations, overlapping game-mode eligibility or new no-repeat behaviour are published.
+The cgo-174 import also preserves fifteen current teacher decisions in their own columns, with zero stale decisions. It pins 60 committed files: 57 vocabulary files, the shared item overlay, the original Activity map and `teacher-decisions.json`. It reads no live Studio changes, reserve settings, accounts or production database. No meaning identity, illustration approval, overlapping mode assessment or meaning-based no-repeat rule is inferred.
+
+Historical cgo-151 measurements (2,406 source rows, one hash mismatch, 84 tasks without an exact spelling candidate) remain in that archived report. They describe the older 759-row input and are not the current source status. A0 of cgo-164 restores the prior builder/checker scripts and masked manifests in the external cgo-153 evidence package; its original 34-record checker again rejects all 17 intentional mutations. Those historical checks do not approve current learner content.
 
 ## Verification and next authority boundary
 
 Tests cover the synthetic calibration, duplicate spellings and source rows, differing glosses, multiline rationale, empty versus absent overrides, source-hash conflicts, missing categories, stale saved words and false approval fields. End-to-end command tests check exact regeneration, edited/omitted/duplicated evidence, input changes and redirected source/manifest/companion shortcuts during capture, private filename/directory suppression, existing-output refusal and a directory shortcut into the repository. Deliberately damaged inputs must fail.
 
-The real thirteen-file import and byte-for-byte verification are mechanical evidence, not an extra semantic approval wave. The 7,373 outstanding appendix occurrences remain outstanding. GG's cgo-150 owns historical Activity-source dispositions; cgo-145 and cgo-132 still gate learning-history continuation. Reviewed meaning identity must precede word help, personal collection links, per-meaning imagery and expanded no-repeat rules. Illustration suitability and quick drawing-game suitability remain separate future judgments, and explaining/acting/drawing may overlap after review.
+The real thirteen-file import and byte-for-byte verification are mechanical evidence, not an extra semantic approval wave. The 7,373 outstanding appendix occurrences remain outstanding. GG owns source/edition dispositions and the separate outstanding booking repairs; cgo-172's explicit teacher decisions do not approve meaning mappings or learning-history persistence. Reviewed meaning identity must precede word help, personal collection links, per-meaning imagery and expanded no-repeat rules. Illustration suitability and quick drawing-game suitability remain separate future judgments, and explaining/acting/drawing may overlap after review.
 
 
 ## Explicit teacher decisions (cgo-174)

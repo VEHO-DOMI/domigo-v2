@@ -1,6 +1,7 @@
 /**
  * DomiGo v2 content pipeline CLI.
  *
+ *   pnpm content vocabulary-source-wave --manifest FILE --activity-manifest FILE --out FILE [--review-dir DIR] [--verify]  evidence-only wave
  *   pnpm content activity-evidence --manifest FILE --out FILE [--verify]  Activity source evidence
  *   pnpm content vocabulary-cases --manifest FILE --out FILE [--decisions FILE] [--verify]  source/meaning review
  *   pnpm content vocabulary-intake --manifest FILE --out FILE [--verify]  P0 appendix reconciliation
@@ -29,6 +30,7 @@
 import type { Grade } from "@domigo/content-schema";
 import { runIngestAllowlist, runReviewDocAllowlist } from "./allowlist.ts";
 import { runExtract } from "./extract.ts";
+import { runSourceWave } from "./vocabulary-source-wave-cli.ts";
 import { runActivityEvidence } from "./activity-evidence-cli.ts";
 import { runVocabularyCases } from "./vocabulary-cases-cli.ts";
 import { runVocabularyIntake } from "./vocabulary-intake-cli.ts";
@@ -88,6 +90,9 @@ function parseStoryId(argv: string[]): string | undefined {
 const [command, ...rest] = process.argv.slice(2);
 
 switch (command) {
+  case "vocabulary-source-wave":
+    runSourceWave(rest);
+    break;
   case "activity-evidence":
     runActivityEvidence(rest);
     break;

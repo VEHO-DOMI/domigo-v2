@@ -30,6 +30,8 @@ Bericht-Fingerprint: `83859646bb927fd2ad26f102a615d6e0ec4aae1d0a529499c89c378d7d
 
 - `g2u03.w.picnic`: `picnic` · `Picknick` · Kategorie: **fehlt** · Aufgaben-Fingerprint `73cc7274b23b863a13f12100fa67d045a476e519ef51a55f36be404a63857c45`.
 
+**Getrennte Geschwister-Aufgabe (cgo-164 A0):** `g2u06.w.picnic` · `picnic` · `Picknick` · gespeicherte Kategorie **draw**. Exakter Wortlaut-, Gloss- und Unit-Beleg in `activity-year-2`, SHA-256 `dbe32b242f34fa438076c249cf0aa305fd90fe116f06cfeaa10c6e8da562dee8`, Datensatz 236. Dies ist eine eigene Aufgabenkennung; weder deren Kategorie noch Bedeutungsidentität wird automatisch übertragen.
+
 **Wörtliche Quellbelege:**
 
 - `activity-year-2` · Datensatz 236 · physische Zeile 246 · U6:
@@ -64,6 +66,8 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 **Aktuelle Aufgaben und gespeicherte Kategorien:**
 
 - `g2u03.w.to-be-proud`: `to be proud (of)` · `stolz sein (auf)` · Kategorie: **fehlt** · Aufgaben-Fingerprint `2199b049f71daa9604aea3e72a6fc65586b8e536b3502124a13388487a91a1db`.
+
+**Getrennte Geschwister-Aufgabe (cgo-164 A0):** `g2u10.w.to-be-proud-of` · `to be proud of` · `stolz sein auf` · gespeicherte Kategorie **show**. Exakter Wortlaut-, Gloss- und Unit-Beleg in `activity-year-2`, SHA-256 `dbe32b242f34fa438076c249cf0aa305fd90fe116f06cfeaa10c6e8da562dee8`, Datensatz 386. Dies ist eine eigene Aufgabenkennung; weder deren Kategorie noch Bedeutungsidentität wird automatisch übertragen.
 
 **Wörtliche Quellbelege:**
 
@@ -103,6 +107,8 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 
 - `g2u03.w.trick-or-treat-2`: `Trick or treat!` · `Süßes oder Saures (Frage beim Halloween-Umzug)` · Kategorie: **fehlt** · Aufgaben-Fingerprint `d47e7d24f788d7d8b471389b4844a1cbf46b02c53d21b68f87ade28beee13e76`.
 
+**Getrennte Geschwister-Aufgabe (cgo-164 A0):** `g2u03.w.trick-or-treat` · `trick or treat` · `Süßes oder Saures` · gespeicherte Kategorie **show**. Exakter Wortlaut-, Gloss- und Unit-Beleg in `activity-year-2`, SHA-256 `dbe32b242f34fa438076c249cf0aa305fd90fe116f06cfeaa10c6e8da562dee8`, Datensatz 89. Dies ist eine eigene Aufgabenkennung; weder deren Kategorie noch Bedeutungsidentität wird automatisch übertragen.
+
 **Wörtliche Quellbelege:**
 
 - `activity-year-2` · Datensatz 89 · physische Zeile 99 · U3:
@@ -138,6 +144,8 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 **Aktuelle Aufgaben und gespeicherte Kategorien:**
 
 - `g2u09.w.fridge`: `fridge` · `Kühlschrank` · Kategorie: **fehlt** · Aufgaben-Fingerprint `99255e10a3088ced8294c7914b46ac4326f58402d1fcc388b59f2fd6b2c73797`.
+
+**Getrennte Geschwister-Aufgabe (cgo-164 A0):** `g2u11.w.fridge` · `fridge` · `Kühlschrank` · gespeicherte Kategorie **draw**. Exakter Wortlaut-, Gloss- und Unit-Beleg in `activity-year-2`, SHA-256 `dbe32b242f34fa438076c249cf0aa305fd90fe116f06cfeaa10c6e8da562dee8`, Datensatz 409. Dies ist eine eigene Aufgabenkennung; weder deren Kategorie noch Bedeutungsidentität wird automatisch übertragen.
 
 **Wörtliche Quellbelege:**
 
@@ -215,6 +223,8 @@ Nicht belegt: Jahr-2-Audit fehlt laut GG-Disposition E2; keine Begründung oder 
 **Aktuelle Aufgaben und gespeicherte Kategorien:**
 
 - `g2u14.w.ice-skating`: `ice skating` · `Eislaufen` · Kategorie: **fehlt** · Aufgaben-Fingerprint `de1a9906710e0f626f2754d68c8bbb12b8657a444d29869c2ff58861e7757729`.
+
+**Getrennte Geschwister-Aufgabe (cgo-164 A0):** `g2u10.w.ice-skating` · `ice skating` · `Eislaufen` · gespeicherte Kategorie **draw**. Exakter Wortlaut-, Gloss- und Unit-Beleg in `activity-year-2`, SHA-256 `dbe32b242f34fa438076c249cf0aa305fd90fe116f06cfeaa10c6e8da562dee8`, Datensatz 402. Dies ist eine eigene Aufgabenkennung; weder deren Kategorie noch Bedeutungsidentität wird automatisch übertragen.
 
 **Wörtliche Quellbelege:**
 
@@ -333,6 +343,12 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 
 ```json
 ["fiction", "U2/12", "Erzählliteratur"]
+```
+
+- Original-Master Jahr 4 · SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc` · logischer Block 46, Tabellenzeile 2 (einbasiert; nichtleere Absätze und Tabellen zählen als Blöcke). Primärbeleg für den Wortlaut, **keine Activity-Klassifikation**:
+
+```json
+["Fiction", "Belletristik, Fiktion"]
 ```
 
 **Frühere Prüfbegründung / Confidence:**
@@ -582,6 +598,18 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 **Entscheidung:** offen. Keine Änderung am Klassifikations-Map, an Aufgaben oder Quellen vorgenommen.
 
 
+## 15. Poetry (nachgetragener Ruling-Fall)
+
+**Aktuelle Aufgabe:** `g4u11.w.poetry` · `Poetry` · `Lyrik`; ursprüngliche gespeicherte Kategorie explain. Keine exakte Activity-Datenzeile oder passende historische Audit-Begründung belegt. Das ist kein Grund, einen Originalbeleg zu erfinden.
+
+**Wörtlicher Masterbeleg:** Jahr 4, SHA-256 `f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc`, logischer Block 46, Tabellenzeile 4:
+
+```json
+["Poetry", "Poesie, Lyrik"]
+```
+
+**Entscheidung:** Koki bestätigte explain ausdrücklich als fünfzehnten Fall in cgo-172, Nachtrag 1. Der Lehrerentscheid aus cgo-174 bleibt vom Master-Wortbeleg und der ursprünglichen Map getrennt. Optionen werden nicht erneut geöffnet; Bilderkennung, überlappende Spielarten und Sprachvoraussetzungen bleiben separat zu prüfen.
+
 ## Beschlussstand 2026-10-24
 
 **Koki, cgo-172, Nachtrag 1:** „for all these go with your recomendation just make sure to document everything for later“. Beschlossen: A, alle fünfzehn Empfehlungen. Umsetzung als Entwurf in cgo-174; die Original-Map, Aufgaben und Quellabschriften werden nicht umgeschrieben. Der Lehrerentscheid ist eine eigene Herkunftsebene, kein nachträglich behaupteter Originalbeleg.
@@ -606,7 +634,7 @@ Keine passende Prüfzeile belegt; Confidence bleibt unbekannt.
 
 Das sind **15 Kategorieeinträge für 14 Fälle plus eine protokollierte Quellenkorrektur**: Fall 13 hat zwei Aufgaben, Fall 14 keine neue Kategorie. Jeder Kategorieeintrag trägt Koki, Datum 2026-10-24, Quelle cgo-172, eine Begründung und exakte Wort-/Bedeutungsschnappschüsse. Die Datei `apps/web/lib/activity/teacher-decisions.json` ist von Original und Audit getrennt. Änderungen an Wort oder Bedeutung setzen die alte Entscheidung außer Kraft, bis sie geprüft wird.
 
-Die Quellen-Ergänzungen (Fiction-Originalzeile, Geschwister-Belege, Poetry-Dossier) und die umfassende Quellenprüfung bleiben Auftrag cgo-164; der Beschluss ersetzt keinen fehlenden Quellennachweis, keine Bedeutungs-ID und keine Bilderkennung.
+Die Quellen-Ergänzungen (Fiction-Originalzeile, fünf Geschwister-Belege, Poetry-Dossier) sind in cgo-164 A0 ergänzt; die umfassende Quellenprüfung bleibt die anschließende Welle; der Beschluss ersetzt keinen fehlenden Quellennachweis, keine Bedeutungs-ID und keine Bilderkennung.
 
 Die Notizen übernehmen je einen Satz wörtlich aus den obigen Vorlagen. Für Poetry ist die Satzquelle die Ergänzung in cgo-172 (Payload, vor Kokis bestätigendem Nachtrag 1):
 
