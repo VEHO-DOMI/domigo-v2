@@ -89,7 +89,8 @@ it("C23 server start and expiry ignore clientNow in the URL, body and context", 
 it("C25 every existing attempt mode passes; unknown and assignment-only tags fail before storage", async () => {
   // Independent inventory of actual producers, not a copy generated from the allowlist.
   const fixed = ["practice", "daily", "review", "listening", "grammar", "test:vocab", "test:grammar", "test:listening", "test:reading", "game:g1", "game:g2", "game:g3", "game:g4", "flashcards", "memory", "spelling", "wordhunt", "speed"];
-  assert.deepEqual([...ATTEMPT_MODES].sort(), [...fixed].sort());
+  // The history-only mode has its own real-database suite in vocabulary-check.test.ts.
+  assert.deepEqual([...ATTEMPT_MODES].sort(), [...fixed, "vocabulary-check"].sort());
   const journeys = listApprovedUnits().flatMap((slug) => (loadJourney(slug)?.nodes ?? [])
     .filter((node) => ["practice", "review", "side-quest"].includes(node.kind))
     .map((node) => `journey:${slug}:${node.id}`));

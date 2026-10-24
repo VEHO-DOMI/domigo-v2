@@ -28,11 +28,9 @@ import type { Db } from "./index.ts";
 async function v2Safe<T>(query: () => Promise<T>, fallback: T): Promise<T> {
   try {
     return await query();
-  } catch (err) {
-    console.error(
-      "[auth] v2 identity query failed — falling back to the v1 mirror:",
-      err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200),
-    );
+  } catch {
+    // Database errors can contain query parameters, including class identifiers.
+    console.error("[auth] v2 identity query failed — falling back to the v1 mirror");
     return fallback;
   }
 }

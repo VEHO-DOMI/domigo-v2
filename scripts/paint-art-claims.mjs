@@ -49,12 +49,21 @@ export const findingRows = text => text.split('\n').flatMap((line, index) => {
   if (!/^(?:content\/.*\.policy\.json#\/vocabLedger\/|docs\/.*\/claims\.json#\/claims\/|scripts\/paint-art-allowlist\.json#\/|scripts\/check-ground-plane\.mjs#\/GROUND_PLANE_PENDING\/)/.test(scope)) return [];
   return [{ id, status, scope, reason, resolution, owner, proof, line: index + 1 }];
 });
+// cgo-080: reject empty/single-character/placeholder cells. This is a minimum
+// bookkeeping check, NOT a semantic judgement of a reason or its evidence.
+export const findingCellsValid = row => ['reason', 'resolution', 'owner', 'proof'].every(key => {
+  const value = row[key]?.trim() ?? '';
+  const letters = value.match(/[\p{L}\p{N}]/gu) ?? [];
+  const placeholder = value.normalize('NFKC').replace(/[^\p{L}\p{N}]/gu, '');
+  return letters.length >= (key === 'owner' ? 2 : 4)
+    && !/^(?:x+|todo|tbd|na|test|placeholder)$/i.test(placeholder);
+});
 export const openFindingMap = text => {
   const ids = text.split('\n').flatMap(line => [...line.matchAll(/^\| (?:~~)?(D-\d+)(?:~~)? \|/g)].map(m => m[1]));
   const counts = new Map();
   for (const id of ids) counts.set(id, (counts.get(id) ?? 0) + 1);
   return new Map(findingRows(text)
-    .filter(r => counts.get(r.id) === 1 && r.status === 'offen' && r.reason && r.resolution && r.owner && r.proof)
+    .filter(r => counts.get(r.id) === 1 && r.status === 'offen' && findingCellsValid(r))
     .map(r => [r.id, r.scope]));
 };
 export const findingError = (id, scope, findings) =>
