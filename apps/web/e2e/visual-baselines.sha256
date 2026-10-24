@@ -1,11 +1,10 @@
 # version: cgo156-0df56205-linux-x64-chromium155
-# artifact-id: 12565730940
-# artifact-run: 40107298946
+# release-tag: visual-reference-cgo156-v1
+# release-asset: cgo156-0df56205-linux-x64-chromium155.zip
 # artifact-head: 0df5620576deffd9c2b4b7f19598fe242cfd4037
 # archive-sha256: 1971dfcf4015ad30eb4546ae84a5934c43c7f2a239ac9c2b307aef82759ff6a8
-# expires-at: 2026-11-23T15:38:19Z
 # capture-contract: 2bbb02ff296ae71416743878a62d0daec6982a067315f1ba3a9cfc2578b68e2c
-# compare-contract: 2bbb02ff296ae71416743878a62d0daec6982a067315f1ba3a9cfc2578b68e2c
+# compare-contract: 05581a65a8dfaec48fd44c7a8ccd06194be9000c8b983a6e6ae7cea1e3e092c7
 40497679e76fc5d3219ac41f575fc41f5a752264e4d141aba213f625d4d99e89  1280-dark/admin.png
 eaf071c96efdf31473110306f332d2e0d9e88f1920b49aac700e05e4e2325b5c  1280-dark/assignments-g1.png
 12c19e214e50496f0ad188f0cdc1cb57f3cddd86a5f3f5b1e587f552f0017c7c  1280-dark/assignments-g2.png

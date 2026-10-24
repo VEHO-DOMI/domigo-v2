@@ -381,6 +381,20 @@ Hell-/Dunkelwahl bleibt ausschließlich im Arbeitsspeicher bis zum Neuladen.
 Kein localStorage, Cookie oder Servereintrag. Dauerhaftes Speichern bleibt bei
 daten-029/GG-Plattform. Die Gerätewahl wird hier nicht vorweggenommen.
 
+#### W7-Nachprüfung cgo-163 (Entwurf)
+
+| Prüfung | Umsetzung und Grenze |
+|---|---|
+| Referenzbezug | Festes GitHub-Release `visual-reference-cgo156-v1`, Asset `cgo156-0df56205-linux-x64-chromium155.zip`. Archiv-Prüfsumme `1971dfcf4015ad30eb4546ae84a5934c43c7f2a239ac9c2b307aef82759ff6a8` und alle 92 Bildprüfsummen bleiben unverändert. `artifact-head` bezeichnet weiterhin die Herkunft; Download und Archivhash scheitern geschlossen. |
+| K5 im synthetischen `--url`-Modus | Gültige UUID-Aufgabe, ausdrücklich gewählte Aufgabe, klares Fehlziel und Pixelvergleich bleiben Prüfgegenstand. Der Historienwächter ist dort kein Abnahmekriterium: synthetische Testseiten belegen keinen realen Verlauf des ausgelieferten Produkts. Im lokalen Router-Test bleibt er erhalten. Echte Zurück-Navigation prüft Koki auf dem ausgelieferten Stand (cgo-128). Eine zusätzliche isolierte Entwicklungs-/Produktionssonde protokolliert den Verlauf getrennt. |
+| Datum | Nur die kopierte Kalenderfunktion der Test-App wird auf 24.10.2026 gesetzt; Browserzeit ist für die Gegenprobe verstellbar. Die Uhr des Next-/Webpack-Prozesses bleibt real, damit Dateizeitstempel korrekt verarbeitet werden. Tagesworttext bleibt wie im vorhandenen Vergleich maskiert; keine neue Bildfläche wird verdeckt. |
+| Abzeichen im Browser | Alle Web-Quelldateien werden inventarisiert; ausdrücklich markierte Client-Module und ihre lokalen Importe werden auf Abzeichenschwellen geprüft. Die enge Prüfung der Anzeige und die Bindung an die angemeldete Person bleiben zusätzlich bestehen. |
+| Tagesabzeichen A5 | Noch offen: Die Zuordnung zum tatsächlichen Tageswortsatz braucht die Verbindung des Datenbanklesers mit der vorhandenen serverseitigen Tagesauswahl. Der bisherige `mode=daily`-Nachweis oben ist dafür nicht ausreichend. Kein geändertes Produktverhalten und keine A5-Freigabe in diesem Teilstand. Umfangsfrage auf der eigenen Karte an GG. |
+
+Die Datumsgleichheit auf demselben Rechner ist ein Wiederholungsnachweis, keine
+Freigabe des Erscheinungsbildes. Der feste Linux-Referenzvergleich wird durch
+GitHub separat geprüft. Die Buchungssperre cgo-162 bleibt davon unabhängig.
+
 #### W7-Abweichungstabelle: alle 41 zurückgestellten Abzeichen
 
 Alle folgenden Einträge bleiben auf GG-Entscheid geparkt. Sie erscheinen weder

@@ -33,7 +33,7 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
   });
   const page = await context.newPage(); page.on('pageerror', error => failures.push(error.message));
   try {
-    await page.clock.setFixedTime(new Date('2026-10-24T10:00:00Z'));
+    await page.clock.setFixedTime(new Date(process.env.VISUAL_BROWSER_TIME || '2026-10-24T10:00:00Z'));
     const response = await page.goto(new URL(row.route,base).href);
     expect(response?.status()).toBe(200);
     expect(new URL(page.url()).pathname).toBe(row.route);
@@ -80,6 +80,10 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       await page.getByRole('button',{name:'English',exact:true}).click();
       if(await shell.getAttribute('data-theme')!=='dark')await shell.locator('.og-footer button').click();
       await page.evaluate(()=>Reflect.set(window,'__visualNavigationMark','kept'));
+      // cgo-163: --url synthetic fixtures cannot prove browser history.
+      // Koki checks real Back navigation on the deployed version (cgo-128).
+      // Keep the local real-router regression check and the external task target.
+      if (local) {
       const historyBefore = await page.evaluate(()=>history.length);
       await page.getByRole('link',{name:'← Home',exact:true}).click();await expect(page).toHaveURL(/\/home$/);
       await expect(page.locator('.og-player')).toBeVisible();
@@ -88,6 +92,7 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       await expect.poll(()=>page.evaluate(()=>history.length),{message:'V1_NAV_HISTORY: Home must create a return entry'}).toBeGreaterThan(historyBefore);
       await page.goBack();await expect(page).toHaveURL(/\/assignments$/);
       await expect(page.locator('.og-root')).toHaveAttribute('lang','en');
+      }
       // Open the real detail route with a synthetic assignment and no sitting.
       // Navigation must keep the same document and in-memory preferences.
       const links = await page.locator('main a[href^="/assignments/"]').evaluateAll(nodes => nodes.map(node => (node as HTMLAnchorElement).getAttribute('href')!));
@@ -97,7 +102,9 @@ for (const row of cases) test(row.name, async ({browser}, info) => {
       await expect(page.getByRole('button',{name:'Begin',exact:true})).toBeVisible();
       await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
       expect(await page.evaluate(()=>Reflect.get(window,'__visualNavigationMark')),'V1_NAV_STATE').toBe('kept');
-      await page.goBack();await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+      if (local) {
+        await page.goBack();await expect(page.locator('.og-root')).toHaveAttribute('lang','en');await expect(page.locator('.og-root')).toHaveAttribute('data-theme','dark');
+      }
     }
     expect(failures).toEqual([]);
   } finally { await context.close(); }
