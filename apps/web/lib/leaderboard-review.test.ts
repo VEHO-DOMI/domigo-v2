@@ -1,3 +1,4 @@
+import { trainerPreferences } from "./trainer/test-loader.ts";
 /** Nachzug 2: execute the real renderer/reader; all examples are invented. */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -20,6 +21,7 @@ const row = { id: 1, name: "Anna (Fuchs)", avatar: 1, className: "Synthetic A", 
 const board = { enabled: true, unavailable: false, gradeOptIn: true, className: "Synthetic A", week: "2026-10-05", weeklyXp: 20, totalXp: 30040, target: 5000, rows: [row, { ...row, id: 2, me: false, name: "Peer (Eule)" }] };
 function render(b = board, grade = 1, tab = "class", order = "week") {
   const deps: Record<string, unknown> = { react: { ...React, useState: (initial: string) => [initial === "class" ? tab : order, () => {}] }, "react/jsx-runtime": jsx, "next/link": { default: "a" }, "@/lib/levels": levels, "@/lib/leaderboard-model": model };
+  deps["@/lib/trainer/preferences"] = trainerPreferences(deps);
   deps["./WeeklyGoal"] = load("apps/web/app/bestenliste/WeeklyGoal.tsx", deps);
   const Screen = load(UI, deps).default as React.ComponentType<Record<string, unknown>>;
   return renderToStaticMarkup(React.createElement(Screen, { board: b, grade, preview: false }));
@@ -86,11 +88,12 @@ it("F9 a failure to acquire a database handle also returns unavailable", async (
   assert.equal(failed, 1);
 });
 it("F13 home renders all three established action links in a three-column row", async () => {
-  const m = load("apps/web/app/home/page.tsx", { "react/jsx-runtime": jsx, "next/link": { default: "a" }, "next/navigation": {},
+  const m = load("apps/web/app/home/page.tsx", { "@/lib/trainer/preferences": trainerPreferences({ react: React, "react/jsx-runtime": jsx }), "react/jsx-runtime": jsx, "next/link": { default: "a" }, "next/navigation": {},
     "@/lib/story-world": { listOpenStories: async () => [] }, "@domigo/db": {},
     "@/lib/student-view": { resolveStudentView: async () => ({ kind: "preview", grades: [1] }), trainerGrade: () => 1 },
     "@/lib/wort-des-tages": { wortDesTages: async () => null, viennaDateKey: () => "2026-10-09" },
     "@/lib/stories": { STORY_UI: {}, DEFAULT_STORY_UI: {} }, "../practice/load-practice": { loadDailyChallenge: async () => null },
+    "@/lib/arena/server": { showArenaCard: async () => true },
     "./TrainerShell": { default: ({ children }: { children: React.ReactNode }) => children }, "./PlayerCard": { default: () => null },
     "./trainer-data": { readTrainerProfile: async () => ({}) }, "./ModeSwitch": { ModeStart: () => null }, "./home.css": {} });
   const html = renderToStaticMarkup(await m.default!() as React.ReactNode);

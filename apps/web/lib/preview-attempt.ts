@@ -13,12 +13,12 @@
  * kein Spiel zeigt »konnte nicht gespeichert werden«. Dass nichts gespeichert
  * wird, sagt das Vorschau-Band (app/PreviewBanner.tsx), nicht das Spiel.
  */
-import { sendAttempt, type AttemptBody, type AttemptResult } from "./attempt-outbox.ts";
+import { sendAttempt, type AttemptSender, type AttemptResult } from "./attempt-outbox.ts";
 
 export const PREVIEW_REPLY: Readonly<AttemptResult> = Object.freeze({ ok: true, queued: false });
 
 /** Der Absender einer Kinderfläche: in der Vorschau ein Stummschalter, sonst die Outbox. */
-export function attemptSender(preview: boolean, ownerId: string | null): (body: AttemptBody) => Promise<AttemptResult> {
+export function attemptSender(preview: boolean, ownerId: string | null): AttemptSender {
   if (preview) return () => Promise.resolve({ ...PREVIEW_REPLY });
-  return (body) => sendAttempt(body, ownerId);
+  return (body, prepare) => sendAttempt(body, ownerId, prepare);
 }
