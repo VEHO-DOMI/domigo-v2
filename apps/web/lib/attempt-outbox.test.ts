@@ -800,8 +800,9 @@ test("unavailable synchronous staging still uses IndexedDB without claiming miss
   globalThis.indexedDB=undefined as unknown as IDBFactory;
   assert.deepEqual(await sendAttempt({...historyBody(),clientAttemptId:crypto.randomUUID()},A),{ok:false,queued:false});
 });
-test("existing completion payloads never enter the synchronous history stage", async () => {
+test("existing completion payloads never enter the synchronous history stage, even on a conflicting resend", async () => {
   await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1); // PRUEFER-523 F1: the IndexedDB conflict path must not stage a completion
 });
 // cgo-145: the first durable copy survives alternating store outages (Codex probe parent-cross-store, 24.10.).
 test("first durable IndexedDB check survives a later conflicting fallback stage and an IndexedDB outage", async () => {
@@ -831,4 +832,12 @@ test("a diverged fallback stage is realigned to the durable IndexedDB copy durin
   globalThis.indexedDB=undefined as unknown as IDBFactory; posted=[];
   globalThis.fetch=async (_url,init) => {posted.push(JSON.parse(String(init?.body)).input.value);return Response.json({ok:true,kind:"vocabulary-check"});};
   assert.equal(await flushOutbox(A),1); assert.deepEqual(posted,[body.input.value]); assert.equal(localRows.size,0);
+});
+test("replay realignment never resurrects a stage that a concurrent acknowledgement removed", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  const key=[...localRows.keys()][0]!, diverged=JSON.parse(localRows.get(key)!); diverged.attempt.input={kind:"vocab",value:"changed"}; localRows.set(key,JSON.stringify(diverged));
+  // PRUEFER-523 F2: the stale stage snapshot was read, then a concurrent acknowledgement cleared the stage before IndexedDB answered.
+  const pending=flushOutbox(A); localRows.clear();
+  assert.equal(await pending,0); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
 });
