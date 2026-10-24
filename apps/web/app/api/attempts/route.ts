@@ -62,6 +62,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request): Promise<Response> {
+  const receivedAt = new Date(); // Trusted arrival time, before identity/content/database latency.
   // 1. Identity.
   const acting = await getActingUser(req);
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
@@ -95,6 +96,16 @@ export async function POST(req: Request): Promise<Response> {
       duelCoordinates = resolved.coordinates; itemId = resolved.itemId;
     }
     catch (error) { return arenaError(error); }
+  }
+  // Load live-only dependencies lazily: other practice modes keep their route.
+  let live: typeof import("@/lib/arena/live-server") | null = null;
+  let liveResolved: Awaited<ReturnType<typeof import("@/lib/arena/live-server")["checkLiveAttempt"]>> | null = null;
+  if (mode.startsWith("live:") || mode.startsWith("quiz:")) {
+    live = await import("@/lib/arena/live-server");
+    try {
+      liveResolved = await live.checkLiveAttempt(req, acting, mode, context, typeof input.value === "string" ? input.value : "", receivedAt);
+      itemId = liveResolved.itemId;
+    } catch (error) { return live.liveError(error); }
   }
   if (itemId === undefined) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
@@ -130,10 +141,10 @@ export async function POST(req: Request): Promise<Response> {
       // degrades to canon on any DB error.
       const unit = await loadUnitWithOverrides(ref.unitSlug);
       if (ref.kind === "vocab") {
-        const item = unit.vocab.find((v) => v.id === itemId);
+        const item = liveResolved?.item ?? unit.vocab.find((v) => v.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
         const value = "value" in input && typeof input.value === "string" ? input.value : "";
-        const pool = duelCoordinates ? "deToEn" : input.kind === "vocab" ? input.pool : undefined;
+        const pool = liveResolved ? liveResolved.pool : duelCoordinates ? "deToEn" : input.kind === "vocab" ? input.pool : undefined;
         tier = gradeVocab(item, value, pool).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
         classifiable = { answers: vocabAnswers(item, pool ?? "carrier") };
@@ -188,6 +199,7 @@ export async function POST(req: Request): Promise<Response> {
       classifiable = item as unknown as ClassifiableItem;
     }
   } catch (error) {
+    if (liveResolved && live) return live.liveError(error);
     if (duelCoordinates) return arenaError(error);
     return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
@@ -221,6 +233,7 @@ export async function POST(req: Request): Promise<Response> {
     };
     const { duplicate, box, dueAt, streak } = duelCoordinates
       ? await writeDuelAnswer(acting, attempt, duelCoordinates, input.kind === "choice" ? input.value : "")
+      : liveResolved && live ? await live.writeLiveAnswer(acting, attempt, liveResolved.coordinates, typeof input.value === "string" ? input.value : "", receivedAt)
       : await recordAttempt(getDb(), acting.classScope, attempt);
     return NextResponse.json({
       ok: true,
@@ -233,6 +246,7 @@ export async function POST(req: Request): Promise<Response> {
       ...(trap ? { trap } : {}),
     });
   } catch (error) {
+    if (liveResolved && live) return live.liveError(error);
     if (duelCoordinates) return arenaError(error);
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded, ...(trap ? { trap } : {}) });
   }

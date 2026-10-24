@@ -72,7 +72,21 @@
     "duel-service.ts#openRound": 3,
     "duel-service.ts#validateDuelAnswer": 2,
     "duel-service.ts#recordAnswer": 3,
-    "duel-service.ts#settleBonus": 2
+    "duel-service.ts#settleBonus": 2,
+    "live-service.ts#liveGate": 1,
+    "live-service.ts#liveRoster": 1,
+    "live-service.ts#saveClock": 1,
+    "live-service.ts#expireRooms": 1,
+    "live-service.ts#roomMembers": 1,
+    "live-service.ts#lockedRoom": 5,
+    "live-service.ts#liveLobby": 3,
+    "live-service.ts#createLiveRoom": 4,
+    "live-service.ts#joinLiveQuiz": 3,
+    "live-service.ts#actOnLiveRoom": 2,
+    "live-service.ts#getLiveRoom": 2,
+    "live-service.ts#answerable": 2,
+    "live-service.ts#checkLiveAnswer": 1,
+    "live-service.ts#recordLiveAnswer": 4
   },
   "bestand": {
     "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",

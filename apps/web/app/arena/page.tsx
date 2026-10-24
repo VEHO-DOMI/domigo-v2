@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { resolveStudentView, trainerGrade } from "@/lib/student-view";
 import { readArena } from "@/lib/arena/server";
+import { liveEnabled } from "@/lib/arena/live-server";
 import TrainerShell from "../home/TrainerShell";
 import ArenaScreen from "./ArenaScreen";
 import "./arena.css";
@@ -11,5 +12,5 @@ export default async function ArenaPage({ searchParams }: { searchParams: Promis
   const grade = trainerGrade(view);
   if (grade === null) redirect("/home");
   const preview = view.kind === "preview", arena = await readArena(view);
-  return <TrainerShell grade={grade} preview={preview} screen="arena"><ArenaScreen key={`${preview ? "preview" : view.player.userId}-${grade}`} arena={arena} grade={grade} preview={preview} /></TrainerShell>;
+  return <TrainerShell grade={grade} preview={preview} screen="arena"><ArenaScreen key={`${preview ? "preview" : view.player.userId}-${grade}`} arena={arena} grade={grade} preview={preview} liveAvailable={liveEnabled() || preview} /></TrainerShell>;
 }

@@ -167,6 +167,7 @@ const NOT_A_GATE = {
  *  not in ci.yml at all, or one that turns out to have a real run after all,
  *  is reported as STALE. */
 const SELFTEST_ONLY = {
+  "check-live-cost.mjs": "Prüft eine externe anonymisierte Vercel-/Neon-Messdatei mit Tarif und ausdrücklich definiertem Zyklus; CI hat diese echten Abrechnungsdaten nicht. Der Selbsttest prüft Rechenweg und harte Sperre bei unbekannten Werten. Eine synthetische Rechnung wäre keine Kostenfreigabe; der echte Lauf bleibt Pflicht der GG-Freischaltung.",
   "measure-presence.mjs":
     "misst Kontrast an einem SCHIRM-Bild (Chrome + Dev-Server); der Selbsttest sichert das Werkzeug, der Lauf gehört in die Session",
   "frame-sink.mjs":

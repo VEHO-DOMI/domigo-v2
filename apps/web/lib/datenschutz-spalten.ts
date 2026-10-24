@@ -102,6 +102,30 @@ const W = {
 
 /** table (SQL name) → column (SQL name) → mark */
 export const SPALTEN: Record<string, Record<string, Eintrag>> = {
+  live_rooms: {
+    id: sachlich("Kennung der gemeinsamen Partie, keine eigene Personenkennung"),
+    class_id: kennung(W.klasse, "Live-Spiel ausschließlich in der freigegebenen Klasse"),
+    grade: sachlich("Jahrgang der Fragen, eingefroren beim Erstellen"),
+    kind: sachlich("Duell oder Klassenquiz"),
+    host_id: kennung(W.konto, "Vorhandenes Konto des einladenden Kindes oder der Quiz-Lehrkraft; FK-Löschung entfernt Raum und Teilnahmen"),
+    guest_id: kennung(W.konto, "Eingeladenes Kind beim Duell, beim Quiz leer; FK-Löschung entfernt Raum und Teilnahmen"),
+    code: sachlich("Zufälliger Raumcode; Beitritt verlangt zusätzlich die berechtigte Klasse"),
+    mode: sachlich("Übersetzung, Definition oder Lückensatz"),
+    phase: sachlich("Zustand der gemeinsamen Partie, kein Online-Präsenzmerkmal"),
+    round: sachlich("Aktuelle Frage der gemeinsamen Partie"),
+    questions: sachlich("Aufgabenkennungen, Anweisungen und Autorenoptionen; keine Personen oder Rohantworten"),
+    phase_at: sachlich("Serveruhr des gemeinsamen Rundentakts; keine Messung der Anwesenheit"),
+    expires_at: sachlich("Automatisches Ende nach spätestens einer Stunde"),
+    created_at: person(W.spielstand, "Beginn der zum Konto gehörenden Partie"),
+  },
+  live_members: {
+    id: sachlich("Zeilenkennung der Teilnahme"),
+    room_id: sachlich("Verweis auf die gemeinsame Partie"),
+    class_id: kennung(W.klasse, "Klassenwand für jede Teilnahmeabfrage"),
+    user_id: kennung(W.konto, "Vorhandenes Kindkonto; bei dessen Löschung entfernt der Fremdschlüssel die Teilnahme"),
+    seat: sachlich("Position im gemeinsamen Spiel, keine Rangwertung"),
+    answers: person(W.spielstand, "Je Frage Versuchkennung, richtig/falsch, serverseitige Antwortdauer und bereits gebuchte Antwort-XP; keine Rohantworten, Namen oder Online-Präsenz. Richtig/falsch, Dauer und XP stehen zusätzlich im vorhandenen Antwortprotokoll."),
+  },
   duels: {
     id: sachlich("Kennung der Duell-Partie; keine zusätzliche Personenkennung"),
     class_id: kennung(W.klasse, "Duell nur zwischen zwei angemeldeten Kindern derselben Klasse; folgt Bestenlisten-Schalter A"),

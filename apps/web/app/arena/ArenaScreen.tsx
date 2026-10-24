@@ -14,7 +14,7 @@ export function DuelResult({ duel, grade }: { duel: DuelSummary; grade: number }
   const c = arenaCopy(grade, language);
   return <>{duel.status === "expired" ? c.expired : duel.result === "win" ? `🏆 ${c.victory}` : duel.result === "loss" ? `💪 ${c.defeat}` : `🤝 ${c.draw}`}</>;
 }
-export default function ArenaScreen({ arena, grade, preview }: { arena: ArenaData; grade: number; preview: boolean }) {
+export default function ArenaScreen({ arena, grade, preview, liveAvailable = false }: { arena: ArenaData; grade: number; preview: boolean; liveAvailable?: boolean }) {
   const language = useTrainerLanguage(grade);
   const c = arenaCopy(grade, language), router = useRouter(), suffix = preview ? `?jahrgang=${grade}` : "";
   const [choosing, setChoosing] = useState(false), [busy, setBusy] = useState(false), [error, setError] = useState("");
@@ -31,6 +31,7 @@ export default function ArenaScreen({ arena, grade, preview }: { arena: ArenaDat
   return <main className="og-screen arena-screen" lang={language}>
     <div className="arena-heading"><Link className="og-back" href={`/home${suffix}`}>← {c.back}</Link><h1>⚔️ {c.title}</h1></div>
     {!arena.enabled ? <p className="arena-notice" role="status">{arena.unavailable ? c.unavailable : c.off}</p> : <>
+      {liveAvailable && <Link className="arena-duel-card" href={`/arena/live${suffix}`}>⚡ {language === "de" ? "Live-Duell & Klassenquiz" : "Live Battle & Class Quiz"} →</Link>}
       <section className="arena-stats" aria-label={c.title}>{[[c.played, arena.stats.played], [c.won, arena.stats.won], [c.rate, `${arena.stats.winRate}%`], [c.xp, arena.stats.xp]].map(([label, value]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</section>
       <p className="arena-bonus-note">{c.bonusRules}</p>
       <section className="arena-challenge"><button type="button" className="og-primary" onClick={() => setChoosing(!choosing)} aria-expanded={choosing}>⚔️ {c.newDuel}</button></section>
