@@ -5,6 +5,9 @@
  * structurally incapable of dropping/altering a v1 table.
  */
 import { sql } from "drizzle-orm";
+import type { VocabularyCheckEvidence } from "./vocabulary-checks.ts";
+import type { DuelBonusReceipt } from "./duel-bonus.ts";
+import type { LiveQuestion, LiveReceipt } from "./live-rules.ts";
 import {
   pgSchema,
   uuid,
@@ -22,6 +25,42 @@ import {
 
 /** Every v2-owned table lives here. */
 export const v2 = pgSchema("domigo_v2");
+
+/** cgo-112: no names or answer keys; each participant stores only correctness. */
+export interface DuelRound {
+  unitKey: string;
+  questions: { itemId: string; options: string[] }[];
+  p1Answers: boolean[];
+  p2Answers: boolean[];
+  /** cgo-122: final settlement, inside the existing JSON column; no DDL. */
+  bonus?: DuelBonusReceipt;
+}
+export const duels = v2.table("duels", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  classId: uuid("class_id").notNull(),
+  grade: smallint("grade").notNull(),
+  p1: uuid("p1").notNull(),
+  p2: uuid("p2").notNull(),
+  mode: text("mode").notNull(),
+  status: text("status").notNull().default("active"),
+  rounds: jsonb("rounds").$type<DuelRound[]>().notNull().default([]),
+  p1Score: integer("p1_score").notNull().default(0),
+  p2Score: integer("p2_score").notNull().default(0),
+  winner: uuid("winner"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => [
+  index("duels_class_status_idx").on(t.classId, t.status),
+  index("duels_p1_idx").on(t.p1), index("duels_p2_idx").on(t.p2),
+  uniqueIndex("duels_active_pair_unique").on(sql`least(${t.p1}, ${t.p2})`, sql`greatest(${t.p1}, ${t.p2})`).where(sql`${t.status} = 'active'`),
+  check("duels_mode_check", sql`${t.mode} in ('vocab', 'grammar')`),
+  check("duels_status_check", sql`${t.status} in ('active', 'complete', 'expired')`),
+  check("duels_grade_check", sql`${t.grade} between 1 and 4`),
+  check("duels_pair_check", sql`${t.p1} <> ${t.p2}`),
+  check("duels_scores_check", sql`${t.p1Score} between 0 and 15 and ${t.p2Score} between 0 and 15`),
+  check("duels_winner_check", sql`${t.winner} is null or (${t.status} = 'complete' and ${t.winner} in (${t.p1}, ${t.p2}))`),
+  check("duels_rounds_check", sql`jsonb_typeof(${t.rounds}) = 'array' and jsonb_array_length(${t.rounds}) <= 5`),
+]);
 
 /** Local cosmetic choice; the account-owned identity mirror is unchanged. */
 export const studentProfile = v2.table("student_profile", {
@@ -80,6 +119,47 @@ export const practiceAttempts = v2.table(
     clientAttemptUnique: uniqueIndex("practice_attempts_client_attempt_unique").on(t.userId, t.clientAttemptId),
   }),
 );
+
+/** A client-reported visit has one immutable exercise/presentation identity.
+ * A provisional visit without a check is not learning evidence. */
+export const vocabularyVisits = v2.table("vocabulary_visits", {
+  userId: uuid("user_id").notNull(), classId: uuid("class_id").notNull(), visitId: uuid("visit_id").notNull(),
+  itemId: text("item_id").notNull(), pool: text("pool").notNull(), sourceMode: text("source_mode").notNull(),
+  maxChecks: smallint("max_checks").notNull(), displayedRevision: integer("displayed_revision").notNull(),
+  displayedSha256: text("displayed_sha256"),
+}, t => [
+  uniqueIndex("vocabulary_visits_owner_unique").on(t.userId, t.visitId),
+  index("vocabulary_visits_class_idx").on(t.classId),
+  check("vocabulary_visits_max_check", sql`${t.maxChecks} in (1, 3)`),
+  check("vocabulary_visits_revision_check", sql`${t.displayedRevision} > 0`),
+  check("vocabulary_visits_hash_check", sql`${t.displayedSha256} is null or ${t.displayedSha256} ~ '^[a-f0-9]{64}$'`),
+]);
+
+/** cgo-144: one checked vocabulary answer, independent of completion/XP/review.
+ * IDs and derived coordinates only; never the raw typed answer or item wording. */
+export const vocabularyChecks = v2.table("vocabulary_checks", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").notNull(), classId: uuid("class_id").notNull(),
+  clientEventId: uuid("client_event_id").notNull(), visitId: uuid("visit_id").notNull(),
+  checkNumber: smallint("check_number").notNull(), maxChecks: smallint("max_checks").notNull(),
+  itemId: text("item_id").notNull(), unitSlug: text("unit_slug").notNull(), grade: smallint("grade").notNull(),
+  sourceMode: text("source_mode").notNull(), pool: text("pool").notNull(),
+  requestSha256: text("request_sha256").notNull(),
+  evidence: jsonb("evidence").$type<VocabularyCheckEvidence>().notNull(),
+  // Browser clock is a claim; arrival and database insertion time are separate.
+  clientCheckedAt: timestamp("client_checked_at", { withTimezone: true }),
+  receivedAt: timestamp("received_at", { withTimezone: true }).notNull(),
+  recordedAt: timestamp("recorded_at", { withTimezone: true }).notNull().defaultNow(),
+}, t => [
+  uniqueIndex("vocabulary_checks_event_unique").on(t.userId, t.clientEventId),
+  uniqueIndex("vocabulary_checks_visit_number_unique").on(t.userId, t.visitId, t.checkNumber),
+  index("vocabulary_checks_user_item_idx").on(t.userId, t.itemId, t.recordedAt.desc()),
+  index("vocabulary_checks_class_idx").on(t.classId),
+  check("vocabulary_checks_number_check", sql`${t.maxChecks} in (1, 3) and ${t.checkNumber} between 1 and ${t.maxChecks}`),
+  check("vocabulary_checks_grade_check", sql`${t.grade} between 1 and 4`),
+  check("vocabulary_checks_pool_check", sql`${t.pool} in ('carrier', 'definition', 'deToEn', 'enToDe')`),
+  check("vocabulary_checks_hash_check", sql`${t.requestSha256} ~ '^[a-f0-9]{64}$'`),
+]);
 
 /** Leitner 5-box spaced-retrieval queue: one entry per (user, item). */
 export const reviewQueue = v2.table(
@@ -802,3 +882,51 @@ export const classSettings = v2.table("class_settings", {
   gradeBoardOptIn: boolean("grade_board_opt_in").notNull().default(false),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => [check("class_settings_purpose_check", sql`${t.purpose} in ('regular', 'test')`)]);
+
+/** cgo-123: class-scoped game state. No copied names or raw answers. Foreign
+ * keys remove room/member data with the existing identity/class deletion. */
+export const liveRooms = v2.table("live_rooms", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  classId: uuid("class_id").notNull().references(() => v2Classes.id, { onDelete: "cascade" }),
+  grade: smallint("grade").notNull(),
+  kind: text("kind").notNull(),
+  hostId: uuid("host_id").notNull().references(() => v2IdentityUsers.id, { onDelete: "cascade" }),
+  guestId: uuid("guest_id").references(() => v2IdentityUsers.id, { onDelete: "cascade" }),
+  code: text("code").notNull(),
+  mode: text("mode").notNull(),
+  phase: text("phase").notNull(),
+  round: smallint("round").notNull().default(0),
+  questions: jsonb("questions").$type<LiveQuestion[]>().notNull(),
+  phaseAt: timestamp("phase_at", { withTimezone: true }).notNull(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, t => [
+  uniqueIndex("live_rooms_code_unique").on(t.code),
+  index("live_rooms_class_phase_idx").on(t.classId,t.phase),
+  index("live_rooms_host_idx").on(t.hostId), index("live_rooms_guest_idx").on(t.guestId),
+  uniqueIndex("live_rooms_battle_pair_unique").on(sql`least(${t.hostId},${t.guestId})`,sql`greatest(${t.hostId},${t.guestId})`)
+    .where(sql`${t.kind} = 'battle' and ${t.phase} not in ('complete','cancelled')`),
+  uniqueIndex("live_rooms_quiz_class_unique").on(t.classId).where(sql`${t.kind} = 'quiz' and ${t.phase} not in ('complete','cancelled')`),
+  check("live_rooms_kind_check",sql`${t.kind} in ('battle','quiz')`),
+  check("live_rooms_grade_check",sql`${t.grade} between 1 and 4`),
+  check("live_rooms_mode_check",sql`${t.mode} in ('translation','definition','context')`),
+  check("live_rooms_phase_check",sql`${t.phase} in ('pending','lobby','countdown','active','result','complete','cancelled')`),
+  check("live_rooms_round_check",sql`${t.round} >= 0 and ${t.round} < jsonb_array_length(${t.questions})`),
+  check("live_rooms_questions_check",sql`jsonb_typeof(${t.questions}) = 'array' and ((${t.kind} = 'battle' and jsonb_array_length(${t.questions}) = 5) or (${t.kind} = 'quiz' and jsonb_array_length(${t.questions}) in (5,10,15)))`),
+  check("live_rooms_pair_check",sql`(${t.kind} = 'battle' and ${t.guestId} is not null and ${t.hostId} <> ${t.guestId}) or (${t.kind} = 'quiz' and ${t.guestId} is null)`),
+  check("live_rooms_code_check",sql`${t.code} ~ '^[A-Z2-9]{6}$'`),
+]);
+export const liveMembers = v2.table("live_members", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  roomId: uuid("room_id").notNull().references(() => liveRooms.id,{onDelete:"cascade"}),
+  classId: uuid("class_id").notNull().references(() => v2Classes.id,{onDelete:"cascade"}),
+  userId: uuid("user_id").notNull().references(() => v2IdentityUsers.id,{onDelete:"cascade"}),
+  seat: smallint("seat").notNull(),
+  answers: jsonb("answers").$type<(LiveReceipt|null)[]>().notNull().default([]),
+}, t => [
+  uniqueIndex("live_members_room_user_unique").on(t.roomId,t.userId),
+  uniqueIndex("live_members_room_seat_unique").on(t.roomId,t.seat),
+  index("live_members_user_idx").on(t.userId),index("live_members_class_idx").on(t.classId),
+  check("live_members_seat_check",sql`${t.seat} between 0 and 39`),
+  check("live_members_answers_check",sql`jsonb_typeof(${t.answers}) = 'array' and jsonb_array_length(${t.answers}) <= 15`),
+]);

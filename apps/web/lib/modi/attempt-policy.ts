@@ -2,10 +2,11 @@ import { TRAINER_MODES } from "./catalog.ts";
 
 /** Audited senders: practice, review, listening, TestSession and game adapters.
  * Assignments (practice/mock_test/checkup) use /api/assignments/attempt and its
- * server-only assign:<id> tag, never this XP-awarding endpoint.
+ * server-only assign:<id> tag. vocabulary-check is a separate history-only
+ * branch at this endpoint and never awards XP.
  */
 export const ATTEMPT_MODES = [
-  "practice", "daily", "review", "listening", "grammar",
+  "practice", "daily", "review", "listening", "grammar", "vocabulary-check",
   "test:vocab", "test:grammar", "test:listening", "test:reading",
   "game:g1", "game:g2", "game:g3", "game:g4",
   ...TRAINER_MODES,
@@ -14,12 +15,18 @@ export const ATTEMPT_MODES = [
 export function knownAttemptMode(mode: string): boolean {
   return (ATTEMPT_MODES as readonly string[]).includes(mode)
     || /^study:(?:(?:vocab|grammar)-practice-[1-3]|checkpoint)$/.test(mode)
-    || /^journey:g[1-4]-u\d{2}:[a-z0-9][a-z0-9-]*$/.test(mode);
+    || /^journey:g[1-4]-u\d{2}:[a-z0-9][a-z0-9-]*$/.test(mode)
+    || /^(?:duel|live|quiz):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(mode);
 }
 
 /** Established modes keep their input contracts. Trainer modes are vocab-only. */
-export function validModeInput(mode: string, itemId: string, input: { kind: string; pool?: string }): boolean {
+export function validModeInput(mode: string, itemId: string | undefined, input: { kind: string; pool?: string }): boolean {
   if (!knownAttemptMode(mode)) return false;
+  if (mode.startsWith("live:")) return itemId === undefined && input.kind === "vocab" && input.pool === undefined;
+  if (mode.startsWith("quiz:")) return itemId === undefined && input.kind === "choice";
+  if (mode.startsWith("duel:")) return itemId === undefined && input.kind === "choice";
+  if (itemId === undefined) return false;
+  if (mode === "vocabulary-check") return /^g[1-4]u\d{2}\.w\./.test(itemId) && input.kind === "vocab" && ["carrier", "definition", "deToEn", "enToDe"].includes(input.pool ?? "");
   if (mode === "grammar") return /^g[1-4]u\d{2}\.gi\./.test(itemId) && ["text", "choice", "matching", "groupSort"].includes(input.kind);
   if (!(TRAINER_MODES as readonly string[]).includes(mode)) return true;
   if (!/^g[1-4]u\d+\.w\./.test(itemId)) return false;

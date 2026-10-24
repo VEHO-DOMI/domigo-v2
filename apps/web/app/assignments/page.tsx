@@ -1,3 +1,5 @@
+import Link from "next/link";
+import LearningShell, { LearningText } from "@/lib/trainer/LearningShell";
 /**
  * /assignments — "Deine Aufgaben": the student's assigned practice sets + mock
  * tests for their class. Teacher previews read definitions for their own classes,
@@ -22,36 +24,36 @@ export default async function AssignmentsPage({ searchParams }: { searchParams: 
     : await listAssignmentsForStudent(getDb(), acting!.classScope, acting!.classId, new Date()).catch(() => []);
 
   return (
-    <>
+    <LearningShell preview={preview} grade={view.grades.length === 1 ? view.grades[0] : null}>
       {preview && <PreviewBanner grade={view.grades.length === 1 ? view.grades[0] : undefined} />}
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Deine Aufgaben</h1>
-        <a href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</a>
+        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}><LearningText de="Deine Aufgaben" en="Your assignments" /></h1>
+        <Link prefetch={false} href={preview ? "/admin/explorer" : "/home"} style={{ fontSize: 14, color: "var(--ink)", fontWeight: 600 }}><LearningText de="← Startseite" en="← Home" /></Link>
       </div>
-      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Aufgaben und Schularbeit-Übungen von deiner Lehrkraft.</p>
+      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}><LearningText de="Aufgaben und Schularbeit-Übungen von deiner Lehrkraft." en="Assignments and practice tests from your teacher." /></p>
 
       {rows.length === 0 ? (
-        <p style={{ color: "var(--muted)", marginTop: 24 }}>Gerade keine offenen Aufgaben. 🎉</p>
+        <p style={{ color: "var(--muted)", marginTop: 24 }}><LearningText de="Gerade keine offenen Aufgaben. 🎉" en="No open assignments right now. 🎉" /></p>
       ) : (
         <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10 }}>
           {rows.map((a) => (
-            <a key={a.id} href={`/assignments/${a.id}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
+            <Link prefetch={false} key={a.id} href={`/assignments/${a.id}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>{a.title}</div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
-                  {a.mode === "mock_test" ? "📝 Schularbeit-Übung" : a.mode === "checkup" ? "✅ Check-up" : "✏️ Übung"}
+                  <LearningText de={a.mode === "mock_test" ? "📝 Schularbeit-Übung" : a.mode === "checkup" ? "✅ Check-up" : "✏️ Übung"} en={a.mode === "mock_test" ? "📝 Practice test" : a.mode === "checkup" ? "✅ Check-up" : "✏️ Practice"} />
                   {preview && "className" in a ? ` · ${a.className}` : ""}
                   {a.sessionDurationMinutes ? ` · ${a.sessionDurationMinutes} min` : ""}
-                  {a.dueAt ? ` · bis ${new Date(a.dueAt).toLocaleDateString("de-AT")}` : ""}
+                  {a.dueAt ? <LearningText de={` · bis ${new Date(a.dueAt).toLocaleDateString("de-AT")}`} en={` · due ${new Date(a.dueAt).toLocaleDateString("en-GB")}`} /> : ""}
                 </div>
               </div>
-              <span style={{ fontSize: 13, color: "var(--accent)", fontWeight: 700 }}>Öffnen →</span>
-            </a>
+              <span style={{ fontSize: 13, color: "var(--ink)", fontWeight: 700 }}><LearningText de="Öffnen →" en="Open →" /></span>
+            </Link>
           ))}
         </div>
       )}
     </main>
-    </>
+    </LearningShell>
   );
 }
