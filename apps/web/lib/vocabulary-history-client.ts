@@ -27,3 +27,19 @@ export function sendCompletedAttempt(send: AttemptSender, body: AttemptBody, det
     ? send(body, snapshot => withVocabularyHistory(snapshot, detail))
     : send(body);
 }
+
+/** Dispatch before any async work: the outbox can synchronously stage the check.
+ * A precomputed displayed fingerprint may be unknown, never guessed or upgraded. */
+export function sendVocabularyCheck(send: AttemptSender, detail: ResultDetail, sourceMode: string): Promise<AttemptResult> {
+  if (detail.kind !== "vocab" || !detail.history?.visitId || !detail.check) return Promise.resolve({ ok: false, queued: false });
+  const { check, history: h, input, itemId } = structuredClone(detail);
+  const last = h!.checks.at(-1)!;
+  return send({ clientAttemptId: check!.id, itemId, mode: "vocabulary-check",
+    input, latencyMs: null, hintUsed: last.helpShown.length > 0,
+    vocabularyCheck: { schema: "vocabulary-check@1", visitId: h!.visitId!,
+      checkNumber: h!.checks.length, maxChecks: h!.maxChecks, checkedAt: check!.checkedAt,
+      itemRevision: h!.itemRevision, displayedContentSha256: check!.displayedContentSha256 ?? null,
+      reportedTier: last.reportedTier, helpShown: last.helpShown, sourceMode,
+    },
+  });
+}

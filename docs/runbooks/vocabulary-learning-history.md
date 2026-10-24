@@ -1,93 +1,141 @@
-# Vocabulary learning history — completed exercises
+# Vocabulary learning history
 
-Implementation slice cgo-143, submitted for review rather than live approval.
-This supports stage 2 of [the vocabulary programme](vocabulary-program.md).
+Review implementation: completed-card observations (cgo-143) and independent
+ordinary-card checks (cgo-144). Neither label implies deployment. This supports
+stage 2 of [the vocabulary programme](vocabulary-program.md).
 
-## What the record means
+**Release blocked after the single review/fix/recheck allowance.** The browser
+reload finding and arbitrary answer-length cutoff were corrected. Independent
+storage recheck found a remaining cross-store replay defect: an event saved only
+in IndexedDB can leave a conflicting localStorage fallback after a changed resend;
+if IndexedDB then becomes unavailable, the altered fallback is sent under the same
+ID. Parent reproduced original/altered/altered. The server rejects such a conflict
+when the original event already exists, but the first local payload is not reliably
+preserved if it has never reached the server. GG owns correction and release;
+this slice must not ship as a complete immutable-pending-history guarantee.
 
-The ordinary practice, daily round, review and study/journey vocabulary cards
-still conclude once: a non-wrong result, or the third wrong result. One existing
-attempt write now carries the ordered observations leading to that conclusion.
-For example, wrong → wrong → correct remains one completed exercise with three
-checks, rather than appearing to have been correct on the first check.
+## Two records, two purposes
 
-Earlier grades are explicitly **client-reported observations**. Only the final
-answer is graded by the server. Observations do not change points, spaced review,
-streaks or mastery calculations. A later consumer must not silently interpret an
-aided final success as first-attempt mastery.
+Ordinary practice, daily rounds, review and study/journey vocabulary cards still
+conclude once: a non-wrong result, or the third wrong result. The existing
+completion write carries the ordered browser observations. A separate
+`vocabulary-check` request now records **each actual Check action**, including a
+first wrong followed by leaving. It does not call `recordAttempt`, change points,
+update streaks or schedule review. A check record is not a completion receipt.
 
-The existing `practice_attempts.context.vocabularyHistory` JSON field contains:
+| Record | Evidence | Authority and limits |
+|---|---|---|
+| `practice_attempts.context.vocabularyHistory` | `vocabulary-learning-history@1`, `completed-card-only`; asked direction, final server grade, displayed/current content identities and ordered browser-reported checks/help. | One existing completion, including optional `clientObservation.visitId`. Earlier grades in this summary remain browser claims. Existing completion-write limitations still apply. |
+| `vocabulary_checks` | One separately server-graded check; owner/class, event/visit identifiers, check number/maximum, item/unit/year, source mode, direction, request fingerprint and structured evidence. | Server recalculates the submitted input using the current effective item and explicit direction. Browser grade/help/display identity remain labelled claims. No raw answer or task text in this table. |
+| `vocabulary_visits` | First immutable item/direction/mode/max-check/display-revision header per owner/visit. | Conditional upsert rejects incompatible visit identities. A header without a check is provisional and never evidence of learning. |
 
-| Field | Meaning |
-|---|---|
-| `schema` / `coverage` | `vocabulary-learning-history@1` / `completed-card-only`. |
-| `pool` | Actual grading direction: contextual sentence (`carrier`), definition, German→English or English→German. |
-| `gradedContent` | Revision and SHA-256 fingerprint of the effective item loaded by the server when it graded this submission. |
-| `displayedContent` | Browser-reported revision and fingerprint of the effective displayed item, or unknown for legacy clients. |
-| `contentMatch` | Fingerprints match, differ, or cannot be compared. This is a comparison of a client claim, not server attestation of what appeared on screen. |
-| `clientObservation` | Maximum checks and ordered grades with assistance already revealed at each check. No earlier raw answer text. |
-| `checkTierEvidence` | Explicitly `client-reported`, or unknown. |
-| `finalServerTier` | Server grade for the final answer. |
-| `helpShown` | Union of observed assistance, or unknown for old clients. |
+The four directions are contextual sentence (`carrier`), definition, German to
+English and English to German. One completed card can have several check rows;
+analytics must not add those to completed-exercise or reward totals.
 
-Assistance names distinguish a manually opened hint, the automatic retry hint,
-an opened gloss, a visible word bank and a first-letter mask. “Shown” does not
-claim that the learner read or understood the assistance. Assistance revealed
-after the final answer does not retroactively change that answer's record.
+## Identity, help and content
 
-The fingerprint includes effective wording, answer pools, hints and revision.
-This matters because prose overrides can currently change an item without
-incrementing its revision number. A fingerprint identifies content; it does not
-store recoverable wording or prove source, intended meaning or first teaching
-chapter. The original item identifier remains on the existing attempt row.
+The card creates a visit UUID on its first check and a distinct event UUID per
+check. Check numbers preserve order even when delivery is 3, 1, 2. A visit with
+only check 2 does not imply checks 1 or 3 were received. Completing an exercise
+adds the visit ID to its existing observation, allowing a future scoped reader
+to relate the two records; this slice does not add that reader or a history UI.
 
-## Boundaries and compatibility
+Help distinguishes manual hint, automatic retry hint, opened gloss, visible word
+bank and first-letter mask. Only help already shown when checking is recorded.
+“Shown” does not prove it was read or understood. Browser-reported completion
+means the reported tier was non-wrong or the maximum check count was reached;
+it is not a server-certified completion, abandonment or mastery decision.
 
-- The browser hashes its local snapshot before sending; item text, keys and
-  earlier raw answers are not added to the request, durable outbox or ledger.
-  Digest failure leaves the displayed fingerprint unknown and still sends.
-- The answer and observations are copied before asynchronous hashing. The
-  existing owner-bound outbox retains the first submitted payload and identifier
-  across retries; later replays must not rewrite the original history. The sender
-  captures its page lifetime before hashing: a remount, even for the same owner,
-  cannot revive that direct callback. The owner's separate queue drain can still
-  replay the durable pending record.
-- The nested history namespace is reserved in every mode. Other context fields
-  remain intact, while only the server can supply the canonical history object.
-- Old requests still work. Their displayed version, checks and assistance remain
-  unknown in this contract, even if the legacy `hintUsed` column defaults false.
-  Old rows are not backfilled with invented evidence.
-- The ordinary hosts reset when effective vocabulary content changes, even if
-  the item ID and revision stay unchanged. Identical new objects retain state.
-- Preview uses the existing no-write sender. Games, listening, tests, assignments
-  and other hosts have not been adapted to this observation contract.
-- The database layout and existing save transaction are unchanged. No migration
-  or production-data inspection is part of this slice.
+Both records identify displayed and server-graded content with revision and
+SHA-256 fingerprint. The fingerprint includes effective wording, answer pools,
+hints and revision, so same-revision prose overrides remain distinguishable.
+`contentMatch` is true, false or unknown; it compares a browser claim with the
+server item, not an attestation of what appeared on screen. A fingerprint does
+not preserve recoverable wording, prove meaning/source/first teaching, or resolve
+mismatched historical grading. Old rows are never backfilled with invented data.
 
-## Open work, required before full stage-2 completion
+For individual checks the browser prepares the fingerprint while the card is
+visible. A click before completion or a digest failure sends an explicit null;
+saving the check never waits for hashing. A first unknown visit-header hash stays
+unknown. Later check-level hashes remain separate claims; an unknown header does
+not certify identical wording throughout the visit. Effective content, direction
+or presentation changes reset the card. Identical new objects do not.
 
-1. **Unfinished exercises:** leaving after a wrong answer produces no terminal
-   record. Capture each check through a separately designed history-only path;
-   calling the existing points/review writer for each retry would alter learning
-   and award semantics. Define session/check identity, ordering, offline replay,
-   abandonment and ownership before wiring it.
-2. **Other task modes:** inventory and adapt their distinct completion and hint
-   semantics. Do not infer missing events or reuse a completed-card label for
-   timers, self-report or formal assessment.
-3. **Time and version policy:** current `createdAt` is persistence time, not
-   answer time; outbox delivery order is not learner order. Display/current
-   content mismatches are exposed, while grading behavior remains unchanged.
-   A historical-content archive and mismatch handling need a separate contract.
-4. **Confirmed persistence:** the existing partial-write/receipt defect and the
-   review/path optimistic points display remain with GG under cgo-132. This
-   metadata change neither fixes nor overrides that blocked decision. Full
-   learning-history and production readiness cannot be declared from this slice.
-5. **Meaning/source links:** source review must approve intended meanings and
-   teaching references before history is joined to them. The remaining 7,373
-   source cases, three unresolved source interpretations and the disputed
-   “again” citation are still open; a matching spelling is insufficient.
+## Time, replay and failures
 
-Word help follows the missing history slices; the deliberate personal vocabulary
-collection follows word help. The richer contexts, prerequisite checks, German
-Year 1 support, reviewed illustration library and non-repeating student Activity
-requirements remain in the parent programme.
+- `client_checked_at` is the device's reported check time, nullable and untrusted.
+- `received_at` is the server arrival time of the first successfully saved request.
+- `recorded_at` is its database insertion time. Arrival order is not learner order;
+  visit/check number is the within-visit sequence. No global activity chronology
+  is inferred from untrusted device clocks.
+- First saved payload wins. Unique owner/event and owner/visit/check keys prevent
+  duplication. Identical logical checks under a new transport ID return the
+  original receipt; conflicting content returns 409. Request identity excludes
+  the transport ID and server's later content/time, so replay can acknowledge a
+  saved check even after an item is changed, reserved or removed. Owner and class
+  checks still precede that acknowledgement.
+- The header and check are separate autocommit writes. An event-write failure may
+  leave a provisional header; it never yields a successful check receipt. Retrying
+  the same payload can recover. Tests exercise this failure and a lost acknowledgement.
+- An invalid/unconfirmed response leaves the pending bytes for retry. Other-mode
+  payloads cannot redirect into the new branch. Reserved or wrong-year new checks
+  are refused. No automatic policy exception is introduced for old offline work.
+
+## Pending device storage
+
+Only history-check requests are staged synchronously in localStorage before the
+click handler yields. This closes the immediate-document-reload window that an
+asynchronous digest and IndexedDB-only write left open. The existing IndexedDB
+outbox also stores the owned payload. The unresolved conflict above is an exception
+to the intended identical-copy guarantee. Drain combines the two pending stores,
+deduplicates by owner/event key and removes both only after explicit server
+confirmation. Staging does not imply server persistence or award points.
+
+A pending request contains the raw input needed for later server grading, its
+metadata and original account ID, but no full task snapshot or answer keys.
+The server ledger retains a request digest rather than that raw input; the
+digest is account-linked and is not anonymous. Privacy inventory/page and account
+deletion cover the new records. A blocked/full device store is handled honestly:
+IndexedDB remains a fallback, and if neither store works an offline save is not
+claimed. Closing before that fallback commits can still lose an unconfirmed
+check. Browser storage being cleared or unavailable cannot be made durable by
+this client code.
+
+Page changes do not transfer callbacks to a new page, even for the same owner.
+The original owner's separate drain can replay their pending records later;
+another account cannot adopt them. Teacher preview invokes no sender preparation
+or writes. Existing completion requests keep their previous transport behaviour.
+
+## Coverage and remaining work
+
+Implemented hosts: `PracticeSession` (including daily, directions and choice
+bank), `ReviewSession`, `PathPracticeNode` (study/journey/checkpoint). This is not
+coverage of every vocabulary surface. Current source inventory also finds:
+
+- game cards: 2D dialogue and battle, detective, trip and novel;
+- trainer modes: flashcards, speed, spelling, memory and word hunt;
+- formal tasks: AssignmentRunner, CheckupRunner, TestSession and separate assignment
+  endpoint; their assessment/reservation and completion semantics must be retained;
+- multiplayer/live/quiz routes with their own authoritative rounds;
+- Studio previews, which deliberately write nothing.
+
+Inventory and adapt remaining history semantics before claiming full stage 2.
+Self-reported recall, selected options, timed rounds and formally submitted answers
+must not be labelled as equivalent independent typed checks. No new source/meaning
+join is inferred: the remaining 7,373 source cases, three unresolved interpretations
+and disputed “again” citation are still open.
+
+Migration 0026 is an additive PR artifact for two tables only, tested in local
+synthetic PostgreSQL. No production migration was applied. Account deletion removes
+both new tables; missing pre-migration tables remain compatible, other errors
+propagate. Deployment order and multi-connection production concurrency remain
+GG verification tasks. Full build, CI battery and visible performance are unverified
+here: **Vollbatterie: UNVERIFIZIERT, läuft in der GG-Kette.**
+
+The existing completion partial-write/receipt defect and optimistic review/path
+points remain with GG under cgo-132. This independent history path neither repairs
+nor overrides that exhausted review decision. Word help follows missing history
+slices; the personal collection follows word help. Rich multi-sentence contexts,
+actual vocabulary/grammar prerequisites, Year 1 German support, reviewed images
+and non-repeating student Activity remain in the parent programme.

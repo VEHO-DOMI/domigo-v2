@@ -6,7 +6,7 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { vocabularyContentSnapshot, XP_WEIGHT, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
+import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
@@ -49,6 +49,9 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
   const current = items[i];
   const title = isCheckpoint ? t("Zeig, was du kannst", "Checkpoint") : t("Üben", "Practice");
 
+  const onCheck = (_tier: Tier, detail: ResultDetail) => {
+    void sendVocabularyCheck(attemptSender(preview, ownerId), detail, mode).catch(() => { /* unconfirmed history */ });
+  };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!current) return;
     setAnswered(true);
@@ -133,7 +136,7 @@ function PathPracticeRound({ preview = false, ownerId, unitSlug, nodeId, isCheck
       {current.kind === "grammar" ? (
         <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} hideHint={isCheckpoint} hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} hideHint={isCheckpoint} hideMeta />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideHint={isCheckpoint} hideMeta />
       )}
 
       {answered && (

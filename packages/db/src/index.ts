@@ -78,3 +78,5 @@ export * from "./class-settings-service.ts";
 export { getUnitMastery } from "./class-progress.ts";
 
 export * from "./practice-access.ts";
+
+export { findVocabularyCheck, recordVocabularyCheck, VocabularyCheckConflict, type VocabularyCheckEvidence, type VocabularyCheckKey, type RecordVocabularyCheckInput, type VocabularyCheckReceipt } from "./vocabulary-checks.ts";

@@ -65,6 +65,8 @@ const sachlich = (warum?: string): Eintrag => ({ marke: "sachlich", warum });
 // seven anonymous regex assertions.
 const W = {
   konto: /deinem Konto zugeordnet/,
+  vokabelPruefung: /einzelnen geprüften Vokabelversuch/,
+  vokabelPruefwerte: /Prüfwerte der Aufgabe und der Übermittlung/,
   klasse: /deine Klasse/,
   spitzname: /Spitzname/,
   echterName: /Echter Name/,
@@ -199,9 +201,32 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     xp_awarded: person(W.xp),
     latency_ms: person(W.dauer),
     hint_used: person(W.hinweisGenommen),
-    context: person(W.fehlerart, "server-set: the kind of mistake, or the test session — never anything the browser dictates"),
+    context: person(W.fehlerart, "server-built: mistake/test session or vocabulary history; browser-reported checks/help are explicitly labelled as claims"),
     client_attempt_id: sachlich("an idempotency key so one answer counts once"),
     created_at: person(W.zeitpunkt),
+  },
+
+  vocabulary_checks: {
+    id: sachlich("Zeilenkennung; keine zusätzliche Personenkennung"),
+    user_id: kennung(W.konto), class_id: kennung(W.klasse),
+    client_event_id: sachlich("Zufällige Kennung gegen doppelte Übermittlung"),
+    visit_id: sachlich("Zufällige Kennung eines Kartenbesuchs, keine zweite Kontoidentität"),
+    check_number: person(W.vokabelPruefung, "Reihenfolge der tatsächlich geprüften Antworten"),
+    max_checks: sachlich("Regel der gezeigten Aufgabe: ein oder drei Versuche"),
+    item_id: sachlich("Kennung des Übungsinhalts"), unit_slug: sachlich(), grade: sachlich(),
+    source_mode: sachlich("Üben, Wiederholen oder Lernpfad"), pool: sachlich("Gefragte Richtung der Vokabelaufgabe"),
+    request_sha256: person(W.vokabelPruefwerte, "Aus Antwort und Metadaten abgeleiteter Prüfwert gegen abweichende Wiederholungen; kein Klartext, aber kontobezogen und nicht anonym"),
+    evidence: person(W.vokabelPruefung, "Geräte- und Serverurteil, gezeigte Hilfe und Inhaltsprüfwerte; keine Rohantwort und kein Aufgabenwortlaut"),
+    client_checked_at: person(W.vokabelPruefung, "Vom Gerät gemeldete Zeit, nicht als Serverzeit bestätigt"),
+    received_at: person(W.vokabelPruefung, "Serverempfang der ersten gespeicherten Übermittlung"),
+    recorded_at: person(W.vokabelPruefung, "Speicherung der Prüfung"),
+  },
+  vocabulary_visits: {
+    user_id: kennung(W.konto), class_id: kennung(W.klasse),
+    visit_id: sachlich("Zufällige Kennung des Kartenbesuchs; ohne Prüfung noch kein Lernbeleg"),
+    item_id: sachlich("Übungsinhalt"), pool: sachlich("Gefragte Richtung"), source_mode: sachlich("Lernoberfläche"),
+    max_checks: sachlich("Regel der Aufgabe"), displayed_revision: sachlich("Version des angezeigten Inhalts"),
+    displayed_sha256: sachlich("Prüfwert des Aufgabeninhalts, keine Eingabe des Kindes"),
   },
 
   review_queue: {

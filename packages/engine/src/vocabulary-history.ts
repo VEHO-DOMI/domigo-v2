@@ -9,6 +9,7 @@ export interface VocabularyCheck {
 }
 export interface VocabularyCompletionObservation {
   schema: "vocabulary-completion@1";
+  visitId?: string;
   itemRevision: number;
   /** Internal only: the sender hashes this; neither payload nor ledger stores it. */
   contentSnapshot: string;

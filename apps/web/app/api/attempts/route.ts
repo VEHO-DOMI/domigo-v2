@@ -1,7 +1,10 @@
 /**
  * POST /api/attempts — idempotent, server-graded attempt recording.
  *
- * The client sends the RAW user answer; the server re-grades through the one
+ * The vocabulary-check mode writes an independent history record only; it never
+ * enters the completion/reward path described below.
+ *
+ * For completed exercises, the client sends the RAW user answer; the server re-grades through the one
  * grading brain (@domigo/engine), records the attempt, updates the Leitner review
  * queue (vocab/grammar only — listening + reading skip it), and bumps the v2 XP
  * pool (all via @domigo/db `recordAttempt`). Best-effort persistence: grading
@@ -23,6 +26,7 @@ import { parseTestRef } from "@/lib/testRef";
 import { parseComprehensionRef } from "@/lib/comprehensionRef";
 import { speedSessionValid } from "@/lib/modi/speed-session";
 import { validModeInput } from "@/lib/modi/attempt-policy";
+import { VocabularyCheckInput } from "@/lib/vocabulary-check";
 import { VocabularyHistoryInput, supportsVocabularyHistory, vocabularyHistoryContext } from "@/lib/vocabulary-history";
 import { arenaError, checkDuelAttempt, writeDuelAnswer } from "@/lib/arena/server";
 
@@ -60,6 +64,7 @@ const Body = z.object({
   latencyMs: z.number().int().nonnegative().nullable().optional(),
   hintUsed: z.boolean().optional(),
   vocabularyHistory: VocabularyHistoryInput.optional(),
+  vocabularyCheck: VocabularyCheckInput.optional(),
   context: z.unknown().optional(),
 });
 
@@ -105,6 +110,13 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   if (!validModeInput(mode, itemId, input)) return NextResponse.json({ ok: false, error: "bad_mode_input" }, { status: 400 }); // cgo-109 MODE-TAG
+  const check = parsed.data.vocabularyCheck;
+  if ((mode === "vocabulary-check") !== Boolean(check)) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  if (check) {
+    if (!itemId || input.kind !== "vocab" || !input.pool) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+    const { saveVocabularyCheck } = await import("@/lib/vocabulary-check-server");
+    return saveVocabularyCheck(acting, clientAttemptId, itemId, input.value, input.pool, check, receivedAt);
+  }
   if (mode === "speed" && !speedSessionValid(context, acting.userId)) return NextResponse.json({ ok: false, error: "speed_expired" }, { status: 410 }); // cgo-109 SPEED-DEADLINE
 
   // A duel question is authorized before grading, then rechecked under its row

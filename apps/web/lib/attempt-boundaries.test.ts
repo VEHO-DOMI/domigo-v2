@@ -28,6 +28,7 @@ before(async () => {
     await pg.exec(`CREATE TABLE domigo_v2."${table.name}" (${cols.join(",")})`);
     for(const idx of Object.values(table.indexes)) await pg.exec(`CREATE ${idx.isUnique?"UNIQUE ":""}INDEX "${idx.name}" ON domigo_v2."${table.name}" (${idx.columns.map(c=>c.isExpression?c.expression:`"${c.expression}"`).join(",")})${idx.where?` WHERE ${idx.where}`:""}`);
   }
+  await pg.exec(readFileSync(new URL("../../../packages/db/drizzle/0026_vocabulary_checks.sql",import.meta.url),"utf8"));
   for(const id of [ownClass,otherClass]) await pg.query("INSERT INTO domigo_v2.classes(id,name,grade,teacher_id,invite_code) VALUES($1,'Synthetic',2,$2,$3)",[id,uuid(9),id.slice(-6)]);
 });
 beforeEach(async()=>{
@@ -37,14 +38,14 @@ beforeEach(async()=>{
 after(async()=>{console.warn=realWarn;await pg.close();});
 const vocab=loadUnit("g2-u01").vocab[0]!,answer=vocabAnswers(vocab,"carrier").find(a=>a.tier==="full")!.text;
 function request(itemId=vocab.id,mode="practice",input:unknown={kind:"vocab",value:answer},id=crypto.randomUUID()) {
-  return new Request("https://synthetic.invalid/api/attempts",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({ownerId:pupil,clientAttemptId:id,itemId,mode,input,context:{grade:2,reserve:false,personal:"MUST_NOT_APPEAR"}})});
+  return new Request("https://synthetic.invalid/api/attempts",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({ownerId:pupil,clientAttemptId:id,itemId,mode,input,...(mode==="vocabulary-check"?{vocabularyCheck:{schema:"vocabulary-check@1",visitId:uuid(30),checkNumber:1,maxChecks:3,itemRevision:vocab.rev,displayedContentSha256:null,sourceMode:"practice",checkedAt:null,reportedTier:"correct",helpShown:[]}}:{}),context:{grade:2,reserve:false,personal:"MUST_NOT_APPEAR"}})});
 }
 async function ledger(){return(await pg.query("SELECT (SELECT count(*) FROM domigo_v2.practice_attempts)::int attempts, (SELECT count(*) FROM domigo_v2.review_queue)::int reviews, (SELECT count(*) FROM domigo_v2.user_progress)::int progress")).rows[0];}
 async function reserve(id:string,classId=ownClass,active=true){await pg.query("INSERT INTO domigo_v2.reserved_items(class_id,item_id,active) VALUES($1,$2,$3)",[classId,id,active]);}
-async function denied(req:Request,error:string,status=403){
+async function denied(req:Request,error:string,status=403,expectLog=true){
   const response=await POST(req);assert.equal(response.status,status);assert.deepEqual(await response.json(),{ok:false,error});
   assert.deepEqual(await ledger(),{attempts:0,reviews:0,progress:0});
-  assert.ok(logs.some(log=>log===`[attempts] denied: ${error}`||log==="[attempts] eligibility_unavailable"||log==="[attempts] denied: class_scope"));
+  if(expectLog) assert.ok(logs.some(log=>log===`[attempts] denied: ${error}`||log==="[attempts] eligibility_unavailable"||log==="[attempts] denied: class_scope"));
   assert.doesNotMatch(logs.join("\n"),/MUST_NOT_APPEAR|00000000-|Synthetic/);
 }
 it("eligible answer books authoritative XP exactly once across a replay",async()=>{
@@ -63,7 +64,7 @@ for(const grade of [1,2,3,4]){
   }
 }
 for(const mode of [...ATTEMPT_MODES.filter(m=>m!=="grammar"&&m!=="speed"),"study:vocab-practice-1","study:grammar-practice-2","study:checkpoint","journey:g2-u01:first"]){
-  it(`${mode}: no reserve exception`,async()=>{const input=mode==="memory"||mode==="wordhunt"?{kind:"choice",value:"x"}:{kind:"vocab",value:answer,pool:"deToEn"};assert.ok(validModeInput(mode,vocab.id,input));await reserve(vocab.id);await denied(request(vocab.id,mode,input),"item_reserved");});
+  it(`${mode}: no reserve exception`,async()=>{const input=mode==="memory"||mode==="wordhunt"?{kind:"choice",value:"x"}:{kind:"vocab",value:answer,pool:"deToEn"};assert.ok(validModeInput(mode,vocab.id,input));await reserve(vocab.id);await denied(request(vocab.id,mode,input),"item_reserved",403,mode!=="vocabulary-check");});
 }
 it("grammar: no reserve exception",async()=>{const item=loadUnit("g2-u01").grammar[0]!;await reserve(item.id);await denied(request(item.id,"grammar",{kind:"text",value:"x"}),"item_reserved");});
 it("foreign/released reserve rows preserve the eligible item",async()=>{await reserve(vocab.id,otherClass);await reserve(vocab.id,ownClass,false);assert.equal((await(await POST(request())).json()).ok,true);assert.equal((await ledger()).attempts,1);});

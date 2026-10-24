@@ -12,6 +12,15 @@ import { startOutboxFlush, type OnlineTarget } from "./useOutboxFlush.ts";
 
 const originalFetch = globalThis.fetch;
 const originalIDB = globalThis.indexedDB;
+const originalLocalDescriptor = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+let localRows = new Map<string, string>();
+function localStore(fail = false): Storage {
+  return {get length() {return localRows.size;}, key: i => [...localRows.keys()][i] ?? null,
+    getItem: key => localRows.get(key) ?? null,
+    setItem: (key,value) => {if(fail) throw Error("synthetic quota"); localRows.set(key,value);},
+    removeItem: key => {localRows.delete(key);}, clear: () => localRows.clear(),
+  };
+}
 const A = "fixture-child-a", B = "fixture-child-b";
 const body = { clientAttemptId: "00000000-0000-4000-8000-000000000062", itemId: "g2-u01.v.001", mode: "practice", input: { kind: "vocab", value: "fixture" }, latencyMs: null, hintUsed: false };
 const tick = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
@@ -83,11 +92,13 @@ let store: ReturnType<typeof memoryIDB>;
 let release = () => {};
 const listeners = new Set<() => void>();
 const target: OnlineTarget = { addEventListener: (_t, f) => { listeners.add(f); }, removeEventListener: (_t, f) => { listeners.delete(f); } };
-beforeEach(() => { store = memoryIDB(); globalThis.indexedDB = store.factory; release = bindOutboxOwner(A); });
+beforeEach(() => { localRows = new Map(); Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore()}); store = memoryIDB(); globalThis.indexedDB = store.factory; release = bindOutboxOwner(A); });
 afterEach(async () => {
   release(); bindOutboxOwner(null)(); listeners.clear();
   await tick(); await tick(); // let any already-started IDB read finish before restoring boundaries
   globalThis.fetch = originalFetch; globalThis.indexedDB = originalIDB;
+  if(originalLocalDescriptor) Object.defineProperty(globalThis,"localStorage",originalLocalDescriptor);
+  else Reflect.deleteProperty(globalThis,"localStorage");
 });
 async function offline(owner = A, attempt = body) {
   globalThis.fetch = async () => { throw new Error("offline"); };
@@ -748,4 +759,47 @@ for (const replacement of ["different owner", "same owner", "away and back"] as 
     assert.equal(await flushOutbox(A), 1, "a separate owner-authorized drain can replay the saved body");
     assert.equal(sends, 1);
   } finally { Object.defineProperty(globalThis, "crypto", { configurable: true, value: originalCrypto }); }
+});
+
+const historyBody = (): AttemptBody => ({ ...structuredClone(body), mode:"vocabulary-check",
+  vocabularyCheck:{schema:"vocabulary-check@1",visitId:"00000000-0000-4000-8000-000000000010",checkNumber:1,maxChecks:3,
+    itemRevision:1,displayedContentSha256:null,sourceMode:"practice",checkedAt:null,reportedTier:"wrong",helpShown:[]},
+});
+test("history stage is durable synchronously before IndexedDB commits", async () => {
+  globalThis.fetch = async () => {throw Error("offline");};
+  const pending = sendAttempt(historyBody(),A);
+  assert.equal(localRows.size,1); assert.equal(store.rows.size,0);
+  const first = JSON.parse([...localRows.values()][0]!); assert.equal(first.attempt.ownerId,A); assert.equal(first.attempt.vocabularyCheck.checkNumber,1);
+  assert.deepEqual(await pending,{ok:false,queued:true}); assert.equal(store.rows.size,1);
+});
+test("history staging alone survives missing IndexedDB and replays only for its owner", async () => {
+  globalThis.indexedDB = undefined as unknown as IDBFactory;
+  globalThis.fetch = async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true});
+  let posted=0; globalThis.fetch=async () => {posted++;return Response.json({ok:true,kind:"vocabulary-check"});};
+  bindOutboxOwner(B); assert.equal(await flushOutbox(B),0); assert.equal(posted,0); assert.equal(localRows.size,1);
+  bindOutboxOwner(A); assert.equal(await flushOutbox(A),1); assert.equal(posted,1); assert.equal(localRows.size,0);
+});
+test("both pending copies are removed only after confirmed history acknowledgement", async () => {
+  globalThis.fetch=async () => Response.json({ok:false,error:"persistence_unavailable"},{status:503});
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,1); assert.equal(store.rows.size,1);
+  globalThis.fetch=async () => Response.json({ok:true,kind:"vocabulary-check"});
+  assert.equal(await flushOutbox(A),1); assert.equal(localRows.size,0); assert.equal(store.rows.size,0);
+});
+test("history staged duplicate keeps its first payload before either asynchronous write", async () => {
+  globalThis.fetch=async () => {throw Error("offline");};
+  const first=sendAttempt(historyBody(),A); const altered=historyBody(); altered.input={kind:"vocab",value:"changed",pool:"carrier"};
+  const second=sendAttempt(altered,A); await Promise.all([first,second]);
+  const staged=JSON.parse([...localRows.values()][0]!); assert.deepEqual(staged.attempt.input,body.input);
+  assert.deepEqual((([...store.rows.values()][0]) as {attempt:AttemptBody}).attempt.input,body.input);
+});
+test("unavailable synchronous staging still uses IndexedDB without claiming missing storage", async () => {
+  Object.defineProperty(globalThis,"localStorage",{configurable:true,value:localStore(true)});
+  globalThis.fetch=async () => {throw Error("offline");};
+  assert.deepEqual(await sendAttempt(historyBody(),A),{ok:false,queued:true}); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
+  globalThis.indexedDB=undefined as unknown as IDBFactory;
+  assert.deepEqual(await sendAttempt({...historyBody(),clientAttemptId:crypto.randomUUID()},A),{ok:false,queued:false});
+});
+test("existing completion payloads never enter the synchronous history stage", async () => {
+  await offline(); assert.equal(localRows.size,0); assert.equal(store.rows.size,1);
 });

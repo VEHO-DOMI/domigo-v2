@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { vocabularyContentSnapshot, type Tier, type VocabPool } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, rotateVocabPool, vocabPoolLabel, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
-import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
+import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import type { AttemptResult } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -59,6 +59,9 @@ function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, 
 
   const switchMode = (m: Mode) => { ids.current.clear(); submitted.current = false; setStreak(null); setMode(m); setI(0); setAnswered(false); setResults([]); };
   const switchPool = (p: PoolChoice) => { ids.current.clear(); submitted.current = false; setStreak(null); setVocabPool(p); setI(0); setAnswered(false); setResults([]); };
+  const onCheck = (_tier: Tier, detail: ResultDetail) => {
+    void sendVocabularyCheck(attemptSender(preview, ownerId), detail, runMode === "daily" ? "daily" : "practice").catch(() => { /* unconfirmed history */ });
+  };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!item || submitted.current) return;
     submitted.current = true;
@@ -122,7 +125,7 @@ function PracticeRound({ slug, vocab, grammar, today, ownerId, preview = false, 
         mode === "grammar" ? (
           <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile hideXp hideMeta />
         ) : (
-          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} hideXp hideMeta pool={resolvedPool} bank={runMode === "mc" ? multipleChoiceBank(item as VocabItem) : undefined} />
+          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} onCheck={onCheck} hideXp hideMeta pool={resolvedPool} bank={runMode === "mc" ? multipleChoiceBank(item as VocabItem) : undefined} />
         )
       ) : (
         <p>{t("Hier gibt es gerade keine Fragen.", "No items in this mode.")}</p>

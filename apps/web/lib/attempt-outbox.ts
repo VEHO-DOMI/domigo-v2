@@ -8,6 +8,7 @@
  * harmless — it comes back as a duplicate. Dependency-free (raw IndexedDB).
  */
 
+import type { VocabularyCheckInput } from "./vocabulary-check.ts";
 import type { VocabularyHistoryInput } from "./vocabulary-history.ts";
 
 export interface AttemptBody {
@@ -18,6 +19,7 @@ export interface AttemptBody {
   latencyMs: number | null;
   hintUsed: boolean;
   vocabularyHistory?: VocabularyHistoryInput;
+  vocabularyCheck?: VocabularyCheckInput;
 }
 
 /** Optional metadata preparation runs inside the original page lifetime. */
@@ -63,6 +65,43 @@ const STORE = "attempt-outbox";
 const DB_VERSION = 2;
 const hasIDB = (): boolean => typeof indexedDB !== "undefined";
 const storageKey = (body: OwnedAttempt): string => JSON.stringify([body.ownerId, body.clientAttemptId]);
+
+// History checks must survive a document reload immediately after the click.
+// localStorage is synchronous; IndexedDB alone commits after the handler returns.
+// Stage only the new history-only mode. Both stores retain the same immutable
+// payload until an explicit server acknowledgement removes it. No task text.
+const CHECK_STAGE = "domigo-vocabulary-check-pending:";
+function stagedCheck(key: string): QueuedAttempt | undefined {
+  try {
+    const raw = localStorage.getItem(CHECK_STAGE + key);
+    if (!raw) return;
+    const entry = JSON.parse(raw) as QueuedAttempt;
+    if (entry.clientAttemptId === key && entry.attempt?.mode === "vocabulary-check"
+      && typeof entry.attempt.ownerId === "string" && typeof entry.attempt.clientAttemptId === "string"
+      && key === storageKey(entry.attempt)) return entry;
+  } catch { /* unavailable or malformed storage does not claim a durable save */ }
+}
+function stageCheck(body: OwnedAttempt): { body: OwnedAttempt; queued: boolean } {
+  if (body.mode !== "vocabulary-check") return { body, queued: false };
+  const key = storageKey(body), previous = stagedCheck(key);
+  if (previous) return { body: previous.attempt, queued: true };
+  try {
+    localStorage.setItem(CHECK_STAGE + key, JSON.stringify({ clientAttemptId: key, attempt: body }));
+    return { body, queued: true };
+  } catch { return { body, queued: false }; }
+}
+function allStagedChecks(): QueuedAttempt[] {
+  const entries: QueuedAttempt[] = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key?.startsWith(CHECK_STAGE)) continue;
+      const entry = stagedCheck(key.slice(CHECK_STAGE.length));
+      if (entry) entries.push(entry);
+    }
+  } catch { /* unavailable storage */ }
+  return entries;
+}
 
 export type OutboxReplyListener = (clientAttemptId: string, result: AttemptResult) => void;
 const replyListeners = new Map<string, Set<OutboxReplyListener>>();
@@ -143,15 +182,16 @@ function runTx<T>(mode: IDBTransactionMode, op: (store: IDBObjectStore) => IDBRe
 }
 
 /** Persist BEFORE sending; add (not put) makes an attempt's first payload immutable. */
-async function remember(body: OwnedAttempt): Promise<{ body: OwnedAttempt; queued: boolean }> {
-  if (!hasIDB()) return { body, queued: false };
+async function remember(input: OwnedAttempt): Promise<{ body: OwnedAttempt; queued: boolean }> {
+  const staged = stageCheck(input), body = staged.body;
+  if (!hasIDB()) return staged;
   const key = storageKey(body);
   try {
     await runTx("readwrite", (s) => s.add({ clientAttemptId: key, attempt: body }));
     return { body, queued: true };
   } catch (error) {
     // Retrying a blocked open would delay the online send for another 3 seconds.
-    if (error instanceof OutboxOpenError) return { body, queued: false };
+    if (error instanceof OutboxOpenError) return staged;
     // A concurrent retry may already have committed this same owner/attempt.
     try {
       const existing = await runTx<QueuedAttempt | undefined>("readonly", (s) => s.get(key));
@@ -159,19 +199,28 @@ async function remember(body: OwnedAttempt): Promise<{ body: OwnedAttempt; queue
         return { body: existing.attempt, queued: true };
       }
     } catch { /* unavailable storage: never claim a durable save */ }
-    return { body, queued: false };
+    return staged;
   }
 }
 
 async function dequeue(body: OwnedAttempt): Promise<void> {
+  if (body.mode === "vocabulary-check") {
+    try { localStorage.removeItem(CHECK_STAGE + storageKey(body)); } catch { /* replay remains idempotent */ }
+  }
   if (!hasIDB()) return;
   try { await runTx("readwrite", (s) => s.delete(storageKey(body))); } catch { /* replay is idempotent */ }
 }
 
 async function allQueued(): Promise<QueuedAttempt[]> {
-  if (!hasIDB()) return [];
-  try { return (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? []; }
-  catch { return []; }
+  const staged = allStagedChecks();
+  if (!hasIDB()) return staged;
+  try {
+    const stored = (await runTx<QueuedAttempt[]>("readonly", (s) => s.getAll())) ?? [];
+    // Existing IndexedDB bytes win if an older durable copy already exists.
+    const entries = new Map(staged.map(entry => [entry.clientAttemptId, entry]));
+    for (const entry of stored) entries.set(entry.clientAttemptId, entry);
+    return [...entries.values()];
+  } catch { return staged; }
 }
 
 async function postAttempt(body: OwnedAttempt): Promise<{ res: Response | null; data: AttemptResponse | null }> {

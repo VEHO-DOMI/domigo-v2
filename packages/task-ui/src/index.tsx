@@ -397,7 +397,7 @@ const TEXT_FORMATS = new Set([
 /** The graded input + item id, surfaced to the parent for attempt recording. */
 export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
-  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string; pool?: VocabPool }; history?: VocabularyCompletionObservation };
+  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string; pool?: VocabPool }; history?: VocabularyCompletionObservation; check?: { id: string; checkedAt: string; displayedContentSha256?: string | null } };
 
 /** Forgiving-retry ladder (Law 3): a wrong answer re-enables the input — nothing
  *  shown lost — up to MAX_WRONG tries (1st wrong → try again, 2nd → the Tipp is
@@ -752,18 +752,33 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
 
 // ---- vocab item ----------------------------------------------------------
 
-type VocabItemViewProps = { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null };
+type VocabItemViewProps = { item: VocabItem; onCheck?: (tier: Tier, detail: ResultDetail) => void; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null };
 export function VocabItemView(props: VocabItemViewProps) {
   // Includes overlays: same id/rev with new wording starts a fresh observation.
   const key = vocabularyPresentationKey(props.item, props.pool ?? "carrier", [props.hideHint, props.singleAttempt, props.mask, props.bank]);
   return <VocabCard key={key} {...props} />;
 }
-function VocabCard({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: VocabItemViewProps) {
+function VocabCard({ item, onResult, onCheck, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: VocabItemViewProps) {
   const t = useTaskText();
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
   const checks = useRef<VocabularyCheck[]>([]);
+  const visitId = useRef<string | null>(null);
+  const contentSnapshot = vocabularyContentSnapshot(item);
+  const displayedHash = useRef<string | null>(null);
+  useEffect(() => {
+    // Prepare identity while the card is visible, never delay saving a check.
+    // An early click or unavailable digest remains explicitly unknown.
+    let current = true;
+    void (async () => {
+      try {
+        const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(contentSnapshot));
+        if (current) displayedHash.current = Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, "0")).join("");
+      } catch { /* unknown content fingerprint */ }
+    })();
+    return () => { current = false; };
+  }, [contentSnapshot]);
   const revealedHelp = useRef(new Set<VocabularyHelp>());
   // A-6/P-10: the exercise grades against the pool it actually asked for. `ask`
   // is the leak-safe prompt for that pool (carrier shows the ___ sentence + a
@@ -785,13 +800,17 @@ function VocabCard({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMe
     if (masked) help.add("first-letter-mask");
     if (!masked && bank && bank.length > 0) help.add("word-bank");
     checks.current.push({ reportedTier: r.tier, helpShown: [...help].sort() });
-    return { tier: r.tier, detail: {
+    visitId.current ??= crypto.randomUUID();
+    const detail: ResultDetail = {
       kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool },
-      history: { schema: "vocabulary-completion@1", itemRevision: item.rev,
-        contentSnapshot: vocabularyContentSnapshot(item), maxChecks: singleAttempt ? 1 : MAX_WRONG,
+      check: { id: crypto.randomUUID(), checkedAt: new Date().toISOString(), displayedContentSha256: displayedHash.current },
+      history: { schema: "vocabulary-completion@1", visitId: visitId.current, itemRevision: item.rev,
+        contentSnapshot, maxChecks: singleAttempt ? 1 : MAX_WRONG,
         checks: checks.current.map(check => ({ ...check, helpShown: [...check.helpShown] })),
       },
-    } };
+    };
+    onCheck?.(r.tier, detail);
+    return { tier: r.tier, detail };
   };
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG, onTier);
   useEffect(() => {

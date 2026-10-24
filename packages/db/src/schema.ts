@@ -5,6 +5,7 @@
  * structurally incapable of dropping/altering a v1 table.
  */
 import { sql } from "drizzle-orm";
+import type { VocabularyCheckEvidence } from "./vocabulary-checks.ts";
 import type { DuelBonusReceipt } from "./duel-bonus.ts";
 import type { LiveQuestion, LiveReceipt } from "./live-rules.ts";
 import {
@@ -118,6 +119,47 @@ export const practiceAttempts = v2.table(
     clientAttemptUnique: uniqueIndex("practice_attempts_client_attempt_unique").on(t.userId, t.clientAttemptId),
   }),
 );
+
+/** A client-reported visit has one immutable exercise/presentation identity.
+ * A provisional visit without a check is not learning evidence. */
+export const vocabularyVisits = v2.table("vocabulary_visits", {
+  userId: uuid("user_id").notNull(), classId: uuid("class_id").notNull(), visitId: uuid("visit_id").notNull(),
+  itemId: text("item_id").notNull(), pool: text("pool").notNull(), sourceMode: text("source_mode").notNull(),
+  maxChecks: smallint("max_checks").notNull(), displayedRevision: integer("displayed_revision").notNull(),
+  displayedSha256: text("displayed_sha256"),
+}, t => [
+  uniqueIndex("vocabulary_visits_owner_unique").on(t.userId, t.visitId),
+  index("vocabulary_visits_class_idx").on(t.classId),
+  check("vocabulary_visits_max_check", sql`${t.maxChecks} in (1, 3)`),
+  check("vocabulary_visits_revision_check", sql`${t.displayedRevision} > 0`),
+  check("vocabulary_visits_hash_check", sql`${t.displayedSha256} is null or ${t.displayedSha256} ~ '^[a-f0-9]{64}$'`),
+]);
+
+/** cgo-144: one checked vocabulary answer, independent of completion/XP/review.
+ * IDs and derived coordinates only; never the raw typed answer or item wording. */
+export const vocabularyChecks = v2.table("vocabulary_checks", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").notNull(), classId: uuid("class_id").notNull(),
+  clientEventId: uuid("client_event_id").notNull(), visitId: uuid("visit_id").notNull(),
+  checkNumber: smallint("check_number").notNull(), maxChecks: smallint("max_checks").notNull(),
+  itemId: text("item_id").notNull(), unitSlug: text("unit_slug").notNull(), grade: smallint("grade").notNull(),
+  sourceMode: text("source_mode").notNull(), pool: text("pool").notNull(),
+  requestSha256: text("request_sha256").notNull(),
+  evidence: jsonb("evidence").$type<VocabularyCheckEvidence>().notNull(),
+  // Browser clock is a claim; arrival and database insertion time are separate.
+  clientCheckedAt: timestamp("client_checked_at", { withTimezone: true }),
+  receivedAt: timestamp("received_at", { withTimezone: true }).notNull(),
+  recordedAt: timestamp("recorded_at", { withTimezone: true }).notNull().defaultNow(),
+}, t => [
+  uniqueIndex("vocabulary_checks_event_unique").on(t.userId, t.clientEventId),
+  uniqueIndex("vocabulary_checks_visit_number_unique").on(t.userId, t.visitId, t.checkNumber),
+  index("vocabulary_checks_user_item_idx").on(t.userId, t.itemId, t.recordedAt.desc()),
+  index("vocabulary_checks_class_idx").on(t.classId),
+  check("vocabulary_checks_number_check", sql`${t.maxChecks} in (1, 3) and ${t.checkNumber} between 1 and ${t.maxChecks}`),
+  check("vocabulary_checks_grade_check", sql`${t.grade} between 1 and 4`),
+  check("vocabulary_checks_pool_check", sql`${t.pool} in ('carrier', 'definition', 'deToEn', 'enToDe')`),
+  check("vocabulary_checks_hash_check", sql`${t.requestSha256} ~ '^[a-f0-9]{64}$'`),
+]);
 
 /** Leitner 5-box spaced-retrieval queue: one entry per (user, item). */
 export const reviewQueue = v2.table(

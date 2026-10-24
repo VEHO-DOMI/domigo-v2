@@ -87,7 +87,9 @@
     "live-service.ts#answerable": 2,
     "live-service.ts#checkLiveAnswer": 1,
     "live-service.ts#recordLiveAnswer": 4,
-    "practice-receipt.ts#getPracticeReceipt": 1
+    "practice-receipt.ts#getPracticeReceipt": 1,
+    "vocabulary-checks.ts#findVocabularyCheck": 1,
+    "vocabulary-checks.ts#recordVocabularyCheck": 2
   },
   "bestand": {
     "hinweis": "Stand 03.10.2026 (dach-100): leer. Die 21 Funktionen, die dach-063 hier am 19.09. eingefroren hatte, sind einzeln beurteilt und stehen mit Satz in scripts/claim-filter-allowlist.json (10 lesen nur nach einer Kennung aus der Sitzung, aus einem signierten Push oder vor jeder Sitzung; 11 haben seit dach-108 keinen Aufrufer). Die Liste darf nur schrumpfen; ein neuer Eintrag hier ist ein Rueckschritt.",

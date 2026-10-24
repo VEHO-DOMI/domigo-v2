@@ -6,7 +6,7 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { vocabularyContentSnapshot, xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { sendCompletedAttempt } from "@/lib/vocabulary-history-client";
+import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
@@ -29,6 +29,9 @@ function ReviewRound({ preview = false, ownerId, items }: Props) {
 
   const current = items[i];
 
+  const onCheck = (_tier: Tier, detail: ResultDetail) => {
+    void sendVocabularyCheck(attemptSender(preview, ownerId), detail, "review").catch(() => { /* unconfirmed history */ });
+  };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!current) return;
     setAnswered(true);
@@ -89,7 +92,7 @@ function ReviewRound({ preview = false, ownerId, items }: Props) {
       {current.kind === "grammar" ? (
         <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile hideMeta />
       ) : (
-        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} hideMeta />
+        <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} onCheck={onCheck} hideMeta />
       )}
 
       {answered && (

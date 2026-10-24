@@ -1,3 +1,4 @@
+import * as vocabularyCheck from "../vocabulary-check.ts";
 import * as vocabularyHistory from "../vocabulary-history.ts";
 import assert from "node:assert/strict";
 import { inScope, practiceItemDenial } from "@domigo/db";
@@ -34,7 +35,7 @@ const boundaries: Record<string, unknown> = {
 const server = loadTestModule("apps/web/lib/arena/server.ts", boundaries);
 const api = loadTestModule("apps/web/lib/arena/api.ts", { "server-only": {}, "@/auth": boundaries["@/auth"], "@/lib/identity": { getActingUser: async () => role === "student" ? player() : null }, zod: { z }, "./server": server });
 const route = loadTestModule("apps/web/app/api/attempts/route.ts", {
-  "@/lib/vocabulary-history": vocabularyHistory, "next/server": { NextResponse: Response }, zod: { z }, "@domigo/content-schema": refs, "@domigo/content-loader": loader, "@domigo/engine": engine,
+  "@/lib/vocabulary-check": vocabularyCheck, "@/lib/vocabulary-history": vocabularyHistory, "next/server": { NextResponse: Response }, zod: { z }, "@domigo/content-schema": refs, "@domigo/content-loader": loader, "@domigo/engine": engine,
   "@/lib/content-service": boundaries["@/lib/content-service"], "@domigo/db": boundaries["@domigo/db"],
   "@/lib/identity": { getActingUser: async () => role === "student" ? player() : null },
   "@/lib/itemRef": itemRef, "@/lib/listeningRef": listeningRef, "@/lib/testRef": testRef, "@/lib/comprehensionRef": comprehensionRef,
