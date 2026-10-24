@@ -55,8 +55,10 @@ eine noch offene Antwortkennung dieser Runde. Die Kennung wird beim Übernehmen
 verbraucht; sofortige Antwort und spätere Warteschlangenwiederholung können sie
 nicht doppelt zählen. Lokale Korrektheitsrückmeldung bleibt verfügbar.
 
-Der Rundenschlüssel umfasst Person, Vorschau, Wiener Datum und Aufgabeninhalt;
-im Lernpfad zusätzlich Chapter, Knoten und Modus. Ein Wechsel ersetzt die Runde
+Der Rundenschlüssel umfasst Person, Vorschau, Wiener Datum und Vokabelinhalt;
+Grammatikaufgaben werden wie bisher an ihrer Kennung gebunden. Eine inhaltliche
+Grammatikänderung bei gleicher Kennung erzwingt deshalb keinen Neustart. Im
+Lernpfad kommen Chapter, Knoten und Modus hinzu. Ein Schlüsselwechsel ersetzt die Runde
 und verwirft ihre offenen Anzeigen. Abgemeldete Runden übernehmen auch verspätete
 Antworten nicht. Vorschauen schreiben keine Antworten und zeigen 0 Punkte.
 Die gespeicherte Warteschlange bleibt wie bisher an die angemeldete Person gebunden.

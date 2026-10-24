@@ -33,7 +33,7 @@ function setup(preview = false, fail = true) {
   const map = loadTestModule("apps/web/app/learn/[slug]/page.tsx", modules).default as (p: unknown) => Promise<ReactNode>;
   const node = loadTestModule("apps/web/app/learn/[slug]/[node]/page.tsx", modules).default as (p: unknown) => Promise<ReactNode>;
   return { map: async () => expand(await map({ params:Promise.resolve({slug}), searchParams:Promise.resolve({}) })),
-    node: () => node({ params:Promise.resolve({slug,node:journey.nodes.find(n => n.kind === "practice")!.id}), searchParams:Promise.resolve({}) }),
+    node: (nodeId = journey.nodes.find(n => n.kind === "practice")!.id) => node({ params:Promise.resolve({slug,node:nodeId}), searchParams:Promise.resolve({}) }),
     calls: () => ({ reserves, attempts }) };
 }
 const entrances = (tree: ReactNode) => nodes(tree).filter(n => n.type === "a" && typeof n.props.href === "string" && (n.props.href.startsWith(`/learn/${slug}/`) || n.props.href.startsWith("/play/")));
@@ -42,8 +42,14 @@ it("unknown reserve state closes every journey node and skips progress reads", a
   assert.equal(nodes(tree).filter(n => n.props.className === "dg-tile--locked").length, journey.nodes.length);
   assert.deepEqual(f.calls(), { reserves:1, attempts:0 });
 });
-it("direct journey URL cannot bypass a failed reserve lookup", async () => {
-  const f = setup(); await assert.rejects(f.node(), new RegExp(`redirect:/learn/${slug}`)); assert.deepEqual(f.calls(), { reserves:1, attempts:0 });
+for (const node of journey.nodes) it(`direct ${node.kind} journey URL cannot bypass a failed reserve lookup`, async () => {
+  const f = setup(); await assert.rejects(f.node(node.id), new RegExp(`redirect:/learn/${slug}$`)); assert.deepEqual(f.calls(), { reserves:1, attempts:0 });
+});
+for (const preview of [false, true]) it(`known reserve state preserves the game destination (preview=${preview})`, async () => {
+  const f = setup(preview, false), node = journey.nodes.find(n => n.kind === "game")!;
+  assert.ok(node.gamePointer);
+  await assert.rejects(f.node(node.id), new RegExp(`redirect:/play/${journey.grade}/${node.gamePointer.zoneOrChapter}$`));
+  assert.deepEqual(f.calls(), { reserves:preview ? 0 : 1, attempts:0 });
 });
 it("successful reserve lookup keeps reachable nodes available", async () => {
   const f = setup(false, false); assert.ok(entrances(await f.map()).length > 0); assert.deepEqual(f.calls(), { reserves:1, attempts:1 });

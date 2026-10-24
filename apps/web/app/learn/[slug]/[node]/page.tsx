@@ -31,13 +31,13 @@ export default async function NodeRunnerPage({ params, searchParams }: { params:
   if (journey) {
     const jnode = journey.nodes.find((n) => n.id === nodeId);
     if (!jnode) notFound();
-    // game nodes deep-link into the campaign — they never run inside /learn.
+    const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => null) : new Set<string>();
+    if (reserved === null) redirect(`/learn/${slug}`);
+    // Every Journey entrance checks the reserve, including campaign deep-links.
     if (jnode.kind === "game") redirect(jnode.gamePointer ? `/play/${journey.grade}/${jnode.gamePointer.zoneOrChapter}` : `/learn/${slug}`);
 
     const junit = await loadUnitWithOverrides(slug);
     const itemIds = [...junit.vocab.map((v) => v.id), ...junit.grammar.map((g) => g.id)];
-    const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => null) : new Set<string>();
-    if (reserved === null) redirect(`/learn/${slug}`);
     const nodeItems = new Map<string, readonly string[]>();
     for (const n of journey.nodes) {
       if ((n.kind === "practice" || n.kind === "side-quest") && n.itemPool) {
