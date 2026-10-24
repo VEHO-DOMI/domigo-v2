@@ -16,6 +16,14 @@ test('exact open binding, missing, closed, foreign, duplicate and incomplete fin
   assert.match(findingError('D-2', scope, open), /Befund/);
   assert.match(findingError(undefined, scope, open), /Befund/);
 });
+test('every evidence cell rejects single letters and placeholders without rejecting real prose', () => {
+  for (const field of ['Grund', 'Bedingung', 'GG-DomiGo', 'Quellenprüfung']) {
+    for (const value of ['x', 'xxx', 'TODO', 'TBD', 'Test', '---', '']) {
+      assert.match(findingError('D-1', scope, openFindingMap(row().replace(field, value))), /Befund/, `${field}: ${value}`);
+    }
+  }
+  assert.equal(findingError('D-1', scope, openFindingMap(row())), null);
+});
 test('calendar text and escaped pipes cannot create or close authorization', () => {
   const historicalDate = row().replace('Grund', 'Grund \\| frühere Frist 2026-10-31');
   assert.deepEqual(openFindingMap(historicalDate), openFindingMap(historicalDate.replace('2026-10-31', '2099-01-01')));

@@ -49,7 +49,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: node scripts/check-vercel-ignore-build.mjs --selftest # cgo-075 · main must build, other refs must skip
       - run: node scripts/check-vercel-ignore-build.mjs # cgo-075 · main must build, other refs must skip
-      - run: node --test scripts/gg-gate-policy/register.test.mjs # cgo-017/476 (Leser S1): das Register-Gesetz der Prüfausnahmen hat seinen eigenen Test — ohne diese Zeile liefe er nirgends (adapters.test.mjs bleibt lokal: 178 s, schreibt in getrackte Dateien)
+      - run: node --test scripts/gg-gate-policy/register.test.mjs # cgo-017/476 (Leser S1): das Register-Gesetz der Prüfausnahmen hat seinen eigenen Test — ohne diese Zeile liefe er nirgends (die schreibenden Adapter laufen im isolierten gate-adapters-Job)
       - run: pnpm test
 
   arena-display:
@@ -170,7 +170,7 @@ jobs:
       - run: node scripts/check-claim-filter.mjs --selftest # dach-018/SPEC-konto-§5-L3: das rote Licht muss erreichbar sein — ein optional gemachter Ausschnitt, eine verneinte Wand, ein Ausschnitt ausserhalb von lib/identity.ts und eine Ausnahme ohne Satz muessen je gemeldet werden; dach-063: ebenso ein GANZ gestrichener Ausschnitt (Positiv-Liste scripts/claim-filter-required.json) und eine neue Funktion auf einer Klassen-Tabelle ohne Eintrag
       - run: node scripts/check-claim-filter.mjs # dach-018/SPEC-konto-§5-L3: jede Klassenabfrage in packages/db filtert ZUERST auf den Ausschnitt der Sitzung — was es nicht kann, steht mit Satz in scripts/claim-filter-allowlist.json
       - run: node scripts/import-checkup-journal.mjs --selftest # cgo-100 Nachzug 1: Offline-Import bleibt ohne Prozessstart/Datenbanktreiber; historische Urteile brauchen genaue Belege
-      - run: node scripts/import-checkup-journal.mjs --out "$(mktemp -d)" # cgo-100 Nachzug 1: echter Offline-Durchlauf schreibt nur SQL/Belege ins temporaere Verzeichnis, fuehrt sie nie aus
+      - run: node scripts/import-checkup-journal.mjs --out "${{ runner.temp }}/checkup-import" # cgo-100 Nachzug 1: echter Offline-Durchlauf schreibt nur SQL/Belege ins temporaere Verzeichnis, fuehrt sie nie aus
       - run: node scripts/check-no-local-login.mjs --selftest # dach-018/SPEC-konto-§6: das rote Licht muss erreichbar sein — ein PIN-Feld auf der Anmeldeseite, eine Weiterleitung mit Datenbankzugriff, ein verlaengertes Ablaufdatum und ein gestelltes Datum danach muessen je gemeldet werden
       - run: node scripts/check-no-local-login.mjs # dach-018/SPEC-konto-§6: DomiGo prueft kein eigenes Passwort mehr — ausser den deklarierten Resten in apps/web/konto-local-login-allowlist.json, jeder mit festem Ablaufdatum
 
@@ -380,3 +380,23 @@ jobs:
             ${{ runner.temp }}/visual-repeat
             ${{ runner.temp }}/visual-mutants
           retention-days: 30
+
+  gate-adapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - name: Register adapters against actual gate commands in an isolated checkout
+        env:
+          GG_GATE_EVIDENCE_DIR: ${{ runner.temp }}/gate-adapters
+        run: node scripts/gg-gate-policy/adapters.test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gate-adapter-evidence
+          path: ${{ runner.temp }}/gate-adapters
+          retention-days: 7

@@ -319,17 +319,64 @@ export const yamlVerdict = (ciText) => {
   return fehler;
 };
 
-// cgo-075: read executable YAML steps, not comments or step labels. A trailing
-// `|| true` suppresses a gate's failure, so that line cannot prove CI coverage.
-const ciCommands = (ciText) => Object.values(yaml.load(ciText).jobs)
-  .flatMap((job) => job.steps)
-  .filter((step) => typeof step.run === "string")
-  .flatMap((step) => step.run.split("\n"))
-  .map((line) => line.replace(/(?:^|\s+)#.*$/, "").trim())
-  .filter((line) => line && !/\|\|\s*true\s*;?$/.test(line))
-  .join("\n");
+// cgo-080: only direct, failure-propagating invocations count. This is a
+// deliberately bounded command grammar, not a shell interpreter. Unsupported
+// control flow cannot stand in for proof that a required gate executes.
+const literalArgs = tail => {
+  const args = [], token = /\s+(?:"[^"]*"|'[^']*'|[^\s"'\\]+)(?=\s|$)/gy;
+  let consumed = 0, match;
+  while ((match = token.exec(tail)) !== null) {
+    const raw = match[0].trim();
+    args.push(/^["']/.test(raw) ? raw.slice(1, -1) : raw);
+    consumed = token.lastIndex;
+  }
+  return tail.slice(consumed).trim() ? null : args;
+};
+const commandsFromRun = run => {
+  const text = run.replace(/\\\r?\n/g, " ")
+    .split("\n").map(line => line.replace(/(?:^|\s+)#.*$/, "").trim()).join("\n");
+  if (/(?:^|\n)\s*(?:exit\b|return\b|if\b|for\b|while\b|until\b|case\b|function\b|eval\b|exec\b|set\s+\+(?:e|o\s+errexit)\b)/.test(text) || text.includes("<<")) return [];
+  return text.split("\n").flatMap(line => {
+    if (/[;&|<>`]/.test(line) || /\$\(/.test(line)) return [];
+    const node = /^node(?:\s+--(?:experimental-strip-types|test))*\s+((?:scripts|docs\/art)\/[A-Za-z0-9_./-]+\.(?:mjs|ts))(?=\s|$)/.exec(line);
+    if (node) {
+      const args = literalArgs(line.slice(node[0].length));
+      if (!args) return []; // unsupported quote/escape form
+      return [`node ${node[1]}${args.includes("--selftest") ? " --selftest" : ""}`];
+    }
+    const pnpm = /^pnpm\s+(?:run\s+)?([A-Za-z0-9:_-]+)(?=\s|$)/.exec(line);
+    if (!pnpm) return [];
+    const args = literalArgs(line.slice(pnpm[0].length));
+    if (!args || args.includes("--help") || args.includes("--version")) return [];
+    return [`pnpm ${pnpm[1]}${args.includes("--selftest") ? " --selftest" : ""}`];
+  });
+};
+const hardFailure = value => value === undefined || value === false;
+const unconditional = value => value === undefined || value === true || value === "true" || value === "${{ true }}";
+const prOnly = value => value === "github.event_name == 'pull_request'";
+const supportedShell = value => value === undefined || value === "bash" || value === "sh";
+const ciCommands = ciText => {
+  const doc = yaml.load(ciText), commands = [];
+  for (const [jobName, job] of Object.entries(doc.jobs)) {
+    if (!hardFailure(job["continue-on-error"]) || !supportedShell(job.defaults?.run?.shell ?? doc.defaults?.run?.shell)) continue;
+    const jobPrOnly = jobName === "perf-contract" && prOnly(job.if);
+    if (!unconditional(job.if) && !jobPrOnly) continue;
+    for (const step of job.steps) {
+      if (typeof step.run !== "string" || !hardFailure(step["continue-on-error"]) || !supportedShell(step.shell)) continue;
+      for (const command of commandsFromRun(step.run)) {
+        // The two existing PR-only comparisons need a PR base; no other
+        // conditional step is credited as unconditional test coverage.
+        const comparison = /^node scripts\/check-(?:png-identity|perf-table)\.mjs(?: |$)/.test(command);
+        if (jobPrOnly && !comparison) continue;
+        if (!unconditional(step.if) && !(prOnly(step.if) && comparison)) continue;
+        commands.push(command);
+      }
+    }
+  }
+  return commands.join("\n");
+};
 
-const scanUsage = (ciText, invoked) => {
+const scanUsage = (ciText, invoked, packageScripts) => {
   const usage = new Map(); // file -> { real: n, selftest: n, how: string }
   const note = (file, isSelftest, how) => {
     const u = usage.get(file) ?? { real: 0, selftest: 0, how };
@@ -341,10 +388,12 @@ const scanUsage = (ciText, invoked) => {
     for (const m of line.matchAll(SCRIPT_REF)) note(m[1], line.includes("--selftest"), "direkt");
   }
   // …and the same again through package.json, for the scripts CI runs as `pnpm <name>`.
-  for (const name of invoked) {
-    const cmd = pkgScripts[name];
+  for (const invocation of ciText.split("\n")) {
+    const hit = /^pnpm ([A-Za-z0-9:_-]+)( --selftest)?$/.exec(invocation);
+    if (!hit) continue;
+    const name = hit[1], cmd = packageScripts[name];
     if (typeof cmd !== "string") continue;
-    for (const m of cmd.matchAll(SCRIPT_REF)) note(m[1], cmd.includes("--selftest"), `pnpm ${name}`);
+    for (const line of commandsFromRun(cmd + (hit[2] ?? ""))) for (const m of line.matchAll(SCRIPT_REF)) note(m[1], line.includes("--selftest"), `pnpm ${name}`);
   }
   return usage;
 };
@@ -362,7 +411,7 @@ const scanInvoked = (ciText) => {
  * ci.yml — the real one, with one line taken out — instead of a made-up
  * configuration. P-71: tamper against the measurement, never against the config.
  */
-export const analyse = ({ ciText, gates, selftestGates = [], notAGate, selftestOnly, importers, importerWaivers, today, offen = new Set() }) => {
+export const analyse = ({ ciText, gates, selftestGates = [], notAGate, selftestOnly, importers, importerWaivers, today, offen = new Set(), packageScripts = pkgScripts }) => {
   const failures = [];
   const rows = [];
   const fail = (msg) => failures.push(msg);
@@ -379,7 +428,15 @@ export const analyse = ({ ciText, gates, selftestGates = [], notAGate, selftestO
 
   const commands = ciCommands(ciText);
   const invoked = scanInvoked(commands);
-  const usage = scanUsage(commands, invoked);
+  const usage = scanUsage(commands, invoked, packageScripts);
+  if (packageScripts["test:vercel-ignore-build"] !== "node scripts/check-vercel-ignore-build.mjs --selftest") {
+    fail("cgo-080: test:vercel-ignore-build must invoke the existing cost-gate selftest exactly");
+  }
+  for (const test of ["register.test.mjs", "adapters.test.mjs"]) {
+    if (!commands.split("\n").includes(`node scripts/gg-gate-policy/${test}`)) {
+      fail(`cgo-080: ${test} has no effective direct CI invocation`);
+    }
+  }
 
   // ── Gesetz 1 · every gate on disk is reachable from CI ─────────────────────
   for (const file of gates) {
@@ -445,7 +502,7 @@ export const analyse = ({ ciText, gates, selftestGates = [], notAGate, selftestO
   }
 
   // ── Gesetz 4 · von der anderen Seite: ein check:-Skript, das CI nie ruft ───
-  for (const [name, cmd] of Object.entries(pkgScripts)) {
+  for (const [name, cmd] of Object.entries(packageScripts)) {
     if (!name.startsWith("check:")) continue;
     if (invoked.has(name)) continue;
     const m = SCRIPT_REF.exec(String(cmd));
@@ -580,7 +637,43 @@ if (selftest) {
     }), true]);
   });
 
+  const changeCostStep = change => {
+    const doc = yaml.load(ciOnDisk);
+    const [jobName, job] = Object.entries(doc.jobs).find(([, job]) => job.steps.some(step =>
+      typeof step.run === "string" && step.run.includes(costGate) && !step.run.includes("--selftest")));
+    const step = job.steps.find(step => typeof step.run === "string" && step.run.includes(costGate) && !step.run.includes("--selftest"));
+    change(step, job, doc, jobName);
+    return yaml.dump(doc);
+  };
+  const suppressionMutants = [" || exit 0", " || echo ok", " || :", "; true", " || TRUE", " || /bin/true", " | cat", " \\\n || true"].map(suffix => [
+    `cgo-080: suppressed command ${JSON.stringify(suffix)}`, () => analyse({ ...WELT,
+      ciText: changeCostStep(step => { step.run = step.run.replace(/\s+#.*$/, "") + suffix; }),
+    }), true,
+  ]);
+  const executionMutants = [
+    ["step continue-on-error", step => { step["continue-on-error"] = true; }],
+    ["job continue-on-error", (step, job) => { job["continue-on-error"] = true; }],
+    ["step if false", step => { step.if = false; }],
+    ["step expression false", step => { step.if = "${{ false }}"; }],
+    ["job if false", (step, job) => { job.if = false; }],
+    ["node version instead of execution", step => { step.run = step.run.replace("node ", "node --version "); }],
+    ["quoted selftest is not a real run", step => { step.run = step.run.replace(/\s+#.*$/, "") + ' "--selftest"'; }],
+    ["echo instead of invocation", step => { step.run = "echo " + step.run; }],
+    ["early successful exit", step => { step.run = "exit 0\n" + step.run; }],
+    ["disable errexit", step => { step.run = "set +e\n" + step.run + "\ntrue"; }],
+    ["shell without failure propagation", step => { step.shell = "bash {0}"; }],
+  ].map(([name, change]) => [`cgo-080: ${name}`, () => analyse({ ...WELT, ciText: changeCostStep(change) }), true]);
+  const aftercareCases = [
+    ...suppressionMutants, ...executionMutants,
+    ["cgo-080: alias points to missing file", () => analyse({ ...WELT, packageScripts: { ...pkgScripts, "test:vercel-ignore-build": "node scripts/missing.mjs" } }), true],
+    ["cgo-080: adapter call removed", () => analyse({ ...WELT, ciText: ohneZeile("run: node scripts/gg-gate-policy/adapters.test.mjs") }), true],
+    ["cgo-080: pure register call removed", () => analyse({ ...WELT, ciText: ohneZeile("run: node --test scripts/gg-gate-policy/register.test.mjs") }), true],
+    ["cgo-080: valid continued command", () => analyse({ ...WELT, ciText: changeCostStep(step => { step.run = "node \\\n  scripts/check-vercel-ignore-build.mjs"; }) }), false],
+    ["cgo-080: named valid YAML step", () => analyse({ ...WELT, ciText: changeCostStep(step => { step.name = "Cost gate"; }) }), false],
+  ];
+
   const cases = [
+    ...aftercareCases,
     ...costMutants,
     ["ein Tor verschwindet aus CI", () => analyse({
       ...WELT, ciText: ciOnDisk.replace(/scripts\/check-paint-art\.mjs/g, "scripts/__weg.mjs"),

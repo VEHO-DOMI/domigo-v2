@@ -1207,7 +1207,7 @@ function classPhotoPortraitError(task, level, painted) {
   return null;
 }
 
-function checkPortraits(file, items, cx, bestand = D987_BESTAND) {
+function checkPortraits(file, items, cx, bestand = D987_BESTAND, allowances = KUNST_FREILISTE, findings = OPEN_FINDINGS) {
   const w = path.basename(file);
   // L0c · P9: dieselbe Menge, die der Aufloeser diesem Kapitel gibt — nicht der
   // ganze Kunst-Baum. Ein Blatt im Ordner eines fremden Kapitels ist fuer dieses
@@ -1238,8 +1238,8 @@ function checkPortraits(file, items, cx, bestand = D987_BESTAND) {
       // Kunst kommt stapelweise spaeter, und das Tor verlangte trotzdem ein
       // Blatt auf der Platte. Bei `draft:false` bleibt das Gesetz scharf, und
       // die Freiliste ist der einzige Weg daran vorbei (Only-Present unveraendert).
-      const geduldet = KUNST_FREILISTE.get(stem);
-      const nochGueltig = geduldet !== undefined && geduldet.until === undefined && typeof geduldet.reason === "string" && geduldet.reason.trim() !== "" && findingError(geduldet.offen, artFindingScope(stem), OPEN_FINDINGS) === null;
+      const geduldet = allowances.get(stem);
+      const nochGueltig = geduldet !== undefined && geduldet.until === undefined && typeof geduldet.reason === "string" && geduldet.reason.trim() !== "" && findingError(geduldet.offen, artFindingScope(stem), findings) === null;
       // L0e · D-987 · SPERRKLINKE: ein Stem, der NUR fuer ein fremdes Kapitel
       // gemalt ist, ist keine Kunst, die spaeter kommt (D-880), sondern eine
       // Karte, die ein Blatt verspricht, das ihr Kapitel nie laden kann.
@@ -1482,6 +1482,37 @@ function exerciseRegistry(unitSlug, chapter) {
 
 // Device portraits: exercise the actual portrait gate with copies of shipped
 // tasks/entities; every alternate-shell permission has a corresponding red case.
+// cgo-080: exercise the real final-chapter portrait exemption branch. The
+// synthetic stem has no pixels; acceptance must require the exact open finding
+// and must reject any calendar field. No authored content is rewritten.
+if (process.argv.includes("--selftest")) {
+  const stem = "cgo080_synthetic_missing_portrait";
+  if (paintedStems.has(stem)) throw new Error("cgo-080 synthetic stem unexpectedly exists");
+  const scope = artFindingScope(stem), entry = { offen: "D-999999", reason: "Synthetic pending portrait" };
+  const item = { id: "cgo080-portrait", stimulus: { type: "entity", art: stem } };
+  const cases = [
+    ["exact open finding", entry, new Map([[entry.offen, scope]]), false],
+    ["missing finding", entry, new Map(), true],
+    ["foreign finding", entry, new Map([[entry.offen, scope + "-foreign"]]), true],
+    ["calendar field", { ...entry, until: "2099-01-01" }, new Map([[entry.offen, scope]]), true],
+    ["empty reason", { ...entry, reason: " " }, new Map([[entry.offen, scope]]), true],
+    ["missing allowance", undefined, new Map([[entry.offen, scope]]), true],
+  ];
+  let bad = 0;
+  for (const [name, value, findings, wantRed] of cases) {
+    const before = failures;
+    captured = [];
+    checkPortraits("cgo080-synthetic.tasks.v2.json", [item], { chapter: "ch01", draft: false },
+      D987_BESTAND, new Map(value ? [[stem, value]] : []), findings);
+    const red = captured.some(message => message.includes('portrait: declares art'));
+    captured = null;
+    failures = before;
+    if (red !== wantRed) { bad++; console.error(`cgo-080 portrait: ${name} did not discriminate`); }
+  }
+  if (bad) process.exit(1);
+  console.log(`check-game-tasks --selftest: cgo-080 portrait OK — ${cases.length} cases`);
+}
+
 if (process.argv.includes("--selftest")) {
   const cx = CHAPTERS.find(c => c.chapter === "ch01" && c.hasTasks);
   if (!cx) throw new Error("device portrait selftest needs real ch01");
