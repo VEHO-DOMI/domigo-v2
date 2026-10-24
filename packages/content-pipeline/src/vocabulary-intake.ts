@@ -91,12 +91,11 @@ function paragraphSegments(block: Extract<DocxBlock, { kind: "paragraph" }>, gra
     if (!reference || !phonetics || !de) return null;
     // A second reference/pronunciation pair means a headword lost its formatting.
     // Do not absorb an unsegmented following entry into the German field.
-    for (const m of de.matchAll(/(?:^|\s)(\S+)\s+\[[^\]\r\n]+\]/gu)) {
-      if (parseAppendixReference(m[1]!, grade)) return null;
-    }
-    for (const m of de.matchAll(/\[[^\]\r\n]+\]\s+(\S+)/gu)) {
-      if (parseAppendixReference(m[1]!, grade)) return null;
-    }
+    // Syntax recognition here is deliberately independent of the current grade:
+    // even a malformed/future-book reference indicates an incomplete second entry.
+    const referenceShape = "(?:MORE\\s+\\d+|U\\d+(?:/\\S+)?|(?:OYW|TGND|T|S)\\d+|DSC|[GFD])";
+    if (new RegExp(`(?:^|\\s)${referenceShape}\\s+\\[[^\\]\\r\\n]+\\]`, "u").test(de) ||
+        new RegExp(`\\[[^\\]\\r\\n]+\\]\\s+${referenceShape}(?=\\s|$)`, "u").test(de)) return null;
     const excluded = reference.kind === "out-of-course-unit";
     result.push({ id: `${parentRowId}.s${i / 2 + 1}`, parentRowId,
       span: { start: head.start, end: detail.end, detailStart: detail.start, runStart: head.runStart, runEnd: detail.runEnd },

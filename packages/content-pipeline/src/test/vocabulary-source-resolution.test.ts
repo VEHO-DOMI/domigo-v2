@@ -88,3 +88,16 @@ test("valid source unit outside course is explicitly excluded without renumberin
   assert.equal(rows[2]!.state,"parsed");assert.equal(rows[3]!.state,"quarantined");
   assert.equal(report.counts.excludedEntries,1);
 });
+
+
+test("partial following prior-book and invalid-unit entries are never absorbed as German", () => {
+  for (const grade of [1,2,3,4] as const) {
+    for (const reference of ["MORE 1","MORE 2","MORE 3","MORE 4","U0/3","U99/3","OYW2","TGND1","DSC"]) {
+      for (const detail of [`${reference} [muːn] Mond`,`[muːn] ${reference} Mond`]) {
+        const s=source([run("sun",true),run(` U1 [sʌn] Sonne moon ${detail}`,false)]);s.grade=grade;
+        assert.equal(sourceRows(s)[0]!.state,"quarantined",`grade ${grade}: ${detail}`);
+      }
+    }
+  }
+  assert.equal(sourceRows(source([run("sun",true),run(" U1 [sʌn] Sonne [selten]",false)]))[0]!.state,"segmented");
+});
