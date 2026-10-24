@@ -1,6 +1,6 @@
 /** Real POST + real history writer + PostgreSQL in local memory. Synthetic identities only. */
 import assert from "node:assert/strict";
-import { before, beforeEach, after, it } from "node:test";
+import { before, beforeEach, after, describe, it } from "node:test";
 import { createRequire } from "node:module";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -40,8 +40,9 @@ beforeEach(async () => {
   await pg.exec("UPDATE domigo_v2.classes SET grade=2");
 });
 after(async () => { await pg.close(); });
+for (const sourceMode of ["practice", "test:vocab"]) describe(sourceMode, () => {
 const evidence = () => ({ schema: "vocabulary-check@1", visitId: id(10), checkNumber: 1, maxChecks: 3,
-  itemRevision: item.rev, displayedContentSha256: hash, sourceMode: "practice",
+  itemRevision: item.rev, displayedContentSha256: hash, sourceMode,
   checkedAt: "2026-10-24T07:30:00.000Z", reportedTier: "wrong", helpShown: [] as string[],
 });
 function body(check: Record<string, unknown> = {}, patch: Record<string, unknown> = {}) {
@@ -124,13 +125,28 @@ it("a new reserved or wrong-year check is refused", async () => {
   await pg.exec("TRUNCATE domigo_v2.reserved_items; UPDATE domigo_v2.classes SET grade=1");
   assert.equal((await post(body())).status, 403); assert.equal((await rows()).length, 0);
 });
-for (const patch of [{ checkNumber: 0 }, { checkNumber: 4 }, { maxChecks: 1, checkNumber: 2 }, { helpShown: ["hint", "hint"] }, { sourceMode: "game:g2" }, { checkedAt: "yesterday" }, { input: "forbidden raw copy" }, { displayedContentSha256: "bad" }]) it(`rejects malformed check ${JSON.stringify(patch)}`, async () => {
+for (const patch of [{ checkNumber: 0 }, { checkNumber: 4 }, { maxChecks: 1, checkNumber: 2 }, { helpShown: ["hint", "hint"] }, { sourceMode: "game:g2" }, ...["test:grammar", "test:listening", "test:reading", "test:writing", "test:vocab-extra", "assignment", "assign:00000000-0000-4000-8000-000000000010", "speed", "arena", "duel:00000000-0000-4000-8000-000000000010", "live:00000000-0000-4000-8000-000000000010", "quiz:00000000-0000-4000-8000-000000000010"].map(sourceMode => ({ sourceMode })), { visitId: "not-a-uuid" }, { checkedAt: "yesterday" }, { input: "forbidden raw copy" }, { displayedContentSha256: "bad" }]) it(`rejects malformed check ${JSON.stringify(patch)}`, async () => {
   assert.equal(VocabularyCheckInput.safeParse({ ...evidence(), ...patch }).success, false);
   assert.equal((await post(body(patch))).status, 400); assert.equal((await rows()).length, 0);
 });
 it("metadata cannot redirect another mode, and history mode requires metadata and a direction", async () => {
   for (const payload of [body({}, { mode: "practice" }), body({}, { vocabularyCheck: undefined }), body({}, { input: { kind: "vocab", value: "x" } }), body({}, { vocabularyHistory: { schema: "vocabulary-completion@1", itemRevision: 1, displayedContentSha256: null, maxChecks: 3, checks: [{ reportedTier: "correct", helpShown: [] }] } })]) assert.equal((await post(payload)).status, 400);
   assert.equal((await rows()).length, 0); await noRewards();
+});
+it("rejects non-vocabulary input, unknown pools and grammar item references", async () => {
+  for (const patch of [
+    {input:{kind:"text",value:"x"}},
+    {input:{kind:"vocab",value:"x",pool:"invented"}},
+    {itemId:loadUnit("g2-u01").grammar[0]!.id},
+  ]) assert.equal((await post(body({}, patch))).status, 400);
+  assert.equal((await rows()).length,0); await noRewards();
+});
+it("third-first-second delivery and duplicate retain a hole until the missing check arrives", async () => {
+  const make = (n: number) => body({checkNumber:n}, {clientAttemptId:id(20+n)});
+  await post(make(3)); await post(make(1)); await post(make(3));
+  assert.deepEqual((await rows()).map((r: {check_number:number})=>r.check_number),[1,3]);
+  await post(make(2)); await post(make(2));
+  assert.deepEqual((await rows()).map((r: {check_number:number})=>r.check_number),[1,2,3]); await noRewards();
 });
 it("history storage failure cannot claim success or fall into the reward writer", async () => {
   await pg.exec("ALTER TABLE domigo_v2.vocabulary_checks RENAME TO vocabulary_checks_unavailable");
@@ -200,4 +216,6 @@ it("a UI-gradeable answer longer than 500 characters is still recorded", async (
   const payload = body({}, {input:{kind:"vocab",value:"q".repeat(501),pool:"carrier"}});
   assert.equal((await post(payload)).status,200); assert.equal((await rows()).length,1);
   assert.equal((await rows())[0].evidence.serverTier,"wrong"); await noRewards();
+});
+
 });

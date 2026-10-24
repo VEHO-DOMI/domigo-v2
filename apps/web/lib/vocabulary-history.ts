@@ -26,7 +26,7 @@ export const VocabularyHistoryInput = z.object({
 export type VocabularyHistoryInput = z.infer<typeof VocabularyHistoryInput>;
 
 export const supportsVocabularyHistory = (mode: string): boolean =>
-  ["practice", "daily", "review"].includes(mode) || /^(study|journey):/.test(mode);
+  ["practice", "daily", "review", "test:vocab"].includes(mode) || /^(study|journey):/.test(mode);
 
 export function vocabularyHistoryContext(item: VocabItem, pool: VocabPool, tier: Tier, observation?: VocabularyHistoryInput) {
   const sha256 = createHash("sha256").update(vocabularyContentSnapshot(item)).digest("hex");

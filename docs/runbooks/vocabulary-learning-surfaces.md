@@ -6,6 +6,16 @@ This contract inventories the answer paths at PR 523, commit `d3fa38fe1d6cfc6521
 
 **Release is blocked.** GG owns the cross-store immutable-replay repair (cgo-145), the completion/accounting finding (cgo-132), the PR 522 arena test-loader failure, and the complete merge/deployment battery. This inventory does not repair, reopen or waive any of them. Vocabulary checks and visits require the unexecuted production migration described in the [existing history contract](vocabulary-learning-history.md).
 
+## cgo-147 implementation update — 24 October 2026
+
+GG released implementation on the repaired stack head `7b6bb52e30fd19c58374431c8b5359ec1938adbe`, containing the cgo-145 fix `64ce6480f946d4e02551b621a84702c997a17565`. The inventory above and below remains pinned to its original source; it is not a current release status. The old storage/arena blockers received GG disposition. Completion/accounting remains blocked under cgo-154; the stack is unmerged and production migrations remain unexecuted by this work.
+
+Standalone `TestSession` now wires actual vocabulary checks and terminal observations through the existing adapters. The shared history allowlist adds only exact `test:vocab`. Each test/account/preview transition resets the local test; section occurrence keys isolate a repeated vocabulary ID in a later section. The real card still resets on changed content, while identical rerenders preserve a visit. A repeated terminal callback with the same visit ID cannot create another completion. Three-check grading, carrier direction, hidden hints, optional gloss, other test sections and local Finish retain their existing behavior.
+
+The eleven acceptance groups below remain the contract. Automated server tests run the existing boundary suite for both practice and test vocabulary; host tests cover duplicate terminal callbacks and ordinary non-vocabulary dispatch. External browser evidence exercises actual TestSession, actual cards, owned device storage, actual POST and a local PostgreSQL-compatible test database using synthetic accounts. No production data or migration is involved. Empty help is not unaided mastery evidence: contextual prompts already contain support. Help-only actions, skips and Finish without answers create no new events.
+
+Next authorized sequence: cgo-153 source calibration, then cgo-154 accounting. Word help, personal collection, images and Activity changes remain unreleased. Full build/CI/deployment belong to GG.
+
 ## Scope, enumeration and meaning of evidence
 
 An adapter is the code that translates an interaction into a stored record. There is no `TaskAdapter` symbol or central game registry in the available runtime source. The actual enumeration sources are:

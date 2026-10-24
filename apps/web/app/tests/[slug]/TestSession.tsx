@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Gloss, GrammarItem, ListeningItem, ReadingItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { AudioClip, GrammarItemView, VocabItemView, type ClientAudioRef, type ResultDetail } from "@domigo/task-ui";
 import { attemptSender } from "@/lib/preview-attempt";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
+import { sendCompletedAttempt, sendVocabularyCheck } from "@/lib/vocabulary-history-client";
 
 export type ResolvedSection =
   | { kind: "vocab"; titleDe: string; items: VocabItem[] }
@@ -16,27 +17,46 @@ export type ResolvedSection =
 
 const page = { maxWidth: 680, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" } as const;
 
-export default function TestSession({ preview = false, ownerId, slug, testId, sections }: { preview?: boolean; ownerId: string | null; slug: string; testId: string; sections: ResolvedSection[] }) {
+type TestSessionProps = { preview?: boolean; ownerId: string | null; slug: string; testId: string; sections: ResolvedSection[] };
+
+export default function TestSession(props: TestSessionProps) {
+  // A different test/account is a fresh local test, even without a route remount.
+  return <TestRound key={JSON.stringify([props.slug, props.testId, props.ownerId, !!props.preview])} {...props} />;
+}
+
+function TestRound({ preview = false, ownerId, slug, testId, sections }: TestSessionProps) {
   const [s, setS] = useState(0);
   const [done, setDone] = useState(false);
   const [results, setResults] = useState<Tier[]>([]);
   const [streak, setStreak] = useState<number | null>(null);
+  const completedVisits = useRef(new Set<string>());
   useOutboxFlush(!preview, ownerId);
 
   const section = sections[s];
 
   const record = (mode: string) => (tier: Tier, detail: ResultDetail) => {
+    const visitId = mode === "test:vocab" && detail.kind === "vocab" ? detail.history?.visitId : undefined;
+    // A repeated terminal callback must not manufacture another completion.
+    if (visitId && completedVisits.current.has(visitId)) return;
+    if (visitId) completedVisits.current.add(visitId);
     setResults((p) => [...p, tier]);
-    void attemptSender(preview, ownerId)({
+    const body = {
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
       mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
-    }).then((r) => {
+    };
+    const send = attemptSender(preview, ownerId);
+    void (mode === "test:vocab" ? sendCompletedAttempt(send, body, detail) : send(body)).then((r) => {
       if (typeof r.streak === "number") setStreak(r.streak);
-    });
+    }).catch(() => { /* the existing owned outbox retains pending attempts */ });
+  };
+
+  const checkVocabulary = (_tier: Tier, detail: ResultDetail) => {
+    void sendVocabularyCheck(attemptSender(preview, ownerId), detail, "test:vocab")
+      .catch(() => { /* a failed check is never represented as confirmed */ });
   };
 
   const isLast = s >= sections.length - 1;
@@ -74,7 +94,7 @@ export default function TestSession({ preview = false, ownerId, slug, testId, se
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {section.kind === "vocab" &&
-          section.items.map((it) => <VocabItemView key={it.id} item={it} onResult={record("test:vocab")} hideHint />)}
+          section.items.map((it, index) => <VocabItemView key={`${s}:${index}:${it.id}`} item={it} onCheck={checkVocabulary} onResult={record("test:vocab")} hideHint />)}
         {section.kind === "grammar" &&
           section.items.map((it) => <GrammarItemView key={it.id} item={it} onResult={record("test:grammar")} hideHint />)}
         {section.kind === "listening" && (

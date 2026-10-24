@@ -1,22 +1,29 @@
 # Vocabulary learning history
 
+**CODEX DRAFT — NOT CANON. Implementation evidence, not a deployment certificate.**
+
 Review implementation: completed-card observations (cgo-143) and independent
 ordinary-card checks (cgo-144). Neither label implies deployment. This supports
 stage 2 of [the vocabulary programme](vocabulary-program.md).
 
-**Release blocked after the single review/fix/recheck allowance.** The browser
-reload finding and arbitrary answer-length cutoff were corrected. Independent
-storage recheck found a remaining cross-store replay defect: an event saved only
-in IndexedDB can leave a conflicting localStorage fallback after a changed resend;
-if IndexedDB then becomes unavailable, the altered fallback is sent under the same
-ID. Parent reproduced original/altered/altered. The server rejects such a conflict
-when the original event already exists, but the first local payload is not reliably
-preserved if it has never reached the server. GG owns correction and release;
-this slice must not ship as a complete immutable-pending-history guarantee.
+**24 October 2026 status:** GG released the repaired cgo-145 transport at stack head
+`7b6bb52e30fd19c58374431c8b5359ec1938adbe` (fix `64ce6480f946d4e02551b621a84702c997a17565`)
+for the bounded cgo-147 implementation. The earlier IndexedDB/localStorage immutable
+replay finding was corrected in that base; this slice changes neither store.
+The completion/accounting finding remains a publication blocker assigned to
+cgo-154. The stack is unmerged; no production migration or later vocabulary
+feature is released here. Full battery: **UNVERIFIED, runs in the GG chain.**
+
+Standalone `/tests/[slug]` now records exact `test:vocab` checks and completion
+observations using those same adapters. Its actual UI stays carrier-only with
+three checks and hidden hints; gloss can still be opened and recorded. Fresh
+sections, tests and accounts do not reuse old card state. Duplicate terminal
+callbacks for one visit are ignored. Other test sections and local Finish keep
+their existing paths. See the eleven-group [acceptance contract](vocabulary-learning-surfaces.md#smallest-next-complete-slice-standalone-test-vocabulary).
 
 ## Two records, two purposes
 
-Ordinary practice, daily rounds, review and study/journey vocabulary cards still
+Ordinary practice, daily rounds, review, study/journey and standalone test vocabulary cards still
 conclude once: a non-wrong result, or the third wrong result. The existing
 completion write carries the ordered browser observations. A separate
 `vocabulary-check` request now records **each actual Check action**, including a
@@ -87,8 +94,8 @@ or presentation changes reset the card. Identical new objects do not.
 Only history-check requests are staged synchronously in localStorage before the
 click handler yields. This closes the immediate-document-reload window that an
 asynchronous digest and IndexedDB-only write left open. The existing IndexedDB
-outbox also stores the owned payload. The unresolved conflict above is an exception
-to the intended identical-copy guarantee. Drain combines the two pending stores,
+outbox also stores the owned payload. GG repaired the earlier conflicting-copy
+case in the released base. Drain combines the two pending stores,
 deduplicates by owner/event key and removes both only after explicit server
 confirmation. Staging does not imply server persistence or award points.
 
@@ -110,12 +117,13 @@ or writes. Existing completion requests keep their previous transport behaviour.
 ## Coverage and remaining work
 
 Implemented hosts: `PracticeSession` (including daily, directions and choice
-bank), `ReviewSession`, `PathPracticeNode` (study/journey/checkpoint). This is not
+bank), `ReviewSession`, `PathPracticeNode` (study/journey/checkpoint), and standalone
+`TestSession` (exact `test:vocab`, carrier only). This is not
 coverage of every vocabulary surface. Current source inventory also finds:
 
 - game cards: 2D dialogue and battle, detective, trip and novel;
 - trainer modes: flashcards, speed, spelling, memory and word hunt;
-- formal tasks: AssignmentRunner, CheckupRunner, TestSession and separate assignment
+- formal tasks: AssignmentRunner, CheckupRunner and separate assignment
   endpoint; their assessment/reservation and completion semantics must be retained;
 - multiplayer/live/quiz routes with their own authoritative rounds;
 - Studio previews, which deliberately write nothing.
@@ -134,8 +142,8 @@ GG verification tasks. Full build, CI battery and visible performance are unveri
 here: **Vollbatterie: UNVERIFIZIERT, läuft in der GG-Kette.**
 
 The existing completion partial-write/receipt defect and optimistic review/path
-points remain with GG under cgo-132. This independent history path neither repairs
-nor overrides that exhausted review decision. Word help follows missing history
+points were dispositioned by GG under cgo-132 and assigned to cgo-154. This
+independent history path neither repairs nor waives those release blockers. Word help follows missing history
 slices; the personal collection follows word help. Rich multi-sentence contexts,
 actual vocabulary/grammar prerequisites, Year 1 German support, reviewed images
 and non-repeating student Activity remain in the parent programme.

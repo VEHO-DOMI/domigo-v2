@@ -65,3 +65,18 @@ it("check snapshot and help are frozen before sender yields", async () => {
 it("legacy detail without a visit and check creates no invented event", async () => {
   let calls=0; assert.deepEqual(await sendVocabularyCheck(async () => {calls++; return {ok:true,queued:false};},detail,"practice"),{ok:false,queued:false}); assert.equal(calls,0);
 });
+
+for (const pool of ["carrier", "definition", "deToEn", "enToDe"] as const) it(`test:vocab adapter preserves ${pool} for check and completion`, async () => {
+  const d = checkedDetail(); d.input.pool = pool;
+  await sendVocabularyCheck(async b => {
+    assert.equal((b.input as {pool:string}).pool,pool);
+    assert.equal(b.vocabularyCheck!.sourceMode,"test:vocab");
+    return {ok:true,queued:false};
+  }, d, "test:vocab");
+  await sendCompletedAttempt(async (b, prepare) => {
+    const packed = await prepare!(b);
+    assert.equal(packed.mode,"test:vocab"); assert.equal((packed.input as {pool:string}).pool,pool);
+    assert.equal(packed.vocabularyHistory!.visitId,d.history!.visitId);
+    return {ok:true,queued:false};
+  }, {...body,mode:"test:vocab",input:d.input}, d);
+});

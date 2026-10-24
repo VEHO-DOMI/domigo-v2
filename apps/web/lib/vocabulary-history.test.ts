@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { beforeEach, it } from "node:test";
+import { beforeEach, describe, it } from "node:test";
 import { createHash } from "node:crypto";
 import { fixture, resetSchoolFixture } from "../scripts/lib/school-test-harness.mjs";
 import { loadUnit } from "@domigo/content-loader";
@@ -10,9 +10,10 @@ const item = loadUnit("g2-u01").vocab[0]!;
 const digest = createHash("sha256").update(vocabularyContentSnapshot(item)).digest("hex");
 const observed = () => ({ schema: "vocabulary-completion@1", itemRevision: item.rev, displayedContentSha256: digest,
   maxChecks: 3, checks: [{ reportedTier: "wrong", helpShown: [] }, { reportedTier: "wrong", helpShown: ["hint"] }, { reportedTier: "correct", helpShown: ["hint", "retry-hint"] }] });
+for (const mode of ["practice", "test:vocab"]) describe(mode, () => {
 function request(pool: VocabPool = "carrier", patch: Record<string, unknown> = {}) {
   return new Request("https://attempts.invalid/api/attempts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({
-    ownerId: "synthetic-child", clientAttemptId: "77777777-7777-4777-8777-777777777777", itemId: item.id, mode: "practice",
+    ownerId: "synthetic-child", clientAttemptId: "77777777-7777-4777-8777-777777777777", itemId: item.id, mode,
     input: { kind: "vocab", value: vocabAnswers(item, pool).find(a => a.tier === "full")!.text, pool }, hintUsed: false,
     vocabularyHistory: observed(), ...patch,
   }) });
@@ -57,8 +58,8 @@ for (const bad of [
   assert.equal(VocabularyHistoryInput.safeParse(bad).success, false);
   assert.equal((await POST(request("carrier", { vocabularyHistory: bad }))).status, 400); assert.equal(fixture.writes.length, 0);
 });
-it("does not let observation metadata opt games into ordinary completion history", async () => {
-  assert.equal((await POST(request("carrier", { mode: "game:g2" }))).status, 400); assert.equal(fixture.writes.length, 0);
+for (const excluded of ["game:g2", "test:grammar", "test:listening", "test:reading", "test:writing", "test:vocab-extra", "assignment", "assign:00000000-0000-4000-8000-000000000010", "speed", "arena", "duel:00000000-0000-4000-8000-000000000010", "live:00000000-0000-4000-8000-000000000010", "quiz:00000000-0000-4000-8000-000000000010"]) it(`does not admit ${excluded} to vocabulary completion history`, async () => {
+  assert.equal((await POST(request("carrier", { mode: excluded }))).status, 400); assert.equal(fixture.writes.length, 0);
 });
 it("storage failure remains unconfirmed, regardless of captured retry history", async () => {
   fixture.writeError = new Error("synthetic write failure");
@@ -74,4 +75,6 @@ it("an excluded game cannot forge the reserved server history through context", 
   const row = fixture.writes[0]!.data;
   assert.equal(row.tier, "wrong"); assert.equal("vocabularyHistory" in row.context, false);
   assert.deepEqual(row.context.coordinates, { round: 2 });
+});
+
 });
